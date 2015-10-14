@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PaymentRequest</title>
+  <style>
+    div {
+      margin-top: 10px;
+    }
+    .error {
+      color: red;
+    }
+    .info {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <div><em><a href="https://goo.gl/tSScCe" target="_blank">This
+        page</a>.</em></div>
+  <div>Cost: <strong>$55.00</strong></div>
+  <div><button onClick="onBuyClicked()">Buy</button></div>
+  <div class="error"></div>
+  <div class="info"></div>
+  <script>
+    function error(msg) {
+      document.getElementsByClassName("error")[0].innerHTML = msg;
+    }
+
+    function info(msg) {
+      document.getElementsByClassName("info")[0].innerHTML = msg;
+    }
+
+    function onBuyClicked() {
+      var supportedInstruments = [
+        "androidpay",
+        "visa",
+        "mastercard",
+        "amex",
+        "bitcoin",
+        "bobpay.com"
+      ];
+
+      var details = {
+        "amount": 5500, //cents
+        "currencyCode": "USD",
+        "countryCode": "US",
+        "requestShipping": true,
+        "recurringCharge": false
+      };
+
+      var schemeData = {
+        "bobpay.com": {
+          "merchantIdentifier": "XXXX",
+          "bobPaySpecificField": true
+        },
+        "bitcoin": {
+          "address": "XXXX"
+        }
+      };
+
+      var shippingOptions = [{
+        label: "Standard shipping",
+        identifier: "standardShipping",
+        description: "Arrives in 6-8 weeks",
+        amount: 500,
+      },
+      {
+        label: "2-day shipping",
+        identifier: "twoDayShipping",
+        description: "Arrives in 2 business days",
+        amount: 1000
+      }];
+
+      if (!window.paymentRequest) {
+        error("PaymentRequest API is not supported.");
+        return;
+      }
+
+      var promise = paymentRequest(supportedInstruments, details, schemeData);
+
+      promise.then(function(requester) {
+
+        requester.addEventListener("shippingAddressChange", function () {
+            var newAddress = requester.userAddress;
+            // Return back new shipping options
+            requester.updateShippingOptions(shippingOptions);
+        });
+
+        return requester.instrumentResponse; //always necessary
+
+      }).then(function(instrumentResponse) {
+        
+        info("hurray, valid response from " +
+             instrumentResponse.instrumentName +
+             instrumentResponse.instrumentDetails);
+
+      }).catch(function(err) {
+
+          // Typically no available payment instruments or error on instrument side
+          error("Uh oh, something bad happened: " + err.message);
+
+      });
+    }
+  </script>
+</body>
+</html>
