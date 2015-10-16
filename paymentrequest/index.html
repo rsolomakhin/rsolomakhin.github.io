@@ -5,11 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PaymentRequest</title>
   <style>
+    body {
+      overflow: hidden;
+    }
     div {
       margin-top: 10px;
     }
     .error {
       color: red;
+      animation-duration: 0.5s;
+      animation-name: popup;
+    }
+    @keyframes popup {
+      from {
+        opacity: 0;
+      }
+      50% {
+        font-size: 105%;
+      }
+    }
+    .error-hide {
+      color: red;
+      animation-duration: 0.5s;
+      animation-name: popdown;
+    }
+    @keyframes popdown {
+      to {
+        opacity: 0;
+        font-size: 80%;
+      }
     }
     .info {
       color: green;
@@ -30,15 +54,32 @@
   <div><em><a href="https://goo.gl/6Dd02u">PaymentRequest</a></em></div>
   <div>Cost: <strong>$55.00</strong></div>
   <div><button onClick="onBuyClicked()">Buy</button></div>
-  <div class="error"></div>
-  <div class="info"></div>
+  <div id="msg"></div>
   <script>
+    var timeoutID1, timeoutID2;
     function error(msg) {
-      document.getElementsByClassName("error")[0].innerHTML = msg;
+      if (timeoutID1) {
+        window.clearTimeout(timeoutID1);
+      }
+      if (timeoutID2) {
+        window.clearTimeout(timeoutID2);
+      }
+      var element = document.getElementById("msg");
+      element.innerHTML = msg;
+      element.className = "error";
+      timeoutID1 = window.setTimeout(function() {
+        element.className = "error-hide";
+        timeoutID2 = window.setTimeout(function() {
+          element.innerHTML = "";
+          element.className = "";
+        }, 500);
+      }, 3000);
     }
 
     function info(msg) {
-      document.getElementsByClassName("info")[0].innerHTML = msg;
+      var element = document.getElementById("msg");
+      element.innerHTML = msg;
+      element.className = "info";
     }
 
     function onBuyClicked() {
