@@ -131,17 +131,7 @@
 
       var promise = paymentRequest(supportedInstruments, details, schemeData);
 
-      promise.then(function(requester) {
-
-        requester.addEventListener("shippingAddressChange", function () {
-            var newAddress = requester.userAddress;
-            // Return back new shipping options
-            requester.updateShippingOptions(shippingOptions);
-        });
-
-        return requester.instrumentResponse; //always necessary
-
-      }).then(function(instrumentResponse) {
+      promise.then(function(instrumentResponse) {
         
         info("hurray, valid response from " +
              instrumentResponse.instrumentName +
