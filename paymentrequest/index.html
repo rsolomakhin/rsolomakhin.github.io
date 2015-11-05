@@ -133,8 +133,9 @@
 
       promise.then(function(instrumentResponse) {
         
-        info("hurray, valid response from " +
+        info("hurray, valid response from \"" +
              instrumentResponse.instrumentName +
+             "\": " +
              instrumentResponse.instrumentDetails);
 
       }).catch(function(err) {
