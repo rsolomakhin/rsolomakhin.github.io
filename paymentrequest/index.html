@@ -86,11 +86,9 @@
     function onBuyClicked() {
       var supportedInstruments = [
         "androidpay",
-        "visa",
-        "mastercard",
-        "amex",
-        "bitcoin",
-        "bobpay.com"
+        "Visa",
+        "Mastercard",
+        "bitcoin"
       ];
 
       var details = {
@@ -98,11 +96,16 @@
         "amount": 5500, //cents
         "currencyCode": "USD",
         "countryCode": "US",
-        "requestShipping": true,
+        "requestShipping": false,
         "recurringCharge": false
       };
 
       var schemeData = {
+        "androidpay": {
+          "gateway": "stripe",
+          "stripe:publishableKey": "pk_test_VKUbaXb3LHE7GdxyOBMNwXqa",
+          "stripe:version": "2015-10-16 (latest)"
+        },
         "bobpay.com": {
           "merchantIdentifier": "XXXX",
           "bobPaySpecificField": true
@@ -133,17 +136,13 @@
       var promise = paymentRequest(supportedInstruments, details, schemeData);
 
       promise.then(function(instrumentResponse) {
-        
         info("hurray, valid response from \"" +
              instrumentResponse.instrumentName +
              "\": " +
              instrumentResponse.instrumentDetails);
-
       }).catch(function(err) {
-
-          // Typically no available payment instruments or error on instrument side
-          error("Uh oh, something bad happened: " + err.message);
-
+        // Typically no available payment instruments or error on instrument side
+        error("Uh oh, something bad happened: " + err.message);
       });
     }
   </script>
