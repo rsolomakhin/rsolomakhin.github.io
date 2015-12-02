@@ -1,5 +1,8 @@
 [{
   "relation": ["delegate_permission/common.handle_all_urls"],
-  "target": {"namespace": "android_app", "package_name": "xyz.bobpay.app",
-             "sha256_cert_fingerprints": ["F8:6D:A3:52:6B:F4:F4:CD:57:17:66:0D:DB:1A:B1:29:1B:CF:A2:1E:60:BF:BE:EC:0B:E9:E4:0B:B1:60:F9:0F"]}
+  "target": {
+    "namespace": "android_app",
+    "package_name": "xyz.bobpay.app",
+    "sha256_cert_fingerprints": ["F8:6D:A3:52:6B:F4:F4:CD:57:17:66:0D:DB:1A:B1:29:1B:CF:A2:1E:60:BF:BE:EC:0B:E9:E4:0B:B1:60:F9:0F"]
+  }
 }]
