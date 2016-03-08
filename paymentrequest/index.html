@@ -85,24 +85,37 @@
 
     function onBuyClicked() {
       var supportedInstruments = [
-        "androidpay",
-        "Visa",
-        "Mastercard",
+        "https://android.com/pay",
+        "visa",
+        "mastercard",
         "bitcoin",
         "bobpay.xyz"
       ];
 
       var details = {
-        "merchant": "rsolomakhin.github.io/paymentrequest",
-        "amount": 5500,  // cents
-        "currencyCode": "USD",
-        "countryCode": "US",
-        "requestShipping": false,
-        "recurringCharge": false
+        "items": [{
+          "id": "0",
+          "label": "Total",
+          "amount": {"currencyCode": "USD", "value": "55.00"}
+        }]
+        "shippingOptions": [{
+          "id": "standardShipping",
+          "label": "Standard shipping",
+          "amount": {"currencyCode": "USD", "value": "5.00"}
+        }, {
+          "id": "twoDayShipping",
+          "label": "2-day shipping",
+          "amount": {"currencyCode": "USD", "value": "10.00"}
+        }]
+      };
+
+      var options = {
+        "requestShipping": true
       };
 
       var schemeData = {
-        "androidpay": {
+        "https://android.com/pay": {
+          "merchant": "The Society in Support of Venerable Rouslan Solomakhin",
           "gateway": "stripe",
           "stripe:publishableKey": "pk_test_VKUbaXb3LHE7GdxyOBMNwXqa",
           "stripe:version": "2015-10-16 (latest)"
@@ -116,31 +129,28 @@
         }
       };
 
-      var shippingOptions = [{
-        label: "Standard shipping",
-        identifier: "standardShipping",
-        description: "Arrives in 6-8 weeks",
-        amount: 500,
-      },
-      {
-        label: "2-day shipping",
-        identifier: "twoDayShipping",
-        description: "Arrives in 2 business days",
-        amount: 1000
-      }];
-
-      if (!window.paymentRequest) {
+      if (!PaymentRequest) {
         error("PaymentRequest API is not supported.");
         return;
       }
 
-      var promise = paymentRequest(supportedInstruments, details, schemeData);
+      var request = new PaymentRequest(
+          supportedInstruments, details, options, schemeData);
 
-      promise.then(function(instrumentResponse) {
+      request.addEventListener("onshippingaddresschange", function(event) {
+        info("shipping address changed, but I don't know how to respond yet.");
+      });
+
+      request.addEventListener("onshippingoptionchange", function(event) {
+        info("shipping option changed, but I don't know how to respond yet.");
+      });
+
+      request.show().then(function(instrumentResponse) {
         info("hurray, valid response from \"" +
-             instrumentResponse.instrumentName +
+             instrumentResponse.methodName +
              "\": " +
-             instrumentResponse.instrumentDetails);
+             instrumentResponse.details);
+        instrumentResponse.complete(true);
       }).catch(function(err) {
         // Typically no available payment instruments or error on instrument side
         error("Uh oh, something bad happened: " + err.message);
