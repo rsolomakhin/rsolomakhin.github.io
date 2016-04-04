@@ -38,8 +38,8 @@
 	  form['zip'].value = '20500';
       }
 
-      var BasicFillForm = function(str) {
-	  var form = document.forms['form300'];
+      var BasicFillForm = function(id, str) {
+	  var form = document.forms[id];
           form['n300'].value = str;
       }
 
@@ -136,7 +136,7 @@
 <hr>
   <h3>Basic form key/value Autocomplete (unstructured data)</h3>
 
-<form name="form300" id="form300" action="https://9bf5d6a9ae58c0976f64da8a482db42e19365982.googledrive.com/generic_submit" method="post">
+<form name="form300" id="form300" action="/generic_submit" method="post">
   This Is: <input type="text" name="n300"><br>
   <input type="reset" value="Reset">
   <input type="submit" value="Submit">
@@ -144,11 +144,29 @@
 
 <p>
 
-<button type="button" onclick="BasicFillForm(&#39;Sparta&#39;)">Sparta</button>
+<button type="button" onclick="BasicFillForm('form300', 'Sparta')">Sparta</button>
 <br>
-<button type="button" onclick="BasicFillForm(&#39;Simpsons&#39;)">Simpsons</button>
+<button type="button" onclick="BasicFillForm('form300', 'Simpsons')">Simpsons</button>
 <br>
-<button type="button" onclick="BasicFillForm(&#39;Superman&#39;)">Superman</button>
+<button type="button" onclick="BasicFillForm('form300', 'Superman')">Superman</button>
+<br>
+
+</p><hr>
+  <h3>Basic form key/value Autocomplete (autocomplete="off")</h3>
+
+<form name="form300off" id="form300off" action="/generic_submit" method="post" autocomplete="off">
+  This Is: <input type="text" name="n300" autocomplete="off"/><br>
+  <input type="reset" value="Reset">
+  <input type="submit" value="Submit">
+</form>
+
+<p>
+
+<button type="button" onclick="BasicFillForm('form300off', 'Sparta')">Sparta</button>
+<br>
+<button type="button" onclick="BasicFillForm('form300off', 'Simpsons')">Simpsons</button>
+<br>
+<button type="button" onclick="BasicFillForm('form300off', 'Superman')">Superman</button>
 <br>
 
 </p><hr>
@@ -226,7 +244,7 @@
 </p><hr>
    <h3>autocomplete="off" form</h3>
 
-<form name="addr1.1" id="acoff" action="https://example.com/" method="post" autocomplete="off">
+<form name="addr1.1off" id="acoff" action="https://example.com/" method="post" autocomplete="off">
   Name: <input type="text" name="name" autocomplete="off"><br>
   Address: <input type="text" name="address" autocomplete="off"><br>
   City: <input type="text" name="city" autocomplete="off"><br>
