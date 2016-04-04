@@ -1,0 +1,253 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.5">
+    <title>Autofill Smoke Test</title>
+
+    <script>
+
+  var FlipRTL = function() {
+    var html = document.getElementsByTagName('html')[0];
+    if (html.getAttribute("dir") == "rtl") {
+      html.setAttribute("dir", "ltr");
+    } else {
+      html.setAttribute("dir", "rtl");
+    }
+  }
+  var FillFormSimpsons = function() {
+	  var form = document.forms['form1'];
+	  form['name'].value = 'Homer Simpson';
+	  form['address'].value = '123 Main Street';
+	  form['city'].value = 'Springfield';
+	  form['state'].value = 'IL';
+	  form['zip'].value = '55123';
+    form['email'].value = 'hjs@aol.com';
+  }
+  var FillFormSuperman = function() {
+	  var form = document.forms['form1'];
+	  form['name'].value = 'Superman';
+	  form['address'].value = 'Hall of Justice';
+	  form['city'].value = 'Metropolis';
+	  form['state'].value = 'NY';
+	  form['zip'].value = '55555';
+      }
+      var FillFormPresident = function() {
+	  var form = document.forms['form1'];
+	  form['name'].value = 'Barack Obama';
+	  form['address'].value = '1600 Pennsylvania Ave NW';
+	  form['city'].value = 'Washington';
+	  form['state'].value = 'DC';
+	  form['zip'].value = '20500';
+      }
+
+      var BasicFillForm = function(str) {
+	  var form = document.forms['form300'];
+          form['n300'].value = str;
+      }
+
+      /* These are not valid credit card numbers!!!! */
+      /* They pass the Luhn check but that's it.     */
+      var CCFillFormSimpsons = function() {
+	  var form = document.forms['cc1'];
+	  form['name'].value = 'Homer Simpson';
+	  form['CCNo'].value = '4408-0412-3456-7893';
+	  form['CCExpiresMonth'].value = '06';
+	  form['CCExpiresYear'].value = '2013';
+      }
+      var CCFillFormSuperman = function() {
+	  var form = document.forms['cc1'];
+	  form['name'].value = 'Superman';
+	  form['CCNo'].value = '4000-4444-4444-4444';
+	  form['CCExpiresMonth'].value = '01';
+	  form['CCExpiresYear'].value = '2011';
+      }
+      var CCFillFormPresident = function() {
+	  var form = document.forms['cc1'];
+	  form['name'].value = 'Barack Obama';
+	  form['CCNo'].value = '4417-1234-5678-9113';
+	  form['CCExpiresMonth'].value = '12';
+	  form['CCExpiresYear'].value = '2012';
+      }
+
+      var NPFillFormSimpsons = function() {
+	  var form = document.forms['np1'];
+	  form['name'].value = 'Homer_Simpson';
+	  form['password'].value = 'DOH!';
+      }
+      var NPFillFormSuperman = function() {
+	  var form = document.forms['np1'];
+	  form['name'].value = 'Superman';
+	  form['password'].value = 'LouisLane';
+      }
+      var NPFillFormPresident = function() {
+	  var form = document.forms['np1'];
+	  form['name'].value = 'Barackalypse';
+	  form['password'].value = 'ILoveGeorgeBush';
+      }
+
+    </script>
+    <style>
+      .fork {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+  <a href="https://github.com/rsolomakhin/rsolomakhin.github.io/blob/master/autofill/index.html"><img class="fork"
+    src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67"
+    alt="Fork me on GitHub"
+    data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+
+  <em>Beware what you post, all the forms send data to https://example.com.</em>
+
+  <h2><a href="https://goo.gl/B6Xs1E">Autofill Smoke Test</a></h2>
+
+  <h3>Profile Autofill</h3>
+
+<form name="addr1.1" id="form1" action="https://example.com/" method="post">
+  Name: <input type="text" name="name"><br>
+  Address: <input type="text" name="address"><br>
+  City: <input type="text" name="city"><br>
+  State: <select name="state">
+    <option value="CA">CA</option>
+    <option value="MA">MA</option>
+    <option value="NY">NY</option>
+    <option value="MD">MD</option>
+    <option value="OR">OR</option>
+    <option value="OH">OH</option>
+    <option value="IL">IL</option>
+    <option value="DC">DC</option>
+  </select> <br>
+  Zip: <input name="zip" id="form_zip"> <br>
+  Email: <input name="email" id="form_email"> <br>
+  <input type="reset" value="Reset">
+  <input type="submit" value="Submit">
+</form>
+
+<button type="button" onclick="FillFormSimpsons()">Fill Form (Simpsons)</button>
+<br>
+<button type="button" onclick="FillFormSuperman()">Fill Form (Superman)</button>
+<br>
+<button type="button" onclick="FillFormPresident()">Fill Form (President)</button>
+<br>
+
+
+<hr>
+  <h3>Basic form key/value Autocomplete (unstructured data)</h3>
+
+<form name="form300" id="form300" action="https://9bf5d6a9ae58c0976f64da8a482db42e19365982.googledrive.com/generic_submit" method="post">
+  This Is: <input type="text" name="n300"><br>
+  <input type="reset" value="Reset">
+  <input type="submit" value="Submit">
+</form>
+
+<p>
+
+<button type="button" onclick="BasicFillForm(&#39;Sparta&#39;)">Sparta</button>
+<br>
+<button type="button" onclick="BasicFillForm(&#39;Simpsons&#39;)">Simpsons</button>
+<br>
+<button type="button" onclick="BasicFillForm(&#39;Superman&#39;)">Superman</button>
+<br>
+
+</p><hr>
+  <h3>Credit Card autofill</h3>
+
+<form name="cc1.1" id="cc1" action="https://example.com/" method="post">
+  Name on card: <input autofocus="" type="text" name="name"><br>
+  Credit card number: <input type="text" name="CCNo"><br>
+  Expiry Date: <select name="CCExpiresMonth">
+    <option value="01">01</option>
+    <option value="02">02</option>
+    <option value="03">03</option>
+    <option value="04">04</option>
+    <option value="05">05</option>
+    <option value="06">06</option>
+    <option value="07">07</option>
+    <option value="08">08</option>
+    <option value="09">09</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+  </select>
+  /
+<select name="CCExpiresYear">
+    <option value="2010">2010</option>
+    <option value="2011">2011</option>
+    <option value="2012">2012</option>
+    <option value="2013">2013</option>
+    <option value="2014">2014</option>
+    <option value="2015">2015</option>
+    <option value="2016">2016</option>
+    <option value="2017">2017</option>
+    <option value="2018">2018</option>
+    <option value="2019">2019</option>
+    <option value="2020">2020</option>
+    <option value="2021">2021</option>
+    <option value="2022">2022</option>
+    <option value="2023">2023</option>
+  </select>
+  <br>
+  CVC: <input name="cvc">
+<br>
+  <input type="reset" value="Reset">
+  <input type="submit" value="Submit">
+</form>
+
+<p>
+
+<button type="button" onclick="CCFillFormSimpsons()">CC Fill Form (Simpsons)</button>
+<br>
+<button type="button" onclick="CCFillFormSuperman()">CC Fill Form (Superman)</button>
+<br>
+<button type="button" onclick="CCFillFormPresident()">CC Fill Form (President)</button>
+<br>
+
+</p><hr>
+  <h3>Name/Password</h3>
+
+  <form name="np" id="np1" action="https://example.com/" method="post">
+  Name: <input type="text" name="name"><br>
+  Password: <input type="password" name="password"><br>
+  <input type="reset" value="Reset">
+  <input type="submit" value="Submit">
+  </form>
+
+<p>
+
+<button type="button" onclick="NPFillFormSimpsons()">NP Fill Form (Simpsons)</button>
+<br>
+<button type="button" onclick="NPFillFormSuperman()">NP Fill Form (Superman)</button>
+<br>
+<button type="button" onclick="NPFillFormPresident()">NP Fill Form (President)</button>
+<br>
+
+</p><hr>
+   <h3>autocomplete="off" form</h3>
+
+<form name="addr1.1" id="acoff" action="https://example.com/" method="post" autocomplete="off">
+  Name: <input type="text" name="name" autocomplete="off"><br>
+  Address: <input type="text" name="address" autocomplete="off"><br>
+  City: <input type="text" name="city" autocomplete="off"><br>
+  State: <select name="state" autocomplete="off">
+    <option value="CA">CA</option>
+    <option value="MA">MA</option>
+    <option value="NY">NY</option>
+    <option value="MD">MD</option>
+    <option value="OR">OR</option>
+    <option value="OH">OH</option>
+    <option value="IL">IL</option>
+    <option value="DC">DC</option>
+  </select> <br>
+  Zip: <input name="zip" id="form_zip" autocomplete="off"> <br>
+  Email: <input name="email" id="form_email" autocomplete="off"> <br>
+  <input type="reset" value="Reset">
+  <input type="submit" value="Submit">
+</form>
+
+<hr>
+<button type="button" onclick="FlipRTL()">RTL &lt;-&gt; LTR</button>
+
+
+</body></html>
