@@ -143,6 +143,7 @@
       }
 
       try {
+
         var request = new PaymentRequest(
             supportedInstruments, details, options, schemeData);
 
@@ -161,12 +162,13 @@
           }).catch(function(err) {
             // Unexpected errors.
             error("Uh oh, something bad happened: " + err.message);
-          }
+          });
         }).catch(function(err) {
           // Typically no available payment instruments or error on instrument
           // side.
           error("Uh oh, something bad happened: " + err.message);
         });
+
       } catch(e) {
         error("Developer mistake that a user should never see: '" + e.message + "'");
       }
