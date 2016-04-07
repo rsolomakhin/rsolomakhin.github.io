@@ -151,7 +151,7 @@
           info("hurray, valid response from \"" +
                instrumentResponse.methodName +
                "\": " +
-               instrumentResponse.details);
+               JSON.stringify(instrumentResponse.details));
           instrumentResponse.complete(true);
         }).catch(function(err) {
           // Typically no available payment instruments or error on instrument side
