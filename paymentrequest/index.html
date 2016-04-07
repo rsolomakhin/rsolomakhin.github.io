@@ -53,10 +53,12 @@
     src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67"
     alt="Fork me on GitHub"
     data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
-  <div><em><a href="https://goo.gl/6Dd02u">The Society in Support of Venerable Rouslan Solomakhin</a></em></div>
-  <div>Cost: <strong>$55.00</strong></div>
-  <div><button onclick="onBuyClicked()">Buy</button></div>
-  <div id="msg"></div>
+  <div id="contents">
+    <div><em><a href="https://goo.gl/6Dd02u">The Society in Support of Venerable Rouslan Solomakhin</a></em></div>
+    <div>Cost: <strong>$55.00</strong></div>
+    <div><button onclick="onBuyClicked()">Buy</button></div>
+    <div id="msg"></div>
+  </div>
   <script>
     var timeoutID1, timeoutID2;
     function error(msg) {
@@ -82,6 +84,11 @@
       var element = document.getElementById("msg");
       element.innerHTML = msg;
       element.className = "info";
+    }
+
+    function done() {
+      var element = document.getElementById("contents");
+      element.innerHTML = "Thank you!";
     }
 
     function onBuyClicked() {
@@ -148,13 +155,16 @@
         });
 
         request.show().then(function(instrumentResponse) {
-          info("hurray, valid response from \"" +
-               instrumentResponse.methodName +
-               "\": " +
-               JSON.stringify(instrumentResponse.details));
-          instrumentResponse.complete(true);
+          // Process the instrumentResponse here.
+          instrumentResponse.complete(true).then(function() {
+            done();
+          }).catch(function(err) {
+            // Unexpected errors.
+            error("Uh oh, something bad happened: " + err.message);
+          }
         }).catch(function(err) {
-          // Typically no available payment instruments or error on instrument side
+          // Typically no available payment instruments or error on instrument
+          // side.
           error("Uh oh, something bad happened: " + err.message);
         });
       } catch(e) {
