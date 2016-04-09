@@ -57,8 +57,8 @@
     <div><em><a href="https://goo.gl/6Dd02u">The Society in Support of Venerable Rouslan Solomakhin</a></em></div>
     <div>Donation: <strong id="currency"></strong><strong id="amount"></strong></div>
     <div><button onclick="onBuyClicked()">Donate</button></div>
-    <div id="msg"></div>
   </div>
+  <div id="msg"></div>
   <script>
     var currency = Math.random() > 0.5 ? "USD" : "EUR";
     document.getElementById("currency").innerHTML = currency == "USD" ? "$" : "€";
@@ -92,9 +92,10 @@
       element.className = "info";
     }
 
-    function done() {
+    function done(methodName, details) {
       var element = document.getElementById("contents");
       element.innerHTML = "Thank you!";
+      info(methodName + ": " + JSON.stringify(details));
     }
 
     function onBuyClicked() {
@@ -180,7 +181,7 @@
         request.show().then(function(instrumentResponse) {
           // Process the instrumentResponse here.
           instrumentResponse.complete(true).then(function() {
-            done();
+            done(instrumentReponse.methodName, instrumentResponse.details);
           }).catch(function(err) {
             // Unexpected errors.
             error("Uh oh, something bad happened: " + err.message);
