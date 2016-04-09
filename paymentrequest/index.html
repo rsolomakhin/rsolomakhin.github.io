@@ -92,10 +92,10 @@
       element.className = "info";
     }
 
-    function done(methodName, details) {
+    function done(extraMessage) {
       var element = document.getElementById("contents");
       element.innerHTML = "Thank you!";
-      info(methodName + ": " + JSON.stringify(details));
+      info(extraMessage)
     }
 
     function onBuyClicked() {
@@ -181,7 +181,7 @@
         request.show().then(function(instrumentResponse) {
           // Process the instrumentResponse here.
           instrumentResponse.complete(true).then(function() {
-            done(instrumentReponse.methodName, instrumentResponse.details);
+            done(JSON.stringify(instrumentResponse));
           }).catch(function(err) {
             // Unexpected errors.
             error("Uh oh, something bad happened: " + err.message);
