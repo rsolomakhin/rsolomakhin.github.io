@@ -60,12 +60,11 @@
   </div>
   <div id="msg"></div>
   <script>
-    var currency = "USD";
-    document.getElementById("currency").innerHTML = "$";
-    var amount = "65.00";
-    var discount = "-10.00";
-    var total = "55.00";
-    document.getElementById("amount").innerHTML = total;
+    var currency = Math.random() > 0.5 ? "USD" : "EUR";
+    document.getElementById("currency").innerHTML = currency == "USD" ? "$" : "€";
+
+    var amount = (Math.floor(Math.random() * 100000000 + 1) / Math.pow(10, Math.floor(Math.random() * 5))).toString();
+    document.getElementById("amount").innerHTML = amount;
 
     var timeoutID1, timeoutID2;
     function error(msg) {
@@ -116,21 +115,9 @@
 
       var details = {
         "items": [{
-          "id": "original",
-          "label": "Original donation amount",
-          "amount": {"currencyCode": currency, "value": amount}
-        }, {
-          "id": "discount",
-          "label": "Friends and family discount",
-          "amount": {
-            "currencyCode": currency,
-            "value": discount
-        }, {
-          "id": "total",
+          "id": "0",
           "label": "Donation",
-          "amount": {
-            "currencyCode": currency,
-            "value": total
+          "amount": {"currencyCode": currency, "value": amount}
         }],
         "shippingOptions": [{
           "id": "standardShipping",
@@ -142,6 +129,17 @@
           "amount": {"currencyCode": currency, "value": "10.00"}
         }]
       };
+
+      if (Math.random() > 0.5) {
+        details.items.splice(0, 0, {
+          "id": "1",
+          "label": "Friends and family discount",
+          "amount": {
+            "currencyCode": currency,
+            "value": "-" + (Math.floor(Math.random() * 10000 + 1) / Math.pow(10, Math.floor(Math.random() * 3))).toString()
+          }
+        });
+      }
 
       var options = {
         "requestShipping": true
