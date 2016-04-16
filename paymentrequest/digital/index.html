@@ -94,9 +94,9 @@
       element.className = "info";
     }
 
-    function done(extraLabel, extraMessage) {
+    function done(message, extraLabel, extraMessage) {
       var element = document.getElementById("contents");
-      element.innerHTML = "Thank you!";
+      element.innerHTML = message;
       info(extraLabel + ": " + extraMessage)
     }
 
@@ -166,8 +166,9 @@
 
         request.show().then(function(instrumentResponse) {
           // Process the instrumentResponse here.
+          done("Processing payment...", instrumentResponse.methodName, JSON.stringify(instrumentResponse.details));
           instrumentResponse.complete(true).then(function() {
-            done(instrumentResponse.methodName, JSON.stringify(instrumentResponse.details));
+            done("Thank you!", instrumentResponse.methodName, JSON.stringify(instrumentResponse.details));
           }).catch(function(err) {
             // Unexpected errors.
             error("Uh oh, something bad happened: " + err.message);
