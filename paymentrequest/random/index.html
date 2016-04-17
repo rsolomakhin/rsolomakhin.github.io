@@ -181,7 +181,6 @@
 
         request.show().then(function(instrumentResponse) {
           // Process the instrumentResponse here.
-          done("Processing payment...", instrumentResponse.methodName, JSON.stringify(instrumentResponse.details));
           instrumentResponse.complete(true).then(function() {
             done("Thank you!", instrumentResponse.methodName, JSON.stringify(instrumentResponse.details));
           }).catch(function(err) {
