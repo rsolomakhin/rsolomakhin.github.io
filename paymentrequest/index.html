@@ -95,12 +95,29 @@
       element.className = "info";
     }
 
+    function toDictionary(addr) {
+      var result = {};
+      result.regionCode = addr.regionCode;
+      result.administrativeArea = addr.administrativeArea;
+      result.locality = addr.locality;
+      result.dependentLocality = addr.dependentLocality;
+      result.addressLine = addr.addressLine;
+      result.postalCode = addr.postalCode;
+      result.sortingCode = addr.sortingCode;
+      result.languageCode = addr.languageCode;
+      result.organization = addr.organization;
+      result.recipient = addr.recipient;
+      return result;
+    }
+
     function done(message, shippingAddress, shippingOption, methodName,
         instrumentDetails) {
       var element = document.getElementById("contents");
       element.innerHTML = message;
-      info(shippingAddress + "<br/>" + shippingOption + "<br/>" + methodName +
-          ": " + instrumentDetails)
+
+      info(JSON.stringify(toDictionary(shippingAddress)) + "<br/>" +
+            shippingOption + "<br/>" + methodName + "<br/>" +
+            JSON.stringify(instrumentDetails));
     }
 
     function onBuyClicked() {
@@ -184,10 +201,10 @@
           // Process the instrumentResponse here.
           instrumentResponse.complete(true).then(function() {
             done("Thank you!",
-                JSON.stringify(request.shippingAddress),
+                request.shippingAddress,
                 request.shippingOption,
                 instrumentResponse.methodName,
-                JSON.stringify(instrumentResponse.details));
+                instrumentResponse.details);
           }).catch(function(err) {
             // Unexpected errors.
             error("Uh oh, something bad happened: " + err.message);
