@@ -95,10 +95,12 @@
       element.className = "info";
     }
 
-    function done(message, extraLabel, extraMessage) {
+    function done(message, shippingAddress, shippingOption, methodName,
+        instrumentDetails) {
       var element = document.getElementById("contents");
       element.innerHTML = message;
-      info(extraLabel + ": " + extraMessage)
+      info(shippingAddress + "<br/>" + shippingOption + "<br/>" + methodName +
+          ": " + instrumentDetails)
     }
 
     function onBuyClicked() {
@@ -181,7 +183,11 @@
         request.show().then(function(instrumentResponse) {
           // Process the instrumentResponse here.
           instrumentResponse.complete(true).then(function() {
-            done("Thank you!", instrumentResponse.methodName, JSON.stringify(instrumentResponse.details));
+            done("Thank you!",
+                JSON.stringify(request.shippingAddress),
+                request.shippingOption,
+                instrumentResponse.methodName,
+                JSON.stringify(instrumentResponse.details));
           }).catch(function(err) {
             // Unexpected errors.
             error("Uh oh, something bad happened: " + err.message);
