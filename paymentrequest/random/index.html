@@ -94,12 +94,30 @@
       element.className = "info";
     }
 
-    function done(message, extraLabel, extraMessage) {
-      var element = document.getElementById("contents");
-      element.innerHTML = message;
-      info(extraLabel + ": " + extraMessage)
+    function toDictionary(addr) {
+      var result = {};
+      result.regionCode = addr.regionCode;
+      result.administrativeArea = addr.administrativeArea;
+      result.locality = addr.locality;
+      result.dependentLocality = addr.dependentLocality;
+      result.addressLine = addr.addressLine;
+      result.postalCode = addr.postalCode;
+      result.sortingCode = addr.sortingCode;
+      result.languageCode = addr.languageCode;
+      result.organization = addr.organization;
+      result.recipient = addr.recipient;
+      return result;
     }
 
+    function done(message, shippingAddress, shippingOption, methodName,
+        instrumentDetails) {
+      var element = document.getElementById("contents");
+      element.innerHTML = message;
+
+      info(JSON.stringify(toDictionary(shippingAddress)) + "<br/>" +
+            shippingOption + "<br/>" + methodName + "<br/>" +
+            JSON.stringify(instrumentDetails));
+    }
     function onBuyClicked() {
       var supportedInstruments = [
         "https://android.com/pay",
@@ -135,10 +153,43 @@
       if (Math.random() > 0.5) {
         details.items.splice(0, 0, {
           "id": "1",
+          "label": "Disaster prevention fund",
+          "amount": {
+            "currencyCode": currency,
+            "value": (Math.floor(Math.random() * 10000 + 1) / Math.pow(10, Math.floor(Math.random() * 3))).toString()
+          }
+        });
+      }
+      
+      if (Math.random() > 0.5) {
+        details.items.splice(0, 0, {
+          "id": "2",
           "label": "Friends and family discount",
           "amount": {
             "currencyCode": currency,
             "value": "-" + (Math.floor(Math.random() * 10000 + 1) / Math.pow(10, Math.floor(Math.random() * 3))).toString()
+          }
+        });
+      }
+
+      if (Math.random() > 0.5) {
+        details.items.splice(0, 0, {
+          "id": "3",
+          "label": "Rainy day contribution",
+          "amount": {
+            "currencyCode": currency,
+            "value": (Math.floor(Math.random() * 10000 + 1) / Math.pow(10, Math.floor(Math.random() * 3))).toString()
+          }
+        });
+      }
+
+      if (Math.random() > 0.9) {
+        details.items.splice(0, 0, {
+          "id": "4",
+          "label": "Congratulations! You Won!",
+          "amount": {
+            "currencyCode": currency,
+            "value": "-10.00"
           }
         });
       }
@@ -183,7 +234,11 @@
         request.show().then(function(instrumentResponse) {
           // Process the instrumentResponse here.
           instrumentResponse.complete(true).then(function() {
-            done("Thank you!", instrumentResponse.methodName, JSON.stringify(instrumentResponse.details));
+            done("Thank you!",
+                request.shippingAddress,
+                request.shippingOption,
+                instrumentResponse.methodName,
+                instrumentResponse.details);
           }).catch(function(err) {
             // Unexpected errors.
             error("Uh oh, something bad happened: " + err.message);
