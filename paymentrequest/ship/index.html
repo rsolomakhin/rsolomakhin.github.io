@@ -57,6 +57,7 @@
     <div><em>The Society in Support of Venerable Rouslan Solomakhin</em></div>
     <div>Donation: <strong id="currency"></strong><strong id="amount"></strong></div>
     <div>Free standard shipping in California.</div>
+    <div>Can ship only in US.</div>
     <div><button onclick="onBuyClicked()">Donate</button></div>
   </div>
   <div id="msg"></div>
@@ -77,11 +78,7 @@
       "US": {
         "shipping": "5.00",
         "total": "60.00",
-      },
-      "world": {
-        "shipping": "10.00",
-        "total": "65.00",
-      },
+      }
     };
 
     var timeoutID1, timeoutID2;
@@ -207,13 +204,24 @@
               if (request.shippingAddress.administrativeArea == "CA") {
                 details.items[SHIPPING_ITEM].amount.value = prices.CA.shipping;
                 details.items[TOTAL_ITEM].amount.value = prices.CA.total;
+                details.shippingOptions = {
+                  "id": "discount",
+                  "label": "Discount California shipping",
+                  "amount": {"currencyCode": "USD", "value": prices.CA.shipping}
+                };
               } else {
                 details.items[SHIPPING_ITEM].amount.value = prices.US.shipping;
                 details.items[TOTAL_ITEM].amount.value = prices.US.total;
+                details.shippingOptions = {
+                  "id": "standard",
+                  "label": "Standard U.S.A. shipping",
+                  "amount": {"currencyCode": "USD", "value": prices.US.shipping}
+                };
               }
             } else {
-              details.items[SHIPPING_ITEM].amount.value = prices.world.shipping;
-              details.items[TOTAL_ITEM].amount.value = prices.world.total;
+              details.items[SHIPPING_ITEM].amount.value = "0";
+              details.items[TOTAL_ITEM].amount.value = total;
+              delete details.shippingOptions;
             }
             resolve(details);
           }));
