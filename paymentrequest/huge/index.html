@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Society in Support of Venerable Rouslan Solomakhin</title>
+  <link rel="icon" href="/favicon.ico">
+  <style>
+    body {
+      overflow: hidden;
+    }
+    div {
+      margin-top: 10px;
+    }
+    .error {
+      animation-duration: 0.5s;
+      animation-name: popup;
+      color: red;
+    }
+    @keyframes popup {
+      from {
+        margin-top: 20px;
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+    .error-hide {
+      animation-duration: 0.5s;
+      animation-name: popdown;
+      color: red;
+    }
+    @keyframes popdown {
+      to {
+        margin-top: 20px;
+        opacity: 0;
+      }
+    }
+    .info {
+      color: green;
+    }
+    .fork {
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <a href="https://github.com/rsolomakhin/rsolomakhin.github.io/blob/master/paymentrequest/huge/index.html"><img class="fork"
+    src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67"
+    alt="Fork me on GitHub"
+    data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+  <div id="contents">
+    <div><em><a href="https://goo.gl/6Dd02u">The Society in Support of Venerable Rouslan Solomakhin</a></em></div>
+    <div>Donation: <strong id="currency"></strong><strong id="amount"></strong></div>
+    <div>Thank you for this HUGE contribution.</div>
+    <div><button onclick="onBuyClicked()">Donate</button></div>
+  </div>
+  <div id="msg"></div>
+  <script>
+    var currency = "USD";
+    document.getElementById("currency").innerHTML = "$";
+    var amount = "6900.00";
+    var discount = "-10.00";
+    var total = "6890.00";
+    document.getElementById("amount").innerHTML = total;
+
+    var timeoutID1, timeoutID2;
+    function error(msg) {
+      if (timeoutID1) {
+        window.clearTimeout(timeoutID1);
+      }
+      if (timeoutID2) {
+        window.clearTimeout(timeoutID2);
+      }
+      var element = document.getElementById("msg");
+      element.innerHTML = msg;
+      element.className = "error";
+      timeoutID1 = window.setTimeout(function() {
+        element.className = "error-hide";
+        timeoutID2 = window.setTimeout(function() {
+          element.innerHTML = "";
+          element.className = "";
+        }, 500);
+      }, 10000);
+    }
+
+    function info(msg) {
+      var element = document.getElementById("msg");
+      element.innerHTML = msg;
+      element.className = "info";
+    }
+
+    function toDictionary(addr) {
+      var result = {};
+      result.regionCode = addr.regionCode;
+      result.administrativeArea = addr.administrativeArea;
+      result.locality = addr.locality;
+      result.dependentLocality = addr.dependentLocality;
+      result.addressLine = addr.addressLine;
+      result.postalCode = addr.postalCode;
+      result.sortingCode = addr.sortingCode;
+      result.languageCode = addr.languageCode;
+      result.organization = addr.organization;
+      result.recipient = addr.recipient;
+      return result;
+    }
+
+    function done(message, shippingAddress, shippingOption, methodName,
+        instrumentDetails) {
+      var element = document.getElementById("contents");
+      element.innerHTML = message;
+
+      info(JSON.stringify(toDictionary(shippingAddress)) + "<br/>" +
+            shippingOption + "<br/>" + methodName + "<br/>" +
+            JSON.stringify(instrumentDetails));
+    }
+
+    function onBuyClicked() {
+      var supportedInstruments = [
+        "https://android.com/pay",
+        "visa",
+        "mastercard",
+        "amex",
+        "discover",
+        "maestro",
+        "diners",
+        "jcb",
+        "unionpay",
+        "bitcoin",
+        "bobpay.xyz"
+      ];
+
+      var details = {
+        "items": [{
+          "id": "original",
+          "label": "Original donation amount",
+          "amount": {"currencyCode": currency, "value": amount}
+        }, {
+          "id": "discount",
+          "label": "Friends and family discount",
+          "amount": {"currencyCode": currency, "value": discount}
+        }, {
+          "id": "total",
+          "label": "Donation",
+          "amount": {"currencyCode": currency, "value": total}
+        }],
+        "shippingOptions": [{
+          "id": "standardShipping",
+          "label": "Standard shipping",
+          "amount": {"currencyCode": currency, "value": "5.00"}
+        }, {
+          "id": "twoDayShipping",
+          "label": "2-day shipping",
+          "amount": {"currencyCode": currency, "value": "10.00"}
+        }]
+      };
+
+      var options = {
+        "requestShipping": false
+      };
+
+      var schemeData = {
+        "https://android.com/pay": {
+          "gateway": "stripe",
+          "stripe:publishableKey": "pk_test_VKUbaXb3LHE7GdxyOBMNwXqa",
+          "stripe:version": "2015-10-16 (latest)"
+        },
+        "bobpay.xyz": {
+          "merchantIdentifier": "XXXX",
+          "bobPaySpecificField": true
+        },
+        "bitcoin": {
+          "address": "XXXX"
+        }
+      };
+
+      if (!window.PaymentRequest) {
+        error("PaymentRequest API is not supported.");
+        return;
+      }
+
+      try {
+
+        var request = new PaymentRequest(
+            supportedInstruments, details, options, schemeData);
+
+        request.addEventListener("onshippingaddresschange", function(event) {
+          info("shipping address changed, but I don't know how to respond yet.");
+        });
+
+        request.addEventListener("onshippingoptionchange", function(event) {
+          info("shipping option changed, but I don't know how to respond yet.");
+        });
+
+        request.show().then(function(instrumentResponse) {
+          // Process the instrumentResponse here.
+          instrumentResponse.complete(true).then(function() {
+            done("Thank you!",
+                request.shippingAddress,
+                request.shippingOption,
+                instrumentResponse.methodName,
+                instrumentResponse.details);
+          }).catch(function(err) {
+            // Unexpected errors.
+            error("Uh oh, something bad happened: " + err.message);
+          });
+        }).catch(function(err) {
+          // Typically no available payment instruments or error on instrument
+          // side.
+          error("Uh oh, something bad happened: " + err.message);
+        });
+
+      } catch(e) {
+        error("Developer mistake that a user should never see: '" + e.message + "'");
+      }
+    }
+  </script>
+</body>
+</html>
