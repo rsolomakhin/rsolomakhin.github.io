@@ -184,11 +184,11 @@
         var request = new PaymentRequest(
             supportedInstruments, details, options, schemeData);
 
-        request.addEventListener("shippingaddresschange", function(event) {
+        request.addEventListener("shippingaddresschange", function(e) {
           info("shipping address changed, but I don't know how to respond yet.");
         });
 
-        request.addEventListener("shippingoptionchange", function(event) {
+        request.addEventListener("shippingoptionchange", function(e) {
           info("shipping option changed, but I don't know how to respond yet.");
         });
 
