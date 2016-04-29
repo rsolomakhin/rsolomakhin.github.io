@@ -234,6 +234,7 @@
           error("shipping option should not change, as there's only one.");
         });
 
+        console.log("request.show();");
         request.show().then(function(instrumentResponse) {
           // Process the instrumentResponse here.
           instrumentResponse.complete(true).then(function() {
