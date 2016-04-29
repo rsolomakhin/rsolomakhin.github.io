@@ -198,10 +198,10 @@
         var request = new PaymentRequest(
             supportedInstruments, details, options, schemeData);
 
-        request.addEventListener("onshippingaddresschange", function(event) {
-          console.log("onShippingAddressChange");
-          event.updateWith(new Promise(function(resolve, reject) {
-            console.log("event.updateWith()");
+        request.addEventListener("onshippingaddresschange", function(e) {
+          info("onShippingAddressChange");
+          e.updateWith(new Promise(function(resolve, reject) {
+            info("event.updateWith()");
             if (request.shippingAddress.regionCode == "US") {
               if (request.shippingAddress.administrativeArea == "CA") {
                 details.items[SHIPPING_ITEM].amount.value = prices.CA.shipping;
@@ -225,7 +225,7 @@
               details.items[TOTAL_ITEM].amount.value = total;
               delete details.shippingOptions;
             }
-            console.log("resolve(details);");
+            info("resolve(details);");
             resolve(details);
           }));
         });
@@ -234,7 +234,7 @@
           error("shipping option should not change, as there's only one.");
         });
 
-        console.log("request.show();");
+        info("request.show();");
         request.show().then(function(instrumentResponse) {
           // Process the instrumentResponse here.
           instrumentResponse.complete(true).then(function() {
