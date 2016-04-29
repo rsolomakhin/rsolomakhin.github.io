@@ -222,11 +222,11 @@
         var request = new PaymentRequest(
             supportedInstruments, details, options, schemeData);
 
-        request.addEventListener("onshippingaddresschange", function(event) {
+        request.addEventListener("shippingaddresschange", function(event) {
           info("shipping address changed, but I don't know how to respond yet.");
         });
 
-        request.addEventListener("onshippingoptionchange", function(event) {
+        request.addEventListener("shippingoptionchange", function(event) {
           info("shipping option changed, but I don't know how to respond yet.");
         });
 
