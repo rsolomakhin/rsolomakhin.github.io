@@ -199,8 +199,8 @@
         var request = new PaymentRequest(
             supportedInstruments, details, options, schemeData);
 
-        request.addEventListener("onshippingaddresschange", function(e) {
-          info("onShippingAddressChange");
+        request.addEventListener("shippingaddresschange", function(e) {
+          info("ShippingAddressChange");
           e.updateWith(new Promise(function(resolve, reject) {
             info("event.updateWith()");
             if (request.shippingAddress.regionCode == "US") {
@@ -231,7 +231,7 @@
           }));
         });
 
-        request.addEventListener("onshippingoptionchange", function(event) {
+        request.addEventListener("shippingoptionchange", function(event) {
           error("shipping option should not change, as there's only one.");
         });
 
