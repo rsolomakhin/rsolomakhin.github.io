@@ -207,19 +207,19 @@
               if (request.shippingAddress.administrativeArea == "CA") {
                 details.items[SHIPPING_ITEM].amount.value = prices.CA.shipping;
                 details.items[TOTAL_ITEM].amount.value = prices.CA.total;
-                details.shippingOptions = {
+                details.shippingOptions = [{
                   "id": "discount",
                   "label": "Discount California shipping",
                   "amount": {"currencyCode": "USD", "value": prices.CA.shipping}
-                };
+                }];
               } else {
                 details.items[SHIPPING_ITEM].amount.value = prices.US.shipping;
                 details.items[TOTAL_ITEM].amount.value = prices.US.total;
-                details.shippingOptions = {
+                details.shippingOptions = [{
                   "id": "standard",
                   "label": "Standard U.S.A. shipping",
                   "amount": {"currencyCode": "USD", "value": prices.US.shipping}
-                };
+                }];
               }
             } else {
               details.items[SHIPPING_ITEM].amount.value = "0";
