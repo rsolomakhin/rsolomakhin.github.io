@@ -1,0 +1,35 @@
+<button onclick="buy()"
+        id="buy"
+        style="width: 50%;
+               height: 50%;
+               font-size: 3em;">Buy</button>
+<script>
+function print(msg) {
+  document.open();
+  document.write('<pre id="result" style="font-size: 3em;">' + msg + '</pre>');
+  document.close();
+}
+function buy() {
+  try {
+    new PaymentRequest(['visa'], {
+      'items' : [ {
+        'id' : 'total',
+        'label' : 'Total',
+        'amount' : {'currencyCode' : 'USD', 'value' : '5.00'}
+      } ]
+    })
+        .show()
+        .then(function(resp) {
+          resp.complete(true)
+              .then(function() {
+                print(resp.methodName + '<br>' +
+                      JSON.stringify(resp.details, undefined, 2));
+              })
+              .catch(function(error) { print(error.message); });
+        })
+        .catch(function(error) { print(error.message); });
+  } catch (error) {
+    print(error.message);
+  }
+}
+</script>
