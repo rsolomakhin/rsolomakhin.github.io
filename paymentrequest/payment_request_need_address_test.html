@@ -1,0 +1,64 @@
+<button onclick="buy()"
+        id="buy"
+        style="width: 50%;
+               height: 50%;
+               font-size: 3em;">Buy</button>
+<script>
+function print(msg) {
+  document.open();
+  document.write('<pre id="result" style="font-size: 3em;">' + msg + '</pre>');
+  document.close();
+}
+function toDictionary(addr) {
+  var dict = {};
+  dict.regionCode = addr.regionCode;
+  dict.administrativeArea = addr.administrativeArea;
+  dict.locality = addr.locality;
+  dict.dependentLocality = addr.dependentLocality;
+  dict.addressLine = addr.addressLine;
+  dict.postalCode = addr.postalCode;
+  dict.sortingCode = addr.sortingCode;
+  dict.languageCode = addr.languageCode;
+  dict.organization = addr.organization;
+  dict.recipient = addr.recipient;
+  return dict;
+}
+function buy() {
+  try {
+    var details = {
+      'items' : [ {
+        'id' : 'total',
+        'label' : 'Total',
+        'amount' : {'currencyCode' : 'USD', 'value' : '5.00'}
+      } ]
+    };
+    var request =
+        new PaymentRequest(['visa'], details, {'requestShipping' : true});
+    request.addEventListener("shippingaddresschange", function(e) {
+      e.updateWith(new Promise(function(resolve, reject) {
+        details['shippingOptions'] = [ {
+          'id' : 'calculatedShippingOption',
+          'label' : 'Standard shipping',
+          'amount' : {'currencyCode' : 'USD', 'value' : '1.00'}
+        } ];
+        resolve(details);
+      }));
+    });
+    request.show()
+        .then(function(resp) {
+          resp.complete(true)
+              .then(function() {
+                print(request.shippingOption + '<br>' +
+                      JSON.stringify(toDictionary(request.shippingAddress),
+                                     undefined, 2) +
+                      '<br>' + resp.methodName + '<br>' +
+                      JSON.stringify(resp.details, undefined, 2));
+              })
+              .catch(function(error) { print(error.message); });
+        })
+        .catch(function(error) { print(error.message); });
+  } catch (error) {
+    print(error.message);
+  }
+}
+</script>
