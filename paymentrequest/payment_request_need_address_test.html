@@ -36,18 +36,17 @@ function toDictionary(addr) {
 }
 function buy() {
   try {
-    var details = {
+    var request = new PaymentRequest(['visa'], {
       'items' : [ {
         'id' : 'total',
         'label' : 'Total',
         'amount' : {'currencyCode' : 'USD', 'value' : '5.00'}
       } ]
-    };
-    var request =
-        new PaymentRequest(['visa'], details, {'requestShipping' : true});
+    },
+                                     {'requestShipping' : true});
     request.addEventListener("shippingaddresschange", function(e) {
       e.updateWith(new Promise(function(resolve, reject) {
-        details = {
+        resolve({
           'items' : [
             {
               'id' : 'item',
@@ -70,8 +69,7 @@ function buy() {
             'label' : 'Standard shipping',
             'amount' : {'currencyCode' : 'USD', 'value' : '1.00'}
           } ]
-        };
-        resolve(details);
+        });
       }));
     });
     request.show()
