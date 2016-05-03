@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>No Shipping Test</title>
+<title>Need Address Test</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-button {
+ button {
   width: 100%;
   height: 5em;
   font-size: 3em;
@@ -13,7 +13,7 @@ button {
 </style>
 </head>
 <body>
-<button onclick="buy()" id="buy">Buy</button>
+<button onclick="buy()" id="buy">Need Address Test</button>
 <script>
 function print(msg) {
   document.open();
@@ -47,11 +47,30 @@ function buy() {
         new PaymentRequest(['visa'], details, {'requestShipping' : true});
     request.addEventListener("shippingaddresschange", function(e) {
       e.updateWith(new Promise(function(resolve, reject) {
-        details['shippingOptions'] = [ {
-          'id' : 'calculatedShippingOption',
-          'label' : 'Standard shipping',
-          'amount' : {'currencyCode' : 'USD', 'value' : '1.00'}
-        } ];
+        details = {
+          'items' : [
+            {
+              'id' : 'item',
+              'label' : 'Item',
+              'amount' : {'currencyCode' : 'USD', 'value' : '5.00'}
+            },
+            {
+              'id' : 'shipping',
+              'label' : 'Standard shipping',
+              'amount' : {'currencyCode' : 'USD', 'value' : '1.00'}
+            },
+            {
+              'id' : 'total',
+              'label' : 'Total',
+              'amount' : {'currencyCode' : 'USD', 'value' : '6.00'}
+            },
+          ],
+          'shippingOptions' : [ {
+            'id' : 'calculatedShippingOption',
+            'label' : 'Standard shipping',
+            'amount' : {'currencyCode' : 'USD', 'value' : '1.00'}
+          } ]
+        };
         resolve(details);
       }));
     });
