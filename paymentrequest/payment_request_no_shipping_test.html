@@ -1,12 +1,26 @@
-<button onclick="buy()"
-        id="buy"
-        style="width: 50%;
-               height: 50%;
-               font-size: 3em;">Buy</button>
+<!DOCTYPE html>
+<html>
+<head>
+<title>No Shipping Test</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+button {
+  width: 100%;
+  height: 5em;
+  font-size: 3em;
+}
+pre {
+  font-size: 2em;
+}
+</style>
+</head>
+<body>
+<button onclick="buy()" id="buy">Buy</button>
 <script>
 function print(msg) {
   document.open();
-  document.write('<pre id="result" style="font-size: 3em;">' + msg + '</pre>');
+  document.write('<pre id="result">' + msg + '</pre>');
   document.close();
 }
 function buy() {
@@ -33,3 +47,5 @@ function buy() {
   }
 }
 </script>
+</body>
+</html>
