@@ -167,7 +167,7 @@
         request.show().then(function(instrumentResponse) {
           // Process the instrumentResponse here.
           instrumentResponse.complete(true).then(function() {
-            done("Thank you!", instrumentResponse.methodName, JSON.stringify(instrumentResponse.details));
+            done("Thank you!", instrumentResponse.methodName, JSON.stringify(instrumentResponse.details, undefined, 2));
           }).catch(function(err) {
             // Unexpected errors.
             error("Uh oh, something bad happened: " + err.message);

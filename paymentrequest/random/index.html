@@ -113,9 +113,9 @@
       var element = document.getElementById("contents");
       element.innerHTML = message;
 
-      info(JSON.stringify(toDictionary(shippingAddress)) + "<br/>" +
+      info(JSON.stringify(toDictionary(shippingAddress), undefined, 2) + "<br/>" +
             shippingOption + "<br/>" + methodName + "<br/>" +
-            JSON.stringify(instrumentDetails));
+            JSON.stringify(instrumentDetails, undefined, 2));
     }
     function onBuyClicked() {
       var supportedInstruments = [
