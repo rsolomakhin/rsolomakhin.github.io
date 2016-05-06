@@ -194,16 +194,17 @@
 
         request.show().then(function(instrumentResponse) {
           // Process the instrumentResponse here.
-          instrumentResponse.complete(true).then(function() {
-            done("Thank you!",
-                request.shippingAddress,
-                request.shippingOption,
-                instrumentResponse.methodName,
-                instrumentResponse.details);
-          }).catch(function(err) {
-            // Unexpected errors.
-            error("Uh oh, something bad happened: " + err.message);
-          });
+          window.setTimeout(function() {
+            instrumentResponse.complete(true).then(function() {
+              done("Thank you!",
+                  request.shippingAddress,
+                  request.shippingOption,
+                  instrumentResponse.methodName,
+                  instrumentResponse.details);
+            }).catch(function(err) {
+              // Unexpected errors.
+              error("Uh oh, something bad happened: " + err.message);
+            }), 2000);
         }).catch(function(err) {
           // Typically no available payment instruments or error on instrument
           // side.
