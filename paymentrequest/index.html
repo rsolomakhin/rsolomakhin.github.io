@@ -204,7 +204,8 @@
             }).catch(function(err) {
               // Unexpected errors.
               error("Uh oh, something bad happened: " + err.message);
-            }), 2000);
+            });
+          }, 2000);
         }).catch(function(err) {
           // Typically no available payment instruments or error on instrument
           // side.
