@@ -1,0 +1,40 @@
+body {
+    overflow: hidden;
+}
+div {
+    margin - top: 10 px;
+}
+.error {
+    animation - duration: 0.5 s;
+    animation - name: popup;
+    color: red;
+}
+@keyframes popup {
+    from {
+        margin - top: 20 px;
+        opacity: 0;
+    }
+    50 % {
+        opacity: 1;
+    }
+}
+.error - hide {
+    animation - duration: 0.5 s;
+    animation - name: popdown;
+    color: red;
+}
+@keyframes popdown {
+    to {
+        margin - top: 20 px;
+        opacity: 0;
+    }
+}
+.info {
+    color: green;
+}
+.fork {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+}
