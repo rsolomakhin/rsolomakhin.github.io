@@ -55,7 +55,7 @@ function onBuyClicked() {
     var request =
         new PaymentRequest(supportedInstruments, details, options, schemeData);
 
-    request.addEventListener('ShippingOptionChange', e => {
+    request.addEventListener('shippingoptionchange', e => {
       e.updateWith(new Promise((resolve, reject) => {
         var selectedShippingOption;
         if (request.shippingOption == 'standard') {

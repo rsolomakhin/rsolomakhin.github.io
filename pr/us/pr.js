@@ -43,7 +43,7 @@ function onBuyClicked() {
     var request =
         new PaymentRequest(supportedInstruments, details, options, schemeData);
 
-    request.addEventListener('ShippingAddressChange', e => {
+    request.addEventListener('shippingaddresschange', e => {
       e.updateWith(new Promise((resolve, reject) => {
         if (request.shippingAddress.regionCode == 'US') {
           var shippingOption = {
