@@ -32,6 +32,7 @@ function updateDetails(details, addr) {
     } else {
       shippingOption.id = 'us';
       shippingOption.label = 'Standard shipping in US';
+      shippingOption.amount.value = '5.00';
       details.items[details.items.length - 1].amount.value = '60.00';
     }
     if (details.items.length == 3) {
