@@ -9,32 +9,22 @@ function onBuyClicked() {
       {
         id: 'original',
         label: 'Original donation amount',
-        amount: {currency: 'USD', value: '65.00'}
+        amount: {currencyCode: 'USD', value: '65.00'}
       },
       {
         id: 'discount',
         label: 'Friends and family discount',
-        amount: {currency: 'USD', value: '-10.00'}
-      },
-      {
-        id: 'shipping',
-        label: 'Free worldwide shipping',
-        amount: {currency: 'USD', value: '0.00'}
+        amount: {currencyCode: 'USD', value: '-10.00'}
       },
       {
         id: 'total',
         label: 'Donation',
-        amount: {currency: 'USD', value: '55.00'}
+        amount: {currencyCode: 'USD', value: '55.00'}
       }
-    ],
-    shippingOptions: [{
-      id: 'freeShippingOption',
-      label: 'Free worldwide shipping',
-      amount: {currency: 'USD', value: '0.00'}
-    }]
+    ]
   };
 
-  var options = {requestShipping: true};
+  var options = null;
 
   var schemeData = {
     'https://android.com/pay': {

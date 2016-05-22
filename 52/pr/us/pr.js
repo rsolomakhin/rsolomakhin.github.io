@@ -3,17 +3,17 @@ var details = {
     {
       id: 'original',
       label: 'Original donation amount',
-      amount: {currency: 'USD', value: '65.00'}
+      amount: {currencyCode: 'USD', value: '65.00'}
     },
     {
       id: 'discount',
       label: 'Friends and family discount',
-      amount: {currency: 'USD', value: '-10.00'}
+      amount: {currencyCode: 'USD', value: '-10.00'}
     },
     {
       id: 'total',
       label: 'Donation',
-      amount: {currency: 'USD', value: '55.00'}
+      amount: {currencyCode: 'USD', value: '55.00'}
     }
   ]
 };
@@ -23,7 +23,7 @@ function updateDetails(details, addr) {
     var shippingOption = {
       id: '',
       label: '',
-      amount: {currency: 'USD', value: '0.00'}
+      amount: {currencyCode: 'USD', value: '0.00'}
     };
     if (addr.administrativeArea == 'CA') {
       shippingOption.id = 'ca';

@@ -3,46 +3,46 @@ var details = {
     {
       id: 'original',
       label: 'Original donation amount',
-      amount: {currency: 'USD', value: '65.00'}
+      amount: {currencyCode: 'USD', value: '65.00'}
     },
     {
       id: 'discount',
       label: 'Friends and family discount',
-      amount: {currency: 'USD', value: '-10.00'}
+      amount: {currencyCode: 'USD', value: '-10.00'}
     },
     {
       id: 'total',
       label: 'Donation',
-      amount: {currency: 'USD', value: '55.00'}
+      amount: {currencyCode: 'USD', value: '55.00'}
+    }
+  ],
+  shippingOptions: [
+    {
+      id: 'standard',
+      label: 'Standard shipping',
+      amount: {currencyCode: 'USD', value: '0.00'}
+    },
+    {
+      id: 'express',
+      label: 'Express shipping',
+      amount: {currencyCode: 'USD', value: '12.00'}
     }
   ]
 };
 
-function updateDetails(details, addr) {
-  if (addr.regionCode == 'US') {
-    var shippingOption = {
-      id: '',
-      label: '',
-      amount: {currency: 'USD', value: '0.00'}
-    };
-    if (addr.administrativeArea == 'CA') {
-      shippingOption.id = 'ca';
-      shippingOption.label = 'Free shipping in California';
-      details.items[details.items.length - 1].amount.value = '55.00';
-    } else {
-      shippingOption.id = 'us';
-      shippingOption.label = 'Standard shipping in US';
-      shippingOption.amount.value = '5.00';
-      details.items[details.items.length - 1].amount.value = '60.00';
-    }
-    if (details.items.length == 3) {
-      details.items.splice(-1, 0, shippingOption);
-    } else {
-      details.items.splice(-2, 1, shippingOption);
-    }
-    details.shippingOptions = [shippingOption];
+function updateDetails(details, shippingOption) {
+  var selectedShippingOption;
+  if (shippingOption == 'standard') {
+    selectedShippingOption = details.shippingOptions[0];
+    details.items[details.items.length - 1].amount.value = '55.00';
   } else {
-    delete details.shippingOptions;
+    selectedShippingOption = details.shippingOptions[1];
+    details.items[details.items.length - 1].amount.value = '67.00';
+  }
+  if (details.items.length == 3) {
+    details.items.splice(-1, 0, selectedShippingOption);
+  } else {
+    details.items.splice(-2, 1, selectedShippingOption);
   }
   return details;
 }
@@ -72,9 +72,9 @@ function onBuyClicked() {
     var request =
         new PaymentRequest(supportedInstruments, details, options, schemeData);
 
-    request.addEventListener('shippingaddresschange', e => {
+    request.addEventListener('shippingoptionchange', e => {
       e.updateWith(new Promise((resolve, reject) => {
-        resolve(updateDetails(details, request.shippingAddress));
+        resolve(updateDetails(details, request.shippingOption));
       }));
     });
 
