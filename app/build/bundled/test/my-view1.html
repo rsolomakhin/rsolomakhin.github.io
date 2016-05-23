@@ -1,0 +1,24 @@
+<!DOCTYPE html><html><head>
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=yes">
+  <title>kart-home</title>
+
+  <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../bower_components/web-component-tester/browser.js"></script>
+
+  
+  <link rel="import" href="../src/my-view1.html">
+
+</head>
+<body>
+
+  <test-fixture id="basic">
+    <template>
+       <my-view1></my-view1>
+    </template>
+  </test-fixture>
+
+  <script>suite("my-view1 tests",function(){var e;setup(function(){e=fixture("basic")}),test("Number in circle should be 1",function(){var t=Polymer.dom(e.root).querySelector(".circle");assert.equal(t.textContent,"1")})});</script>
+
+
+
+</body></html>
