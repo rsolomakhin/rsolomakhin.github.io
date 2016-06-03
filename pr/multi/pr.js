@@ -31,15 +31,15 @@ function updateDetails(details, shippingOption) {
   var selectedShippingOption;
   if (shippingOption == 'standard') {
     selectedShippingOption = details.shippingOptions[0];
-    details.items[details.items.length - 1].amount.value = '55.00';
+    details.displayItems[details.displayItems.length - 1].amount.value = '55.00';
   } else {
     selectedShippingOption = details.shippingOptions[1];
-    details.items[details.items.length - 1].amount.value = '67.00';
+    details.displayItems[details.displayItems.length - 1].amount.value = '67.00';
   }
-  if (details.items.length == 3) {
-    details.items.splice(-1, 0, selectedShippingOption);
+  if (details.displayItems.length == 3) {
+    details.displayItems.splice(-1, 0, selectedShippingOption);
   } else {
-    details.items.splice(-2, 1, selectedShippingOption);
+    details.displayItems.splice(-2, 1, selectedShippingOption);
   }
   return details;
 }
