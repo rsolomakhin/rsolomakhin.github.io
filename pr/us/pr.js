@@ -1,17 +1,14 @@
 var details = {
-  items: [
+  displayItems: [
     {
-      id: 'original',
       label: 'Original donation amount',
       amount: {currency: 'USD', value: '65.00'}
     },
     {
-      id: 'discount',
       label: 'Friends and family discount',
       amount: {currency: 'USD', value: '-10.00'}
     },
     {
-      id: 'total',
       label: 'Donation',
       amount: {currency: 'USD', value: '55.00'}
     }
@@ -28,17 +25,19 @@ function updateDetails(details, addr) {
     if (addr.administrativeArea == 'CA') {
       shippingOption.id = 'ca';
       shippingOption.label = 'Free shipping in California';
-      details.items[details.items.length - 1].amount.value = '55.00';
+      details.displayItems[details.displayItems.length - 1].amount.value =
+          '55.00';
     } else {
       shippingOption.id = 'us';
       shippingOption.label = 'Standard shipping in US';
       shippingOption.amount.value = '5.00';
-      details.items[details.items.length - 1].amount.value = '60.00';
+      details.displayItems[details.displayItems.length - 1].amount.value =
+          '60.00';
     }
-    if (details.items.length == 3) {
-      details.items.splice(-1, 0, shippingOption);
+    if (details.displayItems.length == 3) {
+      details.displayItems.splice(-1, 0, shippingOption);
     } else {
-      details.items.splice(-2, 1, shippingOption);
+      details.displayItems.splice(-2, 1, shippingOption);
     }
     details.shippingOptions = [shippingOption];
   } else {
