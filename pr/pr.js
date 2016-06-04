@@ -1,4 +1,11 @@
-function onBuyClicked() {
+/* global done:false */
+/* global error:false */
+/* global PaymentRequest:false */
+
+/**
+ * Launches payment request that does not require shipping.
+ */
+function onBuyClicked() {  // eslint-disable-line no-unused-vars
   var supportedInstruments = [
     'https://android.com/pay', 'visa', 'mastercard', 'amex', 'discover',
     'maestro', 'diners', 'jcb', 'unionpay'
@@ -14,10 +21,7 @@ function onBuyClicked() {
         label: 'Friends and family discount',
         amount: {currency: 'USD', value: '-10.00'}
       },
-      {
-        label: 'Donation',
-        amount: {currency: 'USD', value: '55.00'}
-      }
+      {label: 'Donation', amount: {currency: 'USD', value: '55.00'}}
     ]
   };
 
@@ -49,11 +53,14 @@ function onBuyClicked() {
                       request.shippingOption, instrumentResponse.methodName,
                       instrumentResponse.details);
                 })
-                .catch(err => { error(err.message); });
+                .catch(err => {
+                  error(err.message);
+                });
           }, 2000);
         })
-        .catch(err => { error(err.message); });
-
+        .catch(err => {
+          error(err.message);
+        });
   } catch (e) {
     error('Developer mistake: \'' + e.message + '\'');
   }
