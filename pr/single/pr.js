@@ -1,4 +1,11 @@
-function onBuyClicked() {
+/* global done:false */
+/* global error:false */
+/* global PaymentRequest:false */
+
+/**
+ * Launches payment request that provides free shipping worldwide.
+ */
+function onBuyClicked() {  // eslint-disable-line no-unused-vars
   var supportedInstruments = [
     'https://android.com/pay', 'visa', 'mastercard', 'amex', 'discover',
     'maestro', 'diners', 'jcb', 'unionpay'
@@ -18,10 +25,7 @@ function onBuyClicked() {
         label: 'Free worldwide shipping',
         amount: {currency: 'USD', value: '0.00'}
       },
-      {
-        label: 'Donation',
-        amount: {currency: 'USD', value: '55.00'}
-      }
+      {label: 'Donation', amount: {currency: 'USD', value: '55.00'}}
     ],
     shippingOptions: [{
       id: 'freeShippingOption',
@@ -58,11 +62,14 @@ function onBuyClicked() {
                       request.shippingOption, instrumentResponse.methodName,
                       instrumentResponse.details);
                 })
-                .catch(err => { error(err.message); });
+                .catch(err => {
+                  error(err.message);
+                });
           }, 2000);
         })
-        .catch(err => { error(err.message); });
-
+        .catch(err => {
+          error(err.message);
+        });
   } catch (e) {
     error('Developer mistake: \'' + e.message + '\'');
   }
