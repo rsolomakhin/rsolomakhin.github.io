@@ -3,6 +3,7 @@
 /* global PaymentRequest:false */
 
 var details = {
+  total: {label: 'Donation', amount: {currency: 'USD', value: '55.00'}},
   displayItems: [
     {
       label: 'Original donation amount',
@@ -11,8 +12,7 @@ var details = {
     {
       label: 'Friends and family discount',
       amount: {currency: 'USD', value: '-10.00'}
-    },
-    {label: 'Donation', amount: {currency: 'USD', value: '55.00'}}
+    }
   ],
   shippingOptions: [
     {
@@ -38,17 +38,15 @@ function updateDetails(details, shippingOption) {
   var selectedShippingOption;
   if (shippingOption === 'standard') {
     selectedShippingOption = details.shippingOptions[0];
-    details.displayItems[details.displayItems.length - 1].amount.value =
-        '55.00';
+    details.total.amount.value = '55.00';
   } else {
     selectedShippingOption = details.shippingOptions[1];
-    details.displayItems[details.displayItems.length - 1].amount.value =
-        '67.00';
+    details.total.amount.value = '67.00';
   }
-  if (details.displayItems.length === 3) {
-    details.displayItems.splice(-1, 0, selectedShippingOption);
+  if (details.displayItems.length === 2) {
+    details.displayItems.splice(1, 0, selectedShippingOption);
   } else {
-    details.displayItems.splice(-2, 1, selectedShippingOption);
+    details.displayItems.splice(1, 1, selectedShippingOption);
   }
   return details;
 }

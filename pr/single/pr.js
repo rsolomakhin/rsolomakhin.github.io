@@ -12,6 +12,7 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
   ];
 
   var details = {
+    total: {label: 'Donation', amount: {currency: 'USD', value: '55.00'}},
     displayItems: [
       {
         label: 'Original donation amount',
@@ -24,8 +25,7 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
       {
         label: 'Free worldwide shipping',
         amount: {currency: 'USD', value: '0.00'}
-      },
-      {label: 'Donation', amount: {currency: 'USD', value: '55.00'}}
+      }
     ],
     shippingOptions: [{
       id: 'freeShippingOption',
