@@ -1,3 +1,7 @@
+/* global done:false */
+/* global error:false */
+/* global PaymentRequest:false */
+
 var details = {
   displayItems: [
     {
@@ -8,21 +12,24 @@ var details = {
       label: 'Friends and family discount',
       amount: {currency: 'USD', value: '-10.00'}
     },
-    {
-      label: 'Donation',
-      amount: {currency: 'USD', value: '55.00'}
-    }
+    {label: 'Donation', amount: {currency: 'USD', value: '55.00'}}
   ]
 };
 
+/**
+ * Updates the details based on the selected shipping address.
+ * @param {object} details - The current details to update.
+ * @param {ShippingAddress} addr - The shipping address selected by the user.
+ * @return {object} The updated details.
+ */
 function updateDetails(details, addr) {
-  if (addr.regionCode == 'US') {
+  if (addr.regionCode === 'US') {
     var shippingOption = {
       id: '',
       label: '',
       amount: {currency: 'USD', value: '0.00'}
     };
-    if (addr.administrativeArea == 'CA') {
+    if (addr.administrativeArea === 'CA') {
       shippingOption.id = 'ca';
       shippingOption.label = 'Free shipping in California';
       details.displayItems[details.displayItems.length - 1].amount.value =
@@ -34,7 +41,7 @@ function updateDetails(details, addr) {
       details.displayItems[details.displayItems.length - 1].amount.value =
           '60.00';
     }
-    if (details.displayItems.length == 3) {
+    if (details.displayItems.length === 3) {
       details.displayItems.splice(-1, 0, shippingOption);
     } else {
       details.displayItems.splice(-2, 1, shippingOption);
@@ -46,7 +53,11 @@ function updateDetails(details, addr) {
   return details;
 }
 
-function onBuyClicked() {
+/**
+ * Launches payment request that provides different shipping options based on
+ * the shipping address that the user selects.
+ */
+function onBuyClicked() {  // eslint-disable-line no-unused-vars
   var supportedInstruments = [
     'https://android.com/pay', 'visa', 'mastercard', 'amex', 'discover',
     'maestro', 'diners', 'jcb', 'unionpay'
@@ -72,7 +83,7 @@ function onBuyClicked() {
         new PaymentRequest(supportedInstruments, details, options, schemeData);
 
     request.addEventListener('shippingaddresschange', e => {
-      e.updateWith(new Promise((resolve, reject) => {
+      e.updateWith(new Promise(resolve => {
         resolve(updateDetails(details, request.shippingAddress));
       }));
     });
@@ -87,11 +98,14 @@ function onBuyClicked() {
                       request.shippingOption, instrumentResponse.methodName,
                       instrumentResponse.details);
                 })
-                .catch(err => { error(err.message); });
+                .catch(err => {
+                  error(err.message);
+                });
           }, 2000);
         })
-        .catch(err => { error(err.message); });
-
+        .catch(err => {
+          error(err.message);
+        });
   } catch (e) {
     error('Developer mistake: \'' + e.message + '\'');
   }

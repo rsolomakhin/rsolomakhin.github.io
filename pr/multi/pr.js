@@ -1,3 +1,7 @@
+/* global done:false */
+/* global error:false */
+/* global PaymentRequest:false */
+
 var details = {
   displayItems: [
     {
@@ -8,10 +12,7 @@ var details = {
       label: 'Friends and family discount',
       amount: {currency: 'USD', value: '-10.00'}
     },
-    {
-      label: 'Donation',
-      amount: {currency: 'USD', value: '55.00'}
-    }
+    {label: 'Donation', amount: {currency: 'USD', value: '55.00'}}
   ],
   shippingOptions: [
     {
@@ -27,16 +28,24 @@ var details = {
   ]
 };
 
+/**
+ * Updates the details based on the selected shipping option.
+ * @param {object} details - The current details to update.
+ * @param {string} shippingOption - The shipping option selected by user.
+ * @return {object} The updated details.
+ */
 function updateDetails(details, shippingOption) {
   var selectedShippingOption;
-  if (shippingOption == 'standard') {
+  if (shippingOption === 'standard') {
     selectedShippingOption = details.shippingOptions[0];
-    details.displayItems[details.displayItems.length - 1].amount.value = '55.00';
+    details.displayItems[details.displayItems.length - 1].amount.value =
+        '55.00';
   } else {
     selectedShippingOption = details.shippingOptions[1];
-    details.displayItems[details.displayItems.length - 1].amount.value = '67.00';
+    details.displayItems[details.displayItems.length - 1].amount.value =
+        '67.00';
   }
-  if (details.displayItems.length == 3) {
+  if (details.displayItems.length === 3) {
     details.displayItems.splice(-1, 0, selectedShippingOption);
   } else {
     details.displayItems.splice(-2, 1, selectedShippingOption);
@@ -44,7 +53,11 @@ function updateDetails(details, shippingOption) {
   return details;
 }
 
-function onBuyClicked() {
+/**
+ * Launches payment request that provides multiple shipping options worldwide,
+ * regardless of the shipping address.
+ */
+function onBuyClicked() {  // eslint-disable-line no-unused-vars
   var supportedInstruments = [
     'https://android.com/pay', 'visa', 'mastercard', 'amex', 'discover',
     'maestro', 'diners', 'jcb', 'unionpay'
@@ -70,7 +83,7 @@ function onBuyClicked() {
         new PaymentRequest(supportedInstruments, details, options, schemeData);
 
     request.addEventListener('shippingoptionchange', e => {
-      e.updateWith(new Promise((resolve, reject) => {
+      e.updateWith(new Promise(resolve => {
         resolve(updateDetails(details, request.shippingOption));
       }));
     });
@@ -85,11 +98,14 @@ function onBuyClicked() {
                       request.shippingOption, instrumentResponse.methodName,
                       instrumentResponse.details);
                 })
-                .catch(err => { error(err.message); });
+                .catch(err => {
+                  error(err.message);
+                });
           }, 2000);
         })
-        .catch(err => { error(err.message); });
-
+        .catch(err => {
+          error(err.message);
+        });
   } catch (e) {
     error('Developer mistake: \'' + e.message + '\'');
   }
