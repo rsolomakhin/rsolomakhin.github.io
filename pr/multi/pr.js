@@ -2,32 +2,6 @@
 /* global error:false */
 /* global PaymentRequest:false */
 
-var details = {
-  total: {label: 'Donation', amount: {currency: 'USD', value: '55.00'}},
-  displayItems: [
-    {
-      label: 'Original donation amount',
-      amount: {currency: 'USD', value: '65.00'}
-    },
-    {
-      label: 'Friends and family discount',
-      amount: {currency: 'USD', value: '-10.00'}
-    }
-  ],
-  shippingOptions: [
-    {
-      id: 'standard',
-      label: 'Standard shipping',
-      amount: {currency: 'USD', value: '0.00'}
-    },
-    {
-      id: 'express',
-      label: 'Express shipping',
-      amount: {currency: 'USD', value: '12.00'}
-    }
-  ]
-};
-
 /**
  * Updates the details based on the selected shipping option.
  * @param {object} details - The current details to update.
@@ -60,6 +34,32 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
     'https://android.com/pay', 'visa', 'mastercard', 'amex', 'discover',
     'maestro', 'diners', 'jcb', 'unionpay'
   ];
+
+  var details = {
+    total: {label: 'Donation', amount: {currency: 'USD', value: '55.00'}},
+    displayItems: [
+      {
+        label: 'Original donation amount',
+        amount: {currency: 'USD', value: '65.00'}
+      },
+      {
+        label: 'Friends and family discount',
+        amount: {currency: 'USD', value: '-10.00'}
+      }
+    ],
+    shippingOptions: [
+      {
+        id: 'standard',
+        label: 'Standard shipping',
+        amount: {currency: 'USD', value: '0.00'}
+      },
+      {
+        id: 'express',
+        label: 'Express shipping',
+        amount: {currency: 'USD', value: '12.00'}
+      }
+    ]
+  };
 
   var options = {requestShipping: true};
 
