@@ -36,8 +36,20 @@ function updateDetails(details, shippingOption) {
  */
 function onBuyClicked() {  // eslint-disable-line no-unused-vars
   var supportedInstruments = [
-    'https://android.com/pay', 'visa', 'mastercard', 'amex', 'discover',
-    'maestro', 'diners', 'jcb', 'unionpay'
+    {
+      supportedMethods: ['https://android.com/pay'],
+      data: {
+        'gateway': 'stripe',
+        'stripe:publishableKey': 'pk_test_VKUbaXb3LHE7GdxyOBMNwXqa',
+        'stripe:version': '2015-10-16 (latest)'
+      }
+    },
+    {
+      supportedMethods: [
+        'visa', 'mastercard', 'amex', 'discover', 'maestro', 'diners', 'jcb',
+        'unionpay'
+      ]
+    }
   ];
 
   var details = {
@@ -69,45 +81,36 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
 
   var options = {requestShipping: true};
 
-  var schemeData = {
-    'https://android.com/pay': {
-      'gateway': 'stripe',
-      'stripe:publishableKey': 'pk_test_VKUbaXb3LHE7GdxyOBMNwXqa',
-      'stripe:version': '2015-10-16 (latest)'
-    }
-  };
-
   if (!window.PaymentRequest) {
     error('PaymentRequest API is not supported.');
     return;
   }
 
   try {
-    var request =
-        new PaymentRequest(supportedInstruments, details, options, schemeData);
+    var request = new PaymentRequest(supportedInstruments, details, options);
 
-    request.addEventListener('shippingoptionchange', e => {
-      e.updateWith(new Promise(resolve => {
+    request.addEventListener('shippingoptionchange', function(e) {
+      e.updateWith(new Promise(function(resolve) {
         resolve(updateDetails(details, request.shippingOption));
       }));
     });
 
     request.show()
-        .then(instrumentResponse => {
-          window.setTimeout(() => {
+        .then(function(instrumentResponse) {
+          window.setTimeout(function() {
             instrumentResponse.complete(true)
-                .then(() => {
+                .then(function() {
                   done(
                       'Thank you!', request.shippingAddress,
                       request.shippingOption, instrumentResponse.methodName,
                       instrumentResponse.details);
                 })
-                .catch(err => {
+                .catch(function(err) {
                   error(err.message);
                 });
           }, 2000);
         })
-        .catch(err => {
+        .catch(function(err) {
           error(err.message);
         });
   } catch (e) {
