@@ -13,7 +13,8 @@ function updateDetails(details, addr) {
     var shippingOption = {
       id: '',
       label: '',
-      amount: {currency: 'USD', value: '0.00'}
+      amount: {currency: 'USD', value: '0.00'},
+      selected: true
     };
     if (addr.administrativeArea === 'CA') {
       shippingOption.id = 'ca';

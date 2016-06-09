@@ -16,6 +16,9 @@ function error(msg) {  // eslint-disable-line no-unused-vars
   element.innerHTML = msg;
   element.className = 'error';
   timeoutID1 = window.setTimeout(function() {
+    if (element.className !== 'error') {
+      return;
+    }
     element.className = 'error-hide';
     timeoutID2 = window.setTimeout(function() {
       element.innerHTML = '';
@@ -42,16 +45,17 @@ function info(msg) {
 function toDictionary(addr) {  // eslint-disable-line no-unused-vars
   var dict = {};
   if (addr) {
-    dict.regionCode = addr.regionCode;
-    dict.administrativeArea = addr.administrativeArea;
-    dict.locality = addr.locality;
+    dict.country = addr.country;
+    dict.region = addr.region;
+    dict.city = addr.city;
     dict.dependentLocality = addr.dependentLocality;
     dict.addressLine = addr.addressLine;
     dict.postalCode = addr.postalCode;
     dict.sortingCode = addr.sortingCode;
     dict.languageCode = addr.languageCode;
     dict.organization = addr.organization;
-    dict.recipient = addr.recipient;
+    dict.careOf = addr.careOf;
+    dict.phone = addr.phone;
   }
   return dict;
 }

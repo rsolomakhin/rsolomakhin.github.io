@@ -10,11 +10,14 @@
  */
 function updateDetails(details, shippingOption) {
   var selectedShippingOption;
+  var otherShippingOption;
   if (shippingOption === 'standard') {
     selectedShippingOption = details.shippingOptions[0];
+    otherShippingOption = details.shippingOptions[1];
     details.total.amount.value = '55.00';
   } else {
     selectedShippingOption = details.shippingOptions[1];
+    otherShippingOption = details.shippingOptions[0];
     details.total.amount.value = '67.00';
   }
   if (details.displayItems.length === 2) {
@@ -22,6 +25,8 @@ function updateDetails(details, shippingOption) {
   } else {
     details.displayItems.splice(1, 1, selectedShippingOption);
   }
+  selectedShippingOption.selected = true;
+  otherShippingOption.selected = false;
   return details;
 }
 
@@ -51,7 +56,8 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
       {
         id: 'standard',
         label: 'Standard shipping',
-        amount: {currency: 'USD', value: '0.00'}
+        amount: {currency: 'USD', value: '0.00'},
+        selected: true
       },
       {
         id: 'express',

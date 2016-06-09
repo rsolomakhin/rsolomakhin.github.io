@@ -30,7 +30,8 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
     shippingOptions: [{
       id: 'freeShippingOption',
       label: 'Free worldwide shipping',
-      amount: {currency: 'USD', value: '0.00'}
+      amount: {currency: 'USD', value: '0.00'},
+      selected: true
     }]
   };
 
