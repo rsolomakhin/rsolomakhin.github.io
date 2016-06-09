@@ -38,8 +38,8 @@ function info(msg) {
 }
 
 /**
- * Converts a shipping address object into a dictionary.
- * @param {ShippingAddress} addr - The shipping address to convert.
+ * Converts an address object into a dictionary.
+ * @param {PaymentAddress} addr - The address to convert.
  * @return {object} The resulting dictionary.
  */
 function toDictionary(addr) {  // eslint-disable-line no-unused-vars

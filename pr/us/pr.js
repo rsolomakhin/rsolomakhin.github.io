@@ -9,14 +9,14 @@
  * @return {object} The updated details.
  */
 function updateDetails(details, addr) {
-  if (addr.regionCode === 'US') {
+  if (addr.country === 'US') {
     var shippingOption = {
       id: '',
       label: '',
       amount: {currency: 'USD', value: '0.00'},
       selected: true
     };
-    if (addr.administrativeArea === 'CA') {
+    if (addr.region === 'CA') {
       shippingOption.id = 'ca';
       shippingOption.label = 'Free shipping in California';
       details.total.amount.value = '55.00';
