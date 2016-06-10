@@ -1,0 +1,39 @@
+body {
+    overflow: hidden;
+}
+
+div {
+    margin-top: 10px;
+}
+
+.error {
+    animation-duration: 0.5s;
+    animation-name: popup;
+    color: red;
+}
+
+@keyframes popup {
+    from {
+        margin-top: 20px;
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.error-hide {
+    animation-duration: 0.5s;
+    animation-name: popdown;
+    color: red;
+}
+
+@keyframes popdown {
+    to {
+        margin-top: 20px;
+        opacity: 0;
+    }
+}
+.info {
+    color: green;
+}
