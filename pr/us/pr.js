@@ -86,7 +86,9 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
 
     request.addEventListener('shippingaddresschange', function(e) {
       e.updateWith(new Promise(function(resolve) {
-        resolve(updateDetails(details, request.shippingAddress));
+        window.setTimeout(function() {
+          resolve(updateDetails(details, request.shippingAddress));
+        }, 2000);
       }));
     });
 
