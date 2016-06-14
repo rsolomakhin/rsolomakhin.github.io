@@ -10,9 +10,16 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
     {
       supportedMethods: ['https://android.com/pay'],
       data: {
-        'gateway': 'stripe',
-        'stripe:publishableKey': 'pk_test_VKUbaXb3LHE7GdxyOBMNwXqa',
-        'stripe:version': '2015-10-16 (latest)'
+        merchantId: '123456',
+        allowedCardNetworks: ['AMEX', 'MASTERCARD', 'VISA'],
+        paymentMethodTokenizationParameters: {
+          tokenizationType: 'GATEWAY_TOKEN',
+          parameters: {
+            'gateway': 'stripe',
+            'stripe:publishableKey': 'pk_test_VKUbaXb3LHE7GdxyOBMNwXqa',
+            'stripe:version': '2015-10-16 (latest)'
+          }
+        }
       }
     },
     {
