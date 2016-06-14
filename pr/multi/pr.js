@@ -103,7 +103,8 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
                   done(
                       'Thank you!', instrumentResponse.shippingAddress,
                       request.shippingOption, instrumentResponse.methodName,
-                      instrumentResponse.details);
+                      instrumentResponse.details,
+                      instrumentResponse.totalAmount);
                 })
                 .catch(function(err) {
                   error(err.message);

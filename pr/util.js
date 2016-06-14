@@ -69,12 +69,14 @@ function toDictionary(addr) {  // eslint-disable-line no-unused-vars
  * @param {string} methodName - The type of payment instrument the user is
  *                              providing.
  * @param {object} instrumentDetails - The payment instrument data to charge.
+ * @param {object} totalAmount - The total amount to charge.
  */
-function done(message, shippingAddress, shippingOption, methodName, instrumentDetails) {  // eslint-disable-line no-unused-vars
+function done(message, shippingAddress, shippingOption, methodName, instrumentDetails, totalAmount) {  // eslint-disable-line no-unused-vars
   var element = document.getElementById('contents');
   element.innerHTML = message;
-  info(
-      JSON.stringify(toDictionary(shippingAddress), undefined, 2) + '<br/>' +
-      shippingOption + '<br/>' + methodName + '<br/>' +
-      JSON.stringify(instrumentDetails, undefined, 2));
+  info(JSON.stringify(totalAmount, undefined, 2) + '<br/>' +
+    methodName + '<br/>' +
+    JSON.stringify(instrumentDetails, undefined, 2) + '<br/>' +
+    shippingOption + '<br/>' +
+    JSON.stringify(toDictionary(shippingAddress), undefined, 2));
 }
