@@ -81,7 +81,11 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
     ]
   };
 
-  var options = {requestShipping: true};
+  var options = {
+    requestShipping: true,
+    requestPayerEmail: true,
+    requestPayerPhone: true
+  };
 
   if (!window.PaymentRequest) {
     error('PaymentRequest API is not supported.');
