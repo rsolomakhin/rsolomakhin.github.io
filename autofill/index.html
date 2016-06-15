@@ -19,6 +19,7 @@
 	  form['city'].value = 'Springfield';
 	  form['state'].value = 'IL';
 	  form['zip'].value = '55123';
+	  form['country'].value = 'USA';
     form['email'].value = 'hjs@aol.com';
   }
   var FillFormSuperman = function() {
@@ -28,6 +29,7 @@
 	  form['city'].value = 'Metropolis';
 	  form['state'].value = 'NY';
 	  form['zip'].value = '55555';
+	  form['country'].value = 'Antarctica';
       }
       var FillFormPresident = function() {
 	  var form = document.forms['form1'];
@@ -36,6 +38,7 @@
 	  form['city'].value = 'Washington';
 	  form['state'].value = 'DC';
 	  form['zip'].value = '20500';
+	  form['country'].value = 'United States';
       }
 
       var BasicFillForm = function(id, str) {
@@ -115,6 +118,7 @@
     <option value="DC">DC</option>
   </select> <br>
   Zip: <input name="zip" id="form_zip"> <br>
+  Country: <input name="country" id="form_country"> <br>
   Email: <input name="email" id="form_email"> <br>
   <input type="reset" value="Reset">
   <input type="submit" value="Submit">
