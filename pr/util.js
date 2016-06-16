@@ -70,13 +70,30 @@ function toDictionary(addr) {  // eslint-disable-line no-unused-vars
  *                              providing.
  * @param {object} instrumentDetails - The payment instrument data to charge.
  * @param {object} totalAmount - The total amount to charge.
+ * @param {string} payerEmail - User's preferred contact email address.
+ * @param {string} payerPhone - User's preferred contact phone number.
  */
-function done(message, shippingAddress, shippingOption, methodName, instrumentDetails, totalAmount) {  // eslint-disable-line no-unused-vars
+function done(message, shippingAddress, shippingOption, methodName, instrumentDetails, totalAmount, payerEmail, payerPhone) {  // eslint-disable-line no-unused-vars
   var element = document.getElementById('contents');
   element.innerHTML = message;
-  info(JSON.stringify(totalAmount, undefined, 2) + '<br/>' +
-    methodName + '<br/>' +
-    JSON.stringify(instrumentDetails, undefined, 2) + '<br/>' +
-    shippingOption + '<br/>' +
-    JSON.stringify(toDictionary(shippingAddress), undefined, 2));
+  info('total:<br/>' +
+    JSON.stringify(totalAmount, undefined, 2) +
+    '<br/>' +
+    'method:<br/>' +
+    methodName +
+    '<br/>' +
+    'instrument:<br/>' +
+    JSON.stringify(instrumentDetails, undefined, 2) +
+    '<br/>' +
+    'shipping option:<br/>' +
+    shippingOption +
+    '<br/>' +
+    'shipping address:<br/>' +
+    JSON.stringify(toDictionary(shippingAddress), undefined, 2) +
+    '<br/>' +
+    'email:<br/>' +
+    payerEmail +
+    '<br/>' +
+    'phone:<br/>' +
+    payerPhone);
 }

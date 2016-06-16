@@ -76,7 +76,9 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
                       'Thank you!', instrumentResponse.shippingAddress,
                       request.shippingOption, instrumentResponse.methodName,
                       instrumentResponse.details,
-                      instrumentResponse.totalAmount);
+                      instrumentResponse.totalAmount,
+                      instrumentResponse.payerEmail,
+                      instrumentResponse.payerPhone);
                 })
                 .catch(function(err) {
                   error(err.message);
