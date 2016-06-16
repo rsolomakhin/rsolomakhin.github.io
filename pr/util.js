@@ -80,7 +80,6 @@ function done(message, shippingAddress, shippingOption, methodName, instrumentDe
     '<br/>' +
     'shipping option: ' + shippingOption +
     '<br/>' +
-    '<br/>' +
     'email: ' + payerEmail +
     '<br/>' +
     'phone: ' + payerPhone +
