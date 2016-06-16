@@ -76,24 +76,21 @@ function toDictionary(addr) {  // eslint-disable-line no-unused-vars
 function done(message, shippingAddress, shippingOption, methodName, instrumentDetails, totalAmount, payerEmail, payerPhone) {  // eslint-disable-line no-unused-vars
   var element = document.getElementById('contents');
   element.innerHTML = message;
-  info('total:<br/>' +
-    JSON.stringify(totalAmount, undefined, 2) +
+  info('method: ' + methodName +
     '<br/>' +
-    'method:<br/>' +
-    methodName +
+    'shipping option: ' + shippingOption +
+    '<br/>' +
+    '<br/>' +
+    'email: ' + payerEmail +
+    '<br/>' +
+    'phone: ' + payerPhone +
+    '<br/>' +
+    'total:<br/>' +
+    JSON.stringify(totalAmount, undefined, 2) +
     '<br/>' +
     'instrument:<br/>' +
     JSON.stringify(instrumentDetails, undefined, 2) +
     '<br/>' +
-    'shipping option:<br/>' +
-    shippingOption +
-    '<br/>' +
     'shipping address:<br/>' +
-    JSON.stringify(toDictionary(shippingAddress), undefined, 2) +
-    '<br/>' +
-    'email:<br/>' +
-    payerEmail +
-    '<br/>' +
-    'phone:<br/>' +
-    payerPhone);
+    JSON.stringify(toDictionary(shippingAddress), undefined, 2));
 }
