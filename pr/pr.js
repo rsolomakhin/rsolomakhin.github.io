@@ -44,18 +44,13 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
     ]
   };
 
-  var options = {
-    requestPayerEmail: true,
-    requestPayerPhone: true
-  };
-
   if (!window.PaymentRequest) {
     error('PaymentRequest API is not supported.');
     return;
   }
 
   try {
-    var request = new PaymentRequest(supportedInstruments, details, options);
+    var request = new PaymentRequest(supportedInstruments, details);
     request.show()
         .then(function(instrumentResponse) {
           window.setTimeout(function() {
