@@ -54,7 +54,7 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
     request.show()
         .then(function(instrumentResponse) {
           window.setTimeout(function() {
-            instrumentResponse.complete(true)
+            instrumentResponse.complete('success')
                 .then(function() {
                   done(
                       'Thank you!', instrumentResponse.shippingAddress,
