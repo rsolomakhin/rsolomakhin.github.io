@@ -75,8 +75,9 @@ function done(message, resp) {  // eslint-disable-line no-unused-vars
 
   var shippingAddress = resp.shippingAddress ?
       'shipping address: ' +
-      JSON.stringify(toDictionary(shippingAddress), undefined, 2)) +
-      '<br/>': '';
+          JSON.stringify(toDictionary(shippingAddress), undefined, 2) +
+          '<br/>' :
+      '';
 
   var instrument =
       'instrument:' + JSON.stringify(instrumentDetails, undefined, 2) + '<br/>';
