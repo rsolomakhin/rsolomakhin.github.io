@@ -70,21 +70,22 @@ function done(message, resp) {  // eslint-disable-line no-unused-vars
   var element = document.getElementById('contents');
   element.innerHTML = message;
 
-  var shippingOption =
-      resp.shippingOption ? 'shipping option: ' + shippingOption + '<br/>' : '';
+  var shippingOption = resp.shippingOption ?
+      'shipping option: ' + resp.shippingOption + '<br/>' :
+      '';
 
   var shippingAddress = resp.shippingAddress ?
       'shipping address: ' +
-          JSON.stringify(toDictionary(shippingAddress), undefined, 2) +
+          JSON.stringify(toDictionary(resp.shippingAddress), undefined, 2) +
           '<br/>' :
       '';
 
   var instrument =
-      'instrument:' + JSON.stringify(instrumentDetails, undefined, 2) + '<br/>';
+      'instrument:' + JSON.stringify(resp.details, undefined, 2) + '<br/>';
 
-  var method = 'method: ' + methodName + '<br/>';
-  var email = resp.payerEmail ? 'email: ' + payerEmail + '<br/>' : '';
-  var phone = resp.payerPhone ? 'phone: ' + payerPhone + '<br/>' : '';
+  var method = 'method: ' + resp.methodName + '<br/>';
+  var email = resp.payerEmail ? 'email: ' + resp.payerEmail + '<br/>' : '';
+  var phone = resp.payerPhone ? 'phone: ' + resp.payerPhone + '<br/>' : '';
 
 
   info(email + phone + shippingOption + shippingAddress + method + instrument);
