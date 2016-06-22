@@ -47,9 +47,16 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
     {
       supportedMethods: ['https://android.com/pay'],
       data: {
-        'gateway': 'stripe',
-        'stripe:publishableKey': 'pk_test_VKUbaXb3LHE7GdxyOBMNwXqa',
-        'stripe:version': '2015-10-16 (latest)'
+        merchantId: '123456',
+        allowedCardNetworks: ['AMEX', 'MASTERCARD', 'VISA'],
+        paymentMethodTokenizationParameters: {
+          tokenizationType: 'GATEWAY_TOKEN',
+          parameters: {
+            'gateway': 'stripe',
+            'stripe:publishableKey': 'pk_test_VKUbaXb3LHE7GdxyOBMNwXqa',
+            'stripe:version': '2015-10-16 (latest)'
+          }
+        }
       }
     },
     {
@@ -86,19 +93,18 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
 
     request.addEventListener('shippingaddresschange', function(e) {
       e.updateWith(new Promise(function(resolve) {
-        resolve(updateDetails(details, request.shippingAddress));
+        window.setTimeout(function() {
+          resolve(updateDetails(details, request.shippingAddress));
+        }, 2000);
       }));
     });
 
     request.show()
         .then(function(instrumentResponse) {
           window.setTimeout(function() {
-            instrumentResponse.complete(true)
+            instrumentResponse.complete('success')
                 .then(function() {
-                  done(
-                      'Thank you!', instrumentResponse.shippingAddress,
-                      request.shippingOption, instrumentResponse.methodName,
-                      instrumentResponse.details);
+                  done('Thank you!', instrumentResponse);
                 })
                 .catch(function(err) {
                   error(err.message);
