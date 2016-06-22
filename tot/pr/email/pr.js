@@ -60,10 +60,7 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
           window.setTimeout(function() {
             instrumentResponse.complete('success')
                 .then(function() {
-                  done(
-                      'Thank you!', undefined, undefined,
-                      instrumentResponse.methodName, instrumentResponse.details,
-                      undefined, instrumentResponse.payerEmail, undefined);
+                  done('Thank you!', instrumentResponse);
                 })
                 .catch(function(err) {
                   error(err.message);
