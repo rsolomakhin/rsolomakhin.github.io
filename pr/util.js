@@ -64,28 +64,27 @@ function toDictionary(addr) {  // eslint-disable-line no-unused-vars
 /**
  * Called when the payment request is complete.
  * @param {string} message - The human readable message to display.
- * @param {ShippingAddress} shippingAddress - User's shipping address.
- * @param {string} shippingOption - User's preferred shipping opion.
- * @param {string} methodName - The type of payment instrument the user is
- *                              providing.
- * @param {object} instrumentDetails - The payment instrument data to charge.
- * @param {string} payerEmail - User's preferred contact email address.
- * @param {string} payerPhone - User's preferred contact phone number.
+ * @param {PaymentResponse} respo - The payment response.
  */
-function done(message, shippingAddress, shippingOption, methodName, instrumentDetails, payerEmail, payerPhone) {  // eslint-disable-line no-unused-vars
+function done(message, resp) {  // eslint-disable-line no-unused-vars
   var element = document.getElementById('contents');
   element.innerHTML = message;
-  info('method: ' + methodName +
-    '<br/>' +
-    'shipping option: ' + shippingOption +
-    '<br/>' +
-    'email: ' + payerEmail +
-    '<br/>' +
-    'phone: ' + payerPhone +
-    '<br/>' +
-    'instrument:<br/>' +
-    JSON.stringify(instrumentDetails, undefined, 2) +
-    '<br/>' +
-    'shipping address:<br/>' +
-    JSON.stringify(toDictionary(shippingAddress), undefined, 2));
+
+  var shippingOption =
+      resp.shippingOption ? 'shipping option: ' + shippingOption + '<br/>' : '';
+
+  var shippingAddress = resp.shippingAddress ?
+      'shipping address: ' +
+      JSON.stringify(toDictionary(shippingAddress), undefined, 2)) +
+      '<br/>': '';
+
+  var instrument =
+      'instrument:' + JSON.stringify(instrumentDetails, undefined, 2) + '<br/>';
+
+  var method = 'method: ' + methodName + '<br/>';
+  var email = resp.payerEmail ? 'email: ' + payerEmail + '<br/>' : '';
+  var phone = resp.payerPhone ? 'phone: ' + payerPhone + '<br/>' : '';
+
+
+  info(email + phone + shippingOption + shippingAddress + method + instrument);
 }

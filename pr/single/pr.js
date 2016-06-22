@@ -68,12 +68,7 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
           window.setTimeout(function() {
             instrumentResponse.complete('success')
                 .then(function() {
-                  done(
-                      'Thank you!', instrumentResponse.shippingAddress,
-                      request.shippingOption, instrumentResponse.methodName,
-                      instrumentResponse.details,
-                      instrumentResponse.payerEmail,
-                      instrumentResponse.payerPhone);
+                  done('Thank you!', instrumentResponse);
                 })
                 .catch(function(err) {
                   error(err.message);
