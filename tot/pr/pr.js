@@ -11,6 +11,7 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
       supportedMethods: ['https://android.com/pay'],
       data: {
         merchantId: '123456',
+        environment: 'TEST',
         allowedCardNetworks: ['AMEX', 'MASTERCARD', 'VISA'],
         paymentMethodTokenizationParameters: {
           tokenizationType: 'GATEWAY_TOKEN',
