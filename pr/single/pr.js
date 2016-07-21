@@ -71,12 +71,12 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
                   done('Thank you!', instrumentResponse);
                 })
                 .catch(function(err) {
-                  error(err.message);
+                  error(err);
                 });
           }, 2000);
         })
         .catch(function(err) {
-          error(err.message);
+          error(err);
         });
   } catch (e) {
     error('Developer mistake: \'' + e.message + '\'');
