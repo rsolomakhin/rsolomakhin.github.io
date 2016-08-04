@@ -45,8 +45,8 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
           tokenizationType: 'GATEWAY_TOKEN',
           parameters: {
             'gateway': 'stripe',
-            'stripe:publishableKey': 'pk_test_VKUbaXb3LHE7GdxyOBMNwXqa',
-            'stripe:version': '2015-10-16 (latest)'
+            'stripe:publishableKey': 'pk_live_lNk21zqKM2BENZENh3rzCUgo',
+            'stripe:version': '2016-07-06'
           }
         }
       }
