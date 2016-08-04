@@ -39,8 +39,8 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
     {
       supportedMethods: ['https://android.com/pay'],
       data: {
-        merchantId: '123456',
-        allowedCardNetworks: ['AMEX', 'MASTERCARD', 'VISA'],
+        merchantId: '00184145120947117657',
+        allowedCardNetworks: ['AMEX', 'MASTERCARD', 'VISA', 'DISCOVER'],
         paymentMethodTokenizationParameters: {
           tokenizationType: 'GATEWAY_TOKEN',
           parameters: {
@@ -53,8 +53,7 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
     },
     {
       supportedMethods: [
-        'visa', 'mastercard', 'amex', 'discover', 'maestro', 'diners', 'jcb',
-        'unionpay'
+        'visa', 'mastercard', 'amex', 'discover', 'diners', 'jcb', 'unionpay'
       ]
     }
   ];
