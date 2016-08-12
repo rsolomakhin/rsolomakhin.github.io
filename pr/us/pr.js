@@ -47,6 +47,7 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
     {
       supportedMethods: ['https://android.com/pay'],
       data: {
+        merchantName: 'Rouslan Solomakhin',
         merchantId: '00184145120947117657',
         allowedCardNetworks: ['AMEX', 'MASTERCARD', 'VISA', 'DISCOVER'],
         paymentMethodTokenizationParameters: {
