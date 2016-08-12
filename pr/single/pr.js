@@ -63,6 +63,14 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
 
   try {
     var request = new PaymentRequest(supportedInstruments, details, options);
+
+    request.addEventListener('shippingaddresschange', function(e) {
+      e.updateWith(new Promise(function(resolve) {
+        // No changes in price based on shipping address change.
+        resolve(details);
+      }));
+    });
+
     request.show()
         .then(function(instrumentResponse) {
           window.setTimeout(function() {

@@ -3,7 +3,7 @@
 /* global PaymentRequest:false */
 
 /**
- * Updates the details based on the selected shipping option.
+ * Updates the price based on the selected shipping option.
  * @param {object} details - The current details to update.
  * @param {string} shippingOption - The shipping option selected by user.
  * @return {object} The updated details.
@@ -95,6 +95,15 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
 
   try {
     var request = new PaymentRequest(supportedInstruments, details, options);
+
+    request.addEventListener('shippingaddresschange', function(e) {
+      e.updateWith(new Promise(function(resolve) {
+        window.setTimeout(function() {
+          // No changes in price based on shipping address change.
+          resolve(details);
+        }, 2000);
+      }));
+    });
 
     request.addEventListener('shippingoptionchange', function(e) {
       e.updateWith(new Promise(function(resolve) {
