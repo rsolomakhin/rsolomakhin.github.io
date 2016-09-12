@@ -41,7 +41,7 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
                 .catch(function(err) {
                   error(err);
                 });
-          }, 2000);
+          }, 500);
         })
         .catch(function(err) {
           error(err);
