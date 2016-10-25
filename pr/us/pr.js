@@ -26,11 +26,7 @@ function updateDetails(details, addr) {
       shippingOption.amount.value = '5.00';
       details.total.amount.value = '60.00';
     }
-    if (details.displayItems.length === 2) {
-      details.displayItems.splice(1, 0, shippingOption);
-    } else {
-      details.displayItems.splice(1, 1, shippingOption);
-    }
+    details.displayItems.splice(1, 1, shippingOption);
     details.shippingOptions = [shippingOption];
   } else {
     delete details.shippingOptions;
@@ -74,6 +70,11 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
         label: 'Original donation amount',
         amount: {currency: 'USD', value: '65.00'}
       },
+      {
+        label: 'Pending shipping price',
+        amount: {currency: 'USD', value: '0.00'},
+        pending: true
+      }
       {
         label: 'Friends and family discount',
         amount: {currency: 'USD', value: '-10.00'}
