@@ -70,11 +70,11 @@ function done(message, resp) {  // eslint-disable-line no-unused-vars
   element.innerHTML = message;
 
   var shippingOption = resp.shippingOption ?
-      'shipping option: ' + resp.shippingOption + '<br/>' :
+      'shipping, delivery, pickup option: ' + resp.shippingOption + '<br/>' :
       '';
 
   var shippingAddress = resp.shippingAddress ?
-      'shipping address: ' +
+      'shipping, delivery, pickup address: ' +
           JSON.stringify(toDictionary(resp.shippingAddress), undefined, 2) +
           '<br/>' :
       '';
