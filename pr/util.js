@@ -85,7 +85,9 @@ function done(message, resp) {  // eslint-disable-line no-unused-vars
   var method = 'method: ' + resp.methodName + '<br/>';
   var email = resp.payerEmail ? 'email: ' + resp.payerEmail + '<br/>' : '';
   var phone = resp.payerPhone ? 'phone: ' + resp.payerPhone + '<br/>' : '';
+  var name = resp.payerName ? 'name: ' + resp.payerName + '<br/>' : '';
 
 
-  info(email + phone + shippingOption + shippingAddress + method + instrument);
+  info(email + phone + name + shippingOption + shippingAddress + method +
+      instrument);
 }

@@ -3,7 +3,7 @@
 /* global PaymentRequest:false */
 
 /**
- * Launches payment request that provides free shipping worldwide.
+ * Launches payment request that requests customer name.
  */
 function onBuyClicked() {  // eslint-disable-line no-unused-vars
   var supportedInstruments = [
@@ -45,8 +45,6 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
   };
 
   var options = {
-    requestPayerEmail: true,
-    requestPayerPhone: true,
     requestPayerName: true
   };
 
