@@ -73,7 +73,7 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
       {
         label: 'Pending shipping price',
         amount: {currency: 'USD', value: '0.00'}
-      }
+      },
       {
         label: 'Friends and family discount',
         amount: {currency: 'USD', value: '-10.00'}
