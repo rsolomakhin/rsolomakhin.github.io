@@ -41,7 +41,17 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
         label: 'Friends and family discount',
         amount: {currency: 'USD', value: '-10.00'}
       }
-    ]
+    ],
+    modifiers: [{
+      supportedMethods: ['visa'],
+      total: {label: 'Donation', amount: {currency: 'USD', value: '45.00'}},
+      additionalDisplayItems: [{
+        label: 'VISA discount', amount: {currency: 'USD', value: '-10.00'}
+      }],
+      data: {
+        discountProgramParticipantId: '86328764873265'
+      }
+    }]
   };
 
   if (!window.PaymentRequest) {
