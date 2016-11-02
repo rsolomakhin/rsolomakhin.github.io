@@ -67,7 +67,7 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
           window.setTimeout(function() {
             instrumentResponse.complete('fail')
                 .then(function() {
-                  done('Thank you!', instrumentResponse);
+                  done('payment processing has failed.', instrumentResponse);
                 })
                 .catch(function(err) {
                   error(err);
