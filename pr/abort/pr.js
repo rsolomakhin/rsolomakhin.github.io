@@ -78,9 +78,9 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
           error(err);
         });
     
-    setTimeout(new function() {
+    setTimeout(function() {
       request.abort();
-    }, 10000); //10sec
+    }, 8000); //8sec
     
   } catch (e) {
     error('Developer mistake: \'' + e.message + '\'');
