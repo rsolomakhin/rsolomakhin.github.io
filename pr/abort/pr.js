@@ -80,7 +80,7 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
     
     setTimeout(function() {
       request.abort();
-    }, 8000); //8sec
+    }, 5000); //5sec
     
   } catch (e) {
     error('Developer mistake: \'' + e.message + '\'');
