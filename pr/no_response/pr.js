@@ -3,44 +3,7 @@
 /* global PaymentRequest:false */
 
 /**
- * Updates the details based on the selected address.
- * @param {object} details - The current details to update.
- * @param {PaymentAddress} addr - The address selected by the user.
- * @return {object} The updated details.
- */
-function updateDetails(details, addr) {
-  if (addr.country === 'US') {
-    var shippingOption = {
-      id: '',
-      label: '',
-      amount: {currency: 'USD', value: '0.00'},
-      selected: true
-    };
-    if (addr.region === 'CA') {
-      shippingOption.id = 'ca';
-      shippingOption.label = 'Free shipping in California';
-      details.total.amount.value = '55.00';
-    } else {
-      shippingOption.id = 'us';
-      shippingOption.label = 'Standard shipping in US';
-      shippingOption.amount.value = '5.00';
-      details.total.amount.value = '60.00';
-    }
-    if (details.displayItems.length === 2) {
-      details.displayItems.splice(1, 0, shippingOption);
-    } else {
-      details.displayItems.splice(1, 1, shippingOption);
-    }
-    details.shippingOptions = [shippingOption];
-  } else {
-    delete details.shippingOptions;
-  }
-  return details;
-}
-
-/**
- * Launches payment request that provides different shipping options based on
- * the shipping address that the user selects.
+ * Launches payment request that provides free shipping worldwide.
  */
 function onBuyClicked() {  // eslint-disable-line no-unused-vars
   var supportedInstruments = [
@@ -76,8 +39,18 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
       {
         label: 'Friends and family discount',
         amount: {currency: 'USD', value: '-10.00'}
+      },
+      {
+        label: 'Free worldwide shipping',
+        amount: {currency: 'USD', value: '0.00'}
       }
-    ]
+    ],
+    shippingOptions: [{
+      id: 'freeShippingOption',
+      label: 'Free worldwide shipping',
+      amount: {currency: 'USD', value: '0.00'},
+      selected: true
+    }]
   };
 
   var options = {requestShipping: true};
@@ -89,26 +62,17 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
 
   try {
     var request = new PaymentRequest(supportedInstruments, details, options);
-
-    request.addEventListener('shippingaddresschange', function(e) {
-      e.updateWith(new Promise(function(resolve) {
-        //window.setTimeout(function() {
-        //  resolve(updateDetails(details, request.shippingAddress));
-        //}, 2000);
-      }));
-    });
-
     request.show()
         .then(function(instrumentResponse) {
-          window.setTimeout(function() {
-            instrumentResponse.complete('success')
-                .then(function() {
-                  done('Thank you!', instrumentResponse);
-                })
-                .catch(function(err) {
-                  error(err);
-                });
-          }, 2000);
+//           window.setTimeout(function() {
+//             instrumentResponse.complete('success')
+//                 .then(function() {
+//                   done('Thank you!', instrumentResponse);
+//                 })
+//                 .catch(function(err) {
+//                   error(err);
+//                 });
+//           }, 2000);
         })
         .catch(function(err) {
           error(err);
