@@ -3,20 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>no response when select shipping option.</title>
+  <title>PaymentRequest Test</title>
   <link rel="icon" href="/favicon.ico">
-  <link rel="stylesheet" type="text/css" href="../style.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
   <div id="contents">
-    <h1>no response when select shipping option.</h1>
-    <p>The merchant provides free shipping in California, $5.00 shipping in US.
-    but no response when select shipping option.</p>
+    <h1>PaymentRequest Test</h1>
+    <p>This page can be used to test:</p>
+    <ul>
+      <li>Android Pay</li>
+      <li>Cards from Google Payments</li>
+      <li>Cards from local autofill</li>
+    </ul>
+    <p>No payment will be processed.</p>
     <p>Price: USD <strong>$55.00</strong></p>
     <p><button onclick="onBuyClicked()">Buy</button></p>
   </div>
   <pre id="msg"></pre>
-  <script src="../util.js"></script>
+  <script src="util.js"></script>
   <script src="pr.js"></script>
   <script src="/redirect.js"></script>
 </body>
