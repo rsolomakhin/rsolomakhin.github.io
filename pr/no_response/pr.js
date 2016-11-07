@@ -3,7 +3,7 @@
 /* global PaymentRequest:false */
 
 /**
- * Launches payment request that provides free shipping worldwide.
+ * Launches payment request that does not require shipping.
  */
 function onBuyClicked() {  // eslint-disable-line no-unused-vars
   var supportedInstruments = [
@@ -24,7 +24,7 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
     },
     {
       supportedMethods: [
-        'visa', 'mastercard', 'amex', 'discover', 'diners', 'jcb', 'unionpay'
+        'unionpay', 'visa', 'mastercard', 'amex', 'discover', 'diners', 'jcb'
       ]
     }
   ];
@@ -39,21 +39,9 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
       {
         label: 'Friends and family discount',
         amount: {currency: 'USD', value: '-10.00'}
-      },
-      {
-        label: 'Free worldwide shipping',
-        amount: {currency: 'USD', value: '0.00'}
       }
-    ],
-    shippingOptions: [{
-      id: 'freeShippingOption',
-      label: 'Free worldwide shipping',
-      amount: {currency: 'USD', value: '0.00'},
-      selected: true
-    }]
+    ]
   };
-
-  var options = {requestShipping: true};
 
   if (!window.PaymentRequest) {
     error('PaymentRequest API is not supported.');
@@ -61,7 +49,7 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
   }
 
   try {
-    var request = new PaymentRequest(supportedInstruments, details, options);
+    var request = new PaymentRequest(supportedInstruments, details);
     request.show()
         .then(function(instrumentResponse) {
 //           window.setTimeout(function() {
