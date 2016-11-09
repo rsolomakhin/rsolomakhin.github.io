@@ -1,5 +1,6 @@
 var timeoutID1;
 var timeoutID2;
+var responseForDebug;
 
 /**
  * Prints the given error message.
@@ -71,6 +72,7 @@ function toDictionary(addr) {  // eslint-disable-line no-unused-vars
  * @param {PaymentResponse} respo - The payment response.
  */
 function done(message, resp) {  // eslint-disable-line no-unused-vars
+  responseForDebug = resp;
   var element = document.getElementById('contents');
   element.innerHTML = message;
 
