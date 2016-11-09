@@ -38,6 +38,7 @@ function buildPaymentRequest() {
       }).catch(function(err) {
         error(err);
       });
+    }
   } catch (e) {
     error('Developer mistake: \'' + e.message + '\'');
   }
