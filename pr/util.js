@@ -49,7 +49,7 @@ function toDictionary(addr) {  // eslint-disable-line no-unused-vars
   var dict = {};
   if (addr) {
     if (addr.toJSON) {
-      return addr.toJSON();
+      return addr;
     }
     dict.country = addr.country;
     dict.region = addr.region;
@@ -77,7 +77,7 @@ function done(message, resp) {  // eslint-disable-line no-unused-vars
   element.innerHTML = message;
 
   if (resp.toJSON) {
-    info(resp.toJSON());
+    info(JSON.stringify(resp, undefined, 2));
     return;
   }
 
