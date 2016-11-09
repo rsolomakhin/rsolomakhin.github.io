@@ -65,7 +65,7 @@ function buildPaymentRequest() {
     if (request.canMakeActivePayment) {
       request.canMakeActivePayment().then(function(result) {
         info(result ? "Can make active payment" : "Cannot make active payment");
-      }).catch(function(error) {
+      }).catch(function(err) {
         error(err);
       });
     }
