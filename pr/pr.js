@@ -94,7 +94,6 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
             instrumentResponse.complete('success')
                 .then(function() {
                   done('Thank you!', instrumentResponse);
-                  request = buildPaymentRequest();
                 })
                 .catch(function(err) {
                   error(err);
