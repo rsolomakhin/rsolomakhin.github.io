@@ -45,6 +45,9 @@ function info(msg) {
 function toDictionary(addr) {  // eslint-disable-line no-unused-vars
   var dict = {};
   if (addr) {
+    if (addr.toJSON) {
+      return addr.toJSON();
+    }
     dict.country = addr.country;
     dict.region = addr.region;
     dict.city = addr.city;
@@ -68,6 +71,11 @@ function toDictionary(addr) {  // eslint-disable-line no-unused-vars
 function done(message, resp) {  // eslint-disable-line no-unused-vars
   var element = document.getElementById('contents');
   element.innerHTML = message;
+
+  if (resp.toJSON) {
+    info(resp.toJSON());
+    return;
+  }
 
   var shippingOption = resp.shippingOption ?
       'shipping, delivery, pickup option: ' + resp.shippingOption + '<br/>' :

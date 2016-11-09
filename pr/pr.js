@@ -2,65 +2,80 @@
 /* global error:false */
 /* global PaymentRequest:false */
 
+var supportedInstruments = [
+  {
+    supportedMethods: ['https://android.com/pay'],
+    data: {
+      merchantName: 'Rouslan Solomakhin',
+      merchantId: '00184145120947117657',
+      allowedCardNetworks: ['AMEX', 'MASTERCARD', 'VISA', 'DISCOVER'],
+      paymentMethodTokenizationParameters: {
+        tokenizationType: 'GATEWAY_TOKEN',
+        parameters: {
+          'gateway': 'stripe',
+          'stripe:publishableKey': 'pk_live_lNk21zqKM2BENZENh3rzCUgo',
+          'stripe:version': '2016-07-06'
+        }
+      }
+    }
+  },
+  {
+    supportedMethods: [
+      'unionpay', 'visa', 'mastercard', 'amex', 'discover', 'diners', 'jcb'
+    ]
+  }
+];
+
+var details = {
+  total: {label: 'Donation', amount: {currency: 'USD', value: '55.00'}},
+  displayItems: [
+    {
+      label: 'Original donation amount',
+      amount: {currency: 'USD', value: '65.00'}
+    },
+    {
+      label: 'Friends and family discount',
+      amount: {currency: 'USD', value: '-10.00'}
+    }
+  ],
+  modifiers: [{
+    supportedMethods: ['visa'],
+    total: {label: 'Donation', amount: {currency: 'USD', value: '45.00'}},
+    additionalDisplayItems: [{
+      label: 'VISA discount', amount: {currency: 'USD', value: '-10.00'}
+    }],
+    data: {
+      discountProgramParticipantId: '86328764873265'
+    }
+  }]
+};
+
+var request = null;
+if (window.PaymentRequest) {
+  try {
+    request = new PaymentRequest(supportedInstruments, details);
+    if (request.canMakeActivePayment) {
+      request.canMakeActivePayment().then(function(result) {
+        info(result ? "Can make active payment" : "Cannot make active payment");
+      }).catch(function(error) {
+        error(err);
+      });
+    }
+  } catch (e) {
+    error('Developer mistake: \'' + e + '\'');
+  }
+}
+
 /**
  * Launches payment request that does not require shipping.
  */
 function onBuyClicked() {  // eslint-disable-line no-unused-vars
-  var supportedInstruments = [
-    {
-      supportedMethods: ['https://android.com/pay'],
-      data: {
-        merchantName: 'Rouslan Solomakhin',
-        merchantId: '00184145120947117657',
-        allowedCardNetworks: ['AMEX', 'MASTERCARD', 'VISA', 'DISCOVER'],
-        paymentMethodTokenizationParameters: {
-          tokenizationType: 'GATEWAY_TOKEN',
-          parameters: {
-            'gateway': 'stripe',
-            'stripe:publishableKey': 'pk_live_lNk21zqKM2BENZENh3rzCUgo',
-            'stripe:version': '2016-07-06'
-          }
-        }
-      }
-    },
-    {
-      supportedMethods: [
-        'unionpay', 'visa', 'mastercard', 'amex', 'discover', 'diners', 'jcb'
-      ]
-    }
-  ];
-
-  var details = {
-    total: {label: 'Donation', amount: {currency: 'USD', value: '55.00'}},
-    displayItems: [
-      {
-        label: 'Original donation amount',
-        amount: {currency: 'USD', value: '65.00'}
-      },
-      {
-        label: 'Friends and family discount',
-        amount: {currency: 'USD', value: '-10.00'}
-      }
-    ],
-    modifiers: [{
-      supportedMethods: ['visa'],
-      total: {label: 'Donation', amount: {currency: 'USD', value: '45.00'}},
-      additionalDisplayItems: [{
-        label: 'VISA discount', amount: {currency: 'USD', value: '-10.00'}
-      }],
-      data: {
-        discountProgramParticipantId: '86328764873265'
-      }
-    }]
-  };
-
-  if (!window.PaymentRequest) {
+  if (!window.PaymentRequest || !request) {
     error('PaymentRequest API is not supported.');
     return;
   }
 
   try {
-    var request = new PaymentRequest(supportedInstruments, details);
     request.show()
         .then(function(instrumentResponse) {
           window.setTimeout(function() {
@@ -77,6 +92,6 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
           error(err);
         });
   } catch (e) {
-    error('Developer mistake: \'' + e.message + '\'');
+    error('Developer mistake: \'' + e + '\'');
   }
 }
