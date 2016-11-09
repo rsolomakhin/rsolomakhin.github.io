@@ -10,9 +10,13 @@ function buildPaymentRequest() {
     return null;
   }
 
-  var supportedInstruments = [{
-    supportedMethods: ['https://rsolomakhin.github.io/bobpay']
-  }];
+  var supportedInstruments = [
+    {
+      supportedMethods: [
+        'unionpay', 'visa', 'mastercard', 'amex', 'discover', 'diners', 'jcb'
+      ]
+    }
+  ];
 
   var details = {
     total: {label: 'Donation', amount: {currency: 'USD', value: '55.00'}},
@@ -25,7 +29,17 @@ function buildPaymentRequest() {
         label: 'Friends and family discount',
         amount: {currency: 'USD', value: '-10.00'}
       }
-    ]
+    ],
+    modifiers: [{
+      supportedMethods: ['visa'],
+      total: {label: 'Donation', amount: {currency: 'USD', value: '45.00'}},
+      additionalDisplayItems: [{
+        label: 'VISA discount', amount: {currency: 'USD', value: '-10.00'}
+      }],
+      data: {
+        discountProgramParticipantId: '86328764873265'
+      }
+    }]
   };
 
   var request = null;
@@ -38,8 +52,9 @@ function buildPaymentRequest() {
       }).catch(function(error) {
         error(err);
       });
+    }
   } catch (e) {
-    error('Developer mistake: \'' + e.message + '\'');
+    error('Developer mistake: \'' + e + '\'');
   }
 
   return request;
@@ -48,7 +63,7 @@ function buildPaymentRequest() {
 var request = buildPaymentRequest();
 
 /**
- * Launches payment request for Bob Pay.
+ * Launches payment request for credit cards.
  */
 function onBuyClicked() {  // eslint-disable-line no-unused-vars
   if (!window.PaymentRequest || !request) {
@@ -68,14 +83,14 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
                   error(err);
                   request = buildPaymentRequest();
                 });
-          }, 500);
+          }, 2000);
         })
         .catch(function(err) {
           error(err);
           request = buildPaymentRequest();
         });
   } catch (e) {
-    error('Developer mistake: \'' + e.message + '\'');
+    error('Developer mistake: \'' + e + '\'');
     request = buildPaymentRequest();
   }
 }
