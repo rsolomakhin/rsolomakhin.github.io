@@ -12,9 +12,10 @@ function error(msg) {  // eslint-disable-line no-unused-vars
   if (timeoutID2) {
     window.clearTimeout(timeoutID2);
   }
-  var element = document.getElementById('msg');
+  var element = document.createElement('pre');
   element.innerHTML = msg;
   element.className = 'error';
+  document.getElementById('msg').appendChild(element);
   timeoutID1 = window.setTimeout(function() {
     if (element.className !== 'error') {
       return;
@@ -32,9 +33,10 @@ function error(msg) {  // eslint-disable-line no-unused-vars
  * @param {string} msg - The information message to print.
  */
 function info(msg) {
-  var element = document.getElementById('msg');
+  var element = document.createElement('pre');
   element.innerHTML = msg;
   element.className = 'info';
+  document.getElementById('msg').appendChild(element);
 }
 
 /**
