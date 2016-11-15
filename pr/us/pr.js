@@ -10,6 +10,7 @@
  */
 function updateDetails(details, addr) {
   if (addr.country === 'US') {
+    delete details.error;
     var shippingOption = {
       id: '',
       label: '',
@@ -30,6 +31,7 @@ function updateDetails(details, addr) {
     details.shippingOptions = [shippingOption];
   } else {
     delete details.shippingOptions;
+    details.error = "Cannot ship outside of US."
   }
   return details;
 }
