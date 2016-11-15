@@ -10,29 +10,32 @@ function buildPaymentRequest() {
     return null;
   }
 
-  var supportedInstruments = [
-    {
-      supportedMethods: ['https://android.com/pay'],
-      data: {
-        merchantName: 'Rouslan Solomakhin',
-        merchantId: '00184145120947117657',
-        allowedCardNetworks: ['AMEX', 'MASTERCARD', 'VISA', 'DISCOVER'],
-        paymentMethodTokenizationParameters: {
-          tokenizationType: 'GATEWAY_TOKEN',
-          parameters: {
-            'gateway': 'stripe',
-            'stripe:publishableKey': 'pk_live_lNk21zqKM2BENZENh3rzCUgo',
-            'stripe:version': '2016-07-06'
-          }
+  var supportedInstruments = [{
+    supportedMethods: ['https://android.com/pay'],
+    data: {
+      merchantName: 'Rouslan Solomakhin',
+      merchantId: '00184145120947117657',
+      allowedCardNetworks: ['AMEX', 'MASTERCARD', 'VISA', 'DISCOVER'],
+      paymentMethodTokenizationParameters: {
+        tokenizationType: 'GATEWAY_TOKEN',
+        parameters: {
+          'gateway': 'stripe',
+          'stripe:publishableKey': 'pk_live_lNk21zqKM2BENZENh3rzCUgo',
+          'stripe:version': '2016-07-06'
         }
       }
-    },
-    {
-      supportedMethods: [
-        'unionpay', 'visa', 'mastercard', 'amex', 'discover', 'diners', 'jcb'
-      ]
     }
-  ];
+  }, {
+    supportedMethods: [
+      'unionpay', 'visa', 'mastercard', 'amex', 'discover', 'diners', 'jcb'
+    ]
+  }, {
+    supportedMethods: ['basic-card'],
+    data: {
+      supportedNetworks: ['unionpay', 'visa', 'mastercard', 'amex', 'discover', 'diners', 'jcb'],
+      supportedTypes: ['prepaid', 'debit', 'credit']
+    }
+  }];
 
   var details = {
     total: {label: 'Donation', amount: {currency: 'USD', value: '55.00'}},
