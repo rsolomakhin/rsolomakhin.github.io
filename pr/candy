@@ -1,0 +1,115 @@
+<html>
+<head>
+<title>2016 HTML5 Conference Candy!</title>
+<meta property="og:title" content="2016 HTML5 Conference Candy!">
+<meta property="og:description" content="2016 HTML5 Conference에 참가하시는 모든분께 Samsung Browser CloseBy가 무료로 캔디를 나눠드립니다. 클릭해 주세요!">
+<meta property='og:image' content="/resources/images/sbrowser_icon.png">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/resources/components/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="/resources/components/jquery/js/jquery.js"></script>
+<script src="/resources/components/bootstrap/js/bootstrap.min.js"></script>
+<link href="/resources/css/styles.css" rel="stylesheet">
+<script>
+var giveCandy = function() {
+    //$.ajax({url: "/giveCandy/?id=${id}", success: function (result) {
+    //    console.log("success");
+    //}, error: function (error) {
+    //    console.log("error");
+    //}});
+    window.location = "http://52.76.218.147/giveCandy/?id=1";
+}
+</script>
+
+</head>
+<body>
+<div class="container">
+    <div id="contents">
+    <p><button onclick="onBuyClicked()">give me candy.</button></p>
+    </div>
+    <pre id="msg"></pre>
+</div>
+  <script>
+    var timeoutID1;
+    var timeoutID2;
+
+    /**
+     * Prints the given error message.
+     * @param {string} msg - The error message to print.
+     */
+    function error(msg) {  // eslint-disable-line no-unused-vars
+      if (timeoutID1) {
+        window.clearTimeout(timeoutID1);
+      }
+      if (timeoutID2) {
+        window.clearTimeout(timeoutID2);
+      }
+      var element = document.getElementById('msg');
+      element.innerHTML = msg;
+      element.className = 'error';
+      timeoutID1 = window.setTimeout(function() {
+        if (element.className !== 'error') {
+          return;
+        }
+        element.className = 'error-hide';
+        timeoutID2 = window.setTimeout(function() {
+          element.innerHTML = '';
+          element.className = '';
+        }, 500);
+      }, 10000);
+    }
+
+    function onBuyClicked() {  // eslint-disable-line no-unused-vars
+      var supportedInstruments = [
+        {
+          supportedMethods: [
+            'visa', 'mastercard', 'amex', 'discover', 'diners', 'jcb', 'unionpay'
+          ]
+        }
+      ];
+
+      var details = {
+        total: {label: 'Candy', amount: {currency: 'KRW', value: '100'}},
+        displayItems: [
+          {
+            label: 'SBrowser WebPayment Demo',
+            amount: {currency: 'KRW', value: '100'}
+          }
+        ]
+      };
+
+      var options = {
+        requestPayerEmail: true,
+        requestPayerPhone: true
+      };
+
+      if (!window.PaymentRequest) {
+        error('PaymentRequest API is not supported.');
+        return;
+      }
+
+      try {
+        var request = new PaymentRequest(supportedInstruments, details, options);
+        request.show()
+            .then(function(instrumentResponse) {
+              window.setTimeout(function() {
+                instrumentResponse.complete('success')
+                    .then(function() {
+                      giveCandy();
+                    })
+                    .catch(function(err) {
+                      error(err);
+                    });
+              }, 2000);
+            })
+            .catch(function(err) {
+              error(err);
+            });
+      } catch (e) {
+        error('Developer mistake: \'' + e.message + '\'');
+      }
+    }
+  </script>
+</body>
+</html>
