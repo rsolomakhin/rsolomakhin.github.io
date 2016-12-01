@@ -1,0 +1,1668 @@
+
+/* wennovation */
+.wennovation-view * {font-family:'SECGCWB' !important;}
+.wenno-info .inner * { color:#282828 !important;}
+.wennovation-view em {display:block; font-size:14px; font-weight:100; font-style:normal; }
+.wenno-info .inner span {font-size:18px;}
+.wenno-info {position:relative; overflow:hidden; background:#afdceb url(//media.samsungwa.com/media/product/wennovation/bg_cover.png) no-repeat right bottom; }
+.wenno-info h2 {padding-bottom:50px; font-size:0; line-height:0;}
+.wenno-info .inner {padding:0 6.45%;  overflow:hidden;}
+.wenno-info .inner h3 {font-size:22px; line-height:36px; font-weight:700;}
+.wenno-info .inner p {padding-bottom:37px; font-size:18px; font-weight:100; line-height: 28px;}
+.wenno-info .inner p span.br {display:block;}
+.wenno-info .inner p.pdb {padding-bottom:8px;}
+.wenno-info .inner p a {text-decoration:underline;}
+.wenno-info .inner .sec1 {float:left; width:50%; }
+.wenno-info .inner .sec1 p.tip {padding:10px 0 34px; font-size:14px; font-weight:100;}
+.wenno-info .inner .sec2 {float:left; width:50%;}
+.wenno-info .inner .sec2 .box {padding-left:20px;}
+.wenno-info .inner .sec2 a.down {display:block; width:150px; height:32px; margin:0 0 45px; line-height:35px; font-size:14px; text-align:center; color:#fff !important; font-weight:400; text-decoration:none; background:#3e4448;}
+.wenno-info .inner .sec2 dl {padding-bottom:24px;}
+.wenno-info .inner .sec2 dl dt {font-size:18px; font-weight:700; margin-bottom:0;}
+.wenno-info .inner .sec2 dl dd {font-size:18px; font-weight:100;}
+.wenno-info .inner .sec2 dl dd p {padding-bottom:0;}
+.wenno-info .inner .sec2 dl dd p span.se {display:block; padding-left:55px; font-size:18px;  letter-spacing:-1px;}
+.wenno-info table {width:488px; margin:0; border-top:2px solid #8cb0bc; border-bottom:2px solid #8cb0bc;}
+.wenno-info table caption {margin:0; padding:0; font-size:0; line-height:0; text-indent:-3000px; border:none; overflow:hidden; }
+.wenno-info table tbody th {border-right:1px solid #8cb0bc;}
+.wenno-info table tbody th, .wenno-info table tbody td {padding:13px 0 12px; font-size:18px; font-weight:100; line-height:24px; text-align:center; border-bottom:1px solid #8cb0bc;}
+.wenno-info a.btn {display:block; width:270px; height:60px; margin:16px auto 70px; line-height:60px; font-size:24px; text-align:center; color:#fff !important; font-weight:400; background:#3e4448;}
+.wenno-tip {background:#fff;}
+.wenno-tip .inner {padding:5% 6.5%;}
+.wenno-tip .inner h3 {padding-bottom:17px; font-size:22px; color:#4b4b4b; line-height:32px; font-weight:700;}
+.wenno-tip .inner ol li {line-height:30px; font-size:16px; color:#4b4b4b; font-weight:100;}
+.wenno-info .sns_wrap {bottom:10px; right:8px;}
+.wennovation-view .sns_wrap .sns_box ul li a i {font-family:xeicon !important;}
+
+.wennovation-contest * {font-family:'SECGCWB' !important; color:#282828 !important; background:#fff; word-break:break-word; word-break:keep-all;}
+.wennovation-contest .inner {padding:38px;}
+.wennovation-contest h3 {padding:80px 0 14px; border-bottom:1px solid #898989; font-size:28px;}
+.wennovation-contest h3.fir {padding-top:0;}
+.winno-bbs-mob {display:none;}
+.winno-bbs-web {margin-bottom:0;}
+.winno-bbs-web caption {position:absolute; margin:0; padding:0; font-size:0; line-height:0; text-indent:-3000px; border:none; overflow:hidden; }
+.winno-bbs-web thead th {padding:20px 0 18px; font-size:16px; text-align:left; border-bottom:1px solid #898989;}
+.winno-bbs-web thead th:first-child {padding-left:10px;}
+.winno-bbs-web tbody th, .winno-bbs-web tbody td {vertical-align:top; padding:20px 0; line-height:20px; text-align:left; border-bottom:1px solid #898989;}
+.winno-bbs-web tbody th {padding-left:10px; font-size:16px;}
+.winno-bbs-web tbody td {font-size:14px;}
+
+.wennovation-contest h4.tit {position:absolute; top:18px; left:10px; font-size:16px; font-weight:700; line-height:22px;}
+.wennovation-contest li p {padding-top:5px; line-height:20px;}
+.wennovation-contest li em {display:block; font-style:normal; line-height:20px;}
+.winno-process {}
+.winno-process li {position:relative; padding:18px 0 15px 205px; border-bottom:1px solid #898989;}
+.winno-process li strong {letter-spacing:-1px;}
+
+.winno-benefit {width:100%; overflow:hidden;}
+.winno-benefit .entry {float:left; width:49%;}
+.winno-benefit .poll {float:right; width:50%;}
+.winno-benefit .poll ul li {padding-left:31%;}
+.winno-benefit ul {min-height:350px; border-bottom:1px solid #898989;}
+.winno-benefit ul li {position:relative; padding:13px 0 15px 33.5%;}
+.winno-benefit ul li:last-child {padding-bottom:0;}
+.winno-benefit ul li.sec {padding-bottom:40px;}
+.winno-benefit ul li h4 span {font-size:16px;}
+.winno-benefit ul li em {padding-top:20px;}
+.winno-benefit ul li em.pdt0 {padding-top:0;}
+.winno-benefit ul li span.br {display:block;}
+.winno-benefit ul li span.br.pd {padding-left:12px;}
+.winno-benefit ul li p span.idn {display:block; padding-left:10px;}
+
+.winno-profile {overflow:hidden; padding:20px 0; border-bottom:1px solid #898989;}
+.winno-profile .profile {position:relative; height:260px; padding:0 0 0 310px; overflow:hidden;}
+.winno-profile .profile.last {height:200px;}
+.winno-profile .profile.last span.name {width:100%; position:absolute; top:50%; margin-top:-42px; margin-bottom:0;}
+.winno-profile .profile .img {position:absolute; top:0; left:0; width:300px; text-align:center;}
+.winno-profile .profile .img img {height:200px;}
+.winno-profile .profile span.name {display:block; margin-bottom:20px; padding:10px 0 15px; font-size:14px; line-height:20px; border-bottom:1px solid #898989;}
+.winno-profile .profile span.name em {display:block; font-size:12px; line-height:23px; font-style:normal;}
+.winno-profile .profile span.name strong {display:block; font-size:16px;}
+.winno-profile .profile ul {float:left; width:45%;}
+.winno-profile .profile ul + ul {float:right; width:54.5%;}
+.winno-profile .profile ul li {padding:0 0 0 9px; background:url(../product/wennovation/bu_01.gif) no-repeat 2px 10px;}
+.winno-profile .profile ul li span.br {display:block;}
+
+@media only screen and (max-width:1280px){
+	.wenno-info h2 {padding-bottom:30px;}
+	.wenno-info .inner span {font-size:16px;}
+	.wenno-info .inner h3 {line-height:34px;}
+	.wenno-info .inner p {padding-bottom:30px; font-size:16px; line-height:25px;}
+	.wenno-info .inner .sec1 em { padding:15px 0 34px;}
+	.wenno-info .inner .sec2 .box {padding-left:30px;}
+	.wenno-info .inner .sec2 a.down {margin-bottom:35px;}
+	.wenno-info .inner .sec2 dl {padding-bottom:17px;}
+	.wenno-info .inner .sec2 dl dt {font-size:16px;}
+	.wenno-info .inner .sec2 dl dd {font-size:16px;}
+	.wenno-info .inner .sec2 dl dd p span.se {padding-left:50px; font-size:16px;}	
+	.wenno-info table {width:420px;}
+	.wenno-info table tbody th, .wenno-info table tbody td {font-size:16px;}	
+	.wenno-tip .inner {padding:5%;}
+	.winno-benefit ul {min-height:405px;}
+	.winno-benefit ul li {padding-left:180px;}
+	.winno-profile .profile {padding-left:280px;}
+	.winno-profile .profile .img {width:280px;}
+}
+
+@media only screen and (max-width:1200px){
+	.winno-benefit ul {min-height:425px;}
+	.winno-benefit ul li {padding-left:180px;}
+}
+
+@media only screen and (max-width:1024px){
+	.wenno-info .inner {padding:0 5%;}
+	.wennovation-contest .inner {padding:5%;}
+	.winno-benefit .entry {float:left; width:49%;}
+	.winno-benefit .poll {float:right; width:50%;}
+	.winno-benefit .poll ul li {padding-left:180px;}
+	.winno-benefit ul {min-height:405px;}
+	.winno-benefit ul li {position:relative; padding:13px 0 15px 210px;}
+	.winno-benefit ul li.sec {padding-bottom:20px;}
+	.winno-benefit ul li span.br.pd {display:inline; padding-left:0;}
+
+	.winno-profile .profile {position:relative; padding:0 0 0 295px; overflow:hidden;}
+	.winno-profile .profile.sec {height:300px; }
+	.winno-profile .profile .img {width:255px;}
+	.winno-profile .profile ul {float:left; width:50%;}
+	.winno-profile .profile ul + ul {float:left; width:50%; padding-left:20px; box-sizing:border-box;}
+	.winno-profile .profile ul li span.br {display:inline;}
+}
+@media only screen and (max-width:1000px){
+	.wenno-info .inner div[class*="sec"] {float:none; width:100%;}
+	.wenno-info .inner p span[class^="b"] {display:inline; font-size:16px;}
+	.wenno-info .inner p {padding-bottom:30px;}
+	.wenno-info .inner .sec2 .box {padding-left:0;}
+	.wenno-info .inner .sec2 a.down {margin-bottom:8%;}
+	.wenno-info .inner .sec2 p.pdb span.br {display:block;}
+	.wenno-info .inner .sec2 dl {padding-bottom:5%;}
+	.wenno-info .inner .sec2 dl dt {font-size:16px; margin-bottom:0;}
+	.wenno-info .inner .sec2 dl dd {font-size:16px; font-weight:100;}
+	.wenno-info .inner .sec2 dl dd p {padding-bottom:0;}
+	.wenno-info .inner .sec2 dl dd p span.se {padding-left:50px; font-size:16px;}
+	.wenno-info table {width:100%;}
+	.wenno-info table tbody th, .wenno-info table tbody td {padding:14px 0 12px 24px; font-size:16px;}	
+	.wenno-tip .inner {padding:5% 5% 6%;}
+	
+	.winno-bbs-web {display:none;}
+	.winno-bbs-mob {display:block;}
+	.winno-bbs-mob h4 {padding:45px 0 10px; font-size:16px; font-weight:700; border-bottom:1px solid #898989;}
+	.winno-bbs-mob em {display:block; margin-top:55px; padding:16px 0 14px; font-size:16px; font-style:normal; font-weight:700; border-bottom:1px solid #898989;}
+	.winno-bbs-mob em.fir {margin-top:0;}
+	.winno-bbs-mob ul li {position:relative; padding:16px 0 14px 100px; border-bottom:1px solid #898989;}
+	.winno-bbs-mob ul li span {position:absolute; top:16px; left:0; font-size:16px; font-weight:700;}
+
+	.wennovation-contest h3 {padding:110px 0 10px;}
+	.wennovation-contest h4.tit {left:0;}
+	.winno-process li {padding-left:160px;}
+	.winno-benefit .entry {float:none; width:100%;}
+	.winno-benefit .poll {float:none; width:100%;}
+	.winno-benefit .poll h3 {padding-top:65px;}
+	.winno-benefit ul {min-height:100%; padding-bottom:15px; border-bottom:1px solid #898989;}
+	.winno-benefit ul li {position:relative; padding:13px 0 15px 198px;}
+	.winno-benefit ul li.sec {height:70px; padding-bottom:0;}
+	.winno-profile {padding:30px 0; border-bottom:0;}
+	.winno-profile .profile {position:relative; height:auto; padding:0 0 100px; overflow:hidden;}
+	.winno-profile .profile.sec {height:auto;}
+	.winno-profile .profile.last {height:auto; padding-bottom:0;}
+	.winno-profile .profile .img {position:static; width:100%;}
+	.winno-profile .profile span.name {padding:20px 0 10px; margin-bottom:15px;}
+	.winno-profile .profile ul {float:none; width:100%;}
+	.winno-profile .profile ul + ul {float:none; width:100%; padding:0; box-sizing:border-box;}
+	.winno-profile .profile.last span.name {position:static; margin-top:0;}
+}
+
+@media only screen and (max-width:768px){
+	.wenno-tip .inner ol li {letter-spacing:-1px;}
+}
+
+@media only screen and (max-width:767px){
+	.wenno-info .inner p span[class^="b"] {display:inline; font-size:21px;}
+	.wenno-info .inner h3 {font-size:27px; padding-bottom:7px;}
+	.wenno-info .inner p {padding-bottom:5.5%; font-size:21px; line-height:30px;}	
+	.wenno-info .inner span {font-size:21px;}
+	.wenno-info .inner .sec1 p.tip {font-size:18px;}
+	.wenno-info .inner .sec2 {padding-left:0;}
+	.wenno-info .inner .sec2 a.down {width:245px; height:48px; font-size:21px; line-height:50px; margin-bottom:8%;}
+	.wenno-info .inner .sec2 dl {padding-bottom:5%;}
+	.wenno-info .inner .sec2 dl dt {font-size:21px;}
+	.wenno-info .inner .sec2 dl dd {font-size:21px;}
+	.wenno-info .inner .sec2 dl dd p {padding-bottom:0;}
+	.wenno-info .inner .sec2 dl dd p span.se {padding-left:64px; font-size:21px;}	
+	.wenno-info a.btn {width:auto; height:76px; margin:0 5% 21%; font-size:30px; line-height:77px; box-sizing:border-box;}
+	.wenno-info table tbody th, .wenno-info table tbody td {padding:18px 0 16px 20px; font-size:21px;}	
+	.wenno-tip .inner {padding:9% 5% 8.5%;}
+	.wenno-tip .inner h3 {font-size:27px; }
+	.wenno-tip .inner ol li {font-size:21px; line-height:34px; letter-spacing:-1px;}
+	.wenno-tip .inner ol li p {font-size:21px;}
+}
+@media only screen and (max-width:481px){
+	.wenno-info .inner p span[class^="b"] {font-size:14px;}
+	.wenno-info .inner span[class^="bm"] {font-size:14px; display:block !important;}
+	.wennovation-view em {font-size:12px;}
+	.wenno-info .inner h3 {font-size:18px; padding-bottom:0; line-height:25px;}
+	.wenno-info .inner p {padding-bottom:5.5%; font-size:14px; line-height:21px;}	
+	.wenno-info .inner .sec1 p.tip {padding-bottom:22px; font-size:14px;}
+	.wenno-info .inner .sec2 a.down {width:122px; height:24px; font-size:12px; line-height:25px; margin-bottom:8%;}
+	.wenno-info .inner .sec2 dl {padding-bottom:5%;}
+	.wenno-info .inner .sec2 dl dt {font-size:14px;}
+	.wenno-info .inner .sec2 dl dd {font-size:14px;}
+	.wenno-info .inner .sec2 dl dd p {padding-bottom:0;}
+	.wenno-info .inner .sec2 dl dd p span.se {padding-left:44px; font-size:14px;}	
+	.wenno-info .inner .sec2 dl dd p span.se > span.bm {padding-left:0;}
+	.wenno-info .inner .sec2 dl dd p span.bm {padding-left:44px;}
+	.wenno-info a.btn {height:50px; margin:3% 5% 26%; font-size:20px; line-height:48px;}
+	.wenno-info table tbody th, .wenno-info table tbody td {padding:9px 0 8px; font-size:14px; line-height:20px; letter-spacing:-0.5px;}	
+	.wenno-tip .inner {padding:9% 5% 8.5%;}
+	.wenno-tip .inner h3 {font-size:18px; }
+	.wenno-tip .inner ol li {font-size:14px; line-height:25px;}
+	.wenno-tip .inner ol li p {font-size:14px;}
+
+	.wennovation-contest h3 {padding:70px 0 0; font-size:18px;}
+	.winno-bbs-mob h4 {padding:30px 0 0; font-size:14px;}
+	.winno-bbs-mob em {margin-top:30px; padding:13px 0 10px; font-size:14px;}
+	.winno-bbs-mob em.fir {margin-top:0;}
+	.winno-bbs-mob ul li {position:relative; padding:10px 0 8px 70px; font-size:12px;}
+	.winno-bbs-mob ul li span {position:absolute; top:8px; left:0; font-size:14px; font-weight:700;}
+	
+	.wennovation-contest h4.tit {position:static; left:0; font-size:14px; padding-bottom:3px;}	
+	.wennovation-contest h4.tit span.br {font-size:14px;}
+	.wennovation-contest ul li p {padding-top:0; font-size:12px; line-height:18px;}	
+	.wennovation-contest li em {font-size:12px;}
+	.winno-process {}
+	.winno-process li {padding:12px 0 10px 0;}
+	.winno-benefit .poll h3 {padding-top:35px;}
+	.winno-benefit .poll ul li {padding-left:0;}
+	.winno-benefit ul li {padding:13px 0 10px 0;}
+	.winno-benefit ul li h4 span {font-size:14px;}
+	.winno-benefit ul li em {font-size:12px; padding-top:10px; line-height:16px;}
+	.winno-benefit ul li.sec {height:auto; padding-bottom:10px;}
+	.winno-benefit ul li span.br {display:inline; font-size:12px;}
+	.winno-benefit ul li p span.idn {font-size:12px;}
+	.winno-profile {padding:20px 0;}
+	.winno-profile .profile {padding:0 0 60px;}
+	.winno-profile .profile span.name {margin-bottom:10px; padding:25px 0 5px; font-size:12px; line-height:16px;}
+	.winno-profile .profile span.name strong {font-size:14px;}
+	.winno-profile .profile .img img {height:135px;}
+	.winno-profile .profile ul li {font-size:12px;}
+	.winno-profile .profile ul li span.br {font-size:12px;}
+}
+
+@media only screen and (max-width:320px){
+	.wenno-info table tbody th, .wenno-info table tbody td {font-size:12px; line-height:20px;}	
+	.wenno-info .inner .sec1 p.tip {font-size:12px;}
+	.wenno-info a.btn {margin-bottom:30%;}
+}
+
+/************************** PSP start **************************/
+span[class*="sec"] {font-size:20px; }
+.contbox[class*="fir"] span {font-size:18px; letter-spacing:0;}
+.product-detailview span[class*="icn"] {display:block; width:100px; margin:23px auto 0; }
+.product-detailview span[class*="icn wo"] {width:auto !important; letter-spacing:0;}
+.product-detailview span[class*="icn"] > span.txt {display:block; font-size:18px; font-weight:100; padding-top:10px;}
+.product-detailview .set span.icn {display:inline-block; margin:23px 15px 0;}
+.product-detailview p[class*="tip"] {position:absolute; bottom:0; left:0; padding:0 0 2% 2.3%; font-weight:100; font-size:14px; color:#000; line-height:20px;}
+.product-detailview p[class*="tip cw"] {color:#fff;}
+.product-detailview p[class*="tip rt"] {left:auto; right:0; padding:0 2.3% 2% 0;} 
+
+.product-detailview * { font-family:'SECGCWB' !important;}
+.product-detailview em {font-style:normal !important;}
+.product-detailview section[class*="sec"] {position:relative; color:#000;}
+.product-detailview .contbox {position:absolute; top:0; text-align:center;}
+.product-detailview .contbox .bar:after {position:absolute; content:""; bottom:-33px; left:50%; margin-left:-55px; width:110px; height:7px; background:#434343;}
+.product-detailview .contbox[class*="rg"] {right:0; }
+.product-detailview .contbox[class*="lg"] {left:0; }
+.product-detailview .contbox[class*="cen"] {width:100%;}
+
+.product-detailview .contbox {line-height:1.23;}
+.product-detailview .contbox h2 {position:relative; font-size:34px; color:#000; font-weight:100; letter-spacing:-2px; line-height:1.3; margin-bottom:60px;}
+.product-detailview .contbox h2.bar:after {bottom:-30px; background:#d7ccbf;}
+.product-detailview .contbox h2 span.eng {display:block; font-size:48px; padding-top:8px; letter-spacing:0; font-weight:700; font-family:'SharpSans' !important;}
+.product-detailview .contbox h3 {position:relative; font-size:36px; color:#000; font-weight:100; letter-spacing:-2px; line-height:1.3; margin-bottom:63px;}
+.product-detailview .contbox h3 span.eng {font-size:36px; letter-spacing:-1px;} 
+.product-detailview .contbox h3 span.br {display:block; font-size:36px; }
+.product-detailview .contbox p {margin-bottom:0; font-size:20px; letter-spacing:-1px; line-height:29px; font-weight:400; box-sizing:border-box;}
+.product-detailview .contbox p span.br {display:block;}
+.product-detailview .contbox p span.en {letter-spacing:0;}
+
+.product-detailview .sec0 dl dt {font-size:30px; color:#282828; font-weight:400; margin-bottom:10px;}
+.product-detailview .sec0 dl dd {font-size:14px; color:#282828; font-weight:400; line-height:23px; letter-spacing:0;}
+.product-detailview .sec0 dl dd span.br {display:block;}
+.product-detailview .sec1 .fir {right:0;}
+.product-detailview .sec1 p {font-size:18px;}
+
+.charm .sec1 .fir {padding:17.5% 6% 0 0;}
+.charm .sec2 .lg {padding:22% 0 0 8%;}
+.charm .sec3 .lg {padding:38.8% 0 0 9%;} 
+.charm .sec4 .rg {padding:38.8% 12% 0 0; } 
+.charm .sec4 .rg h3 {color:#fff;}
+.charm .sec5 .rg {padding:28.8% 7% 0 0;} 
+.charm .sec5 .rg p + p * {vertical-align:middle; padding:0;}
+.charm .sec5 .rg p img.mo {display:none;}
+.charm .sec5 .rg span.icn {display:inline-block;}
+.charm .sec5 .rg span.txt {display:inline-block; padding:23px 0 0 15px; font-size:36px; letter-spacing:0; font-weight:100; color:#434343;}
+.charm .sec6 .lg {top:50%; left:13.5%; margin-top:-5%;}
+.charm .sec6 .lg p + p {padding-top:43px;}
+.charm .sec7 .lg {top:50%; left:15.2%; margin-top:-137px; }
+
+.led-view-cover .sec1 .fir {padding:20% 8.8% 0 0;}
+.led-view-cover .sec2 .lg {padding:18.5% 0 0 8.3%; color:#fff;}
+.led-view-cover .sec2 .lg h3 {color:#fff;}
+.led-view-cover .sec2 h3.bar:after {background:#dcdcdc;}
+.led-view-cover .sec3 .cen {padding:9% 0 0 0;}
+.led-view-cover .sec4 .cen {padding:7.5% 0 0 0;}
+.led-view-cover .sec4 .cen h3 span.br {display:inline;}
+.led-view-cover .sec5 .rg {padding:16% 15.4% 0 0;}
+.led-view-cover .sec6 .lg {padding:20.2% 0 0 7.8%; }
+
+.back-pack .contbox h3 span.br {display:inline;}
+.back-pack .contbox p span.br {display:inline;}
+.back-pack .sec1 .fir {width:100%; height:100%;}
+.back-pack .sec1 .fir .btm {width:100%; position:absolute; bottom:10%; left:0; }
+.back-pack .sec1 .fir h2 {color:#282828;}
+.back-pack .sec1 .fir h2.bar:after {background:#a6a6a6;}
+.back-pack .sec1 .fir h2 span.br {font-size:34px;}
+.back-pack .sec2 .lg {padding:18.2% 0 0 7.5%;}
+.back-pack .sec3 .rg {top:50%; right:7%; margin-top:-123px;}
+.back-pack .sec4 .lg {padding:9% 0 0 7.5%;}
+.back-pack .sec5 .rg {padding:8% 9% 0 0;}
+.back-pack .sec6 .lg {padding:15% 0 0 7.7%;}
+.back-pack .sec6 .lg p + p {padding-top:53px;}
+.back-pack .sec6 .lg p + p em {text-indent:-3000px; font-size:0; line-height:0;}
+.back-pack .sec6 .lg p + p span {display:block; width:200px; height:15px; overflow:hidden; margin:0 auto 17px; text-align:left; line-height:16px; letter-spacing:0; color:#434343; font-size:16px; background:url(//media.samsungwa.com/media/product/back_pack_s7edge/bg_level.png) no-repeat right top;}
+.back-pack .sec6 .lg p + p span.l2 {background-position:right -32px;}
+.back-pack .sec6 .lg p + p span.l3 {background-position:right -64px;}
+.back-pack .sec6 .lg p + p span.l4 {margin-bottom:12px; background-position:right -96px;}
+.back-pack .sec6 .lg p + p span.l5 {height:24px; line-height:26px; background-position:right -123px;}
+
+.level-box-pro .sec1 .fir {right:auto; left:0; padding:16.5% 0 0 6.3%;}
+.level-box-pro .sec2 .rg {padding:21.2% 6.3% 0 0;}
+.level-box-pro .sec3 .cen {padding:11.2% 0 0 0;}
+.level-box-pro .sec4 .cen {padding:5% 0 0 0;}
+.level-box-pro .sec5 .lg {padding:14.5% 0 0 6.3%;}
+.level-box-pro .sec5 .lg .wd {width:525px; }
+.level-box-pro .sec5 .lg .wimg {margin:62px 0 0 0; float:left;}
+.level-box-pro .sec6 .cen {padding:5% 0 0 0;}
+.level-box-pro .sec7 .lg {width:100%; height:100%;}
+.level-box-pro .sec7 .lg .btm {position:absolute;left:0; bottom:0; padding:0 0 5% 6.3%;}
+
+.clear-view-cover .sec1 .fir {top:50%; right:7%; margin-top:-126px;}
+.clear-view-cover .sec2 .rg {top:50%; right:8%; margin-top:-86px;}
+.clear-view-cover .sec3 .lg {top:50%; left:12%; margin-top:-110px;}
+.clear-view-cover .sec4 .rg {top:50%; right:8.5%; margin-top:-172px;}
+.clear-view-cover .sec5 .cen {top:13%;}
+
+.level-u-pro .sec1 .fir {width:100%; left:0; right:0; top:0; padding:0; margin:0; height:100%;}
+.level-u-pro .sec1 .fir .btm {position:absolute; bottom:11.5%; right:7%;}
+.level-u-pro .sec1 h2.bar:after { background:#434343;}
+.level-u-pro .sec2 .lg {padding:21.5% 0 0 9%;}
+.level-u-pro .sec3 .rg {top:50%; right:8.5%; margin-top:-102px;}
+.level-u-pro .sec4 .rg {top:50%; right:7.5%; margin-top:-200px;}
+.level-u-pro .sec4 .rg.tp2 {right:4%;}
+.level-u-pro .sec4 .rg span.bw {display:block;}
+.level-u-pro .sec5 .cen {padding:8% 0 0 0;}
+.level-u-pro .sec5 .cen span.br {display:inline;}
+.level-u-pro .sec5 .cen em.bw {display:block; font-style:normal;}
+.level-u-pro .sec6 .lg {top:50%; left:10%; margin-top:-123px;}
+.level-u-pro .sec7 .rg {padding:17.3% 6% 0 0;}
+.level-u-pro .sec8 .lg {top:50%; left:7.8%; margin-top:-185px;}
+.level-u-pro .sec8 .lg h3 + p span {display:inline-block; width:37px; height:18px; margin-right:7px; line-height:22px; text-indent:-3000px; }
+.level-u-pro .sec8 .lg span.plus {background:url(//media.samsungwa.com/media/product/level_u_pro/ico_plus.png) no-repeat left 0;}
+.level-u-pro .sec8 .lg span.minus {background:url(//media.samsungwa.com/media/product/level_u_pro/ico_minus.png) no-repeat left 0;}
+.level-u-pro .sec9 .rg {top:50%; margin-top:-81px; padding-right:14.5%;}
+
+.wireless .sec1 .fir {top:50%; right:8%; margin-top:-131px;}
+.wireless .sec1 .fir h2:after {background:#434343;}
+.wireless .sec1 .fir span.eng > span.eng {display:inline; padding-top:0;}
+.wireless .sec2 .cen {padding-top:11%; color:#fff;}
+.wireless .sec2 .cen h3 { color:#fff;}
+.wireless .sec2 .cen h3:after {background:#dcdcdc;}
+.wireless .sec3 .rg {padding:9% 7.5% 0 0;}
+.wireless .sec4 .cen {padding-top:9.2%;}
+.wireless .sec5 .rg {padding:17% 8% 0 0;}
+.wireless .sec5 .rg .lgt {padding-left:25px; line-height:29px;}
+.wireless .sec5 .rg .graph-wrap {width:305px; margin:23px auto 0; text-align:left;}
+.wireless .sec5 .rg .graph-wrap .txt {margin:0; font-weight:400; line-height:0; font-size:14px;}
+.wireless .sec5 .rg .graph-wrap .txt span {position:relative; display:block; height:12px; padding-left:24px; line-height:14px; text-align:left; font-size:14px; font-weight:400; color:#767676; }
+.wireless .sec5 .rg .graph-wrap .txt span:before {position:absolute; content:""; top:0; left:0; width:12px; height:12px;}
+.wireless .sec5 .rg .graph-wrap .txt span.s1:before {background:#767676;}
+.wireless .sec5 .rg .graph-wrap .txt span.s2 {color:#000; margin-top:8px; }
+.wireless .sec5 .rg .graph-wrap .txt span.s2:before {background:#000;}
+.wireless .sec5 .rg .graph.fir {padding:14px 0 40px;}
+.wireless .sec5 .rg .graph strong {font-size:14px; font-weight:700; letter-spacing:0;}
+.wireless .sec5 .rg .graph span[class*="s"] {display:block; height:12px; font-size:12px; line-height:13px; font-weight:400; letter-spacing:0;}
+.wireless .sec5 .rg .graph span[class*="s"] .per {display:inline-block; height:12px; margin-right:12px; text-indent:-3000px;}
+.wireless .sec5 .rg .graph span.s1 {color:#767676; margin-bottom:12px;}
+.wireless .sec5 .rg .graph span.s1 .per {background:#767676;}
+.wireless .sec5 .rg .graph span.s2 .per {background:#000;}
+.wireless .sec6 .lg {padding:13% 0 0 14%; }
+
+.eight-cups .sec0 .rg {padding:19% 11% 0 0; text-align:left;}
+.eight-cups .sec0 dl {line-height:1.23;}
+.eight-cups .sec0 dl dd span.br {font-size:14px;}
+.eight-cups .sec0 dl dd.mob {display:none;}
+.eight-cups .sec1 .fir {right:auto; left:0; padding:18% 0 0 6%;}
+.eight-cups .sec1 .fir h2:after {background:#66645d;}
+.eight-cups .sec2 .lg {padding:20% 0 0 15.5%;}
+.eight-cups .sec2 .lg h3 span.br {display:inline;}
+.eight-cups .sec3 .cen {padding-top:15.5%;}
+.eight-cups .sec4 .rg {padding:18% 8% 0 0;}
+.eight-cups .sec5 .rg {padding:15% 11.5% 0 0;}
+.eight-cups .sec6 .lg {padding:15% 0 0 10%;}
+
+.led-sterilizer p[class*="tip"] {left:auto; right:0; padding:0 2% 2% 2%;}
+.led-sterilizer .sec0 .rg {padding:20% 6.5% 0 0; text-align:left;}
+.led-sterilizer .sec0 .rg dd span.bw {display:block;}
+.led-sterilizer .sec1 .fir {right:auto; left:0; padding:15% 0 0 6%;}
+.led-sterilizer .sec1 .fir h2:after {background:#434343;}
+.led-sterilizer .sec2 .rg {padding:20% 19% 0 0;}
+.led-sterilizer .sec3 .lg {padding:8% 0 0 13%;}
+.led-sterilizer .sec4 .rg {padding:13% 5% 0 0;}
+.led-sterilizer .sec5 .lg {padding:15% 0 0 10.5%;}
+.led-sterilizer .sec5 .lg span.icn .txt {letter-spacing:0;}
+
+.charger-tray .sec1 .fir {width:100%; left:0; right:0; top:0; padding:0; margin:0; height:100%;}
+.charger-tray .sec1 .fir .btm {position:absolute; bottom:16%; right:7%;}
+.charger-tray .sec2 .lg {padding:15% 0 0 19%;}
+.charger-tray .sec3 .cen {padding-top:12%;}
+.charger-tray .sec4 .lg {padding:22.5% 0 0 9.5%;}
+.charger-tray .sec5 .rg {top:50%; right:10%; margin-top:-21px;}
+
+.sound-bottle .wa-info {display:block; padding:5px 0; color:#000; line-height:20px; text-align:center; background:#fff;}
+.sound-bottle .img {font-size:0; line-height:0;}
+.sound-bottle .contbox p.chk {padding-top:25px; font-size:27px; line-height:36px; letter-spacing:-0.5px; font-weight:100;}
+.sound-bottle .contbox p.chk img {margin-left:12px; vertical-align:top;}
+.sound-bottle .sec1 .fir {right:auto; left:0; padding:19% 0 0 12.5%;}
+.sound-bottle .sec1 .fir h2:after {background:#9c7863;}
+.sound-bottle .sec2 .rg {padding:15.5% 13% 0 0;}
+.sound-bottle .sec3 .rg {padding:12.5% 20% 0 0;}
+.sound-bottle .sec4 .lg {padding:19% 0 0 16%; color:#fff;}
+.sound-bottle .sec4 .lg h3 {color:#fff;}
+.sound-bottle .sec4 .lg h3.bar:after {background:#fff;}
+.sound-bottle .sec4 p.tip {color:#fff;}
+.sound-bottle .sec5 .rg {padding:22.5% 8.5% 0 0; color:#fff;}
+.sound-bottle .sec5 .rg h3 {color:#fff;}
+.sound-bottle .sec5 .rg h3.bar:after {background:#fff;}
+.sound-bottle .sec5 .banner_pc {position:absolute;top:0;left:0;}
+.sound-bottle .sec5 p.tip {color:#fff;}
+.sound-bottle .sec6 .rg {padding:14% 15.5% 0 0;}
+.sound-bottle .sec7 .lg {top:50%; margin-top:-82px; padding-left:13%;}
+.sound-bottle .sec8 .lg {padding:15% 0 0 11.5%;}
+.sound-bottle .sec9 .rg {padding:7% 10% 0 0;}
+.sound-bottle .sec10 .cen {padding-top:6.5%;}
+.sound-bottle video {width:100%; height:100%;}
+
+.rectangle .sec1 .fir {right:auto; left:0; padding:11% 0 0 11%;}
+.rectangle .sec1 .fir h2:after {background:#a6b1bf;}
+.rectangle .sec2 .rg {padding:30% 9% 0 0;}
+.rectangle .sec3 .rg {top:50%; margin-top:-82px; padding-right:11%;}
+.rectangle .sec4 .lg {top:50%; margin-top:-21px; padding-left:12.5%;}
+.rectangle .sec4 .lg h3 {margin:0;}
+.rectangle .sec5 .rg {padding:26% 9% 0 0;}
+.rectangle .sec6 .cen {padding-top:18%;}
+
+.lamp .sec1 .fir {padding:19% 8.5% 0 0;}
+.lamp .sec1 .fir h2:after {background:#a5d0d9;}
+.lamp .sec2 .lg {padding:23% 0 0 5.5%;}
+.lamp .sec2 .lg h3 {margin-bottom:0;}
+.lamp .sec2 .lg p {line-height:22px;}
+.lamp .sec5 .rg {padding:10.5% 14% 0 0;}
+.lamp .sec6 .lg {padding:22.5% 0 0 9%;}
+
+.kettle .sec1 .fir {width:100%; padding:13.5% 0 0 0;}
+.kettle .sec1 .fir h2:after {background:#addde6;}
+.kettle .sec2 .lg {padding:21% 0 0 12%;}
+.kettle .sec3 .cen {padding-top:6.5%;}
+.kettle .sec4 .lg {padding:20% 0 0 9%;}
+.kettle .sec5 .rg {top:50%; margin-top:-67px; padding-right:10.5%;}
+.kettle .sec6 .lg {padding:14% 0 0 18%;}
+.kettle .sec6 .chk {position:absolute; bottom:0; left:0; padding:0 0 4.5% 4.5%;}
+.kettle .sec6 .chk img {float:left;}
+.kettle .sec6 .chk p {padding-left:120px; line-height:22px; font-size:18px; font-weight:100;}
+.kettle .sec6 .chk p span {display:block; padding-left:42px; font-size:18px;}
+.kettle .sec6 .chk p span.c1 {background:url(//media.samsungwa.com/media/product/kettle_s1/ico_chk1.png) no-repeat 0 5px;}
+.kettle .sec6 .chk p span.c2 {margin-top:14px;background:url(//media.samsungwa.com/media/product/kettle_s1/ico_chk2.png) no-repeat 0 5px;}
+.kettle .sec7 .rg {top:50%; margin-top:-81px; padding-right:10.5%;}
+.kettle .sec8 .cen {padding-top:6.5%;}
+.kettle .sec8 em {position:absolute; bottom:0; left:0; padding:0 0 2% 2%; font-weight:100; font-size:14px;}
+
+.kettle div[class*="k"] span.btm {z-index:11; position:absolute; bottom:0; left:0; height:100%; }
+.kettle div[class*="k"] .per {overflow:hidden; position:relative; }
+.kettle div[class*="k"] .per span.bg {opacity:0; position:absolute; top:0; left:0; }
+.kettle .k1 {position:absolute; top:21.6%; right:51.7%;}
+.kettle .k1 span.btm {width:8px; background:url(//media.samsungwa.com/media/product/kettle_s1/bg_per1_01.png) no-repeat left bottom;}
+.kettle .k1 .per {height:118px; }
+.kettle .k1 .per span { display:block; width:8px; height:118px;}
+.kettle .k1 .per span em {position:absolute; display:block; width:8px; height:118px; bottom:-60%; left:0; background:url(//media.samsungwa.com/media/product/kettle_s1/bg_per1_02.png) no-repeat left bottom;}
+.kettle .k1 .per span.bg {height:118px; background:url(//media.samsungwa.com/media/product/kettle_s1/bg_per1_03.png) no-repeat left top;}
+.kettle .k2 {position:absolute; top:38.1%; right:34.5%; }
+.kettle .k2 span.btm {width:11px; background:url(//media.samsungwa.com/media/product/kettle_s1/bg_per2_01.png) no-repeat left bottom;}
+.kettle .k2 .per {height:148px; }
+.kettle .k2 .per span {display:block; width:11px; height:148px;}
+.kettle .k2 .per span em {position:absolute; display:block; width:11px; height:148px; bottom:-60%; left:0; background:url(//media.samsungwa.com/media/product/kettle_s1/bg_per2_02.png) no-repeat left bottom;}
+.kettle .k2 .per span.bg {height:148px; background:url(//media.samsungwa.com/media/product/kettle_s1/bg_per2_03.png) no-repeat left top;}
+
+.scoop .sec1 .fir {right:auto; left:0; padding:19% 0 0 10%;}
+.scoop .sec1 .fir h2:after {background:#bfbfbf;}
+.scoop .sec2 .rg {top:50%; margin-top:-67px; padding-right:12.5%;}
+.scoop .sec3 .lg {top:50%; margin-top:-105px; padding-left:13.5%;}
+.scoop .sec4 .lg {padding:17.5% 0 0 8%;}
+.scoop .sec5 .rg {top:50%; margin-top:-80px; padding-right:6.5%;}
+.scoop .sec6 .lg {padding:11% 0 0 7%;}
+.scoop .sec7 .lg {padding:18% 0 0 13%;}
+.scoop .sec7 .lg .control {width:283px; margin:0 -32px 0 0; text-align:left;}
+.scoop .sec7 .lg .control span {display:block; padding-bottom:20px; font-size:18px; font-weight:100;}
+.scoop .sec7 .lg .control span img {margin-right:12px;}
+.scoop .sec7 .lg .control span.c2 img {margin-right:24px;}
+.scoop .sec7 .lg .control span em {text-indent:-30000px; font-size:0; line-height:0;}
+
+.fit2 span[class*="icn"] img {margin:0 5px; }
+.fit2 p[class*="tip"] {left:auto; right:0; padding:0 2.3% 2% 0; font-size:14px;}
+.fit2 .sec1 .fir {top:50%; margin-top:-143px; padding-right:6.3%;}
+.fit2 .sec1 .fir h2:after {background:#a7a7a7;}
+.fit2 .sec2 .lg {padding:21% 0 0 8%;}
+.fit2 .sec3 .rg {padding:11% 10% 0 0;}
+.fit2 .sec4 .cen {padding:10% 0 0 0;}
+.fit2 .sec5 .lg {padding:19% 0 0 11%;}
+.fit2 .sec6 .rg {padding:18% 11% 0 0;}
+.fit2 .sec7 .lg {padding:8.5% 0 0 8.5%;}
+
+.iconx .sec1 .fir {right:auto; left:0; top:50%; margin-top:-143px; padding-left:11%;}
+.iconx .sec1 .fir h2:after {background:#bda980;}
+.iconx .sec2 .rg {padding:7% 4.5% 0 0;}
+.iconx .sec3 .lg {top:50%; margin-top:-67px; padding-left:11.5%;}
+.iconx .sec4 .rg {padding:14% 5.5% 0 0;}
+.iconx .sec4 .rg ul {max-width:380px; margin:11.5% auto 0;}
+.iconx .sec4 .rg ul li {float:left; width:52%; padding-bottom:22px; text-align:left; }
+.iconx .sec4 .rg ul li:nth-child(even) {width:48%;}
+.iconx .sec4 .rg ul li span {position:relative; display:inline-block; padding-top:28px; font-size:18px; font-weight:100; line-height:22px;}
+.iconx .sec4 .rg ul li span.c1 {height:8px; background:url(../product/iconx/bg_circle1.png) no-repeat 0 15px;}
+.iconx .sec4 .rg ul li span.c2 {height:8px; background:url(../product/iconx/bg_circle2.png) no-repeat 0 15px;}
+.iconx .sec4 .rg ul li span.c3 {height:8px; background:url(../product/iconx/bg_circle3.png) no-repeat 0 15px;}
+.iconx .sec4 .rg ul li img {float:left; margin-right:10px;}
+.iconx .sec5 .lg {padding:18% 0 0 8.5%;}
+.iconx .sec6 .rg {top:50%; margin-top:-202px; padding-right:11%;}
+.iconx .sec7 .lg {padding:18.5% 0 0 9.5%;}
+
+.level-active .sec1 .fir {right:0; top:50%; margin-top:-145px; padding-right:18%;}
+.level-active .sec1 .fir h2:after {background:#b2b9b6;}
+.level-active .sec2 .rg {padding:15% 9% 0 0;}
+.level-active .sec3 .cen {padding-top:17%;}
+.level-active .sec3 .cen .set span.icn {margin:23px 25px 0;}
+.level-active .sec4 .rg {padding:6% 14% 0 0;}
+.level-active .sec5 .cen {top:50%; margin-top:-82px;}
+.level-active .sec6 .lg {padding:13% 0 0 12%;}
+.level-active .sec6 .lg span.icn img {height:70px;}
+.level-active .sec7 .lg {padding:10% 0 0 8%;}
+
+.lens-cover .sec1 .fir {right:0; padding:8% 14% 0 0;}
+.lens-cover .sec1 .fir h2:after {background:#adb6c5;}
+.lens-cover .sec2 .lg {top:50%; margin-top:-82px; padding-left:15.5%;}
+.lens-cover .sec3 .rg {top:50%; margin-top:-97px; padding-right:15%;}
+.lens-cover .sec4 .lg {padding:8.5% 0 0 14%;}
+.lens-cover .sec4 p.tip {text-shadow:1px 1px #fff;}
+.lens-cover .sec5 .cen {padding-top:8.5%;}
+.lens-cover .sec5 p.tip {color:#fff; text-shadow:1px 1px #000;}
+
+.battery-pack .sec1 .fir {right:0; padding:7.5% 8% 0 0;}
+.battery-pack .sec1 .fir h2:after {background:#434343;}
+.battery-pack .sec2 .rg {top:50%;  margin-top:-105px; padding-right:8.5%}
+.battery-pack .sec3 .lg {top:50%; margin-top:-82px; padding-left:12%;}
+.battery-pack .sec4 .cen {padding-top:10%;}
+.battery-pack .sec4 .cen p.desc {padding-top:25px; font-size:14px; font-weight:100; letter-spacing:0; line-height:18px;}
+
+.back-note7 .sec1 .fir {right:auto; left:0; top:50%; margin-top:-131px; padding-left:14%;}
+.back-note7 .sec1 .fir h2:after {background:#434343;}
+.back-note7 .sec1 p.tip {font-size:14px;}
+.back-note7 .sec2 .lg {padding:15% 0 0 12%;}
+.back-note7 .sec3 .lg {top:50%; margin-top:-82px; padding-left:12%;}
+.back-note7 .sec4 .lg {top:50%; margin-top:-82px; padding-left:16%;}
+.back-note7 .sec5 .lg {padding:12% 0 0 14%;}
+.back-note7 .sec5 p.tip {text-shadow:1px 1px #e7e7e7;}
+
+.s-view-cover .sec1 .fir {right:0; padding:7% 7.5% 0 0;}
+.s-view-cover .sec1 .fir h2:after {background:#b8a789;}
+.s-view-cover .sec2 .lg {padding:11.8% 0 0 11.8%;}
+.s-view-cover .sec3 .rg {top:50%; margin-top:-45px; padding-right:7.5%;}
+.s-view-cover .sec3 .rg h3 {margin-bottom:0;}
+.s-view-cover .sec4 .lg {padding:29% 0 0 19.5%;}
+.s-view-cover .sec5 .rg {top:50%; margin-top:-106px; padding-right:8.5%;}
+
+.note7-view-cover .sec1 .fir {right:auto; left:0; top:50%; margin-top:-130px; padding-left:10%;}
+.note7-view-cover .sec1 .fir h2:after {background:#434343;}
+.note7-view-cover .sec2 .rg {padding:10% 18% 0 0;}
+.note7-view-cover .sec3 .lg {padding:18.5% 0 0 12%;}
+.note7-view-cover .sec3 .lg h3 {margin-bottom:0;}
+.note7-view-cover .sec4 .lg {padding:13% 0 0 14%;}
+.note7-view-cover .sec4 p.desc {padding-top:25px; font-size:14px; font-weight:100; letter-spacing:0; line-height:18px;}
+.note7-view-cover .sec4 p.tip {color:#fff;}
+.note7-view-cover .sec5 .lg {padding:17% 0 0 16%;}
+
+.level-in-anc .sec1 .fir {left:0; right:auto; top:50%; margin-top:-144px; padding-left:11%;}
+.level-in-anc .sec1 .fir h2:after {background:#b5b5b5;}
+.level-in-anc .sec3 .rg {padding:12% 10% 0 0;}
+.level-in-anc .sec4 .rg {top:50%; margin-top:-83px; padding-right:12.5%;}
+.level-in-anc .sec4 p.tip {color:#000; text-shadow:1px 1px #fff;}
+.level-in-anc .sec5 .lg {padding:12% 0 0 10%;}
+.level-in-anc .sec6 .lg {top:50%; margin-top:-130px; padding-left:10%;}
+
+.gear-s3-frontier .sec1 .fir {left:0; right:auto; top:0; padding:18% 0 0 6%;}
+.gear-s3-frontier .sec1 .fir h2:after {background:#66645d;}
+.gear-s3-frontier .sec2 .lg *, .gear-s3-frontier .sec5 .lg *, .gear-s3-frontier .sec11 .cen * {color:#fff;}
+.gear-s3-frontier .sec2 .lg {top:50%; margin-top:-93px; padding-left:6%;}
+.gear-s3-frontier .sec2 .lg h3:after, .gear-s3-frontier .sec5 .lg h3:after, .gear-s3-frontier .sec11 .cen h3:after {background:#dcdcdc;}
+.gear-s3-frontier .sec3 .rg {top:50%; margin-top:-73px; padding-right:8%;}
+.gear-s3-frontier .sec4 .rg {top:50%; margin-top:-121px; padding-right:5.5%;}
+.gear-s3-frontier .sec5 .lg {top:50%; margin-top:-113px; padding-left:12%;}
+.gear-s3-frontier .sec6 .lg {padding:11.5% 0 0 9%;}
+.gear-s3-frontier .sec6 .lg p + p * {vertical-align:middle; padding:0;}
+.gear-s3-frontier .sec6 .lg p img.mo {display:none;}
+.gear-s3-frontier .sec6 .lg span.icn {display:inline-block;}
+.gear-s3-frontier .sec6 .lg span.txt {display:inline-block; padding:23px 0 0 15px; font-size:36px; letter-spacing:0; font-weight:100; color:#535353;}
+.gear-s3-frontier .sec7 .rg {padding:9% 9% 0 0;}
+.gear-s3-frontier .sec8 .rg {padding:13% 7% 0 0;}
+.gear-s3-frontier .sec9 .lg {top:auto; bottom:0; padding:0 0 7% 7%;}
+.gear-s3-frontier .sec10 .cen {padding-top:7%;}
+.gear-s3-frontier .sec11 .cen {padding-top:8%;}
+
+.gear-s3-classic .sec1 .fir {left:0; right:auto; top:50%; margin-top:-151px; padding-left:8.5%;}
+.gear-s3-classic .sec1 .fir h2:after {background:#bfbfbf;}
+.gear-s3-classic .sec2 .rg *, .gear-s3-classic .sec5 .lg *, .gear-s3-classic .sec11 .cen * {color:#fff;}
+.gear-s3-classic .sec2 .rg {top:50%; margin-top:-98px; padding-right:12%;}
+.gear-s3-classic .sec2 .rg h3:after, .gear-s3-classic .sec5 .lg h3:after, .gear-s3-classic .sec11 .cen h3:after {background:#dcdcdc;}
+.gear-s3-classic .sec3 .rg {top:50%; margin-top:-73px; padding-right:8%;}
+.gear-s3-classic .sec4 .rg {top:50%; margin-top:-121px; padding-right:8%;}
+.gear-s3-classic .sec5 .lg {top:50%; margin-top:-93px; padding-left:6%;}
+.gear-s3-classic .sec5 .lg h3 span.br {display:inline;}
+.gear-s3-classic .sec6 .lg {top:50%; margin-top:-120px; padding-left:9%;}
+.gear-s3-classic .sec6 .lg p + p * {vertical-align:middle; padding:0;}
+.gear-s3-classic .sec6 .lg p img.mo {display:none;}
+.gear-s3-classic .sec6 .lg span.icn {display:inline-block;}
+.gear-s3-classic .sec6 .lg span.txt {display:inline-block; padding:23px 0 0 15px; font-size:36px; letter-spacing:0; font-weight:100; color:#535353;}
+.gear-s3-classic .sec7 .rg {padding:6% 6% 0 0;}
+.gear-s3-classic .sec8 .rg {top:50%; margin-top:-83px; padding-right:4%;}
+.gear-s3-classic .sec9 .rg {top:50%; margin-top:-83px; padding-right:9.5%;}
+.gear-s3-classic .sec10 .rg {padding:17.5% 7.5% 0 0;}
+.gear-s3-classic .sec11 .cen {top:auto; bottom:0; padding-bottom:7%;}
+
+.we-case .sec1 .fir {width:100%; padding:5.5% 0 0;}
+.we-case .sec1 .fir em {display:block; padding-bottom:10px; line-height:28px; font-size:28px; font-weight:100;}
+.we-case .sec1 .fir h2:after {background:#ccc;}
+.we-case .sec1 .fir h2 {font-size:46px; font-weight:700;}
+.we-case .sec1 .fir h2 span {font-size:33px; font-weight:100;}
+.we-case .contbox[class*="g"] em {display:block; font-size:18px; line-height:30px; font-weight:700; letter-spacing:-0.5px;}
+.we-case .sec2 .rg {top:50%; margin-top:-136px; padding-right:13%;}
+.we-case .sec3 .lg {padding:8% 0 0 12%;}
+.we-case .sec4 .rg {padding:13% 21% 0 0;}
+.we-case .sec5 .lg * {color:#fff;}
+.we-case .sec5 .lg h3:after {background:#f9f9f9;}
+.we-case .sec5 .lg {padding:10% 0 0 10%;}
+.we-case .sec6 .rg {padding:11% 22% 0 0;}
+
+.strap .contbox p.col img.w {display:block;}
+.strap .contbox p.col img.m {display:none;}
+.strap .sec1 .fir {width:100%; padding:11% 0 0;}
+.strap .sec1 .fir h2 {line-height:1.21; }
+.strap .sec2 .cen {top:50%; margin-top:-83px;}
+.strap .sec3 .lg {padding:16.5% 0 0 11%;}
+.strap .sec4 .rg {padding:12.5% 10% 0 0;}
+.strap .sec5 .lg {padding:13.5% 0 0 9.5%;}
+.strap .sec6 .lg {top:50%; margin-top:-46px; padding-left:9.5%;}
+.strap .sec6 .lg h3 {margin:0;}
+
+@media only screen and (max-width:1280px){
+	/* PSP */
+	.charm .sec6 .lg {margin-top:-10%;}
+	.charm .sec6 .lg p + p {padding-top:35px;}
+	.back-pack .sec1 .fir .btm {bottom:6%;}
+	.back-pack .sec2 .lg {padding:18.2% 0 0 6.5%;}
+	.back-pack .sec5 .rg {padding:5.5% 5% 0 0;}
+	.level-box-pro .sec1 .fir {padding-left:5%;}
+	.level-box-pro .sec7 .lg .btm {padding-left:5%;}
+	.level-u-pro .sec7 .rg {padding:15% 5% 0 0;}
+	.wireless .sec1 .fir {right:6%;}
+	.wireless .sec5 .rg {padding:10% 5% 0 0;}
+	.charger-tray .sec2 .lg {padding:15% 0 0 16%;}
+	.charger-tray .sec4 .lg {padding:22.5% 0 0 5%;}
+	.kettle .sec6 .lg {padding:14% 0 0 15%;}
+	.kettle .k1 span.btm {width:7px; background-size:auto 100px;}
+	.kettle .k1 .per {height:100px; }
+	.kettle .k1 .per span { display:block; width:8px; height:100px;}
+	.kettle .k1 .per span em {width:7px; height:100px; bottom:0; left:0; background-size:auto 100px;}
+	.kettle .k1 .per span.bg {height:100px; background-size:auto 100px;}
+	.kettle .k2 {position:absolute; top:38%; right:34.5%; }
+	.kettle .k2 span.btm {width:10px; background-size:auto 128px;}
+	.kettle .k2 .per {height:128px; }
+	.kettle .k2 .per span {display:block; width:10px; height:148px;}
+	.kettle .k2 .per span em {width:10px; height:128px; background-size:auto 128px;}
+	.kettle .k2 .per span.bg {height:128px; background-size:auto 128px;}
+	.fit2 .sec3 .rg {padding:10% 8% 0 0;}
+	.fit2 .sec4 .cen {padding:8% 0 0 0;}
+	.fit2 .sec7 .lg {padding:8.5% 0 0 8.5%;}
+	.iconx .sec4 .rg {padding:12% 5.5% 0 0;}
+	.s-view-cover .sec1 .fir {padding:5% 7.5% 0 0;}
+	.gear-s3-classic .sec10 .rg {padding:15.5% 4% 0 0;}
+	.gear-s3-classic .sec11 .cen {padding-bottom:5%;}
+}
+
+@media only screen and (max-width:1200px){
+	.product-detailview .contbox .bar:after {bottom:-25px;}
+	span[class*="sec"] {font-size:18px; }
+	.contbox[class*="fir"] span {font-size:16px;}
+
+	.product-detailview .contbox h2 {font-size:32px;}
+	.product-detailview .contbox h2 span.eng {font-size:40px;}	
+	.product-detailview .contbox h3 {font-size:34px; margin-bottom:1.25em;}
+	.product-detailview .contbox h3 span.br {font-size:34px; }
+	.product-detailview .contbox p {font-size:18px;}
+	.product-detailview .sec1 p {font-size:16px;}
+
+	.charm .sec1 .fir {padding:15% 5% 0 0;}
+	.led-view-cover .sec1 .fir {padding:20% 7% 0 0;}
+	.led-view-cover .sec3 .cen {padding:4.8% 0 0 0;}
+	.led-view-cover .sec6 .lg {padding:18.5% 0 0 7.8%; }
+	.level-u-pro .sec8 .lg {left:4%;}
+	.wireless .sec1 .fir {right:3%;}
+	.wireless .sec5 .rg {padding:10% 5% 0 0;}
+	.charger-tray .sec4 .lg {padding:22.5% 0 0 3%;}
+	.rectangle .sec1 .fir {padding-left:8%;}
+	.rectangle .sec4 .lg {padding-left:8%;}
+	.sound-bottle .sec5 .rg {padding:22.5% 6% 0 0;}
+	.sound-bottle .sec9 .rg {padding:4% 8% 0 0;}
+	.lamp .sec1 .fir {padding:19% 5% 0 0;}
+	.lamp .sec2 .lg {padding:23% 0 0 5.5%;}
+	.lamp .sec5 .rg {padding:10.5% 12% 0 0;}
+	.lamp .sec6 .lg {padding:22.5% 0 0 7%;}
+	.fit2 .sec2 .lg {padding:20% 0 0 5%;}
+	.fit2 .sec3 .rg {padding:7% 6% 0 0;}
+	.fit2 .sec4 .cen {padding:6% 0 0 0;}
+	.fit2 .sec7 .lg {padding:8.5% 0 0 5%;}
+	.iconx .sec1 .fir {padding-left:7%;}	
+	.iconx .sec4 .rg {padding:10% 3% 0 0;}
+	.iconx .sec4 .rg ul {max-width:380px; margin:8% auto 0;}
+	.iconx .sec5 .lg {padding:18% 0 0 6%;}
+	.level-active .sec4 .rg {padding:5% 14% 0 0;}
+	.level-active .sec5 .cen {margin-top: -70px;}
+	.level-active .sec7 .lg {padding:10% 0 0 5%;}
+	.s-view-cover .sec1 .fir {padding:4% 7% 0 0;}
+	.s-view-cover .sec3 .rg {padding-right:5%;}
+	.we-case .sec1 .fir {width:100%; padding:3% 0 0;}
+	.we-case .sec1 .fir h2 {font-size:40px; font-weight:700;}
+	.we-case .sec1 .fir h2 span {font-size:30px; font-weight:100;}
+}	
+
+@media only screen and (max-width:1024px){
+	/* PSP */
+	.product-detailview .contbox .bar:after {bottom:-28px; margin-left:-49px; width:98px; height:6px; }
+	.product-detailview video {display:none;}
+	.contbox[class*="fir"] span, span[class*="sec"] {font-size:16px;}
+	
+	.product-detailview span[class*="icn"] {display:block; width:100px; margin:23px auto 0; }
+	.product-detailview span[class*="icn"] > span.txt {display:block; font-size:18px; font-weight:100; padding-top:10px;}
+	.product-detailview .set span.icn {display:inline-block; margin:23px 15px 0;}
+
+	.product-detailview .contbox {line-height:1.2;}
+	.product-detailview .contbox h2 {font-size:28px; letter-spacing:-1px; margin-bottom:44px;}
+	.product-detailview .contbox h2.bar:after {bottom:-21px;}
+	.product-detailview .contbox h2 span.eng {font-size:38px; padding-top:8px;}
+	.product-detailview .contbox h3 {font-size:28px; margin-bottom:51px;}
+	.product-detailview .contbox h3 span.eng {font-size:28px;}
+	.product-detailview .contbox h3 span.br {display:inline; font-size:28px; }
+	.product-detailview .contbox p {font-size:16px; line-height:26px; letter-spacing:0;}	
+	.product-detailview .sec1 .fir {top:0; right:0; width:100%; }
+	.product-detailview .sec1 p {font-size:16px;}
+
+	.charm .sec1 .fir {padding:15.5% 0 0;}
+	.charm .sec2 .lg {left:auto; right:14%; padding:0; top:50%; margin-top:-74px; }
+	.charm .sec3 .lg h3, .charm .sec4 .rg h3 {margin-bottom:0;} 
+	.charm .sec3 .lg {width:100%; height:100%; padding:0; }
+	.charm .sec3 .lg .btm {position:absolute; bottom:15%; left:16%;} 
+	.charm .sec4 .rg {width:100%; padding:0; height:100%;}
+	.charm .sec4 .rg .btm {width:100%; position:absolute; bottom:15.5%;}
+	.charm .sec5 .rg {padding:0; top:50%; right:16%; margin-top:22.5%;}	
+	.charm .sec6 .lg { left:16%; margin-top:13.5%; padding:0; }
+	.charm .sec6 .lg p + p {padding-top:45px;}
+	.charm .sec7 .lg {top:67.2%; left:50%; margin:0 0 0 -125px;}
+
+	.led-view-cover .sec1 .fir {padding:11.5% 0 0 0;}
+	.led-view-cover .sec2 .lg {width:auto; padding:22.5% 0 0 12.3%;}
+	.led-view-cover .sec3 .cen {padding:17% 0 0 0;}
+	.led-view-cover .sec4 .cen {padding:20% 0 0 0;}
+	.led-view-cover .sec5 .rg {width:100%; padding:15% 0 0 0;}
+	.led-view-cover .sec5 .rg span.br {display:inline;}
+	.led-view-cover .sec6 .lg {width:320px; padding:0; top:11.8%; left:8.2%; }
+	
+	.back-pack .sec1 .fir .btm {bottom:15%;}
+	.back-pack .sec1 .fir h2 span.br {font-size:28px;}
+	.back-pack .sec2 .lg {width:100%; height:100%; padding:0;}
+	.back-pack .sec2 .lg .btm {width:100%; position:absolute; left:0; bottom:13.5%;}
+	.back-pack .sec3 .rg {top:0; right:0; margin-top:0; padding:17.7% 14.5% 0 0;}
+	.back-pack .sec4 .lg {padding:21.5% 0 0 17.7%;}
+	.back-pack .sec5 .rg {width:100%; padding:19.5% 0 0 0;}
+	.back-pack .sec6 .lg {width:100%; height:100%; padding:0;}
+	.back-pack .sec6 .lg .btm {position:absolute; width:100%; left:0; bottom:9%;}
+
+	.level-box-pro .contbox[class*="g"] {width:100%; left:0; right:0; top:0; padding:0; margin:0;}
+	.level-box-pro .sec1 .fir {padding:11.5% 0 0 0;}
+	.level-box-pro .sec2 .rg {padding:16.8% 0 0 0;}
+	.level-box-pro .sec3 .cen {padding:25% 0 0 0;}
+	.level-box-pro .sec4 .cen {padding:24% 0 0 0;}
+	.level-box-pro .sec5 .lg {padding:16.5% 0 0 0;}
+	.level-box-pro .sec5 .lg .wd {width:500px; margin:0 auto;}
+	.level-box-pro .sec5 .lg .wimg {margin:53px 0 0 0; float:right;}
+	.level-box-pro .sec6 .cen {padding:24% 0 0 0;}
+	.level-box-pro .sec7 .lg {width:100%; height:auto; padding-top:16%;}
+	.level-box-pro .sec7 .lg .btm {position:static; padding:0;}
+	
+	.clear-view-cover .sec1 .fir {width:100%; left:0; right:0; top:0; padding:0; margin:0; height:100%;}
+	.clear-view-cover .sec1 .fir .btm {position:absolute; width:100%; padding:0; left:0; bottom:14%;}
+	.clear-view-cover .sec2 .rg {width:100%; top:24%; right:0; margin-top:0;}
+	.clear-view-cover .sec3 .lg {top:61%; left:10%; margin-top:0;}
+	.clear-view-cover .sec4 .rg {width:100%; top:10%; right:0; margin-top:0;}
+	.clear-view-cover .sec4 .rg p span.br {display:inline;}
+	.clear-view-cover .sec5 .cen {top:15.5%;}
+
+	.level-u-pro .sec1 .fir {top:14.5%;}
+	.level-u-pro .sec1 .fir .btm {position:static; bottom:0; right:0;}
+	.level-u-pro .sec2 .lg {padding:13.5% 0 0 10.8%;}
+	.level-u-pro .sec3 .rg {width:100%; left:0; right:0; top:0; padding:0; margin:0; height:100%;}
+	.level-u-pro .sec3 .rg .btm {position:absolute; bottom:12%; left:0; width:100%;}
+	.level-u-pro .sec4 .rg {width:100%; left:0; right:0; top:0; padding:0; margin:0; height:100%;}
+	.level-u-pro .sec4 .rg .btm {position:absolute; bottom:6%; left:0; width:100%;}
+	.level-u-pro .sec4 .rg span.bw {display:inline;}
+	.level-u-pro .sec4 .rg.tp2 span.bw {display:block;}
+	.level-u-pro .sec4 .rg span.bt {display:block;}
+	.level-u-pro .sec4 .rg span.bt > span.br {display:inline;}
+	.level-u-pro .sec5 .cen {padding:14% 0 0 0;}
+	.level-u-pro .sec6 .lg {top:0; left:0; margin-top:0; width:100%; padding-top:11%;}
+	.level-u-pro .sec7 .rg {width:100%; left:0; right:0; top:0; padding:0; margin:0; height:100%;}
+	.level-u-pro .sec7 .rg .btm {position:absolute; bottom:10.7%; left:0; width:100%;}
+	.level-u-pro .sec8 .lg {top:0; left:0; margin-top:0; width:100%; padding-top:15.5%;}
+	.level-u-pro .sec9 .rg {top:0; margin-top:0; width:100%; padding:16% 0 0;}
+	
+	.wireless .sec1 .fir {top:12%; right:0; margin-top:0; width:100%;}
+	.wireless .sec2 .cen {padding-top:23%;}
+	.wireless .sec3 .rg {padding:23% 15.5% 0 0;}
+	.wireless .sec4 .cen {padding-top:23%;}
+	.wireless .sec5 .rg {width:100%; padding:16% 0 0 0;}
+	.wireless .sec5 .rg .lgt {padding-left:32px;}
+	.wireless .sec6 .lg {width:100%; padding:16% 0 0 0; }
+	.wireless .sec7 .cen {padding-top:20%;}
+	
+	.eight-cups .sec0 .rg {width:100%; padding:19% 0 0 0; text-align:center;}	
+	.eight-cups .sec1 .fir {padding:15.3% 0 0 0;}
+	.eight-cups .sec2 .lg {top:50%; margin-top:-70px; padding:0 0 0 23%;}
+	.eight-cups .sec3 .cen {padding-top:16%;}
+	.eight-cups .sec4 .rg {width:100%; padding:16% 0 0 0;}
+	.eight-cups .sec5 .rg {width:100%; padding:16% 0 0 0;}	
+	.eight-cups .sec6 .lg {width:100%; padding:16% 0 0 0;}	
+
+	.led-sterilizer .contbox[class*="g"] {width:100%; left:0; right:0; top:0; padding:16% 0 0 0; margin:0;}
+	.led-sterilizer .sec0 .rg {padding:54.5% 0 0 0; text-align:center;}
+
+	.charger-tray .sec1 .fir .btm {position:absolute; bottom:13%; right:auto; width:100%;}
+	.charger-tray .sec2 .lg {width:100%; padding:22.5% 0 0 0;}
+	.charger-tray .sec3 .cen {padding-top:18.5%;}
+	.charger-tray .sec4 .lg {padding:34.5% 0 0 17.5%;}
+	.charger-tray .sec5 .rg {top:0; right:0; margin-top:0; padding:36% 14% 0 0;}
+	
+	.sound-bottle p[class*="tip"] em {display:none;}
+	.sound-bottle .contbox p.chk {padding-top:20px; font-size:24px; line-height:36px;}
+	.sound-bottle .contbox p.chk img {height:28px; margin-left:12px;}
+	.sound-bottle .sec1 .fir {padding:10% 0 0 0;}
+	.sound-bottle .sec2 .rg {width:100%; padding:17.5% 0 0 0;}
+	.sound-bottle .sec3 .rg {width:100%; padding:17.5% 0 0 0;}
+	.sound-bottle .sec4 .lg {top:auto; bottom:0; width:100%; padding:0 0 7.5%; }	
+	.sound-bottle .sec5 .rg {top:auto; right:auto; left:0; bottom:0; padding:0 0 15.5% 20%;}
+	.sound-bottle .sec6 .rg {width:100%; padding:11.5% 0 0 0;}
+	.sound-bottle .sec7 .lg {width:100%; top:0; margin-top:0; padding:13% 0 0;}
+	.sound-bottle .sec8 .lg {width:100%; padding:10% 0 0 0;}
+	.sound-bottle .sec9 .rg {width:100%; top:auto; bottom:0; padding:0 0 11.5%;}
+	.sound-bottle .sec10 .cen {padding-top:17%;}
+
+	.rectangle .sec1 .fir {width:auto !important; right:auto !important; left:0; padding:20% 0 0 18.5%;}
+	.rectangle .sec2 .rg {width:100%; padding:37% 0 0 0;}
+	.rectangle .sec3 .rg {margin-top:-68px; padding-right:14%;}
+	.rectangle .sec4 .lg {top:0; margin-top:0; padding:28.5% 0 0 17.5%;}
+	.rectangle .sec5 .rg {padding:56% 11% 0 0;}
+	.rectangle .sec6 .cen {padding-top:42%;}
+
+	.lamp .sec1 .fir {padding:14% 0 0 0;}
+	.lamp .sec2 .lg {width:100%; padding:14% 0 0 0;}
+	.lamp .sec5 .rg {padding:33% 29% 0 0;}
+	.lamp .sec6 .lg {width:100%; padding:31% 0 0 0;}
+
+	.kettle .sec1 .fir {padding:14% 0 0 0;}
+	.kettle .sec2 .lg {top:auto; bottom:0; padding:0 0 29% 15%;}
+	.kettle .sec3 .cen {padding-top:17.5%;}
+	.kettle .sec4 .lg {width:100%; padding:17.5% 0 0 0;}
+	.kettle .sec5 .rg {top:0; margin-top:0; padding:17.5% 12% 0 0;}
+	.kettle .sec6 .lg {width:100%; padding:17.5% 0 0 0;}
+	.kettle .sec6 .chk {position:absolute; bottom:0; left:0; padding:0 0 6% 6%;}
+	.kettle .sec7 .rg {top:auto; margin-top:0; bottom:0; padding:0 10% 20% 0;}
+	.kettle .sec8 .cen {padding-top:15%;}
+	.kettle .k1 {position:absolute; top:47.5%; right:62.65%; }
+	.kettle .k1 span.btm {width:8px; background:url(//media.samsungwa.com/media/product/kettle_s1/bg_per1_01.png) no-repeat left bottom;}
+	.kettle .k1 .per {height:118px; }
+	.kettle .k1 .per span { display:block; width:8px; height:118px;}
+	.kettle .k1 .per span em {position:absolute; display:block; width:8px; height:118px; bottom:0; left:0; background:url(//media.samsungwa.com/media/product/kettle_s1/bg_per1_02.png) no-repeat left bottom;}
+	.kettle .k1 .per span.bg {height:118px; background:url(//media.samsungwa.com/media/product/kettle_s1/bg_per1_03.png) no-repeat left top;}
+	.kettle .k2 {position:absolute; top:57%; right:41%; }
+	.kettle .k2 span.btm {width:11px; background:url(//media.samsungwa.com/media/product/kettle_s1/bg_per2_01.png) no-repeat left bottom;}
+	.kettle .k2 .per {height:148px; }
+	.kettle .k2 .per span {display:block; width:11px; height:148px;}
+	.kettle .k2 .per span em {position:absolute; display:block; width:11px; height:148px; bottom:0; left:0; background:url(//media.samsungwa.com/media/product/kettle_s1/bg_per2_02.png) no-repeat left bottom;}
+	.kettle .k2 .per span.bg {height:148px; background:url(//media.samsungwa.com/media/product/kettle_s1/bg_per2_03.png) no-repeat left top;}
+
+	.scoop .sec1 .fir {right:auto; left:0; width:100%; padding:14% 0 0 0;}
+	.scoop .sec1 .fir h2:after {background:#bfbfbf;}
+	.scoop .sec2 .rg {top:0; margin-top:0; right:auto; left:0; padding:40.5% 0 0 23%;}
+	.scoop .sec3 .lg {width:100%; top:0; margin-top:0; padding:14.5% 0 0;}
+	.scoop .sec4 .lg {width:100%; padding:17.5% 0 0 0;}
+	.scoop .sec5 .rg {width:100%; top:auto; bottom:0; margin-top:0; padding:0 0 14.5%;}
+	.scoop .sec6 .lg {width:100%; padding:14.5% 0 0 0;}
+	.scoop .sec7 .lg {width:100%; padding:14% 0 0 0;}
+	.scoop .sec7 .lg .control {width:300px; margin:0 auto; padding-top:10px; text-align:left;}
+
+	.fit2 span[class*="icn"] img {margin:0 5px; }
+	.fit2 p[class*="tip"] {left:auto; right:0; padding:0 2.3% 2% 0; color:#000; font-size:14px;}
+	.fit2 .sec1 .fir {width:100%; top:0; margin-top:0; padding:14% 0 0;}
+	.fit2 .sec2 .lg {width:100%; padding:17.5% 0 0 0;}
+	.fit2 .sec3 .rg {padding:15% 10% 0 0;}
+	.fit2 .sec4 .cen {padding:14.5% 0 0 0;}
+	.fit2 .sec5 .lg {padding:24.5% 0 0 17.5%;}
+	.fit2 .sec6 .rg {padding:50% 13% 0 0;}	
+	.fit2 .sec7 .lg {width:100%; padding:11% 0 0 0;}
+
+	.iconx .sec1 .fir {right:auto; left:0; width:100%; top:0; margin-top:0; padding:14% 0 0;}
+	.iconx .sec2 .rg {top:auto; bottom:0; width:100%; padding:0 0 13.5%;}
+	.iconx .sec3 .lg {top:0; margin-top:0; padding:22% 0 0 20%;}	
+	.iconx .sec4 .rg {top:auto; bottom:0; width:100%; padding:0 0 6%;}
+	.iconx .sec4 .rg ul {max-width:380px; margin:3% auto 0;}
+	.iconx .sec5 .lg {top:auto; bottom:0; width:100%; padding:0 0 7.5%;}
+	.iconx .sec6 .rg {top:auto; bottom:0; width:100%; margin-top:0; padding:0 0 5.5%;}
+	.iconx .sec7 .lg {width:100%; padding:16.5% 0 0 0;}
+
+	.level-active .sec1 .fir {right:0; top:0; width:100%; margin-top:0; padding:11.5% 0 0;}
+	.level-active .sec2 .rg {width:100%; padding:15.5% 0 0 0;}
+	.level-active .sec3 .cen {top:auto; bottom:0; padding:0 0 7.5%;}
+	.level-active .sec4 .rg {padding:20.5% 15% 0 0;}
+	.level-active .sec5 .cen {top:0; margin-top:0; padding-top:17.5%;}
+	.level-active .sec6 .lg {width:100%; padding:17.5% 0 0 0;}
+	.level-active .sec7 .lg {width:100%; padding:15% 0 0 0;}
+
+	.battery-pack .sec1 .fir {width:auto; right:0; padding:18.5% 14% 0 0;}
+	.battery-pack .sec2 .rg {width:100%; top:0; margin-top:0; padding:18.5% 0 0;}
+	.battery-pack .sec3 .lg {width:100%; top:0; margin-top:0; padding:13.5% 0 0;}
+	.battery-pack .sec4 .cen {padding-top:13.5%;}
+
+	.back-note7 .sec1 .fir {width:100%; top:0; margin-top:0; padding:14% 0 0;}
+	.back-note7 .sec1 p.tip {text-shadow:1px 1px #e7e7e7;}
+	.back-note7 .contbox[class*="g"] {width:100%; top:0; margin-top:0; padding:0;}
+	.back-note7 .sec2 .lg {padding-top:18%;}
+	.back-note7 .sec3 .lg {padding-top:17%;}
+	.back-note7 .sec4 .lg {padding-top:26%;}
+	.back-note7 .sec5 .lg {padding-top:20%;}
+
+	.lens-cover .sec1 .fir {right:0; width:100%; padding:17.5% 0 0 0;}
+	.lens-cover .sec2 .lg {top:0; margin-top:0; padding:18% 0 0 22%;}
+	.lens-cover .sec3 .rg {top:auto; bottom:0; margin-top:0; padding:0 18% 14.5% 0;}
+	.lens-cover .sec4 .lg {padding:29% 0 0 19%;}
+	.lens-cover .sec5 .cen {width:auto; left:0; padding:12.5% 0 0 21%;}
+
+	.s-view-cover .sec1 .fir {width:100%; right:0; padding:19% 0 0 0;}
+	.s-view-cover .sec2 .lg {padding:22% 0 0 17%;}
+	.s-view-cover .sec3 .rg {top:auto; bottom:0; margin-top:0; padding:0 13% 22% 0;}
+	.s-view-cover .sec4 .lg {top:auto; bottom:0; padding:0 0 18% 20%;}
+	.s-view-cover .sec5 .rg {width:100%; top:0; margin-top:0; padding:19.5% 0 0;}
+
+	.note7-view-cover .sec1 .fir {width:100%; right:auto; left:0; top:0; margin-top:0; padding:18% 0 0;}
+	.note7-view-cover .sec2 .rg {width:100%; padding:13.5% 0 0 0;}
+	.note7-view-cover .sec3 .lg {width:100%; padding:13.5% 0 0 0;}
+	.note7-view-cover .sec4 .lg {padding:15% 0 0 15%;}
+	.note7-view-cover .sec5 .lg {width:100%; padding:10% 0 0;}
+
+	.level-in-anc .sec1 .fir {width:100%; left:0; right:auto; top:0; margin-top:0; padding:14% 0 0;}
+	.level-in-anc .sec3 .rg {width:100%; top:auto; bottom:0; padding:0 0 14%;}
+	.level-in-anc .sec4 .rg {top:auto; bottom:0; margin-top:0; padding:0 14% 20% 0;}
+	.level-in-anc .sec5 .lg {padding:14.5% 0 0 10%;}
+	.level-in-anc .sec6 .lg {width:100%; top:0; margin-top:0; padding:14.5% 0 0;}
+	.level-in-anc .sec6 p.tip {color:#000; text-shadow:1px 1px #fff;}
+
+	.gear-s3-frontier .sec1 .fir {left:auto; right:0; top:0; width:auto; padding:14.5% 11% 0 0;}
+	.gear-s3-frontier .contbox[class*="g"] {width:100%; top:0; margin-top:0; padding:14.5% 0 0;}	
+	.gear-s3-frontier .sec7 .rg {width:auto; padding:14.5% 13% 0 0;}
+	.gear-s3-frontier .sec8 .rg {width:auto; padding:14.5% 13% 0 0;}
+	.gear-s3-frontier .sec9 .lg {width:auto; top:auto; bottom:0; padding:0 0 11.5% 13%;}
+	.gear-s3-frontier .sec10 .cen {padding-top:11.5%;}
+	.gear-s3-frontier .sec11 .cen {padding-top:14.5%;}
+
+	.gear-s3-classic .sec1 .fir {width:auto; left:auto; right:0; top:0; margin-top:0; padding:11% 15% 0 0;}
+	.gear-s3-classic .contbox[class*="g"] {width:100%; top:0; margin-top:0; padding:14.5% 0 0;}
+	.gear-s3-classic .sec5 .lg {padding-top:17%;}
+	.gear-s3-classic .sec9 .rg {width:auto; top:auto; bottom:0; margin-top:0; padding:0 13% 14% 0;}
+	.gear-s3-classic .sec11 .cen {top:0; bottom:auto; padding:19% 0 0;}
+
+	.we-case .sec1 .fir {width:100%; padding:14.5% 0 0;}
+	.we-case .sec1 .fir em {display:block; padding-bottom:10px; line-height:28px; font-size:28px; font-weight:100;}
+	.we-case .sec1 .fir h2 {font-size:38px;}
+	.we-case .sec1 .fir h2 span {display:block; font-size:30px;}
+	.we-case .contbox[class*="g"] {width:100%; top:0; margin-top:0; padding:13.5% 0 0;}
+	.we-case .contbox[class*="g"] em {display:block; font-size:16px; line-height:28px;}
+	.we-case .sec4 .rg h3 br, .we-case .sec6 .rg h3 br {display:none;}
+
+	.strap .contbox p.col img.w {margin:0 auto;}
+	.strap .sec1 .fir {width:100%; padding:50% 0 0;}
+	.strap .sec2 .cen {top:0; margin-top:0; padding-top:43%;}
+	.strap .sec3 .lg {width:100%; padding:13.5% 0 0;}
+	.strap .sec4 .rg {width:100%; padding:13.5% 0 0;}
+	.strap .sec5 .lg {width:100%; padding:13.5% 0 0;}
+	.strap .sec6 .lg {top:50%; margin-top:-36px; padding-left:9%;}
+	.strap .sec6 {background:#f9f9f9; padding-bottom:20px;}
+}
+
+@media only screen and (max-width:768px){
+	/* PSP */
+	.charm .sec1 .fir {padding:8% 0 0;}	
+	.led-view-cover .sec1 .fir {padding:10% 0 0 0;}
+	.led-view-cover .sec1 .lg {padding-top:22%;}
+	.led-view-cover .sec5 .rg {padding:10% 0 0 0;}
+	.led-view-cover .sec6 .lg {top:11%; left:6%;}
+	.back-pack .sec3 .rg {padding:16% 12.5% 0 0;}
+	.back-pack .sec6 .lg .btm {bottom:4%;}
+	.clear-view-cover .sec3 .lg {left:4%;}
+	.clear-view-cover .sec4 .rg {top:8%;}
+	.level-u-pro .sec2 .lg {padding:13.5% 0 0 8%;}
+	.level-u-pro .sec4 .rg .btm {bottom:2%;}
+	.level-u-pro .sec5 .cen {padding:9% 0 0 0;}
+	.level-u-pro .sec6 .lg {padding-top:8%;}
+	.wireless .sec5 .rg {width:100%; padding:12% 0 0 0;}
+	.eight-cups .sec4 .rg {padding:10% 0 0 0;}
+	.eight-cups .sec5 .rg {padding:15% 0 0 0;}	
+	.eight-cups .sec6 .lg {padding:12% 0 0 0;}
+	.led-sterilizer .sec5 .lg {padding-top:12%;}
+	.charger-tray .sec1 .fir .btm {bottom:10%;}
+	.charger-tray .sec4 .lg {padding:34.5% 0 0 15%;}
+	.charger-tray .sec5 .rg {padding:36% 12% 0 0;}
+	.sound-bottle .wa-info span.bt {display:block;}
+	.sound-bottle .sec1 .fir {padding:7% 0 0 0;}
+	.sound-bottle .sec6 .rg {width:100%; padding:10% 0 0 0;}
+	.sound-bottle .sec7 .lg {padding:10% 0 0;}
+	.sound-bottle .sec8 .lg {width:100%; padding:7% 0 0 0;}
+	.sound-bottle .sec10 .cen {padding-top:17%;}
+	.rectangle .sec1 .fir {padding:20% 0 0 10%;}
+	.rectangle .sec2 .rg {width:100%; padding:37% 0 0 0;}
+	.rectangle .sec3 .rg {margin-top:-68px; padding-right:12%;}
+	.rectangle .sec4 .lg {top:0; margin-top:0; padding:28.5% 0 0 15%;}
+	.rectangle .sec5 .rg {padding:56% 6% 0 0;}
+	.lamp .sec2 .lg {width:100%; padding:10% 0 0 0;}
+	.kettle .sec2 .lg {padding:0 0 25% 10%;}
+	.kettle .sec7 .rg {padding:0 7% 20% 0;}
+	.kettle .k1 {position:absolute;  top:47.5%; right:62.65%;}
+	.kettle .k1 span.btm {width:6px; background-size:auto 89px;}
+	.kettle .k1 .per {height:89px; }
+	.kettle .k1 .per span { display:block; width:6px; height:89px;}
+	.kettle .k1 .per span em {width:6px; height:89px; background-size:auto 89px;}
+	.kettle .k1 .per span.bg {height:89px; background-size:auto 89px;}
+	.kettle .k2 {position:absolute; top:57%; right:40.9%; }
+	.kettle .k2 span.btm {width:9px; background-size:auto 110px;}
+	.kettle .k2 .per {height:110px; }
+	.kettle .k2 .per span {display:block; width:9px; height:110px;}
+	.kettle .k2 .per span em {width:9px; height:110px; background-size:auto 110px;}
+	.kettle .k2 .per span.bg {height:110px; background-size:auto 110px;}
+	.scoop .sec3 .lg {padding:12% 0 0;}
+	.fit2 .sec1 .fir {padding:12% 0 0;}
+	.fit2 .sec3 .rg {padding:10% 4.5% 0 0;}
+	.fit2 .sec4 .cen {padding:9% 0 0 0;}
+	.fit2 .sec7 .lg {width:100%; padding:10% 0 0 0;}
+	.lens-cover .sec3 .rg {padding:0 18% 11% 0;}
+	.s-view-cover .sec3 .rg {padding:0 12% 18% 0;}
+	.level-in-anc .sec3 .rg {padding:0 0 10%;}
+	.gear-s3-frontier .sec1 .fir {padding-right:4%;}
+	.gear-s3-classic .sec1 .fir {padding:8% 10% 0 0;}
+	.gear-s3-classic .sec3 .rg {padding-top:10%;}
+	.gear-s3-classic .sec9 .rg {padding:0 10% 10% 0;}
+	.gear-s3-classic .sec10 .rg {padding-top:10%;}
+	.gear-s3-classic .sec11 .cen {padding:17% 0 0;}
+	.we-case .sec2 .rg {padding-top:8%;}
+	.we-case .sec3 .lg {padding-top:8%;}	
+}
+
+@media only screen and (max-width:767px){
+	/* PSP */
+	.product-detailview .contbox .bar:after {bottom:-30px; margin-left:-55px; width:110px; height:7px; }
+	.contbox[class*="fir"] span, span[class*="sec"] {font-size:18px;}
+	.product-detailview p[class*="tip"] {font-size:12px; line-height:16px;}
+	.product-detailview p[class*="tip"] span {font-size:12px;}
+	
+	.product-detailview span[class*="icn"] {display:block; width:85px; margin:23px auto 0; }
+	.product-detailview span[class*="icn"] img {height:85px;}
+	.product-detailview span[class*="icn"] > span.txt {display:block; font-size:16px; font-weight:100; padding-top:7px;}
+	.product-detailview .set span.icn {display:inline-block; margin:23px 12px 0;}
+		
+	.product-detailview .contbox h2 {font-size:30px; margin-bottom:50px;}
+	.product-detailview .contbox h2.bar:after {bottom:-24px;}
+	.product-detailview .contbox h2 span.eng {font-size:42px;}	
+	.product-detailview .contbox h3 {font-size:33px; margin-bottom:56px;}
+	.product-detailview .contbox h3 span.eng {font-size:33px;}
+	.product-detailview .contbox h3 span.br {display:block; font-size:33px; }
+	.product-detailview .contbox p {font-size:18px; line-height:27px;}
+	.product-detailview .sec0 dl dt {font-size:33px; margin-bottom:10px;}
+	.product-detailview .sec0 dl dd {font-size:18px; line-height:30px;}
+	.product-detailview .sec1 p {font-size:18px;}
+
+	.charm .contbox[class*="g"] {width:100%; left:0; right:0; top:0; padding:0; margin:0; height:100%;}
+	.charm .contbox[class*="g"] .btm {position:absolute; width:100%; padding:0; left:0;}	
+	.charm .sec1 .fir {padding-top:6%;}
+	.charm .sec2 .contbox[class*="g"] .btm { bottom:7%;}
+	.charm .sec3 .contbox[class*="g"] .btm { bottom:5.5%;}
+	.charm .sec4 .contbox[class*="g"] .btm { bottom:10%;}
+	.charm .sec5 .contbox[class*="g"] .btm { bottom:10%;}
+	.charm .sec5 .rg span.txt {font-size:30px;}
+	.charm .sec5 .rg p + p img {height:41px;}
+	.charm .sec6 .contbox[class*="g"] .btm { bottom:6.5%;}
+	.charm .sec6 .lg p + p {padding-top:35px;}
+	.charm .sec6 .lg p + p img {height:111px;}
+	.charm .sec7 .contbox[class*="g"] .btm { bottom:10.5%;}
+	.charm .sec7 .lg p + p img {height:60px;}	
+	
+	.led-view-cover .sec1 .fir {padding:9.7% 0 0 0;}
+	.led-view-cover .sec2 .lg {width:100%; padding:8% 0 0 0;}
+	.led-view-cover .sec3 .cen, .led-view-cover .sec4 .cen {padding:8% 0 0 0;}
+	.led-view-cover .sec4 .cen h3 span.br {display:block;}
+	.led-view-cover .sec4 .cen span.ta {display:block;}
+	.led-view-cover .sec5 .rg {padding:9.7% 0 0 0;}
+	.led-view-cover .sec5 .rg span.br {display:block;}
+	.led-view-cover .sec6 .lg {top:5.5%; left:0; width:100%;}
+	
+	.back-pack .contbox p span.br {display:block;}
+	.back-pack .sec1 .fir .btm {bottom:5%;}
+	.back-pack .sec1 .fir h2 span.br {display:block; font-size:30px;}
+	.back-pack .sec2 .lg .btm {bottom:7%;}
+	.back-pack .sec3 .rg {width:100%; padding:12.5% 0 0 0;}
+	.back-pack .sec4 .lg {width:100%; padding:12% 0 0 0;}
+	.back-pack .sec5 .rg {padding:15% 0 0 0;}
+	.back-pack .sec6 .lg .btm {bottom:4.5%;}
+	.back-pack .sec6 .lg p + p {padding-top:23px;}
+	.back-pack .sec6 .lg p + p span { width:166px; height:13px; margin:0 auto 14px; line-height:15px; font-size:14px; background-size:auto 122px;}
+	.back-pack .sec6 .lg p + p span.l2 {background-position:right -27px;}
+	.back-pack .sec6 .lg p + p span.l3 {background-position:right -53px;}
+	.back-pack .sec6 .lg p + p span.l4 {background-position:right -80px;}
+	.back-pack .sec6 .lg p + p span.l5 {height:20px; line-height:22px; background-position:right -104px;}
+
+	.level-box-pro .sec2 .rg {padding:19% 0 0 0;}
+	.level-box-pro .sec3 .cen {padding:24% 0 0 0;}
+	.level-box-pro .sec4 .cen {padding:24% 0 0 0;}
+	.level-box-pro .sec5 .lg {padding:13.5% 0 0 0;}
+	.level-box-pro .sec5 .lg .wd {width:450px;}
+	.level-box-pro .sec5 .lg .wimg {margin:33px 0 0 0;}
+	.level-box-pro .sec5 .lg .wimg img {height:108px;}
+	.level-box-pro .sec6 .cen {padding:23.5% 0 0 0;}
+	.level-box-pro .sec7 .lg {padding-top:23.5%;}
+	.level-box-pro .sec7 .lg h3 span.br {display:inline;}
+
+	.clear-view-cover .sec1 .fir .btm {bottom:9%;}
+	.clear-view-cover .sec2 .rg {top:12%;}
+	.clear-view-cover .sec3 .lg {width:100%; top:7%; left:0; margin-top:0;}
+	.clear-view-cover .sec4 .rg {top:10%;}
+	.clear-view-cover .sec4 .rg h3 span.br {display:inline !important;}
+	.clear-view-cover .sec5 .cen {top:10.5%;}
+
+	.level-u-pro .sec1 .fir {top:8%;}
+	.level-u-pro .sec2 .lg {width:100%; padding:9% 0 0 0;}
+	.level-u-pro .sec3 .rg .btm {bottom:7%;}
+	.level-u-pro .sec4 .rg .btm {position:absolute; bottom:5%; left:0; width:100%;}
+	.level-u-pro .sec4 .rg.tp2 .btm {bottom:3%;}
+	.level-u-pro .sec4 .rg .btm h3 span.br {display:inline;}
+	.level-u-pro .sec5 .cen {padding:10% 0 0 0;}
+	.level-u-pro .sec5 .cen span.br {display:block;}
+	.level-u-pro .sec5 .cen em.bw {display:inline; font-style:normal;}
+	.level-u-pro .sec6 .lg {padding-top:10%;}
+	.level-u-pro .sec6 .lg p img {height:26px;}
+	.level-u-pro .sec7 .rg .btm {bottom:7.3%;}
+	.level-u-pro .sec8 .lg {padding-top:10%;}
+	.level-u-pro .sec8 .lg h3 + p span {width:31px; height:15px; line-height:20px;}
+	.level-u-pro .sec8 .lg span.plus {background:url(//media.samsungwa.com/media/product/level_u_pro/ico_plus_m.png) no-repeat left 0; background-size:31px 15px;}
+	.level-u-pro .sec8 .lg span.minus {background:url(//media.samsungwa.com/media/product/level_u_pro/ico_minus_m.png) no-repeat left 0; background-size:31px 15px;}
+	.level-u-pro .sec8 .lg .icn img {height:107px;}
+	.level-u-pro .sec9 .rg {padding:10% 0 0;}
+	
+	.wireless .sec1 .fir {top:4.3%; right:0; margin-top:0; width:100%;}
+	.wireless .sec1 .fir span.eng > span.eng {display:block; padding-top:0;}
+	.wireless .sec1 .fir span.bt {display:block;}
+	.wireless .sec2 .cen {padding-top:14.5%;}
+	.wireless .sec3 .rg {width:100%; padding:10% 0 0 0;}
+	.wireless .sec4 .cen {padding-top:14.5%;}
+	.wireless .sec5 .rg {width:100%; padding:9% 0 0 0;}	
+	.wireless .sec5 .rg .lgt {padding-left:32px; line-height:27px;}
+	.wireless .sec5 .rg .graph-wrap {width:262px; margin:23px auto 0; padding-left:0; text-align:left;}
+	.wireless .sec5 .rg .graph-wrap .txt {margin:0; font-weight:400; line-height:0; font-size:12px;}
+	.wireless .sec5 .rg .graph-wrap .txt span {height:10px; padding-left:20px; line-height:12px; font-size:12px;}
+	.wireless .sec5 .rg .graph-wrap .txt span:before {position:absolute; content:""; top:0; left:0; width:10px; height:10px;}
+	.wireless .sec5 .rg .graph.fir {padding:10px 0 30px;}
+	.wireless .sec5 .rg .graph strong {font-size:12px;}
+	.wireless .sec5 .rg .graph span[class*="s"] {display:block; height:10px; font-size:12px; line-height:12px;}
+	.wireless .sec5 .rg .graph span[class*="s"] .per {display:inline-block; height:10px; margin-right:8px; text-indent:-3000px;}
+	.wireless .sec5 .rg .graph span.s1 {color:#767676; margin-bottom:10px;}
+	.wireless .sec6 .lg {width:100%; padding:14% 0 0 0; }
+	.wireless .sec7 .cen {padding-top:14%;}
+	
+	.eight-cups .sec0 .rg {width:100%; padding:17% 0 0 0; text-align:center;}	
+	.eight-cups .sec0 dl dd span.br {font-size:18px;}
+	.eight-cups .sec0 dl dd.mob {display:block;}
+	.eight-cups .sec0 dl dd.web {display:none;}
+	.eight-cups .sec1 .fir {padding:13.5% 0 0 0;}
+	.eight-cups .sec2 .lg {width:100%; top:0; margin-top:0; padding:19% 0 0 0;}
+	.eight-cups .sec2 .lg h3 span.br {display:block;}
+	.eight-cups .sec3 .cen {padding-top:11%;}
+	.eight-cups .sec4 .rg {width:100%; padding:11% 0 0 0;}
+	.eight-cups .sec5 .rg {width:100%; padding:11% 0 0 0;}	
+	.eight-cups .sec6 .lg {width:100%; padding:11% 0 0 0;}
+
+	.led-sterilizer .contbox[class*="g"] {padding:11% 0 0 0;}
+	.led-sterilizer .sec0 .rg {padding:42% 0 0 0; text-align:center;}
+	.led-sterilizer .sec0 .rg dd span.bw {display:inline; font-size:18px;}
+	.led-sterilizer .sec0 .rg dd span.bm {display:block; font-size:18px;}
+	.led-sterilizer .sec4 .disc {font-size:12px;}
+	.led-sterilizer .sec4 .disc span {font-size:12px;}
+	.led-sterilizer .sec5 h3 span.br {display:inline !important;}
+
+	.charger-tray .sec1 .fir .btm {bottom:6.5%;}
+	.charger-tray .sec2 .lg {padding:14% 0 0 0;}
+	.charger-tray .sec3 .cen {padding-top:17%;}
+	.charger-tray .sec4 .lg {width:100%; padding:17% 0 0 0;}
+	.charger-tray .sec5 .rg {padding:39% 8% 0 0;}
+	
+	.sound-bottle .wa-info {font-size:12px; line-height:18px;}
+	.sound-bottle .wa-info span.bm, .sound-bottle .wa-info span.bt {font-size:12px;}
+	.sound-bottle .contbox[class*="g"] {padding:9% 0 0 0;}
+	.sound-bottle .contbox p.chk {padding-top:15px; font-size:24px; line-height:36px;}
+	.sound-bottle .contbox p.chk img {height:28px; margin-left:12px;}
+	.sound-bottle .sec1 .fir {padding:9% 0 0 0;}
+	.sound-bottle .sec4 .lg {padding:0 0 10%;}	
+	.sound-bottle .sec5 .rg {width:100%; padding:0 0 12%;}
+	.sound-bottle .sec7 .lg {padding:13% 0 0;}
+	.sound-bottle .sec9 .rg {padding:0 0 10%;}
+	.sound-bottle .sec10 .cen {padding-top:9%;}
+	
+	.rectangle .sec1 .fir {width:100% !important; padding:12.5% 0 0 0;}
+	.rectangle .sec2 .rg {width:100%; padding:35.5% 0 0 0;}
+	.rectangle .sec3 .rg {width:100%; top:0; margin:0; padding:12% 0 0;}
+	.rectangle .sec4 .lg {width:100%; top:0; margin-top:0; padding:22.3% 0 0 0;}
+	.rectangle .sec5 .rg {width:100%; padding:6% 0 0 0;}
+	.rectangle .sec6 .cen {padding-top:43%;}
+
+	.lamp .sec1 .fir {padding:13% 0 0 0;}
+	.lamp .sec2 .lg {padding:14% 0 0 0;}
+	.lamp .sec5 .rg {width:100%; padding:18.5% 0 0 0;}
+	.lamp .sec6 .lg {width:100%; padding:25% 0 0 0;}
+	
+	.kettle .contbox[class*="g"] {padding:10% 0 0 0;}
+	.kettle .contbox[class*="cen"] {padding:10% 0 0 0;}
+	.kettle .sec1 .fir {padding:14% 0 0 0;}
+	.kettle .sec2 .lg {top:auto; bottom:auto; width:100%;}
+	.kettle .sec5 .rg {top:0; margin-top:0; width:100%;}
+	.kettle .sec6 .chk {position:absolute; bottom:0; left:0; padding:0 0 4.5% 3%;}
+	.kettle .sec6 .chk img {height:85px;}
+	.kettle .sec6 .chk p {padding-left:100px; line-height:20px; font-size:16px; font-weight:100;}
+	.kettle .sec6 .chk p span {display:block; padding-left:32px; font-size:16px;}
+	.kettle .sec6 .chk p span.c1 {background-size:auto 6px;}
+	.kettle .sec6 .chk p span.c2 {margin-top:10px; background-size:auto 6px;}
+	.kettle .sec7 .rg {top:auto; margin-top:0; bottom:0; width:100%; padding:0 0 10% 0;}
+	.kettle .sec8 em {font-size:12px;}
+	.kettle .k1 {position:absolute; top:40.7%; right:78%;}
+	.kettle .k2 {position:absolute; top:51%; right:51.5%; }
+	.kettle .k2 span.btm {width:9px; background:url(//media.samsungwa.com/media/product/kettle_s1/bg_per2_01_m.png) no-repeat left bottom; background-size:9px auto;}
+	.kettle .k2 .per {height:112px; }
+	.kettle .k2 .per span {display:block; width:9px; height:112px;}
+	.kettle .k2 .per span em {width:9px; height:112px; background:url(//media.samsungwa.com/media/product/kettle_s1/bg_per2_02_m.png) no-repeat left bottom; background-size:9px auto;}
+	.kettle .k2 .per span.bg {height:112px; background:url(//media.samsungwa.com/media/product/kettle_s1/bg_per2_03_m.png) no-repeat left top; background-size:9px auto;}
+
+	.scoop .sec1 .fir {padding:11.5% 0 0 0;}
+	.scoop .sec2 .rg {width:100%; padding:14% 0 0 0;}
+	.scoop .sec3 .lg {padding:11.5% 0 0;}
+	.scoop .sec4 .lg {padding:11.5% 0 0 0;}
+	.scoop .sec5 .rg {padding:0 0 11.5%;}
+	.scoop .sec6 .lg {padding:11.5% 0 0 0;}
+	.scoop .sec7 .lg {padding:11.5% 0 0 0;}
+	.scoop .sec7 .lg .control {width:260px; margin:0 auto; padding-top:3px; text-align:left;}
+	.scoop .sec7 .lg .control span {padding-bottom:15px;font-size:16px;}
+	.scoop .sec7 .lg .control span img {height:25px;}
+
+	.fit2 span[class*="icn"] img {height:60px; margin:0 4px; }
+	.fit2 p[class*="tip"] {font-size:12px;}
+	.fit2 .contbox[class*="g"] {width:100%;}
+	.fit2 .sec1 .fir {padding:10.5% 0 0;}
+	.fit2 .sec2 .lg {padding:13% 0 0 0;}
+	.fit2 .sec3 .rg {padding:11.5% 0 0 0;}
+	.fit2 .sec4 .cen {padding:11% 0 0 0;}
+	.fit2 .sec5 .lg {padding:12% 0 0 0;}
+	.fit2 .sec6 .rg {top:auto; bottom:0; padding:0 0 9% 0;}	
+	.fit2 .sec7 .lg {padding:11% 0 0 0;}
+	
+	.iconx p[class*="tip rt"] {right:auto; left:0; padding:0 0 2% 2.3%;}
+	.iconx p[class*="tip rt"] span {display:block;}
+	.iconx .sec1 .fir {padding:12% 0 0;}
+	.iconx .sec2 .rg {padding:0 0 7.5%;}
+	.iconx .sec3 .lg {width:100%; padding:17% 0 0 0;}	
+	.iconx .sec4 .rg {top:auto; bottom:0; width:100%; padding:0 0 10.5%;}	
+	.iconx .sec4 .rg ul {max-width:320px; margin:2.5% auto 0;}
+	.iconx .sec4 .rg ul li {padding-bottom:5px;}
+	.iconx .sec4 .rg ul li span {padding-top:24px; font-size:15px; line-height:17px; }
+	.iconx .sec4 .rg ul li span.c1 {background-size:auto 7px; background-position:0 10px;}
+	.iconx .sec4 .rg ul li span.c2 {background-size:auto 7px; background-position:0 10px;}
+	.iconx .sec4 .rg ul li span.c3 {background-size:auto 7px; background-position:0 10px;}
+	.iconx .sec4 .rg ul li img {height:68px;}
+	.iconx .sec5 .lg {padding:0 0 6.5%;}
+	.iconx .sec6 .rg {padding:0 0 5.5%;}
+	.iconx .sec6 .rg p span.br {display:inline;}
+	.iconx .sec6 .rg p span.bm {display:block;}
+	.iconx .sec7 .lg {padding:12% 0 0 0;}
+
+	.level-active .sec1 .fir {padding:9% 0 0;}
+	.level-active .sec2 .rg {padding:12% 0 0 0;}
+	.level-active .sec3 .cen {padding:0 0 4%;}
+	.level-active .sec3 .cen .set span.icn {margin:23px 20px 0;}
+	.level-active .sec4 .rg {width:100%; padding:11.5% 0 0 0;}
+	.level-active .sec5 .cen {padding-top:18.5%;}
+	.level-active .sec6 .lg {padding:15% 0 0 0;}
+	.level-active .sec6 .lg span.icn img {height:60px;}
+	.level-active .sec6 p[class*="tip"] span {text-shadow:1px 1px #e7e7e7;}
+	.level-active .sec7 .lg {padding:10% 0 0 0;}
+
+	.battery-pack .sec1 .fir {width:100%; right:0; padding:11% 0 0 0;}
+	.battery-pack .sec2 .rg {padding:11% 0 0;}
+	.battery-pack .sec3 .lg {padding:11% 0 0;}
+	.battery-pack .sec4 .cen {padding-top:11%;}
+	.battery-pack .sec4 .cen p.desc {padding-top:20px; font-size:16px; line-height:20px;}
+
+	.back-note7 .sec1 .fir {padding:11.5% 0 0;}
+	.back-note7 .sec1 p.tip {font-size:12px;}
+	.back-note7 .sec2 .lg {padding-top:11.5%;}
+	.back-note7 .sec3 .lg {padding-top:12%;}
+	.back-note7 .sec4 .lg {padding-top:20.5%;}
+	.back-note7 .sec5 .lg {padding-top:17%;}
+
+	.lens-cover .sec1 .fir {padding:11.5% 0 0 0;}
+	.lens-cover .sec2 .lg {width:100%; padding:13.5% 0 0 0;}
+	.lens-cover .sec3 .rg {width:100%; padding:0 0 8% 0;}
+	.lens-cover .sec4 .lg {width:100%; padding:33.5% 0 0 0;}
+	.lens-cover .sec4 p.tip {color:#fff; text-shadow:1px 1px #000;}
+	.lens-cover .sec5 .cen {left:0; padding:12% 0 0 6.5%;}
+
+	.s-view-cover .sec1 .fir {padding:11% 0 0 0;}
+	.s-view-cover .sec2 .lg {width:100%; padding:13.5% 0 0 0;}
+	.s-view-cover .sec3 .rg {width:100%; padding:0 0 11% 0;}
+	.s-view-cover .sec4 .lg {padding:0 0 11% 10%;}
+	.s-view-cover .sec5 .rg {padding:13.5% 0 0;}
+
+	.note7-view-cover .sec1 .fir {padding:11% 0 0;}
+	.note7-view-cover .contbox[class*="g"] {width:100%; padding:11% 0 0;}
+	.note7-view-cover .sec4 p.desc {padding-top:20px; font-size:16px; line-height:20px;}
+
+	.level-in-anc .sec1 .fir {padding:11% 0 0;}
+	.level-in-anc .sec3 .rg {padding:0 0 9.5%;}
+	.level-in-anc .sec4 .rg {width:100%; padding:0 0 15%;}
+	.level-in-anc .sec5 .lg {width:100%; top:auto; bottom:0; padding:0 0 9.5%;}
+	.level-in-anc .sec6 .lg {padding:11% 0 0;}
+
+	.gear-s3-frontier .sec1 .fir {width:100%; padding:10% 0 0;}
+	.gear-s3-frontier .contbox[class*="g"] {padding:10% 0 0;}	
+	.gear-s3-frontier .contbox[class*="cen"] {padding:10% 0 0;}	
+	.gear-s3-frontier .sec6 .lg span.txt {font-size:30px;}
+	.gear-s3-frontier .sec6 .lg p + p img {height:41px;}
+	.gear-s3-frontier .sec7 .rg {width:100%; padding:10% 0 0;}
+	.gear-s3-frontier .sec8 .rg {width:100%; padding:10% 0 0;}
+	.gear-s3-frontier .sec8 .rg p + p img {height:60px;}
+	.gear-s3-frontier .sec9 .lg {width:100%; top:auto; bottom:0; padding:0 0 10%;}
+
+	.gear-s3-classic .sec1 .fir {width:100%; padding:8.5% 0 0;}
+	.gear-s3-classic .contbox[class*="g"] {padding:10.5% 0 0;}
+	.gear-s3-classic .sec5 .lg h3 span.br {display:block;}
+	.gear-s3-classic .sec6 .lg span.txt {font-size:30px;}
+	.gear-s3-classic .sec6 .lg p + p img {height:41px;}
+	.gear-s3-classic .sec9 .rg {width:100%; top:auto; bottom:0; margin-top:0; padding:0 0 10%;}
+	.gear-s3-classic .sec11 .cen {top:0; bottom:auto; padding:10.5% 0 0;}
+
+	.we-case .sec1 .fir {width:100%; padding:13% 0 0;}
+	.we-case .sec1 .fir em {display:block; padding-bottom:10px; line-height:27px; font-size:27px; letter-spacing:-1px;}
+	.we-case .sec1 .fir h2 {font-size:36px;}
+	.we-case .sec1 .fir h2 span {display:block; font-size:30px;}
+	.we-case .contbox[class*="g"] {width:100%; top:0; margin-top:0; padding:9.5% 0 0;}
+	.we-case .contbox[class*="g"] em {display:block; font-size:18px; line-height:28px;}
+	
+	.strap .contbox p.col img.w {display:none;}
+	.strap .contbox p.col img.m {display:block; margin:0 auto;}
+	.strap .contbox p.col img {height:82px;}
+	.strap .sec1 .fir {padding:40% 0 0;}
+	.strap .sec2 .cen {padding-top:42%;}
+	.strap .sec3 .lg {padding:10% 0 0;}
+	.strap .sec4 .rg {padding:10% 0 0;}
+	.strap .sec5 .lg {padding:10% 0 0;}
+	.strap .sec6 .lg {width:100%; top:0; margin-top:0; padding:10% 0 0;}
+}
+
+@media only screen and (max-width:481px){
+	/* PSP */
+	.product-detailview .contbox .bar:after {bottom:-20px; margin-left:-37px; width:74px; height:5px; }
+	.contbox[class*="fir"] span, span[class*="sec"] {font-size:12px;}
+
+	.product-detailview span[class*="icn"] {display:block; width:56px; margin:13px auto 0; }
+	.product-detailview span[class*="icn"] img {height:56px;}
+	.product-detailview span[class*="icn"] > span.txt {display:block; font-size:12px; font-weight:100; padding-top:5px;}
+	.product-detailview .set span.icn {display:inline-block; margin:13px 8px 0;}
+	
+	.product-detailview .contbox h2 {font-size:20px; letter-spacing:-1px; margin-bottom:35px;}
+	.product-detailview .contbox h2.bar:after {bottom:-18px;}
+	.product-detailview .contbox h2 span.eng {font-size:28px; padding-top:5px;}
+	.product-detailview .contbox h3 {font-size:22px; letter-spacing:-1px; margin-bottom:37px;}
+	.product-detailview .contbox h3 span.eng {font-size:22px;}
+	.product-detailview .contbox h3 span.br {display:block; font-size:22px; }
+	.product-detailview .contbox p {font-size:12px; line-height:20px;}
+	.product-detailview .sec0 dl dt {font-size:22px; margin-bottom:10px;}
+	.product-detailview .sec0 dl dd {font-size:12px; line-height:20px;}
+	.product-detailview .sec1 p {font-size:12px; }
+	
+	.charm .sec2 .cen .btm {bottom:6.2%;}
+	.charm .sec5 .rg p img.pc {display:none;}
+	.charm .sec5 .rg p img.mo {display:block; height:28px;}
+	.charm .sec5 .rg p span.txt {padding:15px 0 0 10px; font-size:20px;}
+	.charm .sec6 .lg p + p {padding-top:15px;}
+	.charm .sec6 .lg p + p img {height:75px;}
+	.charm .sec7 .lg p + p img {height:40px;}
+
+	.back-pack .sec1 .fir h2 span.br {font-size:20px;}
+	.back-pack .sec6 .lg p + p {padding-top:13px;}
+	.back-pack .sec6 .lg p + p span {width:115px; height:10px; margin:0 auto 10px; line-height:12px; font-size:12px; background-size:auto 81px;}
+	.back-pack .sec6 .lg p + p span.l2 {background-position:right -17px;}
+	.back-pack .sec6 .lg p + p span.l3 {background-position:right -35px;}
+	.back-pack .sec6 .lg p + p span.l4 {background-position:right -52px;}
+	.back-pack .sec6 .lg p + p span.l5 {height:14px; line-height:14px; background-position:right -68px;}
+	
+	.level-box-pro .sec5 .lg .wd {width:295px;}
+	.level-box-pro .sec5 .lg .wimg {margin:18px 0 0 0;}
+	.level-box-pro .sec5 .lg .wimg img {height:72px;}
+	.level-box-pro .sec6 .cen {padding:18% 0 0 0;}
+	.level-box-pro .sec7 .lg {padding-top:21.5%;}
+
+	.level-u-pro .sec3 .rg .btm {bottom:6%;}
+	.level-u-pro .sec4 .rg.tp2 h3 {text-shadow:1px 1px #e7e7e7;}
+	.level-u-pro .sec6 .lg {padding-top:10%;}
+	.level-u-pro .sec6 .lg p span.icn {margin-top:10px;}
+	.level-u-pro .sec6 .lg p img {height:17px;}
+	.level-u-pro .sec7 .rg .btm {bottom:7%;}
+	.level-u-pro .sec8 .lg {padding-top:13%;}
+	.level-u-pro .sec8 .lg h3 + p span {width:20px; height:10px; line-height:12px;}
+	.level-u-pro .sec8 .lg span.plus {background-size:20px 10px;}
+	.level-u-pro .sec8 .lg span.minus {background-size:20px 10px;}
+	.level-u-pro .sec8 .lg .icn img {height:71px;}
+
+	.wireless .sec1 .fir {top:4.5%; right:0; margin-top:0; width:100%;}		
+	.wireless .sec2 .cen {padding-top:14.5%;}
+	.wireless .sec3 .rg {width:100%; padding:10% 0 0 0;}
+	.wireless .sec4 .cen {padding-top:14.5%;}
+	.wireless .sec5 .rg {width:100%; padding:9% 0 0 0;}	
+	.wireless .sec5 .rg .lgt {padding-left:65px; line-height:20px;}
+	.wireless .sec5 .rg .graph-wrap {width:230px; margin:23px auto 0; padding-left:0; text-align:left;}
+	.wireless .sec5 .rg .graph-wrap .txt span {height:10px; padding-left:15px; line-height:12px; font-size:12px;}
+	.wireless .sec5 .rg .graph-wrap .txt span:before {position:absolute; content:""; top:0; left:0; width:10px; height:10px;}
+	.wireless .sec5 .rg .graph.fir {padding:10px 0 20px;}
+	.wireless .sec5 .rg .graph strong {font-size:12px;}
+	.wireless .sec5 .rg .graph span[class*="s"] {display:block; height:10px; font-size:11px; line-height:12px;}
+	.wireless .sec5 .rg .graph span[class*="s"] .per {display:inline-block; height:10px; margin-right:5px; text-indent:-3000px;}
+	.wireless .sec5 .rg .graph span.s1 {color:#767676; margin-bottom:7px;}
+	.wireless .sec6 .lg {width:100%; padding:14% 0 0 0; }
+	.wireless .sec7 .cen {padding-top:14%;}
+	
+	.eight-cups .sec0 .rg {width:100%; padding:15% 0 0 0; text-align:center;}
+	.eight-cups .sec0 dl dd span.br {font-size:12px;}
+	.eight-cups .sec1 .fir {padding:13.5% 0 0 0;}
+	.eight-cups .sec2 .lg {width:100%; top:0; margin-top:0; padding:16% 0 0 0;}
+	.eight-cups .sec3 .cen {padding-top:10%;}
+	.eight-cups .sec4 .rg {width:100%; padding:10% 0 0 0;}
+	.eight-cups .sec5 .rg {width:100%; padding:10% 0 0 0;}	
+	.eight-cups .sec6 .lg {width:100%; padding:10% 0 0 0;}
+
+	.led-sterilizer .contbox[class*="g"] {padding:9.2% 0 0 0;}
+	.led-sterilizer .sec0 .rg {padding:44% 0 0 0; text-align:center;}
+	.led-sterilizer .sec0 .rg dd span.bw {display:inline; font-size:12px;}
+	.led-sterilizer .sec0 .rg dd span.bm {display:block; font-size:12px;}
+	.led-sterilizer .sec4 .disc {font-size:11px;}
+	.led-sterilizer .sec4 .disc span {display:block; font-size:11px; padding-left:66px;}
+	
+	.sound-bottle .wa-info {padding:3%; font-size:12px; line-height:18px;}
+	.sound-bottle .wa-info span.bm {display:block; font-size:12px;}
+	.sound-bottle .wa-info span.bt {display:inline; font-size:12px;}
+	.sound-bottle .contbox[class*="g"] .btm {bottom:4%;}
+	.sound-bottle .contbox p.chk {padding-top:8px; font-size:16px; line-height:26px;}
+	.sound-bottle .contbox p.chk img {height:20px; margin-left:10px;}
+	.sound-bottle .sec1 .fir {padding:9% 0 0 0;}
+	.sound-bottle .sec7 .lg {padding:11% 0 0;}
+	.sound-bottle .sec9 .rg {padding:0 0 12%;}
+	.sound-bottle .sec10 .cen {padding-top:9%;}
+
+	.rectangle .sec1 .fir {padding:11.5% 0 0 0;}
+	.rectangle .sec2 .rg {padding:39% 0 0 0;}
+	.rectangle .sec3 .rg {padding:16% 0 0;}
+	.rectangle .sec4 .lg {padding:25.5% 0 0 0;}
+	.rectangle .sec5 .rg {width:100%; padding:11% 0 0 0;}
+	.rectangle .sec6 .cen {padding-top:56%;}
+
+	.lamp .sec1 .fir {padding:12% 0 0 0;}
+	.lamp .sec2 .lg {padding:12.5% 0 0 0;}
+	.lamp .sec2 .lg p {line-height:15px;}
+	.lamp .sec5 .rg {padding:17% 0 0 0;}
+	.lamp .sec6 .lg {padding:23% 0 0 0;}
+
+	.kettle .sec1 .fir {padding:12% 0 0 0;}
+	.kettle .sec6 .chk {position:absolute; bottom:0; left:0; padding:0 0 4% 3%;}
+	.kettle .sec6 .chk img {height:56px;}
+	.kettle .sec6 .chk p {padding-left:65px; line-height:14px; font-size:12px; font-weight:100;}
+	.kettle .sec6 .chk p span {display:block; padding-left:25px; font-size:12px;}
+	.kettle .sec6 .chk p span.c1 {background-size:auto 5px;}
+	.kettle .sec6 .chk p span.c2 {margin-top:5px; background-size:auto 5px;}
+	.kettle .sec8 em {padding:0 2% 2% 0; font-size:11px; text-align:right; left:auto; right:0;}
+
+	.kettle .k1 {position:absolute; top:40.9%; right:78%; }
+	.kettle .k1 span.btm {width:5px; background:url(//media.samsungwa.com/media/product/kettle_s1/bg_per1_01_m.png) no-repeat left bottom; background-size:5px auto;}
+	.kettle .k1 .per {height:65px; }
+	.kettle .k1 .per span {display:block; width:5px; height:65px;}
+	.kettle .k1 .per span em {width:5px; height:65px; background:url(//media.samsungwa.com/media/product/kettle_s1/bg_per1_02_m.png) no-repeat left bottom; background-size:5px auto;}
+	.kettle .k1 .per span.bg {height:65px; background:url(//media.samsungwa.com/media/product/kettle_s1/bg_per1_03_m.png) no-repeat left top; background-size:5px auto;}
+	.kettle .k2 {position:absolute; top:51%; right:51.5%; }
+	.kettle .k2 span.btm {width:6px; background-size:6px auto;}
+	.kettle .k2 .per {height:84px; }
+	.kettle .k2 .per span {display:block; width:6px; height:84px;}
+	.kettle .k2 .per span em {width:6px; height:84px; background-size:6px auto;}
+	.kettle .k2 .per span.bg {height:84px; background-size:6px auto;}
+
+	.scoop .sec1 .fir {padding:11% 0 0 0;}
+	.scoop .sec2 .rg {padding:13.5% 0 0 0;}
+	.scoop .sec3 .lg {padding:11% 0 0;}
+	.scoop .sec4 .lg {padding:11% 0 0 0;}
+	.scoop .sec5 .rg {padding:0 0 11%;}
+	.scoop .sec6 .lg {padding:11% 0 0 0;}
+	.scoop .sec7 .lg {padding:11% 0 0 0;}
+	.scoop .sec7 .lg .control {width:185px; padding-top:0;}
+	.scoop .sec7 .lg .control span {padding-bottom:5px;font-size:12px;}
+	.scoop .sec7 .lg .control span img {height:16px; margin-right:10px;}
+	.scoop .sec7 .lg .control span.c2 img {margin-right:17px;}
+
+	.fit2 span[class*="icn"] img {height:40px; margin:0 3px; }
+	.fit2 p[class*="tip"] span {text-shadow:1px 1px #e7e7e7;}
+	.fit2 .sec1 .fir {padding:7% 0 0;}
+	.fit2 .sec2 .lg {padding:13% 0 0 0;}
+	.fit2 .sec4 .cen {padding:9% 0 0 0;}
+	.fit2 .sec5 .lg {padding:12% 0 0 0;}
+	.fit2 .sec6 .rg {top:auto; bottom:0; padding:0 0 7% 0;}
+	.fit2 .sec7 .lg {padding:10% 0 0 0;}
+
+	.iconx .sec4 .rg {top:auto; bottom:0; width:100%; padding:0 0 10.5%;}
+	.iconx .sec4 .rg ul {max-width:240px; margin:2.5% auto 0;}
+	.iconx .sec4 .rg ul li {padding-bottom:5px;}
+	.iconx .sec4 .rg ul li span {padding-top:20px; font-size:11px; line-height:13px; }
+	.iconx .sec4 .rg ul li span.c1 {background-size:auto 5px; background-position:1px 9px;}
+	.iconx .sec4 .rg ul li span.c2 {background-size:auto 5px; background-position:1px 9px;}
+	.iconx .sec4 .rg ul li span.c3 {background-size:auto 5px; background-position:1px 9px;}
+	.iconx .sec4 .rg ul li img {height:53px; margin-right:8px;}
+
+	.level-active .sec2 .rg {padding:11% 0 0 0;}
+	.level-active .sec3 .cen .set span.icn {margin:23px 14px 0;}
+	.level-active .sec4 .rg {padding:11% 0 0 0;}
+	.level-active .sec5 .cen {padding-top:18%;}
+	.level-active .sec6 .lg {padding:13% 0 0 0;}
+	.level-active .sec6 .lg span.icn img {height:41px;}
+
+	.battery-pack .sec4 .cen p.desc, .note7-view-cover .sec4 p.desc  {padding-top:12px; font-size:11px; line-height:16px;}
+
+	.back-note7 .sec1 .fir {padding:11% 0 0;}
+	.back-note7 .sec2 .lg {padding-top:11%;}
+	.back-note7 .sec3 .lg {padding-top:12%;}
+	.back-note7 .sec4 .lg {padding-top:19%;}
+	.back-note7 .sec5 .lg {padding-top:16.5%;}
+	
+	.gear-s3-frontier .sec6 .lg p img.pc {display:none;}
+	.gear-s3-frontier .sec6 .lg p img.mo {display:block; height:28px;}
+	.gear-s3-frontier .sec6 .lg p span.txt {padding:15px 0 0 10px; font-size:20px;}
+	.gear-s3-frontier .sec8 .rg p + p img {height:40px;}
+
+	.gear-s3-classic .sec6 .lg p img.pc {display:none;}
+	.gear-s3-classic .sec6 .lg p img.mo {display:block; height:28px;}
+	.gear-s3-classic .sec6 .lg p span.txt {padding:15px 0 0 10px; font-size:20px;}
+
+	.we-case .sec1 .fir {width:100%; padding:13% 0 0;}
+	.we-case .sec1 .fir em {display:block; padding-bottom:5px; line-height:18px; font-size:18px; letter-spacing:-1px;}
+	.we-case .sec1 .fir h2 {font-size:24px;}
+	.we-case .sec1 .fir h2 span {display:block; font-size:20px;}
+	.we-case .contbox[class*="g"] {width:100%; top:0; margin-top:0; padding:8% 0 0;}
+	.we-case .contbox[class*="g"] em {display:block; font-size:12px; line-height:22px;}
+	.we-case .sec2 .rg {padding-top:13%;}
+
+	.strap .contbox p.col img {height:70px;}
+	.strap .sec1 .fir {padding:38% 0 0;}
+	.strap .sec2 .cen {padding-top:41%;}
+	.strap .sec6 {background:#f9f9f9; padding-bottom:40px;}
+}
+
+@media only screen and (max-width:380px){
+	.product-detailview p[class*="tip"] {font-size:11px; line-height:14px;}
+	.product-detailview p[class*="tip"] span {font-size:11px;}
+
+	.kettle .k1 {position:absolute; top:40.7%; right:78%; }
+	.kettle .k1 span.btm {width:4px; background-size:4px auto;}
+	.kettle .k1 .per {height:51px; }
+	.kettle .k1 .per span {display:block; width:4px; height:51px;}
+	.kettle .k1 .per span em {width:4px; height:51px; background-size:4px auto;}
+	.kettle .k1 .per span.bg {height:51px; background-size:4px auto;}	
+	.kettle .k2 {position:absolute; top:51.2%; right:51.5%; }
+	.kettle .k2 span.btm {width:5px; background-size:5px auto;}
+	.kettle .k2 .per {height:64px; }
+	.kettle .k2 .per span {display:block; width:5px; height:64px;}
+	.kettle .k2 .per span em {width:5px; height:64px; background-size:5px auto;}
+	.kettle .k2 .per span.bg {height:64px; background-size:5px auto;}	
+}
+
+@media only screen and (max-width:370px){
+	.sound-bottle .wa-info span.bm {display:inline;}
+}	
+
+@media only screen and (max-width:320px){
+	/* PSP */
+	.level-u-pro .sec8 .lg {padding-top:8%;}
+	.wireless .sec1 .fir {top:4%;}
+	.wireless .sec1 .fir h2 {margin-bottom:32px;}
+	.wireless .sec1 .fir h2.bar:after {bottom:-15px;}
+	.wireless .sec1 .fir span.eng {line-height:1.1em;}
+	.wireless .sec5 .rg .lgt {padding-left:30px;}
+	.wireless .sec5 .rg .graph-wrap {margin-top:10px;}
+	.wireless .sec5 .rg .graph-wrap .txt span {display:inline;}
+	.wireless .sec5 .rg .graph-wrap .txt span.s1 {margin:0 23px 0 0;}
+	.wireless .sec5 .rg .graph-wrap .txt span:before {top:1px;}
+	.wireless .sec5 .rg .graph.fir {padding:10px 0;}
+	.wireless .sec5 .rg .graph span.s1 {margin-bottom:3px;}
+	
+	.clear-view-cover .sec3 .lg {top:5%;}
+	.eight-cups span[class*="icn"] {margin-top:10px;}
+	.eight-cups .sec0 dl dd {letter-spacing:-0.8px;}
+	.eight-cups .sec1 .fir {padding:8% 0 0 0;}
+	.eight-cups .sec1 h2 span.eng {padding-top:5px;}
+	.eight-cups .sec4 .rg {padding:8% 0 0 0;}
+	.eight-cups .sec5 .rg {padding:8% 0 0 0;}
+	.eight-cups .sec6 .lg {padding:8% 0 0 0;}
+	.led-sterilizer .sec1 .fir h2 span.eng {letter-spacing:-1px;}
+	.charger-tray .sec1 .fir .btm {bottom:5%;}
+	.charger-tray .sec5 .rg {padding-right:5%;}	
+	.sound-bottle p.tip span {display:block; font-size:11px; padding:0 0 0 8px;}
+	.sound-bottle .sec1 .fir {padding:5% 0 0;}
+	.sound-bottle .sec8 .lg {padding:7% 0 0;}
+	.rectangle .sec5 .rg {padding:5% 0 0;}
+	.rectangle .sec5 .rg span.icn {margin-top:10px;}
+	.rectangle .sec6 .cen  p {letter-spacing:-1px;}
+	.rectangle .sec6 .cen  p span.en {letter-spacing:-0.7px;}
+	.scoop .sec3 .lg {padding:9% 0 0;}
+	.scoop .sec5 .rg {padding:0 0 5%;}
+	.level-active .sec1 .fir {padding:6% 0 0 0;}
+	.level-active .sec7 .lg {padding:8% 0 0 0;}
+	.lens-cover .sec5 .cen {left:0; padding:12% 0 0 4%;}
+	.s-view-cover .contbox h2 span.eng {letter-spacing:-1px;}
+	.we-case .sec2 .rg {padding-top:5%;}
+}

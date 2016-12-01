@@ -1,0 +1,1336 @@
+@charset "UTF-8";
+
+/*=========================================================
+  레이아웃
+=========================================================*/ 
+
+
+/*=========================================================
+  상단배너
+=========================================================*/ 
+.case_event{overflow: hidden;}
+.case_event .top_bannerbx{position: relative;background: #99dacd;}
+.case_event .top_bannerbx .cont_bx{position: relative;text-align: center;}
+.case_event .top_bannerbx .cont_bx .title{font-size: 24px; color:#282828; font-weight: bold;font-family: 'SharpSans' !important;letter-spacing: 1px;}
+.case_event .top_bannerbx .cont_bx .sub_title{font-size: 26px; color:#3e4448;margin-bottom: 13px;font-weight: 300;letter-spacing: -2px;}
+.case_event .top_bannerbx .cont_bx .text{font-size: 14px; color:#3e4448;line-height: 1.4em;margin-bottom: 10px;}
+.case_event .top_bannerbx .cont_bx .date_text{font-size: 24px; color:#3e4448;font-weight: bold;margin-bottom: 8px;}
+.case_event .top_bannerbx .cont_bx .text .br_span{display: block; clear: both;width:100%;}
+.case_event .top_bannerbx .cont_bx .blod_text{font-size: 14px; color:#3e4448;line-height: 1.4em;}
+.case_event .top_bannerbx .cont_bx .banner_container{position: relative;z-index: 10;padding:52px 38px;}
+.case_event .top_bannerbx .text_bx{font-size: 24px; color:#fff; background: #3e4448; text-align: center;color:#fff;padding:18px 38px;}
+.sns_bx{width:34px; height: 34px; position: absolute; bottom:10px; right:8px;z-index: 15;}
+
+
+/*이미지*/
+.case_event .top_bannerbx .cont_bx .banner_container:after{content: ""; width:0; height: 0; border-bottom: 90px solid #faf1dc;border-left: 90px solid transparent;position: absolute; bottom:0; right:0;z-index: 10;}
+.case_event .top_bannerbx .cont_bx:before{content: ""; width:311px; height: 186px;background: url(/media/product/wennovation/story/bg_one.png) no-repeat;position: absolute; top:53px; left:-44px;}
+.case_event .top_bannerbx .cont_bx:after{content: ""; width:404px; height: 423px;background: url(/media/product/wennovation/story/bg_two.png) no-repeat;position: absolute; top:-132px; right:-70px;}
+
+
+/*=========================================================
+  폼 포스트
+=========================================================*/ 
+.form_postbx{padding:38px 38px;background: #fff;}
+.form_postbx:after{content: ""; clear: both; display: table;}
+.form_postbx > ul{margin:0 -8px;}
+.form_postbx > ul > li{padding:0 8px;margin-bottom: 60px;width:25%; float: left;}
+.form_postbx > ul > li:nth-child(4n+1){clear: both;}
+.form_postbx .post_contbx{margin-bottom: 20px;}
+.form_postbx .s_text_bx{font-size: 14px; color:#3e4448; float: right;margin-bottom: 20px;line-height: 1.3em;}
+.form_postbx .post_contbx a{display: block;background: #f9f9f9;}
+.form_postbx .post_contbx .thum{line-height: 0;border-bottom: solid 1px #e9e9e9;}
+.form_postbx .post_contbx h4{font-size: 18px; color:#323232;text-align: center;padding:28px 10px;border-bottom: solid 1px #e9e9e9;line-height: 1.3em;}
+
+/*체크박스*/
+.form_postbx.end_post .post_checkbox{text-align: center;font-size: 16px; color:#323232;}
+.post_checkbox input[type="checkbox"]{display: none;}
+.post_checkbox label{width:22px; height: 22px; display: block; margin:0 auto;background: url(/media/product/wennovation/story/checkbox_icon.png) no-repeat;text-indent: -99999px;background-position: -22px 0;cursor: pointer;}
+
+/*hover*/
+.post_checkbox input:checked + label{background-position: 0 0;}
+.form_postbx > ul > li.active .post_contbx{border:solid 5px #99dacd;}
+.form_postbx .submit_btn{font-size: 24px; color:#fff;background: #3e4448; margin:0 auto 60px;width: 270px;padding:18px 10px;display: block;clear: both;}
+
+/*=========================================================
+  스태틱
+=========================================================*/ 
+.static_bx{clear: both;background: #fff;padding:0px 38px 38px;}
+.static_bx:after{content: ""; clear: both; display: table;}
+.static_bx .s_title{font-size: 28px; color:#282828;padding-bottom: 20px; line-height: 1.2em;clear: both;}
+.static_bx .list_ul{margin-bottom:60px;border-top: solid 1px #898989;border-bottom: solid 1px #898989;padding-top:25px;padding-bottom: 10px;overflow: hidden;}
+.static_bx .thum_ul{margin-bottom:10px;border-top: solid 1px #898989;border-bottom: solid 1px #898989;padding:10px 0;}
+.static_bx .s_title span{font-size: 14px; color:#282828;float: right;font-weight: normal;}
+.static_bx .list_ul h4{font-size: 16px; color:#282828;margin-bottom: 5px;}
+.static_bx .list_ul h4.s_h4{margin-bottom: 20px;}
+.static_bx .list_ul > li{width:50%; float: left;padding:0 10px;}
+.static_bx .sub_list{margin:0;margin-bottom: 20px;}
+.static_bx .sub_list li .bullet{display: block; float: left;margin-right:2px;font-size: 14px; color:#282828;font-family: 'SECGCWL',"Roboto", Arial, Tahoma, sans-serif!important;}
+.static_bx .sub_list li .text{display: block; overflow: hidden;font-size: 14px; color:#282828;font-family: 'SECGCWL',"Roboto", Arial, Tahoma, sans-serif!important;}
+.static_bx .sub_list li.margin_t{margin-top:20px;}
+.static_bx .sub_list li.margin{margin-bottom:20px;margin-top:20px;}
+.static_bx .sub_list li .br_span{display: block; width:100%; clear: both;}
+
+/*프로필*/
+.static_bx .thum_ul > li{padding:30px 0;clear: both;overflow: hidden;}
+.static_bx .thum_ul > li .thum{margin-right:60px;float: left;line-height: 0;}
+.static_bx .thum_ul > li .cont{overflow: hidden;padding-top:25px;}
+.static_bx .thum_ul > li .cont h3{font-size: 16px; color:#282828;line-height: 1.2em;font-weight: bold;}
+.static_bx .thum_ul > li .cont .meta{font-size: 14px; color:#282828;margin-bottom: 20px;padding-bottom: 15px;border-bottom: solid 1px #898989;}
+.static_bx .thum_ul > li .cont .cont_ul{margin:0;width:50%; float: left;}
+.static_bx .thum_ul > li .cont .cont_ul li{padding-left:12px; position: relative;font-size: 14px; color:#282828;font-family: 'SECGCWL',"Roboto", Arial, Tahoma, sans-serif!important;margin-top:2px;}
+.static_bx .thum_ul > li .cont .cont_ul li:before{content: "•";position: absolute; top:3px; left:0;font-size:10px;}
+.static_bx .thum_ul > li .cont .cont_ul li:first-child{margin-top:0;}
+.static_bx .thum_ul > li .cont .cont_ul.left{padding-right:15px;}
+
+/*반응형*/
+@media only screen and (max-width: 1024px){
+.form_postbx > ul{margin:0 -8px;}
+.form_postbx > ul > li{padding: 0 7px;width:33.3333%;}
+.form_postbx > ul > li{clear: none !important;}
+.form_postbx > ul > li:nth-child(3n+1){clear: both !important;}
+.case_event .top_bannerbx .cont_bx:before{content:"";width:224px; height: 134px; background-size: 224px 134px;top:73px;}
+.case_event .top_bannerbx .cont_bx:after{content:"";width:287px; height: 300px; background-size: 287px 300px;top: -76px;right: -60px;}
+.case_event.wp_main_banner .top_bannerbx .cont_bx .sub_title{font-size: 24px;}
+}
+@media only screen and (max-width: 830px){
+.static_bx .sub_list li .br_span{display: none;}
+}
+@media only screen and (max-width: 767px){
+.case_event.wp_main_banner .top_bannerbx .cont_bx .sub_title{font-size: 22px;}
+}
+
+@media only screen and (max-width: 540px){
+.case_event .top_bannerbx .cont_bx .title{font-size: 16px;}
+.case_event .top_bannerbx .cont_bx .sub_title{font-size: 21px;max-width: 300px;margin-left:auto;margin-right:auto;line-height: 1.3em;}
+.case_event .top_bannerbx .cont_bx .text{font-size: 13px;max-width: 350px;margin-left:auto;margin-right:auto;}
+.case_event .top_bannerbx .cont_bx .date_text{font-size: 20px;}
+.case_event .top_bannerbx .cont_bx .text .br_span{display: none;}
+.case_event .top_bannerbx .cont_bx .blod_text{font-size: 14px;max-width: 310px;margin-left:auto;margin-right:auto;}
+.case_event .top_bannerbx .text_bx{font-size: 20px;}
+.form_postbx .submit_btn{width:100%;}
+.form_postbx > ul > li{padding: 0 7px;width:50%;}
+.form_postbx > ul > li{clear: none !important;}
+.form_postbx > ul > li:nth-child(3n+1){clear: none !important;}
+.form_postbx > ul > li:nth-child(odd){clear: both !important;}
+.static_bx .list_ul > li{width:100%; float: none;}
+.static_bx .thum_ul > li .thum{float: none; width:100%; margin-right:0; text-align: center;margin-bottom: 25px;}
+.static_bx .thum_ul > li .cont .cont_ul.left{padding-right:0;margin-bottom: 20px;}
+.static_bx .thum_ul > li .cont .cont_ul{width:100%; float: none;}
+.case_event .top_bannerbx .cont_bx:before{content: ""; width:84px; height: 93px;background: url(/media/product/wennovation/story/m_bg_one.png) no-repeat;position: absolute; top:53px; left:0px;background-size:84px 93px;}
+.case_event .top_bannerbx .cont_bx:after{content: ""; width:139px; height: 150px;background: url(/media/product/wennovation/story/m_bg_two.png) no-repeat;position: absolute; top:0px; right:0;background-size: 139px 150px;}
+.case_event.wp_main_banner .top_bannerbx .cont_bx .sub_title{font-size: 19px;max-width: 214px;}
+.case_event.wp_main_banner .top_bannerbx .cont_bx .text{font-size: 12px;max-width: 300px;}
+}
+
+@media only screen and (max-width: 400px){
+.static_bx .s_title span{float: none;display: block;}
+.form_postbx > ul > li{clear: both !important;}
+.form_postbx > ul > li{width:100%;}
+}
+
+/*=========================================================
+  팝업
+=========================================================*/ 
+.event_popuop{position: fixed; top:0; left:0; right:0; bottom:0;z-index: 10000;}
+.event_popuop .bg{background: rgba(0,0,0,0.6);position: absolute; top:0; left:0; width:100%; height: 100%; z-index: 1;}
+.event_popuop .pop_conbx{position: absolute; z-index: 10;width: 790px;max-height:90%;top:10%; left:50%; margin-left:-385px;overflow-y: auto;}
+.event_popuop .pop_container{padding:30px 30px;position: relative;background: #efefef;}
+.event_popuop .pop_conbx .close{width:22px; height: 22px; background: url(/media/product/wennovation/story/pop_close_btn.png) no-repeat; background-size: 22px 22px;display: block; position: absolute; top:30px; right:30px;text-indent: -99999px;z-index: 10;}
+.event_popuop .pop_conbx h3{font-size: 20px; color:#323232;margin-bottom: 15px;line-height: 1.4em; padding-right:50px;}
+.event_popuop .pop_conbx .imgbx{margin-bottom: 20px;line-height: 0;text-align: center;background: #fff;}
+.event_popuop .pop_conbx .text{font-size: 14px; color:#5d5d5d; line-height: 1.5em;}
+
+/*반응형*/
+@media only screen and (max-width: 960px){
+.event_popuop .pop_conbx{width:80%; left:10%;margin-left:0;}
+}
+
+/*=========================================================
+  팝업(이미지가 3개일 경우)
+=========================================================*/ 
+.event_popuop .pop_conbx.tp2{max-height:none;bottom:3%}
+.event_popuop .pop_conbx.tp2 .pop_container .imgbx{}
+.event_popuop .pop_conbx.tp2 .pop_container .thumb_list{width:100%;padding-bottom:20px; overflow:hidden; border-bottom:1px solid #d3d2d2;text-align:center}
+.event_popuop .pop_conbx.tp2 .pop_container .thumb_list li{float:left; width:32%; }
+.event_popuop .pop_conbx.tp2 .pop_container .thumb_list li a {position:relative; display:block;}
+.event_popuop .pop_conbx.tp2 .pop_container .thumb_list li a.on:after, .event_popuop .pop_conbx.tp2 .thumb_list li a:hover:after {position:absolute; top:0; left:0; content:""; width:100%; height:100%; border:2px solid #101010; opacity:0.6;}
+.event_popuop .pop_conbx.tp2 .pop_container .thumb_list li:nth-child(2) {margin:0 2%}
+.event_popuop .pop_conbx.tp2 .pop_container .thumb_list li img{width:100%}
+.event_popuop .pop_conbx.tp2 .pop_container .text{margin-top:18px}
+.event_popuop .pop_conbx.tp2 .pop_container .thumb_list.tp2 {margin:0 auto;}
+.event_popuop .pop_conbx.tp2 .pop_container .thumb_list.tp2 li {float:none; display:inline-block;}
+/*반응형*/
+@media only screen and (max-width: 960px){
+  .event_popuop .pop_conbx.tp2{max-height:90%;bottom:auto;}
+}@media only screen and (max-width: 767px){
+  .event_popuop .pop_conbx.tp2 .pop_container .imgbx{margin-bottom:10px}
+  .event_popuop .pop_conbx.tp2 .pop_container .thumb_list{padding-bottom:10px}
+  .event_popuop .pop_conbx.tp2 .pop_container .text{margin-top:10px}
+}
+/*=========================================================
+  로그인
+=========================================================*/ 
+.event_loginbx{padding:30px 30px; background: #fff;text-align: center;}
+.event_loginbx .login_cont{margin-top:100px; margin-bottom: 100px;}
+.event_loginbx h3{font-size: 30px; color:#282828;line-height: 1.4em;font-weight: bold;margin-bottom: 10px;}
+.event_loginbx .text{font-size: 14px; color:#282828;line-height: 1.3em;margin-bottom: 45px;}
+.event_loginbx .btn_box{font-size: 0; line-height: 0;margin:0 -7px 18px;}
+.event_loginbx .btn_box a.login_btn{font-size: 16px; color:#fff;border:solid 1px #3e4448; background: #3e4448;width:190px; padding:8px 10px;text-align: center;display: inline-block;line-height: 1.4em;margin:0 7px;}
+.event_loginbx .btn_box a.signup_btn{font-size: 16px; color:#282828;border:solid 1px #000000; background: #fff;width:190px; padding:8px 10px;text-align: center;display: inline-block;line-height: 1.4em;margin:0 7px;}
+.event_loginbx .s_text{font-size: 14px; color:#282828;line-height: 1.3em;font-family: 'SECGCWL',"Roboto", Arial, Tahoma, sans-serif!important;}
+
+
+@media only screen and (max-width: 1024px){
+.event_loginbx .login_cont{margin-top:80px; margin-bottom: 80px;}
+}
+
+@media only screen and (max-width: 540px){
+.event_loginbx h3{font-size: 22px;line-height: 1.3em;}
+.event_loginbx .text{font-size: 14px;}
+.event_loginbx .s_text{font-size: 14px;}
+.event_loginbx .btn_box{margin:0 0 18px;}
+.event_loginbx .btn_box a.login_btn{font-size: 18px;padding:11px 10px; width:100%; margin-bottom: 15px;margin-left:0; margin-right:0;}
+.event_loginbx .btn_box a.signup_btn{font-size: 18px;padding:11px 10px; width:100%;margin-left:0; margin-right:0;}
+.event_loginbx .login_cont{margin-top:90px; margin-bottom: 90px;}
+}
+
+@media only screen and (max-width: 719px){
+.static_bx .list_ul > li{width:100%; float: none;}
+.static_bx .thum_ul > li .cont .cont_ul.left{padding-right:0;margin-bottom: 20px;}
+.static_bx .thum_ul > li .cont .cont_ul{width:100%; float: none;}
+}
+
+/*=========================================================
+  메인배너
+=========================================================*/ 
+.case_event.wp_main_banner{margin-top:15px;}
+.case_event.wp_main_banner .top_bannerbx .cont_bx .banner_container:after{display: none;}
+.case_event.wp_main_banner .bn_idea{display:block; width:190px; height:40px; line-height:40px; text-align:center; color:#fff; background:#2f3438;margin:25px auto 0;}
+.case_event.wp_main_banner .top_bannerbx .cont_bx:before{top:29px;}
+.case_event.wp_main_banner .top_bannerbx .cont_bx .banner_container{padding-top:30px; padding-bottom: 30px;}
+.case_event.wp_main_banner .top_bannerbx .cont_bx:after{top:-152px;}
+
+/*반응형*/
+@media only screen and (max-width: 1024px){
+.case_event.wp_main_banner{margin-top:0px;}
+.case_event.wp_main_banner .top_bannerbx .cont_bx:before{content:"";width:224px; height: 134px; background-size: 224px 134px;top:50px;}
+.case_event.wp_main_banner .top_bannerbx .cont_bx:after{content:"";width:287px; height: 300px; background-size: 287px 300px;top: -76px;right: -110px;}
+.case_event.wp_main_banner .top_bannerbx .cont_bx .banner_container{padding-bottom: 40px;}
+}
+
+@media only screen and (max-width: 767px){
+.case_event.wp_main_banner .top_bannerbx .cont_bx .banner_container{padding-top: 55px;padding-bottom: 35px;padding-left: 5%; padding-right:5%;}
+.case_event.wp_main_banner .bn_idea{width:100%; margin:40px auto 0; height:50px; line-height:50px; font-size:16px;}
+.case_event .top_bannerbx .cont_bx .text{word-break: keep-all; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word;}
+}
+
+@media only screen and (max-width: 540px){
+.case_event.wp_main_banner .top_bannerbx .cont_bx .banner_container{padding-top: 55px;padding-bottom: 35px;padding-left: 5%; padding-right:5%;}
+.case_event.wp_main_banner .top_bannerbx .cont_bx:before{content: ""; width:84px; height: 93px;background: url(/media/product/wennovation/story/m_bg_one.png) no-repeat;position: absolute; top:53px; left:0px;background-size:84px 93px;}
+.case_event.wp_main_banner .top_bannerbx .cont_bx:after{content: ""; width:139px; height: 150px;background: url(/media/product/wennovation/story/m_bg_two.png) no-repeat;position: absolute; top:0; right:0;background-size: 139px 150px;}
+.case_event.wp_main_banner .bn_idea{width:100%; margin:40px auto 0; height:50px; line-height:50px; font-size:16px;}
+
+}
+
+/*=========================================================
+  WE-INNOVATE STORY
+=========================================================*/ 
+.we_stroybx{background: #faf1dc;}
+.we_stroybx:after{content: ""; display: table; clear: both;}
+.we_stroybx .sns_wrap {bottom:0;right:0;}
+.we_stroybx .top_stroy_bx{background: url(/media/product/wennovation/story/story_main.jpg) no-repeat; background-position: center center;position: relative;}
+.we_stroybx .top_stroy_bx *{letter-spacing: -1px;}
+.we_stroybx .top_stroy_bx .bx_container{padding:123px 75px;text-align: center;}
+.we_stroybx .top_stroy_bx .cont_bx{display: inline-block; background: #fff;padding:63px 60px 40px;}
+.we_stroybx .top_stroy_bx .cont_bx .sub_tit{font-size: 25px; color:#282828; font-family: 'SECGCWB' !important;font-weight: bold;padding-bottom: 40px; margin-bottom: 40px;position: relative;}
+.we_stroybx .top_stroy_bx .cont_bx .sub_tit:after{content: ""; width:110px; height: 10px;background: #434343; position: absolute; bottom:0; left:50%; margin-left:-55px;}
+.we_stroybx .top_stroy_bx .cont_bx h3{font-size: 0;line-height: 0;margin-bottom: 31px;}
+.we_stroybx .top_stroy_bx .cont_bx h3 .title{font-size: 37px; color:#282828;display: block;line-height: 1.25em;font-family: 'SECGCWL' !important;letter-spacing: -2px;}
+.we_stroybx .top_stroy_bx .cont_bx h3 .title_bold{font-size: 60px; color:#282828; font-weight: bold; display: block;line-height: 1.25em;font-family: 'SECGCWL' !important;letter-spacing: -2px;}
+.we_stroybx .top_stroy_bx .cont_bx h3 .title_under{font-size: 30px; color:#282828;display: inline-block;line-height: 1.25em;font-family: 'SECGCWL' !important;position: relative;letter-spacing: -2px;}
+.we_stroybx .top_stroy_bx .cont_bx h3 .title_under:after{content: ""; width:100%; height: 2px;background: #5d5d5d;position: absolute; bottom:5px; left:0;}
+.we_stroybx .top_stroy_bx .cont_bx .txtbx{font-size: 20px; color:#282828;text-align: center;line-height: 1.6em;font-family: 'SECGCWM' !important;}
+.we_stroybx .top_stroy_bx .cont_bx .txtbx .br_span{width:100%; display: block; clear: both;}
+.we_stroybx .top_stroy_bx:after{content: ""; width:0; height: 0; border-bottom: 90px solid #faf1dc;border-left: 90px solid transparent;position: absolute; bottom:0; right:0;z-index: 10;}
+
+/*컨텐츠*/
+.we_stroybx div[class*="section_"]{background: #ffffff;overflow: hidden;}
+.we_stroybx div[class*="section_"]:after{content: ""; display: table; clear: both;}
+.we_stroybx div[class*="section_"] .text_type{width:33.4%;position: relative;z-index: 10;}
+.we_stroybx div[class*="section_"] .img_type{width:66.6%;position: relative;z-index: 10;}
+
+/*img_type*/
+.we_stroybx div[class*="section_"] .img_type .imgbx{line-height: 0;overflow: hidden;}
+.we_stroybx div[class*="section_"] .img_type .imgbx img{min-width: 1280px;display: none;max-width: none;}
+.we_stroybx div[class*="section_"] .img_type.left h4{font-size: 0px; color:#ffffff;position: absolute; top:26px;right:30px;line-height:0;text-align: right;}
+.we_stroybx div[class*="section_"] .img_type.left h4 span.tit{font-size: 40px; color:#ffffff;line-height: 1.28em;border-bottom: solid 1px #fff;}
+
+/*조건값*/
+.we_stroybx div[class*="section_"] .img_type .imgbx img.imgbx_dec{display: block;}
+
+.we_stroybx div[class*="section_"] .img_type.right h4{font-size: 0px; color:#000;position: absolute; top:26px;left:30px;line-height:0;text-align: left;}
+.we_stroybx div[class*="section_"] .img_type.right h4 span.tit{font-size: 40px; color:#000;line-height: 1.28em;border-bottom: solid 1px #000;}
+
+/*text_type*/
+.we_stroybx div[class*="section_"] .text_type.right{text-align: left;}
+.we_stroybx div[class*="section_"] .text_type.left{text-align: right;}
+.we_stroybx div[class*="section_"] .text_type{padding:30px 30px 0px;}
+.we_stroybx div[class*="section_"] .text_type h4{font-size: 29px; color:#282828;font-family: 'SECGCWM' !important;margin-bottom: 24px;}
+.we_stroybx div[class*="section_"] .text_type .textbx{font-size: 17px; color:#282828;line-height: 1.5em;font-family: 'SECGCWM' !important;margin-bottom: 24px;}
+.we_stroybx div[class*="section_"] .text_type .textbx.last{margin-bottom: 0;}
+.we_stroybx div[class*="section_"] .text_type .textbx .sub_tit{font-size: 30px; font-weight: normal;}
+.we_stroybx div[class*="section_"] .text_type .textbx .br_span{display: block;clear: both; width:100%;}
+
+/*아이콘*/
+.we_stroybx .section_1{position: relative;background: #fafaf0 !important;}
+.we_stroybx .section_1:after{content: "";width:1281px; height: 642px;background: url(/media/product/wennovation/story/story_banner_two.jpg) no-repeat;position: absolute;bottom: -14px;right: 0px;}
+
+.we_stroybx .section_2{position: relative;background: #fff !important;}
+.we_stroybx .section_2:after{content: "";width:464px; height: 430px;background: url(/media/product/wennovation/story/story_banner_three.jpg) no-repeat;position: absolute;bottom: 0;left: -172px;}
+
+/*반응형*/
+@media only screen and (min-width: 1921px){
+.we_stroybx .top_stroy_bx{background-size: cover;}
+.we_stroybx div[class*="section_"] .img_type .imgbx img{width:100%;}
+.we_stroybx div[class*="section_"]{max-height:640px; overflow: hidden;}
+}
+
+@media only screen and (max-width: 1760px){
+.we_stroybx .section_2:after{left:-300px;}
+}
+
+@media only screen and (max-width: 1390px){
+.we_stroybx div[class*="section_"] .text_type{width:40%;position: relative;}
+.we_stroybx div[class*="section_"] .img_type{width:60%;position: relative;}
+}
+
+@media only screen and (max-width: 1279px){
+.we_stroybx div[class*="section_"] .text_type{width:45%;position: relative;}
+.we_stroybx div[class*="section_"] .img_type{width:55%;position: relative;}
+}
+
+@media only screen and (max-width: 1024px){
+.we_stroybx .top_stroy_bx{background: url(/media/product/wennovation/story/story_main1024.jpg) no-repeat; background-position: center center;}
+.we_stroybx div[class*="section_"] .img_type .imgbx img{min-width: 512px;}
+.we_stroybx .top_stroy_bx .bx_container{padding:84px 25px;}
+.we_stroybx .top_stroy_bx .cont_bx{padding:40px 40px 34px;}
+.we_stroybx div[class*="section_"] .text_type{width:50%;position: relative;}
+.we_stroybx div[class*="section_"] .img_type{width:50%;position: relative;}
+.we_stroybx .top_stroy_bx .cont_bx .sub_tit{font-size: 20px;}
+.we_stroybx .top_stroy_bx .cont_bx h3 .title{font-size: 30px;}
+.we_stroybx .top_stroy_bx .cont_bx h3 .title_bold{font-size: 48px;}
+.we_stroybx .top_stroy_bx .cont_bx h3 .title_under{font-size: 27px;}
+.we_stroybx .top_stroy_bx .cont_bx .txtbx{font-size: 18px;line-height: 1.5em;}
+.we_stroybx .top_stroy_bx .cont_bx .sub_tit{padding-bottom: 36px;margin-bottom: 27px;}
+.we_stroybx .top_stroy_bx .cont_bx .sub_tit:after{height: 8px;width:88px; margin-left:-44px;}
+.we_stroybx .top_stroy_bx .cont_bx h3{margin-bottom: 28px;}
+.we_stroybx div[class*="section_"] .img_type.left h4 span.tit{font-size: 32px;}
+.we_stroybx div[class*="section_"] .img_type.right h4 span.tit{font-size: 32px;}
+.we_stroybx div[class*="section_"] .text_type h4{font-size: 24px;margin-bottom: 17px;}
+.we_stroybx div[class*="section_"] .text_type .textbx{font-size: 16px;line-height: 1.4em;margin-bottom: 14px;}
+.we_stroybx div[class*="section_"] .text_type .textbx.last{margin-bottom: 0;}
+.we_stroybx div[class*="section_"] .text_type{padding:25px 25px 0;}
+.we_stroybx div[class*="section_"] .img_type.left h4{top:25px;right:25px;}
+.we_stroybx div[class*="section_"] .img_type.right h4{top:25px;left:25px;}
+.we_stroybx div[class*="section_"] .img_type .imgbx img.imgbx_dec{display: none;}
+.we_stroybx div[class*="section_"] .img_type .imgbx img.imgbx_t{display: block;}
+.we_stroybx div[class*="section_"] .text_type .textbx .sub_tit{font-size: 24px;}
+
+/*아이콘*/
+.we_stroybx .section_1:after{content: "";width:999px; height: 391px;background: url(/media/product/wennovation/story/story_banner_two1024.jpg) no-repeat;position: absolute;bottom: -14px;right: 0px;}
+.we_stroybx .section_2:after{content: "";width:269px; height: 337px;background: url(/media/product/wennovation/story/story_banner_three1024.jpg) no-repeat;position: absolute;bottom: 0;left: 0;}
+}
+
+@media only screen and (max-width: 1000px){
+.we_stroybx .section_2:after{left:-128px;}
+}
+
+@media only screen and (max-width: 767px){
+.we_stroybx .top_stroy_bx{background: url(/media/product/wennovation/story/story_main1080.jpg) no-repeat; background-position: center center;}
+.we_stroybx div[class*="section_"] .text_type{width:100%;position: relative;float: none !important;clear: both;}
+.we_stroybx div[class*="section_"] .img_type{width:100%;position: relative;float: none !important;clear: both;}
+.we_stroybx div[class*="section_"] .img_type .imgbx img{min-width: 0;max-width: 100%; width:100%;}
+.we_stroybx .top_stroy_bx{margin-bottom: 0;}
+.we_stroybx .top_stroy_bx .bx_container{padding:75px 25px;}
+.we_stroybx .top_stroy_bx .cont_bx{padding:20px 20px 20px;}
+.we_stroybx .top_stroy_bx .cont_bx .sub_tit{font-size: 12px;}
+.we_stroybx .top_stroy_bx .cont_bx h3 .title{font-size: 22px;}
+.we_stroybx .top_stroy_bx .cont_bx h3 .title_bold{font-size: 30px;}
+.we_stroybx .top_stroy_bx .cont_bx h3 .title_under{font-size: 16px;}
+.we_stroybx .top_stroy_bx .cont_bx .txtbx{font-size: 16px;line-height: 1.5em;}
+.we_stroybx .top_stroy_bx .cont_bx h3 .title_under:after{bottom: 1px; height: 1px;}
+.we_stroybx .top_stroy_bx .cont_bx .sub_tit:after{height: 5px;width:56px; margin-left:-28px;}
+.we_stroybx .top_stroy_bx .cont_bx .sub_tit{padding-bottom: 21px; margin-bottom: 16px;}
+.we_stroybx .top_stroy_bx .cont_bx h3{margin-bottom: 17px;}
+.we_stroybx .top_stroy_bx .cont_bx .txtbx{line-height: 1.45em;}
+.we_stroybx div[class*="section_"] .img_type.left h4 span.tit{font-size: 22px;}
+.we_stroybx div[class*="section_"] .img_type.right h4 span.tit{font-size: 22px;}
+.we_stroybx div[class*="section_"] .text_type h4{font-size: 22px;margin-bottom: 6px;}
+.we_stroybx div[class*="section_"] .text_type .textbx{font-size: 12px;line-height: 1.5em;}
+.we_stroybx div[class*="section_"] .img_type .imgbx img.imgbx_t{display: none;}
+.we_stroybx div[class*="section_"] .img_type .imgbx img.imgbx_m{display: block;}
+.we_stroybx div[class*="section_"] .text_type .textbx .sub_tit{font-size: 22px;}
+.we_stroybx div[class*="section_"] .text_type{padding:25px 25px;}
+#content .wennovation-curation .we_stroybx div[class*="section_"] .text_type .textbx .br_span{display: none;}
+
+/*아이콘*/
+.we_stroybx .section_1:after{display: none !important;}
+.we_stroybx .section_2:after{display: none !important;}
+.we_stroybx .section_2 .text_type{position: relative;}
+.we_stroybx .section_1 .text_type{background: url(/media/product/wennovation/story/story_banner_two1080.jpg) #f7f7f1 no-repeat;background-size: 539px 225px;background-position: right bottom;padding-bottom: 85px !important;}
+.we_stroybx .section_2 .text_type{background: url(/media/product/wennovation/story/story_banner_three1080.jpg) no-repeat;background-size: 158px 218px;background-position: left 85%;}
+}
+
+@media only screen and (max-width: 530px){
+.we_stroybx .section_1 .text_type{background: url(/media/product/wennovation/story/story_banner_two1080.jpg) #f7f7f1 no-repeat;background-size: 539px 225px;background-position: 27% bottom;}
+}
+
+@media only screen and (max-width: 400px){
+.we_stroybx .top_stroy_bx .cont_bx h3 .title{font-size: 18px;}
+.we_stroybx .top_stroy_bx .cont_bx .txtbx{font-size: 13px;}
+}
+
+/*풀위드 상단 빵가루 레이아웃*/
+.story_rowbx{max-width:1440px !important; padding-left:72px !important; padding-right:72px !important; margin:0 auto;}
+
+@media only screen and (max-width: 1024px){
+.story_rowbx{max-width: 100%!important;padding-left: 0!important; padding-right: 0!important;}
+}
+
+/*=========================================================
+  팝업(메인 임시)
+=========================================================*/ 
+.case_popup{position: fixed; top:0; left:0; right:0; bottom:0;z-index: 10000;}
+.case_popup .bg{background: rgba(0,0,0,0.6);position: absolute; top:0; left:0; width:100%; height: 100%; z-index: 1;}
+.case_popup .pop_conbx{position: absolute; z-index: 10;width: 540px;height:80%;top:130px; right:2%;overflow-y: auto;}
+.case_popup .pop_container{padding:30px 30px;position: relative;background: #f9f9f9;}
+.case_popup .pop_conbx .close{width:22px; height: 22px; background: url(/media/product/wennovation/story/pop_close_btn.png) no-repeat; background-size: 22px 22px;display: block; position: absolute; top:30px; right:30px;text-indent: -99999px;z-index: 10;}
+.case_popup .pop_conbx h3{font-size: 20px; color:#323232;margin-bottom: 15px;line-height: 1.4em; padding-right:50px;}
+.case_popup .pop_conbx .imgbx{margin-bottom: 20px;line-height: 0;text-align: center;background: #fff;}
+.case_popup .pop_conbx .text{font-size: 14px; color:#5d5d5d; line-height: 1.5em;}
+
+.case_popup .pop_conbx .sub_title{font-size: 26px; color:#3e4448;margin-bottom: 13px;font-weight: 300;letter-spacing: -2px;border-bottom: solid 1px #3e4448;padding-bottom: 20px; margin-bottom: 20px;font-weight: bold;line-height: 1.3em;}
+.case_popup .pop_conbx .case_pop_name{padding-bottom: 20px;border-bottom: solid 1px #3e4448;margin-bottom: 20px;overflow: hidden;}
+.case_popup .pop_conbx .case_pop_name li{padding:10px 0;width:50%; float: left;}
+.case_popup .pop_conbx .case_pop_name li span{font-size: 14px; color:#3e4448;line-height: 1.4em;display: block;}
+.case_popup .pop_conbx .date_text{font-size: 16px; color:#3e4448;line-height: 1.4em;}
+.case_popup .pop_conbx .case_pop_name li:nth-child(odd){clear: both;}
+
+/*반응형*/
+@media only screen and (max-width: 960px){
+.case_popup .pop_conbx{width:80%; top:5%; left:10%;margin-left:0;}
+.case_popup .pop_conbx .sub_title{padding-right:50px;}
+
+}
+
+@media only screen and (max-width: 767px){
+.case_popup .pop_conbx .case_pop_name li{width:100%;}
+.case_popup .pop_conbx .sub_title{font-size: 23px;}
+}
+
+
+
+/*=========================================================
+  내 마음에 딱 맞는 WEnnovation 제품을 선택해주세요!(로그인)
+=========================================================*/ 
+.case_event .top_bannerbx.two_type{background: #b5e5d2;}
+.case_event .top_bannerbx.two_type .cont_bx .banner_container{padding:42px 38px 18px;}
+.case_event .top_bannerbx.two_type .cont_bx .sub_title{font-size: 28px;font-family: 'SECGCWL',"Roboto", Arial, Tahoma, sans-serif!important;}
+.case_event .top_bannerbx.two_type .cont_bx .text{font-family: 'SECGCWL',"Roboto", Arial, Tahoma, sans-serif!important;margin-bottom: 29px;}
+.case_event .top_bannerbx.two_type .cont_bx .date_text{margin-bottom: 26px;}
+.case_event .top_bannerbx.two_type .cont_bx:before{content: ""; width:429px; height: 431px; background: url(//media.samsungwa.com/media/weinnovate/2016/09/two_event_bg_left.png) no-repeat;top:-32px; left:20px;background-size: 429px 431px;}
+.case_event .top_bannerbx.two_type .cont_bx:after{content: ""; width:323px; height: 390px; background: url(//media.samsungwa.com/media/weinnovate/2016/09/two_event_bg_right.png) no-repeat;top:-32px; right:20px;background-size: 323px 390px;}
+
+/*반응형*/
+@media only screen and (max-width: 1024px){
+.case_event .top_bannerbx.two_type .cont_bx:before{width:310px; height: 357px;background: url(//media.samsungwa.com/media/weinnovate/2016/09/two_event_bg_left_t.png) no-repeat;left:15px;top:-25px;background-size: 310px 357px;}
+.case_event .top_bannerbx.two_type .cont_bx:after{width:254px; height: 401px; background: url(//media.samsungwa.com/media/weinnovate/2016/09/two_event_bg_right_t.png) no-repeat;right:15px;top:-30px;background-size: 254px 401px;}
+}
+
+@media only screen and (max-width: 767px){
+.case_event .top_bannerbx.two_type .cont_bx .banner_container{padding:25px 60px 18px;}
+.case_event .top_bannerbx.two_type .cont_bx .title{font-size: 13px;line-height: 1.4em;margin-bottom: 5px;}
+.case_event .top_bannerbx.two_type .cont_bx .sub_title{font-size: 17px;font-weight: bold;letter-spacing: -0.025em;}
+.case_event .top_bannerbx.two_type .cont_bx .sub_title .br_span{display: block; clear: both; width:100%;}
+.case_event .top_bannerbx.two_type .cont_bx:before{width:105px; height: 137px;background: url(//media.samsungwa.com/media/weinnovate/2016/09/two_event_bg_left_m.png) no-repeat;left:0;top:0;background-size: 105px 137px;}
+.case_event .top_bannerbx.two_type .cont_bx:after{width:89px; height: 135px; background: url(//media.samsungwa.com/media/weinnovate/2016/09/two_event_bg_right_m.png) no-repeat;right:0;top:0;background-size: 89px 135px;}
+.case_event .top_bannerbx.two_type .cont_bx .date_text{font-size: 13px;margin-bottom: 5px;}
+.case_event .top_bannerbx.two_type .cont_bx .text{font-size: 11px;margin-bottom: 5px;}
+.case_event .top_bannerbx.two_type .cont_bx .blod_text{font-size: 11px;}
+
+/*로그인*/
+.event_loginbx.two_type .login_cont{margin-top:30px; margin-bottom: 30px;}
+.event_loginbx.two_type h3{font-size: 18px;}
+.event_loginbx.two_type .text{font-size: 11px;margin-bottom: 10px;}
+.event_loginbx.two_type .btn_box a.login_btn{font-size: 20px;padding:10px 10px;margin-bottom: 8px;}
+.event_loginbx.two_type .btn_box a.signup_btn{font-size: 20px;padding:10px 10px;}
+.event_loginbx.two_type .s_text{font-size: 11px;}
+}
+
+/*=========================================================
+  내 마음에 딱 맞는 WEnnovation 제품을 선택해주세요!(이벤트 페이지)
+=========================================================*/
+.case_event .top_bannerbx.two_type .text_bx{position: relative;z-index: 5;}
+.form_postbx.two_type > ul:after{content: ""; display: table; clear: both;}
+.form_postbx.two_type .post_contbx h4{padding:27px 10px;}
+.form_postbx.two_type .post_contbx h4 .title{display: block;font-size: 18px; color:#323232;line-height: 1.25em;font-weight: bold;margin-bottom: 2px;}
+.form_postbx.two_type .post_contbx h4 .com_bx{display: block;font-size: 14px; color:#323232;line-height: 1.25em;}
+.form_postbx.two_type .submit_btn{margin-top:68px;margin-bottom: 40px;}
+
+.case_event.two_type .top_bannerbx .cont_bx .sub_title{line-height: 1.3em;}
+
+/*반응형*/
+@media only screen and (max-width: 767px){
+.form_postbx.two_type .post_contbx h4 .title{font-size: 12px;}
+.form_postbx.two_type .post_contbx h4 .com_bx{font-size: 12px;}
+.form_postbx.two_type .post_contbx h4{padding:5px 10px;}
+.form_postbx.two_type .submit_btn{font-size: 20px;padding:15px 10px;}
+.form_postbx.two_type > ul > li{margin-bottom: 40px;}
+.form_postbx.two_type .submit_btn{margin-top:40px;margin-bottom: 0;}
+}
+
+/*=========================================================
+  내 마음에 딱 맞는 WEnnovation 제품을 선택해주세요!(이벤트 메인)
+=========================================================*/
+.case_event.wp_main_banner.two_type .top_bannerbx .cont_bx .banner_container{padding:29px 38px 29px;}
+.case_event.wp_main_banner.two_type .top_bannerbx .cont_bx .title{line-height: 1.3em; margin-bottom: 4px;}
+.case_event.wp_main_banner.two_type .top_bannerbx .cont_bx .sub_title{margin-bottom: 8px;}
+.case_event.wp_main_banner.two_type .top_bannerbx .cont_bx .text{margin-bottom: 8px;}
+.case_event.wp_main_banner.two_type .bn_idea{margin-top:20px;}
+
+.case_event.wp_main_banner.two_type .top_bannerbx .cont_bx:before{content: ""; width:320px; height: 341px; background: url(//media.samsungwa.com/media/weinnovate/2016/09/two_event_m_left.png) no-repeat;top:-35px; left:5%;background-size: 320px 341px;}
+.case_event.wp_main_banner.two_type .top_bannerbx .cont_bx:after{content: ""; width:304px; height: 328px; background: url(//media.samsungwa.com/media/weinnovate/2016/09/two_event_m_right.png) no-repeat;top:-35px; right:5%;background-size: 304px 328px;}
+
+/*반응형*/
+@media only screen and (max-width: 1024px){
+.case_event.wp_main_banner.two_type .top_bannerbx .cont_bx:before{left:15px;}
+.case_event.wp_main_banner.two_type .top_bannerbx .cont_bx:after{right:15px;}
+}
+
+@media only screen and (max-width: 767px){
+.case_event.wp_main_banner.two_type .top_bannerbx .cont_bx .sub_title{max-width: 260px;margin-left: auto;margin-right:auto;}
+.case_event.wp_main_banner.two_type .top_bannerbx .cont_bx .banner_container{padding:5%;}
+.case_event.wp_main_banner.two_type .top_bannerbx .cont_bx .sub_title{line-height: 1.4em;}
+.case_event.wp_main_banner.two_type .top_bannerbx .cont_bx .sub_title br{display: none;}
+.case_event.wp_main_banner.two_type .top_bannerbx .cont_bx .text .br_span{display: block; clear: both; width:100%;}
+.case_event.wp_main_banner.two_type .top_bannerbx .cont_bx:before{width:105px; height: 137px;background: url(//media.samsungwa.com/media/weinnovate/2016/09/two_event_bg_left_m.png) no-repeat;left:0;top:0;background-size: 105px 137px;}
+.case_event.wp_main_banner.two_type .top_bannerbx .cont_bx:after{width:89px; height: 135px; background: url(//media.samsungwa.com/media/weinnovate/2016/09/two_event_bg_right_m.png) no-repeat;right:5px;top:0;background-size: 89px 135px;}
+}
+
+/*=========================================================
+  내 마음에 딱 맞는 WEnnovation 제품을 선택해주세요!(이벤트 완료 페이지)
+=========================================================*/
+@media only screen and (max-width: 767px){
+.form_postbx.end_post.two_type .post_contbx{margin-bottom: 10px;}
+.form_postbx.end_post.two_type .post_checkbox{font-size: 14px;}
+.event_popuop .pop_conbx h3{font-size: 18px;}
+.event_popuop .pop_container{padding:20px 20px;}
+.event_popuop .pop_conbx .close{top:20px; right:20px;}
+}
+
+/*=========================================================
+  History list
+=========================================================*/
+
+/*상단배너*/
+.history_list{overflow: hidden;}
+.history_list .case_event{overflow: visible;}
+.history_list .case_event .top_bannerbx.two_type{background:url(/media/product/wennovation/story/history_bg_pc.png) #b8dbe1 no-repeat;background-position: 100% bottom;}
+.history_list .case_event .top_bannerbx.two_type .cont_bx .banner_container{padding:117px 38px 94px;}
+.history_list .case_event .top_bannerbx .cont_bx .title{font-size: 24px; color:#282828;line-height: 1.4em;margin-bottom: 6px;font-family:'SECGCWB',"Roboto", Arial, Tahoma, sans-serif!important;}
+.history_list .case_event .top_bannerbx.two_type .cont_bx .sub_title{font-size: 35px; color:#282828;font-family:'SharpSans','SECGCWB',"Roboto", Arial, Tahoma, sans-serif!important;font-weight: bold; letter-spacing: 0;margin-bottom: 24px;}
+.history_list .case_event .top_bannerbx.two_type .cont_bx .text{font-size: 19px;}
+
+.history_list .case_event .top_bannerbx.two_type .cont_bx:before{content: ""; width:543px; height: 361px; background: url(//media.samsungwa.com/media/weinnovate/2016/09/history_back_left_pc.png) no-repeat;top:0; right:58%;left:auto;background-size: 543px 361px;}
+.history_list .case_event .top_bannerbx.two_type .cont_bx:after{content: ""; width:564px; height: 375px; background: url(//media.samsungwa.com/media/weinnovate/2016/09/history_back_right_pc.png) no-repeat;top:0; right:0px;background-size: 564px 375px;}
+
+/*이미지*/
+.history_list .top_bannerbx .cont_bx .banner_container:after{content: ""; width:0; height: 0; border-bottom: 90px solid #faf1dc;border-left: 90px solid transparent;position: absolute; bottom:0; right:0;z-index: 10;}
+.history_list .top_bannerbx .cont_bx:after{content: ""; width:665px; height: 287px;background: url(//media.samsungwa.com/media/weinnovate/2016/09/history_top_bg_full.png) no-repeat;position: absolute; top:0; right:0; background-position: -6px -103px;}
+
+/*반응형*/
+@media only screen and (max-width: 1024px){
+.history_list .case_event .top_bannerbx.two_type .cont_bx .banner_container{padding:93px 38px 68px;}
+.history_list .case_event .top_bannerbx .cont_bx .title{font-size: 19px;}
+.history_list .case_event .top_bannerbx.two_type .cont_bx .sub_title{font-size: 27px;margin-bottom: 19px;}
+.history_list .case_event .top_bannerbx.two_type .cont_bx .text{font-size: 15px;}
+.history_list .case_event .top_bannerbx.two_type .cont_bx:before{width:376px; height: 250px; background-size: 376px 250px;right:63%;}
+.history_list .case_event .top_bannerbx.two_type .cont_bx:after{width:448px; height:298px; background-size: 448px 298px;}
+}
+
+@media only screen and (max-width: 767px){
+.history_list .case_event .top_bannerbx.two_type .cont_bx .banner_container{padding:80px 38px 96px;}
+.history_list .case_event .top_bannerbx .cont_bx .title{font-size: 13px;margin-bottom: 0;}
+.history_list .case_event .top_bannerbx.two_type .cont_bx .sub_title{font-size: 17px;margin-bottom: 5px;}
+.history_list .case_event .top_bannerbx.two_type .cont_bx .text{font-size: 11px;}
+.history_list .case_event .top_bannerbx.two_type .cont_bx:before{width:186px; height: 242px;background: url(//media.samsungwa.com/media/weinnovate/2016/09/history_back_left_m.png) no-repeat; background-size: 186px 242px;left:0%; right:auto;}
+.history_list .case_event .top_bannerbx.two_type .cont_bx:after{width:213px; height:244px;background: url(//media.samsungwa.com/media/weinnovate/2016/09/history_back_right_m.png) no-repeat; background-size: 213px 244px;}
+.history_list .case_event .top_bannerbx.two_type{background:url(//media.samsungwa.com/media/weinnovate/2016/09/history_bg_pc.png) #b8dbe1 repeat-x; background-size:auto 40px;background-position: 0 bottom;}
+}
+
+
+
+/*리스트 포스트*/
+.list_postbx{padding:33px 38px;background: #fff;}
+.list_postbx:after{content: ""; clear: both; display: table;}
+.list_postbx .list_postbx_title{padding-bottom:16px; margin-bottom:40px;border-bottom:1px solid #898989;}
+.list_postbx .list_postbx_title h3 {font-size:28px; color:#282828;letter-spacing: -1px;line-height: 1.4em;font-weight:500;}
+.list_postbx .list_cont{padding:0 15px;}
+.list_postbx .list_cont .post_contbx:after{content: ""; clear: both; display: table;}
+.list_postbx .list_cont ul li{clear:both;margin-bottom: 40px;}
+.list_postbx .post_contbx:after{content:"";display:block; clear:both;}
+.list_postbx .post_contbx .feed_thumbx{float:left;margin-right:30px;position: relative;overflow: hidden;max-width: 448px;width:38%;}
+.list_postbx .post_contbx .feed_thumbx a{display:block;}
+.list_postbx .post_contbx .post_feedbx{position: relative; min-height:244px;padding:16px 0 40px 0;overflow: hidden;}
+.list_postbx .post_contbx .post_feedbx h4{padding-bottom:20px;line-height: 1em;}
+.list_postbx .post_contbx .post_feedbx h4 a{font-size:23px;color:#282828;line-height: 1.3em;font-weight: bold;}
+.list_postbx .post_contbx .post_feedbx .feed_date {position: absolute; bottom:10px;left:0;font-size:15px; color:#5d5d5d;line-height: 1.4em;font-family: 'SECGCWL',"Roboto", Arial, Tahoma, sans-serif!important;}
+.list_postbx .more_btn_ro {text-align: center;padding-bottom:7px;}
+.list_postbx .more_btn_ro a {display:inline-block;width:190px;height:40px;line-height: 40px;border: 1px solid #7f7f7f;font-size:16px;color:#313131;}
+.list_postbx .post_contbx .thum{line-height: 0;}
+.list_postbx .post_contbx p.feed_desc a {font-size:15px; color:#5d5d5d;font-family: 'SECGCWL',"Roboto", Arial, Tahoma, sans-serif!important;}
+
+/*반응형*/
+@media only screen and (max-width: 1024px){
+.list_postbx .post_contbx .post_feedbx h4 a{font-size: 19px;}
+.list_postbx .post_contbx .feed_thumbx{max-width: 390px; width:44%;}
+.list_postbx .list_cont{padding:0 10px;}
+.list_postbx .post_contbx .feed_thumbx{margin-right:20px;}
+.list_postbx .post_contbx .post_feedbx{padding:10px 0 40px 0;min-height: 220px;}
+
+}
+
+
+@media only screen and (max-width: 767px){
+.list_postbx .list_cont ul li{margin-bottom: 25px;}
+.list_postbx{padding:20px 20px;}
+.list_postbx .list_postbx_title h3{font-size: 19px;}
+.list_postbx .list_postbx_title{padding-bottom: 9px;margin-bottom: 20px;}
+.list_postbx .post_contbx .post_feedbx h4 a{font-size: 15px;line-height: 1.3em;}
+.list_postbx .post_contbx .post_feedbx .feed_date{font-size: 11px;position: static;}
+.list_postbx .post_contbx .feed_thumbx{float: none;margin-right:0;text-align: center;width:100%;}
+.list_postbx .post_contbx .feed_thumbx a{text-align: center;}
+.list_postbx .post_contbx .feed_thumbx a {width:100%;height:auto;}
+.list_postbx .post_contbx .thum img{width:100%;}
+.list_postbx .list_cont{padding:0;}
+.list_postbx .post_contbx p.feed_desc{margin-bottom: 10px;line-height: 1em;}
+.list_postbx .post_contbx .post_feedbx{padding-bottom: 0;min-height: 0;}
+.list_postbx .post_contbx .post_feedbx h4{padding-bottom: 10px;line-height: 0;}
+.list_postbx .post_contbx p.feed_desc a{line-height: 1.6em;font-size: 11px;}
+.list_postbx .more_btn_ro a{font-size: 20px;display: block; width:100%;height: 50px;padding:5px 10px;}
+
+
+}
+
+/*=========================================================
+  History Single
+=========================================================*/
+
+/*싱글 포스트*/
+.single_postbx{padding:33px 38px;background: #fff;}
+.single_postbx:after{content: ""; clear: both; display: table;}
+.single_postbx .single_postbx_title{position: relative; padding-bottom:24px; margin-bottom:65px;border-bottom:1px solid #898989;}
+.single_postbx .single_postbx_title .title_bx{padding-left:13px; padding-right:140px;padding-top:30px;}
+.single_postbx .single_postbx_title h3 {padding-bottom:10px;font-size:28px; color:#282828;letter-spacing: -1px;line-height: 1.4em;font-weight:500;}	
+.single_postbx .single_postbx_title .sns_bx{bottom:18px;}
+/*.single_postbx .single_contbx{text-align: center;}*/
+.single_postbx .single_contbx .cont_bx{max-width:840px;margin:0 auto;}
+.single_postbx .post_date {font-size:18px; color:#5d5d5d;line-height: 1.4em;font-family: 'SECGCWL',"Roboto", Arial, Tahoma, sans-serif!important;	}
+.single_postbx .bn_idea{display:block; width:190px; height:40px; line-height:40px; text-align:center; color:#fff; background:#2f3438;margin:65px auto 2px;}
+
+/*상세페이지 등록*/
+.single_postbx .single_contbx .cont_bx *{font-size:18px; color:#282828;word-break: keep-all;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;font-family: 'SECGCWL',"Roboto", Arial, Tahoma, sans-serif!important; line-height: 1.7em;}
+.single_postbx .single_contbx .cont_bx p{margin-top: 40px;font-size: 18px;}
+.single_postbx .single_contbx .cont_bx ul{margin-top:40px;}
+.single_postbx .single_contbx .cont_bx ul:first-child{margin-top:0;}
+.single_postbx .single_contbx .cont_bx li{font-size: 18px;}
+.single_postbx .single_contbx .cont_bx li a{font-size: 18px;}
+.single_postbx .single_contbx .cont_bx dl{margin-top:40px;}
+.single_postbx .single_contbx .cont_bx dl:first-child{margin-top:0;}
+.single_postbx .single_contbx .cont_bx dt{font-size:  18px;}
+.single_postbx .single_contbx .cont_bx dd{font-size:  18px;}
+.single_postbx .single_contbx .cont_bx p:first-child{margin-top:0;}
+.single_postbx .single_contbx .cont_bx h1{font-size: 30px; color:#282828; font-weight: bold;line-height: 1.4em;margin: 40px 0 0;font-family:'SECGCWB',"Roboto", Arial, Tahoma, sans-serif!important;font-weight:bold;}
+.single_postbx .single_contbx .cont_bx h2{font-size: 28px; color:#282828; font-weight: bold;line-height: 1.4em;margin: 40px 0 0;font-family:'SECGCWB',"Roboto", Arial, Tahoma, sans-serif!important;font-weight:bold;}
+.single_postbx .single_contbx .cont_bx h3{font-size: 26px; color:#282828; font-weight: bold;line-height: 1.4em;margin: 40px 0 0;font-family:'SECGCWB',"Roboto", Arial, Tahoma, sans-serif!important;font-weight:bold;}
+.single_postbx .single_contbx .cont_bx h4{font-size: 24px; color:#282828; font-weight: bold;line-height: 1.4em;margin: 40px 0 0;font-family:'SECGCWB',"Roboto", Arial, Tahoma, sans-serif!important;font-weight:bold;}
+.single_postbx .single_contbx .cont_bx h5{font-size: 22px; color:#282828; font-weight: bold;line-height: 1.4em;margin: 40px 0 0;font-family:'SECGCWB',"Roboto", Arial, Tahoma, sans-serif!important;font-weight:bold;}
+.single_postbx .single_contbx .cont_bx h6{font-size: 20px; color:#282828; font-weight: bold;line-height: 1.4em;margin: 40px 0 0;font-family:'SECGCWB',"Roboto", Arial, Tahoma, sans-serif!important;font-weight:bold;}
+.single_postbx .single_contbx .cont_bx table{width:100%;margin-top:40px;}
+.single_postbx .single_contbx .cont_bx table caption{display: none;}
+.single_postbx .single_contbx .cont_bx table th,.single_postbx .single_contbx .cont_bx table td{vertical-align: middle;font-size: 18px;border:solid 1px #898989;}
+.single_contetbox .single_contbox iframe{max-width: 100% !important;}
+
+/*반응형*/
+@media only screen and (max-width: 1024px){
+.single_postbx{padding:33px 50px;}
+.single_postbx .single_postbx_title .title_bx{padding-left:0;}
+}
+
+@media only screen and (max-width: 767px){
+.single_postbx{padding:30px 20px;}
+.single_postbx .single_postbx_title .title_bx{padding:0;}
+.single_postbx .single_postbx_title{padding-bottom: 15px;margin-bottom: 20px;}
+.single_postbx .single_postbx_title h3{font-size: 17px;margin-bottom: 40px;}
+.single_postbx .post_date{font-size: 10px;}
+.single_postbx .single_postbx_title .sns_bx{bottom:15px;}
+
+/*상세페이지 등록*/
+.single_postbx .single_contbx .cont_bx *{font-size:12px; color:#282828;word-break: keep-all;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;font-family: 'SECGCWL',"Roboto", Arial, Tahoma, sans-serif!important; line-height: 1.9em;}
+.single_postbx .single_contbx .cont_bx p{margin-top: 25px;font-size: 12px;}
+.single_postbx .single_contbx .cont_bx ul{margin-top:25px;}
+.single_postbx .single_contbx .cont_bx ul:first-child{margin-top:0;}
+.single_postbx .single_contbx .cont_bx li{font-size: 12px;}
+.single_postbx .single_contbx .cont_bx li a{font-size: 12px;}
+.single_postbx .single_contbx .cont_bx dl{margin-top:25px;}
+.single_postbx .single_contbx .cont_bx dl:first-child{margin-top:0;}
+.single_postbx .single_contbx .cont_bx dt{font-size:  12px;}
+.single_postbx .single_contbx .cont_bx dd{font-size:  12px;}
+.single_postbx .single_contbx .cont_bx p:first-child{margin-top:0;}
+.single_postbx .single_contbx .cont_bx h1{font-size: 30px; color:#282828; font-weight: bold;line-height: 1.4em;margin: 25px 0 0;font-family:'SECGCWB',"Roboto", Arial, Tahoma, sans-serif!important;font-weight:bold;}
+.single_postbx .single_contbx .cont_bx h2{font-size: 28px; color:#282828; font-weight: bold;line-height: 1.4em;margin: 25px 0 0;font-family:'SECGCWB',"Roboto", Arial, Tahoma, sans-serif!important;font-weight:bold;}
+.single_postbx .single_contbx .cont_bx h3{font-size: 26px; color:#282828; font-weight: bold;line-height: 1.4em;margin: 25px 0 0;font-family:'SECGCWB',"Roboto", Arial, Tahoma, sans-serif!important;font-weight:bold;}
+.single_postbx .single_contbx .cont_bx h4{font-size: 24px; color:#282828; font-weight: bold;line-height: 1.4em;margin: 25px 0 0;font-family:'SECGCWB',"Roboto", Arial, Tahoma, sans-serif!important;font-weight:bold;}
+.single_postbx .single_contbx .cont_bx h5{font-size: 22px; color:#282828; font-weight: bold;line-height: 1.4em;margin: 25px 0 0;font-family:'SECGCWB',"Roboto", Arial, Tahoma, sans-serif!important;font-weight:bold;}
+.single_postbx .single_contbx .cont_bx h6{font-size: 20px; color:#282828; font-weight: bold;line-height: 1.4em;margin: 25px 0 0;font-family:'SECGCWB',"Roboto", Arial, Tahoma, sans-serif!important;font-weight:bold;}
+.single_postbx .single_contbx .cont_bx table{width:100%;margin-top:25px;}
+.single_postbx .single_contbx .cont_bx table caption{display: none;}
+.single_postbx .single_contbx .cont_bx table th,.single_postbx .single_contbx .cont_bx table td{vertical-align: middle;font-size: 12px;border:solid 1px #898989;}
+.single_contetbox .single_contbox iframe{max-width: 100% !important;}
+.single_postbx .bn_idea{margin-top:40px;width:100%;font-size: 20px;height: 50px;padding:6px 10px;}
+}
+
+/*서치 호버박스*/
+.h_listbx li.hover_textbx a:hover{opacity: 1;}
+.h_listbx li.hover_textbx a .bx_hover{display: block; position: absolute; top:0; left:0; width:100%; height: 100%; background: rgba(255,255,255,0.9);z-index: 10;    transition: all 0.2s ease-in-out; -webkit-transition: all 0.2s ease-in-out;opacity: 0; visibility: hidden;}
+.h_listbx li.hover_textbx a .bx_hover .h_tbl{display: table; position: absolute; top:0; left:0; width:100%; height: 100%;}
+.h_listbx li.hover_textbx a .bx_hover .h_tbl .h_cell{display: table-cell; vertical-align: middle;text-align: center;}
+.h_listbx li.hover_textbx a .bx_hover .h_tbl .h_cell .text{padding:10px 20px;text-align: center;display: block;font-weight: bold; font-size: 32px; letter-spacing: -1px; line-height: 38px;color:#000;}
+
+/*호버*/
+.h_listbx li.hover_textbx a:focus{opacity: 1;}
+.h_listbx li.hover_textbx a:hover .bx_hover{opacity: 1; visibility: visible;}
+.h_listbx li.hover_textbx a:focus .bx_hover{opacity: 1; visibility: visible;}
+
+/*반응형*/
+@media only screen and (max-width: 1024px){
+.h_listbx li.hover_textbx a .bx_hover .h_tbl .h_cell .text{font-size: 32px; line-height: 38px;}
+}
+
+@media only screen and (max-width: 767px){
+.h_listbx li.hover_textbx a .bx_hover .h_tbl .h_cell .text{font-size: 15px; line-height: 19px;}
+}
+
+/*그리드타입 호버박스*/
+.wassup_style_1 li[class*="wassup_grid"] .Wassup_List_Click{position: relative;}
+.wassup_style_1 li[class*="wassup_grid"] a:hover{opacity: 1;}
+.wassup_style_1 li[class*="wassup_grid"] a .bx_hover{display: block; position: absolute; top:0; left:0; width:100%; height: 100%; background: rgba(255,255,255,0.9);z-index: 10;    transition: all 0.2s ease-in-out; -webkit-transition: all 0.2s ease-in-out;opacity: 0; visibility: hidden;}
+.wassup_style_1 li[class*="wassup_grid"] a .bx_hover .h_tbl{display: table; position: absolute; top:0; left:0; width:100%; height: 100%;}
+.wassup_style_1 li[class*="wassup_grid"] a .bx_hover .h_tbl .h_cell{display: table-cell; vertical-align: middle;text-align: center;}
+.wassup_style_1 li[class*="wassup_grid"] a .bx_hover .h_tbl .h_cell .text{padding:10px 20px;text-align: center;display: block;font-weight: bold; font-size: 20px; letter-spacing: -1px; line-height: 26px;color:#000;}
+
+/*호버*/
+.wassup_style_1 li[class*="wassup_grid"] a:focus{opacity: 1;}
+.wassup_style_1 li[class*="wassup_grid"] a:hover .bx_hover{opacity: 1; visibility: visible;}
+.wassup_style_1 li[class*="wassup_grid"] a:focus .bx_hover{opacity: 1; visibility: visible;}
+
+/*반응형*/
+@media only screen and (max-width: 1024px){
+.wassup_style_1 li[class*="wassup_grid"] a .bx_hover .h_tbl .h_cell .text{font-size: 22px; line-height: 27px;}
+}
+
+@media only screen and (max-width: 767px){
+.wassup_style_1 li[class*="wassup_grid"] a .bx_hover .h_tbl .h_cell .text{font-size: 15px; line-height: 19px;}
+}
+
+
+/*기획전 종료 페이지*/
+.exit_exhibition{background-color:#fff;}
+.e_singlebx{text-align: center;padding:82px 30px;}
+.e_singlebx h1{line-height: 0; margin-bottom: 36px;}
+.e_singlebx h2{font-size: 30px; color:#282828;letter-spacing: -0.05em;margin-bottom: 26px; padding-bottom: 26px;position: relative;}
+.e_singlebx h2:after{content: ""; width:48px; height: 1px; background: #000; position: absolute; bottom:0; left:50%; margin-left:-24px;}
+.e_singlebx .text_bx{font-size: 18px; line-height: 24px;letter-spacing: -0.05em;color:#282828;margin-bottom: 55px;}
+.e_singlebx .btn_bx{font-size: 0; line-height: 0;}
+.e_singlebx .btn_bx .list_morebx{font-size: 13px; letter-spacing: -0.025em;color:#282828;border:solid 1px #000;width:96px;display: inline-block;padding:9px 10px 6px;line-height: 1em; height: 30px;transition: all 0.2s ease-in-out; -webkit-transition: all 0.2s ease-in-out;}
+
+/*호버*/
+.e_singlebx .btn_bx .list_morebx:hover{color: #fff;background-color: #000;}
+
+/*반응형*/
+@media only screen and (max-width: 1024px){
+.e_singlebx{text-align: center;padding:86px 30px;}
+}
+
+@media only screen and (max-width: 767px){
+.e_singlebx{text-align: center;padding:98px 20px;}
+.e_singlebx h2{font-size: 23px;padding-bottom: 19px;margin-bottom: 20px;}
+.e_singlebx h2:after{width:30px; margin-left:-15px;}
+.e_singlebx .text_bx{font-size: 13px;line-height: 19px;margin-bottom: 30px;}
+.e_singlebx .btn_bx .list_morebx{font-size: 20px;display: block; width:100%;height: 50px;padding:14px 10px;}
+.e_singlebx .text_bx .br_span{display: block; width:100%; clear: both;}
+}
+
+
+/*기획전종료 서치박스*/
+.h_searchbx.h_listbx li.hover_textbx a .bx_hover .h_tbl .h_cell .text{font-size: 20px;line-height: 26px;}
+
+/*반응형*/
+@media only screen and (max-width: 1024px){
+.h_searchbx.h_listbx li.hover_textbx a .bx_hover .h_tbl .h_cell .text{font-size: 22px; line-height: 27px;}
+}
+
+@media only screen and (max-width: 767px){
+.h_searchbx.h_listbx li.hover_textbx a .bx_hover .h_tbl .h_cell .text{font-size: 15px; line-height: 19px;}
+}
+
+/*=========================================================
+ 케이스 디자인 공모전 최종 수상작 발표(로그인)
+=========================================================*/
+.event_loginbx.award h3{margin-bottom: 40px;}
+
+@media only screen and (max-width: 767px){
+.event_loginbx.award h3{margin-bottom: 25px;}
+}
+
+
+/*=========================================================
+ 케이스 디자인 공모전 최종 수상작 발표(상단)
+=========================================================*/
+.case_event .top_bannerbx.two_type.award .cont_bx .banner_container{padding:38px 20px 37px;}
+.case_event .top_bannerbx.award .cont_bx .title{font-size: 30px; line-height: 1.3em;padding-top:69px; background: url(//media.samsungwa.com/media/weinnovate/2016/09/award_icon.png) no-repeat;background-position: center 0;margin-bottom: 3px;}
+.case_event .top_bannerbx.two_type.award .cont_bx .sub_title{font-size: 36px;font-family: 'SECGCWB' !important;font-weight: bold;color:#282828;margin-bottom: 24px;word-break: keep-all; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word;}
+.case_event .top_bannerbx.two_type.award .cont_bx .text{font-size: 19px;color:#282828;}
+.case_event .top_bannerbx.two_type.award .cont_bx .banner_container .tp_bx{display: inline-block;padding:0 100px;position: relative;}
+.case_event .top_bannerbx.two_type.award .cont_bx:before{display: none;}
+.case_event .top_bannerbx.two_type.award .cont_bx:after{display: none;}
+.case_event .top_bannerbx.two_type.award{background:url(//media.samsungwa.com/media/weinnovate/2016/09/award_bg.jpg) repeat;}
+.case_event .top_bannerbx.two_type.award .tp_bx:before{content: "";width:70px; height: 145px; position: absolute; top:50%; left:0;margin-top:-72px;background: url(//media.samsungwa.com/media/weinnovate/2016/09/award_top_bg_left.png) no-repeat;}
+.case_event .top_bannerbx.two_type.award .tp_bx:after{content: "";width:70px; height: 145px; position: absolute; top:50%; right:0;margin-top:-72px;background: url(//media.samsungwa.com/media/weinnovate/2016/09/award_top_bg_right.png) no-repeat;}
+
+@media only screen and (max-width: 1024px){
+.case_event .top_bannerbx.two_type.award .cont_bx .banner_container{padding:38px 20px 48px;}
+.case_event .top_bannerbx.award .cont_bx .title{background-size: 61px 54px;font-size: 24px; padding-top:62px;}
+.case_event .top_bannerbx.two_type.award .cont_bx .sub_title{font-size: 26px;margin-bottom: 15px;}
+.case_event .top_bannerbx.two_type.award .cont_bx .text{font-size: 15px;margin-bottom: 25px;}
+.case_event .top_bannerbx.two_type.award .tp_bx:before{content: "";width:63px; height: 130px;background-size: 63px 130px;margin-top:-40px;}
+.case_event .top_bannerbx.two_type.award .tp_bx:after{content: "";width:63px; height: 130px;background-size: 63px 130px;margin-top:-40px;}
+}
+
+@media only screen and (max-width: 767px){
+.case_event .top_bannerbx.two_type.award .cont_bx .banner_container .tp_bx{padding:0 50px;}
+.case_event .top_bannerbx.two_type.award .cont_bx .banner_container{padding:43px 20px 40px;}
+.case_event .top_bannerbx.award .cont_bx .title{background-size: 38px 34px;font-size: 13px; padding-top:40px;}
+.case_event .top_bannerbx.two_type.award .cont_bx .sub_title{font-size: 18px;margin-bottom: 9px;}
+.case_event .top_bannerbx.two_type.award .cont_bx .text{font-size: 11px;margin-bottom: 7px;}
+.case_event .top_bannerbx.two_type.award .tp_bx:before{content: "";width:32px; height: 67px;background-size: 32px 67px;margin-top:-33px;}
+.case_event .top_bannerbx.two_type.award .tp_bx:after{content: "";width:32px; height: 67px;background-size: 32px 67px;margin-top:-33px;}
+}
+
+/*=========================================================
+ 케이스 디자인 공모전 최종 수상작 발표(상세 리스트)
+=========================================================*/
+.form_postbx.award{padding:116px 38px 38px;}
+.form_postbx.two_type.award .post_contbx h4{padding:29px 10px;}
+.form_postbx.two_type.award .post_contbx h4 .title{margin-bottom: 6px;}
+.form_postbx.two_type.award .post_contbx h4 .com_bx{font-size: 18px;}
+.form_postbx.award .post_contbx .thum{padding:17px 0;}
+.form_postbx.award > ul{text-align: center;font-size: 0; line-height: 0;margin:0 -38px;}
+.form_postbx.award > ul > li{float: none; display: inline-block;padding:0 38px;margin-bottom: 90px;width:33.3333%;max-width: 324px;}
+.form_postbx.award > ul > li.li_brbx_pc{display: none;}
+.form_postbx.award > ul > li.li_brbx_m{width:100%; clear: both; display: block;margin:0; padding:0;}
+
+/*아이콘*/
+.form_postbx.award > ul > li .post_contbx{position: relative;}
+.form_postbx.award > ul > li .post_contbx .best_icon{width:53px; height: 80px;position: absolute; top:-15px; left:-15px;display: block;text-indent: -999999px;text-align: left;}
+.form_postbx.award > ul > li.best_1 .post_contbx .best_icon{background: url(//media.samsungwa.com/media/weinnovate/2016/09/icon_award_1.png) no-repeat;}
+.form_postbx.award > ul > li.best_2 .post_contbx .best_icon{background: url(//media.samsungwa.com/media/weinnovate/2016/09/icon_award_2.png) no-repeat;}
+.form_postbx.award > ul > li.best_3 .post_contbx .best_icon{background: url(//media.samsungwa.com/media/weinnovate/2016/09/icon_award_3.png) no-repeat;}
+.form_postbx.award > ul > li.best_4 .post_contbx .best_icon{background: url(//media.samsungwa.com/media/weinnovate/2016/09/icon_award_4.png) no-repeat;}
+.form_postbx.award > ul > li.best_5 .post_contbx .best_icon{background: url(//media.samsungwa.com/media/weinnovate/2016/09/icon_award_5.png) no-repeat;}
+
+
+@media only screen and (max-width: 1024px){
+.form_postbx.award > ul{margin:0 -7px;}
+.form_postbx.award > ul > li{padding:0 7px;margin-bottom: 60px;max-width: none;}
+.form_postbx.award > ul > li .post_contbx .best_icon{top:20px; left:20px;}
+}
+
+@media only screen and (max-width: 767px){
+.form_postbx.award{padding:38px 20px 38px;}
+.form_postbx.award > ul{margin:0 -4px;}
+.form_postbx.award > ul > li{padding:0 4px;margin-bottom: 40px;width:50%;max-width: 256px;}
+.form_postbx.award .post_contbx .thum{padding:10px 0;}
+.form_postbx.two_type.award .post_contbx h4{padding:11px 10px;}
+.form_postbx.award > ul > li.li_brbx_m{display: none;}
+.form_postbx.award > ul > li.li_brbx_pc{width:100%; clear: both; display: block;margin:0; padding:0;}
+.form_postbx.two_type.award .post_contbx h4 .title{font-size: 12px;}
+.form_postbx.two_type.award .post_contbx h4 .com_bx{font-size: 12px;}
+.static_bx.award .s_title{font-size: 19px;padding-bottom: 12px;}
+.static_bx.award .list_ul{padding-top:20px;margin-bottom: 0;}
+.static_bx.award .list_ul h4{font-size: 11px;line-height: 1.3em;}
+.static_bx.award .sub_list li .bullet{font-size: 10px;}
+.static_bx.award .sub_list li .text{font-size: 10px;}
+.static_bx.award .sub_list{margin-bottom: 15px;}
+.static_bx.award .list_ul > li{padding:0;}
+.form_postbx.award > ul > li .post_contbx .best_icon{top:10px; left:10px;width:27px; height: 40px;}
+.form_postbx.award > ul > li.best_1 .post_contbx .best_icon{background: url(//media.samsungwa.com/media/weinnovate/2016/09/icon_award_1.png) no-repeat;background-size: 27px 40px;}
+.form_postbx.award > ul > li.best_2 .post_contbx .best_icon{background: url(//media.samsungwa.com/media/weinnovate/2016/09/icon_award_2.png) no-repeat;background-size: 27px 40px;}
+.form_postbx.award > ul > li.best_3 .post_contbx .best_icon{background: url(//media.samsungwa.com/media/weinnovate/2016/09/icon_award_3.png) no-repeat;background-size: 27px 40px;}
+.form_postbx.award > ul > li.best_4 .post_contbx .best_icon{background: url(//media.samsungwa.com/media/weinnovate/2016/09/icon_award_4.png) no-repeat;background-size: 27px 40px;}
+.form_postbx.award > ul > li.best_5 .post_contbx .best_icon{background: url(//media.samsungwa.com/media/weinnovate/2016/09/icon_award_5.png) no-repeat;background-size: 27px 40px;}
+}
+
+/*=========================================================
+ 블루투스 스피커 디자인 아이디어
+=========================================================*/
+.wennovation-view.two_type .wenno-info{background: #b5e5d2 url(//media.samsungwa.com/media/weinnovate/2016/09/bg_cover.png) no-repeat right bottom;overflow:visible;}
+.wennovation-view.two_type .wenno-info h2{padding-bottom: 71px;}
+.wennovation-view.two_type .titlebx{font-size: 28px; color:#282828; font-weight: bold; font-family: 'SECGCWB' !important;line-height: 1.3em; padding-bottom: 13px; border-bottom: solid 4px #3e4448;margin-bottom: 44px;word-break: keep-all; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word;}
+.wennovation-view.two_type .wenno-info table tbody td.text_sc{border-right: 1px solid #8cb0bc;font-size: 14px;}
+.wennovation-view.two_type .wenno-info table tbody th.text_b{border-right:none; border-top:solid 2px #8cb0bc;border-bottom:solid 2px #8cb0bc;font-size: 14px;text-align:left;}
+.wennovation-view.two_type .wenno-info table tbody td.text_sz{font-size: 14px;}
+.wennovation-view.two_type .wenno-info a.btn{margin-top:143px;margin-bottom: 60px;}
+.wennovation-view.two_type .wenno-info .inner p{word-break: keep-all; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word;}
+
+@media only screen and (max-width: 1024px){
+.wennovation-view.two_type .titlebx{font-size: 24px;border-bottom: solid 3px #3e4448;padding-bottom: 10px;margin-bottom: 32px;}
+.wennovation-view.two_type .wenno-info h2{padding-bottom: 45px;}
+.wennovation-view.two_type .wenno-info a.btn{margin-top:84px;}
+}
+
+@media only screen and (max-width: 767px){
+.wennovation-view.two_type .titlebx{font-size: 19px;}
+.wennovation-view.two_type .wenno-info h2{padding-bottom: 30px;}
+.wennovation-view.two_type .titlebx{font-size: 24px;border-bottom: solid 2px #3e4448;margin-bottom: 22px;}
+.wennovation-view.two_type .wenno-info a.btn{margin-top:30px;margin-bottom: 88px;}
+.wennovation-view.two_type .wenno-info table{margin-bottom: 5.5%;}
+.wennovation-view.two_type .wenno-info table tbody td.text_sc{font-size: 12px;}
+.wennovation-view.two_type .wenno-info table tbody th.text_b{font-size: 12px;}
+.wennovation-view.two_type .wenno-info table tbody td.text_sz{font-size: 12px;}
+}
+
+/*=========================================================
+ 위노베이트 두번째 스토리
+=========================================================*/
+.we_stroybx.story_two .top_stroy_bx .bx_container{padding:112px 75px;}
+.we_stroybx.story_two .top_stroy_bx .cont_bx .sub_tit:after{display: none;}
+.we_stroybx.story_two .top_stroy_bx .cont_bx{text-align: left;background: rgba(255,255,255,0.7);padding:116px 55px 94px;}
+#content .wennovation-curation .we_stroybx.story_two .top_stroy_bx .cont_bx .sub_tit{font-size: 20px; color:#275e92;font-family: 'SECGCWB' !important;text-align: left;border-bottom: solid 2px #275e92;padding-bottom: 0;display: inline-block;margin-bottom: 21px;}
+#content .wennovation-curation .we_stroybx.story_two .top_stroy_bx .cont_bx h3 .title_bold{font-size: 39px;font-family: 'SECGCWB' !important;font-weight: bold;letter-spacing: -2px;}
+.we_stroybx.story_two .top_stroy_bx .cont_bx h3{margin-bottom: 35px;}
+.we_stroybx.story_two .top_stroy_bx .cont_bx .txtbx{text-align: left;font-size: 20px;line-height: 1.81em;}
+.we_stroybx.story_two .top_stroy_bx{background: url(//media.samsungwa.com/media/weinnovate/2016/09/story_main_two.jpg) no-repeat; background-position: center top;position: relative;background-size: cover;}
+.we_stroybx.story_two .top_stroy_bx:after{display: none;}
+.we_stroybx.story_two .sns_bx{bottom:20px; right:20px;}
+
+/*하단컨텐츠*/
+.we_story_contbx .left{float: left;}
+.we_story_contbx .right{float: right;}
+.we_story_contbx .as_left{left:0;}
+.we_story_contbx .as_right{right: 0;}
+.we_story_contbx div[class*="sectionitem"]{overflow: hidden;position: relative;}
+.we_story_contbx div[class*="sectionitem"]:after{content: ""; display: table; clear: both;}
+.we_story_contbx div[class*="sectionitem"] .textbx{width:50%;position: absolute; top:0; top:0;height: 100%;}
+.we_story_contbx div[class*="sectionitem"] .imgbx{width:50%;line-height: 0;}
+.we_story_contbx div[class*="sectionitem"] .imgbx img{width:100%;}
+.we_story_contbx div[class*="sectionitem"] .m_img{display: none;}
+
+/*1*/
+.sectionitem_1 .textbx{background: #d2c7b4;}
+.we_story_contbx div[class*="sectionitem"] .cont_textbx{width:100%; position: absolute; top:50%; left:0;text-align: center; transform: translateY(-50%);-webkit-transform: translateY(-50%);-moz-transform: translateY(-50%);padding:8%;}
+#content .wennovation-curation .we_story_contbx div[class*="sectionitem"] .cont_textbx .number{font-size: 138px;color:rgba(255,255,255,0.7);font-family: 'SharpSans' !important;font-weight: bold; letter-spacing: -2px;line-height: 1.2em;margin-bottom: 27px;}
+#content .wennovation-curation .we_story_contbx div[class*="sectionitem"] .cont_textbx .title{font-size: 27px;font-family: 'SECGCWB' !important;line-height: 1.2em;margin-bottom: 30px;font-weight: bold;letter-spacing: -0.025em;}
+.we_story_contbx div[class*="sectionitem"] .cont_textbx .text{font-size: 20px;line-height: 1.7em;word-break: keep-all; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word;margin-bottom: 20px;letter-spacing: -0.025em;}
+
+/*2*/
+.sectionitem_2 .textbx{background: #d2c7b4;width:50%;position: absolute; top:0; top:0;}
+.sectionitem_2 .imgbx{width:50%;line-height: 0;}
+.we_story_contbx div[class*="sectionitem"] .s_itembx{width:50%;}
+.sectionitem_2 > .textbx{background: #ebc8c2;}
+.we_story_contbx div[class*="sectionitem"] .s_itembx .textbx{background: #f5e7e6;}
+
+.we_story_contbx div[class*="sectionitem"] .s_itembx .textbx .as_cont_textbx{position: absolute; left:0; bottom:0;width:100%;padding:6% 7%;}
+#content .wennovation-curation .we_story_contbx div[class*="sectionitem"] .s_itembx .textbx .as_cont_textbx .text{font-size: 20px; color:#999;font-family: 'SECGCWB' !important;line-height: 1.55em;font-weight: bold;margin-bottom: 12px;letter-spacing: -0.06em;}
+#content .wennovation-curation .we_story_contbx div[class*="sectionitem"] .s_itembx .textbx .as_cont_textbx .title{font-size: 37px;line-height: 1.2em;color:#999;}
+
+.we_story_contbx div[class*="sectionitem"] .s_itembx .textbx .as_cont_textbx.txt_left{text-align: left;}
+.we_story_contbx div[class*="sectionitem"] .s_itembx .textbx .as_cont_textbx.txt_right{text-align: right;}
+
+/*5*/
+.sectionitem_5 .textbx{background: #c2bdda;}
+
+
+/*6*/
+.sectionitem_6 .textbx{background: #c1d8d0;}
+#content .wennovation-curation .we_story_contbx div.sectionitem_6 .cont_textbx .title{font-size: 39px;text-align: right;}
+#content .wennovation-curation .we_story_contbx div.sectionitem_6 .cont_textbx .text{text-align: right;font-size: 21px;}
+
+/*arrow*/
+.we_story_contbx div[class*="sectionitem"] .s_itembx .textbx.as_right:after{content: ""; width:25px; height: 39px;background: url(//media.samsungwa.com/media/weinnovate/2016/09/we_story_arrow_left.png) no-repeat;display: block;position: absolute; bottom:10%; left:-25px;background-size: 25px 39px;z-index: 10;}
+.we_story_contbx div[class*="sectionitem"] .s_itembx .textbx.as_left:after{content: ""; width:25px; height: 39px;background: url(//media.samsungwa.com/media/weinnovate/2016/09/we_story_arrow_right.png) no-repeat;display: block;position: absolute; bottom:10%; right:-25px;background-size: 25px 39px;z-index: 10;}
+
+
+@media only screen and (min-width: 1980px){
+#content .wennovation-curation .we_stroybx.story_two .top_stroy_bx .cont_bx .sub_tit{font-size: 26px;}
+#content .wennovation-curation .we_stroybx.story_two .top_stroy_bx .cont_bx h3 .title_bold{font-size: 52px;}
+.we_stroybx.story_two .top_stroy_bx .cont_bx .txtbx{font-size: 26px;}
+#content .wennovation-curation .we_story_contbx div[class*="sectionitem"] .cont_textbx .number{font-size: 184px;}
+#content .wennovation-curation .we_story_contbx div[class*="sectionitem"] .cont_textbx .title{font-size: 36px;}
+.we_story_contbx div[class*="sectionitem"] .cont_textbx .text{font-size: 26px;}
+#content .wennovation-curation .we_story_contbx div[class*="sectionitem"] .s_itembx .textbx .as_cont_textbx .text{font-size: 25px;}
+#content .wennovation-curation .we_story_contbx div[class*="sectionitem"] .s_itembx .textbx .as_cont_textbx .title{font-size: 50px;}
+#content .wennovation-curation .we_story_contbx div.sectionitem_6 .cont_textbx .title{font-size: 52px;}
+#content .wennovation-curation .we_story_contbx div.sectionitem_6 .cont_textbx .text{font-size: 28px;}
+}
+
+@media only screen and (max-width: 1440px){
+#content .wennovation-curation .we_story_contbx div[class*="sectionitem"] .s_itembx .textbx .as_cont_textbx .text{font-size: 18px;}
+}
+
+@media only screen and (max-width: 1279px){
+.we_stroybx.story_two .top_stroy_bx .cont_bx{padding:85px 40px 85px;}
+.we_stroybx.story_two .top_stroy_bx .bx_container{padding:50px 75px;}
+.we_story_contbx div[class*="sectionitem"] .s_itembx .textbx .as_cont_textbx{padding:6%;}
+#content .wennovation-curation .we_stroybx.story_two .top_stroy_bx .cont_bx .sub_tit{font-size: 19px;}
+#content .wennovation-curation .we_stroybx.story_two .top_stroy_bx .cont_bx h3 .title_bold{font-size: 39px;}
+.we_stroybx.story_two .top_stroy_bx .cont_bx .txtbx{font-size: 19px;}
+#content .wennovation-curation .we_story_contbx div[class*="sectionitem"] .cont_textbx .number{font-size: 98px;margin-bottom: 0;}
+#content .wennovation-curation .we_story_contbx div[class*="sectionitem"] .cont_textbx .title{font-size: 24px;margin-bottom: 15px;}
+.we_story_contbx div[class*="sectionitem"] .cont_textbx .text{font-size: 17px;}
+#content .wennovation-curation .we_story_contbx div[class*="sectionitem"] .s_itembx .textbx .as_cont_textbx .text{font-size: 16px;}
+#content .wennovation-curation .we_story_contbx div[class*="sectionitem"] .s_itembx .textbx .as_cont_textbx .title{font-size: 34px;}
+#content .wennovation-curation .we_story_contbx div.sectionitem_6 .cont_textbx .title{font-size: 34px;}
+#content .wennovation-curation .we_story_contbx div.sectionitem_6 .cont_textbx .text{font-size: 19px;}
+/*#content .wennovation-curation .we_story_contbx .m_br_clear br{display: none;}
+.we_story_contbx div[class*="sectionitem"] .cont_textbx .text br{display: none;}*/
+.we_story_contbx div[class*="sectionitem"] .cont_textbx .text{margin-bottom: 0;}
+.we_story_contbx div[class*="sectionitem"] .s_itembx .textbx.as_left:after{width:12px; height: 19px; background-size: 12px 19px;right:-12px;}
+.we_story_contbx div[class*="sectionitem"] .s_itembx .textbx.as_right:after{width:12px; height: 19px; background-size: 12px 19px;left:-12px;}
+}
+
+@media only screen and (max-width: 1023px){
+#content .wennovation-curation .we_stroybx.story_two .top_stroy_bx .cont_bx .sub_tit{font-size: 14px;}
+#content .wennovation-curation .we_stroybx.story_two .top_stroy_bx .cont_bx h3 .title_bold{font-size: 29px;}
+.we_stroybx.story_two .top_stroy_bx .cont_bx .txtbx{font-size: 14px;}
+#content .wennovation-curation .we_story_contbx div[class*="sectionitem"] .cont_textbx .number{font-size: 73px;margin-bottom: 0;}
+#content .wennovation-curation .we_story_contbx div[class*="sectionitem"] .cont_textbx .title{font-size: 17px;}
+.we_story_contbx div[class*="sectionitem"] .cont_textbx .text{font-size: 13px;}
+#content .wennovation-curation .we_story_contbx div[class*="sectionitem"] .s_itembx .textbx .as_cont_textbx .text{font-size: 12px;}
+#content .wennovation-curation .we_story_contbx div[class*="sectionitem"] .s_itembx .textbx .as_cont_textbx .title{font-size: 25px;}
+#content .wennovation-curation .we_story_contbx div.sectionitem_6 .cont_textbx .title{font-size: 25px;}
+#content .wennovation-curation .we_story_contbx div.sectionitem_6 .cont_textbx .text{font-size: 15px;}
+}
+
+@media only screen and (max-width: 767px){
+#content .wennovation-curation .we_stroybx.story_two .top_stroy_bx .cont_bx .sub_tit{font-size: 11px;margin-bottom: 10px;}
+.we_stroybx.story_two .top_stroy_bx .cont_bx h3{margin-bottom: 13px;}
+#content .wennovation-curation .we_stroybx.story_two .top_stroy_bx .cont_bx h3 .title_bold{font-size: 19px;}
+.we_stroybx.story_two .top_stroy_bx .cont_bx .txtbx{font-size: 10px;font-weight: bold;}
+#content .wennovation-curation .we_story_contbx div[class*="sectionitem"] .cont_textbx .number{font-size: 63px;margin-bottom: 0;}
+#content .wennovation-curation .we_story_contbx div[class*="sectionitem"] .cont_textbx .title{font-size: 14px;}
+.we_story_contbx div[class*="sectionitem"] .cont_textbx .text{font-size: 10px;font-weight: bold;}
+#content .wennovation-curation .we_story_contbx div[class*="sectionitem"] .s_itembx .textbx .as_cont_textbx .text{font-size: 10px;}
+#content .wennovation-curation .we_story_contbx div[class*="sectionitem"] .s_itembx .textbx .as_cont_textbx .title{font-size: 19px;}
+#content .wennovation-curation .we_story_contbx div.sectionitem_6 .cont_textbx .title{font-size: 19px;text-align: center;}
+#content .wennovation-curation .we_story_contbx div.sectionitem_6 .cont_textbx .text{font-size: 10px;text-align: center;}
+
+.we_story_contbx div.sectionitem_1 img.dec_img{display: none;}
+.we_story_contbx div.sectionitem_5 img.dec_img{display: none;}
+.we_story_contbx div.sectionitem_6 img.dec_img{display: none;}
+.we_story_contbx div[class*="sectionitem"] .m_img{display: block;}
+
+/*레이아웃*/
+/*.we_stroybx.story_two .top_stroy_bx{background: url(//media.samsungwa.com/media/weinnovate/2016/09/story_main_two_m.jpg) no-repeat; background-position: center top;position: relative;background-size: cover;}*/
+.we_stroybx.story_two .top_stroy_bx .cont_bx{padding:40px 24px 40px;}
+.we_stroybx.story_two .top_stroy_bx .bx_container{padding:20px 20px;}
+.we_story_contbx div[class*="sectionitem"] .cont_textbx{padding:6%;}
+.we_story_contbx div[class*="sectionitem_6"] .cont_textbx{padding-bottom:0;}
+.we_story_contbx div[class*="sectionitem"] .textbx{width:100%;position: static;}
+.we_story_contbx div[class*="sectionitem"] .cont_textbx{position: static;transform: translateY(0);-webkit-transform: translateY(0);-moz-transform: translateY(0);}
+.we_story_contbx div[class*="sectionitem"] .imgbx{width:100%;}
+.we_story_contbx div[class*="sectionitem"] .s_itembx{width:100%;}
+.we_story_contbx div[class*="sectionitem"] .s_itembx .imgbx{width:50%;}
+.we_story_contbx div[class*="sectionitem"] .s_itembx .textbx{position: absolute; width:50%;}
+#content .wennovation-curation .we_story_contbx div[class*="sectionitem"] .s_itembx .textbx .as_cont_textbx .text{margin-bottom: 5px;}
+.we_story_contbx div[class*="sectionitem"] .s_itembx .textbx.as_left:after{width:8px; height: 12px; background-size: 8px 12px;right:-8px;}
+.we_story_contbx div[class*="sectionitem"] .s_itembx .textbx.as_right:after{width:8px; height: 12px; background-size: 8px 12px;left:-8px;}
+
+}
+
+/*=========================================================
+  talk(로그인)
+=========================================================*/ 
+.case_event .top_bannerbx.talk_type{background: #c0d59b;}
+.case_event .top_bannerbx.talk_type .text_bx{position: relative; z-index: 1;}
+.case_event .top_bannerbx.talk_type .cont_bx .banner_container{padding:49px 38px 52px;}
+.case_event .top_bannerbx.talk_type .cont_bx .sub_title{font-size: 26px;font-family: 'SECGCWL',"Roboto", Arial, Tahoma, sans-serif!important;margin-bottom: 16px;}
+.case_event .top_bannerbx.talk_type .cont_bx .text{font-family: 'SECGCWL',"Roboto", Arial, Tahoma, sans-serif!important;margin-bottom: 32px;}
+.case_event .top_bannerbx.talk_type .cont_bx .date_text{margin-bottom: 0px;}
+.case_event .top_bannerbx.talk_type .cont_bx:before{content: ""; width:436px; height: 215px; background: url(//media.samsungwa.com/media/weinnovate/2016/09/talk_event_bg_left.png) no-repeat;top:auto;bottom:0; left:0px;background-size: 436px 215px;}
+.case_event .top_bannerbx.talk_type .cont_bx:after{content: ""; width:359px; height: 211px; background: url(//media.samsungwa.com/media/weinnovate/2016/09/talk_event_bg_right.png) no-repeat;top:0; right:0px;background-size: 359px 211px;}
+
+/*반응형*/
+@media only screen and (max-width: 1024px){
+.case_event .top_bannerbx.talk_type .cont_bx .banner_container{padding:60px 38px 64px;}
+.case_event .top_bannerbx.talk_type .cont_bx:before{width:356px; height: 176px;background: url(//media.samsungwa.com/media/weinnovate/2016/09/talk_event_bg_left.png) no-repeat;background-size: 356px 176px;}
+.case_event .top_bannerbx.talk_type .cont_bx:after{width:320px; height: 188px; background: url(//media.samsungwa.com/media/weinnovate/2016/09/talk_event_bg_right.png) no-repeat;background-size: 320px 188px;}
+.case_event .top_bannerbx.talk_type .cont_bx .text{margin-bottom: 20px;}
+}
+
+@media only screen and (max-width: 767px){
+.case_event .top_bannerbx.talk_type .cont_bx .banner_container{padding:40px 60px 25px;}
+.case_event .top_bannerbx.talk_type .cont_bx .title{font-size: 13px;line-height: 1.4em;margin-bottom: 2px;}
+.case_event .top_bannerbx.talk_type .cont_bx .sub_title{font-size: 17px;font-weight: bold;letter-spacing: -0.025em;line-height: 1.3em;margin-bottom: 8px;}
+.case_event .top_bannerbx.talk_type .cont_bx .sub_title .br_span{display: block; clear: both; width:100%;}
+.case_event .top_bannerbx.talk_type .cont_bx:before{width:121px; height: 89px;background: url(//media.samsungwa.com/media/weinnovate/2016/09/talk_event_bg_left_m.png) no-repeat;left:0;bottom:auto;top:0;background-size: 121px 89px;}
+.case_event .top_bannerbx.talk_type .cont_bx:after{width:121px; height: 88px; background: url(//media.samsungwa.com/media/weinnovate/2016/09/talk_event_bg_right_m.png) no-repeat;right:0;top:0;background-size: 121px 88px;}
+.case_event .top_bannerbx.talk_type .cont_bx .date_text{font-size: 13px;margin-bottom: 5px;}
+.case_event .top_bannerbx.talk_type .cont_bx .text{font-size: 11px;margin-bottom: 9px;}
+.case_event .top_bannerbx.talk_type .cont_bx .blod_text{font-size: 11px;}
+
+/*로그인*/
+.event_loginbx.talk_type .login_cont{margin-top:30px; margin-bottom: 30px;}
+.event_loginbx.talk_type h3{font-size: 18px;}
+.event_loginbx.talk_type .text{font-size: 11px;margin-bottom: 10px;}
+.event_loginbx.talk_type .btn_box a.login_btn{font-size: 20px;padding:10px 10px;margin-bottom: 8px;}
+.event_loginbx.talk_type .btn_box a.signup_btn{font-size: 20px;padding:10px 10px;}
+.event_loginbx.talk_type .s_text{font-size: 11px;}
+}
+
+@media only screen and (max-width: 639px){
+.case_event .top_bannerbx.talk_type .cont_bx .banner_container{padding:40px 40px 25px;}
+.case_event .top_bannerbx.talk_type .cont_bx .text br{display: none;}
+}
+
+/*=========================================================
+  talk(리스트)
+=========================================================*/ 
+.form_postbx.talk_type {min-height:200px;}
+.form_postbx.talk_type .talk_topbx{margin-bottom: 40px;}
+.form_postbx.talk_type .talk_topbx:after{content: ""; display: table; clear: both;}
+.form_postbx.talk_type .talk_topbx .search_txt{font-size: 16px; color:#313131;display: block;float: left;padding:12px 0;}
+.form_postbx.talk_type .talk_topbx .search_txt .bold{font-size: 16px; color:#313131;font-weight: bold;}
+.form_postbx.talk_type .talk_topbx .btn_bx{display: block;width:190px; float: right;background: #3e4448;font-size: 16px; color:#fff;font-family: 'SECGCWM' !important;text-align: center; padding:12px 5px;}
+.form_postbx.talk_type .more_btn{display: block;width:190px;border:solid 1px #7f7f7f; font-size: 16px; color:#313131;font-family: 'SECGCWM' !important;text-align: center; padding:12px 5px;margin:40px auto 0;clear: both;}
+
+/*호버*/
+.form_postbx.talk_type .more_btn:hover{background: #3e4448;color:#fff;border:solid 1px #3e4448;}
+
+/*컨텐츠*/
+.form_postbx.talk_type .talk_contbx{margin:-12px -8px;clear: both;}
+.form_postbx.talk_type .talk_contbx:after{content: ""; display: table; clear: both;}
+.form_postbx.talk_type .talk_contbx > li{padding:12px 8px; margin-bottom: 0;}
+.form_postbx.talk_type .talk_contbx > li:nth-child(4n+1){clear: both;}
+.form_postbx.talk_type .talk_contbx > li .talk_itembx{background: #f9f9f9;border-bottom: solid 1px #e9e9e9; text-align: center;padding:50px 35px 32px;position: relative;}
+.form_postbx.talk_type .talk_contbx > li .talk_itembx .close_btn{position: absolute; display: block;width:24px; height: 24px;background: url(//media.samsungwa.com/media/weinnovate/2016/09/talk_close.png) no-repeat;top:14px;right:14px;background-size: 24px 24px;text-indent: -99999px;display: none;z-index: 10;}
+.form_postbx.talk_type .talk_contbx > li .talk_itembx h3{font-size: 18px; color:#323232;font-family: 'SECGCWM' !important;line-height: 1.2em;overflow: hidden; text-overflow: ellipsis; white-space: nowrap;margin-bottom: 5px;}
+.form_postbx.talk_type .talk_contbx > li .talk_itembx h3 a{font-size: 18px; color:#323232;font-family: 'SECGCWM' !important;line-height: 1.2em;}
+.form_postbx.talk_type .talk_contbx > li .talk_itembx .name{font-size: 16px; color:#323232;font-family: 'SECGCWM' !important;line-height: 1.2em;margin-bottom: 12px;overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.form_postbx.talk_type .talk_contbx > li .talk_itembx .sub_txt{line-height: 0; font-size: 0;margin-bottom: 30px;height: 58px; overflow: hidden; word-break: break-word;}
+.form_postbx.talk_type .talk_contbx > li .talk_itembx .sub_txt a{font-size: 14px; color:#5d5d5d;line-height: 1.5em;}
+.form_postbx.talk_type .talk_contbx > li .talk_itembx .like_bx{display: inline-block;}
+.form_postbx.talk_type .talk_contbx > li .talk_itembx .icon_item{width:32px; height:29px;background: url(//media.samsungwa.com/media/weinnovate/2016/09/icon_like.png) no-repeat;background-size: 64px 29px;background-position: 0 0;display: block;margin-bottom: 3px;}
+.form_postbx.talk_type .talk_contbx > li .talk_itembx .count{font-size: 14px; color:#323232;font-family: 'SECGCWM' !important;}
+
+/*액티브*/
+.form_postbx.talk_type .talk_contbx > li .talk_itembx .like_bx.active .icon_item{background-position: -32px 0;}
+.form_postbx.talk_type .talk_contbx > li .talk_itembx .like_bx.active .count{color:#f26522;}
+
+/*호버*/
+.form_postbx.talk_type .talk_contbx > li .talk_itembx:hover .close_btn{display: block;}
+
+/*반응형*/
+@media only screen and (max-width: 1024px){
+.form_postbx.talk_type .talk_contbx > li{width:33.33333%;}
+.form_postbx.talk_type .talk_contbx > li:nth-child(4n+1){clear: none;}
+.form_postbx.talk_type .talk_contbx > li:nth-child(3n+1){clear: both !important;}
+}
+
+@media only screen and (max-width: 767px){
+.form_postbx.talk_type{padding:24px 20px;}
+.form_postbx.talk_type .talk_topbx{margin-bottom: 25px;}
+.form_postbx.talk_type .talk_topbx .search_txt{font-size: 11px; padding:0;float: none;text-align: center;margin-bottom: 8px;}
+.form_postbx.talk_type .talk_topbx .search_txt .bold{font-size: 11px;}
+.form_postbx.talk_type .talk_topbx .btn_bx{float: none;width:100%;}
+.form_postbx.talk_type .talk_topbx .btn_bx{font-size: 20px;padding: 15px 5px;}
+.form_postbx.talk_type .talk_contbx{margin:-6px 4px;}
+.form_postbx.talk_type .talk_contbx > li{padding:6px 4px;}
+.form_postbx.talk_type .more_btn{font-size: 14px; margin-top:20px;padding:10px 5px 9px;width:156px;}
+
+
+/*컨텐츠*/
+.form_postbx.talk_type .talk_contbx > li{width:50%;}
+.form_postbx.talk_type .talk_contbx > li:nth-child(4n+1){clear: none;}
+.form_postbx.talk_type .talk_contbx > li:nth-child(3n+1){clear: none !important;}
+.form_postbx.talk_type .talk_contbx > li:nth-child(odd){clear: both !important;}
+.form_postbx.talk_type .talk_contbx > li .talk_itembx{padding:16px 20px 10px;}
+.form_postbx.talk_type .talk_contbx > li .talk_itembx h3{font-size: 12px;}
+.form_postbx.talk_type .talk_contbx > li .talk_itembx h3 a{font-size: 12px;}
+.form_postbx.talk_type .talk_contbx > li .talk_itembx .name{font-size: 11px;margin-bottom: 5px;}
+.form_postbx.talk_type .talk_contbx > li .talk_itembx .sub_txt{margin-bottom: 10px;height: 46px;}
+.form_postbx.talk_type .talk_contbx > li .talk_itembx .like_bx{font-size: 0; line-height: 0;}
+.form_postbx.talk_type .talk_contbx > li .talk_itembx .count{font-size: 10px;display: inline-block;line-height: 1.2em;}
+.form_postbx.talk_type .talk_contbx > li .talk_itembx .sub_txt a{font-size: 10px;}
+.form_postbx.talk_type .talk_contbx > li .talk_itembx .icon_item{width:20px; height:18px;background: url(//media.samsungwa.com/media/weinnovate/2016/09/icon_like.png) no-repeat;background-size: 40px 18px;background-position: 0 0;display: block;margin-bottom: 3px;}
+.form_postbx.talk_type .talk_contbx > li .talk_itembx .like_bx.active .icon_item{background-position: -20px 0;}
+}
+
+@media only screen and (max-width: 400px){
+.form_postbx.talk_type .talk_contbx > li{width:100%;}
+.form_postbx.talk_type .talk_contbx > li:nth-child(4n+1){clear: both;}
+.form_postbx.talk_type .talk_contbx > li:nth-child(3n+1){clear: both !important;}
+.form_postbx.talk_type .talk_contbx > li:nth-child(odd){clear: both !important;}
+.form_postbx.talk_type .talk_contbx > li .talk_itembx .sub_txt{height: auto;}
+}
+
+/*=========================================================
+  talk(등록하기 팝업) 
+=========================================================*/ 
+.talk_post .inpbx_basic{clear: both; margin-bottom: 17px;}
+.talk_post .inpbx_basic label{font-size: 15px; color:#3c3c3c;margin-bottom: 5px;}
+.talk_post .inpbx_basic input{font-size: 15px; color:#3c3c3c;line-height: 1.4em;padding:8px 13px;height: 38px;margin-bottom: 0;}
+.talk_post .inpbx_basic textarea{font-size: 15px; color:#3c3c3c;line-height: 1.4em;padding:8px 13px;height: 250px !important;margin-bottom: 0;resize: none;}
+
+.talk_post .btn_box{font-size: 0; line-height: 0;margin:30px -7px 0px;text-align: center;}
+.talk_post .btn_box .add_btn{font-size: 16px; color:#fff;border:solid 1px #3e4448; background: #3e4448;width:190px; padding:8px 10px;text-align: center;display: inline-block;line-height: 1.4em;margin:0 7px;}
+.talk_post .btn_box a.cancel_btn{font-size: 16px; color:#282828;border:solid 1px #000000; background: #fff;width:190px; padding:8px 10px;text-align: center;display: inline-block;line-height: 1.4em;margin:0 7px;}
+.talk_post .talk_p_stxt{text-align: center;font-size: 14px; color:#3c3c3c;font-weight: normal; margin-bottom: 10px;line-height: 1.3em;}
+
+/*반응형*/
+@media only screen and (max-width: 767px){
+.event_popuop.talk_post .pop_conbx h3{font-size: 15px;}
+.talk_post .inpbx_basic{margin-bottom: 10px;}
+.talk_post .inpbx_basic label{font-size: 13px;}
+.talk_post .inpbx_basic input{font-size: 13px;height: 36px;}
+.talk_post .inpbx_basic textarea{font-size: 13px;height: 150px !important;}
+.talk_post .btn_box{margin:0;}
+.talk_post .btn_box .add_btn{font-size: 14px;width:100%;margin:0 0 10px;}
+.talk_post .btn_box a.cancel_btn{font-size: 14px;width:100%;display: block;margin:0;}
+.talk_post .talk_p_stxt{font-size: 12px;}
+}
+
+@media only screen and (max-width: 320px){
+.talk_post .inpbx_basic textarea{height: 80px !important;}
+}
+
+/*=========================================================
+  talk(상세보기 팝업) 
+=========================================================*/ 
+.event_popuop.talk_s_post .pop_conbx{height: auto;}
+.event_popuop .pop_conbx{border:solid 1px #d3d2d2;}
+.event_popuop.talk_s_post .pop_container{background: #fff;border:solid 9px #efefef;padding-top:82px;}
+.event_popuop.talk_s_post .top_t_bx{position: relative;padding-bottom: 15px;border-bottom: solid 1px #e5e5e5;margin-bottom: 15px;}
+.event_popuop.talk_s_post .sub_tit{font-size: 14px; color:#000;margin-bottom: 5px;}
+.event_popuop.talk_s_post .pop_conbx h3{font-size: 28px;line-height: 1.2em;margin-bottom: 45px;word-break:break-word;}
+.event_popuop.talk_s_post .pop_conbx .name{font-size: 18px; color:#000; font-family: 'SECGCWM' !important;}
+.event_popuop.talk_s_post .pop_conbx .like_bx{position: absolute; bottom:15px; right:0;text-align: center;}
+.event_popuop.talk_s_post .pop_conbx .like_bx .icon_item{width:32px; height:29px;background: url(//media.samsungwa.com/media/weinnovate/2016/09/icon_like.png) no-repeat;background-size: 64px 29px;background-position: 0 0;display: block;margin:0 auto 3px;}
+.event_popuop.talk_s_post .pop_conbx .like_bx .count{font-size: 14px; color:#323232;font-family: 'SECGCWM' !important;}
+.event_popuop.talk_s_post .pop_conbx .pop_postbx{max-height: 370px; overflow-y: auto;}
+.event_popuop.talk_s_post .pop_conbx .pop_postbx *{font-size: 14px; color:#5d5d5d; line-height: 1.5em;}
+.event_popuop.talk_s_post .pop_conbx .pop_postbx .container_bx { word-break: break-word; }
+/*액티브*/
+.event_popuop.talk_s_post .pop_conbx .like_bx.active .icon_item{background-position: -32px 0;}
+.event_popuop.talk_s_post .pop_conbx .like_bx.active .count{color:#f26522;}
+
+/*반응형*/
+@media only screen and (max-width: 767px){
+.event_popuop.talk_s_post .sub_tit{font-size: 11px;}
+.event_popuop.talk_s_post .pop_conbx h3{font-size: 15px;padding-right:0;}
+.event_popuop.talk_s_post .pop_conbx .name{font-size: 13px;}
+.event_popuop.talk_s_post .pop_conbx .pop_postbx *{font-size: 10px;}
+.event_popuop.talk_s_post .pop_conbx .like_bx{font-size: 0; line-height: 0;bottom: 7px;}
+.event_popuop.talk_s_post .pop_conbx .like_bx .count{font-size: 10px;display: inline-block;line-height: 1.2em;}
+.event_popuop.talk_s_post .pop_conbx .like_bx .sub_txt a{font-size: 10px;}
+.event_popuop.talk_s_post .pop_conbx .like_bx .icon_item{width:20px; height:18px;background: url(//media.samsungwa.com/media/weinnovate/2016/09/icon_like.png) no-repeat;background-size: 40px 18px;background-position: 0 0;display: block;margin-bottom: 3px;}
+.event_popuop.talk_s_post .pop_conbx .like_bx.active .icon_item{background-position: -20px 0;}
+.event_popuop.talk_s_post .top_t_bx{padding-bottom: 7px; margin-bottom: 7px;}
+.event_popuop.talk_s_post .pop_conbx .pop_postbx{max-height: 250px;}
+.event_popuop.talk_s_post .pop_conbx h3{margin-bottom: 29px;}
+.event_popuop.talk_s_post .pop_container{padding-top: 55px;}
+}
+
+@media only screen and (max-width: 320px){
+.event_popuop.talk_s_post .pop_conbx .pop_postbx{max-height: 170px;}
+}
+
+/*=========================================================
+  talk(메인 배너) 
+=========================================================*/ 
+.case_event.talk .top_bannerbx{background: #c0d59c;}
+.case_event.wp_main_banner.two_type.talk .top_bannerbx .cont_bx:before{content: ""; width:436px; height: 215px; background: url(//media.samsungwa.com/media/weinnovate/2016/09/talk_event_bg_left.png) no-repeat;top:auto;bottom:-19px;; left:0px;background-size: 436px 215px;}
+.case_event.wp_main_banner.two_type.talk .top_bannerbx .cont_bx:after{content: ""; width:359px; height: 211px; background: url(//media.samsungwa.com/media/weinnovate/2016/09/talk_event_bg_right.png) no-repeat;top:0; right:0px;background-size: 359px 211px;}
+
+/*반응형*/
+@media only screen and (max-width: 1024px){
+.case_event.wp_main_banner.two_type.talk .top_bannerbx .cont_bx:before{width:356px; height: 176px;background: url(//media.samsungwa.com/media/weinnovate/2016/09/talk_event_bg_left.png) no-repeat;background-size: 356px 176px;}
+.case_event.wp_main_banner.two_type.talk .top_bannerbx .cont_bx:after{width:320px; height: 188px; background: url(//media.samsungwa.com/media/weinnovate/2016/09/talk_event_bg_right.png) no-repeat;background-size: 320px 188px;}
+}
+
+@media only screen and (max-width: 767px){
+.case_event.wp_main_banner.two_type.talk .top_bannerbx .cont_bx:before{width:121px; height: 89px;background: url(//media.samsungwa.com/media/weinnovate/2016/09/talk_event_bg_left_m.png) no-repeat;left:0;bottom:auto;top:0;background-size: 121px 89px;}
+.case_event.wp_main_banner.two_type.talk .top_bannerbx .cont_bx:after{width:121px; height: 88px; background: url(//media.samsungwa.com/media/weinnovate/2016/09/talk_event_bg_right_m.png) no-repeat;right:0;top:0;background-size: 121px 88px;}
+}
+
+/*=========================================================
+  케이스 수상작 하단 다이어그램 리스트
+=========================================================*/ 
+.static_bx.award .mt70{margin-top:70px;}
+.static_bx .diagram_listbx{border-top: solid 1px #898989; border-bottom: solid 1px #898989; padding:25px 10px;}
+.static_bx .diagram_listbx ol{text-align: center;font-size: 0; line-height: 0;margin:-30px -60px 0 0;}
+.static_bx .diagram_listbx ol:after{content: ""; clear: both; display: table;}
+.static_bx .diagram_listbx li{display: inline-block; position: relative;padding-right:60px;margin-top:30px;}
+.static_bx .diagram_listbx li .dia_bx{width:190px; height: 190px; background: #f9f9f9; position: relative; border-radius: 100px;-webkit-border-radius: 100px;-moz-border-radius: 100px;}
+.static_bx .diagram_listbx li .dia_bx .position_bx{position: absolute; display: block; top:50%;left:0; transform: translateY(-50%);-webkit-transform: translateY(-50%);-moz-transform: translateY(-50%);-ms-transform: translateY(-50%);width:100%;}
+.static_bx .diagram_listbx li .dia_bx .text{font-size: 14px; color:#282828; font-family: 'SECGCWB' !important;line-height: 1.4em;display: block;margin-bottom: 10px;}
+.static_bx .diagram_listbx li .dia_bx .link{font-size: 12px; color:#282828; text-decoration: underline;line-height: 1.4em;}
+.static_bx .diagram_listbx li:after{content: ""; width:14px; height: 25px; background: url(//media.samsungwa.com/media/weinnovate/2016/09/dia_arrow_icon.png) no-repeat;display: block; position: absolute; top:50%; margin-top:-12px;right:9%;background-size: 14px 25px;}
+.static_bx .diagram_listbx li.step5:after{display: none;}
+
+/*반응형*/
+@media only screen and (max-width: 1444px){
+.static_bx .diagram_listbx .container_bx{max-width: 980px; margin:0 auto;}
+.static_bx .diagram_listbx ol{margin-right:0;}
+}
+
+@media only screen and (max-width: 767px){
+.static_bx .diagram_listbx{padding-left:0; padding-right:0;}
+.static_bx.award{padding-left:20px; padding-right:20px;}
+.static_bx .diagram_listbx .container_bx{text-align: center;}
+.static_bx .diagram_listbx li .dia_bx .text{font-size: 10px; margin-bottom: 5px;letter-spacing: -1px;}
+.static_bx .diagram_listbx li .dia_bx .link{font-size: 10px;letter-spacing: -1px; }
+.static_bx .diagram_listbx ol{margin-top:-20px;display: inline-block;}
+.static_bx .diagram_listbx li{padding-right:40px;margin-top:20px;display: block; float: left;}
+.static_bx .diagram_listbx li .dia_bx{width:120px; height: 120px;}
+.static_bx .diagram_listbx li:after{width:7px; height: 12px;background-size: 7px 12px;margin-top:-6px;right:11%;}
+.static_bx .diagram_listbx li:nth-child(odd){clear: both;}
+.static_bx.award .s_title span{font-size: 10px;}
+}
+
+@media only screen and (max-width: 359px){
+.static_bx .diagram_listbx li{padding-right:20px;}
+.static_bx .diagram_listbx li:after{right:4%;}
+}
+
+
+/*=========================================================
+  we-innovate-main-poll-battery.php 관련 css
+=========================================================*/ 
+.case_event.talk.talk_poll_v3 .top_bannerbx{background:#e0e0e6}
+								
+.case_event.wp_main_banner.two_type.talk_poll_v3 .top_bannerbx .cont_bx:before{content: ""; width:343px; height: 216px; background: url(//media.samsungwa.com/media/weinnovate/2016/10/talk_event_main_bg_left.png) no-repeat;top:auto;bottom:0; left:2%;background-size: 343px 216px;}
+.case_event.wp_main_banner.two_type.talk_poll_v3 .top_bannerbx .cont_bx:after{content: ""; width:350px; height: 217px; background: url(//media.samsungwa.com/media/weinnovate/2016/10/talk_event_main_bg_right.png) no-repeat;top:auto;bottom:0;right:2%;background-size: 350px 217px;}
+.case_event.wp_main_banner.talk_poll_v3 .bn_idea{background:#3e4448}
+/*반응형*/
+@media only screen and (max-width: 1024px){
+.case_event.wp_main_banner.two_type.talk_poll_v3 .top_bannerbx .cont_bx:before{width:259px; height: 164px; background-size: 259px 164px;}
+.case_event.wp_main_banner.two_type.talk_poll_v3 .top_bannerbx .cont_bx:after{width:264px; height: 168px; background-size: 264px 168px;}
+}
+
+@media only screen and (max-width: 767px){
+.case_event.wp_main_banner.two_type.talk_poll_v3 .br_span{display:block}
+.case_event.wp_main_banner.two_type.talk_poll_v3 .top_bannerbx .cont_bx:before{width:93px; height: 72px;background: url(//media.samsungwa.com/media/weinnovate/2016/10/talk_event_main_bg_left_m.png) no-repeat;left:5px;top:0;bottom:auto;background-size: 93px 72px;}
+.case_event.wp_main_banner.two_type.talk_poll_v3 .top_bannerbx .cont_bx:after{width:84px; height: 73px; background: url(//media.samsungwa.com/media/weinnovate/2016/10/talk_event_main_bg_right_m.png) no-repeat;right:5px;top:0;bottom:auto;background-size: 84px 73px;}
+}
