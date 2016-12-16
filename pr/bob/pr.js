@@ -32,9 +32,9 @@ function buildPaymentRequest() {
 
   try {
     request = new PaymentRequest(supportedInstruments, details);
-    if (request.canMakeActivePayment) {
-      request.canMakeActivePayment().then(function(result) {
-        info(result ? "Can make active payment" : "Cannot make active payment");
+    if (request.canMakePayment) {
+      request.canMakePayment().then(function(result) {
+        info(result ? "Can make payment" : "Cannot make payment");
       }).catch(function(err) {
         error(err);
       });
