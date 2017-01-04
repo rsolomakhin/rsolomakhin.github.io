@@ -1,8 +1,0 @@
-[{
-  "relation": ["delegate_permission/common.payment"],
-  "target": [{
-    "namespace": "android_app",
-    "package": "com.bobpay.app",
-    "sha256_cert_fingerprints": ["14:6D:E9:83:C5:73:06:50"]
-  }]
-}]

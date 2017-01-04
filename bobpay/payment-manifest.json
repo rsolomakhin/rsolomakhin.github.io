@@ -1,0 +1,7 @@
+{
+  "android": [{
+    "package": "com.bobpay.app",
+    "version": 1,
+    "sha256_cert_fingerprints": ["14:6D:E9:83:C5:73:06:50"]
+  }]
+}
