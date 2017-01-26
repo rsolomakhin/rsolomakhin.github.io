@@ -1,16 +1,13 @@
-/* global done:false */
-/* global error:false */
-/* global PaymentRequest:false */
-
 /**
  * Initializes the payment request object.
+ * @return {PaymentRequest} The payment request object.
  */
 function buildPaymentRequest() {
   if (!window.PaymentRequest) {
     return null;
   }
 
-  var supportedInstruments = [{
+  const supportedInstruments = [{
     supportedMethods: ['https://android.com/pay'],
     data: {
       merchantName: 'Rouslan Solomakhin',
@@ -21,42 +18,44 @@ function buildPaymentRequest() {
         parameters: {
           'gateway': 'stripe',
           'stripe:publishableKey': 'pk_live_lNk21zqKM2BENZENh3rzCUgo',
-          'stripe:version': '2016-07-06'
-        }
-      }
-    }
+          'stripe:version': '2016-07-06',
+        },
+      },
+    },
   }, {
-    supportedMethods: [
-      'unionpay', 'visa', 'mastercard', 'amex', 'discover', 'diners', 'jcb'
-    ]
+    supportedMethods: ['unionpay', 'visa', 'mastercard', 'amex', 'discover',
+      'diners', 'jcb', 'mir', 'https://emerald-eon.appspot.com/bobpay',
+    ],
   }, {
     supportedMethods: ['basic-card'],
     data: {
-      supportedNetworks: ['unionpay', 'visa', 'mastercard', 'amex', 'discover', 'diners', 'jcb'],
-      supportedTypes: ['prepaid', 'debit', 'credit']
-    }
+      supportedNetworks: ['unionpay', 'visa', 'mastercard', 'amex', 'discover',
+        'diners', 'jcb', 'mir',
+      ],
+      supportedTypes: ['prepaid', 'debit', 'credit'],
+    },
   }];
 
-  var details = {
+  const details = {
     total: {
       label: 'Donation',
       amount: {
         currency: 'USD',
-        value: '55.00'
-      }
+        value: '55.00',
+      },
     },
     displayItems: [{
       label: 'Original donation amount',
       amount: {
         currency: 'USD',
-        value: '65.00'
-      }
+        value: '65.00',
+      },
     }, {
       label: 'Friends and family discount',
       amount: {
         currency: 'USD',
-        value: '-10.00'
-      }
+        value: '-10.00',
+      },
     }],
     modifiers: [{
       supportedMethods: ['visa'],
@@ -64,29 +63,29 @@ function buildPaymentRequest() {
         label: 'Discounted donation',
         amount: {
           currency: 'USD',
-          value: '45.00'
-        }
+          value: '45.00',
+        },
       },
       additionalDisplayItems: [{
         label: 'VISA discount',
         amount: {
           currency: 'USD',
-          value: '-10.00'
-        }
+          value: '-10.00',
+        },
       }],
       data: {
-        discountProgramParticipantId: '86328764873265'
-      }
-    }]
+        discountProgramParticipantId: '86328764873265',
+      },
+    }],
   };
 
-  var request = null;
+  let request = null;
 
   try {
     request = new PaymentRequest(supportedInstruments, details);
     if (request.canMakePayment) {
       request.canMakePayment().then(function(result) {
-        info(result ? "Can make payment" : "Cannot make payment");
+        info(result ? 'Can make payment' : 'Cannot make payment');
       }).catch(function(err) {
         error(err);
       });
@@ -98,7 +97,7 @@ function buildPaymentRequest() {
   return request;
 }
 
-var request = buildPaymentRequest();
+let request = buildPaymentRequest();
 
 /**
  * Launches payment request that does not require shipping.
