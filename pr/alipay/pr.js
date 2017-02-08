@@ -1,5 +1,5 @@
 /**
- * Launches payment request for AliPay.
+ * Launches payment request for Alipay.
  */
 function onBuyClicked() { // eslint-disable-line no-unused-vars
   let supportedInstruments = [{

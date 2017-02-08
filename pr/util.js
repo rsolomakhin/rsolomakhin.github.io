@@ -12,7 +12,7 @@ function error(msg) {  // eslint-disable-line no-unused-vars
   if (timeoutID2) {
     window.clearTimeout(timeoutID2);
   }
-  var element = document.createElement('pre');
+  let element = document.createElement('pre');
   element.innerHTML = msg;
   element.className = 'error';
   document.getElementById('msg').appendChild(element);
@@ -33,7 +33,7 @@ function error(msg) {  // eslint-disable-line no-unused-vars
  * @param {string} msg - The information message to print.
  */
 function info(msg) {
-  var element = document.createElement('pre');
+  let element = document.createElement('pre');
   element.innerHTML = msg;
   element.className = 'info';
   document.getElementById('msg').appendChild(element);
@@ -45,7 +45,7 @@ function info(msg) {
  * @return {object} The resulting dictionary.
  */
 function toDictionary(addr) {  // eslint-disable-line no-unused-vars
-  var dict = {};
+  let dict = {};
   if (addr) {
     if (addr.toJSON) {
       return addr;
@@ -68,10 +68,10 @@ function toDictionary(addr) {  // eslint-disable-line no-unused-vars
 /**
  * Called when the payment request is complete.
  * @param {string} message - The human readable message to display.
- * @param {PaymentResponse} respo - The payment response.
+ * @param {PaymentResponse} resp - The payment response.
  */
 function done(message, resp) {  // eslint-disable-line no-unused-vars
-  var element = document.getElementById('contents');
+  let element = document.getElementById('contents');
   element.innerHTML = message;
 
   if (resp.toJSON) {
@@ -79,23 +79,23 @@ function done(message, resp) {  // eslint-disable-line no-unused-vars
     return;
   }
 
-  var shippingOption = resp.shippingOption ?
+  let shippingOption = resp.shippingOption ?
       'shipping, delivery, pickup option: ' + resp.shippingOption + '<br/>' :
       '';
 
-  var shippingAddress = resp.shippingAddress ?
+  let shippingAddress = resp.shippingAddress ?
       'shipping, delivery, pickup address: ' +
           JSON.stringify(toDictionary(resp.shippingAddress), undefined, 2) +
           '<br/>' :
       '';
 
-  var instrument =
+  let instrument =
       'instrument:' + JSON.stringify(resp.details, undefined, 2) + '<br/>';
 
-  var method = 'method: ' + resp.methodName + '<br/>';
-  var email = resp.payerEmail ? 'email: ' + resp.payerEmail + '<br/>' : '';
-  var phone = resp.payerPhone ? 'phone: ' + resp.payerPhone + '<br/>' : '';
-  var name = resp.payerName ? 'name: ' + resp.payerName + '<br/>' : '';
+  let method = 'method: ' + resp.methodName + '<br/>';
+  let email = resp.payerEmail ? 'email: ' + resp.payerEmail + '<br/>' : '';
+  let phone = resp.payerPhone ? 'phone: ' + resp.payerPhone + '<br/>' : '';
+  let name = resp.payerName ? 'name: ' + resp.payerName + '<br/>' : '';
 
 
   info(email + phone + name + shippingOption + shippingAddress + method +
