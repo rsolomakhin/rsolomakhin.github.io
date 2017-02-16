@@ -91,7 +91,7 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
   try {
     request.show()
       .then(function(instrumentResponse) {
-        print('Received instrument response.');
+        info('Received instrument response.');
       })
       .catch(function(err) {
         error(err);
