@@ -49,7 +49,7 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
           info('Cannot make payment.');
         }
       }).catch(function(err) {
-        error(err);
+        error('canMakePayment: ' + err);
       });
     } else {
       info('Cannot check whether can make payment.');
@@ -63,12 +63,12 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
               done('Thank you!', instrumentResponse);
             })
             .catch(function(err) {
-              error(err);
+              error('complete: ' + err);
             });
         }, 2000);
       })
       .catch(function(err) {
-        error(err);
+        error('show: ' + err);
       });
   } catch (e) {
     error('Developer mistake: \'' + e.message + '\'');
