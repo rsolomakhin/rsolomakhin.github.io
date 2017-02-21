@@ -40,6 +40,21 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
 
   try {
     let request = new PaymentRequest(supportedInstruments, details);
+    if (request.canMakePayment) {
+      info('Checking whether can make payment...');
+      request.canMakePayment(function(result) {
+        if (result) {
+          info('Can make payment.');
+        } else {
+          info('Cannot make payment.');
+        }
+      }).catch(function(err) {
+        error(err);
+      });
+    } else {
+      info('Cannot check whether can make payment.');
+    }
+
     request.show()
       .then(function(instrumentResponse) {
         window.setTimeout(function() {
