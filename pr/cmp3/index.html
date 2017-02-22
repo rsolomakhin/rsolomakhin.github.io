@@ -134,7 +134,6 @@ limitations under the License.
  * is finished with failure.
  */
 function initPaymentRequest(onSuccess, onFailure) {
-  alert('initing');
   if (!navigator.userAgent.match(/Android/i)) {
     onFailure('Supported only on Android for now.');
     return;
@@ -190,7 +189,6 @@ function initPaymentRequest(onSuccess, onFailure) {
 
   if (request.canMakePayment) {
     request.canMakePayment().then(function(result) {
-      alert('can make payment:' + result);
       if (result) {
         onSuccess(request);
       } else {
