@@ -1,7 +1,14 @@
 /**
- * Launches payment request for Alipay.
+ * Builds payment request for Alipay, but does not launch it.
+ * @return {PaymentRequest} The instance of payment request for Alipay.
+ * @private
  */
-function onBuyClicked() { // eslint-disable-line no-unused-vars
+function buildPaymentRequest() {
+  if (!window.PaymentRequest) {
+    error('This browser does not support web payments.');
+    return null;
+  }
+
   let supportedInstruments = [{
     supportedMethods: ['https://www.alipay.com/webpay'],
     data: {
@@ -33,44 +40,55 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
     }],
   };
 
-  if (!window.PaymentRequest) {
-    error('This browser does not support web payments.');
-    return;
-  }
-
+  let request = null;
   try {
-    let request = new PaymentRequest(supportedInstruments, details);
-    if (request.canMakePayment) {
-      info('Checking whether can make payment...');
-      request.canMakePayment(function(result) {
-        if (result) {
-          info('Can make payment.');
-        } else {
-          info('Cannot make payment.');
-        }
-      }).catch(function(err) {
-        error('canMakePayment: ' + err);
-      });
-    } else {
-      info('Cannot check whether can make payment.');
-    }
-
-    request.show()
-      .then(function(instrumentResponse) {
-        window.setTimeout(function() {
-          instrumentResponse.complete('success')
-            .then(function() {
-              done('Thank you!', instrumentResponse);
-            })
-            .catch(function(err) {
-              error('complete: ' + err);
-            });
-        }, 2000);
-      })
-      .catch(function(err) {
-        error('show: ' + err);
-      });
+    new PaymentRequest(supportedInstruments, details);
   } catch (e) {
     error('Developer mistake: \'' + e.message + '\'');
   }
+
+  if (request.canMakePayment) {
+    info('Checking whether can make payment...');
+    request.canMakePayment(function(result) {
+      if (result) {
+        info('Can make payment.');
+      } else {
+        info('Cannot make payment.');
+      }
+    }).catch(function(err) {
+      error('canMakePayment: ' + err);
+    });
+  } else {
+    info('Cannot check whether can make payment.');
+  }
+  return request;
+}
+
+let request = buildPaymentRequest();
+
+/**
+ * Launches payment request for Alipay.
+ */
+function onBuyClicked() { // eslint-disable-line no-unused-vars
+  if (request == null) {
+    return;
+  }
+
+  request.show()
+    .then(function(instrumentResponse) {
+      window.setTimeout(function() {
+        instrumentResponse.complete('success')
+          .then(function() {
+            done('Thank you!', instrumentResponse);
+          })
+          .catch(function(err) {
+            error('complete: ' + err);
+          });
+      }, 2000);
+    })
+    .catch(function(err) {
+      error('show: ' + err);
+    });
+
+  request = buildPaymentRequest();
 }
