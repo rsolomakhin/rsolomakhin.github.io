@@ -42,9 +42,10 @@ function buildPaymentRequest() {
 
   let request = null;
   try {
-    new PaymentRequest(supportedInstruments, details);
+    request = new PaymentRequest(supportedInstruments, details);
   } catch (e) {
     error('Developer mistake: \'' + e.message + '\'');
+    return null;
   }
 
   if (request.canMakePayment) {
@@ -61,6 +62,7 @@ function buildPaymentRequest() {
   } else {
     info('Cannot check whether can make payment.');
   }
+
   return request;
 }
 
