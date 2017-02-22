@@ -1,0 +1,293 @@
+
+<!doctype html>
+<!--
+Copyright 2017 Google Inc. All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Sample illustrating the use of PaymentRequest Can Make Payment.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>PaymentRequest Can Make Payment Sample</title>
+    <script>
+      // Add a global error event listener early on in the page load, to help ensure that browsers
+      // which don't support specific functionality still end up displaying a meaningful message.
+      window.addEventListener('error', function(error) {
+        if (ChromeSamples && ChromeSamples.setStatus) {
+          console.error(error);
+          ChromeSamples.setStatus(error.message + ' (Your browser may not support this feature.)');
+          error.preventDefault();
+        }
+      });
+    </script>
+    
+  <LInk rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+    
+  </head>
+
+  <body>
+    
+    <h1>PaymentRequest Can Make Payment Sample</h1>
+    <p class="availability">
+      Available in <a target="_blank" href="https://www.chromestatus.com/feature/5639348045217792">Chrome 56+</a> |
+      <a target="_blank" href="https://github.com/googlechrome/samples/blob/gh-pages/paymentrequest/can-make-payment/">View on GitHub</a> |
+      <a target="_blank" href="https://www.chromestatus.com/samples">Browse Samples</a>
+    </p>
+    <h3>Background</h3>
+<p>
+  <a href="https://github.com/w3c/browser-payment-api">PaymentRequest</a> lets
+  you accept payment from different payment methods.
+</p>
+
+<p>
+  This sample accepts both Android Pay and credit card payments and checks
+  whether the browser can make payment.
+</p>
+
+
+<script>
+  var ChromeSamples = {
+    log: function() {
+      var line = Array.prototype.slice.call(arguments).map(function(argument) {
+        return typeof argument === 'string' ? argument : JSON.stringify(argument);
+      }).join(' ');
+
+      document.querySelector('#log').textContent += line + '\n';
+    },
+
+    clearLog: function() {
+      document.querySelector('#log').textContent = '';
+    },
+
+    setStatus: function(status) {
+      document.querySelector('#status').textContent = status;
+    },
+
+    setContent: function(newContent) {
+      var content = document.querySelector('#content');
+      while(content.hasChildNodes()) {
+        content.removeChild(content.lastChild);
+      }
+      content.appendChild(newContent);
+    }
+  };
+</script>
+
+<h3>Live Output</h3>
+<div id="output" class="output">
+  <div id="content">
+<div><button id="buyButton">Buy</button></div>
+<div><pre id="result"></pre></div>
+</div>
+  <div id="status"></div>
+  <pre id="log"></pre>
+</div>
+
+
+
+
+
+  
+    
+      <script>/**
+ * The callback for successful creation of PaymentRequest.
+ *
+ * @callback successCallback
+ * @param {PaymentRequest} request The newly created instance of PaymentRequest
+ * object.
+ * @param {string} optionalWarning The optional warning message to be used, for
+ * example, when unable to determine whether the browser can make payments.
+ */
+
+/**
+ * The callback for failed creation of PaymentRequest.
+ *
+ * @callback failureCallback
+ * @param {string} error The message indicating the reason why an instance of
+ * PaymentRequest was not created.
+ */
+
+/**
+ * Asynchronously builds PaymentRequest for both Android Pay and credit card
+ * payments, but does not show any UI yet. Succeeds only if can make payments.
+ * If you encounter issues when running your own copy of this sample, run 'adb
+ * logcat | grep Wallet' to see detailed error messages.
+ *
+ * @param {successCallback} onSuccess The callback to invoke when this function
+ * is finished successfully.
+ * @param {failureCallback} onFailure The callback to invoke when this function
+ * is finished with failure.
+ */
+function initPaymentRequest(onSuccess, onFailure) {
+  alert('initing');
+  if (!navigator.userAgent.match(/Android/i)) {
+    onFailure('Supported only on Android for now.');
+    return;
+  }
+
+  if (!('PaymentRequest' in window)) {
+    onFailure('This browser does not support web payments.');
+    return;
+  }
+
+  let networks = ['amex', 'diners', 'discover', 'jcb', 'mastercard', 'unionpay',
+      'visa', 'mir'];
+  let types = ['debit', 'credit', 'prepaid'];
+  let supportedInstruments = [{
+    supportedMethods: ['https://android.com/pay'],
+    data: {
+      merchantName: 'Android Pay Demo',
+      environment: 'TEST',
+      // Place your own Android Pay merchant ID here. The merchant ID is tied to
+      // the origin of the website.
+      merchantId: '00184145120947117657',
+      // If you do not yet have a merchant ID, uncomment the following line.
+      // environment: 'TEST',
+      allowedCardNetworks: ['AMEX', 'DISCOVER', 'MASTERCARD', 'VISA'],
+      paymentMethodTokenizationParameters: {
+        tokenizationType: 'GATEWAY_TOKEN',
+        parameters: {
+          'gateway': 'stripe',
+          // Place your own Stripe publishable key here. Use a matching Stripe
+          // secret key on the server to initiate a transaction.
+          'stripe:publishableKey': 'pk_live_lNk21zqKM2BENZENh3rzCUgo',
+          'stripe:version': '2016-07-06',
+        },
+      },
+    },
+  }];
+
+  let details = {
+    total: {label: 'Donation', amount: {currency: 'USD', value: '55.00'}},
+    displayItems: [
+      {
+        label: 'Original donation amount',
+        amount: {currency: 'USD', value: '65.00'},
+      },
+      {
+        label: 'Friends and family discount',
+        amount: {currency: 'USD', value: '-10.00'},
+      },
+    ],
+  };
+
+  let request = new PaymentRequest(supportedInstruments, details);
+
+  if (request.canMakePayment) {
+    request.canMakePayment().then(function(result) {
+      alert('can make payment:' + result);
+      if (result) {
+        onSuccess(request);
+      } else {
+        onFailure('Cannot make payment');
+      }
+    }).catch(function(err) {
+      onSuccess(request, err);
+    });
+  } else {
+    onSuccess(
+        request, 'This browser does not support "can make payment" query');
+  }
+}
+
+/**
+ * Invokes PaymentRequest for Android Pay.
+ *
+ * @param {PaymentRequest} request The PaymentRequest object.
+ */
+function onBuyClicked(request) {
+  request.show().then(function(instrumentResponse) {
+    sendPaymentToServer(instrumentResponse);
+  })
+  .catch(function(err) {
+    ChromeSamples.setStatus(err);
+  });
+}
+
+/**
+ * Simulates processing the payment data on the server.
+ *
+ * @param {PaymentResponse} instrumentResponse The payment information to
+ * process.
+ */
+function sendPaymentToServer(instrumentResponse) {
+  // There's no server-side component of these samples. No transactions are
+  // processed and no money exchanged hands. Instantaneous transactions are not
+  // realistic. Add a 2 second delay to make it seem more real.
+  window.setTimeout(function() {
+    instrumentResponse.complete('success')
+        .then(function() {
+          document.getElementById('result').innerHTML =
+              instrumentToJsonString(instrumentResponse);
+        })
+        .catch(function(err) {
+          ChromeSamples.setStatus(err);
+        });
+  }, 2000);
+}
+
+/**
+ * Converts the payment instrument into a JSON string.
+ *
+ * @param {PaymentResponse} instrument The instrument to convert.
+ * @return {string} The JSON string representation of the instrument.
+ */
+function instrumentToJsonString(instrument) {
+  if (instrument.toJSON) {
+    return JSON.stringify(instrument, undefined, 2);
+  } else {
+    return JSON.stringify({
+      methodName: instrument.methodName,
+      details: instrument.details,
+    }, undefined, 2);
+  }
+}
+
+/**
+ * Initializes the buy button.
+ *
+ * @param {HTMLElement} buyButton The "Buy" button to initialize.
+ */
+function initBuyButton(buyButton) {
+  window.setTimeout(function() {
+    initPaymentRequest(function(request, optionalWarning) {
+      buyButton.setAttribute('style', 'display: inline;');
+      ChromeSamples.setStatus(optionalWarning ? optionalWarning : '');
+      buyButton.addEventListener('click', function handleClick() {
+        buyButton.removeEventListener('click', handleClick);
+        onBuyClicked(request);
+        initBuyButton(buyButton);
+      });
+    }, function(error) {
+      buyButton.setAttribute('style', 'display: none;');
+      ChromeSamples.setStatus(error);
+    });
+  }, 2000);
+}
+
+const buyButton = document.getElementById('buyButton');
+buyButton.setAttribute('style', 'display: none;');
+ChromeSamples.setStatus('Checking...');
+initBuyButton(buyButton);
+</script>
+    
+  
+
+  
+  </body>
+</html>
