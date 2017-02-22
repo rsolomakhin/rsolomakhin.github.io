@@ -50,7 +50,7 @@ function buildPaymentRequest() {
 
   if (request.canMakePayment) {
     info('Checking whether can make payment...');
-    request.canMakePayment(function(result) {
+    request.canMakePayment().then(function(result) {
       if (result) {
         info('Can make payment.');
       } else {
