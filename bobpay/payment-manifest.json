@@ -3,5 +3,9 @@
     "package": "com.bobpay",
     "version": 1,
     "sha256_cert_fingerprints": ["59:5C:88:65:FF:C4:E8:20:CF:F7:3E:C8:64:D0:95:F0:06:19:2E:A6:7B:20:04:D1:03:07:92:E2:A5:31:67:66"]
+  }, {
+    "package": "com.bobpay",
+    "version": 1,
+    "sha256_cert_fingerprints": ["92:5A:39:05:C5:B9:EA:BC:71:48:5F:F2:05:0A:1E:57:5F:23:40:E9:E3:87:14:EC:6D:A2:04:21:E0:FD:3B:D1"]
   }]
 }
