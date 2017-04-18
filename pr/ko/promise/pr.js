@@ -68,12 +68,12 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
   try {
     var request = new PaymentRequest(supportedInstruments, details, options);
 
-    request.addEventListener('onshippingaddresschange', function(e) {
+    request.addEventListener('shippingaddresschange', function(e) {
       // Don't resolve the promise to cause a timeout.
       e.updateWith(new Promise(function(resolve) {}));
     });
 
-    request.addEventListener('onshippingoptionchange', function(e) {
+    request.addEventListener('shippingoptionchange', function(e) {
       // Don't resolve the promise to cause a timeout.
       e.updateWith(new Promise(function(resolve) {}));
     });
