@@ -25,7 +25,7 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
     },
     {
       supportedMethods: [
-        'visa', 'mastercard', 'amex', 'discover', 'diners', 'jcb', 'unionpay'
+        'basic-card'
       ]
     }
   ];

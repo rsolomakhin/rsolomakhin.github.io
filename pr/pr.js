@@ -23,17 +23,7 @@ function buildPaymentRequest() {
       },
     },
   }, {
-    supportedMethods: ['unionpay', 'visa', 'mastercard', 'amex', 'discover',
-      'diners', 'jcb', 'mir', 'https://emerald-eon.appspot.com/bobpay',
-    ],
-  }, {
     supportedMethods: ['basic-card'],
-    data: {
-      supportedNetworks: ['unionpay', 'visa', 'mastercard', 'amex', 'discover',
-        'diners', 'jcb', 'mir',
-      ],
-      supportedTypes: ['prepaid', 'debit', 'credit'],
-    },
   }];
 
   const details = {

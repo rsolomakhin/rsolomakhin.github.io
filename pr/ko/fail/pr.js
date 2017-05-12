@@ -7,9 +7,7 @@ function buildPaymentRequest() {
   }
 
   var supportedInstruments = [{
-    supportedMethods: [
-      'unionpay', 'visa', 'mastercard', 'amex', 'discover', 'diners', 'jcb'
-    ]
+    supportedMethods: ['basic-card']
   }];
 
   var details = {
