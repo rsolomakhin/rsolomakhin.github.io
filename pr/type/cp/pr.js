@@ -60,7 +60,7 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
     request.show()
       .then(function(instrumentResponse) {
         instrumentResponse.complete().then(function() {
-          done(JSON.stringify(instrumentResponse, undefined, 2));
+          done('Thank you!', instrumentResponse);
         }).catch(function(err) {
           error(err);
         });
