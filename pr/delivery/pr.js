@@ -13,7 +13,10 @@ function updateDetails(details, addr) {
     var shippingOption = {
       id: '',
       label: '',
-      amount: {currency: 'USD', value: '0.00'},
+      amount: {
+        currency: 'USD',
+        value: '0.00'
+      },
       selected: true
     };
     if (addr.region === 'CA') {
@@ -38,9 +41,8 @@ function updateDetails(details, addr) {
  * Launches payment request that provides different delivery options based on
  * the delivery address that the user selects.
  */
-function onBuyClicked() {  // eslint-disable-line no-unused-vars
-  var supportedInstruments = [
-    {
+function onBuyClicked() { // eslint-disable-line no-unused-vars
+  var supportedInstruments = [{
       supportedMethods: ['https://android.com/pay'],
       data: {
         merchantName: 'Rouslan Solomakhin',
@@ -62,25 +64,42 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
   ];
 
   var details = {
-    total: {label: 'Donation', amount: {currency: 'USD', value: '55.00'}},
-    displayItems: [
-      {
+    total: {
+      label: 'Donation',
+      amount: {
+        currency: 'USD',
+        value: '55.00'
+      }
+    },
+    displayItems: [{
         label: 'Original donation amount',
-        amount: {currency: 'USD', value: '65.00'}
+        amount: {
+          currency: 'USD',
+          value: '65.00'
+        }
       },
       {
         label: 'Pending delivery price',
-        amount: {currency: 'USD', value: '0.00'},
+        amount: {
+          currency: 'USD',
+          value: '0.00'
+        },
         pending: true
       },
       {
         label: 'Friends and family discount',
-        amount: {currency: 'USD', value: '-10.00'}
+        amount: {
+          currency: 'USD',
+          value: '-10.00'
+        }
       }
     ]
   };
 
-  var options = {requestShipping: true, shippingType: "delivery"};
+  var options = {
+    requestShipping: true,
+    shippingType: "delivery"
+  };
 
   if (!window.PaymentRequest) {
     error('PaymentRequest API is not supported.');
@@ -99,20 +118,20 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
     });
 
     request.show()
-        .then(function(instrumentResponse) {
-          window.setTimeout(function() {
-            instrumentResponse.complete('success')
-                .then(function() {
-                  done('Thank you!', instrumentResponse);
-                })
-                .catch(function(err) {
-                  error(err);
-                });
-          }, 2000);
-        })
-        .catch(function(err) {
-          error(err);
-        });
+      .then(function(instrumentResponse) {
+        window.setTimeout(function() {
+          instrumentResponse.complete('success')
+            .then(function() {
+              done('This is a demo website. No payment will be processed.', instrumentResponse);
+            })
+            .catch(function(err) {
+              error(err);
+            });
+        }, 2000);
+      })
+      .catch(function(err) {
+        error(err);
+      });
   } catch (e) {
     error('Developer mistake: \'' + e.message + '\'');
   }

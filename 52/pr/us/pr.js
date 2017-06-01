@@ -13,7 +13,10 @@ function updateDetails(details, addr) {
     var shippingOption = {
       id: '',
       label: '',
-      amount: {currency: 'USD', value: '0.00'}
+      amount: {
+        currency: 'USD',
+        value: '0.00'
+      }
     };
     if (addr.administrativeArea === 'CA') {
       shippingOption.id = 'ca';
@@ -41,33 +44,43 @@ function updateDetails(details, addr) {
  * Starts PaymentRequest with shipping options that depend on the shipping
  * address.
  */
-function onBuyClicked() {  // eslint-disable-line no-unused-vars
+function onBuyClicked() { // eslint-disable-line no-unused-vars
   var supportedInstruments = [
     'https://android.com/pay', 'visa', 'mastercard', 'amex', 'discover',
     'maestro', 'diners', 'jcb', 'unionpay'
   ];
 
   var details = {
-    items: [
-      {
+    items: [{
         id: 'original',
         label: 'Original donation amount',
-        amount: {currency: 'USD', value: '65.00'}
+        amount: {
+          currency: 'USD',
+          value: '65.00'
+        }
       },
       {
         id: 'discount',
         label: 'Friends and family discount',
-        amount: {currency: 'USD', value: '-10.00'}
+        amount: {
+          currency: 'USD',
+          value: '-10.00'
+        }
       },
       {
         id: 'total',
         label: 'Donation',
-        amount: {currency: 'USD', value: '55.00'}
+        amount: {
+          currency: 'USD',
+          value: '55.00'
+        }
       }
     ]
   };
 
-  var options = {requestShipping: true};
+  var options = {
+    requestShipping: true
+  };
 
   var schemeData = {
     'https://android.com/pay': {
@@ -84,7 +97,7 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
 
   try {
     var request =
-        new PaymentRequest(supportedInstruments, details, options, schemeData);
+      new PaymentRequest(supportedInstruments, details, options, schemeData);
 
     request.addEventListener('shippingaddresschange', e => {
       e.updateWith(new Promise(resolve => {
@@ -93,23 +106,23 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
     });
 
     request.show()
-        .then(instrumentResponse => {
-          window.setTimeout(() => {
-            instrumentResponse.complete(true)
-                .then(() => {
-                  done(
-                      'Thank you!', request.shippingAddress,
-                      request.shippingOption, instrumentResponse.methodName,
-                      instrumentResponse.details);
-                })
-                .catch(err => {
-                  error(err.message);
-                });
-          }, 2000);
-        })
-        .catch(err => {
-          error(err.message);
-        });
+      .then(instrumentResponse => {
+        window.setTimeout(() => {
+          instrumentResponse.complete(true)
+            .then(() => {
+              done(
+                'This is a demo website. No payment will be processed.', request.shippingAddress,
+                request.shippingOption, instrumentResponse.methodName,
+                instrumentResponse.details);
+            })
+            .catch(err => {
+              error(err.message);
+            });
+        }, 2000);
+      })
+      .catch(err => {
+        error(err.message);
+      });
   } catch (e) {
     error('Developer mistake: \'' + e.message + '\'');
   }

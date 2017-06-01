@@ -34,9 +34,8 @@ function updateDetails(details, shippingOption) {
  * Launches payment request that provides multiple shipping options worldwide,
  * regardless of the shipping address.
  */
-function onBuyClicked() {  // eslint-disable-line no-unused-vars
-  var supportedInstruments = [
-    {
+function onBuyClicked() { // eslint-disable-line no-unused-vars
+  var supportedInstruments = [{
       supportedMethods: ['https://android.com/pay'],
       data: {
         merchantId: '123456',
@@ -60,33 +59,51 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
   ];
 
   var details = {
-    total: {label: 'Donation', amount: {currency: 'USD', value: '55.00'}},
-    displayItems: [
-      {
+    total: {
+      label: 'Donation',
+      amount: {
+        currency: 'USD',
+        value: '55.00'
+      }
+    },
+    displayItems: [{
         label: 'Original donation amount',
-        amount: {currency: 'USD', value: '65.00'}
+        amount: {
+          currency: 'USD',
+          value: '65.00'
+        }
       },
       {
         label: 'Friends and family discount',
-        amount: {currency: 'USD', value: '-10.00'}
+        amount: {
+          currency: 'USD',
+          value: '-10.00'
+        }
       }
     ],
-    shippingOptions: [
-      {
+    shippingOptions: [{
         id: 'standard',
         label: 'Standard shipping',
-        amount: {currency: 'USD', value: '0.00'},
+        amount: {
+          currency: 'USD',
+          value: '0.00'
+        },
         selected: true
       },
       {
         id: 'express',
         label: 'Express shipping',
-        amount: {currency: 'USD', value: '12.00'}
+        amount: {
+          currency: 'USD',
+          value: '12.00'
+        }
       }
     ]
   };
 
-  var options = {requestShipping: true};
+  var options = {
+    requestShipping: true
+  };
 
   if (!window.PaymentRequest) {
     error('PaymentRequest API is not supported.');
@@ -103,20 +120,20 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
     });
 
     request.show()
-        .then(function(instrumentResponse) {
-          window.setTimeout(function() {
-            instrumentResponse.complete('success')
-                .then(function() {
-                  done('Thank you!', instrumentResponse);
-                })
-                .catch(function(err) {
-                  error(err.message);
-                });
-          }, 2000);
-        })
-        .catch(function(err) {
-          error(err.message);
-        });
+      .then(function(instrumentResponse) {
+        window.setTimeout(function() {
+          instrumentResponse.complete('success')
+            .then(function() {
+              done('This is a demo website. No payment will be processed.', instrumentResponse);
+            })
+            .catch(function(err) {
+              error(err.message);
+            });
+        }, 2000);
+      })
+      .catch(function(err) {
+        error(err.message);
+      });
   } catch (e) {
     error('Developer mistake: \'' + e.message + '\'');
   }

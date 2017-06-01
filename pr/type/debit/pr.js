@@ -60,7 +60,7 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
     request.show()
       .then(function(instrumentResponse) {
         instrumentResponse.complete().then(function() {
-          done('Thank you!', instrumentResponse);
+          done('This is a demo website. No payment will be processed.', instrumentResponse);
         }).catch(function(err) {
           error(err);
         });

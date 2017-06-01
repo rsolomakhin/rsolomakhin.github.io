@@ -28,45 +28,60 @@ function updateDetails(details, shippingOption) {
 /**
  * Starts PaymentRequest with shipping options independent of address.
  */
-function onBuyClicked() {  // eslint-disable-line no-unused-vars
+function onBuyClicked() { // eslint-disable-line no-unused-vars
   var supportedInstruments = [
     'https://android.com/pay', 'visa', 'mastercard', 'amex', 'discover',
     'maestro', 'diners', 'jcb', 'unionpay'
   ];
 
   var details = {
-    items: [
-      {
+    items: [{
         id: 'original',
         label: 'Original donation amount',
-        amount: {currency: 'USD', value: '65.00'}
+        amount: {
+          currency: 'USD',
+          value: '65.00'
+        }
       },
       {
         id: 'discount',
         label: 'Friends and family discount',
-        amount: {currency: 'USD', value: '-10.00'}
+        amount: {
+          currency: 'USD',
+          value: '-10.00'
+        }
       },
       {
         id: 'total',
         label: 'Donation',
-        amount: {currency: 'USD', value: '55.00'}
+        amount: {
+          currency: 'USD',
+          value: '55.00'
+        }
       }
     ],
-    shippingOptions: [
-      {
+    shippingOptions: [{
         id: 'standard',
         label: 'Standard shipping',
-        amount: {currency: 'USD', value: '0.00'}
+        amount: {
+          currency: 'USD',
+          value: '0.00'
+        }
       },
       {
         id: 'express',
         label: 'Express shipping',
-        amount: {currency: 'USD', value: '12.00'}
+        amount: {
+          currency: 'USD',
+          value: '12.00'
+        }
       }
     ]
   };
 
-  var options = {requestShipping: true};
+  var options = {
+    requestShipping: true
+  };
 
   var schemeData = {
     'https://android.com/pay': {
@@ -83,7 +98,7 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
 
   try {
     var request =
-        new PaymentRequest(supportedInstruments, details, options, schemeData);
+      new PaymentRequest(supportedInstruments, details, options, schemeData);
 
     request.addEventListener('shippingoptionchange', e => {
       e.updateWith(new Promise(resolve => {
@@ -92,23 +107,23 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
     });
 
     request.show()
-        .then(instrumentResponse => {
-          window.setTimeout(() => {
-            instrumentResponse.complete(true)
-                .then(() => {
-                  done(
-                      'Thank you!', request.shippingAddress,
-                      request.shippingOption, instrumentResponse.methodName,
-                      instrumentResponse.details);
-                })
-                .catch(err => {
-                  error(err.message);
-                });
-          }, 2000);
-        })
-        .catch(err => {
-          error(err.message);
-        });
+      .then(instrumentResponse => {
+        window.setTimeout(() => {
+          instrumentResponse.complete(true)
+            .then(() => {
+              done(
+                'This is a demo website. No payment will be processed.', request.shippingAddress,
+                request.shippingOption, instrumentResponse.methodName,
+                instrumentResponse.details);
+            })
+            .catch(err => {
+              error(err.message);
+            });
+        }, 2000);
+      })
+      .catch(err => {
+        error(err.message);
+      });
   } catch (e) {
     error('Developer mistake: \'' + e.message + '\'');
   }

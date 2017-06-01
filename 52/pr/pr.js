@@ -5,21 +5,29 @@ function onBuyClicked() {
   ];
 
   var details = {
-    items: [
-      {
+    items: [{
         id: 'original',
         label: 'Original donation amount',
-        amount: {currency: 'USD', value: '65.00'}
+        amount: {
+          currency: 'USD',
+          value: '65.00'
+        }
       },
       {
         id: 'discount',
         label: 'Friends and family discount',
-        amount: {currency: 'USD', value: '-10.00'}
+        amount: {
+          currency: 'USD',
+          value: '-10.00'
+        }
       },
       {
         id: 'total',
         label: 'Donation',
-        amount: {currency: 'USD', value: '55.00'}
+        amount: {
+          currency: 'USD',
+          value: '55.00'
+        }
       }
     ]
   };
@@ -41,21 +49,25 @@ function onBuyClicked() {
 
   try {
     var request =
-        new PaymentRequest(supportedInstruments, details, options, schemeData);
+      new PaymentRequest(supportedInstruments, details, options, schemeData);
     request.show()
-        .then(instrumentResponse => {
-          window.setTimeout(() => {
-            instrumentResponse.complete(true)
-                .then(() => {
-                  done(
-                      'Thank you!', request.shippingAddress,
-                      request.shippingOption, instrumentResponse.methodName,
-                      instrumentResponse.details);
-                })
-                .catch(err => { error(err.message); });
-          }, 2000);
-        })
-        .catch(err => { error(err.message); });
+      .then(instrumentResponse => {
+        window.setTimeout(() => {
+          instrumentResponse.complete(true)
+            .then(() => {
+              done(
+                'This is a demo website. No payment will be processed.', request.shippingAddress,
+                request.shippingOption, instrumentResponse.methodName,
+                instrumentResponse.details);
+            })
+            .catch(err => {
+              error(err.message);
+            });
+        }, 2000);
+      })
+      .catch(err => {
+        error(err.message);
+      });
 
   } catch (e) {
     error('Developer mistake: \'' + e.message + '\'');
