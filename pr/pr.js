@@ -53,7 +53,7 @@ function buildPaymentRequest() {
         supportedTypes: ['debit'],
       },
       total: {
-        label: 'Discounted donation',
+        label: 'Debit card discounted donation',
         amount: {
           currency: 'USD',
           value: '45.00',
@@ -64,6 +64,25 @@ function buildPaymentRequest() {
         amount: {
           currency: 'USD',
           value: '-10.00',
+        },
+      }],
+    }, {
+      supportedMethods: ['basic-card'],
+      data: {
+        supportedNetworks: ['mastercard'],
+      },
+      total: {
+        label: 'MasterCard discounted donation',
+        amount: {
+          currency: 'USD',
+          value: '50.00',
+        },
+      },
+      additionalDisplayItems: [{
+        label: 'MasterCard discount',
+        amount: {
+          currency: 'USD',
+          value: '-5.00',
         },
       }],
     }],
