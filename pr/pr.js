@@ -48,7 +48,10 @@ function buildPaymentRequest() {
       },
     }],
     modifiers: [{
-      supportedMethods: ['visa'],
+      supportedMethods: ['basic-card'],
+      data: {
+        supportedTypes: ['debit'],
+      },
       total: {
         label: 'Discounted donation',
         amount: {
@@ -57,7 +60,7 @@ function buildPaymentRequest() {
         },
       },
       additionalDisplayItems: [{
-        label: 'VISA discount',
+        label: 'Debit card discount',
         amount: {
           currency: 'USD',
           value: '-10.00',
@@ -104,7 +107,8 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
         window.setTimeout(function() {
           instrumentResponse.complete('success')
             .then(function() {
-              done('This is a demo website. No payment will be processed.', instrumentResponse);
+              done('This is a demo website. No payment will be processed.',
+                instrumentResponse);
             })
             .catch(function(err) {
               error(err);
