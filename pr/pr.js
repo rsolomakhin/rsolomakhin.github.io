@@ -66,9 +66,6 @@ function buildPaymentRequest() {
           value: '-10.00',
         },
       }],
-      data: {
-        discountProgramParticipantId: '86328764873265',
-      },
     }],
   };
 
