@@ -58,6 +58,26 @@ function buildPaymentRequest() {
 let request = buildPaymentRequest();
 
 /**
+ * Handles the response from PaymentRequest.show().
+ */
+function handlePaymentResponse(response) {
+  window.setTimeout(function() {
+    response.complete('success')
+      .then(function() {
+        done('This is a demo website. No payment will be processed.', response);
+      })
+      .catch(function(err) {
+        error(err);
+        request = buildPaymentRequest();
+      });
+  }, 500);
+}
+
+// Handle the response from PaymentRequest.show() if the page has been unloaded
+// while the user was performing the payment.
+window.addEventListener('paymentresponse', handlePaymentResponse);
+
+/**
  * Launches payment request for Bob Pay.
  */
 function onBuyClicked() { // eslint-disable-line no-unused-vars
@@ -68,18 +88,7 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
 
   try {
     request.show()
-      .then(function(instrumentResponse) {
-        window.setTimeout(function() {
-          instrumentResponse.complete('success')
-            .then(function() {
-              done('This is a demo website. No payment will be processed.', instrumentResponse);
-            })
-            .catch(function(err) {
-              error(err);
-              request = buildPaymentRequest();
-            });
-        }, 500);
-      })
+      .then(handlePaymentResponse)
       .catch(function(err) {
         error(err);
         request = buildPaymentRequest();
