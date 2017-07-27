@@ -1,0 +1,10 @@
+{
+  "short_name": "Bobpay",
+  "icons": [{
+    "src": "droid.png"
+  }],
+  "related_applications": [{
+    "platform": "itunes",
+    "url": "https://bobpay.xyz/pay"
+  }]
+}
