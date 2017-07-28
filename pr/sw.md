@@ -1,4 +1,4 @@
-## Two service workers example
+# Two service workers example
 
 If your [payment handler](https://w3c.github.io/payment-handler/) needs to
 compartmentalize the payment instruments into two wallets, one of the simplest
@@ -7,6 +7,8 @@ paths. Here's the list of files to enable this solution for the
 personal/business split of the payment instruments in the fictional product
 named Bob Pay. A visitor to `/personal` and `/business` paths on your website
 will be able to install two service workers with different responsibilities.
+
+## Files in `/personal/` subdirectory:
 
 ### `/personal/manifest.json`
 
@@ -52,6 +54,8 @@ self.addEventListener('paymentrequest', function(e) {
   e.respondWith(undefined);
 });
 ```
+
+## Files in `/business/` subdirectory:
 
 ### `/business/manifest.json`
 
