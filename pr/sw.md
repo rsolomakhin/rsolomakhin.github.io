@@ -2,8 +2,9 @@
 
 If your [payment handler](https://w3c.github.io/payment-handler/) needs to
 compartmentalize the payment instruments into two wallets, one of the simplest
-approaches is to use two separate service workers with different [scopes]() or
-paths. Here's the list of files to enable this solution for the
+approaches is to use two separate service workers with different
+[scopes](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers#Registering_your_worker)
+or paths. Here's the list of files to enable this solution for the
 personal/business split of the payment instruments in the fictional product
 named Bob Pay. A visitor to `/personal` and `/business` paths on your website
 will be able to install two service workers with different responsibilities.
