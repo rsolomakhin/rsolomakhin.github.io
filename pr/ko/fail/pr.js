@@ -32,7 +32,7 @@ function buildPaymentRequest() {
       }
     }],
     modifiers: [{
-      supportedMethods: ['visa'],
+      supportedMethods: ['basic-card'],
       total: {
         label: 'Discounted donation',
         amount: {
@@ -48,7 +48,8 @@ function buildPaymentRequest() {
         }
       }],
       data: {
-        discountProgramParticipantId: '86328764873265'
+        discountProgramParticipantId: '86328764873265',
+        supportedNetworks: ['visa']
       }
     }]
   };
