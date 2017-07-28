@@ -12,7 +12,7 @@ will be able to install two service workers with different responsibilities.
 
 ```json
 {
-  "name": "Bob Pay Personal"
+  "name": "Bob Pay Personal",
   "icons": [{
     "src": "/img/personal.png"
   }]
@@ -29,7 +29,7 @@ for the payment handler name and icon: -->
 <script>
 function install() {
   if (!navigator.serviceWorker) {
-    console.log('Service workers not supported.);
+    console.log('Service workers not supported.');
     return;
   }
 
@@ -57,7 +57,7 @@ self.addEventListener('paymentrequest', function(e) {
 
 ```json
 {
-  "name": "Bob Pay Business"
+  "name": "Bob Pay Business",
   "icons": [{
     "src": "/img/business.png"
   }]
@@ -74,7 +74,7 @@ for the payment handler name and icon: -->
 <script>
 function install() {
   if (!navigator.serviceWorker) {
-    console.log('Service workers not supported.);
+    console.log('Service workers not supported.');
     return;
   }
 
