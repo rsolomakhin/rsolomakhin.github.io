@@ -1,7 +1,8 @@
 {
   "short_name": "Bobpay",
   "icons": [{
-    "src": "droid.png"
+    "src": "droid.png",
+    "sizes": "32x32"
   }],
   "related_applications": [{
     "platform": "itunes",
