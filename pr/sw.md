@@ -36,7 +36,7 @@ function install() {
     return;
   }
 
-  navigator.serviceWorker.register('/personal/payment-handler.js', '/personal')
+  navigator.serviceWorker.register('/personal/payment-handler.js', '/personal/')
   .then(function(registration) {
     console.log('Registered the service worker for ' + registration.scope);
   }).catch(function(error) {
@@ -83,7 +83,7 @@ function install() {
     return;
   }
 
-  navigator.serviceWorker.register('/business/payment-handler.js', '/business')
+  navigator.serviceWorker.register('/business/payment-handler.js', '/business/')
   .then(function(registration) {
     console.log('Registered the service worker for ' + registration.scope);
   }).catch(function(error) {
