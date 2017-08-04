@@ -10,7 +10,7 @@ function buildPaymentRequest() {
   const supportedInstruments = [{
     supportedMethods: [
       'interledger',
-      'https://emerald-eon.appspot.com/bobpay',
+      'https://emerald-eon.appspot.com/alicepay',
     ],
   }];
 
