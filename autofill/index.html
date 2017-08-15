@@ -21,6 +21,7 @@
 	  form['zip'].value = '55123';
 	  form['country'].value = 'USA';
     form['email'].value = 'hjs@aol.com';
+    form['phone'].value = '(555) 555-5555';
   }
   var FillFormSuperman = function() {
 	  var form = document.forms['form1'];
@@ -30,8 +31,9 @@
 	  form['state'].value = 'NY';
 	  form['zip'].value = '55555';
 	  form['country'].value = 'Antarctica';
-      }
-      var FillFormPresident = function() {
+    form['phone'].value = '(555) 555-5555';
+  }
+  var FillFormPresident = function() {
 	  var form = document.forms['form1'];
 	  form['name'].value = 'Barack Obama';
 	  form['address'].value = '1600 Pennsylvania Ave NW';
@@ -39,9 +41,10 @@
 	  form['state'].value = 'DC';
 	  form['zip'].value = '20500';
 	  form['country'].value = 'United States';
-      }
+    form['phone'].value = '(555) 555-5555';
+  }
 
-      var BasicFillForm = function(id, str) {
+  var BasicFillForm = function(id, str) {
 	  var form = document.forms[id];
           form['n300'].value = str;
       }
@@ -120,6 +123,7 @@
   Zip: <input name="zip" id="form_zip"> <br>
   Country: <input name="country" id="form_country"> <br>
   Email: <input name="email" id="form_email"> <br>
+  Phone: <input name="phone" id="form_phone"> <br>
   <input type="reset" value="Reset">
   <input type="submit" value="Submit">
 </form>
@@ -259,6 +263,7 @@
   </select> <br>
   Zip: <input name="zip" id="form_zip" autocomplete="off"> <br>
   Email: <input name="email" id="form_email" autocomplete="off"> <br>
+  Phone: <input name="phone" id="form_phone" autocomplete="off"> <br>
   <input type="reset" value="Reset">
   <input type="submit" value="Submit">
 </form>
