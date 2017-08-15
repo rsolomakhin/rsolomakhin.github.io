@@ -14,10 +14,13 @@ function buildPaymentRequest() {
   }, {
     supportedMethods: ['https://google.com/pay'],
     data: {
+      allowedPaymentMethods: ['TOKENIZED_CARD', 'CARD'],
+      apiVersion: 1,
+      cardRequirements: {
+        'allowedCardNetworks': ['VISA', 'MASTERCARD', 'AMEX'],
+      },
       merchantName: 'Rouslan Solomakhin',
       merchantId: '00184145120947117657',
-      allowedCardNetworks: ['AMEX', 'MASTERCARD', 'VISA', 'DISCOVER'],
-      apiVersion: '1',
       paymentMethodTokenizationParameters: {
         tokenizationType: 'GATEWAY_TOKEN',
         parameters: {
