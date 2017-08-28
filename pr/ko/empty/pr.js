@@ -71,6 +71,7 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
 
     request.addEventListener('shippingaddresschange', function(e) {
       e.updateWith({});
+    });
 
     request.show()
       .then(function(instrumentResponse) {
