@@ -37,7 +37,10 @@ Bob Pay Personal Wallet</button>
 <script>
 var SW_URL = '/personal/payment-handler.js';
 var SW_SCOPE = '/personal/';
-if (navigator.serviceWorker) {
+
+if (!navigator.serviceWorker) {
+  console.log('Service workers not supported.');
+} else {
   navigator.serviceWorker.getRegistration(SW_URL)
   .then(function(registration) {
     if (!registration) {
@@ -47,11 +50,6 @@ if (navigator.serviceWorker) {
 }
 
 function install() {
-  if (!navigator.serviceWorker) {
-    console.log('Service workers not supported.');
-    return;
-  }
-
   navigator.serviceWorker.register(SW_URL, SW_SCOPE)
   .then(function(registration) {
     console.log('Registered the service worker for ' + registration.scope);
@@ -101,7 +99,10 @@ Bob Pay Business Wallet</button>
 <script>
 var SW_URL = '/business/payment-handler.js';
 var SW_SCOPE = '/business/';
-if (navigator.serviceWorker) {
+
+if (!navigator.serviceWorker) {
+  console.log('Service workers not supported.');
+} else {
   navigator.serviceWorker.getRegistration(SW_URL)
   .then(function(registration) {
     if (!registration) {
@@ -111,11 +112,6 @@ if (navigator.serviceWorker) {
 }
 
 function install() {
-  if (!navigator.serviceWorker) {
-    console.log('Service workers not supported.');
-    return;
-  }
-
   navigator.serviceWorker.register(SW_URL, SW_SCOPE)
   .then(function(registration) {
     console.log('Registered the service worker for ' + registration.scope);
