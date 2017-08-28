@@ -29,14 +29,30 @@ will be able to install two service workers with different responsibilities.
 for the payment handler name and icon: -->
 <link rel="manifest" href="/personal/manifest.json">
 
+<h1>Bob Pay Personal Wallet</h1>
+
+<button id="register-button" style="display: none;" onclick="install()">Install
+Bob Pay Personal Wallet</button>
+
 <script>
+var SW_URL = '/personal/payment-handler.js';
+var SW_SCOPE = '/personal/';
+if (navigator.serviceWorker) {
+  navigator.serviceWorker.getRegistration(SW_URL)
+  .then(function(registration) {
+    if (!registration) {
+      document.getElementById('register-button').style.display = 'block';
+    }
+  });
+}
+
 function install() {
   if (!navigator.serviceWorker) {
     console.log('Service workers not supported.');
     return;
   }
 
-  navigator.serviceWorker.register('/personal/payment-handler.js', '/personal/')
+  navigator.serviceWorker.register(SW_URL, SW_SCOPE)
   .then(function(registration) {
     console.log('Registered the service worker for ' + registration.scope);
   }).catch(function(error) {
@@ -44,7 +60,8 @@ function install() {
   });
 }
 </script>
-<button onclick="install()">Install Bob Pay Personal</button>
+
+<p>You can switch to manage <a href="/business/">Bob Pay Business Wallet</a>.</p>
 ```
 
 ### `/personal/payment-handler.js`
@@ -76,14 +93,30 @@ self.addEventListener('paymentrequest', function(e) {
 for the payment handler name and icon: -->
 <link rel="manifest" href="/business/manifest.json">
 
+<h1>Bob Pay Business Wallet</h1>
+
+<button id="register-button" style="display: none;" onclick="install()">Install
+Bob Pay Business Wallet</button>
+
 <script>
+var SW_URL = '/business/payment-handler.js';
+var SW_SCOPE = '/business/';
+if (navigator.serviceWorker) {
+  navigator.serviceWorker.getRegistration(SW_URL)
+  .then(function(registration) {
+    if (!registration) {
+      document.getElementById('register-button').style.display = 'block';
+    }
+  });
+}
+
 function install() {
   if (!navigator.serviceWorker) {
     console.log('Service workers not supported.');
     return;
   }
 
-  navigator.serviceWorker.register('/business/payment-handler.js', '/business/')
+  navigator.serviceWorker.register(SW_URL, SW_SCOPE)
   .then(function(registration) {
     console.log('Registered the service worker for ' + registration.scope);
   }).catch(function(error) {
@@ -91,7 +124,8 @@ function install() {
   });
 }
 </script>
-<button onclick="install()">Install Bob Pay Business</button>
+
+<p>You can switch to manage <a href="/personal/">Bob Pay Personal Wallet</a>.</p>
 ```
 
 ### `/business/payment-handler.js`
