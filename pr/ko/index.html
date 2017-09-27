@@ -13,12 +13,18 @@
     <li><a href="fail/">Failed transaction</a></li>
     <li><a href="complete/">Timed out transaction</a></li>
     <li><a href="nocomplete/">Invalid completion status</a></li>
-    <li><a href="updatewith/">Timed out update for address changes</a></li>
-    <li><a href="promise/">Timed out promise for address changes</a></li>
+    <li><a href="no-listener/">Merchant does not listen to shipping address
+        change. This should not block UI when user changes shipping address.</a></li>
+    <li><a href="updatewith/">Merchant listens to shipping address change, but
+        does not call updateWith() on the change event. This should not block UI
+      when user changes shipping address.</a></li>
+    <li><a href="promise/">Timed out promise for address changes. The merchant
+        calls updateWith(promise), but never resolves that promise. This should
+        cancel payment request.</a></li>
     <li><a href="empty/">Respond to shipping address change with an empty
-        dictionary</a></li>
+        dictionary.</a></li>
     <li><a href="reject-update/">Reject the promise for responding to address
-        changes.</a></li>
+        changes. This should cancel the payment request.</a></li>
   </ul>
   <script src="/redirect.js"></script>
 </body>

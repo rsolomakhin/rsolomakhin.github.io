@@ -3,8 +3,8 @@
 /* global PaymentRequest:false */
 
 /**
- * This merchant listens to shipping address change, but never responds with an
- * updateWith() call. This should not cause timeouts or block UI.</p>
+ * Merchant does not listen to shipping address change. This should not block UI
+ * when user changes shipping address.
  */
 function onBuyClicked() { // eslint-disable-line no-unused-vars
     var supportedInstruments = [{
@@ -82,12 +82,7 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
 
     try {
         var request = new PaymentRequest(supportedInstruments, details, options);
-        request.addEventListener('shippingaddresschange', function(evt) {
-            console.log('Got the shipping address change event, going to ignore it.');
-        });
-        request.addEventListener('shippingoptionchange', function(evt) {
-            console.log('Got the shipping option change event, going to ignore it.');
-        });
+        // No shipping address or option change listeners.
         request.show()
             .then(function(instrumentResponse) {
                 window.setTimeout(function() {

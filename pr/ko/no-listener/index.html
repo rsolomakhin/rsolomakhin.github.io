@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shipping Without updateWith() Call</title>
+  <title>Shipping Without Event Listeners</title>
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" type="text/css" href="../../style.css">
 </head>
 <body>
   <div id="contents">
-    <h1>Shipping Without updateWith() Call</h1>
-    <p>This merchant listens to shipping address change, but never responds with
-    an updateWith() call. This should not cause timeouts or block UI.</p>
+    <h1>Shipping Without Event Listeners</h1>
+    <p>Merchant does not listen to shipping address change. This should not
+    block UI when user changes shipping address.</p>
     <p>Price: USD <strong>$55.00</strong></p>
     <p><button onclick="onBuyClicked()">Buy</button></p>
   </div>
