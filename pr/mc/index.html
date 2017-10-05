@@ -1,0 +1,56 @@
+<html>
+<head>
+<script>
+
+const supportedPaymentMethods = [
+  {
+    supportedMethods: ["https://mpass.mcskunkworks.com/pay"]
+  }
+];
+
+const paymentDetails = {
+  total: {
+    label: 'Total',
+    amount:{
+      currency: 'USD',
+      value: 0
+    }
+  }
+};
+
+// Options isn't required
+const options = {requestUserEmail: true};
+
+function pay() {
+
+  if (window.PaymentRequest) {
+    console.log("Calling Payment Request");
+    const PR = new PaymentRequest(
+      supportedPaymentMethods,
+      paymentDetails,
+      options
+    );
+
+    PR.show()
+      .then((paymentResponse) => {
+        // The user filled in the required fields and completed the flow
+        // Get the details from `paymentResponse` and complete the transaction.
+        return paymentResponse.complete();
+      })
+      .catch((err) => {
+        console.log("Error: " + err);
+      });
+  } else {
+    alert("Damn!!")
+  }
+
+}
+</script>
+</head>
+
+<body>
+  <h1>Shop</h1>
+  <button onclick="pay();">Pay</button>
+</body>
+
+</html>
