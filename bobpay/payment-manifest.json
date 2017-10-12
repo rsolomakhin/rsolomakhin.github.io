@@ -1,4 +1,4 @@
 {
     "default_applications": ["https://rsolomakhin.github.io/bobpay/gangguis-app.json"],
-    "supported_origins": ["https://bobpay.xyz", "https://webauthn.org"]
+    "supported_origins": ["https://bobpay.xyz", "https://webauthn.org", "https://webauthn.org:8443"]
 }
