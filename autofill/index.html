@@ -108,7 +108,7 @@
   <h3>Profile Autofill</h3>
 
 <form name="addr1.1" id="form1" action="https://example.com/" method="post">
-  Name: <input type="text" name="name"><br>
+  Name: <input type="text" name="name" id="profile_autofill_name"><br>
   Address: <input type="text" name="address"><br>
   City: <input type="text" name="city"><br>
   State: <select name="state">
@@ -126,7 +126,7 @@
   Email: <input name="email" id="form_email"> <br>
   Phone: <input name="phone" id="form_phone"> <br>
   <input type="reset" value="Reset">
-  <input type="submit" value="Submit">
+  <input type="submit" value="Submit" id="profile_submit">
 </form>
 
 <button type="button" onclick="FillFormSimpsons()">Fill Form (Simpsons)</button>
@@ -143,7 +143,7 @@
 <form name="form300" id="form300" action="/generic_submit" method="post">
   This Is: <input type="text" name="n300"><br>
   <input type="reset" value="Reset">
-  <input type="submit" value="Submit">
+  <input type="submit" value="Submit" id="key_value_autocomplete_submit">
 </form>
 
 <p>
@@ -161,7 +161,7 @@
 <form name="form300off" id="form300off" action="/generic_submit" method="post" autocomplete="off">
   This Is: <input type="text" name="n300" autocomplete="off"/><br>
   <input type="reset" value="Reset">
-  <input type="submit" value="Submit">
+  <input type="submit" value="Submit" id="key_value_autocomplete_off_submit">
 </form>
 
 <p>
@@ -177,8 +177,8 @@
   <h3>Credit Card autofill</h3>
 
 <form name="cc1.1" id="cc1" action="https://example.com/" method="post">
-  Name on card: <input autofocus="" type="text" name="name"><br>
-  Credit card number: <input type="text" name="CCNo"><br>
+  Name on card: <input autofocus="" type="text" name="name" id="credit_card_name"><br>
+  Credit card number: <input type="text" name="CCNo" id="credit_card_number"><br>
   Expiry Date: <select name="CCExpiresMonth">
     <option value="01">01</option>
     <option value="02">02</option>
@@ -214,7 +214,7 @@
   CVC: <input name="cvc">
 <br>
   <input type="reset" value="Reset">
-  <input type="submit" value="Submit">
+  <input type="submit" value="Submit" id="credit_card_submit">
 </form>
 
 <p>
@@ -230,10 +230,10 @@
   <h3>Name/Password</h3>
 
   <form name="np" id="np1" action="https://example.com/" method="post">
-  Name: <input type="text" name="name"><br>
-  Password: <input type="password" name="password"><br>
+  Name: <input type="text" name="name" id="password_name"><br>
+  Password: <input type="password" name="password" id="password_field"><br>
   <input type="reset" value="Reset">
-  <input type="submit" value="Submit">
+  <input type="submit" value="Submit" id="password_submit">
   </form>
 
 <p>
@@ -266,7 +266,7 @@
   Email: <input name="email" id="form_email" autocomplete="off"> <br>
   Phone: <input name="phone" id="form_phone" autocomplete="off"> <br>
   <input type="reset" value="Reset">
-  <input type="submit" value="Submit">
+  <input type="submit" value="Submit" id="autocomplete_off_submit">
 </form>
 
 <hr>
