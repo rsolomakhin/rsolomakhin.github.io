@@ -1,4 +1,4 @@
 {
     "default_applications": ["https://rsolomakhin.github.io/bobpay/gangguis-app.json"],
-    "supported_origins": ["https://bobpay.xyz", "https://webauthn.org", "https://webauthn.org:8443", "https://webauthn.org:8000"]
+    "supported_origins": ["https://bobpay.xyz", "https://webauthn.org", "https://webauthn.org:8443", "https://webauthn.org:8000", "https://webauthn05.noknoktest.com:8443"]
 }
