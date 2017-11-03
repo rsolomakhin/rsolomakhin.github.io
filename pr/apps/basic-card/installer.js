@@ -1,3 +1,16 @@
+function showMessage(message) {
+    const messageElement = document.getElementById('msg');
+    messageElement.innerHTML = message + '\n' + messageElement.innerHTML;
+}
+
+function clearMessages() {
+    document.getElementById('msg').innerHTML = '';
+}
+
+function showElement(id) {
+    document.getElementById(id).style.display = 'block';
+}
+
 function hideElement(id) {
     document.getElementById(id).style.display = 'none';
 }
@@ -9,31 +22,14 @@ function hideElements() {
     }
 }
 
-function showElement(id) {
-    document.getElementById(id).style.display = 'block';
-}
-
-function showMessage(message) {
-    const messageElement = document.getElementById('msg');
-    messageElement.innerHTML = message + '\n' + messageElement.innerHTML;
-}
-
-function clearMessages() {
-    document.getElementById('msg').innerHTML = '';
-}
-
-function finishCheckingWithMessage(message) {
-    hideElement('checking');
-    showMessage(message);
-}
-
 function check() {
     clearMessages();
     hideElements();
     showElement('checking');
 
     if (!navigator.serviceWorker) {
-        finishCheckingWithMessage('No service worker capability in this browser.');
+        hideElement('checking');
+        showMessage('No service worker capability in this browser.');
         return;
     }
 
@@ -47,15 +43,18 @@ function check() {
             showElement('installed');
             document.getElementById('scope').innerHTML = registration.scope;
             if (!registration.paymentManager) {
-                finishCheckingWithMessage('No payment handler capability in this browser. Is chrome://flags/#servicew-worker-payment-apps enabled?');
+                hideElement('checking');
+                showMessage('No payment handler capability in this browser. Is chrome://flags/#servicew-worker-payment-apps enabled?');
                 return;
             }
             if (!registration.paymentManager.instruments) {
-                finishCheckingWithMessage('Payment handler is not fully implemented. Cannot set the instruments.');
+                hideElement('checking');
+                showMessage('Payment handler is not fully implemented. Cannot set the instruments.');
                 return;
             }
             if (!registration.paymentManager.instruments.has('instrument-key')) {
-                finishCheckingWithMessage('No instruments found. Did installation fail?');
+                hideElement('checking');
+                showMessage('No instruments found. Did installation fail?');
                 return;
             }
             registration.paymentManager.instruments.get('instrument-key').then((instrument) => {
@@ -64,12 +63,14 @@ function check() {
                 document.getElementById('type').innerHTML = instrument.capabilities.supportedTypes;
                 hideElement('checking');
             }).catch((error) => {
-                finishCheckingWithMessage(error);
+                hideElement('checking');
+                showMessage(error);
             });
 
         })
         .catch((error) => {
-            finishCheckingWithMessage(error);
+            hideElement('checking');
+            showMessage(error);
         });
 }
 
@@ -92,8 +93,17 @@ function install() {
                     }
                 })
                 .then(() => {
-                    hideElement('installing');
-                    showElement('installed');
+                    registration.paymentManager.instruments.get('instrument-key').then((instrument) => {
+                        document.getElementById('scope').innerHTML = registration.scope;
+                        document.getElementById('method').innerHTML = instrument.enabledMethods;
+                        document.getElementById('network').innerHTML = instrument.capabilities.supportedNetworks;
+                        document.getElementById('type').innerHTML = instrument.capabilities.supportedTypes;
+                        hideElement('installing');
+                        showElement('installed');
+                    }).catch((error) => {
+                        hideElement('installing');
+                        showMessage(error);
+                    });
                 })
                 .catch((error) => {
                     hideElement('installing');
