@@ -64,6 +64,8 @@ function check() {
                 document.getElementById('method').innerHTML = instrument.enabledMethods;
                 document.getElementById('network').innerHTML = instrument.capabilities.supportedNetworks;
                 document.getElementById('type').innerHTML = instrument.capabilities.supportedTypes;
+                hideElement('checking');
+                showElement('recheck');
             }).catch((error) => {
                 finishCheckingWithMessage(error);
             });
