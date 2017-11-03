@@ -61,9 +61,9 @@ function check() {
                 return;
             }
             registration.paymentManager.instruments.get('instrument-key').then((instrument) => {
-                document.getElementsById('method').innerHTML = instrument.enabledMethods;
-                document.getElementsById('network').innerHTML = instrument.capabilities.supportedNetworks;
-                document.getElementsById('type').innerHTML = instrument.capabilities.supportedTypes;
+                document.getElementById('method').innerHTML = instrument.enabledMethods;
+                document.getElementById('network').innerHTML = instrument.capabilities.supportedNetworks;
+                document.getElementById('type').innerHTML = instrument.capabilities.supportedTypes;
             }).catch((error) => {
                 finishCheckingWithMessage(error);
             });
