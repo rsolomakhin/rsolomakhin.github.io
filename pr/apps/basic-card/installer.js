@@ -3,7 +3,7 @@ function hideElement(id) {
 }
 
 function hideElements() {
-    const elements = ['checking', 'installed', 'installing', 'uninstalling', 'not-installed', 'recheck'];
+    const elements = ['checking', 'installed', 'installing', 'uninstalling', 'not-installed'];
     for (const id of elements) {
         hideElement(id);
     }
@@ -24,7 +24,6 @@ function clearMessages() {
 
 function finishCheckingWithMessage(message) {
     hideElement('checking');
-    showElement('recheck');
     showMessage(message);
 }
 
@@ -42,7 +41,6 @@ function check() {
         .then((registration) => {
             if (!registration) {
                 hideElement('checking');
-                showElement('recheck');
                 showElement('not-installed');
                 return;
             }
@@ -65,7 +63,6 @@ function check() {
                 document.getElementById('network').innerHTML = instrument.capabilities.supportedNetworks;
                 document.getElementById('type').innerHTML = instrument.capabilities.supportedTypes;
                 hideElement('checking');
-                showElement('recheck');
             }).catch((error) => {
                 finishCheckingWithMessage(error);
             });
@@ -100,13 +97,11 @@ function install() {
                 })
                 .catch((error) => {
                     hideElement('installing');
-                    showElement('recheck');
                     showMessage(error);
                 });
         })
         .catch((error) => {
             hideElement('installing');
-            showElement('recheck');
             showMessage(error);
         });
 }
@@ -121,21 +116,17 @@ function uninstall() {
                 if (result) {
                     hideElement('uninstalling');
                     showElement('not-installed');
-                    showElement('recheck');
                 } else {
                     hideElement('uninstalling');
                     showElement('installed');
-                    showElement('recheck');
                     showMessage('Service worker unregistration returned "false", which indicates that it failed.');
                 }
             }).catch((error) => {
                 hideElement('uninstalling');
-                showElement('recheck');
                 showMessage(error);
             });
         }).catch((error) => {
             hideElement('uninstalling');
-            showElement('recheck');
             showMessage(error);
         });
 }
