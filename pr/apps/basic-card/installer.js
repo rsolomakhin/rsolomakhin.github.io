@@ -74,41 +74,68 @@ function check() {
         });
 }
 
-//function install() {
-//    navigator.serviceWorker.register('app.js')
-//        .then(() => {
-//            return navigator.serviceWorker.ready;
-//        })
-//        .then((registration) => {
-//            if (!registration.paymentManager) {
-//                output(
-//                    'serviceWorker.register()',
-//                    'PaymentManager API not found.');
-//                return;
-//            }
-//
-//            registration.paymentManager.instruments
-//                .set('123456', {
-//                    name: 'Alice Pay',
-//                    enabledMethods: [method]
-//                })
-//                .then(() => {
-//                    output(
-//                        'instruments.set()',
-//                        'Payment app for "' + method + '" method installed.');
-//                })
-//                .catch((error) => {
-//                    output('instruments.set()', error);
-//                });
-//        })
-//        .catch((error) => {
-//            output('serviceWorker.register()', error);
-//        });
-//})
-//.catch((error) => {
-//    output('serviceWorker.getRegistration()', error);
-//});
-//
-//}
+function install() {
+    hideElements();
+    showElement('installing');
+
+    navigator.serviceWorker.register('app.js')
+        .then(() => {
+            return navigator.serviceWorker.ready;
+        })
+        .then((registration) => {
+            registration.paymentManager.instruments
+                .set('instrument-key', {
+                    name: 'Chrome uses name and icon from the web app manifest',
+                    enabledMethods: ['basic-card'],
+                    capabilities: {
+                        supportedNetworks: ['visa'],
+                        supportedTypes: ['credit'],
+                    }
+                })
+                .then(() => {
+                    hideElement('installing');
+                    showElement('installed');
+                })
+                .catch((error) => {
+                    hideElement('installing');
+                    showElement('recheck');
+                    showMessage(error);
+                });
+        })
+        .catch((error) => {
+            hideElement('installing');
+            showElement('recheck');
+            showMessage(error);
+        });
+}
+
+function uninstall() {
+    hideElements();
+    showElement('uninstalling');
+
+    navigator.serviceWorker.getRegistration('app.js')
+        .then((registration) => {
+            registration.unregister().then((result) => {
+                if (result) {
+                    hideElement('uninstalling');
+                    showElement('not-installed');
+                    showElement('recheck');
+                } else {
+                    hideElement('uninstalling');
+                    showElement('installed');
+                    showElement('recheck');
+                    showMessage('Service worker unregistration returned "false", which indicates that it failed.');
+                }
+            }).catch((error) => {
+                hideElement('uninstalling');
+                showElement('recheck');
+                showMessage(error);
+            });
+        }).catch((error) => {
+            hideElement('uninstalling');
+            showElement('recheck');
+            showMessage(error);
+        });
+}
 
 check();
