@@ -83,6 +83,16 @@ function install() {
             return navigator.serviceWorker.ready;
         })
         .then((registration) => {
+            if (!registration.paymentManager) {
+                hideElement('installing');
+                showMessage('No payment handler capability in this browser. Is chrome://flags/#servicew-worker-payment-apps enabled?');
+                return;
+            }
+            if (!registration.paymentManager.instruments) {
+                hideElement('installing');
+                showMessage('Payment handler is not fully implemented. Cannot set the instruments.');
+                return;
+            }
             registration.paymentManager.instruments
                 .set('instrument-key', {
                     name: 'Chrome uses name and icon from the web app manifest',

@@ -59,8 +59,6 @@ function check() {
             }
             registration.paymentManager.instruments.get('instrument-key').then((instrument) => {
                 document.getElementById('method').innerHTML = instrument.enabledMethods;
-                document.getElementById('network').innerHTML = instrument.capabilities.supportedNetworks;
-                document.getElementById('type').innerHTML = instrument.capabilities.supportedTypes;
                 hideElement('checking');
             }).catch((error) => {
                 hideElement('checking');
@@ -83,21 +81,25 @@ function install() {
             return navigator.serviceWorker.ready;
         })
         .then((registration) => {
+            if (!registration.paymentManager) {
+                hideElement('installing');
+                showMessage('No payment handler capability in this browser. Is chrome://flags/#servicew-worker-payment-apps enabled?');
+                return;
+            }
+            if (!registration.paymentManager.instruments) {
+                hideElement('installing');
+                showMessage('Payment handler is not fully implemented. Cannot set the instruments.');
+                return;
+            }
             registration.paymentManager.instruments
                 .set('instrument-key', {
                     name: 'Chrome uses name and icon from the web app manifest',
                     enabledMethods: ['https://rsolomakhin.github.io'],
-                    capabilities: {
-                        supportedNetworks: ['visa'],
-                        supportedTypes: ['credit'],
-                    }
                 })
                 .then(() => {
                     registration.paymentManager.instruments.get('instrument-key').then((instrument) => {
                         document.getElementById('scope').innerHTML = registration.scope;
                         document.getElementById('method').innerHTML = instrument.enabledMethods;
-                        document.getElementById('network').innerHTML = instrument.capabilities.supportedNetworks;
-                        document.getElementById('type').innerHTML = instrument.capabilities.supportedTypes;
                         hideElement('installing');
                         showElement('installed');
                     }).catch((error) => {
