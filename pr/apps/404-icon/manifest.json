@@ -1,0 +1,8 @@
+{
+    "name": "404 Icon P.H.",
+    "icons": [{
+        "src": "this-icon-cannot-be-downloaded.png",
+        "sizes": "600x600",
+        "type": "image/png"
+    }]
+}
