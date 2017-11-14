@@ -12,13 +12,19 @@
   <p>Good:</p>
   <ul>
     <li><a href="basic-card/">Payment handler for "basic-card".</a></li>
-    <li><a href="origin/">Payment handler for "https://rsolomakhin.github.io".</a></li>
-    <li><a href="emerald/">Payment handler for "https://emerald-eon.appspot.com/bobpay".</a></li>
-  </ul>
   <p>Bad:</p>
   <ul>
     <li><a href="no-method-name/">Payment handler that does not specify the method name in the response.</a></li>
     <li><a href="no-details/">Payment handler that does not specify the details in the response.</a></li>
+  </ul>
+  </ul>
+  <p>Ugly: (These payment handler tests are on the same origin as the payment
+  handler. Currently Chrome closes all windows with the payment handler origin
+  upon completed payment. This behavior causes the merchant window to close in
+  this demo as well. <a href="https://crbug.com/784885">Issue 784885</a>)</p>
+  <ul>
+    <li><a href="origin/">Payment handler for "https://rsolomakhin.github.io".</a></li>
+    <li><a href="emerald/">Payment handler for "https://emerald-eon.appspot.com/bobpay".</a></li>
   </ul>
   <script src="/redirect.js"></script>
 </body>
