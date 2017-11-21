@@ -12,6 +12,8 @@
   <h3>Good:</h3>
   <ul>
     <li><a href="basic-card/">Payment handler for "basic-card"</a>.</li>
+    <li><a href="origin/">Payment handler for "https://rsolomakhin.github.io"</a>.</li>
+    <li><a href="bobpay/">Payment handler for "https://emerald-eon.appspot.com/bobpay"</a>.</li>
     <li><a href="https://bobpay.xyz">BobPay</a>. <a href="../bob/">Test it out</a>.</li>
   </ul>
   <h3>Bad:</h3>
@@ -28,14 +30,8 @@
     <li><a href="404-icon/">Payment handler with icon that cannot be downloaded</a>.</li>
     <li><a href="no-name/">Payment handler without a name definition</a>.</li>
   </ul>
-  <h3>Ugly:</h3>
-  <p>(These payment handler tests are on the same origin as the payment
-  handler. Currently Chrome closes all windows with the payment handler origin
-  upon completed payment. This behavior causes the merchant window to close in
-  this demo as well. <a href="https://crbug.com/784885">Issue 784885</a>)</p>
+  <p>(This payment handler is not authorized to handle payments for its payment method.)</p>
   <ul>
-    <li><a href="origin/">Payment handler for "https://rsolomakhin.github.io"</a>.</li>
-    <li><a href="emerald/">Payment handler for "https://emerald-eon.appspot.com/bobpay"</a>.</li>
     <li><a href="alice/">Payment handler for "https://emerald-eon.appspot.com/alicepay".</a>.</li>
   </ul>
   <script src="/redirect.js"></script>
