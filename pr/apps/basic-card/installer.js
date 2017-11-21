@@ -44,7 +44,7 @@ function check() {
             document.getElementById('scope').innerHTML = registration.scope;
             if (!registration.paymentManager) {
                 hideElement('checking');
-                showMessage('No payment handler capability in this browser. Is chrome://flags/#servicew-worker-payment-apps enabled?');
+                showMessage('No payment handler capability in this browser. Is chrome://flags/#service-worker-payment-apps enabled?');
                 return;
             }
             if (!registration.paymentManager.instruments) {
@@ -85,7 +85,7 @@ function install() {
         .then((registration) => {
             if (!registration.paymentManager) {
                 hideElement('installing');
-                showMessage('No payment handler capability in this browser. Is chrome://flags/#servicew-worker-payment-apps enabled?');
+                showMessage('No payment handler capability in this browser. Is chrome://flags/#service-worker-payment-apps enabled?');
                 return;
             }
             if (!registration.paymentManager.instruments) {
