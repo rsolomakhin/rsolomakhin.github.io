@@ -13,6 +13,11 @@
 <body>
     <div id="contents">
         <h1>Payment Handler for "https://emerald-eon.appspot.com/alicepay"</h1>
+        <p>This payment handler is for the payment method
+        "https://emerald-eon.appspot.com/alicepay", which does not allow this
+        payment handler to use it. The browser will never display this payment
+        handler and will print a warning in developer tools console shortly
+        after the PaymentRequest instantiation on the test page.</p>
 
         <p id="checking">Checking whether the payment handler is installed...</p>
 
@@ -43,6 +48,8 @@
                 <li><a href="installer.js">Installer</a></li>
                 <li><a href="app.js">App</a></li>
                 <li><a href="manifest.json">Web app manifest</a></li>
+                <li><a href="../../../alicepay/payment-manifest.json">Payment
+                    method manifest</a>(Does not allow this payment handler)</li>
             </ul>
         </div>
     </div>

@@ -13,6 +13,11 @@
 <body>
     <div id="contents">
         <h1>Payment Handler without name definition</h1>
+        <p>This payment handler is for "basic-card". The code is correct except
+        for one bug: the web app manifest does not contain an entry for "name".
+        This causes Chrome to identify this payment handler only by its icon and
+        origin. Chrome will print a warning message in developer tools console
+        at the time of install.</p>
 
         <p id="checking">Checking whether the payment handler is installed...</p>
 
