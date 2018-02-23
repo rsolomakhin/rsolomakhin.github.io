@@ -1,39 +1,46 @@
 body {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 div {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .error {
-    animation-duration: 0.5s;
-    animation-name: popup;
-    color: red;
+  animation-duration: 0.5s;
+  animation-name: popup;
+  color: red;
 }
 
 @keyframes popup {
-    from {
-        margin-top: 20px;
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
+  from {
+    margin-top: 20px;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 .error-hide {
-    animation-duration: 0.5s;
-    animation-name: popdown;
-    color: red;
+  animation-duration: 0.5s;
+  animation-name: popdown;
+  color: red;
 }
 
 @keyframes popdown {
-    to {
-        margin-top: 20px;
-        opacity: 0;
-    }
+  to {
+    margin-top: 20px;
+    opacity: 0;
+  }
 }
 .info {
-    color: green;
+  color: green;
+}
+
+.warning {
+  background: yellow;
+  padding: 20px;
+  font-weight: bold;
+  text-align: center;
 }
