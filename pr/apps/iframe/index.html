@@ -13,11 +13,20 @@
 <body>
     <div id="contents">
         <h1>Merchant Website</h1>
+
         <p>This is a merchant website that includes an iframe from a payment
         service website. The iframe can install a payment handler. The payment
         handler name and icon should come from the web app manifest of the
         payment handler in the iframe instead of the top level context of the
         merchant.</p>
+
+        <div id="src">
+            <p>View the source code:</p>
+            <ul>
+                <li><a href="manifest.json">Web app manifest</a></li>
+            </ul>
+        </div>
+
         <iframe src="payment-app/index.html" allowpaymentrequest width="800px"
           height="600px"></iframe>
     </div>
