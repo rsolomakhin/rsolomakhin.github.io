@@ -1,0 +1,10 @@
+{
+  "name": "Success! This is payment handler manifest.",
+  "icons": [
+    {
+      "src": "tree.png",
+      "sizes": "600x600",
+      "type": "image/png"
+    }
+  ]
+}

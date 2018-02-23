@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Merchant Website</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+    <div id="contents">
+        <h1>Merchant Website</h1>
+        <p>This is a merchant website that includes an iframe from a payment
+        service website. The iframe can install a payment handler. The payment
+        handler name and icon should come from the web app manifest of the
+        payment handler in the iframe instead of the top level context of the
+        merchant.</p>
+        <iframe src="payment-app/index.html" allowpaymentrequest width="800px"
+          height="600px"></iframe>
+    </div>
+
+    <script src="/redirect.js"></script>
+</body>
+
+</html>
