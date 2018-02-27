@@ -40,17 +40,17 @@ function check() {
   }
 
   navigator.serviceWorker
-    .getRegistration('./')
+    .getRegistration('app.js')
     .then(registration => {
       if (!registration) {
         hideElement('checking');
         showElement('not-installed');
         return;
       }
-      showElement('installed');
       document.getElementById('scope').innerHTML = registration.scope;
       if (!registration.paymentManager) {
         hideElement('checking');
+        showElement('not-installed');
         showMessage(
           'No payment handler capability in this browser. Is chrome://flags/#service-worker-payment-apps enabled?',
         );
@@ -58,34 +58,43 @@ function check() {
       }
       if (!registration.paymentManager.instruments) {
         hideElement('checking');
+        showElement('not-installed');
         showMessage(
           'Payment handler is not fully implemented. Cannot set the instruments.',
         );
         return;
       }
-      if (!registration.paymentManager.instruments.has('instrument-key')) {
-        hideElement('checking');
-        showMessage('No instruments found. Did installation fail?');
-        return;
-      }
       registration.paymentManager.instruments
-        .get('instrument-key')
-        .then(instrument => {
-          document.getElementById('method').innerHTML =
-            instrument.enabledMethods;
-          document.getElementById('network').innerHTML =
-            instrument.capabilities.supportedNetworks;
-          document.getElementById('type').innerHTML =
-            instrument.capabilities.supportedTypes;
-          hideElement('checking');
-        })
-        .catch(error => {
-          hideElement('checking');
-          showMessage(error);
+        .has('instrument-key')
+        .then(result => {
+          if (!result) {
+            hideElement('checking');
+            showElement('not-installed');
+            showMessage('No instruments found. Did installation fail?');
+          } else {
+            registration.paymentManager.instruments
+              .get('instrument-key')
+              .then(instrument => {
+                document.getElementById('method').innerHTML =
+                  instrument.enabledMethods;
+                document.getElementById('network').innerHTML =
+                  instrument.capabilities.supportedNetworks;
+                document.getElementById('type').innerHTML =
+                  instrument.capabilities.supportedTypes;
+                hideElement('checking');
+                showElement('installed');
+              })
+              .catch(error => {
+                hideElement('checking');
+                showElement('not-installed');
+                showMessage(error);
+              });
+          }
         });
     })
     .catch(error => {
       hideElement('checking');
+      showElement('not-installed');
       showMessage(error);
     });
 }
