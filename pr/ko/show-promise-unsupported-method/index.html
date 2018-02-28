@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Timeout Show Promise Test</title>
+  <title>Show Promise for Unsupported Payment Method Identifer Test</title>
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" type="text/css" href="../../style.css">
 </head>
 <body>
   <div id="contents">
-    <h1>Timeout Show Promise Test</h1>
+    <h1>Show Promise for Unsupported Payment Method Identifer Test</h1>
     <p>This page can be used to test the show promise. It simulates the final
-    price not being known for the first 11 seconds after showing the payment
-    sheet. The payment sheet should be in the "spinning" mode. After 10 seconds,
-    browser will timeout and cancel payment.</p> 
+    price not being known for the first 5 seconds after showing the payment
+    sheet for an unsupported payment method identifier. This will cancel the
+    payment request.</p> 
     <p>Price: USD <strong>$1.00</strong> <em>(tentative)</em></p>
     <p><button onclick="onBuyClicked()">Buy</button></p>
     <p>No payment will be processed.</p>
