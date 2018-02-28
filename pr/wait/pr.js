@@ -64,7 +64,9 @@ function onBuyClicked() {
     request
       .show(
         new Promise(function(resolve) {
+          info('Calculating final price...');
           window.setTimeout(function() {
+            info('The final price is $2.00 USD.');
             resolve({
               total: {
                 label: 'Donation',
