@@ -71,10 +71,6 @@ function check() {
               .then(instrument => {
                 document.getElementById('method').innerHTML =
                   instrument.enabledMethods;
-                document.getElementById('network').innerHTML =
-                  instrument.capabilities.supportedNetworks;
-                document.getElementById('type').innerHTML =
-                  instrument.capabilities.supportedTypes;
                 hideElement('checking');
                 showElement('installed');
               })
