@@ -95,59 +95,57 @@ function onBuyClicked() {
 
     request
       .show(
-        new Promise(
-          new function(resolveShowPromise) {
-            window.setTimeout(function() {
-              var details = {
-                total: {
-                  label: 'Donation',
+        new Promise(function(resolveShowPromise) {
+          window.setTimeout(function() {
+            var details = {
+              total: {
+                label: 'Donation',
+                amount: {
+                  currency: 'USD',
+                  value: '55.00',
+                },
+              },
+              displayItems: [
+                {
+                  label: 'Original donation amount',
                   amount: {
                     currency: 'USD',
-                    value: '55.00',
+                    value: '65.00',
                   },
                 },
-                displayItems: [
-                  {
-                    label: 'Original donation amount',
-                    amount: {
-                      currency: 'USD',
-                      value: '65.00',
-                    },
+                {
+                  label: 'Pending shipping price',
+                  amount: {
+                    currency: 'USD',
+                    value: '0.00',
                   },
-                  {
-                    label: 'Pending shipping price',
-                    amount: {
-                      currency: 'USD',
-                      value: '0.00',
-                    },
-                    pending: true,
+                  pending: true,
+                },
+                {
+                  label: 'Friends and family discount',
+                  amount: {
+                    currency: 'USD',
+                    value: '-10.00',
                   },
-                  {
-                    label: 'Friends and family discount',
-                    amount: {
-                      currency: 'USD',
-                      value: '-10.00',
-                    },
-                  },
-                ],
-              };
+                },
+              ],
+            };
 
-              request.addEventListener('shippingaddresschange', function(e) {
-                e.updateWith(
-                  new Promise(function(resolveShippingAddressChange) {
-                    window.setTimeout(function() {
-                      resolveShippingAddressChange(
-                        updateDetails(details, request.shippingAddress),
-                      );
-                    }, 2000);
-                  }),
-                );
-              });
+            request.addEventListener('shippingaddresschange', function(e) {
+              e.updateWith(
+                new Promise(function(resolveShippingAddressChange) {
+                  window.setTimeout(function() {
+                    resolveShippingAddressChange(
+                      updateDetails(details, request.shippingAddress),
+                    );
+                  }, 2000);
+                }),
+              );
+            });
 
-              resolveShowPromise(details);
-            }, 5000); // 5 seconds
-          },
-        ),
+            resolveShowPromise(details);
+          }, 5000); // 5 seconds
+        }),
       )
       .then(function(instrumentResponse) {
         window.setTimeout(function() {
