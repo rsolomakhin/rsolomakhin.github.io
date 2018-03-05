@@ -65,7 +65,7 @@ function onBuyClicked() {
   try {
     request
       .show(
-        new Promise(function(resolve) {
+        new Promise(function(resolveShowPromise) {
           info('Calculating final price...');
           window.setTimeout(function() {
             info('The final price is $2.00 USD.');
@@ -93,14 +93,14 @@ function onBuyClicked() {
 
             request.addEventListener('shippingaddresschange', function(e) {
               e.updateWith(
-                new Promise(function(resolve) {
+                new Promise(function(resolveShippingAddressChange) {
                   // No changes in price based on shipping address change.
-                  resolve(finalizedDetails);
+                  resolveShippingAddressChange(finalizedDetails);
                 }),
               );
             });
 
-            resolve(finalizedDetails);
+            resolveShowPromise(finalizedDetails);
           }, 5000); // 5 seconds.
         }),
       )
