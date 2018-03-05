@@ -84,10 +84,12 @@ function onBuyClicked() {
       options,
     );
 
+    info('Calculating final price...');
     request
       .show(
         new Promise(function(resolveShowPromise) {
           window.setTimeout(function() {
+            info('Calculated final price: USD $55.00');
             var finalizedDetails = {
               total: {
                 label: 'Donation',

@@ -62,6 +62,7 @@ function onBuyClicked() {
     return;
   }
 
+  info('Calculating final price...');
   try {
     request
       .show(
