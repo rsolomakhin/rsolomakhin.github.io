@@ -1,0 +1,78 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.5">
+  <title>React 16</title>
+  <style>
+    #ui-console {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+  </style>
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+</head>
+
+<body>
+  <h2>Native Form</h2>
+  <form id="native-form">
+    <input type="text" name="firstname" placeholder="Firstname">
+    <input type="text" name="lastname" placeholder="Lastname">
+    <input type="email" name="email" placeholder="Email">
+  </form>
+
+  <h2>React Form</h2>
+  <form id="react-form"></form>
+
+  <h2>Console</h2>
+  <div id="ui-console"></div>
+
+  <script>
+    const uiConsole = document.querySelector('#ui-console');
+
+    Array.from(document.querySelectorAll('#native-form input')).forEach(input =>
+      input.addEventListener('change', function(event) {
+        uiConsole.innerHTML +=
+          `<div>Native change event: ${event.target.value}</div>`;
+      }));
+
+    class Form extends React.Component {
+      onChange(event) {
+        uiConsole.innerHTML +=
+          `<div>React change event: ${event.target.value}</div>`;
+      }
+
+      render() {
+        return React.createElement(
+          "div",
+          null,
+          React.createElement("input", {
+            type: "text",
+            name: "firstname",
+            placeholder: "Firstname",
+            onChange: this.onChange
+          }),
+          React.createElement("input", {
+            type: "text",
+            name: "lastname",
+            placeholder: "Lastname",
+            onChange: this.onChange
+          }),
+          React.createElement("input", {
+            type: "email",
+            name: "email",
+            placeholder: "Email",
+            onChange: this.onChange
+          })
+        );
+      }
+    }
+
+    ReactDOM.render(
+      React.createElement(Form, null),
+      document.getElementById('react-form')
+    );
+  </script>
+</body>
+</html>
