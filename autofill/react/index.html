@@ -5,13 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.5">
   <title>React 16</title>
   <style>
+    #version-selector {
+      margin: 10px 0;
+    }
+
     #ui-console {
       border: 1px solid #ccc;
       padding: 10px;
     }
   </style>
-  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 </head>
 
 <body>
@@ -22,57 +25,97 @@
     <input type="email" name="email" placeholder="Email">
   </form>
 
-  <h2>React Form</h2>
+  <h2>Dynamic React Form</h2>
+
+  <select id="version-selector" onchange="reloadPageWithVersion(this.value)">
+    <option value disabled selected>-- select a version --</option>
+    <option value="15.6.2">15.6.2</option>
+    <option value="16.2.0">16.2.0</option>
+  </select>
+
   <form id="react-form"></form>
 
   <h2>Console</h2>
   <div id="ui-console"></div>
 
   <script>
-    const uiConsole = document.querySelector('#ui-console');
-
-    Array.from(document.querySelectorAll('#native-form input')).forEach(input =>
-      input.addEventListener('change', function(event) {
-        uiConsole.innerHTML +=
-          `<div>Native change event: ${event.target.value}</div>`;
-      }));
-
-    class Form extends React.Component {
-      onChange(event) {
-        uiConsole.innerHTML +=
-          `<div>React change event: ${event.target.value}</div>`;
-      }
-
-      render() {
-        return React.createElement(
-          "div",
-          null,
-          React.createElement("input", {
-            type: "text",
-            name: "firstname",
-            placeholder: "Firstname",
-            onChange: this.onChange
-          }),
-          React.createElement("input", {
-            type: "text",
-            name: "lastname",
-            placeholder: "Lastname",
-            onChange: this.onChange
-          }),
-          React.createElement("input", {
-            type: "email",
-            name: "email",
-            placeholder: "Email",
-            onChange: this.onChange
-          })
-        );
-      }
-    }
-
-    ReactDOM.render(
-      React.createElement(Form, null),
-      document.getElementById('react-form')
-    );
+   Array.from(document.querySelectorAll('#native-form input')).forEach(input =>
+     input.addEventListener('change', function(event) {
+       document.querySelector('#ui-console').innerHTML +=
+         `<div>Native change event: ${event.target.value}</div>`;
+     }));
+   var scripts = {
+     '15.6.2': [
+       'https://cdnjs.cloudflare.com/ajax/libs/react/15.6.2/react.js',
+       'https://cdnjs.cloudflare.com/ajax/libs/react-dom/15.6.2/react-dom.js'
+     ],
+     '16.2.0': ['https://unpkg.com/react@16.2.0/umd/react.development.js',
+       'https://unpkg.com/react-dom@16.2.0/umd/react-dom.development.js'
+     ]
+   }
+   var loadScripts = function(version, index, callback) {
+     if (index >= scripts[version].length) {
+       callback();
+       return;
+     }
+     $.getScript(scripts[version][index], function() {
+       loadScripts(version, index + 1, callback);
+     });
+   };
+   var reloadPageWithVersion = function(version) {
+     location.href = location.href.split('#')[0] + '#' + version;
+     location.reload();
+   };
+   var isValidVersion = function(version) {
+     return Array.from(document.querySelector('#version-selector').options).find(
+       option => option.value == version);
+   };
+   var renderForm = function() {
+     class Form extends React.Component {
+       onChange(event) {
+         document.querySelector('#ui-console').innerHTML +=
+           `<div>React change event: ${event.target.value}</div>`;
+       }
+       render() {
+         return React.createElement("div", null, React.createElement(
+           "input", {
+             type: "text",
+             name: "firstname",
+             placeholder: "Firstname",
+             onChange: this.onChange
+           }), React.createElement("input", {
+           type: "text",
+           name: "lastname",
+           placeholder: "Lastname",
+           onChange: this.onChange
+         }), React.createElement("input", {
+           type: "email",
+           name: "email",
+           placeholder: "Email",
+           onChange: this.onChange
+         }));
+       }
+     }
+     ReactDOM.render(React.createElement(Form, null), document.getElementById(
+       'react-form'));
+   };
+   onload = function() {
+     // If the location has a hash, check to see if it's a valid one. If so,
+     // set it as the selected version in #version-selector, load the React
+     // with that version, and render the forms. Otherwise, remove the hash
+     // from the location.
+     if (location.hash) {
+       var version = location.hash.split('#')[1];
+       if (isValidVersion(version)) {
+         document.querySelector('#version-selector').value = version;
+         loadScripts(version, 0, function() {
+           renderForm();
+         });
+       } else {
+         location.href = location.href.split('#')[0];
+       }
+     }
+   };
   </script>
 </body>
 </html>
