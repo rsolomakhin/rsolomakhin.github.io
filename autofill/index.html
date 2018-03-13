@@ -108,9 +108,9 @@
   <h3>Profile Autofill</h3>
 
 <form name="addr1.1" id="form1" action="https://example.com/" method="post">
-  Name: <input type="text" name="name" id="profile_autofill_name"><br>
-  Address: <input type="text" name="address"><br>
-  City: <input type="text" name="city"><br>
+  Name: <input type="text" name="name" placeholder="Name"><br>
+  Address: <input type="text" name="address" placeholder="Address"><br>
+  City: <input type="text" name="city" placeholder="City"><br>
   State: <select name="state">
     <option value="CA">CA</option>
     <option value="MA">MA</option>
@@ -121,10 +121,10 @@
     <option value="IL">IL</option>
     <option value="DC">DC</option>
   </select> <br>
-  Zip: <input name="zip" id="form_zip"> <br>
-  Country: <input name="country" id="form_country"> <br>
-  Email: <input name="email" id="form_email"> <br>
-  Phone: <input name="phone" id="form_phone"> <br>
+  Zip: <input name="zip" id="form_zip" placeholder="Zip"> <br>
+  Country: <input name="country" id="form_country" placeholder="Country"> <br>
+  Email: <input name="email" id="form_email" placeholder="Email"> <br>
+  Phone: <input name="phone" id="form_phone" placeholder="Phone"> <br>
   <input type="reset" value="Reset">
   <input type="submit" value="Submit" id="profile_submit">
 </form>
@@ -249,9 +249,9 @@
    <h3>autocomplete="off" form</h3>
 
 <form name="addr1.1off" id="acoff" action="https://example.com/" method="post" autocomplete="off">
-  Name: <input type="text" name="name" autocomplete="off"><br>
-  Address: <input type="text" name="address" autocomplete="off"><br>
-  City: <input type="text" name="city" autocomplete="off"><br>
+  Name: <input type="text" name="name" autocomplete="off" value="Name"><br>
+  Address: <input type="text" name="address" autocomplete="off" value="Address"><br>
+  City: <input type="text" name="city" autocomplete="off" value="City"><br>
   State: <select name="state" autocomplete="off">
     <option value="CA">CA</option>
     <option value="MA">MA</option>
@@ -262,9 +262,9 @@
     <option value="IL">IL</option>
     <option value="DC">DC</option>
   </select> <br>
-  Zip: <input name="zip" id="form_zip" autocomplete="off"> <br>
-  Email: <input name="email" id="form_email" autocomplete="off"> <br>
-  Phone: <input name="phone" id="form_phone" autocomplete="off"> <br>
+  Zip: <input name="zip" id="form_zip" autocomplete="off" value="Zip"> <br>
+  Email: <input name="email" id="form_email" autocomplete="off" value="Email"> <br>
+  Phone: <input name="phone" id="form_phone" autocomplete="off" value="Phone"> <br>
   <input type="reset" value="Reset">
   <input type="submit" value="Submit" id="autocomplete_off_submit">
 </form>
