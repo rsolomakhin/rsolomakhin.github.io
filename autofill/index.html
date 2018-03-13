@@ -90,6 +90,9 @@
 	  form['password'].value = 'ILoveGeorgeBush';
       }
 
+      var changeVisibility = function(checkbox, targetId) {
+        document.getElementById(targetId).style.display = checkbox.checked ? 'none' : 'block';
+      }
     </script>
     <style>
       .fork {
@@ -270,7 +273,56 @@
 </form>
 
 <hr>
-<button type="button" onclick="FlipRTL()">RTL &lt;-&gt; LTR</button>
+<h3>Shipping and Billing sections</h3>
 
+<form name="addr1.sections" id="sections1" action="https://example.com/" method="post">
+  <div id='billing1'>
+    <h2>Billing Address</h2>
+    Name: <input type="text" name="name"><br>
+    Address: <input type="text" name="address"><br>
+    City: <input type="text" name="city"><br>
+    State: <select name="state">
+      <option value="CA">CA</option>
+      <option value="MA">MA</option>
+      <option value="NY">NY</option>
+      <option value="MD">MD</option>
+      <option value="OR">OR</option>
+      <option value="OH">OH</option>
+      <option value="IL">IL</option>
+      <option value="DC">DC</option>
+    </select> <br>
+    Zip: <input name="zip"> <br>
+    Country: <input name="country"> <br>
+    Email: <input name="email"> <br>
+  </div>
+    Ship to the same address:
+    <input name="same" type="checkbox" checked="checked" onchange="changeVisibility(this, 'shipping1')">
+  <div id='shipping1' style="display: none;">
+    <h2>Shipping Address</h2>
+    Name: <input type="text" name="s_name"><br>
+    Address: <input type="text" name="s_address"><br>
+    City: <input type="text" name="s_city"><br>
+    State: <select name="s_state">
+      <option value="CA">CA</option>
+      <option value="MA">MA</option>
+      <option value="NY">NY</option>
+      <option value="MD">MD</option>
+      <option value="OR">OR</option>
+      <option value="OH">OH</option>
+      <option value="IL">IL</option>
+      <option value="DC">DC</option>
+    </select> <br>
+    Zip: <input name="s_zip"> <br>
+    Country: <input name="s_country"> <br>
+    Email: <input name="s_email"> <br>
+  </div>
+  <div>
+    <input type="reset" value="Reset">
+    <input type="submit" value="Submit">
+  </div>
+</form>
+
+<hr>
+<button type="button" onclick="FlipRTL()">RTL &lt;-&gt; LTR</button>
 
 </body></html>
