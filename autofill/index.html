@@ -31,7 +31,7 @@
 	  form['city'].value = 'Metropolis';
 	  form['state'].value = 'NY';
 	  form['zip'].value = '55555';
-	  form['country'].value = 'Antarctica';
+	  form['country'].value = 'United States';
     form['phone'].value = phoneNumber;
   }
   var FillFormPresident = function() {
@@ -90,6 +90,9 @@
 	  form['password'].value = 'ILoveGeorgeBush';
       }
 
+      var changeVisibility = function(checkbox, targetId) {
+        document.getElementById(targetId).style.display = checkbox.checked ? 'none' : 'block';
+      }
     </script>
     <style>
       .fork {
@@ -108,9 +111,9 @@
   <h3>Profile Autofill</h3>
 
 <form name="addr1.1" id="form1" action="https://example.com/" method="post">
-  Name: <input type="text" name="name" id="profile_autofill_name"><br>
-  Address: <input type="text" name="address"><br>
-  City: <input type="text" name="city"><br>
+  Name: <input type="text" name="name" placeholder="Name"><br>
+  Address: <input type="text" name="address" placeholder="Address"><br>
+  City: <input type="text" name="city" placeholder="City"><br>
   State: <select name="state">
     <option value="CA">CA</option>
     <option value="MA">MA</option>
@@ -121,10 +124,10 @@
     <option value="IL">IL</option>
     <option value="DC">DC</option>
   </select> <br>
-  Zip: <input name="zip" id="form_zip"> <br>
-  Country: <input name="country" id="form_country"> <br>
-  Email: <input name="email" id="form_email"> <br>
-  Phone: <input name="phone" id="form_phone"> <br>
+  Zip: <input name="zip" id="form_zip" placeholder="Zip"> <br>
+  Country: <input name="country" id="form_country" placeholder="Country"> <br>
+  Email: <input name="email" id="form_email" placeholder="Email"> <br>
+  Phone: <input name="phone" id="form_phone" placeholder="Phone"> <br>
   <input type="reset" value="Reset">
   <input type="submit" value="Submit" id="profile_submit">
 </form>
@@ -249,9 +252,9 @@
    <h3>autocomplete="off" form</h3>
 
 <form name="addr1.1off" id="acoff" action="https://example.com/" method="post" autocomplete="off">
-  Name: <input type="text" name="name" autocomplete="off"><br>
-  Address: <input type="text" name="address" autocomplete="off"><br>
-  City: <input type="text" name="city" autocomplete="off"><br>
+  Name: <input type="text" name="name" autocomplete="off" value="Name"><br>
+  Address: <input type="text" name="address" autocomplete="off" value="Address"><br>
+  City: <input type="text" name="city" autocomplete="off" value="City"><br>
   State: <select name="state" autocomplete="off">
     <option value="CA">CA</option>
     <option value="MA">MA</option>
@@ -262,15 +265,64 @@
     <option value="IL">IL</option>
     <option value="DC">DC</option>
   </select> <br>
-  Zip: <input name="zip" id="form_zip" autocomplete="off"> <br>
-  Email: <input name="email" id="form_email" autocomplete="off"> <br>
-  Phone: <input name="phone" id="form_phone" autocomplete="off"> <br>
+  Zip: <input name="zip" id="form_zip" autocomplete="off" value="Zip"> <br>
+  Email: <input name="email" id="form_email" autocomplete="off" value="Email"> <br>
+  Phone: <input name="phone" id="form_phone" autocomplete="off" value="Phone"> <br>
   <input type="reset" value="Reset">
   <input type="submit" value="Submit" id="autocomplete_off_submit">
 </form>
 
 <hr>
-<button type="button" onclick="FlipRTL()">RTL &lt;-&gt; LTR</button>
+<h3>Shipping and Billing sections</h3>
 
+<form name="addr1.sections" id="sections1" action="https://example.com/" method="post">
+  <div id='billing1'>
+    <h2>Billing Address</h2>
+    Name: <input type="text" name="name"><br>
+    Address: <input type="text" name="address"><br>
+    City: <input type="text" name="city"><br>
+    State: <select name="state">
+      <option value="CA">CA</option>
+      <option value="MA">MA</option>
+      <option value="NY">NY</option>
+      <option value="MD">MD</option>
+      <option value="OR">OR</option>
+      <option value="OH">OH</option>
+      <option value="IL">IL</option>
+      <option value="DC">DC</option>
+    </select> <br>
+    Zip: <input name="zip"> <br>
+    Country: <input name="country"> <br>
+    Email: <input name="email"> <br>
+  </div>
+    Ship to the same address:
+    <input name="same" type="checkbox" checked="checked" onchange="changeVisibility(this, 'shipping1')">
+  <div id='shipping1' style="display: none;">
+    <h2>Shipping Address</h2>
+    Name: <input type="text" name="s_name"><br>
+    Address: <input type="text" name="s_address"><br>
+    City: <input type="text" name="s_city"><br>
+    State: <select name="s_state">
+      <option value="CA">CA</option>
+      <option value="MA">MA</option>
+      <option value="NY">NY</option>
+      <option value="MD">MD</option>
+      <option value="OR">OR</option>
+      <option value="OH">OH</option>
+      <option value="IL">IL</option>
+      <option value="DC">DC</option>
+    </select> <br>
+    Zip: <input name="s_zip"> <br>
+    Country: <input name="s_country"> <br>
+    Email: <input name="s_email"> <br>
+  </div>
+  <div>
+    <input type="reset" value="Reset">
+    <input type="submit" value="Submit">
+  </div>
+</form>
+
+<hr>
+<button type="button" onclick="FlipRTL()">RTL &lt;-&gt; LTR</button>
 
 </body></html>
