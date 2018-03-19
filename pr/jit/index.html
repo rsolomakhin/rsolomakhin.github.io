@@ -10,8 +10,11 @@
 <body>
   <div id="contents">
     <h1>JIT Test</h1>
-    <p>This merchant accepts Bob Pay, which can be installed just-in-time (JIT). <a href="pr.js">View
-      source</a>.</p>
+    <p>This merchant accepts Bob Pay, which can be installed just-in-time (JIT).
+    Because only one URL-based payment method identifier is requested without
+    any additional information, this page may skip the browser payment sheet and
+    launch directly into Bob Pay.
+    <a href="pr.js">View source</a>.</p>
     <p>Price: USD <strong>$1.00</strong></p>
     <p><button onclick="onBuyClicked()">Buy</button></p>
   </div>
