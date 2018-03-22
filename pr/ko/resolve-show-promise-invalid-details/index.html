@@ -3,16 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Show Promise for Unsupported Payment Method Identifer Test</title>
+  <title>Invalid Details Show Promise Test</title>
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" type="text/css" href="../../style.css">
 </head>
 <body>
   <div id="contents">
-    <h1>Show Promise for Unsupported Payment Method Identifer Test</h1>
-    <p>This page can be used to test the show promise. The payment sheet
-    should not display because show is called for an unsupported payment
-    method identifier. This will cancel the payment request.</p>
+    <h1>Invalid Details Show Promise Test</h1>
+    <p>This page can be used to test the show promise. It simulates the final
+    price not being known for the first 5 seconds after showing the payment
+    sheet. The payment sheet should be in the "spinning" mode. After the 5
+    seconds, the show promise is resolved with an invalid final price of
+    <strong>-$2.00</strong>. This should cancel payment.</p> 
     <p>Price: USD <strong>$1.00</strong> <em>(tentative)</em></p>
     <p><button onclick="onBuyClicked()">Buy</button></p>
     <p>No payment will be processed.</p>
