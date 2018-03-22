@@ -72,7 +72,7 @@ function onBuyClicked() {
                 label: 'Donation',
                 amount: {
                   currency: 'USD',
-                  value: '-2.00',
+                  value: '-2.00',  // Negative total is invalid.
                   pending: false,
                 },
               },
