@@ -108,9 +108,9 @@
        var version = location.hash.split('#')[1];
        if (isValidVersion(version)) {
          document.querySelector('#version-selector').value = version;
-         loadScripts(version, 0, function() {
+         setTimeout(function() { loadScripts(version, 0, function() {
            renderForm();
-         });
+         })}, 500);
        } else {
          location.href = location.href.split('#')[0];
        }
