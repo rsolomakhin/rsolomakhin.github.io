@@ -70,7 +70,7 @@ function check() {
               .get('instrument-key')
               .then(instrument => {
                 document.getElementById('method').innerHTML =
-                  instrument.enabledMethods;
+                  instrument.method;
                 hideElement('checking');
                 showElement('installed');
               })
@@ -111,12 +111,12 @@ function install() {
             registration.paymentManager.instruments
                 .set('instrument-key', {
                     name: 'Chrome uses name and icon from the web app manifest',
-                    enabledMethods: ['https://emerald-eon.appspot.com/bobpay'],
+                    method: 'https://emerald-eon.appspot.com/bobpay',
                 })
                 .then(() => {
                     registration.paymentManager.instruments.get('instrument-key').then((instrument) => {
                         document.getElementById('scope').innerHTML = registration.scope;
-                        document.getElementById('method').innerHTML = instrument.enabledMethods;
+                        document.getElementById('method').innerHTML = instrument.method;
                         hideElement('installing');
                         showElement('installed');
                     }).catch((error) => {
