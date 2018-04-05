@@ -10,12 +10,16 @@
 <body>
   <div id="contents">
     <h1>IFrame Test</h1>
-    <p>This iframe is allowed to request payments:</p>
-    <iframe src="https://secure-google-com-not-malicious-testing.github.io/" allowpaymentrequest></iframe>
-    <p>This iframe is not allowed to request payments:</p>
+    <p>This iframe is same-origin, so it is allowed to request payments:</p>
+    <iframe src="https://rsolomakhin.github.io/pr/"></iframe>
+    <p>This cross-origin iframe is not allowed to request payments:</p>
     <iframe src="https://secure-google-com-not-malicious-testing.github.io/"></iframe>
-    <p>This iframe is allowed to request payments:</p>
-    <iframe src="https://emerald-eon.appspot.com/" allowpaymentrequest></iframe>
+    <p>This cross-oroigin iframe is allowed to request payments via
+    <code>allowpaymentrequest</code> attribute:</p>
+    <iframe src="https://secure-google-com-not-malicious-testing.github.io/" allowpaymentrequest></iframe>
+    <p>This cross-origin iframe is allowed to request payments via
+    <code>allow="payment"</code> attribute:</p>
+    <iframe src="https://emerald-eon.appspot.com/" allow="payment"></iframe>
   </div>
 </body>
 </html>
