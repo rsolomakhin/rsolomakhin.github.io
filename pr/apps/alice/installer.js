@@ -70,7 +70,7 @@ function check() {
               .get('instrument-key')
               .then(instrument => {
                 document.getElementById('method').innerHTML =
-                  instrument.method;
+                  instrument.enabledMethods;
                 hideElement('checking');
                 showElement('installed');
               })
@@ -111,12 +111,12 @@ function install() {
             registration.paymentManager.instruments
                 .set('instrument-key', {
                     name: 'Chrome uses name and icon from the web app manifest',
-                    method: 'https://emerald-eon.appspot.com/alicepay',
+                    enabledMethods: ['https://emerald-eon.appspot.com/alicepay'],
                 })
                 .then(() => {
                     registration.paymentManager.instruments.get('instrument-key').then((instrument) => {
                         document.getElementById('scope').innerHTML = registration.scope;
-                        document.getElementById('method').innerHTML = instrument.method;
+                        document.getElementById('method').innerHTML = instrument.enabledMethods;
                         hideElement('installing');
                         showElement('installed');
                     }).catch((error) => {
