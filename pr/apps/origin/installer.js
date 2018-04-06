@@ -70,7 +70,7 @@ function check() {
               .get('instrument-key')
               .then(instrument => {
                 document.getElementById('method').innerHTML =
-                  instrument.enabledMethods;
+                  instrument.enabledMethods || instrument.method;
                 hideElement('checking');
                 showElement('installed');
               })
@@ -112,11 +112,12 @@ function install() {
                 .set('instrument-key', {
                     name: 'Chrome uses name and icon from the web app manifest',
                     enabledMethods: ['https://rsolomakhin.github.io'],
+                    method: 'https://rsolomakhin.github.io',
                 })
                 .then(() => {
                     registration.paymentManager.instruments.get('instrument-key').then((instrument) => {
                         document.getElementById('scope').innerHTML = registration.scope;
-                        document.getElementById('method').innerHTML = instrument.enabledMethods;
+                        document.getElementById('method').innerHTML = instrument.enabledMethods || instrument.method;
                         hideElement('installing');
                         showElement('installed');
                     }).catch((error) => {
