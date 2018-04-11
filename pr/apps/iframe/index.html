@@ -15,10 +15,9 @@
         <h1>Merchant Website</h1>
 
         <p>This is a merchant website that includes an iframe from a payment
-        service website. The iframe can install a payment handler. The payment
-        handler name and icon should come from the web app manifest of the
-        payment handler in the iframe instead of the top level context of the
-        merchant.</p>
+        service website. The payment handler name and icon should come from the
+        web app manifest of the payment handler in the iframe instead of the top
+        level context of the merchant.</p>
 
         <div id="src">
             <p>View the source code:</p>
@@ -27,8 +26,13 @@
             </ul>
         </div>
 
-        <iframe src="payment-app/index.html" allowpaymentrequest width="800px"
-          height="600px"></iframe>
+        <p>The following iframe is <font color="green">allowed</font> to install the payment handler.</p>
+
+        <iframe src="payment-app/index.html" width="800px" height="600px" allow="payment"></iframe>
+
+        <p>The following iframe is <font color="red">not allowed</font> to install the payment handler.</p>
+
+        <iframe src="payment-app/index.html" width="800px" height="600px"></iframe>
     </div>
 
     <script src="/redirect.js"></script>
