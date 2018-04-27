@@ -2,6 +2,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.5">
     <title>Autofill Smoke Test</title>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
 
   var phoneNumber = '310-310-6000';
@@ -93,6 +94,19 @@
       var changeVisibility = function(checkbox, targetId) {
         document.getElementById(targetId).style.display = checkbox.checked ? 'none' : 'block';
       }
+
+    function AjaxSubmit(event) {
+      var form = event.target.form;
+      $.ajax({
+        type: "POST",
+        crossDomain: true,
+        url: 'https://cors-test.appspot.com/',
+        data: $(form).serialize(),
+        success: function() {
+          form.parentNode.innerHTML = "Form Submitted";
+        }
+      });
+    }
     </script>
     <style>
       .fork {
@@ -130,6 +144,7 @@
   Phone: <input name="phone" id="form_phone" placeholder="Phone"> <br>
   <input type="reset" value="Reset">
   <input type="submit" value="Submit" id="profile_submit">
+  <button type="button" onclick="AjaxSubmit(event)">AJAX Submit</button>
 </form>
 
 <button type="button" onclick="FillFormSimpsons()">Fill Form (Simpsons)</button>
