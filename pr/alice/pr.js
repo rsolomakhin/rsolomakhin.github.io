@@ -8,10 +8,10 @@ function buildPaymentRequest() {
   }
 
   const supportedInstruments = [{
-    supportedMethods: [
-      'interledger',
-      'https://emerald-eon.appspot.com/alicepay',
-    ],
+    supportedMethods: 'https://emerald-eon.appspot.com/alicepay'
+  },
+  {
+    supportedMethods: 'interledger'
   }];
 
   const details = {
