@@ -107,6 +107,10 @@
         }
       });
     }
+
+    function ShowPhoneNumber() {
+      document.getElementById('form_phone_container').style.display = 'block';
+    }
     </script>
     <style>
       .fork {
@@ -141,10 +145,13 @@
   Zip: <input name="zip" id="form_zip" placeholder="Zip"> <br>
   Country: <input name="country" id="form_country" placeholder="Country"> <br>
   Email: <input name="email" id="form_email" placeholder="Email"> <br>
-  Phone: <input name="phone" id="form_phone" placeholder="Phone"> <br>
+  <div id="form_phone_container" style="display: none;">
+    Phone: <input name="phone" id="form_phone" placeholder="Phone"> <br>
+  </div>
   <input type="reset" value="Reset">
   <input type="submit" value="Submit" id="profile_submit">
   <button type="button" onclick="AjaxSubmit(event)">AJAX Submit</button>
+  <button type="button" onclick="ShowPhoneNumber()">Show phone number</button>
 </form>
 
 <button type="button" onclick="FillFormSimpsons()">Fill Form (Simpsons)</button>
