@@ -8,7 +8,7 @@ function buildPaymentRequest() {
   }
 
   const supportedInstruments = [{
-    supportedMethods: 'https://emerald-eon.appspot.com/bobpay'
+    supportedMethods: 'https://bobpay.xyz/pay'
   },
   {
     supportedMethods: 'interledger'
