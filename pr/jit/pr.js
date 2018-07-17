@@ -9,7 +9,7 @@ function buildPaymentRequest() {
 
   const supportedInstruments = [{
     supportedMethods: [
-      'https://emerald-eon.appspot.com/bobpay',
+      'https://bobpay.xyz/pay',
     ],
   }];
 
