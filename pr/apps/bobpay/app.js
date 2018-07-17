@@ -4,7 +4,7 @@ self.addEventListener('canmnakepayment', (evt) => {
 
 self.addEventListener('paymentrequest', (evt) => {
     evt.respondWith({
-        methodName: 'https://emerald-eon.appspot.com/bobpay',
+        methodName: 'https://bobpay.xyz/pay',
         details: {
             token: '1234567890',
         },
