@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Retry with shipping address validation</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+  <div id="contents">
+    <h1>Retry with shipping address validation</h1>
+    <p>This merchant only accepts postalCode <strong>"12345"</strong> for shipping address.
+    Otherwise, the payment UI will be shown again with an error message.
+    No payment will be processed.</p>
+    <p>Price: USD <strong>$1.00</strong> <em>(tentative)</em></p>
+    <p><button onclick="onBuyClicked()">Buy</button></p>
+  </div>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+</body>
+</html>
