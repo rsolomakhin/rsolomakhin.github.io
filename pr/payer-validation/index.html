@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Retry with payer info validation</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+  <div id="contents">
+    <h1>Retry with payer info validation</h1>
+    <p>This merchant only accepts payerEmail <strong>"test@email.com"</strong> for payer information.
+    Otherwise, the payment UI will be shown again with an error message.
+    No payment will be processed.</p>
+    <p>Price: USD <strong>$1.00</strong> <em>(tentative)</em></p>
+    <p><button onclick="onBuyClicked()">Buy</button></p>
+  </div>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+</body>
+</html>
