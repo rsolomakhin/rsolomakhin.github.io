@@ -11,25 +11,25 @@ window.onload = () => {
   const syncButton = document.getElementById("sync");
   const forgetButton = document.getElementById("forget");
   const errorsParagraph = document.getElementById("errors");
+  const sessionIdentifierParagraph = document.getElementById("session");
   const numberOfWidgets = document.getElementById("number");
-  let lightWeightUserSession = null;
 
-  syncButton.style.display = "inline";
   syncButton.onclick = (e) => {
     navigator.credentials.get({password : true})
         .then(cred => {
           if (cred) {
-            lightWeightUserSession = cred;
-            numberOfWidgets.value = lightWeightUserSession.password;
+            sessionIdentifierParagraph.innerHTML = cred.id;
+            numberOfWidgets.value = cred.password;
             syncButton.style.display = "none";
             forgetButton.style.display = "inline";
           } else {
             // In production, generate a unique ID on the server.
             const username = "light-weight-user-session-" +
                              Math.floor(Math.random() * 1000000000000000000);
-            lightWeightUserSession = new PasswordCredential(
+            sessionIdentifierParagraph.innerHTML = username;
+            const newCredential = new PasswordCredential(
                 {id : username, password : numberOfWidgets.value});
-            navigator.credentials.store(lightWeightUserSession)
+            navigator.credentials.store(newCredential)
                 .then(() => {
                   syncButton.style.display = "none";
                   forgetButton.style.display = "inline";
@@ -41,10 +41,28 @@ window.onload = () => {
 
   };
 
-  forgetButton.onclick = (e) => {
-    lightWeightUserSession = null;
-    navigator.credentials.preventSilentAccess();
-    forgetButton.style.display = "none";
-    syncButton.style.display = "inline";
-  }
+  forgetButton.onclick =
+      (e) => {
+        sessionIdentifierParagraph.innerHTML = '';
+        navigator.credentials.preventSilentAccess();
+        forgetButton.style.display = "none";
+        syncButton.style.display = "inline";
+      }
+
+             navigator.credentails.get({password : true})
+                 .then(cred => {
+                   if (cred) {
+                     sessionIdentifierParagraph.innerHTML = cred.id;
+                     numberOfWidgets.value = cred.password;
+                     syncButton.style.display = "none";
+                     forgetButton.style.display = "inline";
+                   } else {
+                     syncButton.style.display = "inline";
+                     forgetButton.style.display = "none";
+                   }
+                 })
+                 .catch(error => {
+                   syncButton.style.display = "inline";
+                   forgetButton.style.display = "none";
+                 });
 };
