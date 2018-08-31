@@ -11,42 +11,39 @@ window.onload = () => {
   const syncButton = document.getElementById("sync");
   const forgetButton = document.getElementById("forget");
   const errorsParagraph = document.getElementById("errors");
+  const numberOfWidgets = document.getElementById("number");
+  let lightWeightUserSession = null;
 
   syncButton.style.display = "inline";
   syncButton.onclick = (e) => {
     navigator.credentials.get({password : true})
         .then(cred => {
           if (cred) {
-            console.log("Found a credential:");
-            console.log(cred);
+            lightWeightUserSession = cred;
+            numberOfWidgets.value = lightWeightUserSession.password;
+            syncButton.style.display = "none";
+            forgetButton.style.display = "inline";
           } else {
             // In production, generate a unique ID on the server.
             const username = "light-weight-user-session-" +
-                       Math.floor(Math.random() * 1000000000000000000);
-            console.log("No credential yet, let's generate one");
-            console.log(username);
-            navigator.credentials.store(new PasswordCredential({
-              id: username,
-              password: document.getElementById("number").value
-            })).then(() => {
-              syncButton.style.display = "none";
-              forgetButton.style.display = "inline";
-            }).catch(error => {
-              console.log(error);
-              errorsParagraph.innerHTML = error;
-            });
+                             Math.floor(Math.random() * 1000000000000000000);
+            lightWeightUserSession = new PasswordCredential(
+                {id : username, password : numberOfWidgets.value});
+            navigator.credentials.store(lightWeightUserSession)
+                .then(() => {
+                  syncButton.style.display = "none";
+                  forgetButton.style.display = "inline";
+                })
+                .catch(error => { errorsParagraph.innerHTML = error; });
           }
         })
-        .catch(error => {
-          console.log(error);
-          errorsParagraph.innerHTML = error;
-        });
+        .catch(error => { errorsParagraph.innerHTML = error; });
 
   };
 
   forgetButton.onclick = (e) => {
+    lightWeightUserSession = null;
     navigator.credentials.preventSilentAccess();
-    console.log("bye!");
     forgetButton.style.display = "none";
     syncButton.style.display = "inline";
   }
