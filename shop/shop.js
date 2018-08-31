@@ -57,7 +57,7 @@ window.onload = () => {
         credential = null;
         sessionIdentifierParagraph.innerHTML = '';
         if (navigator.credentials.preventSilentAccess) {
-          if (navigator.credentials.preventSilentAccess();
+          navigator.credentials.preventSilentAccess();
         }
         forgetButton.style.display = "none";
         syncButton.style.display = "inline";
