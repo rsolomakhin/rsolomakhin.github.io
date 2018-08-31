@@ -64,5 +64,9 @@ window.onload = () => {
         }
         forgetButton.style.display = 'none';
         syncButton.style.display = 'inline';
-      }
+      };
+
+  // In production, save the UI state in a cookie and on the server to make it
+  // stateful.
+  syncButton.style.display = 'inline';
 };
