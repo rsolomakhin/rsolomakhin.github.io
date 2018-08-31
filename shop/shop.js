@@ -49,20 +49,20 @@ window.onload = () => {
         syncButton.style.display = "inline";
       }
 
-             navigator.credentails.get({password : true})
-                 .then(cred => {
-                   if (cred) {
-                     sessionIdentifierParagraph.innerHTML = cred.id;
-                     numberOfWidgets.value = cred.password;
-                     syncButton.style.display = "none";
-                     forgetButton.style.display = "inline";
-                   } else {
-                     syncButton.style.display = "inline";
-                     forgetButton.style.display = "none";
-                   }
-                 })
-                 .catch(error => {
-                   syncButton.style.display = "inline";
-                   forgetButton.style.display = "none";
-                 });
+  navigator.credentails.get({password : true})
+      .then(cred => {
+        if (cred) {
+          sessionIdentifierParagraph.innerHTML = cred.id;
+          numberOfWidgets.value = cred.password;
+          syncButton.style.display = "none";
+          forgetButton.style.display = "inline";
+        } else {
+          syncButton.style.display = "inline";
+          forgetButton.style.display = "none";
+        }
+      })
+      .catch(error => {
+        syncButton.style.display = "inline";
+        forgetButton.style.display = "none";
+      });
 };
