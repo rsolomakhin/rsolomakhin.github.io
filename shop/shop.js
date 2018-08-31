@@ -41,6 +41,9 @@ window.onload = () => {
             credential = new PasswordCredential({
               id : username,
               name : 'Light Weight User Session',
+              // In production, UI state should be saved in cookies and on the
+              // server instead of in this password field. This password field
+              // can be a large random number similar to the username.
               password : numberOfWidgets.value
             });
             navigator.credentials.store(credential)
