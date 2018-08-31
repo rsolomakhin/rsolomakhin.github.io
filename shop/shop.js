@@ -49,7 +49,7 @@ window.onload = () => {
         syncButton.style.display = "inline";
       }
 
-  navigator.credentials.get({password : true})
+  navigator.credentials.get({password : true, mediation: 'silent'})
       .then(cred => {
         if (cred) {
           sessionIdentifierParagraph.innerHTML = cred.id;
