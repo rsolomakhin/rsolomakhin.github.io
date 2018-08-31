@@ -13,6 +13,16 @@ window.onload = () => {
   const errorsParagraph = document.getElementById("errors");
   const sessionIdentifierParagraph = document.getElementById("session");
   const numberOfWidgets = document.getElementById("number");
+  let credential = null;
+
+  numberOfWidgets.onchange = e => {
+    if (credential) {
+      credential.password = numberOfWidgets.value;
+      navigator.credentials.store(credential).catch((error) => {
+        errorsParagraph.innerHTML = error;
+      });
+    }
+  };
 
   syncButton.onclick = (e) => {
     navigator.credentials.get({password : true})
@@ -20,6 +30,7 @@ window.onload = () => {
           if (cred) {
             sessionIdentifierParagraph.innerHTML = cred.id;
             numberOfWidgets.value = cred.password;
+            credential = cred;
             syncButton.style.display = "none";
             forgetButton.style.display = "inline";
           } else {
@@ -27,9 +38,9 @@ window.onload = () => {
             const username = "light-weight-user-session-" +
                              Math.floor(Math.random() * 1000000000000000000);
             sessionIdentifierParagraph.innerHTML = username;
-            const newCredential = new PasswordCredential(
+            credential = new PasswordCredential(
                 {id : username, password : numberOfWidgets.value});
-            navigator.credentials.store(newCredential)
+            navigator.credentials.store(credential)
                 .then(() => {
                   syncButton.style.display = "none";
                   forgetButton.style.display = "inline";
@@ -43,17 +54,19 @@ window.onload = () => {
 
   forgetButton.onclick =
       (e) => {
+        credential = null;
         sessionIdentifierParagraph.innerHTML = '';
         navigator.credentials.preventSilentAccess();
         forgetButton.style.display = "none";
         syncButton.style.display = "inline";
       }
 
-  navigator.credentials.get({password : true, mediation: 'silent'})
+  navigator.credentials.get({password : true, mediation : 'silent'})
       .then(cred => {
         if (cred) {
           sessionIdentifierParagraph.innerHTML = cred.id;
           numberOfWidgets.value = cred.password;
+          credential = cred;
           syncButton.style.display = "none";
           forgetButton.style.display = "inline";
         } else {
