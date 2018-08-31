@@ -65,22 +65,4 @@ window.onload = () => {
         forgetButton.style.display = 'none';
         syncButton.style.display = 'inline';
       }
-
-             navigator.credentials.get({password : true, mediation : 'silent'})
-                 .then(cred => {
-                   if (cred) {
-                     sessionIdentifierParagraph.innerHTML = cred.id;
-                     numberOfWidgets.value = cred.password;
-                     credential = cred;
-                     syncButton.style.display = 'none';
-                     forgetButton.style.display = 'inline';
-                   } else {
-                     syncButton.style.display = 'inline';
-                     forgetButton.style.display = 'none';
-                   }
-                 })
-                 .catch(error => {
-                   syncButton.style.display = 'inline';
-                   forgetButton.style.display = 'none';
-                 });
 };
