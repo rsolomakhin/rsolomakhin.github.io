@@ -27,7 +27,7 @@ window.onload = () => {
   syncButton.onclick = (e) => {
     navigator.credentials.get({
         password: true,
-        mediation: 'required'
+        mediation: 'silent'
       })
       .then(cred => {
         if (cred) {
