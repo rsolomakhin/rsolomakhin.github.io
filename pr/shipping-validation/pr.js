@@ -5,18 +5,13 @@
 /**
  * Initializes the payment request object.
  */
-function buildPaymentRequest() {
-  if (!window.PaymentRequest) {
-    return null;
-  }
-
-  var supportedInstruments = [
+async function buildPaymentRequest() {
+  const supportedInstruments = [
     {
       supportedMethods: 'basic-card',
     },
   ];
-
-  var details = {
+  const details = {
     total: {
       label: 'Total',
       amount: {
@@ -34,86 +29,30 @@ function buildPaymentRequest() {
       selected: true
     }]
   };
-
-  var options = {requestShipping: true};
-
-  var request = null;
-
-  try {
-    request = new PaymentRequest(supportedInstruments, details, options);
-  } catch (e) {
-    error("Developer mistake: '" + e + "'");
-  }
-
-  if (request.canMakePayment) {
-    request
-      .canMakePayment()
-      .then(function(result) {
-        info(result ? 'Can make payment' : 'Cannot make payment');
-      })
-      .catch(function(err) {
-        error(err);
-      });
-  }
-
+  const options = {requestShipping: true};
+  const request = new PaymentRequest(supportedInstruments, details, options);
+  info(`${await request.canMakePayment() ? "Can" : "Cannot"} make payment.`);
   return request;
 }
-
-var request = buildPaymentRequest();
 
 /**
  * Launches payment request for credit cards.
  */
-function onBuyClicked() {
-  // eslint-disable-line no-unused-vars
-  if (!window.PaymentRequest || !request) {
-    error('PaymentRequest API is not supported.');
-    return;
-  }
-
+async function onBuyClicked() {
   try {
-    request
-      .show()
-      .then(function(instrumentResponse) {
-        validateResponse(instrumentResponse)
-          .then(function() {
-            window.setTimeout(function() {
-              instrumentResponse
-                .complete('success')
-                .then(function() {
-                  done(
-                    'This is a demo website. No payment will be processed.',
-                    instrumentResponse,
-                  );
-                })
-                .catch(function(err) {
-                  error(err);
-                  request = buildPaymentRequest();
-                });
-            }, 2000);
-          });
-      })
-      .catch(function(err) {
-        error(err);
-        request = buildPaymentRequest();
-      });
-  } catch (e) {
-    error("Developer mistake: '" + e + "'");
-    request = buildPaymentRequest();
+    const request = await buildPaymentRequest();
+    const response = await request.show();
+    await validateResponse(response);
+  } catch(err) {
+    error(`Developer mistake: '${err}'`);
+    throw err;
   }
+  await response.complete('success');
 }
 
-function validateResponse(response) {
-  return new Promise(resolver => {
-    window.setTimeout(function() {
-      if (!response.shippingAddress || response.shippingAddress.postalCode != "12345") {
-        response.retry({ shippingAddress: { postalCode: "The postal code should be 12345." }})
-          .then(function() {
-            resolver(validateResponse(response));
-          });
-      } else {
-        resolver();
-      }
-    }, 2000);
-  });
+async function validateResponse(response) {
+  if (response.shippingAddress.postalCode !== "12345") {
+    await response.retry({ shippingAddress: { postalCode: "The postal code should be 12345." }});
+  }
+  await validateResponse(response)
 }
