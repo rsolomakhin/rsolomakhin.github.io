@@ -12,8 +12,6 @@ function updateDetails(details, shippingOption) {
   var selectedShippingOption;
   var otherShippingOption;
   if (shippingOption === 'standard') {
-    if (selected === shippingOption)
-    selected = 'standard'
     selectedShippingOption = details.shippingOptions[0];
     otherShippingOption = details.shippingOptions[1];
     details.total.amount.value = '55.00';
