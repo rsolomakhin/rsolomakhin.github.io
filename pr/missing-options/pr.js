@@ -120,7 +120,7 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
           // sheet, according to the spec.)
           var noShippingOptions = Object.assign({}, details);
           delete noShippingOptions.shippingOptions;
-          resolve({});
+          resolve(noShippingOptions);
         }, 2000);
       }));
     });
