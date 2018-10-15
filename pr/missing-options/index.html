@@ -3,16 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>US-only shipping</title>
+  <title>Worldwide multi-option shipping</title>
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
   <div id="contents">
-    <h1>US-only shipping</h1>
-    <p>The merchant provides free shipping in California, $5.00 shipping in US.
-    Shipping outside of US is impossible. The merchant provides a custom error
-    message for locations outside of US. No payment will be processed.</p>
+    <h1>Worldwide multi-option shipping with missing options in updates</h1>
+    <p>This merchant provides multiple shipping options worldwide, independent
+    of the shipping address. This merchant will call <code>updateWith()</code>
+    without specifying any <code>shippingOptions</code>. According to the spec,
+    this should preserve  the existing shipping options in the payment sheet. No
+    payment will be processed.</p>
     <p>Price: USD <strong>$55.00</strong></p>
     <p><button onclick="onBuyClicked()">Buy</button></p>
   </div>

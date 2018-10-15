@@ -33,9 +33,8 @@ function updateDetails(details, addr) {
     details.displayItems.splice(1, 1, shippingOption);
     details.shippingOptions = [shippingOption];
   } else {
-    delete details.shippingOptions;
-    // Disable shipping to this location by specifying an error message.
-    details.error = "Cannot ship outside of US."
+    // Disable shipping to this location by clearing out all shipping options.
+    details.shippingOptions = [];
   }
   return details;
 }

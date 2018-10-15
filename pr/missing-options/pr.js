@@ -3,46 +3,38 @@
 /* global PaymentRequest:false */
 
 /**
- * Updates the details based on the selected address.
+ * Updates the price based on the selected shipping option.
  * @param {object} details - The current details to update.
- * @param {PaymentAddress} addr - The address selected by the user.
+ * @param {string} shippingOption - The shipping option selected by user.
  * @return {object} The updated details.
  */
-function updateDetails(details, addr) {
-  if (addr.country === 'US') {
-    delete details.error;
-    var shippingOption = {
-      id: '',
-      label: '',
-      amount: {
-        currency: 'USD',
-        value: '0.00'
-      },
-      selected: true
-    };
-    if (addr.region === 'CA') {
-      shippingOption.id = 'ca';
-      shippingOption.label = 'Free shipping in California';
-      details.total.amount.value = '55.00';
-    } else {
-      shippingOption.id = 'us';
-      shippingOption.label = 'Standard shipping in US';
-      shippingOption.amount.value = '5.00';
-      details.total.amount.value = '60.00';
-    }
-    details.displayItems.splice(1, 1, shippingOption);
-    details.shippingOptions = [shippingOption];
+function updateDetails(details, shippingOption) {
+  var selectedShippingOption;
+  var otherShippingOption;
+  if (shippingOption === 'standard') {
+    if (selected === shippingOption)
+    selected = 'standard'
+    selectedShippingOption = details.shippingOptions[0];
+    otherShippingOption = details.shippingOptions[1];
+    details.total.amount.value = '55.00';
   } else {
-    delete details.shippingOptions;
-    // Disable shipping to this location by specifying an error message.
-    details.error = "Cannot ship outside of US."
+    selectedShippingOption = details.shippingOptions[1];
+    otherShippingOption = details.shippingOptions[0];
+    details.total.amount.value = '67.00';
   }
+  if (details.displayItems.length === 2) {
+    details.displayItems.splice(1, 0, selectedShippingOption);
+  } else {
+    details.displayItems.splice(1, 1, selectedShippingOption);
+  }
+  selectedShippingOption.selected = true;
+  otherShippingOption.selected = false;
   return details;
 }
 
 /**
- * Launches payment request that provides different shipping options based on
- * the shipping address that the user selects.
+ * Launches payment request that provides multiple shipping options worldwide,
+ * regardless of the shipping address.
  */
 function onBuyClicked() { // eslint-disable-line no-unused-vars
   var supportedInstruments = [{
@@ -82,18 +74,28 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
         }
       },
       {
-        label: 'Pending shipping price',
-        amount: {
-          currency: 'USD',
-          value: '0.00'
-        },
-        pending: true
-      },
-      {
         label: 'Friends and family discount',
         amount: {
           currency: 'USD',
           value: '-10.00'
+        }
+      }
+    ],
+    shippingOptions: [{
+        id: 'standard',
+        label: 'Standard shipping',
+        amount: {
+          currency: 'USD',
+          value: '0.00'
+        },
+        selected: true
+      },
+      {
+        id: 'express',
+        label: 'Express shipping',
+        amount: {
+          currency: 'USD',
+          value: '12.00'
         }
       }
     ]
@@ -114,8 +116,20 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
     request.addEventListener('shippingaddresschange', function(e) {
       e.updateWith(new Promise(function(resolve) {
         window.setTimeout(function() {
-          resolve(updateDetails(details, request.shippingAddress));
+          // No changes in price or shipping options based on shipping address
+          // change. (Not specifying any shipping options or errors should
+          // preserve the currently selected shipping option in the payment
+          // sheet, according to the spec.)
+          var noShippingOptions = Object.assign({}, details);
+          delete noShippingOptions.shippingOptions;
+          resolve({});
         }, 2000);
+      }));
+    });
+
+    request.addEventListener('shippingoptionchange', function(e) {
+      e.updateWith(new Promise(function(resolve) {
+        resolve(updateDetails(details, request.shippingOption));
       }));
     });
 
