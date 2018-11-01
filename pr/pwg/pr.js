@@ -10,9 +10,9 @@ function buildPaymentRequest() {
   }
 
   const supportedInstruments = [{
-    supportedMethods: ['basic-card'],
+    supportedMethods: 'basic-card',
   }, {
-    supportedMethods: ['https://google.com/pay'],
+    supportedMethods: 'https://google.com/pay',
     data: {
       allowedPaymentMethods: ['TOKENIZED_CARD', 'CARD'],
       apiVersion: 1,

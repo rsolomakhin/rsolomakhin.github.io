@@ -38,7 +38,7 @@ function onBuyClicked() {
   // eslint-disable-line no-unused-vars
   var supportedInstruments = [
     {
-      supportedMethods: ['https://android.com/pay'],
+      supportedMethods: 'https://android.com/pay',
       data: {
         merchantName: 'Rouslan Solomakhin',
         merchantId: '00184145120947117657',
@@ -54,7 +54,7 @@ function onBuyClicked() {
       },
     },
     {
-      supportedMethods: ['basic-card'],
+      supportedMethods: 'basic-card',
     },
   ];
 

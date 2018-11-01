@@ -8,7 +8,7 @@ function buildPaymentRequest() {
   }
 
   var supportedInstruments = [{
-    supportedMethods: ['basic-card'],
+    supportedMethods: 'basic-card',
   }];
 
   var details = {
@@ -33,7 +33,7 @@ function buildPaymentRequest() {
       },
     }],
     modifiers: [{
-      supportedMethods: ['basic-card'],
+      supportedMethods: 'basic-card',
       total: {
         label: 'Discounted donation',
         amount: {

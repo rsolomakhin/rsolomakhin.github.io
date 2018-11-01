@@ -11,7 +11,7 @@ function buildPaymentRequest() {
   }
 
   const supportedInstruments = [{
-    supportedMethods: ['basic-card'],
+    supportedMethods: 'basic-card',
     data: {
       supportedTypes: ['debit', 'prepaid'],
     },

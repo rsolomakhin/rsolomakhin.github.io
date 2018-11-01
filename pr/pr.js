@@ -8,7 +8,7 @@ function buildPaymentRequest() {
   }
 
   const supportedInstruments = [{
-    supportedMethods: ['https://android.com/pay'],
+    supportedMethods: 'https://android.com/pay',
     data: {
       merchantName: 'Rouslan Solomakhin',
       merchantId: '00184145120947117657',
@@ -23,7 +23,7 @@ function buildPaymentRequest() {
       },
     },
   }, {
-    supportedMethods: ['basic-card'],
+    supportedMethods: 'basic-card',
   }];
 
   const details = {
@@ -48,7 +48,7 @@ function buildPaymentRequest() {
       },
     }],
     modifiers: [{
-      supportedMethods: ['basic-card'],
+      supportedMethods: 'basic-card',
       data: {
         supportedTypes: ['debit'],
       },
@@ -67,7 +67,7 @@ function buildPaymentRequest() {
         },
       }],
     }, {
-      supportedMethods: ['basic-card'],
+      supportedMethods: 'basic-card',
       data: {
         supportedNetworks: ['mastercard'],
       },

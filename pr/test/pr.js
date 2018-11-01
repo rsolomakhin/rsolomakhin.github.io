@@ -7,7 +7,7 @@
  */
 function onBuyClicked() { // eslint-disable-line no-unused-vars
   var supportedInstruments = [{
-    supportedMethods: ['https://android.com/pay'],
+    supportedMethods: 'https://android.com/pay',
     data: {
       environment: 'TEST',
       merchantName: 'Rouslan Solomakhin',

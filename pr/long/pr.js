@@ -7,7 +7,7 @@
  */
 function onBuyClicked() { // eslint-disable-line no-unused-vars
   var supportedInstruments = [{
-    supportedMethods: ['basic-card']
+    supportedMethods: 'basic-card'
   }];
 
   var details = {

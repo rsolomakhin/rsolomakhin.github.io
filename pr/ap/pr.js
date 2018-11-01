@@ -11,7 +11,7 @@ function buildPaymentRequest() {
   }
 
   var supportedInstruments = [{
-    supportedMethods: ['https://android.com/pay'],
+    supportedMethods: 'https://android.com/pay',
     data: {
       merchantName: 'Rouslan Solomakhin',
       merchantId: '00184145120947117657',

@@ -12,7 +12,7 @@ function buildPaymentRequest() {
 
   var supportedInstruments = [
     {
-      supportedMethods: ['foo'],
+      supportedMethods: 'foo',
     },
   ];
 

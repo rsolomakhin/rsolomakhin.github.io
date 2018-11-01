@@ -4,9 +4,9 @@ function buildPaymentRequest() {
     }
 
     let supportedInstruments = [{
-        supportedMethods: [
+        supportedMethods: 
             'https://rsolomakhin.github.io',
-        ]
+        
     }];
 
     let details = {
