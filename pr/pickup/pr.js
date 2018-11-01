@@ -117,6 +117,10 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
       }));
     });
 
+    request.addEventListener('shippingoptionchange', function(e) {
+      e.updateWith(details);
+    });
+
     request.show()
       .then(function(instrumentResponse) {
         window.setTimeout(function() {
