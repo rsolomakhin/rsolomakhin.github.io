@@ -17,9 +17,6 @@
         "src": "gpay_256.png",
         "sizes": "256x256"
     }, {
-        "src": "tree.png",
-        "sizes": "600x600"
-    }, {
         "src": "gpay_rect_32.png",
         "sizes": "80x32"
     }, {
