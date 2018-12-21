@@ -19,5 +19,20 @@
     }, {
         "src": "tree.png",
         "sizes": "600x600"
+    }, {
+        "src": "gpay_rect_32.png",
+        "sizes": "80x32"
+    }, {
+        "src": "gpay_rect_64.png",
+        "sizes": "161x64"
+    }, {
+        "src": "gpay_rect_128.png",
+        "sizes": "322x128"
+    }, {
+        "src": "gpay_rect_256.png",
+        "sizes": "643x256"
+    }, {
+        "src": "gpay_rect_347.png",
+        "sizes": "872x347"
     }]
 }
