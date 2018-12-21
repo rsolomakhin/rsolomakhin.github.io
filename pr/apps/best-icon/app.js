@@ -38,6 +38,6 @@ self.addEventListener('message', (evt) => {
 self.addEventListener('paymentrequest', (evt) => {
     evt.respondWith(new Promise((resolve) => {
       self.resolver = resolve;
-      evt.openWindow('/confirm.html');
+      evt.openWindow('confirm.html');
     }));
 });
