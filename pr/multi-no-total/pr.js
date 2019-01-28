@@ -25,7 +25,6 @@ function updateDetails(details, shippingOption) {
   }
   selectedShippingOption.selected = true;
   otherShippingOption.selected = false;
-  delete details.total;
   return details;
 }
 
@@ -43,7 +42,7 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
 
   var details = {
     total: {
-      label: 'Donation',
+      label: 'TOTAL DONATION AMOUNT',
       amount: {
         currency: 'USD',
         value: '1.00'
@@ -99,6 +98,7 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
     request.addEventListener('shippingaddresschange', function(e) {
       e.updateWith(new Promise(function(resolve) {
         window.setTimeout(function() {
+          delete details.total;
           resolve(details);
         }, 500);
       }));
@@ -106,6 +106,7 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
 
     request.addEventListener('shippingoptionchange', function(e) {
       e.updateWith(new Promise(function(resolve) {
+        delete details.total;
         resolve(updateDetails(details, request.shippingOption));
       }));
     });
