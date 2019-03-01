@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Show Promise Test for Skip-UI Flow for Google Pay</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <div id="contents">
+    <h1>Show Promise Test for Skip-UI Flow for Google Pay</h1>
+    <p>This page can be used to test the show promise. It simulates the final
+    price not being known for the first 5 seconds after showing the payment
+    sheet. The payment sheet should be in the "spinning" mode. After the 5
+    seconds, the payment app should launch and the final price of
+    <strong>$2.00</strong> will be sent to the payment app.</p> 
+    <p>Price: USD <strong>$1.00</strong> <em>(tentative)</em></p>
+    <p><button onclick="onBuyClicked()" id="buyButton"> Buy </button></p>
+    <p>No payment will be processed.</p>
+  </div>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+</body>
+</html>
