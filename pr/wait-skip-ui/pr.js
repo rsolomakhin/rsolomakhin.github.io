@@ -58,6 +58,11 @@ function onBuyClicked() {
     return;
   }
 
+  var spinner = document.createElement('i');
+  spinner.classList = 'fa fa-refresh fa-spin';
+  var button = document.getElementById('buyButton');
+  button.appendChild(spinner);
+
   try {
     request
       .show(
@@ -89,16 +94,19 @@ function onBuyClicked() {
               );
             })
             .catch(function(err) {
+              button.removeChild(spinner);
               error(err);
               request = buildPaymentRequest();
             });
         }, 2000);
       })
       .catch(function(err) {
+        button.removeChild(spinner);
         error(err);
         request = buildPaymentRequest();
       });
   } catch (e) {
+    button.removeChild(spinner);
     error("Developer mistake: '" + e + "'");
     request = buildPaymentRequest();
   }

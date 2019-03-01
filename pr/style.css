@@ -44,3 +44,7 @@ div {
   font-weight: bold;
   text-align: center;
 }
+
+#spinner {
+  display: none;
+}
