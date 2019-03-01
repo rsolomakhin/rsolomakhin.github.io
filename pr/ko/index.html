@@ -13,28 +13,32 @@
     <li><a href="fail/">Failed transaction</a></li>
     <li><a href="complete/">Timed out transaction</a></li>
     <li><a href="nocomplete/">Invalid completion status</a></li>
-    <li><a href="no-listener/">Merchant does not listen to shipping address
-        change. This should not block UI when user changes shipping address.</a></li>
-    <li><a href="updatewith/">Merchant listens to shipping address change, but
-        does not call updateWith() on the change event. This should not block UI
-      when user changes shipping address.</a></li>
-    <li><a href="promise/">Timed out promise for address changes. The merchant
-        calls updateWith(promise), but never resolves that promise. This should
-        cancel payment request.</a></li>
-    <li><a href="empty/">Respond to shipping address change with an empty
-        dictionary.</a></li>
-    <li><a href="reject-update/">Reject the promise for responding to address
-        changes. This should cancel the payment request.</a></li>
-    <li><a href="reject-show-promise/">Reject the <code>show(promise)</code>.
-        This should cancel the payment request.</a></li>
-    <li><a href="timeout-show-promise/">Timeout the <code>show(promise)</code>.
-        This should cancel the payment request.</a></li>
-    <li><a href="show-promise-unsupported-method/">Calling
-        <code>show(promise)</code> for unsupported payment method identifier.
-        This should cancel the payment request.</a></li>
-    <li><a href="resolve-show-promise-invalid-details/">
-        The show promise resolves with invalid payment details.
-        This should cancel the payment request.</a></li>
+    <li>Shipping address failures:<ul>
+      <li><a href="no-listener/">Merchant does not listen to shipping address
+          change. This should not block UI when user changes shipping address.</a></li>
+      <li><a href="updatewith/">Merchant listens to shipping address change, but
+          does not call updateWith() on the change event. This should not block UI
+        when user changes shipping address.</a></li>
+      <li><a href="promise/">Timed out promise for address changes. The merchant
+          calls updateWith(promise), but never resolves that promise. This should
+          cancel payment request.</a></li>
+      <li><a href="empty/">Respond to shipping address change with an empty
+          dictionary.</a></li>
+      <li><a href="reject-update/">Reject the promise for responding to address
+          changes. This should cancel the payment request.</a></li>
+    </ul></li>
+    <li><code>show(promise)</code> failures:<ul>
+      <li><a href="reject-show-promise/">Reject the <code>show(promise)</code>.
+          This should cancel the payment request.</a></li>
+      <li><a href="timeout-show-promise/">Timeout the <code>show(promise)</code>.
+          This should cancel the payment request.</a></li>
+      <li><a href="show-promise-unsupported-method/">Calling
+          <code>show(promise)</code> for unsupported payment method identifier.
+          This should cancel the payment request.</a></li>
+      <li><a href="resolve-show-promise-invalid-details/">
+          The show promise resolves with invalid payment details.
+          This should cancel the payment request.</a></li>
+    </ul></li>
   </ul>
   <script src="/redirect.js"></script>
 </body>
