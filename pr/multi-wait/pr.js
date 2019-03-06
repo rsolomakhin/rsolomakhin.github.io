@@ -85,10 +85,17 @@ function onBuyClicked() {
     );
 
     info('Calculating final price...');
+
+    var spinner = document.createElement('i');
+    spinner.classList = 'fa fa-refresh fa-spin';
+    var button = document.getElementById('buyButton');
+    button.appendChild(spinner);
+
     request
       .show(
         new Promise(function(resolveShowPromise) {
           window.setTimeout(function() {
+            button.removeChild(spinner);
             info('Calculated final price: USD $55.00');
             var finalizedDetails = {
               total: {

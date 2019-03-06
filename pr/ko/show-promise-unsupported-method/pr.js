@@ -53,12 +53,16 @@ var request = buildPaymentRequest();
 /**
  * Launches payment request for credit cards.
  */
-function onBuyClicked() {
-  // eslint-disable-line no-unused-vars
+function onBuyClicked() {  // eslint-disable-line no-unused-vars
   if (!window.PaymentRequest || !request) {
     error('PaymentRequest API is not supported.');
     return;
   }
+
+  var spinner = document.createElement('i');
+  spinner.classList = 'fa fa-refresh fa-spin';
+  var button = document.getElementById('buyButton');
+  button.appendChild(spinner);
 
   try {
     request
@@ -66,6 +70,7 @@ function onBuyClicked() {
         new Promise(function(resolve) {
           info('Calculating final price...');
           window.setTimeout(function() {
+            button.removeChild(spinner);
             info('The final price is $2.00 USD.');
             resolve({
               total: {

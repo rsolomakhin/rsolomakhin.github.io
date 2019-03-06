@@ -93,12 +93,18 @@ function onBuyClicked() {
       options,
     );
 
+    var spinner = document.createElement('i');
+    spinner.classList = 'fa fa-refresh fa-spin';
+    var button = document.getElementById('buyButton');
+    button.appendChild(spinner);
+
     request
       .show(
         new Promise(function(resolveShowPromise) {
           info('Calculating final price...');
           window.setTimeout(function() {
-          info('The final price is USD $55.00.');
+            button.removeChild(spinner);
+            info('The final price is USD $55.00.');
             var details = {
               total: {
                 label: 'Donation',

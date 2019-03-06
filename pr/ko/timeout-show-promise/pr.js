@@ -60,12 +60,18 @@ function onBuyClicked() {
     return;
   }
 
+  var spinner = document.createElement('i');
+  spinner.classList = 'fa fa-refresh fa-spin';
+  var button = document.getElementById('buyButton');
+  button.appendChild(spinner);
+
   try {
     request
       .show(
         new Promise(function(resolve) {
           info('Calculating final price...');
           window.setTimeout(function() {
+            button.removeChild(spinner);
             info('The final price is $2.00 USD.');
             resolve({
               total: {
