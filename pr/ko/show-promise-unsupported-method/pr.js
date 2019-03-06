@@ -90,22 +90,26 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
           instrumentResponse
             .complete('success')
             .then(function() {
+              button.removeChild(spinner);
               done(
                 'This is a demo website. No payment will be processed.',
                 instrumentResponse,
               );
             })
             .catch(function(err) {
+              button.removeChild(spinner);
               error(err);
               request = buildPaymentRequest();
             });
         }, 2000);
       })
       .catch(function(err) {
+        button.removeChild(spinner);
         error(err);
         request = buildPaymentRequest();
       });
   } catch (e) {
+    button.removeChild(spinner);
     error("Developer mistake: '" + e + "'");
     request = buildPaymentRequest();
   }
