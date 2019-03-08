@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Request Billing Address Test</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+  <div id="contents">
+    <h1>Request Billing Address Test</h1>
+    <p>This page can be used to test credit card payments with price changes
+    based on the billing address. No payment will be processed.</p>
+    <p>Default price: USD <strong>$1.00</strong></p>
+    <p>Price for billing addresses outside of US: EUR <strong>€2.00</strong></p>
+    <p><button onclick="onBuyClicked()">Buy</button></p>
+  </div>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+</body>
+</html>
