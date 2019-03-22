@@ -82,7 +82,7 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
                 },
               },
             });
-          }, 11000); // Longer than the 10 second timeout.
+          }, 100);
         }),
       )
       .then(function(instrumentResponse) {
