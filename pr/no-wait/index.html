@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test For Show Promise That Resolves With Empty Dictionary</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <div id="contents">
+    <h1>Test For Show Promise That Resolves With Empty Dictionary</h1>
+    <p>This page can be used to test the show promise that resolves with an
+    empty dictionary. It simulates the page being undecisive about the total
+    amount and modifiers for the first 5 seconds after showing the payment
+    sheet. The payment sheet should be in the "spinning" mode. After the 5
+    seconds, the final price will be unchanged at <strong>$1.00</strong> with a
+    modifier for <strong>visa</strong> cards that make the total
+    <strong>$2.00</strong>.</p> 
+    <p>Price: USD <strong>$1.00</strong> ($2.00 for VISA cards) <em>(tentative)</em></p>
+    <p><button onclick="onBuyClicked()" id="buyButton"> Buy </button></p>
+    <p>No payment will be processed.</p>
+  </div>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+</body>
+</html>
