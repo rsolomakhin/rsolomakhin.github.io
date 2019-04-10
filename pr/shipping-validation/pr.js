@@ -104,12 +104,12 @@ function onBuyClicked() {
 }
 
 function validateResponse(response) {
-  if (!response.retry) {
-    error('PaymentResponse.retry() is not defined. Is chrome://flags/#enable-experimental-web-platform-features enabled?');
-    return;
-  }
-
   return new Promise(resolver => {
+    if (!response.retry) {
+      error('PaymentResponse.retry() is not defined. Is chrome://flags/#enable-experimental-web-platform-features enabled?');
+      return;
+    }
+
     window.setTimeout(function() {
       if (!response.shippingAddress || response.shippingAddress.postalCode != "12345") {
         response.retry({ shippingAddress: { postalCode: "The postal code should be 12345." }})
