@@ -35,6 +35,7 @@ function init() {
     pleasewait.style.display = 'none';
   }).catch((error) => {
     output(error);
+    pleasewait.style.display = 'none';
   });
 }
 init();
