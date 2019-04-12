@@ -33,6 +33,8 @@ function init() {
       paymentManager = registration.paymentManager;
     }
     pleasewait.style.display = 'none';
+  }).catch((error) => {
+    output(error);
   });
 }
 init();
