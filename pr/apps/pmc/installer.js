@@ -79,8 +79,6 @@ function check() {
                   instrument.enabledMethods || instrument.method;
                 document.getElementById('network').innerHTML =
                   instrument.capabilities.supportedNetworks;
-                document.getElementById('type').innerHTML =
-                  instrument.capabilities.supportedTypes;
                 hideElement('checking');
                 showElement('installed');
               })
