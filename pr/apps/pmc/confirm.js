@@ -63,7 +63,7 @@ function firePaymentMethodChangeEvent(details) {
   });
 }
 
-const billingAddress2 = document.getElementById('billing-address-1');
+const billingAddress1 = document.getElementById('billing-address-1');
 billingAddress1.addEventListener('click', (evt) => {
   firePaymentMethodChangeEvent({
     billingAddress: {
@@ -77,7 +77,7 @@ billingAddress1.addEventListener('click', (evt) => {
   });
 });
 
-const billingAddress1 = document.getElementById('billing-address-1');
+const billingAddress2 = document.getElementById('billing-address-1');
 billingAddress2.addEventListener('click', (evt) => {
   firePaymentMethodChangeEvent({
     billingAddress: {
