@@ -44,7 +44,12 @@ const button = document.getElementById('confirm');
 button.addEventListener('click', (evt) => {
   button.style.display = 'none';
   pleasewait.style.display = 'block';
-  navigator.serviceWorker.controller.postMessage('confirm');
+  if (navigator.serviceWorker.controller) {
+    navigator.serviceWorker.controller.postMessage('confirm');
+  } else {
+    output('No service worker controller found');
+    pleasewait.style.display = 'none';
+  }
 });
 
 function firePaymentMethodChangeEvent(details) {
