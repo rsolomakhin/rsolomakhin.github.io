@@ -85,7 +85,7 @@ billingAddress1.addEventListener('click', (evt) => {
   });
 });
 
-const billingAddress2 = document.getElementById('billing-address-1');
+const billingAddress2 = document.getElementById('billing-address-2');
 billingAddress2.addEventListener('click', (evt) => {
   firePaymentMethodChangeEvent({
     billingAddress: {
