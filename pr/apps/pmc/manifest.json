@@ -1,0 +1,7 @@
+{
+    "name": "Payment Method Change Event Test",
+    "icons": [{
+        "src": "gpay_32.png",
+        "sizes": "32x32"
+    }]
+}

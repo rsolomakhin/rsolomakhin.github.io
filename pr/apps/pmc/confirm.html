@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Payment Method Change Event Test</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../style.css">
+</head>
+
+<body>
+  <div id="content">
+    <div>Total: <span id="currency">N/A</span> <span id="value">N/A</span></div>
+    <div>
+      Billing Address:
+      <div><input type="radio" name="billing-address"
+        id="billing-address-1">Venice, CA 90291, US</input></div>
+      <div><input type="radio" name="billing-address"
+        id="billing-address-2">London WC2H 8AG, GB</input></div>
+    </div>
+  </div>
+  <div><button id="confirm">Confirm</button></div>
+  <div id="pleasewait" style="display: none;">Please wait...</div>
+  <div id="msg"><div>
+  <script src="/redirect.js"></script>
+  <script src="confirm.js"></script>
+</body>
+
+</html>
