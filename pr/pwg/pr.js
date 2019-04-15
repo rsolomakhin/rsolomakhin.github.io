@@ -57,7 +57,7 @@ function buildPaymentRequest() {
     if (request.onpaymentmethodchange) {
       info('Will print out payment method change event details here.');
       request.addEventListener('paymentmethodchange', (evt) => {
-        info('Payment method change event: ' + JSON.stringify({'methodName': evt.methodName, 'methodDetails': evt.methodDetails}, undefined, 2);
+        info('Payment method change event: ' + JSON.stringify({'methodName': evt.methodName, 'methodDetails': evt.methodDetails}, undefined, 2));
       });
     }
   } catch (e) {
