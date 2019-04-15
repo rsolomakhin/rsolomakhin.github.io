@@ -62,7 +62,7 @@ function firePaymentMethodChangeEvent(details) {
     return;
   }
   pleasewait.style.display = 'block';
-  paymentManager.fireEvent(id, 'paymentmethodchange', details).then((paymentHandlerUpdate) => {
+  paymentManager.fireEvent('basic-card', id, 'paymentmethodchange', details).then((paymentHandlerUpdate) => {
     updateAmount(paymentHandlerUpdate.total.currency, paymentHandlerUpdate.total.value);
     if (paymentHandlerUpdate.error) {
       output(error);
