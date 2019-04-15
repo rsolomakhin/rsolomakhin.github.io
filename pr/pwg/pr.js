@@ -53,6 +53,13 @@ function buildPaymentRequest() {
         error(err);
       });
     }
+
+    if (request.onpaymentmethodchange) {
+      info('Will print out payment method change event details here.');
+      request.addEventListener('paymentmethodchange', (evt) => {
+        info(JSON.stringify({'methodName': evt.methodName, 'methodDetails': {evt.methodDetails}}, undefined, 2);
+      });
+    }
   } catch (e) {
     error('Developer mistake: \'' + e + '\'');
   }
