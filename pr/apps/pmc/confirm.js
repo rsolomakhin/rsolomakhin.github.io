@@ -17,21 +17,21 @@ function init() {
   pleasewait.style.display = 'block';
   navigator.serviceWorker.getRegistration('app.js').then((registration) => {
     if (!registration) {
-      output('Service worker not installed');
+      output('Service worker not installed.');
       pleasewait.style.display = 'none';
     } else if (!registration.paymentManager) {
-      output('Payment manager not found');
+      output('Payment manager not found.');
       pleasewait.style.display = 'none';
     } else if (!registration.paymentManager.paymentRequestEvent) {
-      output('paymentManager.paymentRequestEvent is not implemented yet');
+      output('Payment request event is not implemented yet.');
       pleasewait.style.display = 'none';
     } else {
       registration.paymentManager.paymentRequestEvent.then((evt) => {
         if (evt) {
-          output('Received the payment request event');
+          output('Received the payment request event.');
           paymentRequestEvent = evt;
         } else {
-          output('Failed to retrieve the payment request event');
+          output('Failed to retrieve the payment request event.');
         }
         pleasewait.style.display = 'none';
       }).catch((error) => {
@@ -49,7 +49,7 @@ init();
 const button = document.getElementById('confirm');
 button.addEventListener('click', (evt) => {
   if (!paymentRequestEvent) {
-    output('Payment request event not found');
+    output('Payment request event not found.');
     return;
   }
   button.style.display = 'none';
@@ -89,11 +89,11 @@ button.addEventListener('click', (evt) => {
 
 function firePaymentMethodChangeEvent(details) {
   if (!paymentRequestEvent) {
-    output('Payment request event not found');
+    output('Payment request event not found.');
     return;
   }
   if (!paymentRequestEvent.changePaymentMethod) {
-    output('No method change feature in the payment manager');
+    output('No method change feature in the payment manager.');
     return;
   }
   pleasewait.style.display = 'block';
