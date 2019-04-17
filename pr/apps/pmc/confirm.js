@@ -11,17 +11,8 @@ function updateAmount(currencyUpdate, valueUpdate) {
   value.innerHTML = valueUpdate;
 }
 
-const parts = window.location.href.split('#');
-let id = 'N/A';
-if (parts.length === 4) {
-  id = parts[1];
-  updateAmount(parts[2], parts[3]);
-} else {
-  output('Could not parse the Payment Request ID, total currency, and total value from the URL');
-}
-
 const pleasewait = document.getElementById('pleasewait');
-let paymentManager = null;
+let paymentRequestEvent = null;
 function init() {
   pleasewait.style.display = 'block';
   navigator.serviceWorker.getRegistration('app.js').then((registration) => {
@@ -29,10 +20,22 @@ function init() {
       output('Service worker not installed');
     } else if (!registration.paymentManager) {
       output('Payment manager not found');
+    } else if (!registration.paymentManager.paymentRequestEvent) {
+      output('paymentManager.paymentRequestEvent is not implemented yet');
     } else {
-      paymentManager = registration.paymentManager;
-    }
+      registration.paymentManager.paymentRequestEvent.then((evt) => {
+        if (evt) {
+          output('Received the payment request event');
+          paymentRequestEvent = evt;
+        } else {
+          output('Failed to retrieve the payment request event');
+        }
+        pleasewait.style.display = 'none';
+      }).catch((error) => {
+    output(error);
     pleasewait.style.display = 'none';
+      });
+    }
   }).catch((error) => {
     output(error);
     pleasewait.style.display = 'none';
@@ -42,31 +45,54 @@ init();
 
 const button = document.getElementById('confirm');
 button.addEventListener('click', (evt) => {
+  if (!paymentRequestEvent) {
+    output('Payment request event not found');
+    return;
+  }
   button.style.display = 'none';
   pleasewait.style.display = 'block';
-  if (navigator.serviceWorker.controller) {
-    navigator.serviceWorker.controller.postMessage('confirm');
-  } else {
-    output('No service worker controller found');
-    pleasewait.style.display = 'none';
-  }
+  paymentRequestEvent.respondWith({
+    methodName: 'basic-card',
+    details: {
+        billingAddress: {
+            addressLine: [
+                '1875 Explorer St #1000',
+            ],
+            city: 'Reston',
+            country: 'US',
+            dependentLocality: '',
+            languageCode: '',
+            organization: 'Google',
+            phone: '+15555555555',
+            postalCode: '20190',
+            recipient: 'Jon Doe',
+            region: 'VA',
+            sortingCode: ''
+        },
+        cardNumber: '4111111111111111',
+        cardSecurityCode: '123',
+        cardholderName: 'Jon Doe',
+        expiryMonth: '01',
+        expiryYear: '2020',
+    },
+  });
 });
 
 function firePaymentMethodChangeEvent(details) {
-  if (!paymentManager) {
-    output('Payment manager not found');
+  if (!paymentRequestEvent) {
+    output('Payment request event not found');
     return;
   }
-  if (!paymentManager.fireEvent) {
-    output('No event firing feature in the payment manager');
+  if (!paymentRequestEvent.changePaymentMethod) {
+    output('No method change feature in the payment manager');
     return;
   }
   pleasewait.style.display = 'block';
-  paymentManager.fireEvent('basic-card', id, 'paymentmethodchange', details).then((paymentHandlerUpdate) => {
-    updateAmount(paymentHandlerUpdate.total.currency, paymentHandlerUpdate.total.value);
+  paymentRequestEvent.changePaymentMethod('basic-card', details).then((paymentHandlerUpdate) => {
     if (paymentHandlerUpdate.error) {
       output(error);
     }
+    updateAmount(paymentHandlerUpdate.total.currency, paymentHandlerUpdate.total.value);
     pleasewait.style.display = 'none';
   }).catch((error) => {
     output(error);
