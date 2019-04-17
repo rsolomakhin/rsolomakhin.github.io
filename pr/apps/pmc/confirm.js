@@ -18,10 +18,13 @@ function init() {
   navigator.serviceWorker.getRegistration('app.js').then((registration) => {
     if (!registration) {
       output('Service worker not installed');
+      pleasewait.style.display = 'none';
     } else if (!registration.paymentManager) {
       output('Payment manager not found');
+      pleasewait.style.display = 'none';
     } else if (!registration.paymentManager.paymentRequestEvent) {
       output('paymentManager.paymentRequestEvent is not implemented yet');
+      pleasewait.style.display = 'none';
     } else {
       registration.paymentManager.paymentRequestEvent.then((evt) => {
         if (evt) {
@@ -32,8 +35,8 @@ function init() {
         }
         pleasewait.style.display = 'none';
       }).catch((error) => {
-    output(error);
-    pleasewait.style.display = 'none';
+        output(error);
+        pleasewait.style.display = 'none';
       });
     }
   }).catch((error) => {
