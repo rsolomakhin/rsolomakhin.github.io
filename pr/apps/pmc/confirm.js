@@ -51,31 +51,37 @@ button.addEventListener('click', (evt) => {
   }
   button.style.display = 'none';
   pleasewait.style.display = 'block';
-  paymentRequestEvent.respondWith({
-    methodName: 'basic-card',
-    details: {
-        billingAddress: {
-            addressLine: [
-                '1875 Explorer St #1000',
-            ],
-            city: 'Reston',
-            country: 'US',
-            dependentLocality: '',
-            languageCode: '',
-            organization: 'Google',
-            phone: '+15555555555',
-            postalCode: '20190',
-            recipient: 'Jon Doe',
-            region: 'VA',
-            sortingCode: ''
-        },
-        cardNumber: '4111111111111111',
-        cardSecurityCode: '123',
-        cardholderName: 'Jon Doe',
-        expiryMonth: '01',
-        expiryYear: '2020',
-    },
-  });
+  try {
+    paymentRequestEvent.respondWith({
+      methodName: 'basic-card',
+      details: {
+          billingAddress: {
+              addressLine: [
+                  '1875 Explorer St #1000',
+              ],
+              city: 'Reston',
+              country: 'US',
+              dependentLocality: '',
+              languageCode: '',
+              organization: 'Google',
+              phone: '+15555555555',
+              postalCode: '20190',
+              recipient: 'Jon Doe',
+              region: 'VA',
+              sortingCode: ''
+          },
+          cardNumber: '4111111111111111',
+          cardSecurityCode: '123',
+          cardholderName: 'Jon Doe',
+          expiryMonth: '01',
+          expiryYear: '2020',
+      },
+    });
+  } catch (error) {
+    output(error);
+    button.style.display = 'block';
+    pleasewait.style.display = 'none';
+  }
 });
 
 function firePaymentMethodChangeEvent(details) {
@@ -89,6 +95,10 @@ function firePaymentMethodChangeEvent(details) {
   }
   pleasewait.style.display = 'block';
   paymentRequestEvent.changePaymentMethod('basic-card', details).then((paymentHandlerUpdate) => {
+    pleasewait.style.display = 'none';
+    if (!paymentHandlerUpdate) {
+      return;
+    }
     if (paymentHandlerUpdate.error) {
       output(error);
     }
