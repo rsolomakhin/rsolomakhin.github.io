@@ -12,7 +12,7 @@ function notifyPaymentMethodChanged(messageDestination) {
     console.log(paymentMethodChangeResponse);
     messageDestination.postMessage(paymentMethodChangeResponse);
   }).catch((error) => {
-    console.log(error);
+    console.log(error.message);
     messageDestination.postMessage({error: error.message});
   });
 }
