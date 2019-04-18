@@ -59,7 +59,6 @@ function redact(input) {
       postalCode: input.details.billingAddress.postalCode,
       sortingCode: input.details.billingAddress.sortingCode,
     },
-    cardNumber: '****' + input.details.cardNumber.substring(input.details.cardNumber.length - 4);
+    cardNumber: '****' + input.details.cardNumber.substring(input.details.cardNumber.length - 4),
   };
-
-};
+}
