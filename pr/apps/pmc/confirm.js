@@ -11,8 +11,17 @@ function updateAmount(currencyUpdate, valueUpdate) {
   value.innerHTML = valueUpdate;
 }
 
+const parts = window.location.href.split('#');
+let id = 'N/A';
+if (parts.length === 4) {
+  id = parts[1];
+  updateAmount(parts[2], parts[3]);
+} else {
+  output('Could not parse the Payment Request ID, total currency, and total value from the URL');
+}
+
 const pleasewait = document.getElementById('pleasewait');
-let paymentRequestEvent = null;
+let paymentManager = null;
 function init() {
   pleasewait.style.display = 'block';
   navigator.serviceWorker.getRegistration('app.js').then((registration) => {
@@ -39,6 +48,7 @@ function init() {
         pleasewait.style.display = 'none';
       });
     }
+    pleasewait.style.display = 'none';
   }).catch((error) => {
     output(error);
     pleasewait.style.display = 'none';
@@ -105,7 +115,6 @@ function firePaymentMethodChangeEvent(details) {
     if (paymentHandlerUpdate.error) {
       output(error);
     }
-    updateAmount(paymentHandlerUpdate.total.currency, paymentHandlerUpdate.total.value);
     pleasewait.style.display = 'none';
   }).catch((error) => {
     output(error);
