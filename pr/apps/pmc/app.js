@@ -9,8 +9,10 @@ self.response = response1;
 
 function notifyPaymentMethodChanged(messageDestination) {
   self.paymentRequestEvent.changePaymentMethod(self.response.methodName, redact(self.response)).then((paymentMethodChangeResponse) => {
+    console.log(paymentMethodChangeResponse);
     messageDestination.postMessage(paymentMethodChangeResponse);
   }).catch((error) => {
+    console.log(error);
     messageDestination.postMessage({error: error.message});
   });
 }
