@@ -1,3 +1,5 @@
+let response = response1;
+
 const msg = document.getElementById('msg');
 function output(message) {
   msg.innerHTML = message;
@@ -11,17 +13,8 @@ function updateAmount(currencyUpdate, valueUpdate) {
   value.innerHTML = valueUpdate;
 }
 
-const parts = window.location.href.split('#');
-let id = 'N/A';
-if (parts.length === 4) {
-  id = parts[1];
-  updateAmount(parts[2], parts[3]);
-} else {
-  output('Could not parse the Payment Request ID, total currency, and total value from the URL');
-}
-
 const pleasewait = document.getElementById('pleasewait');
-let paymentManager = null;
+let paymentRequestEvent = null;
 function init() {
   pleasewait.style.display = 'block';
   navigator.serviceWorker.getRegistration('app.js').then((registration) => {
@@ -58,93 +51,85 @@ init();
 
 const button = document.getElementById('confirm');
 button.addEventListener('click', (evt) => {
-  if (!paymentRequestEvent) {
-    output('Payment request event not found.');
-    return;
-  }
-  button.style.display = 'none';
-  pleasewait.style.display = 'block';
-  try {
-    paymentRequestEvent.respondWith({
-      methodName: 'basic-card',
-      details: {
-          billingAddress: {
-              addressLine: [
-                  '1875 Explorer St #1000',
-              ],
-              city: 'Reston',
-              country: 'US',
-              dependentLocality: '',
-              languageCode: '',
-              organization: 'Google',
-              phone: '+15555555555',
-              postalCode: '20190',
-              recipient: 'Jon Doe',
-              region: 'VA',
-              sortingCode: ''
-          },
-          cardNumber: '4111111111111111',
-          cardSecurityCode: '123',
-          cardholderName: 'Jon Doe',
-          expiryMonth: '01',
-          expiryYear: '2020',
-      },
-    });
-  } catch (error) {
-    output(error);
-    button.style.display = 'block';
-    pleasewait.style.display = 'none';
+  if (paymentRequestEvent) {
+    button.style.display = 'none';
+    pleasewait.style.display = 'block';
+    try {
+      paymentRequestEvent.respondWith(response);
+    } catch (error) {
+      output(error);
+      button.style.display = 'block';
+      pleasewait.style.display = 'none';
+    }
+  } else if (navigator.serviceWorker.controller) {
+    button.style.display = 'none';
+    pleasewait.style.display = 'block';
+    navigator.serviceWorker.controller.postMessage('confirm');
+  } else {
+    output('Neither payment request event nor service worker controller found');
   }
 });
 
-function firePaymentMethodChangeEvent(details) {
-  if (!paymentRequestEvent) {
-    output('Payment request event not found.');
+function changePaymentMethod(which_one) {
+  let message = '';
+  if (which_one === 1) {
+    response = response1;
+    message = 'change-method-1';
+  } else if (which_one === 2) {
+    response = response2;
+    message = 'change-method-2';
+  } else {
+    output('Unknown payment method identifier ' + which_one.toString());
     return;
   }
-  if (!paymentRequestEvent.changePaymentMethod) {
-    output('No method change feature in the payment manager.');
-    return;
-  }
-  pleasewait.style.display = 'block';
-  paymentRequestEvent.changePaymentMethod('basic-card', details).then((paymentHandlerUpdate) => {
-    pleasewait.style.display = 'none';
-    if (!paymentHandlerUpdate) {
+
+  if (paymentRequestEvent) {
+    if (!paymentRequestEvent.changePaymentMethod) {
+      output('No method change feature in the payment request event.');
       return;
     }
-    if (paymentHandlerUpdate.error) {
+    pleasewait.style.display = 'block';
+    paymentRequestEvent.changePaymentMethod(response.methodName, redact(response)).then((paymentHandlerUpdate) => {
+      pleasewait.style.display = 'none';
+      if (!paymentHandlerUpdate) {
+        return;
+      }
+      if (paymentHandlerUpdate.error) {
+        output(error);
+      }
+      pleasewait.style.display = 'none';
+    }).catch((error) => {
       output(error);
-    }
-    pleasewait.style.display = 'none';
-  }).catch((error) => {
-    output(error);
-    pleasewait.style.display = 'none';
-  });
+      pleasewait.style.display = 'none';
+    });
+  } else if (navigator.serviceWorker.controller) {
+    navigator.serviceWorker.controller.postMessage(message);
+  } else {
+    output('Neither payment request event nor service worker controller found');
+  }
 }
 
 const billingAddress1 = document.getElementById('billing-address-1');
 billingAddress1.addEventListener('click', (evt) => {
-  firePaymentMethodChangeEvent({
-    billingAddress: {
-        city: 'Venice',
-        country: 'US',
-        postalCode: '20191',
-        region: 'VA',
-    },
-    cardNumber: '****1111',
-    cardNetwork: 'visa',
-  });
+  changePaymentMethod(1);
 });
 
 const billingAddress2 = document.getElementById('billing-address-2');
 billingAddress2.addEventListener('click', (evt) => {
-  firePaymentMethodChangeEvent({
-    billingAddress: {
-        city: 'London',
-        country: 'GB',
-        postalCode: 'WC2H 8AG',
-    },
-    cardNumber: '****5454',
-    cardNetwork: 'mastercard',
-  });
+  changePaymentMethod(2);
+});
+
+window.addEventListener('message', (evt) => {
+  if (!evt.data) {
+    output('Received an empty message');
+    return;
+  }
+
+  if (evt.data.error) {
+    output(evt.data.error);
+  }
+
+  if (evt.data.total) {
+    updateAmount(evt.data.total.currency, evt.data.total.value);
+  }
 });
