@@ -120,7 +120,7 @@ billingAddress2.addEventListener('click', (evt) => {
 });
 
 window.addEventListener('message', (evt) => {
-  console.log('Window receieved a message.);
+  console.log('Window receieved a message.');
   if (!evt.data) {
     output('Received an empty message');
     return;
@@ -136,7 +136,7 @@ window.addEventListener('message', (evt) => {
 });
 
 self.addEventListener('message', (evt) => {
-  console.log('Self receieved a message.);
+  console.log('Self receieved a message.');
   if (!evt.data) {
     output('Received an empty message');
     return;
@@ -152,7 +152,7 @@ self.addEventListener('message', (evt) => {
 });
 
 navigator.serviceWorker.addEventListener('message', (evt) => {
-  console.log('Service worker receieved a message.);
+  console.log('Service worker receieved a message.');
   if (!evt.data) {
     output('Received an empty message');
     return;
@@ -168,7 +168,7 @@ navigator.serviceWorker.addEventListener('message', (evt) => {
 });
 
 navigator.serviceWorker.controller.addEventListener('message', (evt) => {
-  console.log('Service worker controller receieved a message.);
+  console.log('Service worker controller receieved a message.');
   if (!evt.data) {
     output('Received an empty message');
     return;
