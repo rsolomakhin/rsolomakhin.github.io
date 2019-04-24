@@ -33,7 +33,7 @@ const response2 = {
               '1-13 St Giles High St',
           ],
           city: 'London',
-          country: 'US',
+          country: 'GB',
           dependentLocality: '',
           organization: 'Google',
           phone: '+442070313000',
