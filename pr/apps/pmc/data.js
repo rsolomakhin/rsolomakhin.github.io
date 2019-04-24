@@ -18,6 +18,7 @@ const response1 = {
           sortingCode: ''
       },
       cardNumber: '378282246310005',
+      cardType: 'amex',
       cardSecurityCode: '2302',
       cardholderName: 'Jon Doe',
       expiryMonth: '09',
@@ -42,7 +43,8 @@ const response2 = {
           region: '',
           sortingCode: ''
       },
-      cardNumber: '3566002020360505',
+      cardNumber: '4012888888881881',
+      cardType: 'visa',
       cardSecurityCode: '123',
       cardholderName: 'Jon Doe',
       expiryMonth: '11',
@@ -60,5 +62,6 @@ function redact(input) {
       sortingCode: input.details.billingAddress.sortingCode,
     },
     cardNumber: '****' + input.details.cardNumber.substring(input.details.cardNumber.length - 4),
+    cardType: input.details.cardType,
   };
 }
