@@ -17,7 +17,7 @@ const pleasewait = document.getElementById('pleasewait');
 let paymentRequestEvent = null;
 function init() {
   pleasewait.style.display = 'block';
-  navigator.serviceWorker.getRegistration('app.js').then((registration) => {
+  navigator.serviceWorker.getRegistration('payment_handler.js').then((registration) => {
     if (!registration) {
       output('Service worker not installed.');
       pleasewait.style.display = 'none';

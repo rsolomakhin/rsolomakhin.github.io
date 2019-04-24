@@ -54,14 +54,14 @@ self.addEventListener('message', (evt) => {
 
 self.addEventListener('paymentrequest', (evt) => {
   if (evt.delegateToWindow) {
-    evt.delegateToWindow('confirm.html');
+    evt.delegateToWindow('payment_handler_window.html');
     return;
   }
 
   self.paymentRequestEvent = evt;
   self.paymentRequestEvent.respondWith(new Promise((resolve) => {
     self.resolver = resolve;
-    evt.openWindow('confirm.html').then((windowClient) => {
+    evt.openWindow('payment_handler_window.html').then((windowClient) => {
       self.messageDestination = windowClient;
     }).catch((error) => {
       console.log(error.message);
