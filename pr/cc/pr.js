@@ -60,6 +60,56 @@ function buildPaymentRequest() {
     }]
   };
 
+  var nonUSdetails = {
+    total: {
+      label: 'Donation',
+      amount: {
+        currency: 'USD',
+        value: '60.00'
+      }
+    },
+    displayItems: [{
+      label: 'Original donation amount',
+      amount: {
+        currency: 'USD',
+        value: '65.00'
+      }
+    }, {
+      label: 'Friends and family discount',
+      amount: {
+        currency: 'USD',
+        value: '-10.00'
+      }
+    }, {
+      label: 'Export tax',
+      amount: {
+        currency: 'USD',
+        value: '5.00'
+      }
+    }],
+    modifiers: [{
+      supportedMethods: 'basic-card',
+      total: {
+        label: 'Discounted donation',
+        amount: {
+          currency: 'USD',
+          value: '50.00'
+        }
+      },
+      additionalDisplayItems: [{
+        label: 'VISA discount',
+        amount: {
+          currency: 'USD',
+          value: '-10.00'
+        }
+      }],
+      data: {
+        discountProgramParticipantId: '86328764873265',
+        supportedNetworks: ['visa'],
+      }
+    }]
+  };
+
   var request = null;
 
   try {
@@ -73,9 +123,16 @@ function buildPaymentRequest() {
     }
 
     if (request.onpaymentmethodchange !== undefined) {
-      info('Will print out payment method change event details here.');
+      console.log('Will print out payment method change event details here.');
       request.addEventListener('paymentmethodchange', (evt) => {
-        info('Payment method change event: ' + JSON.stringify({'methodName': evt.methodName, 'methodDetails': evt.methodDetails}, undefined, 2));
+        console.log('Payment method change event: ' + JSON.stringify({'methodName': evt.methodName, 'methodDetails': evt.methodDetails}, undefined, 2));
+        if (evt.methodDetails && evt.methodDetails.billingAddress && evt.methodDetails.billingAddress.country) {
+          if (evt.methodDetails.billingAddress.country === 'US') {
+            evt.respondWith(details);
+          } else {
+            evt.respondWith(nonUSdetails);
+          }
+        }
       });
     }
   } catch (e) {
