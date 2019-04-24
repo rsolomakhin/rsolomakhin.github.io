@@ -151,6 +151,22 @@ self.addEventListener('message', (evt) => {
   }
 });
 
+navigator.serviceWorker.addEventListener('message', (evt) => {
+  console.log('Service worker receieved a message.);
+  if (!evt.data) {
+    output('Received an empty message');
+    return;
+  }
+
+  if (evt.data.error) {
+    output(evt.data.error);
+  }
+
+  if (evt.data.total) {
+    updateAmount(evt.data.total.currency, evt.data.total.value);
+  }
+});
+
 navigator.serviceWorker.controller.addEventListener('message', (evt) => {
   console.log('Service worker controller receieved a message.);
   if (!evt.data) {
