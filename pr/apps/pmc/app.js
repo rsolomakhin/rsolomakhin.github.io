@@ -6,14 +6,22 @@ self.importScripts('data.js');
 self.paymentRequestEvent = null;
 self.resolver = null;
 self.response = response1;
+self.messageDestination = null;
 
-function notifyPaymentMethodChanged(messageDestination) {
+function sendMessage(msg) {
+  if (self.messageDestination) {
+    console.log('Sending message: ' + JSON.stringify(msg, undefined, 2));
+    self.messageDestination.postMessage(msg);
+  } else {
+    console.log('No destination found for message: ' + JSON.stringify(msg, undefined, 2));
+  }
+}
+
+function notifyPaymentMethodChanged() {
   self.paymentRequestEvent.changePaymentMethod(self.response.methodName, redact(self.response)).then((paymentMethodChangeResponse) => {
-    console.log(JSON.stringify(paymentMethodChangeResponse, undefined, 2));
-    messageDestination.postMessage(paymentMethodChangeResponse);
+    sendMessage(paymentMethodChangeResponse);
   }).catch((error) => {
-    console.log(error.message);
-    messageDestination.postMessage({error: error.message});
+    sendMessage({error: error.message});
   });
 }
 
@@ -23,24 +31,24 @@ self.addEventListener('message', (evt) => {
       self.resolver(response);
       self.resolver = null;
     } else {
-      evt.source.postMessage({error: 'Service worker cannot confirm payment because there is no resolver function.'});
+      sendMessage({error: 'Service worker cannot confirm payment because there is no resolver function.'});
     }
   } else if (evt.data === 'change-method-1') {
     self.response = response1;
     if (self.paymentRequestEvent !== null && self.paymentRequestEvent.changePaymentMethod) {
-      notifyPaymentMethodChanged(evt.source);
+      notifyPaymentMethodChanged();
     } else {
-      evt.source.postMessage({error: 'Service worker cannot change payment method. There is no payment request event or no change payment method feature.'});
+      sendMessage({error: 'Service worker cannot change payment method. There is no payment request event or no change payment method feature.'});
     }
   } else if (evt.data === 'change-method-2') {
     self.response = response2;
     if (self.paymentRequestEvent !== null && self.paymentRequestEvent.changePaymentMethod) {
-      notifyPaymentMethodChanged(evt.source);
+      notifyPaymentMethodChanged();
     } else {
-      evt.source.postMessage({error: 'Service worker cannot change payment method. There is no payment request event or no change payment method feature.'});
+      sendMessage({error: 'Service worker cannot change payment method. There is no payment request event or no change payment method feature.'});
     }
   } else {
-    evt.source.postMessage({error: 'Service worker did not recognize the message "' + evt.data + '".'});
+    sendMessage({error: 'Service worker did not recognize the message "' + evt.data + '".'});
   }
 });
 
@@ -53,6 +61,10 @@ self.addEventListener('paymentrequest', (evt) => {
   self.paymentRequestEvent = evt;
   self.paymentRequestEvent.respondWith(new Promise((resolve) => {
     self.resolver = resolve;
-    evt.openWindow('confirm.html');
+    evt.openWindow('confirm.html').then((windowClient) => {
+      self.messageDestination = windowClient;
+    }).catch((error) => {
+      console.log(error.message);
+    });
   }));
 });
