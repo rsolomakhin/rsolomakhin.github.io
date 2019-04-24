@@ -10,7 +10,7 @@ self.messageDestination = null;
 
 function sendMessage(msg) {
   if (self.messageDestination) {
-    console.log('Sending message: ' + JSON.stringify(msg, undefined, 2));
+    console.log('Sending message to payment handler window: ' + JSON.stringify(msg, undefined, 2));
     self.messageDestination.postMessage(msg);
   } else {
     console.log('No destination found for message: ' + JSON.stringify(msg, undefined, 2));
