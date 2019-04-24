@@ -128,9 +128,9 @@ function buildPaymentRequest() {
         console.log('Payment method change event: ' + JSON.stringify({'methodName': evt.methodName, 'methodDetails': evt.methodDetails}, undefined, 2));
         if (evt.methodDetails && evt.methodDetails.billingAddress && evt.methodDetails.billingAddress.country) {
           if (evt.methodDetails.billingAddress.country === 'US') {
-            evt.respondWith(details);
+            evt.updateWith(details);
           } else {
-            evt.respondWith(nonUSdetails);
+            evt.updateWith(nonUSdetails);
           }
         }
       });
