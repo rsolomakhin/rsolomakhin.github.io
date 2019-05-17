@@ -112,6 +112,7 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
     var request = new PaymentRequest(supportedInstruments, details, options);
 
     request.addEventListener('shippingaddresschange', function(e) {
+      info(JSON.stringify(request.shippingAddress, undefined, 2));
       e.updateWith(new Promise(function(resolve) {
         window.setTimeout(function() {
           resolve(updateDetails(details, request.shippingAddress));
