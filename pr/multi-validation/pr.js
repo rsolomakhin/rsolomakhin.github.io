@@ -127,10 +127,12 @@ function validateResponse(response) {
 function validateShippingAddressAndPayerInfo(response) {
   const errors = {};
   if (!response.shippingAddress || response.shippingAddress.postalCode != "12345") {
-    errors['shippingAddress'] = { postalCode: "The postal code should be 12345." };
+    let postalCodeError = document.querySelector("#postal-code-error").value;
+    errors['shippingAddress'] = { postalCode: postalCodeError };
   }
   if (!response.payerEmail || response.payerEmail != "test@email.com") {
-    errors['payer'] = { email: "The email should be \"test@email.com\"." };
+    let emailError = document.querySelector("#email-error").value;
+    errors['payer'] = { email: emailError };
   }
   return errors;
 }

@@ -103,7 +103,8 @@ function validateResponse(response) {
 
     window.setTimeout(function() {
       if (!response.payerEmail || response.payerEmail != "test@email.com") {
-        response.retry({ payer: { email: "The email should be \"test@email.com\"." }})
+        var emailError = document.querySelector("#email-error").value;
+        response.retry({ payer: { email: emailError }})
           .then(function() {
             resolver(validateResponse(response));
           });
