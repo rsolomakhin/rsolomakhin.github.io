@@ -112,7 +112,8 @@ function validateResponse(response) {
 
     window.setTimeout(function() {
       if (!response.shippingAddress || response.shippingAddress.postalCode != "12345") {
-        response.retry({ shippingAddress: { postalCode: "The postal code should be 12345." }})
+        var postalCodeError = document.querySelector("#postal-code-error").value;
+        response.retry({ shippingAddress: { postalCode: postalCodeError }})
           .then(function() {
             resolver(validateResponse(response));
           });
