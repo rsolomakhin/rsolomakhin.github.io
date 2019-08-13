@@ -111,6 +111,22 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
   try {
     var request = new PaymentRequest(supportedInstruments, details, options);
 
+    if (request.canMakePayment) {
+      request.canMakePayment().then(function(result) {
+        info(result ? "Can make payment" : "Cannot make payment");
+      }).catch(function(err) {
+        error(err);
+      });
+    }
+
+    if (request.hasEnrolledInstrument) {
+      request.hasEnrolledInstrument().then(function(result) {
+        info(result ? "Has enrolled instrument" : "No enrolled instrument");
+      }).catch(function(err) {
+        error(err);
+      });
+    }
+
     request.addEventListener('shippingaddresschange', function(e) {
       info(JSON.stringify(request.shippingAddress, undefined, 2));
       e.updateWith(new Promise(function(resolve) {

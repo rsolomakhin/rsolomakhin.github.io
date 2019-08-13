@@ -48,14 +48,21 @@ function buildPaymentRequest() {
     request = new PaymentRequest(supportedInstruments, details);
     if (request.canMakePayment) {
       request.canMakePayment().then(function(result) {
-        info(result ? 'Can make payment' : 'Cannot make payment');
+        info(result ? "Can make payment" : "Cannot make payment");
+      }).catch(function(err) {
+        error(err);
+      });
+    }
+
+    if (request.hasEnrolledInstrument) {
+      request.hasEnrolledInstrument().then(function(result) {
+        info(result ? "Has enrolled instrument" : "No enrolled instrument");
       }).catch(function(err) {
         error(err);
       });
     }
 
     if (request.onpaymentmethodchange !== undefined) {
-      info('Will print out payment method change event details here.');
       request.addEventListener('paymentmethodchange', (evt) => {
         info('Payment method change event: ' + JSON.stringify({'methodName': evt.methodName, 'methodDetails': evt.methodDetails}, undefined, 2));
       });
