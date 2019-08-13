@@ -117,7 +117,7 @@ function validateResponse(response) {
             resolver(validateResponse(response));
           }).catch(e => {
             error("Developer mistake: '" + e + "'");
-            request.abort();
+            resolver();
           });
       } else {
         resolver();
