@@ -122,8 +122,15 @@ function buildPaymentRequest() {
       });
     }
 
+    if (request.hasEnrolledInstrument) {
+      request.hasEnrolledInstrument().then(function(result) {
+        info(result ? "Has enrolled instrument" : "No enrolled instrument");
+      }).catch(function(err) {
+        error(err);
+      });
+    }
+
     if (request.onpaymentmethodchange !== undefined) {
-      console.log('Will print out payment method change event details here.');
       request.addEventListener('paymentmethodchange', (evt) => {
         console.log('Payment method change event: ' + JSON.stringify({'methodName': evt.methodName, 'methodDetails': evt.methodDetails}, undefined, 2));
         if (evt.methodDetails && evt.methodDetails.billingAddress && evt.methodDetails.billingAddress.country) {
