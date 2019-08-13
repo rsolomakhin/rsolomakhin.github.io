@@ -113,15 +113,12 @@ function validateResponse(response) {
     window.setTimeout(function() {
       const errors = validateShippingAddressAndPayerInfo(response);
       if (Object.keys(errors).length > 0) {
-        try {
-          response.retry(errors)
-            .then(function() {
-              resolver(validateResponse(response));
-            });
-        } catch (e) {
-          error("Developer mistake: '" + e + "'");
-          request.abort();
-        }
+          response.retry(errors).then(() => {
+            resolver(validateResponse(response));
+          }).catch(e => {
+            error("Developer mistake: '" + e + "'");
+            request.abort();
+          });
       } else {
         resolver();
       }
