@@ -77,11 +77,16 @@ function onBuyClicked() {
       .then(function(instrumentResponse) {
         validateResponse(instrumentResponse)
           .then(function(status) {
+            let isSuccess = (status === 'success');
+            let simulatedProcessingTime = 2000;
+            if (!isSuccess) {
+              simulatedProcessingTime = 10;
+            }
             window.setTimeout(function() {
               instrumentResponse
                 .complete(status)
                 .then(function() {
-                  if (status === 'success') {
+                  if (isSuccess) {
                     done(
                       'This is a demo website. No payment will be processed.',
                       instrumentResponse,
@@ -94,7 +99,7 @@ function onBuyClicked() {
                   error(err);
                   request = buildPaymentRequest();
                 });
-            }, 2000);
+            }, simulatedProcessingTime);
           });
       })
       .catch(function(err) {
@@ -114,6 +119,7 @@ function validateResponse(response) {
       return;
     }
 
+    info('Validating...');
     window.setTimeout(function() {
       const errors = validateShippingAddressAndPayerInfo(response);
       if (Object.keys(errors).length > 0) {
