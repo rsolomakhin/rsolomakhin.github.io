@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Payment Handler for "https://rsolomakhin.github.io"</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+    <div id="contents">
+        <h1>Payment Handler for "https://rsolomakhin.github.io"</h1>
+        <p>This is a payment handler for "https://rsolomakhin.github.io" payment
+        method, which is located on the same origin as this payment handler.
+        The browser does not download the payment method manifest in this
+        case.</p>
+
+        <p id="checking">Checking whether the payment handler is installed...</p>
+
+        <div id="installed" style="display: none;">
+            <p>The payment handler is installed. <a href="../origin-test/">Test it out</a>.</p>
+            <ul>
+                <li>Scope: <code id="scope">N/A</code></li>
+                <li>Method: <code id="method">N/A</code></li>
+            </ul>
+            <p><button onclick="uninstall();">Uninstall</button></p>
+        </div>
+
+        <p id="installing" style="display: none;">Installing...</p>
+
+        <p id="uninstalling" style="display: none;">Uninstalling...</p>
+
+        <div id="not-installed" style="display: none;">
+            <p>The payment handler is not installed. <a href="../origin-test/">Verify</a>.</p>
+            <p><button onclick="install();">Install</button></p>
+        </div>
+
+        <pre id="msg"></pre>
+
+        <div id="src">
+            <p>View the source code:</p>
+            <ul>
+                <li><a href="installer.js">Installer</a></li>
+                <li><a href="app.js">App</a></li>
+                <li><a href="manifest.json">Web app manifest</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="installer.js"></script>
+    <script src="/redirect.js"></script>
+</body>
+
+</html>
