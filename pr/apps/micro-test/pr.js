@@ -1,70 +1,73 @@
 function buildPaymentRequest() {
-    if (!window.PaymentRequest) {
-        return null;
+  if (!window.PaymentRequest) {
+    return null;
+  }
+
+  let supportedInstruments = [{
+    supportedMethods: 'https://rsolomakhin.github.io',
+  }];
+
+  let details = {
+    total: {
+      label: 'Payment',
+      amount: {
+        currency: 'USD',
+        value: '1.00'
+      }
     }
+  };
 
-    let supportedInstruments = [{
-        supportedMethods: 
-            'https://rsolomakhin.github.io',
-        
-    }];
+  let request = null;
 
-    let details = {
-        total: {
-            label: 'Donation',
-            amount: {
-                currency: 'USD',
-                value: '1.00'
-            }
-        }
-    };
-
-    let request = null;
-
-    try {
-        request = new PaymentRequest(supportedInstruments, details);
-        if (request.canMakePayment) {
-            request.canMakePayment().then(function(result) {
-                info(result ? "Can make payment" : "Cannot make payment");
-            }).catch(function(err) {
-                error(err);
-            });
-        }
-    } catch (e) {
-        error('Developer mistake: \'' + e + '\'');
+  try {
+    request = new PaymentRequest(supportedInstruments, details);
+    if (request.canMakePayment) {
+      request.canMakePayment().then((result) => {
+        info(result ? "Can make payment" : "Cannot make payment");
+      }).catch((err) => {
+        error(err.toString());
+      });
     }
+    if (request.hasEnrolledInstrument) {
+      request.hasEnrolledInstrument().then((result) => {
+        info(result ? "Has enrolled instrument" : "No enrolled instrument");
+      }).catch((err) => {
+        error(err.toString());
+      });
+    }
+  } catch (e) {
+    error(e.toString());
+  }
 
-    return request;
+  return request;
 }
 
 let request = buildPaymentRequest();
 
 function onBuyClicked() { // eslint-disable-line no-unused-vars
-    if (!window.PaymentRequest || !request) {
-        error('PaymentRequest API is not supported.');
-        return;
-    }
+  if (!window.PaymentRequest || !request) {
+    error('PaymentRequest API is not supported.');
+    return;
+  }
 
-    try {
-        request.show()
-            .then(function(instrumentResponse) {
-                window.setTimeout(function() {
-                    instrumentResponse.complete('success')
-                        .then(function() {
-                            done('This is a demo website. No payment will be processed.', instrumentResponse);
-                        })
-                        .catch(function(err) {
-                            error(err);
-                            request = buildPaymentRequest();
-                        });
-                }, 2000);
-            })
-            .catch(function(err) {
-                error(err);
-                request = buildPaymentRequest();
-            });
-    } catch (e) {
-        error('Developer mistake: \'' + e + '\'');
+  try {
+    request.show()
+      .then((instrumentResponse) => {
+        instrumentResponse.complete('success')
+          .then(() => {
+            done('This is a demo website. No payment will be processed.', instrumentResponse);
+          })
+          .catch((err) => {
+            error(err.toString());
+            request = buildPaymentRequest();
+          });
+      })
+      .catch((err) => {
+        error(err.toString());
         request = buildPaymentRequest();
-    }
+      });
+  } catch (e) {
+    error(e.toString());
+    request = buildPaymentRequest();
+  }
 }
