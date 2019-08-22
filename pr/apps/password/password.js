@@ -5,7 +5,9 @@ const username = parts[3];
 const password = parts[4];
 document.getElementById('origin').innerHTML = origin;
 document.getElementById('action').innerHTML = action;
-document.getElementById('username').innerHTML = username;
+if (action == 'store') {
+  document.getElementById('username').innerHTML = username;
+}
 const button = document.getElementById('confirm');
 const pleasewait = document.getElementById('pleasewait');
 button.addEventListener('click', (evt) => {
