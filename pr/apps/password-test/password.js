@@ -8,7 +8,7 @@ async function storePassword() {
     }
     document.getElementById('status').innerHTML = 'Storing password...';
     const request = new PaymentRequest([{
-      supportedMethods: 'https://rsolomakhin.github.io/pr/apps/password',
+      supportedMethods: 'https://rsolomakhin.github.io/pr/apps/password/',
       data: {
         action: 'store',
         username: document.getElementById('username').value,
@@ -54,7 +54,7 @@ async function getPassword() {
     document.getElementById('msg').innerHTML = '';
     document.getElementById('status').innerHTML = 'Getting password...';
     const request = new PaymentRequest([{
-      supportedMethods: 'https://rsolomakhin.github.io/pr/apps/password',
+      supportedMethods: 'https://rsolomakhin.github.io/pr/apps/password/',
       data: {
         action: 'get',
       },
