@@ -1,5 +1,7 @@
 async function storePassword() {
   try {
+    document.getElementById('msg').innerHTML = '';
+    document.getElementById('status').innerHTML = 'Storing password...';
     const request = new PaymentRequest([{
       supportedMethods: 'https://rsolomakhin.github.io/pr/apps/password',
       data: {
@@ -16,6 +18,8 @@ async function storePassword() {
         }
       }
     });
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
     const response = await request.show();
     document.getElementById('msg').innerHTML = JSON.stringify(response.details);
     document.getElementById('status').innerHTML = 'Username and password stored.';
@@ -40,6 +44,10 @@ async function clearForm() {
 
 async function getPassword() {
   try {
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('msg').innerHTML = '';
+    document.getElementById('status').innerHTML = 'Getting password...';
     const request = new PaymentRequest([{
       supportedMethods: 'https://rsolomakhin.github.io/pr/apps/password',
       data: {
