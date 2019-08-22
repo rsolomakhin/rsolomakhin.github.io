@@ -1,0 +1,34 @@
+{
+    "name": "Password Handler",
+    "icons": [{
+        "src": "gpay_24.png",
+        "sizes": "24x24"
+    }, {
+        "src": "gpay_32.png",
+        "sizes": "32x32"
+    }, {
+        "src": "gpay_64.png",
+        "sizes": "64x64"
+    }, {
+        "src": "gpay_128.png",
+        "sizes": "128x128"
+    }, {
+        "src": "gpay_256.png",
+        "sizes": "256x256"
+    }, {
+        "src": "gpay_rect_32.png",
+        "sizes": "80x32"
+    }, {
+        "src": "gpay_rect_64.png",
+        "sizes": "161x64"
+    }, {
+        "src": "gpay_rect_128.png",
+        "sizes": "322x128"
+    }, {
+        "src": "gpay_rect_256.png",
+        "sizes": "643x256"
+    }, {
+        "src": "gpay_rect_347.png",
+        "sizes": "872x347"
+    }]
+}
