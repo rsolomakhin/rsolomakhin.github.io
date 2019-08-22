@@ -72,7 +72,7 @@ async function getPassword() {
       document.getElementById('username').value = response.details.username;
     }
     if (response.details.password) {
-      document.getElementById('username').value = response.details.password;
+      document.getElementById('password').value = response.details.password;
     }
     document.getElementById('msg').innerHTML = JSON.stringify(response.details);
     document.getElementById('status').innerHTML = 'Form filled.';
