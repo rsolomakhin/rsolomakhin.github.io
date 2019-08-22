@@ -46,7 +46,7 @@ function updateDetails(details, addr) {
  */
 function onBuyClicked() { // eslint-disable-line no-unused-vars
   var supportedInstruments = [{
-      supportedMethods: 'https://android.com/pay',
+      supportedMethods: 'https://google.com/pay',
       data: {
         merchantName: 'Rouslan Solomakhin',
         merchantId: '00184145120947117657',
