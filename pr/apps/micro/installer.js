@@ -58,14 +58,14 @@ function check() {
         );
         return;
       }
-      if (!registration.paymentManager.setMicrotransactionLimit) {
-        hideElement('checking');
-        showElement('not-installed');
-        showMessage(
-          'Microtransactions are not fully implemented. Cannot set the microtransaction limit.',
-        );
-        return;
-      }
+      //      if (!registration.paymentManager.setMicrotransactionLimit) {
+      //        hideElement('checking');
+      //        showElement('not-installed');
+      //        showMessage(
+      //          'Microtransactions are not fully implemented. Cannot set the microtransaction limit.',
+      //        );
+      //        return;
+      //      }
       registration.paymentManager.instruments
         .has('instrument-key')
         .then(result => {
@@ -115,27 +115,27 @@ function install() {
         showMessage('Payment handler is not fully implemented. Cannot set the instruments.');
         return;
       }
-      if (!registration.paymentManager.setMicrotransactionLimit) {
-        hideElement('installing');
-        showMessage('Microtransactions are not fully implemented. Cannot set the microtransaction limit.');
-        return;
-      }
+      //      if (!registration.paymentManager.setMicrotransactionLimit) {
+      //        hideElement('installing');
+      //        showMessage('Microtransactions are not fully implemented. Cannot set the microtransaction limit.');
+      //        return;
+      //      }
       registration.paymentManager.instruments
         .set('instrument-key', {
           name: 'Chrome uses name and icon from the web app manifest',
           method: 'https://rsolomakhin.github.io',
         })
         .then(() => {
-          registration.paymentManager.setMicrotransactionLimit('20.00', 'USD').then(() => {
-            registration.paymentManager.instruments.get('instrument-key').then((instrument) => {
-              document.getElementById('scope').innerHTML = registration.scope;
-              document.getElementById('method').innerHTML = instrument.method;
-              hideElement('installing');
-              showElement('installed');
-            }).catch((error) => {
-              hideElement('installing');
-              showMessage(error);
-            });
+          registration.paymentManager.instruments.get('instrument-key').then((instrument) => {
+            // registration.paymentManager.setMicrotransactionLimit('20.00', 'USD').then(() => {
+            document.getElementById('scope').innerHTML = registration.scope;
+            document.getElementById('method').innerHTML = instrument.method;
+            hideElement('installing');
+            showElement('installed');
+            // }).catch((error) => {
+            //   hideElement('installing');
+            //   showMessage(error);
+            // });
           }).catch((error) => {
             hideElement('installing');
             showMessage(error);
