@@ -4,8 +4,20 @@ body {
   color: black;
 }
 
-@media (prefers-color-scheme: dark) {
-  body { background: black; color: white; }
+a:link {
+  color: #185ABC;
+}
+
+a:hover {
+  color: #185ABC;
+}
+
+a:active {
+  color: #185ABC;
+}
+
+a:visited {
+  color: #4527A0;
 }
 
 div {
@@ -15,7 +27,7 @@ div {
 .error {
   animation-duration: 0.5s;
   animation-name: popup;
-  color: red;
+  color: #c62828;
 }
 
 @keyframes popup {
@@ -31,7 +43,7 @@ div {
 .error-hide {
   animation-duration: 0.5s;
   animation-name: popdown;
-  color: red;
+  color: #c62828;
 }
 
 @keyframes popdown {
@@ -41,11 +53,11 @@ div {
   }
 }
 .info {
-  color: green;
+  color: #2E7D32;
 }
 
 .warning {
-  background: yellow;
+  background: #F9A825;
   padding: 20px;
   font-weight: bold;
   text-align: center;
@@ -54,3 +66,43 @@ div {
 #spinner {
   display: none;
 }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: black;
+    color: white;
+  }
+
+  a:link {
+    color: #8AB4F8;
+  }
+
+  a:hover {
+    color: #8AB4F8;
+  }
+
+  a:active {
+    color: #8AB4F8;
+  }
+
+  a:visited {
+    color: #9575CD;
+  }
+
+  .error {
+    color: #e57373;
+  }
+
+  .error-hide {
+    color: #e57373;
+  }
+
+  .info {
+    color: #81C784;
+  }
+
+  .warning {
+    background: #FFF176;
+  }
+}
+
