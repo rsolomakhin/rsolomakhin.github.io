@@ -70,7 +70,7 @@ div {
 @media (prefers-color-scheme: dark) {
   body {
     background: black;
-    color: white;
+    color: #E0E0E0;
   }
 
   a:link {
