@@ -25,7 +25,7 @@ function init() {
       output('Payment manager not found.');
       pleasewait.style.display = 'none';
     } else if (!registration.paymentManager.paymentRequestEvent) {
-      output('Payment request event is not implemented yet.');
+      console.log('Payment request event is not implemented yet.');
       pleasewait.style.display = 'none';
     } else {
       registration.paymentManager.paymentRequestEvent.then((evt) => {
