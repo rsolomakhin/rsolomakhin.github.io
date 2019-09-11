@@ -123,7 +123,7 @@ function install() {
       registration.paymentManager.instruments
         .set('instrument-key', {
           name: 'Chrome uses name and icon from the web app manifest',
-          method: 'https://rsolomakhin.github.io',
+          method: 'https://rsolomakhin.github.io/pr/apps/micro',
         })
         .then(() => {
           registration.paymentManager.instruments.get('instrument-key').then((instrument) => {

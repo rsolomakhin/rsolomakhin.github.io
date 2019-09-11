@@ -1,8 +1,8 @@
 {
-    "name": "Micro Payment Handler",
+    "name": "Bob Pay",
     "icons": [{
-        "src": "tree.png",
-        "sizes": "600x600",
+        "src": "bobpay-logo.png",
+        "sizes": "207x207",
         "type": "image/png"
     }]
 }

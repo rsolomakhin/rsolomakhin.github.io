@@ -1,13 +1,40 @@
+async function checkCanMakePayment(request) {
+  if (!request.canMakePayment) {
+    return;
+  }
+
+  try {
+    const result = await request.canMakePayment();
+    info(result ? "Can make payment" : "Cannot make payment");
+  } catch (e) {
+    error(e.toString());
+  }
+}
+
+async function checkHasEnrolledInstrument(request) {
+  if (!request.hasEnrolledInstrument) {
+    return;
+  }
+
+  try {
+    const result = await request.hasEnrolledInstrument();
+    info(result ? "Has enrolled instrument" : "No enrolled instrument");
+  } catch (e) {
+    error(e.toString());
+  }
+}
+
 function buildPaymentRequest() {
   if (!window.PaymentRequest) {
+    error('PaymentRequest API is not supported.');
     return null;
   }
 
-  let supportedInstruments = [{
-    supportedMethods: 'https://rsolomakhin.github.io',
+  const supportedInstruments = [{
+    supportedMethods: 'https://rsolomakhin.github.io/pr/apps/micro',
   }];
 
-  let details = {
+  const details = {
     total: {
       label: 'Payment',
       amount: {
@@ -21,51 +48,31 @@ function buildPaymentRequest() {
 
   try {
     request = new PaymentRequest(supportedInstruments, details);
-    if (request.canMakePayment) {
-      request.canMakePayment().then((result) => {
-        info(result ? "Can make payment" : "Cannot make payment");
-      }).catch((err) => {
-        error(err.toString());
-      });
-    }
-    if (request.hasEnrolledInstrument) {
-      request.hasEnrolledInstrument().then((result) => {
-        info(result ? "Has enrolled instrument" : "No enrolled instrument");
-      }).catch((err) => {
-        error(err.toString());
-      });
-    }
   } catch (e) {
     error(e.toString());
+    return null;
   }
+
+  checkCanMakePayment(request);
+  checkHasEnrolledInstrument(request);
 
   return request;
 }
 
 let request = buildPaymentRequest();
 
-function onBuyClicked() { // eslint-disable-line no-unused-vars
-  if (!window.PaymentRequest || !request) {
-    error('PaymentRequest API is not supported.');
+async function onBuyClicked() { // eslint-disable-line no-unused-vars
+  if (!request) {
     return;
   }
 
+  const r = request;
+  request = null;
+
   try {
-    request.show()
-      .then((instrumentResponse) => {
-        instrumentResponse.complete('success')
-          .then(() => {
-            done('This is a demo website. No payment will be processed.', instrumentResponse);
-          })
-          .catch((err) => {
-            error(err.toString());
-            request = buildPaymentRequest();
-          });
-      })
-      .catch((err) => {
-        error(err.toString());
-        request = buildPaymentRequest();
-      });
+    const instrumentResponse = await r.show()
+    await instrumentResponse.complete('success');
+    done('This is a demo website. No payment will be processed.', instrumentResponse);
   } catch (e) {
     error(e.toString());
     request = buildPaymentRequest();
