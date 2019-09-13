@@ -101,3 +101,10 @@ function done(message, resp) {  // eslint-disable-line no-unused-vars
   info(email + phone + name + shippingOption + shippingAddress + method +
       instrument);
 }
+
+/**
+ * Clears all messages.
+ */
+function clearAllMessages() {  // eslint-disable-line no-unused-vars
+  document.getElementById('msg').innerHTML = '';
+}
