@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Icon Test</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet"
+      href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"
+      integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w"
+      crossorigin="anonymous">
+</head>
+
+<body>
+<form class="pure-form pure-form-aligned">
+  <fieldset>
+    <legend>Credit card</legend>
+ <div class="pure-control-group">
+    <label for="credit_card_name">Name on card</label>
+    <input autofocus="" type="text" name="name" id="credit_card_name">
+ </div>
+ <div class="pure-control-group">
+   <label>Credit card number</label>
+     <input type="text" name="CCNo" id="credit_card_number">
+ </div>
+ <div class="pure-control-group">
+   <label>
+  Expiry Date
+   </label>
+  <select name="CCExpiresMonth">
+    <option value="01">01</option>
+    <option value="02">02</option>
+    <option value="03">03</option>
+    <option value="04">04</option>
+    <option value="05">05</option>
+    <option value="06">06</option>
+    <option value="07">07</option>
+    <option value="08">08</option>
+    <option value="09">09</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+  </select>
+  /
+<select name="CCExpiresYear">
+    <option value="2010">2010</option>
+    <option value="2011">2011</option>
+    <option value="2012">2012</option>
+    <option value="2013">2013</option>
+    <option value="2014">2014</option>
+    <option value="2015">2015</option>
+    <option value="2016">2016</option>
+    <option value="2017">2017</option>
+    <option value="2018">2018</option>
+    <option value="2019">2019</option>
+    <option value="2020">2020</option>
+    <option value="2021">2021</option>
+    <option value="2022">2022</option>
+    <option value="2023">2023</option>
+  </select>
+ </div>
+ <div class="pure-control-group">
+  <label>CVC</label><input name="cvc">
+ </div>
+</fieldset>
+
+  <fieldset>
+    <legend>Shipping address</legend>
+ <div class="pure-control-group">
+   <label>Name</label><input type="text" name="name" placeholder="Name">
+ </div>
+ <div class="pure-control-group">
+   <label>Address</label>
+   <input type="text" name="address" placeholder="Address">
+ </div>
+ <div class="pure-control-group">
+   <label>City</label> <input type="text" name="city" placeholder="City">
+ </div>
+ <div class="pure-control-group">
+   <label>State</label> <select name="state">
+    <option value="CA">CA</option>
+    <option value="MA">MA</option>
+    <option value="NY">NY</option>
+    <option value="MD">MD</option>
+    <option value="OR">OR</option>
+    <option value="OH">OH</option>
+    <option value="IL">IL</option>
+    <option value="DC">DC</option>
+  </select>
+ </div>
+ <div class="pure-control-group">
+   <label>Zip</label> <input name="zip" id="form_zip" placeholder="Zip"> <br>
+ </div>
+ <div class="pure-control-group">
+   <label>Country</label> <input name="country" id="form_country" placeholder="Country"> <br>
+ </div>
+ <div class="pure-control-group">
+   <label>Company</label> <input name="company" id="form_company" placeholder="company"> <br>
+ </div>
+ <div class="pure-control-group">
+   <label>Email</label> <input name="email" id="form_email" placeholder="Email"> <br>
+ </div>
+ <div class="pure-control-group">
+   <label>Phone</label> <input name="phone" id="form_phone" placeholder="Phone"> <br>
+</div>
+  </fieldset>
+</form>
+
+  <div><button class="pure-button pure-button-primary" id="confirm">Confirm</button></div>
+    <div id="pleasewait" style="display: none;">Confirming...</div>
+    <script src="/redirect.js"></script>
+    <script src="confirm.js"></script>
+</body>
+
+</html>
