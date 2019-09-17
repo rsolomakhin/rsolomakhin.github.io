@@ -122,7 +122,7 @@ function install() {
       registration.paymentManager.instruments
         .set('instrument-key', {
           name: 'Citi ****1234',
-          icons: [{src:'card_art.png', sizes: '1920x1245',type: 'image/png'}]
+          icons: [{src:'card_art.png', sizes: '1920x1245',type: 'image/png'}],
           method: 'src-card',
         })
         .then(() => {
