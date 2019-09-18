@@ -28,7 +28,7 @@ function hideElements() {
   }
 }
 
-function check() {
+async function check() {
   clearMessages();
   hideElements();
   showElement('checking');
@@ -38,61 +38,43 @@ function check() {
     showMessage('No service worker capability in this browser.');
     return;
   }
-
-  navigator.serviceWorker
-    .getRegistration('app.js')
-    .then(registration => {
-      if (!registration) {
-        hideElement('checking');
-        showElement('not-installed');
-        return;
-      }
-      document.getElementById('scope').innerHTML = registration.scope;
-      if (!registration.paymentManager) {
-        hideElement('checking');
-        showElement('not-installed');
-        showMessage(
-          'No payment handler capability in this browser. Is chrome://flags/#service-worker-payment-apps enabled?',
-        );
-        return;
-      }
-      if (!registration.paymentManager.instruments) {
-        hideElement('checking');
-        showElement('not-installed');
-        showMessage(
-          'Payment handler is not fully implemented. Cannot set the instruments.',
-        );
-        return;
-      }
-      registration.paymentManager.instruments
-        .has('instrument-key')
-        .then(result => {
-          if (!result) {
-            hideElement('checking');
-            showElement('not-installed');
-            showMessage('No instruments found. Did installation fail?');
-          } else {
-            registration.paymentManager.instruments
-              .get('instrument-key')
-              .then(instrument => {
-                document.getElementById('method').innerHTML =
-                  instrument.enabledMethods || instrument.method;
-                hideElement('checking');
-                showElement('installed');
-              })
-              .catch(error => {
-                hideElement('checking');
-                showElement('not-installed');
-                showMessage(error);
-              });
-          }
-        });
-    })
-    .catch(error => {
+  
+  try {
+    const registration = await navigator.serviceWorker.getRegistration('app.js');
+    if (!registration) {
       hideElement('checking');
       showElement('not-installed');
-      showMessage(error);
-    });
+      return;
+    }
+    document.getElementById('scope').innerHTML = registration.scope;
+    if (!registration.paymentManager) {
+      hideElement('checking');
+      showElement('not-installed');
+      showMessage('No payment handler capability in this browser. Is chrome://flags/#service-worker-payment-apps enabled?');
+      return;
+    }
+    if (!registration.paymentManager.instruments) {
+      hideElement('checking');
+      showElement('not-installed');
+      showMessage('Payment handler is not fully implemented. Cannot set the instruments.');
+      return;
+    }
+    const result = awaitregistration.paymentManager.instruments.has('instrument-key');
+    if (!result) {
+      hideElement('checking');
+      showElement('not-installed');
+      showMessage('No instruments found. Did installation fail?');
+      return;
+    }
+    const instrument = await registration.paymentManager.instruments.get('instrument-key');
+    document.getElementById('method').innerHTML = instrument.method;
+    hideElement('checking');
+    showElement('installed');
+  } catch (error) {
+    hideElement('checking');
+    showElement('not-installed');
+    showMessage(error);
+  }
 }
 
 async function install() {
