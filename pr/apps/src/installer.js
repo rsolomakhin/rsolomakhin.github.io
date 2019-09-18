@@ -95,59 +95,42 @@ function check() {
     });
 }
 
-function install() {
+async function install() {
   hideElements();
   showElement('installing');
 
-  navigator.serviceWorker
-    .register('app.js')
-    .then(() => {
-      return navigator.serviceWorker.ready;
-    })
-    .then(registration => {
-      if (!registration.paymentManager) {
-        hideElement('installing');
-        showMessage(
-          'No payment handler capability in this browser. Is chrome://flags/#service-worker-payment-apps enabled?',
-        );
-        return;
-      }
-      if (!registration.paymentManager.instruments) {
-        hideElement('installing');
-        showMessage(
-          'Payment handler is not fully implemented. Cannot set the instruments.',
-        );
-        return;
-      }
-      registration.paymentManager.instruments
-        .set('instrument-key', {
-          name: 'Citi ****1234',
-          icons: [{src:'card_art.png', sizes: '1920x1245',type: 'image/png'}],
-          method: 'src-card',
-        })
-        .then(() => {
-          registration.paymentManager.instruments
-            .get('instrument-key')
-            .then(instrument => {
-              document.getElementById('scope').innerHTML = registration.scope;
-              document.getElementById('method').innerHTML = instrument.method;
-              hideElement('installing');
-              showElement('installed');
-            })
-            .catch(error => {
-              hideElement('installing');
-              showMessage(error);
-            });
-        })
-        .catch(error => {
-          hideElement('installing');
-          showMessage(error);
-        });
-    })
-    .catch(error => {
+  try {
+    await navigator.serviceWorker .register('app.js');
+    const registration = await navigator.serviceWorker.ready;
+    if (!registration.paymentManager) {
       hideElement('installing');
-      showMessage(error);
+      showMessage('No payment handler capability in this browser.');
+      return;
+    }
+    if (!registration.paymentManager.instruments) {
+      hideElement('installing');
+      showMessage('Payment handler is not fully implemented. Cannot set the instruments.');
+      return;
+    }
+    await registration.paymentManager.instruments.set('instrument-key', {
+      name: 'Citi ****1234',
+      icons: [{src:'card_art.png', sizes: '960x607',type: 'image/png'}],
+      method: 'src-card',
     });
+    await registration.paymentManager.instruments.set('instrument-key-2', {
+      name: 'CapitalOne ****5678',
+      icons: [{src:'card_art_2.png', sizes: '960x623',type: 'image/png'}],
+      method: 'src-card',
+    });
+    const instrument = registration.paymentManager.instruments.get('instrument-key');
+    document.getElementById('scope').innerHTML = registration.scope;
+    document.getElementById('method').innerHTML = instrument.method;
+    hideElement('installing');
+    showElement('installed');
+  } catch(error) {
+    hideElement('installing');
+    showMessage(error);
+  }
 }
 
 function uninstall() {
