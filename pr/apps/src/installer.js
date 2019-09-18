@@ -59,7 +59,7 @@ async function check() {
       showMessage('Payment handler is not fully implemented. Cannot set the instruments.');
       return;
     }
-    const result = awaitregistration.paymentManager.instruments.has('instrument-key');
+    const result = await registration.paymentManager.instruments.has('instrument-key');
     if (!result) {
       hideElement('checking');
       showElement('not-installed');
