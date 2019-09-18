@@ -100,7 +100,7 @@ async function install() {
   showElement('installing');
 
   try {
-    await navigator.serviceWorker .register('app.js');
+    await navigator.serviceWorker.register('app.js');
     const registration = await navigator.serviceWorker.ready;
     if (!registration.paymentManager) {
       hideElement('installing');
