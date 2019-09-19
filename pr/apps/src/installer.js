@@ -77,6 +77,27 @@ async function check() {
   }
 }
 
+const publicKeyCredentialCreationOptions = {
+    challenge: Uint8Array.from(
+        'INSECURE.SHOULD-BE-A-RANDOM-STRING-FROM-SERVER', c => c.charCodeAt(0)),
+    rp: {
+        name: "rsolomakhin.github.io",
+        id: "rsolomakhin.github.io",
+    },
+    user: {
+        id: Uint8Array.from(
+            "IOFIVBNMUJ", c => c.charCodeAt(0)),
+        name: "insecure-demo@rsolomakhin.github.io",
+        displayName: "Demo, Insecure",
+    },
+    pubKeyCredParams: [{alg: -7, type: "public-key"}],
+    authenticatorSelection: {
+        authenticatorAttachment: "platform",
+    },
+    timeout: 60000,
+    attestation: "none"
+};
+
 async function install() {
   hideElements();
   showElement('installing');
@@ -104,9 +125,13 @@ async function install() {
       icons: [{src:'card_art_2.png', sizes: '960x623',type: 'image/png'}],
       method: 'src-card',
     });
-    const instrument = registration.paymentManager.instruments.get('instrument-key');
     document.getElementById('scope').innerHTML = registration.scope;
-    document.getElementById('method').innerHTML = instrument.method;
+    document.getElementById('method').innerHTML = 'src-card';
+    if (navigator.credentials && navigator.credentials.create) {
+      const credential = await navigator.credentials.create({
+        publicKey: publicKeyCredentialCreationOptions
+      });
+    }
     hideElement('installing');
     showElement('installed');
   } catch(error) {
