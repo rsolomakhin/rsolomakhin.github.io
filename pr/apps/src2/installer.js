@@ -31,22 +31,23 @@ function hideElements() {
 async function checkCard(swUrl, scopeId, methodId) {
   const registration = await navigator.serviceWorker.getRegistration(swUrl);
   if (!registration) {
-    return;
+    return false;
   }
   document.getElementById(scope).innerHTML = registration.scope;
   document.getElementById('scope').innerHTML = registration.scope;
   if (!registration.paymentManager) {
-    return;
+    return false;
   }
   if (!registration.paymentManager.instruments) {
-    return;
+    return false;
   }
   const result = await registration.paymentManager.instruments.has('card-id');
   if (!result) {
-    return;
+    return false;
   }
   const instrument = await registration.paymentManager.instruments.get('card-id');
   document.getElementById(method).innerHTML = instrument.method;
+  return true;
 }
 
 async function check() {
@@ -73,15 +74,19 @@ async function check() {
   }
   
   try {
-    await Promise.all([checkCard('./app.js?card=1', 'scope1', 'method1'),
-                       checkCard('./app.js?card=2', 'scope2', 'method2')]);
-    hideElement('checking');
-    showElement('installed');
+    const card1installed = checkCard('./app.js?card=1', 'scope1', 'method1');
+    const card2installed = checkCard('./app.js?card=2', 'scope2', 'method2');
+    if (card1installed && card2installed) {
+      showElement('installed');
+    } else {
+      showElement('not-installed');
+    }
   } catch (error) {
-    hideElement('checking');
     showElement('not-installed');
     showMessage(error);
   }
+
+  hideElement('checking');
 }
 
 const publicKeyCredentialCreationOptions = {
