@@ -136,23 +136,20 @@ async function uninstall() {
 
   try {
     let registration = await navigator.serviceWorker.getRegistration('app.js?card=1');
-    let result = registration.unregister();
-    if (!result) {
-      hideElement('uninstalling');
-      showElement('installed');
-      showMessage('Service worker unregistration returned "false", which indicates that it failed.');
-      return;
+    if (registration) {
+      await registration.unregister();
     }
     registration = await navigator.serviceWorker.getRegistration('app.js?card=2');
-    result = registration.unregister();
-    if (result) {
-      hideElement('uninstalling');
-      showElement('not-installed');
-    } else {
-      hideElement('uninstalling');
-      showElement('installed');
-      showMessage('Service worker unregistration returned "false", which indicates that it failed.');
+    if (registration) {
+      let result = await registration.unregister();
+      if (!result) {
+        hideElement('uninstalling');
+        showElement('installed');
+        showMessage('Service worker unregistration returned "false", which indicates that it failed.');
+      }
     }
+    hideElement('uninstalling');
+    showElement('not-installed');
   } catch (error) {
     hideElement('uninstalling');
     showMessage(error);
