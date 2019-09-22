@@ -28,55 +28,6 @@ function hideElements() {
   }
 }
 
-async function checkCard(swUrl, scopeId, methodId) {
-  const registration = await navigator.serviceWorker.getRegistration(swUrl);
-  if (!registration) {
-    return false;
-  }
-  document.getElementById(scope).innerHTML = registration.scope;
-  document.getElementById('scope').innerHTML = registration.scope;
-  if (!registration.paymentManager) {
-    return false;
-  }
-  if (!registration.paymentManager.instruments) {
-    return false;
-  }
-  const result = await registration.paymentManager.instruments.has('card-id');
-  if (!result) {
-    return false;
-  }
-  const instrument = await registration.paymentManager.instruments.get('card-id');
-  document.getElementById(method).innerHTML = instrument.method;
-  return true;
-}
-
-async function check() {
-  clearMessages();
-  hideElements();
-  showElement('checking');
-
-  if (!navigator.serviceWorker) {
-    hideElement('checking');
-    showMessage('No service worker capability in this browser.');
-    return;
-  }
-  
-  try {
-    const card1installed = await checkCard('./app.js?card=1', 'scope1', 'method1');
-    const card2installed = await checkCard('./app.js?card=2', 'scope2', 'method2');
-    if (card1installed && card2installed) {
-      showElement('installed');
-    } else {
-      showElement('not-installed');
-    }
-  } catch (error) {
-    showElement('not-installed');
-    showMessage(error);
-  }
-
-  hideElement('checking');
-}
-
 const publicKeyCredentialCreationOptions = {
     challenge: Uint8Array.from(
         'INSECURE.SHOULD-BE-A-RANDOM-STRING-FROM-SERVER', c => c.charCodeAt(0)),
@@ -148,5 +99,3 @@ async function uninstall() {
     showMessage(error);
   }
 }
-
-check();
