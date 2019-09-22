@@ -74,8 +74,8 @@ async function check() {
   }
   
   try {
-    const card1installed = checkCard('./app.js?card=1', 'scope1', 'method1');
-    const card2installed = checkCard('./app.js?card=2', 'scope2', 'method2');
+    const card1installed = await checkCard('./app.js?card=1', 'scope1', 'method1');
+    const card2installed = await checkCard('./app.js?card=2', 'scope2', 'method2');
     if (card1installed && card2installed) {
       showElement('installed');
     } else {
