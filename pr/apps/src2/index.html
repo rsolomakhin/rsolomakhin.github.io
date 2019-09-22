@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SRC test</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../style.css">
+</head>
+
+<body>
+    <div id="contents">
+        <h1>SRC test</h1>
+        <p id="checking">Checking whether the payment handler is installed...</p>
+
+        <div id="installed" style="display: none;">
+            <p>The payment handler is installed. <a href="../src2-test/">Test it
+              out</a>.</p>
+            <ol>
+              <li>
+                <ul>
+                    <li>Scope: <code id="scope1">N/A</code></li>
+                    <li>Method: <code id="method1">N/A</code></li>
+                </ul>
+              </li>
+              <li>
+                <ul>
+                    <li>Scope: <code id="scope2">N/A</code></li>
+                    <li>Method: <code id="method2">N/A</code></li>
+                </ul>
+              </li>
+            </ol>
+            <p><button onclick="uninstall();">Uninstall</button></p>
+        </div>
+
+        <p id="uninstalling" style="display: none;">Uninstalling...</p>
+
+        <div id="not-installed" style="display: none;">
+            <p>The payment handler is not installed. <a href="../src2-test/">Verify</a>.</p>
+            <p><button onclick="install();">Install</button></p>
+        </div>
+
+        <pre id="msg"></pre>
+
+        <div id="src">
+            <p>View the source code:</p>
+            <ul>
+                <li><a href="app.js">Payment handler</a></li>
+                <li><a href="confirm.html">Confirmation page HTML</a></li>
+                <li><a href="confirm.js">Confirmation page JavaScript</a></li>
+                <li><a href="installer.js">Installation coordinattor</a></li>
+                <li><a href="card1/installer.js">Card #1 installer</a></li>
+                <li><a href="card1/manifest.json">Card #1 manifest</a></li>
+                <li><a href="card1/card_art.png">Card #1 art</a></li>
+                <li><a href="card2/installer.js">Card #2 installer</a></li>
+                <li><a href="card2/manifest.json">Card #2 manifest</a></li>
+                <li><a href="card2/card_art_2.png">Card #2 art</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="/redirect.js"></script>
+    <script src="installer.js"></script>
+</body>
+
+</html>

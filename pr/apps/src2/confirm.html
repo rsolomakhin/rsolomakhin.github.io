@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Payment Handler</title>
+</head>
+
+<body>
+  <div id="card1" style="display: none;">
+    <div><img src="card1/card_art.png" style="max-width: 100%; height: auto;"></div>
+    <center>
+      <div>Citi ****1234</div>
+    </center>
+  </div>
+  <div id="card2" style="display: none;">
+    <div><img src="card2/card_art_2.png" style="max-width: 100%; height: auto;"></div>
+    <center>
+      <div>CapitalOne ****5678</div>
+    </center>
+  </div>
+  <center>
+      <div><button id="confirm">Confirm</button></div>
+      <div id="pleasewait" style="display: none;">Confirming...</div>
+  </center>
+  <script src="/redirect.js"></script>
+  <script src="confirm.js"></script>
+</body>
+
+</html>
