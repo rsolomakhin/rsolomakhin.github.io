@@ -51,18 +51,6 @@ async function checkCard(swUrl, scopeId, methodId) {
 }
 
 async function check() {
-  const params = new URLSearchParams(window.location.search);
-  const installed = params.get('installed');
-  if (installed === 'card1') {
-    ////////////////////////////////////////////////////////////////////////////
-    //
-    // Install the second card.
-    //
-    ////////////////////////////////////////////////////////////////////////////
-    window.location.href = './card2';
-    return;
-  }
-
   clearMessages();
   hideElements();
   showElement('checking');

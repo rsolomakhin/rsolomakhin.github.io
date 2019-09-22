@@ -40,7 +40,12 @@ async function install() {
       icons: [{src:'card_art.png', sizes: '960x607',type: 'image/png'}],
       method: 'https://rsolomakhin.github.io/pr/apps/src2',
     });
-    window.location.href = '../?installed=card1';
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // Install the second card.
+    //
+    ////////////////////////////////////////////////////////////////////////////
+    window.location.href = '../card2';
   } catch(error) {
     hideElement('installing');
     showMessage(error);

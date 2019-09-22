@@ -12,35 +12,15 @@
 <body>
     <div id="contents">
         <h1>SRC test</h1>
-        <p id="checking">Checking whether the payment handler is installed...</p>
+        <p><a href="../src2-test/">Test it out</a>.</p>
+        <p><button onclick="install();">Install</button></p>
+        <p><button onclick="uninstall();">Uninstall</button></p>
 
+        <p id="checking" style="display: none;">Checking...</p>
         <p id="installing" style="display: none;">Installing...</p>
         <p id="uninstalling" style="display: none;">Uninstalling...</p>
-
-        <div id="installed" style="display: none;">
-            <p>The payment handler is installed. <a href="../src2-test/">Test it
-              out</a>.</p>
-            <ol>
-              <li>
-                <ul>
-                    <li>Scope: <code id="scope1">N/A</code></li>
-                    <li>Method: <code id="method1">N/A</code></li>
-                </ul>
-              </li>
-              <li>
-                <ul>
-                    <li>Scope: <code id="scope2">N/A</code></li>
-                    <li>Method: <code id="method2">N/A</code></li>
-                </ul>
-              </li>
-            </ol>
-            <p><button onclick="uninstall();">Uninstall</button></p>
-        </div>
-
-        <div id="not-installed" style="display: none;">
-            <p>The payment handler is not installed. <a href="../src2-test/">Verify</a>.</p>
-            <p><button onclick="install();">Install</button></p>
-        </div>
+        <p id="installed" style="display: none;">Installed.</p>
+        <p id="not-installed" style="display: none;">Not installed.</p>
 
         <pre id="msg"></pre>
 
