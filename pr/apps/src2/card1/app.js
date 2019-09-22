@@ -38,12 +38,6 @@ self.addEventListener('message', (evt) => {
 self.addEventListener('paymentrequest', (evt) => {
     evt.respondWith(new Promise((resolve) => {
       self.resolver = resolve;
-      //////////////////////////////////////////////////////////////////////////
-      //
-      // TODO: Parse service worker registration scope and add '?card=1' or
-      // '?card-2' parameter to confirm.html.
-      //
-      //////////////////////////////////////////////////////////////////////////
       evt.openWindow('confirm.html');
     }));
 });

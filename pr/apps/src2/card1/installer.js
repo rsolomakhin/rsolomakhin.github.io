@@ -16,7 +16,7 @@ async function install() {
     // shared among all cards.
     //
     ////////////////////////////////////////////////////////////////////////////
-    await navigator.serviceWorker.register('../app.js?card=1', {scope: './'});
+    await navigator.serviceWorker.register('app.js', {scope: './'});
     const registration = await navigator.serviceWorker.ready;
     if (!registration.paymentManager) {
       hideElement('installing');
