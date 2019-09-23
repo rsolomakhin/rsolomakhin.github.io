@@ -13,60 +13,15 @@ function updateAmount(currencyUpdate, valueUpdate) {
   value.innerHTML = valueUpdate;
 }
 
-const pleasewait = document.getElementById('pleasewait');
-let paymentRequestEvent = null;
-function init() {
-  pleasewait.style.display = 'block';
-  navigator.serviceWorker.getRegistration('payment_handler.js').then((registration) => {
-    if (!registration) {
-      output('Service worker not installed.');
-      pleasewait.style.display = 'none';
-    } else if (!registration.paymentManager) {
-      output('Payment manager not found.');
-      pleasewait.style.display = 'none';
-    } else if (!registration.paymentManager.paymentRequestEvent) {
-      console.log('Payment request event is not implemented yet.');
-      pleasewait.style.display = 'none';
-    } else {
-      registration.paymentManager.paymentRequestEvent.then((evt) => {
-        if (evt) {
-          output('Received the payment request event.');
-          paymentRequestEvent = evt;
-        } else {
-          output('Failed to retrieve the payment request event.');
-        }
-        pleasewait.style.display = 'none';
-      }).catch((error) => {
-        output(error);
-        pleasewait.style.display = 'none';
-      });
-    }
-    pleasewait.style.display = 'none';
-  }).catch((error) => {
-    output(error);
-    pleasewait.style.display = 'none';
-  });
-}
-init();
-
 const button = document.getElementById('confirm');
+const pleasewait = document.getElementById('pleasewait');
 button.addEventListener('click', (evt) => {
-  if (paymentRequestEvent) {
-    button.style.display = 'none';
-    pleasewait.style.display = 'block';
-    try {
-      paymentRequestEvent.respondWith(response);
-    } catch (error) {
-      output(error);
-      button.style.display = 'block';
-      pleasewait.style.display = 'none';
-    }
-  } else if (navigator.serviceWorker.controller) {
+  if (navigator.serviceWorker.controller) {
     button.style.display = 'none';
     pleasewait.style.display = 'block';
     navigator.serviceWorker.controller.postMessage('confirm');
   } else {
-    output('Neither payment request event nor service worker controller found');
+    output('Service worker controller found');
   }
 });
 
@@ -83,29 +38,10 @@ function changePaymentMethod(which_one) {
     return;
   }
 
-  if (paymentRequestEvent) {
-    if (!paymentRequestEvent.changePaymentMethod) {
-      output('No method change feature in the payment request event.');
-      return;
-    }
-    pleasewait.style.display = 'block';
-    paymentRequestEvent.changePaymentMethod(response.methodName, redact(response)).then((paymentHandlerUpdate) => {
-      pleasewait.style.display = 'none';
-      if (!paymentHandlerUpdate) {
-        return;
-      }
-      if (paymentHandlerUpdate.error) {
-        output(error);
-      }
-      pleasewait.style.display = 'none';
-    }).catch((error) => {
-      output(error);
-      pleasewait.style.display = 'none';
-    });
-  } else if (navigator.serviceWorker.controller) {
+  if (navigator.serviceWorker.controller) {
     navigator.serviceWorker.controller.postMessage(message);
   } else {
-    output('Neither payment request event nor service worker controller found');
+    output('Service worker controller found');
   }
 }
 
@@ -133,3 +69,13 @@ navigator.serviceWorker.addEventListener('message', (evt) => {
     updateAmount(evt.data.total.currency, evt.data.total.value);
   }
 });
+
+function init() {
+  const params = new URLSearchParams(window.location.search);
+  const currency = params.get('currency');
+  const amount = params.get('amount');
+  if (currency && amount) {
+    updateAmount(currency, amount);
+  }
+}
+init();

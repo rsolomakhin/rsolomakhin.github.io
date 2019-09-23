@@ -61,7 +61,7 @@ self.addEventListener('paymentrequest', (evt) => {
   self.paymentRequestEvent = evt;
   self.paymentRequestEvent.respondWith(new Promise((resolve) => {
     self.resolver = resolve;
-    evt.openWindow('payment_handler_window.html').then((windowClient) => {
+    evt.openWindow('payment_handler_window.html?currency=' + encodeURIComponent(evt.total.currency) + '&amount=' + encodeURIComponent(evt.total.value)).then((windowClient) => {
       self.messageDestination = windowClient;
     }).catch((error) => {
       console.log(error.message);
