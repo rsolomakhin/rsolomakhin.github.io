@@ -28,50 +28,13 @@ function hideElements() {
   }
 }
 
-const publicKeyCredentialCreationOptions = {
-    challenge: Uint8Array.from(
-        'INSECURE.SHOULD-BE-A-RANDOM-STRING-FROM-SERVER', c => c.charCodeAt(0)),
-    rp: {
-        name: 'rsolomakhin.github.io',
-        id: 'rsolomakhin.github.io',
-    },
-    user: {
-        id: Uint8Array.from(
-            'IOFIVBNMUJ', c => c.charCodeAt(0)),
-        name: 'insecure-demo@rsolomakhin.github.io',
-        displayName: 'Demo, Insecure',
-    },
-    pubKeyCredParams: [{alg: -7, type: 'public-key'}],
-    authenticatorSelection: {
-        authenticatorAttachment: 'platform',
-        userVerification: 'discouraged',
-    },
-    timeout: 60000,
-    attestation: 'none'
-};
-
 async function install() {
-  hideElements();
-  showElement('installing');
-
-
-  try {
-    if (navigator.credentials && navigator.credentials.create) {
-      const credential = await navigator.credentials.create({
-        publicKey: publicKeyCredentialCreationOptions
-      });
-    }
-
-    ////////////////////////////////////////////////////////////////////////////
-    //
-    // Install the first card.
-    //
-    ////////////////////////////////////////////////////////////////////////////
-    window.location.href = './card1';
-  } catch(error) {
-    hideElement('installing');
-    showMessage(error);
-  }
+  ////////////////////////////////////////////////////////////////////////////
+  //
+  // Install the first card.
+  //
+  ////////////////////////////////////////////////////////////////////////////
+  window.location.href = './card1';
 }
 
 async function uninstall() {
