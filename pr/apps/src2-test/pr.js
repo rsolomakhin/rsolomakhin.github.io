@@ -7,7 +7,7 @@ async function checkCanMakePayment(request) {
     const result = await request.canMakePayment();
     info(result ? "Can make payment" : "Cannot make payment");
   } catch (e) {
-    error(e.toString());
+    error('Can make payment: ' + e.toString());
   }
 }
 
@@ -20,7 +20,7 @@ async function checkHasEnrolledInstrument(request) {
     const result = await request.hasEnrolledInstrument();
     info(result ? "Has enrolled instrument" : "No enrolled instrument");
   } catch (e) {
-    error(e.toString());
+    error('Has enrolled instrument: ' + e.toString());
   }
 }
 
@@ -49,7 +49,7 @@ function buildPaymentRequest() {
   try {
     request = new PaymentRequest(supportedInstruments, details);
   } catch (e) {
-    error(e.toString());
+    error('Payment request: ' + e.toString());
     return null;
   }
 
