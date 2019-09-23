@@ -75,6 +75,7 @@ function buildPaymentRequest() {
         }
       }
     });
+  }
 
   checkCanMakePayment(request);
   checkHasEnrolledInstrument(request);
