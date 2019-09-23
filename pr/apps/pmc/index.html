@@ -14,16 +14,16 @@
     <div id="contents">
         <h1>Payment handler for testing payment method change event</h1>
         <p>This is a simple payment handler for testing payment method change
-        event. It uses "basic-card" payment method.</p>
+        event. It uses <code>https://rsolomakhin.github.io/pr/apps/pmc</code>
+        payment method.</p>
 
         <p id="checking">Checking whether the payment handler is installed...</p>
 
         <div id="installed" style="display: none;">
-            <p>The payment handler is installed. <a href="../../cc/">Test it
+            <p>The payment handler is installed. <a href="../pmc-test/">Test it
               out</a>.</p>
             <ul>
                 <li>Scope: <code id="scope">N/A</code></li>
-                <li>Method: <code id="method">N/A</code></li>
                 <li>Capabilities:
                     <ul>
                         <li>Network: <code id="network">N/A</code></li>
@@ -38,7 +38,7 @@
         <p id="uninstalling" style="display: none;">Uninstalling...</p>
 
         <div id="not-installed" style="display: none;">
-            <p>The payment handler is not installed. <a href="../../cc/">Verify</a>.</p>
+            <p>The payment handler is not installed. <a href="../pmc-test/">Verify</a>.</p>
             <p><button onclick="install();">Install</button></p>
         </div>
 

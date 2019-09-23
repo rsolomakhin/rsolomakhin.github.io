@@ -1,7 +1,7 @@
 // The data should be stored on the server.
 
 const response1 = {
-  methodName: 'basic-card',
+  methodName: 'https://rsolomakhin.github.io/pr/apps/pmc',
   details: {
       billingAddress: {
           addressLine: [
@@ -27,7 +27,7 @@ const response1 = {
 };
 
 const response2 = {
-  methodName: 'basic-card',
+  methodName: 'https://rsolomakhin.github.io/pr/apps/pmc',
   details: {
       billingAddress: {
           addressLine: [
