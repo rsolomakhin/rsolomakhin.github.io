@@ -42,11 +42,11 @@ async function uninstall() {
   showElement('uninstalling');
 
   try {
-    let registration = await navigator.serviceWorker.getRegistration('app.js?card=1');
+    let registration = await navigator.serviceWorker.getRegistration('./card1/app.js');
     if (registration) {
       await registration.unregister();
     }
-    registration = await navigator.serviceWorker.getRegistration('app.js?card=2');
+    registration = await navigator.serviceWorker.getRegistration('./card2/app.js');
     if (registration) {
       let result = await registration.unregister();
       if (!result) {
