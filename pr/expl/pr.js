@@ -34,18 +34,22 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
   var supportedInstruments = [{
       supportedMethods: 'https://google.com/pay',
       data: {
+        allowedPaymentMethods: ['TOKENIZED_CARD', 'CARD'],
+        apiVersion: 1,
+        cardRequirements: {
+          'allowedCardNetworks': ['VISA', 'MASTERCARD', 'AMEX'],
+        },
         merchantName: 'Rouslan Solomakhin',
         merchantId: '00184145120947117657',
-        allowedCardNetworks: ['AMEX', 'MASTERCARD', 'VISA', 'DISCOVER'],
         paymentMethodTokenizationParameters: {
           tokenizationType: 'GATEWAY_TOKEN',
           parameters: {
             'gateway': 'stripe',
             'stripe:publishableKey': 'pk_live_lNk21zqKM2BENZENh3rzCUgo',
-            'stripe:version': '2016-07-06'
-          }
-        }
-      }
+            'stripe:version': '2016-07-06',
+          },
+        },
+      },
     },
     {
       supportedMethods: 'basic-card'
