@@ -1,0 +1,8 @@
+{
+    "short_name": "Self-Signed",
+    "name": "Self-Signed Certificate",
+    "icons": [{
+        "src": "bobpay-logo.png",
+        "sizes": "any"
+    }]
+}

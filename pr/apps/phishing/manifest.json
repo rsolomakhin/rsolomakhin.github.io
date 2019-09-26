@@ -1,0 +1,8 @@
+{
+    "short_name": "Phishing",
+    "name": "Phishing",
+    "icons": [{
+        "src": "bobpay-logo.png",
+        "sizes": "any"
+    }]
+}
