@@ -1,0 +1,8 @@
+{
+    "short_name": "Mixed",
+    "name": "Mixed Content: Blocked",
+    "icons": [{
+        "src": "bobpay-logo.png",
+        "sizes": "any"
+    }]
+}
