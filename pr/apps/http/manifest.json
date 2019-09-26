@@ -1,0 +1,8 @@
+{
+    "short_name": "HTTP",
+    "name": "HTTP: Insecure",
+    "icons": [{
+        "src": "bobpay-logo.png",
+        "sizes": "any"
+    }]
+}
