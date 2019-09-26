@@ -148,6 +148,7 @@ async function uninstall() {
       hideElement('uninstalling');
       showElement('installed');
       showMessage('Service worker unregistration returned "false", which indicates that it failed.');
+    }
   } catch (error) {
     hideElement('uninstalling');
     showMessage(error);
