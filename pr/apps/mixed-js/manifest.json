@@ -1,6 +1,6 @@
 {
     "short_name": "Mixed JS",
-    "name": "Mixed Content JavaScript: Insecure",
+    "name": "Mixed Content JavaScript: Blocked",
     "icons": [{
         "src": "bobpay-logo.png",
         "sizes": "any"
