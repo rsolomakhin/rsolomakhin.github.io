@@ -77,17 +77,17 @@
 
       var NPFillFormSimpsons = function() {
 	  var form = document.forms['np1'];
-	  form['name'].value = 'Homer_Simpson';
+	  form['username'].value = 'Homer_Simpson';
 	  form['password'].value = 'DOH!';
       }
       var NPFillFormSuperman = function() {
 	  var form = document.forms['np1'];
-	  form['name'].value = 'Superman';
+	  form['username'].value = 'Superman';
 	  form['password'].value = 'LouisLane';
       }
       var NPFillFormPresident = function() {
 	  var form = document.forms['np1'];
-	  form['name'].value = 'Barackalypse';
+	  form['username'].value = 'Barackalypse';
 	  form['password'].value = 'ILoveGeorgeBush';
       }
 
@@ -253,10 +253,10 @@
 <br>
 
 </p><hr>
-  <h3>Name/Password</h3>
+  <h3>Username/Password</h3>
 
   <form name="np" id="np1" action="https://example.com/" method="post">
-  Name: <input type="text" name="name" id="password_name"><br>
+  Username: <input type="text" name="username" id="password_name"><br>
   Password: <input type="password" name="password" id="password_field"><br>
   <input type="reset" value="Reset">
   <input type="submit" value="Submit" id="password_submit">
