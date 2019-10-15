@@ -39,6 +39,26 @@ function buildPaymentRequest() {
     },
   };
 
+  const PayPalPaymentMethod = {
+    type: 'PAYPAL',
+    parameters: {
+      purchase_context: {
+        payment_intent: 'AUTHORIZE', // Or 'CAPTURE'.
+        purchase_units: [{
+          description: 'Test Transaction',
+          payee: {
+            // Please use your own PayPal merchant ID.
+            merchant_id: '7CVBPVJ6XSJNA',
+          },
+        }],
+      },
+    },
+  };
+
+  PayPalPaymentMethod.tokenizationSpecification = {
+    type: 'DIRECT',
+  };
+
   const cardPaymentMethod = Object.assign(
     {},
     baseCardPaymentMethod,
@@ -51,7 +71,7 @@ function buildPaymentRequest() {
     {},
     baseRequest,
     {
-      allowedPaymentMethods: [baseCardPaymentMethod],
+      allowedPaymentMethods: [baseCardPaymentMethod, PayPalPaymentMethod],
     },
   );
 
