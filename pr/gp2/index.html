@@ -12,53 +12,58 @@
 <body>
   <div id="contents">
     <h1>Google Pay 2.0 Test</h1>
-    <p>This page can be used to test Google Pay API version 2.0 only.
+    <p>This page can be used to test Google Pay API version 2.0.
     No payment will be processed. <a href="pr.js">View source</a>.</p>
     <p>Price: USD <strong>$1.00</strong></p>
     <p><button onclick="onBuyClicked()">Buy</button></p>
   </div>
   <pre id="msg"></pre>
-  <p>Will make the following request for a Stripe token:
+  <p>Will make the following request for a Stripe token from Google Pay:
   <pre>new PaymentRequest([{
-    supportedMethods: 'https://google.com/pay',
-    data: {
-      apiVersion: 2,
-      apiVersionMinor: 0,
-      allowedPaymentMethods: [{
-        type: 'CARD',
+  supportedMethods: 'https://google.com/pay',
+  data: {
+    apiVersion: 2,
+    apiVersionMinor: 0,
+    allowedPaymentMethods: [{
+      type: 'CARD',
+      parameters: {
+        allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+        allowedCardNetworks: ['AMEX', 'DISCOVER', 'INTERAC', 'JCB', 'VISA', 'MASTERCARD'],
+      },
+      tokenizationSpecification: {
+        type: 'PAYMENT_GATEWAY',
         parameters: {
-          allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
-          allowedCardNetworks: ['AMEX', 'DISCOVER', 'INTERAC', 'JCB', 'VISA', 'MASTERCARD'],
+          'gateway': 'stripe',
+          // Please use your own Stripe public key.
+          'stripe:publishableKey': 'pk_live_lNk21zqKM2BENZENh3rzCUgo',
+          'stripe:version': '2016-07-06',
         },
-        tokenizationSpecification: {
-          type: 'PAYMENT_GATEWAY',
-          parameters: {
-            'gateway': 'stripe',
-            'stripe:publishableKey': 'pk_live_lNk21zqKM2BENZENh3rzCUgo',
-            'stripe:version': '2016-07-06',
-          },
-        },
-      }],
-      transactionInfo: {
-        countryCode: 'US',
-        currencyCode: 'USD',
-        totalPriceStatus: 'FINAL',
-        totalPrice: '1.00',
       },
-      merchantInfo: {
-        merchantName: 'Rouslan Solomakhin',
-        merchantId: '00184145120947117657',
-      },
+    }],
+    transactionInfo: {
+      countryCode: 'US',
+      currencyCode: 'USD',
+      totalPriceStatus: 'FINAL',
+      totalPrice: '1.00',
     },
-  }], {
-    total: {
-      label: 'Tots',
-      amount: {
-        currency: 'USD',
-        value: '1.00',
-      },
+    // Please use your own Google Pay merchant ID.
+    merchantInfo: {
+      merchantName: 'Rouslan Solomakhin',
+      merchantId: '00184145120947117657',
     },
-  });</pre></p>
+  },
+}], {
+  total: {
+    label: 'Tots',
+    amount: {
+      currency: 'USD',
+      value: '1.00',
+    },
+  },
+});</pre></p>
+  <p>Based on the <a
+  href="https://developers.google.com/pay/api/web/guides/tutorial">Google Pay
+  tutorial</a>.</p>
   <script src="../util.js"></script>
   <script src="pr.js"></script>
   <script src="/redirect.js"></script>

@@ -11,49 +11,42 @@ function buildPaymentRequest() {
 
   // Documentation:
   // https://developers.google.com/pay/api/web/guides/tutorial
-  const baseRequest = {
-    apiVersion: 2,
-    apiVersionMinor: 0,
-  };
-
-  // Documentation:
   // https://developer.paypal.com/docs/archive/checkout/how-to/googlepay-integration/
-  const PayPalPaymentMethod = {
-    type: 'PAYPAL',
-    parameters: {
-      purchase_context: {
-        payment_intent: 'AUTHORIZE', // Or 'CAPTURE'.
-        purchase_units: [{
-          description: 'Test Transaction',
-          payee: {
-            // Please use your own PayPal merchant ID.
-            merchant_id: '7CVBPVJ6XSJNA',
-          },
-        }],
-      },
-    },
-  };
-
-  PayPalPaymentMethod.tokenizationSpecification = {
-    type: 'DIRECT',
-  };
-
-  const paymentDataRequest = Object.assign({}, baseRequest);
-  paymentDataRequest.allowedPaymentMethods = [PayPalPaymentMethod];
-  paymentDataRequest.transactionInfo = {
-    countryCode: 'US',
-    currencyCode: 'USD',
-    totalPriceStatus: 'FINAL',
-    totalPrice: '1.00',
-  };
-  paymentDataRequest.merchantInfo = {
-    merchantName: 'Rouslan Solomakhin',
-    merchantId: '00184145120947117657',
-  };
-
   const supportedInstruments = [{
     supportedMethods: 'https://google.com/pay',
-    data: paymentDataRequest,
+    data: {
+      apiVersion: 2,
+      apiVersionMinor: 0,
+      allowedPaymentMethods: [{
+        type: 'PAYPAL',
+        parameters: {
+          purchase_context: {
+            payment_intent: 'AUTHORIZE', // Or 'CAPTURE'.
+            purchase_units: [{
+              description: 'Test Transaction',
+              payee: {
+                // Please use your own PayPal merchant ID.
+                merchant_id: '7CVBPVJ6XSJNA',
+              },
+            }],
+          },
+        },
+        tokenizationSpecification: {
+          type: 'DIRECT',
+        },
+      }],
+      transactionInfo: {
+        countryCode: 'US',
+        currencyCode: 'USD',
+        totalPriceStatus: 'FINAL',
+        totalPrice: '1.00',
+      },
+      // Please use your own Google Pay merchant ID.
+      merchantInfo: {
+        merchantName: 'Rouslan Solomakhin',
+        merchantId: '00184145120947117657',
+      },
+    },
   }];
 
   const details = {
