@@ -11,7 +11,6 @@ function buildPaymentRequest() {
 
   // Documentation:
   // https://developers.google.com/pay/api/web/guides/tutorial
-  // https://developer.paypal.com/docs/archive/checkout/how-to/googlepay-integration/
   const baseRequest = {
     apiVersion: 2,
     apiVersionMinor: 0,
@@ -39,6 +38,8 @@ function buildPaymentRequest() {
     },
   };
 
+  // Documentation:
+  // https://developer.paypal.com/docs/archive/checkout/how-to/googlepay-integration/
   const PayPalPaymentMethod = {
     type: 'PAYPAL',
     parameters: {
@@ -71,7 +72,7 @@ function buildPaymentRequest() {
     {},
     baseRequest,
     {
-      allowedPaymentMethods: [baseCardPaymentMethod, PayPalPaymentMethod],
+      allowedPaymentMethods: [PayPalPaymentMethod],
     },
   );
 
