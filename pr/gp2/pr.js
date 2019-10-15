@@ -58,7 +58,7 @@ function buildPaymentRequest() {
     countryCode: 'US',
     currencyCode: 'USD',
     totalPriceStatus: 'FINAL',
-    totalPrice: '1.00'.
+    totalPrice: '1.00',
   };
   paymentDataRequest.merchantInfo = {
     merchantName: 'Rouslan Solomakhin',
