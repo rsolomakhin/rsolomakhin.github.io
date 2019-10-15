@@ -16,28 +16,6 @@ function buildPaymentRequest() {
     apiVersionMinor: 0,
   };
 
-  const tokenizationSpecification = {
-    type: 'PAYMENT_GATEWAY',
-    parameters: {
-      'gateway': 'stripe',
-      'stripe:publishableKey': 'pk_live_lNk21zqKM2BENZENh3rzCUgo',
-      'stripe:version': '2016-07-06',
-    },
-  };
-  
-  const allowedCardNetworks = ['AMEX', 'DISCOVER', 'INTERAC', 'JCB', 'VISA',
-      'MASTERCARD'];
-
-  const allowedCardAuthMethods = ['PAN_ONLY', 'CRYPTOGRAM_3DS'];
-
-  const baseCardPaymentMethod = {
-    type: 'CARD',
-    parameters: {
-      allowedAuthMethods: allowedCardAuthMethods,
-      allowedCardNetworks: allowedCardNetworks,
-    },
-  };
-
   // Documentation:
   // https://developer.paypal.com/docs/archive/checkout/how-to/googlepay-integration/
   const PayPalPaymentMethod = {
@@ -60,24 +38,8 @@ function buildPaymentRequest() {
     type: 'DIRECT',
   };
 
-  const cardPaymentMethod = Object.assign(
-    {},
-    baseCardPaymentMethod,
-    {
-      tokenizationSpecification: tokenizationSpecification,
-    },
-  );
-
-  const googleIsReadyToPayRequest = Object.assign(
-    {},
-    baseRequest,
-    {
-      allowedPaymentMethods: [PayPalPaymentMethod],
-    },
-  );
-
   const paymentDataRequest = Object.assign({}, baseRequest);
-  paymentDataRequest.allowedPaymentMethods = [cardPaymentMethod];
+  paymentDataRequest.allowedPaymentMethods = [PayPalPaymentMethod];
   paymentDataRequest.transactionInfo = {
     countryCode: 'US',
     currencyCode: 'USD',
