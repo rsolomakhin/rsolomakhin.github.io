@@ -9,6 +9,8 @@ function buildPaymentRequest() {
     return null;
   }
 
+  // Documentation:
+  // https://developers.google.com/pay/api/web/guides/tutorial
   const baseRequest = {
     apiVersion: 2,
     apiVersionMinor: 0,
