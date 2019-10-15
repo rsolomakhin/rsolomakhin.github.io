@@ -46,14 +46,6 @@ function buildPaymentRequest() {
     },
   );
 
-  const googleIsReadyToPayRequest = Object.assign(
-    {},
-    baseRequest,
-    {
-      allowedPaymentMethods: [baseCardPaymentMethod],
-    },
-  );
-
   const paymentDataRequest = Object.assign({}, baseRequest);
   paymentDataRequest.allowedPaymentMethods = [cardPaymentMethod];
   paymentDataRequest.transactionInfo = {
