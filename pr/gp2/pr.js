@@ -11,57 +11,37 @@ function buildPaymentRequest() {
 
   // Documentation:
   // https://developers.google.com/pay/api/web/guides/tutorial
-  const baseRequest = {
-    apiVersion: 2,
-    apiVersionMinor: 0,
-  };
-
-  const tokenizationSpecification = {
-    type: 'PAYMENT_GATEWAY',
-    parameters: {
-      'gateway': 'stripe',
-      'stripe:publishableKey': 'pk_live_lNk21zqKM2BENZENh3rzCUgo',
-      'stripe:version': '2016-07-06',
-    },
-  };
-  
-  const allowedCardNetworks = ['AMEX', 'DISCOVER', 'INTERAC', 'JCB', 'VISA',
-      'MASTERCARD'];
-
-  const allowedCardAuthMethods = ['PAN_ONLY', 'CRYPTOGRAM_3DS'];
-
-  const baseCardPaymentMethod = {
-    type: 'CARD',
-    parameters: {
-      allowedAuthMethods: allowedCardAuthMethods,
-      allowedCardNetworks: allowedCardNetworks,
-    },
-  };
-
-  const cardPaymentMethod = Object.assign(
-    {},
-    baseCardPaymentMethod,
-    {
-      tokenizationSpecification: tokenizationSpecification,
-    },
-  );
-
-  const paymentDataRequest = Object.assign({}, baseRequest);
-  paymentDataRequest.allowedPaymentMethods = [cardPaymentMethod];
-  paymentDataRequest.transactionInfo = {
-    countryCode: 'US',
-    currencyCode: 'USD',
-    totalPriceStatus: 'FINAL',
-    totalPrice: '1.00',
-  };
-  paymentDataRequest.merchantInfo = {
-    merchantName: 'Rouslan Solomakhin',
-    merchantId: '00184145120947117657',
-  };
-
   const supportedInstruments = [{
     supportedMethods: 'https://google.com/pay',
-    data: paymentDataRequest,
+    data: {
+      apiVersion: 2,
+      apiVersionMinor: 0,
+      allowedPaymentMethods: [{
+        type: 'CARD',
+        parameters: {
+          allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+          allowedCardNetworks: ['AMEX', 'DISCOVER', 'INTERAC', 'JCB', 'VISA', 'MASTERCARD'],
+        },
+        tokenizationSpecification: {
+          type: 'PAYMENT_GATEWAY',
+          parameters: {
+            'gateway': 'stripe',
+            'stripe:publishableKey': 'pk_live_lNk21zqKM2BENZENh3rzCUgo',
+            'stripe:version': '2016-07-06',
+          },
+        },
+      }],
+      transactionInfo: {
+        countryCode: 'US',
+        currencyCode: 'USD',
+        totalPriceStatus: 'FINAL',
+        totalPrice: '1.00',
+      },
+      merchantInfo: {
+        merchantName: 'Rouslan Solomakhin',
+        merchantId: '00184145120947117657',
+      },
+    },
   }];
 
   const details = {
