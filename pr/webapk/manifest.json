@@ -9,28 +9,15 @@
   "icons": [{
     "src": "icon512.png",
     "sizes": "512x512",
-    "type": "image/png",
-    "purpose": "maskable"
+    "type": "image/png"
   }, {
     "src": "icon192.png",
     "sizes": "192x192",
-    "type": "image/png",
-    "purpose": "maskable"
+    "type": "image/png"
   }, {
     "src": "icon144.png",
     "sizes": "144x144",
-    "type": "image/png",
-    "purpose": "maskable"
-  }, {
-    "src": "icon512.gif",
-    "sizes": "512x512",
-    "type": "image/gif",
-    "purpose": "any"
-  }, {
-    "src": "icon192.gif",
-    "sizes": "192x192",
-    "type": "image/gif",
-    "purpose": "any"
+    "type": "image/png"
   }],
   "serviceworker": {
     "src": "webapk-app.js",
