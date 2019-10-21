@@ -6,6 +6,7 @@
   "display": "standalone",
   "background_color": "white",
   "theme_color": "white",
+  "android_package_name": "io.github.rsolomakhin.pr.webapk",
   "icons": [{
     "src": "icon512.png",
     "sizes": "512x512",
