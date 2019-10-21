@@ -140,7 +140,7 @@ function onBuyClicked() {
       .then(function(instrumentResponse) {
         instrumentResponse.complete('success')
           .then(function() {
-            info(JSON.stringify(resp, undefined, 2));
+            info(JSON.stringify(instrumentResponse, undefined, 2));
           })
           .catch(function(err) {
             error(err);
