@@ -1,5 +1,17 @@
 /* exported onBuyClicked */
 
+async function setupServiceWorker() {
+  const serviceWorkerSourceUrl = 'webapk-app.js';
+  const registration = await navigator.serviceWorker.getRegistration(serviceWorkerSourceUrl);
+  if (registration) {
+    info('Service worker is installed.');
+    return;
+  }
+
+  return navigator.serviceWorker.register(serviceWorkerSourceUrl);
+}
+setupServiceWorker();
+
 let deferredPrompt = null;
 const btnAdd = document.getElementById('btnAdd');
 
