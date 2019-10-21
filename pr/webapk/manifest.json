@@ -26,5 +26,9 @@
     "sizes": "512x512",
     "type": "image/png",
     "purpose": "maskable"
-  }]
+  }],
+  "serviceworker": {
+    "src": "webapk-app.js",
+    "scope": "/pr/webapk/"
+  }
 }
