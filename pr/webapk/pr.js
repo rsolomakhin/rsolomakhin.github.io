@@ -140,8 +140,7 @@ function onBuyClicked() {
       .then(function(instrumentResponse) {
         instrumentResponse.complete('success')
           .then(function() {
-            done('This is a demo website. No payment will be processed.',
-              instrumentResponse);
+            info(JSON.stringify(resp, undefined, 2));
           })
           .catch(function(err) {
             error(err);
