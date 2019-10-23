@@ -86,7 +86,6 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
         }),
       )
       .then(function(instrumentResponse) {
-        window.setTimeout(function() {
           instrumentResponse
             .complete('success')
             .then(function() {
@@ -101,7 +100,6 @@ function onBuyClicked() {  // eslint-disable-line no-unused-vars
               error(err);
               request = buildPaymentRequest();
             });
-        }, 2000);
       })
       .catch(function(err) {
         button.removeChild(spinner);

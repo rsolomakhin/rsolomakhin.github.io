@@ -86,7 +86,6 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
   try {
     request.show()
       .then(function(instrumentResponse) {
-        window.setTimeout(function() {
           instrumentResponse.complete('fail')
             .then(function() {
               error('Transaction failed');
@@ -94,7 +93,6 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
             .catch(function(err) {
               error(err);
             });
-        }, 2000);
       })
       .catch(function(err) {
         error(err);

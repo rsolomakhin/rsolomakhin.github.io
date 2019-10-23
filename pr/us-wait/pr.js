@@ -146,11 +146,9 @@ function onBuyClicked() {
             request.addEventListener('shippingaddresschange', function(e) {
               e.updateWith(
                 new Promise(function(resolveShippingAddressChange) {
-                  window.setTimeout(function() {
                     resolveShippingAddressChange(
                       updateDetails(details, request.shippingAddress),
                     );
-                  }, 2000);
                 }),
               );
             });
@@ -160,7 +158,6 @@ function onBuyClicked() {
         }),
       )
       .then(function(instrumentResponse) {
-        window.setTimeout(function() {
           instrumentResponse
             .complete('success')
             .then(function() {
@@ -172,7 +169,6 @@ function onBuyClicked() {
             .catch(function(err) {
               error(err);
             });
-        }, 2000);
       })
       .catch(function(err) {
         error(err);

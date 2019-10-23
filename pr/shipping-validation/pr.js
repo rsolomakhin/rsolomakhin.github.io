@@ -77,7 +77,6 @@ function onBuyClicked() {
       .then(function(instrumentResponse) {
         validateResponse(instrumentResponse)
           .then(function() {
-            window.setTimeout(function() {
               instrumentResponse
                 .complete('success')
                 .then(function() {
@@ -90,7 +89,6 @@ function onBuyClicked() {
                   error(err);
                   request = buildPaymentRequest();
                 });
-            }, 2000);
           });
       })
       .catch(function(err) {
@@ -110,7 +108,6 @@ function validateResponse(response) {
       return;
     }
 
-    window.setTimeout(function() {
       if (!response.shippingAddress || response.shippingAddress.postalCode != "12345") {
         var postalCodeError = document.querySelector("#postal-code-error").value;
         response.retry({ shippingAddress: { postalCode: postalCodeError }})
@@ -120,6 +117,5 @@ function validateResponse(response) {
       } else {
         resolver();
       }
-    }, 2000);
   });
 }

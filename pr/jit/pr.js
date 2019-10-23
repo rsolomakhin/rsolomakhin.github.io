@@ -47,7 +47,6 @@ let request = buildPaymentRequest();
  * Handles the response from PaymentRequest.show().
  */
 function handlePaymentResponse(response) {
-  window.setTimeout(function() {
     response.complete('success')
       .then(function() {
         done('This is a demo website. No payment will be processed.', response);
@@ -56,7 +55,6 @@ function handlePaymentResponse(response) {
         error(err);
         request = buildPaymentRequest();
       });
-  }, 500);
 }
 
 /**

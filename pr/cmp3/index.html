@@ -227,7 +227,6 @@ function sendPaymentToServer(instrumentResponse) {
   // There's no server-side component of these samples. No transactions are
   // processed and no money exchanged hands. Instantaneous transactions are not
   // realistic. Add a 2 second delay to make it seem more real.
-  window.setTimeout(function() {
     instrumentResponse.complete('success')
         .then(function() {
           document.getElementById('result').innerHTML =
@@ -236,7 +235,6 @@ function sendPaymentToServer(instrumentResponse) {
         .catch(function(err) {
           ChromeSamples.setStatus(err);
         });
-  }, 2000);
 }
 
 /**
@@ -262,7 +260,6 @@ function instrumentToJsonString(instrument) {
  * @param {HTMLElement} buyButton The "Buy" button to initialize.
  */
 function initBuyButton(buyButton) {
-  window.setTimeout(function() {
     initPaymentRequest(function(request, optionalWarning) {
       buyButton.setAttribute('style', 'display: inline;');
       ChromeSamples.setStatus(optionalWarning ? optionalWarning : '');
@@ -275,7 +272,6 @@ function initBuyButton(buyButton) {
       buyButton.setAttribute('style', 'display: none;');
       ChromeSamples.setStatus(error);
     });
-  }, 2000);
 }
 
 const buyButton = document.getElementById('buyButton');

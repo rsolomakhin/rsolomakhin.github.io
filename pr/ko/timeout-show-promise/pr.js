@@ -87,7 +87,6 @@ function onBuyClicked() {
         }),
       )
       .then(function(instrumentResponse) {
-        window.setTimeout(function() {
           instrumentResponse
             .complete('success')
             .then(function() {
@@ -100,7 +99,6 @@ function onBuyClicked() {
               error(err);
               request = buildPaymentRequest();
             });
-        }, 2000);
       })
       .catch(function(err) {
         error(err);

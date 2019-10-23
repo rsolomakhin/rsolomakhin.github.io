@@ -52,7 +52,6 @@ function onBuyClicked() {
       new PaymentRequest(supportedInstruments, details, options, schemeData);
     request.show()
       .then(instrumentResponse => {
-        window.setTimeout(() => {
           instrumentResponse.complete(true)
             .then(() => {
               done(
@@ -63,7 +62,6 @@ function onBuyClicked() {
             .catch(err => {
               error(err.message);
             });
-        }, 2000);
       })
       .catch(err => {
         error(err.message);

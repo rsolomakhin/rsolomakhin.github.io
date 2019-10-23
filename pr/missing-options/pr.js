@@ -117,7 +117,6 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
 
     request.addEventListener('shippingaddresschange', function(e) {
       e.updateWith(new Promise(function(resolve) {
-        window.setTimeout(function() {
           // No changes in price or shipping options based on shipping address
           // change. (Not specifying any shipping options or errors should
           // preserve the currently selected shipping option in the payment
@@ -125,7 +124,6 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
           var noShippingOptions = Object.assign({}, details);
           delete noShippingOptions.shippingOptions;
           resolve(noShippingOptions);
-        }, 2000);
       }));
     });
 
@@ -137,7 +135,6 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
 
     request.show()
       .then(function(instrumentResponse) {
-        window.setTimeout(function() {
           instrumentResponse.complete('success')
             .then(function() {
               done('This is a demo website. No payment will be processed.', instrumentResponse);
@@ -145,7 +142,6 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
             .catch(function(err) {
               error(err);
             });
-        }, 2000);
       })
       .catch(function(err) {
         error(err);

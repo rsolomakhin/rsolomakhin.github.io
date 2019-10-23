@@ -68,7 +68,6 @@ function onBuyClicked() {
       .then(function(instrumentResponse) {
         validateResponse(instrumentResponse)
           .then(function() {
-            window.setTimeout(function() {
               instrumentResponse
                 .complete('success')
                 .then(function() {
@@ -81,7 +80,6 @@ function onBuyClicked() {
                   error(err);
                   request = buildPaymentRequest();
                 });
-            }, 2000);
           });
       })
       .catch(function(err) {
@@ -101,7 +99,6 @@ function validateResponse(response) {
       return;
     }
 
-    window.setTimeout(function() {
       if (!response.payerEmail || response.payerEmail != "test@email.com") {
         var emailError = document.querySelector("#email-error").value;
         response.retry({ payer: { email: emailError }})
@@ -111,6 +108,5 @@ function validateResponse(response) {
       } else {
         resolver();
       }
-    }, 2000);
   });
 }

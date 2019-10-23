@@ -163,7 +163,6 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
   try {
     request.show()
       .then(function(instrumentResponse) {
-        window.setTimeout(function() {
           instrumentResponse.complete('success')
             .then(function() {
               done('This is a demo website. No payment will be processed.', instrumentResponse);
@@ -172,7 +171,6 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
               error(err);
               request = buildPaymentRequest();
             });
-        }, 2000);
       })
       .catch(function(err) {
         error(err);
