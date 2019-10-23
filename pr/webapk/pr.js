@@ -40,6 +40,7 @@ async function addToHomeScreen() {
 
 window.addEventListener('appinstalled', e => {
   info('Added to home screen.');
+  btnAdd.style.display = 'none';
 });
 
 /**
