@@ -1,0 +1,7 @@
+{
+    "name": "Shipping Option Change Event Test",
+    "icons": [{
+        "src": "../tree.png",
+        "sizes": "32x32"
+    }]
+}
