@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shipping Address Change Event Test</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+</head>
+
+<style>
+form label {
+  display: inline-block;
+  width: 150px;
+  font-weight: bold;
+}
+</style>
+
+
+<body>
+  <div id="content">
+    <div>Total: <span id="currency">N/A</span> <span id="value">N/A</span></div>
+    <div id ="shippingType"></div>
+    <form id="addressForm">
+      <div>
+        <label for="addressLine">Address line:</label>
+        <input type="text" id="addressLine" name="addressLine" value="1875 Explorer St #1000">
+      </div>
+      <div>
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" value="Reston">
+      </div>
+      <div>
+        <label for="country">Country code:</label>
+        <input type="text" id="country" name="country" value="US">
+      </div>
+      <div>
+        <label for="dependentLocality">Dependent locality:</label>
+        <input type="text" id="dependentLocality" name="dependentLocality" value="">
+      </div>
+      <div>
+        <label for="organization">Organization:</label>
+        <input type="text" id="organization" name="organization" value="">
+      </div>
+      <div>
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone"  name="phone" value="+15555555555">
+      </div>
+      <div>
+        <label for="postalCode">Postal code:</label>
+        <input type="text" id="postalCode" name="postalCode" value="20190">
+      </div>
+      <div>
+        <label for="recipient">Recipient:</label>
+      <input type="text" id="recipient" name="recipient" value="John Smith">
+      </div>
+      <div>
+        <label for="region">Region:</label>
+        <input type="text" id="region" name="region" value="VA">
+      </div>
+      <div>
+        <label for="sortingCode">Sorting code:</label>
+        <input type="text" id="sortingCode" name="sortingCode" value="">
+      </div>
+    </form>
+  </div>
+  <div>
+    <button type="button" id="submit"> Submit Address</button>
+    <button id="confirm">Confirm</button>
+  </div>
+  <div id="pleasewait" style="display: none;">Please wait...</div>
+  <div id="msg"><div>
+  <script src="/redirect.js"></script>
+  <script src="data.js"></script>
+  <script src="payment_handler_window.js"></script>
+</body>
+</html>
