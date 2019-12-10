@@ -1,0 +1,7 @@
+{
+    "name": "Delegation Test",
+    "icons": [{
+        "src": "../tree.png",
+        "sizes": "32x32"
+    }]
+}
