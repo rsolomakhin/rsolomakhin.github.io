@@ -53,6 +53,7 @@ self.addEventListener('paymentrequest', (evt) => {
     evt.delegateToWindow('payment_handler_window.html');
     return;
   }
+
   // Populate response fields based on specified options in the request.
   self.response.payerName = evt.paymentOptions.requestPayerName ? 'Jon Doe' : '';
   self.response.payerEmail =
