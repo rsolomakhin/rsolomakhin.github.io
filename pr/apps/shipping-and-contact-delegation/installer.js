@@ -28,7 +28,9 @@ function hideElements() {
   }
 }
 
-function check() {
+function check(
+    delegations =
+        ['shippingAddress', 'payerName', 'payerPhone', 'payerEmail']) {
   clearMessages();
   hideElements();
   showElement('checking');
@@ -55,53 +57,16 @@ function check() {
           return;
         }
         if (!registration.paymentManager.enableDelegations) {
-          hideElement('checking');
-          showElement('not-installed');
+          setInstruments(registration);
           showMessage(
               'Shipping delegation is available on chrome 80 and later. Checkout chrome://version',
           );
           return;
         }
-        registration.paymentManager.enableDelegations(['shippingAddress', 'payerName', 'payerPhone', 'payerEmail'])
+        registration.paymentManager.enableDelegations(delegations)
             .then(() => {
-              if (!registration.paymentManager.instruments) {
-                hideElement('checking');
-                showElement('not-installed');
-                showMessage(
-                    'Payment handler is not fully implemented. Cannot set the instruments.',
-                );
-                return;
-              }
-              registration.paymentManager.instruments.has('instrument-key')
-                  .then(result => {
-                    if (!result) {
-                      hideElement('checking');
-                      showElement('not-installed');
-                      showMessage(
-                          'No instruments found. Did installation fail?');
-                    } else {
-                      registration.paymentManager.instruments
-                          .get('instrument-key')
-                          .then(instrument => {
-                            document.getElementById('method').innerHTML =
-                                instrument.enabledMethods || instrument.method;
-                            document.getElementById('network').innerHTML =
-                                instrument.capabilities.supportedNetworks;
-                            hideElement('checking');
-                            showElement('installed');
-                          })
-                          .catch(error => {
-                            hideElement('checking');
-                            showElement('not-installed');
-                            showMessage(error);
-                          });
-                    }
-                  })
-                  .catch(error => {
-                    hideElement('checking');
-                    showElement('not-installed');
-                    showMessage(error);
-                  });
+              setInstruments(registration);
+              return;
             })
             .catch(error => {
               hideElement('checking');
@@ -116,7 +81,9 @@ function check() {
       });
 }
 
-function install() {
+function install(
+    delegations =
+        ['shippingAddress', 'payerName', 'payerPhone', 'payerEmail']) {
   hideElements();
   showElement('installing');
 
@@ -133,53 +100,54 @@ function install() {
           return;
         }
         if (!registration.paymentManager.enableDelegations) {
-          hideElement('checking');
-          showElement('not-installed');
+          setInstruments(registration);
           showMessage(
               'Shipping delegation is available on chrome 80 and later. Checkout chrome://version',
           );
           return;
         }
-        registration.paymentManager.enableDelegations(['shippingAddress', 'payerName', 'payerPhone', 'payerEmail'])
+        registration.paymentManager.enableDelegations(delegations)
             .then(() => {
-              if (!registration.paymentManager.instruments) {
-                hideElement('installing');
-                showMessage(
-                    'Payment handler is not fully implemented. Cannot set the instruments.',
-                );
-                return;
-              }
-              registration.paymentManager.instruments
-                  .set('instrument-key', {
-                    name: 'Chrome uses name and icon from the web app manifest',
-                    enabledMethods: ['basic-card'],
-                    method: 'basic-card',
-                    capabilities: {
-                      supportedNetworks: ['visa'],
-                    },
-                  })
-                  .then(() => {
-                    registration.paymentManager.instruments
-                        .get('instrument-key')
-                        .then(instrument => {
-                          document.getElementById('scope').innerHTML =
-                              registration.scope;
-                          document.getElementById('method').innerHTML =
-                              instrument.enabledMethods || instrument.method;
-                          document.getElementById('network').innerHTML =
-                              instrument.capabilities.supportedNetworks;
-                          hideElement('installing');
-                          showElement('installed');
-                        })
-                        .catch(error => {
-                          hideElement('installing');
-                          showMessage(error);
-                        });
-                  })
-                  .catch(error => {
-                    hideElement('installing');
-                    showMessage(error);
-                  });
+              setInstruments(registration);
+            })
+            .catch(error => {
+              hideElement('installing');
+              showMessage(error);
+            });
+      })
+      .catch(error => {
+        hideElement('installing');
+        showMessage(error);
+      });
+}
+
+function setInstruments(registration) {
+  if (!registration.paymentManager.instruments) {
+    hideElement('installing');
+    showMessage(
+        'Payment handler is not fully implemented. Cannot set the instruments.',
+    );
+    return;
+  }
+  registration.paymentManager.instruments
+      .set('instrument-key', {
+        name: 'Chrome uses name and icon from the web app manifest',
+        enabledMethods: ['basic-card'],
+        method: 'basic-card',
+        capabilities: {
+          supportedNetworks: ['visa'],
+        },
+      })
+      .then(() => {
+        registration.paymentManager.instruments.get('instrument-key')
+            .then(instrument => {
+              document.getElementById('scope').innerHTML = registration.scope;
+              document.getElementById('method').innerHTML =
+                  instrument.enabledMethods || instrument.method;
+              document.getElementById('network').innerHTML =
+                  instrument.capabilities.supportedNetworks;
+              hideElement('installing');
+              showElement('installed');
             })
             .catch(error => {
               hideElement('installing');
@@ -221,5 +189,3 @@ function uninstall() {
         showMessage(error);
       });
 }
-
-check();
