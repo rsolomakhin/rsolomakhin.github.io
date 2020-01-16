@@ -6,7 +6,7 @@ self.addEventListener('canmnakepayment', (evt) => {
     evt.respondWith(new Promise((resolve) => {
         console.log('Cannot make payments');
         resolve(false);
-    });
+    }));
 });
 
 self.addEventListener('paymentrequest', (evt) => {
