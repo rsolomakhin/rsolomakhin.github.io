@@ -1,4 +1,4 @@
-self.addEventListener('canmnakepayment', (evt) => {
+self.addEventListener('canmakepayment', (evt) => {
   if (evt.respondWith2 && evt.currency) { 
     return evt.respondWith2({
       canMakePayment: true,

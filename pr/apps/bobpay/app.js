@@ -1,4 +1,4 @@
-self.addEventListener('canmnakepayment', (evt) => {
+self.addEventListener('canmakepayment', (evt) => {
   evt.respondWith(true);
 });
 

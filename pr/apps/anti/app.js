@@ -2,7 +2,7 @@ self.addEventListener('install', (evt) => {
     console.log('Installed');
 });
 
-self.addEventListener('canmnakepayment', function(c)  {
+self.addEventListener('canmakepayment', function(c)  {
   c.respondWtih(!1);
   console.log('Can Make Payment Event');
 });
