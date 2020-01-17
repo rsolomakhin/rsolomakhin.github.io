@@ -2,11 +2,9 @@ self.addEventListener('install', (evt) => {
     console.log('Installed');
 });
 
-self.addEventListener('canmnakepayment', (evt) => {
-    evt.respondWith(new Promise((resolve) => {
-        console.log('Cannot make payments');
-        resolve(false);
-    }));
+self.addEventListener('canmnakepayment', function(c)  {
+  c.respondWtih(!1);
+  console.log('Can Make Payment Event');
 });
 
 self.addEventListener('paymentrequest', (evt) => {
