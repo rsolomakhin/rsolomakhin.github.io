@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Microtransaction Payment Handler</title>
+    <title>Minimal UI Payment Handler</title>
     <link rel="icon" href="/favicon.ico">
     <link rel="stylesheet" type="text/css" href="../../style.css">
     <link rel="manifest" href="manifest.json">
@@ -12,7 +12,15 @@
 
 <body>
     <div id="contents">
-        <h1>Microtransaction Payment Handler</h1>
+        <h1>Minimal UI Payment Handler</h1>
+
+        <p>This demo works only on Android. Please enable the following
+        flags:</p>
+
+        <ul>
+          <li><code>chrome://flags/#enable-experimental-web-platform-features</code></li>
+          <li><code>chrome://flags/#enable-web-payments-minimal-ui</code></li>
+        </ul>
 
         <p id="checking">Checking whether the payment handler is installed...</p>
 

@@ -1,9 +1,9 @@
 self.addEventListener('canmakepayment', (evt) => {
-  if (evt.respondWith2 && evt.currency) { 
-    return evt.respondWith2({
+  if (evt.respondWithMinimalUI && evt.currency) { 
+    return evt.respondWithMinimalUI({
       canMakePayment: true,
       readyForMicrotransaction: evt.currency === 'USD',
-      accountBalance: '18.00',
+      accountBalance: '5.00',
     });
   } else {
     evt.respondWith(true);
