@@ -14,11 +14,10 @@
     <div id="contents">
         <h1>Minimal UI Payment Handler</h1>
 
-        <p>This demo works only on Android. Please enable the following
-        flags:</p>
+        <p>This demo shows minimal UI only on Android. Please enable the
+        following flag:</p>
 
         <ul>
-          <li><code>chrome://flags/#enable-experimental-web-platform-features</code></li>
           <li><code>chrome://flags/#enable-web-payments-minimal-ui</code></li>
         </ul>
 
@@ -29,6 +28,9 @@
             <ul>
                 <li>Scope: <code id="scope">N/A</code></li>
                 <li>Method: <code id="method">N/A</code></li>
+                <li>Can make payment: <code id="canmakepayment">true</code></li>
+                <li>Ready for minimal UI: <code id="ready">true</code></li>
+                <li>Account balance: <code id="balance">USD $5.00</code></li>
             </ul>
             <p><button onclick="uninstall();">Uninstall</button></p>
         </div>
