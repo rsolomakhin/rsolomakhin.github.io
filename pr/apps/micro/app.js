@@ -6,7 +6,9 @@ self.addEventListener('canmakepayment', (evt) => {
       accountBalance: '5.00',
     });
   } else {
-    evt.respondWith(true);
+    console.log('Minimal UI feature is not enabled. Is ' +
+        'chrome://flags/#enable-web-payments-minimal-ui flag enabled?');
+    evt.respondWith(false);
   }
 });
 
