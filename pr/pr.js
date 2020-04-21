@@ -10,86 +10,50 @@ function buildPaymentRequest() {
   const supportedInstruments = [{
     supportedMethods: 'https://google.com/pay',
     data: {
-      allowedPaymentMethods: ['TOKENIZED_CARD', 'CARD'],
-      apiVersion: 1,
-      cardRequirements: {
-        'allowedCardNetworks': ['VISA', 'MASTERCARD', 'AMEX'],
-      },
-      merchantName: 'Rouslan Solomakhin',
-      merchantId: '00184145120947117657',
-      paymentMethodTokenizationParameters: {
-        tokenizationType: 'GATEWAY_TOKEN',
+      apiVersion: 2,
+      apiVersionMinor: 0,
+      allowedPaymentMethods: [{
+        type: 'CARD',
         parameters: {
-          'gateway': 'stripe',
-          'stripe:publishableKey': 'pk_live_lNk21zqKM2BENZENh3rzCUgo',
-          'stripe:version': '2016-07-06',
+          allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+          allowedCardNetworks: ['AMEX', 'DISCOVER', 'INTERAC', 'JCB', 'VISA', 'MASTERCARD'],
         },
+        tokenizationSpecification: {
+          type: 'PAYMENT_GATEWAY',
+          parameters: {
+            'gateway': 'stripe',
+            // Please use your own Stripe public key.
+            'stripe:publishableKey': 'pk_live_lNk21zqKM2BENZENh3rzCUgo',
+            'stripe:version': '2016-07-06',
+          },
+        },
+      }],
+      transactionInfo: {
+        countryCode: 'US',
+        currencyCode: 'USD',
+        totalPriceStatus: 'FINAL',
+        totalPrice: '1.00',
+      },
+      // Please use your own Google Pay merchant ID.
+      merchantInfo: {
+        merchantName: 'Rouslan Solomakhin',
+        merchantId: '00184145120947117657',
       },
     },
+  }, {
+    supportedMethods: 'https://bobpay.xyz/pay',
   }, {
     supportedMethods: 'basic-card',
   }];
 
   const details = {
     total: {
-      label: 'Donation',
+      label: 'Total',
       amount: {
         currency: 'USD',
-        value: '55.00',
+        value: '1.00',
       },
     },
-    displayItems: [{
-      label: 'Original donation amount',
-      amount: {
-        currency: 'USD',
-        value: '65.00',
-      },
-    }, {
-      label: 'Friends and family discount',
-      amount: {
-        currency: 'USD',
-        value: '-10.00',
-      },
-    }],
-    modifiers: [{
-      supportedMethods: 'basic-card',
-      data: {
-        supportedTypes: ['debit'],
-      },
-      total: {
-        label: 'Debit card discounted donation',
-        amount: {
-          currency: 'USD',
-          value: '45.00',
-        },
-      },
-      additionalDisplayItems: [{
-        label: 'Debit card discount',
-        amount: {
-          currency: 'USD',
-          value: '-10.00',
-        },
-      }],
-    }, {
-      supportedMethods: 'basic-card',
-      data: {
-        supportedNetworks: ['mastercard'],
-      },
-      total: {
-        label: 'MasterCard discounted donation',
-        amount: {
-          currency: 'USD',
-          value: '50.00',
-        },
-      },
-      additionalDisplayItems: [{
-        label: 'MasterCard discount',
-        amount: {
-          currency: 'USD',
-          value: '-5.00',
-        },
-      }],
-    }],
   };
 
   let request = null;
