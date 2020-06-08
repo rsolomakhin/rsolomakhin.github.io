@@ -67,13 +67,7 @@ function buildPaymentRequest() {
   if (request.onpaymentmethodchange !== undefined) {
     request.addEventListener('paymentmethodchange', (evt) => {
       console.log('Payment method change event: ' + JSON.stringify({'methodName': evt.methodName, 'methodDetails': evt.methodDetails}, undefined, 2));
-      if (evt.methodDetails && evt.methodDetails.billingAddress && evt.methodDetails.billingAddress.country) {
-        if (evt.methodDetails.billingAddress.country === 'US') {
-          evt.updateWith(details);
-        } else {
-          evt.updateWith(globalDetails);
-        }
-      }
+      evt.respondWith(respondAsync(evt, details, globalDetails));
     });
   }
 
@@ -81,6 +75,20 @@ function buildPaymentRequest() {
   checkHasEnrolledInstrument(request);
 
   return request;
+}
+
+function respondAsync(evt, details, globalDetails) {
+  return new Promise(function(resolve, reject) {
+    window.setTimeout(() => {
+      if (evt.methodDetails && evt.methodDetails.billingAddress && evt.methodDetails.billingAddress.country) {
+        if (evt.methodDetails.billingAddress.country === 'US') {
+          evt.updateWith(details);
+        } else {
+          evt.updateWith(globalDetails);
+        }
+      }
+    }, 1000);
+  });
 }
 
 let request = buildPaymentRequest();
