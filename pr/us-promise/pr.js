@@ -30,7 +30,7 @@ function updateDetails(details, addr) {
       shippingOption.amount.value = '5.00';
       details.total.amount.value = '6.00';
     }
-    details.displayItems.splice(1, 1, shippingOption);
+    details.displayItems = [shippingOption];
     details.shippingOptions = [shippingOption];
   } else {
     delete details.shippingOptions;
