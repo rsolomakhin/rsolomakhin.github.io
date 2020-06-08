@@ -67,7 +67,7 @@ function buildPaymentRequest() {
   if (request.onpaymentmethodchange !== undefined) {
     request.addEventListener('paymentmethodchange', (evt) => {
       console.log('Payment method change event: ' + JSON.stringify({'methodName': evt.methodName, 'methodDetails': evt.methodDetails}, undefined, 2));
-      evt.respondWith(respondAsync(evt, details, globalDetails));
+      evt.updateWith(respondAsync(evt, details, globalDetails));
     });
   }
 
@@ -82,9 +82,9 @@ function respondAsync(evt, details, globalDetails) {
     window.setTimeout(() => {
       if (evt.methodDetails && evt.methodDetails.billingAddress && evt.methodDetails.billingAddress.country) {
         if (evt.methodDetails.billingAddress.country === 'US') {
-          evt.updateWith(details);
+          resolve(details);
         } else {
-          evt.updateWith(globalDetails);
+          resolve(globalDetails);
         }
       }
     }, 1000);
