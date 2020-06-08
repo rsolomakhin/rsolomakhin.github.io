@@ -118,7 +118,11 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
     });
 
     request.addEventListener('shippingoptionchange', function(e) {
-      e.updateWith(details);
+      e.updateWith(new Promise(function(resolve) {
+        window.setTimeout(() => {
+          resolve(details);
+        }, 1000);
+      }));
     });
 
     request.show()
