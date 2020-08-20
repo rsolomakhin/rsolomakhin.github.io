@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secure Payment Confirmation</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>Secure Payment Confirmation</h1>
+    <p>Price: USD <strong>$0.01</strong></p>
+    <p><button onclick="onBuyClicked()">Buy</button></p>
+  </div>
+  <pre id="msg"></pre>
+  <p>Will make the following request:
+  <pre>new PaymentRequest([{
+  supportedMethods: 'secure-payment-confirmation',
+  data: {
+    action: 'authenticate',
+    instrumentId: 'x',
+    networkData: Uint8Array.from('x', c => c.charCodeAt(0)),
+    timeout: 60000,
+    fallbackUrl: 'https://rsolomakhin.github.io/pr/spc/fallback'
+  },
+}], {
+  total: {
+    label: 'Total',
+    amount: {
+      currency: 'USD',
+      value: '0.01',
+    },
+  },
+});</pre></p>
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+</body>
+
+</html>
