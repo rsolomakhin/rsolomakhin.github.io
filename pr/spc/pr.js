@@ -2,7 +2,7 @@
 /* exported onBuyClicked */
 
 const textEncoder = new TextEncoder();
-let credentialIdentifier = [Uint8Array.from('stub_credential', c => c.charCodeAt(0))];
+let credentialIdentifier = Uint8Array.from('stub_credential', c => c.charCodeAt(0));
 
 /**
  * Creates a payment credential.
