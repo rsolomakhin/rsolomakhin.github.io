@@ -2,7 +2,6 @@
 /* exported onBuyClicked */
 
 const textEncoder = new TextEncoder();
-let credentialIdentifier = textEncoder.encode('stub_credential');
 
 /**
  * Creates a payment credential.
@@ -32,7 +31,7 @@ async function createPaymentCredential() {
   };
   try {
     const publicKeyCredential = await navigator.credentials.create({payment});
-    credentialIdentifier = publicKeyCredential.rawId;
+    window.localStorage.setItem('credential_identifier', publicKeyCredential.id);
     info('Credential enrolled.');
   } catch (err) {
     error(err);
@@ -54,7 +53,9 @@ async function buildPaymentRequest() {
     supportedMethods: 'secure-payment-confirmation',
     data: {
       action: 'authenticate',
-      credentialIds: [credentialIdentifier],
+      credentialIds: [Uint8Array.from(
+        atob(window.localStorage.getItem('credential_identifier')),
+        c => c.charCodeAt(0))],
       networkData: textEncoder.encode('network_data'),
       timeout: 60000,
       fallbackUrl: 'https://rsolomakhin.github.io/pr/spc/fallback'
