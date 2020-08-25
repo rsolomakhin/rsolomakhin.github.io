@@ -31,7 +31,7 @@ async function createPaymentCredential() {
   };
   try {
     const publicKeyCredential = await navigator.credentials.create({payment});
-    window.localStorage.setItem('credential_identifier', publicKeyCredential.id);
+    window.localStorage.setItem('credential_identifier', btoa(publicKeyCredential.rawId));
     info('Credential enrolled.');
   } catch (err) {
     error(err);
