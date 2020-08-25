@@ -10,7 +10,7 @@ let credentialIdentifier = [textEncoder.encode('stub_credentialIdentifier')];
 async function createPaymentCredential() {
   const instrument = {
     displayName: 'Display name for instrument',
-    icon: '../../micro.png',
+    icon: 'https://rsolomakhin.github.io/micro.png',
   };
   const rp = {
     id: 'rsolomakhin.github.io',
