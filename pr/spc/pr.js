@@ -31,8 +31,13 @@ async function createPaymentCredential() {
   };
   try {
     const publicKeyCredential = await navigator.credentials.create({payment});
-    window.localStorage.setItem('credential_identifier', btoa(publicKeyCredential.rawId));
-    info('Credential enrolled.');
+    window.localStorage.setItem(
+        'credential_identifier',
+        btoa(String.fromCharCode(...new Uint8Array(
+            publicKeyCredential.rawId))));
+    info('Credential ' +
+         window.localStorage.getItem('credential_identifier') +
+         ' enrolled.');
   } catch (err) {
     error(err);
   }
@@ -57,8 +62,8 @@ async function buildPaymentRequest() {
       data: {
         action: 'authenticate',
         credentialIds: [Uint8Array.from(
-          atob(window.localStorage.getItem('credential_identifier')),
-          c => c.charCodeAt(0))],
+            atob(window.localStorage.getItem('credential_identifier')),
+            c => c.charCodeAt(0))],
         networkData: textEncoder.encode('network_data'),
         timeout: 60000,
         fallbackUrl: 'https://rsolomakhin.github.io/pr/spc/fallback'
