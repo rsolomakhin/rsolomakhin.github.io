@@ -1,4 +1,38 @@
+/* exported createPaymentCredential */
 /* exported onBuyClicked */
+
+const textEncoder = new TextEncoder();
+let credentialIdentifier = [textEncoder.encode('stub_credentialIdentifier')];
+
+/**
+ * Creates a payment credential.
+ */
+async function createPaymentCredential() {
+  const instrument = {
+    displayName: 'Display name for instrument',
+    icon: '../../micro.png',
+  };
+  const rp = {
+    id: 'rsolomakhin.github.io',
+    name: 'Rouslan Solomakhin',
+  };
+  const pubKeyCredParams = [{
+    type: 'public-key',
+    alg: -7,
+  }];
+  const payment = {
+    rp,
+    instrument,
+    challenge: textEncoder.encode('Transaction approval challenge'),
+    pubKeyCredParams,
+  };
+  try {
+    const publicKeyCredential = await navigator.credentials.create({payment});
+    credentialIdentifier = publicKeyCredential.rawId;
+  } catch (err) {
+    error(err);
+  }
+}
 
 /**
  * Initializes the payment request object.
@@ -15,8 +49,8 @@ function buildPaymentRequest() {
     supportedMethods: 'secure-payment-confirmation',
     data: {
       action: 'authenticate',
-      credentialIds: [Uint8Array.from('credential_ids', c => c.charCodeAt(0))],
-      networkData: Uint8Array.from('network_data', c => c.charCodeAt(0)),
+      credentialIds: [credentialIdentifier],
+      networkData: textEncoder.encode('network_data'),
       timeout: 60000,
       fallbackUrl: 'https://rsolomakhin.github.io/pr/spc/fallback'
     },

@@ -13,16 +13,38 @@
   <div id="contents">
     <h1>Secure Payment Confirmation</h1>
     <p>Price: USD <strong>$0.01</strong></p>
+    <p><button onclick="createPaymentCredential()">Enroll</button></p>
     <p><button onclick="onBuyClicked()">Buy</button></p>
   </div>
   <pre id="msg"></pre>
-  <p>Will make the following request:
+  <p><em>Enroll</em> will make the following request:
+  <pre>const instrument = {
+  displayName: 'Display name for instrument',
+  icon: '../../micro.png',
+};
+const rp = {
+  id: 'rsolomakhin.github.io',
+  name: 'Rouslan Solomakhin',
+};
+const pubKeyCredParams = [{
+  type: 'public-key',
+  alg: -7,
+}];
+const payment = {
+  rp,
+  instrument,
+  challenge: textEncoder.encode('Transaction approval challenge'),
+  pubKeyCredParams,
+};
+const publicKeyCredential = await navigator.credentials.create({payment});
+credentialIdentifier = publicKeyCredential.rawId;</pre></p>
+  <p><em>Buy</em> will make the following request:
   <pre>new PaymentRequest([{
   supportedMethods: 'secure-payment-confirmation',
   data: {
     action: 'authenticate',
-    credentialIds: [Uint8Array.from('credential_ids', c => c.charCodeAt(0))],
-    networkData: Uint8Array.from('network_data', c => c.charCodeAt(0)),
+    credentialIds: [credentialIdentifier],
+    networkData: textEncode.encode('network_data'),
     timeout: 60000,
     fallbackUrl: 'https://rsolomakhin.github.io/pr/spc/fallback'
   },
