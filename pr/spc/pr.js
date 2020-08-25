@@ -2,33 +2,38 @@
 /* exported onBuyClicked */
 
 const textEncoder = new TextEncoder();
-let credentialIdentifier = Uint8Array.from('stub_credential', c => c.charCodeAt(0));
+let credentialIdentifier = textEncoder.encode('stub_credential');
 
 /**
  * Creates a payment credential.
  */
 async function createPaymentCredential() {
-  const instrument = {
-    displayName: 'Display name for instrument',
-    icon: 'https://rsolomakhin.github.io/micro.png',
-  };
   const rp = {
     id: 'rsolomakhin.github.io',
     name: 'Rouslan Solomakhin',
+  };
+  const instrument = {
+    displayName: 'Display name for instrument',
+    icon: 'https://rsolomakhin.github.io/micro.png',
   };
   const pubKeyCredParams = [{
     type: 'public-key',
     alg: -7,
   }];
+  const authenticatorSelection = {
+    userVerification: "required",
+  };
   const payment = {
     rp,
     instrument,
     challenge: textEncoder.encode('Transaction approval challenge'),
     pubKeyCredParams,
+    authenticatorSelection,
   };
   try {
     const publicKeyCredential = await navigator.credentials.create({payment});
     credentialIdentifier = publicKeyCredential.rawId;
+    info('Credential enrolled.');
   } catch (err) {
     error(err);
   }
@@ -38,7 +43,7 @@ async function createPaymentCredential() {
  * Initializes the payment request object.
  * @return {PaymentRequest} The payment request object.
  */
-function buildPaymentRequest() {
+async function buildPaymentRequest() {
   if (!window.PaymentRequest) {
     return null;
   }
@@ -50,7 +55,7 @@ function buildPaymentRequest() {
     data: {
       action: 'authenticate',
       credentialIds: [credentialIdentifier],
-      networkData: Uint8Array.from('network_data', c => c.charCodeAt(0)),
+      networkData: textEncoder.encode('network_data'),
       timeout: 60000,
       fallbackUrl: 'https://rsolomakhin.github.io/pr/spc/fallback'
     },
@@ -70,58 +75,34 @@ function buildPaymentRequest() {
 
   try {
     request = new PaymentRequest(supportedInstruments, details);
-    if (request.canMakePayment) {
-      request.canMakePayment().then(function(result) {
-        info(result ? "Can make payment" : "Cannot make payment");
-      }).catch(function(err) {
-        error(err);
-      });
-    }
-
-    if (request.hasEnrolledInstrument) {
-      request.hasEnrolledInstrument().then(function(result) {
-        info(result ? "Has enrolled instrument" : "No enrolled instrument");
-      }).catch(function(err) {
-        error(err);
-      });
-    }
-  } catch (e) {
-    error('Developer mistake: \'' + e + '\'');
+    const result = await request.canMakePayment();
+    info(result ? "Can make payment" : "Cannot make payment");
+  } catch (err) {
+    error(err);
   }
 
   return request;
 }
 
-let request = buildPaymentRequest();
-
 /**
  * Launches payment request for Android Pay.
  */
-function onBuyClicked() {
-  if (!window.PaymentRequest || !request) {
+async function onBuyClicked() {
+  if (!window.PaymentRequest) {
     error('PaymentRequest API is not supported.');
     return;
   }
 
+  const request = await buildPaymentRequest();
+  if (!request)
+    return;
+
   try {
-    request.show()
-      .then(function(instrumentResponse) {
-        instrumentResponse.complete('success')
-          .then(function() {
-            done('This is a demo website. No payment will be processed.',
-              instrumentResponse);
-          })
-          .catch(function(err) {
-            error(err);
-            request = buildPaymentRequest();
-          });
-      })
-      .catch(function(err) {
-        error(err);
-        request = buildPaymentRequest();
-      });
-  } catch (e) {
-    error('Developer mistake: \'' + e + '\'');
-    request = buildPaymentRequest();
+    const instrumentResponse = await request.show();
+    await instrumentResponse.complete('success')
+    info('This is a demo website. No payment will be processed. ' +
+        JSON.stringify(instrumentResponse, undefned, 2));
+  } catch (err) {
+    error(err);
   }
 }
