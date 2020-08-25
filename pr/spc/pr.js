@@ -47,34 +47,34 @@ async function buildPaymentRequest() {
     return null;
   }
 
-  // Documentation:
-  // https://github.com/rsolomakhin/secure-payment-confirmation
-  const supportedInstruments = [{
-    supportedMethods: 'secure-payment-confirmation',
-    data: {
-      action: 'authenticate',
-      credentialIds: [Uint8Array.from(
-        atob(window.localStorage.getItem('credential_identifier')),
-        c => c.charCodeAt(0))],
-      networkData: textEncoder.encode('network_data'),
-      timeout: 60000,
-      fallbackUrl: 'https://rsolomakhin.github.io/pr/spc/fallback'
-    },
-  }];
-
-  const details = {
-    total: {
-      label: 'Total',
-      amount: {
-        currency: 'USD',
-        value: '0.01',
-      },
-    },
-  };
-
   let request = null;
 
   try {
+    // Documentation:
+    // https://github.com/rsolomakhin/secure-payment-confirmation
+    const supportedInstruments = [{
+      supportedMethods: 'secure-payment-confirmation',
+      data: {
+        action: 'authenticate',
+        credentialIds: [Uint8Array.from(
+          atob(window.localStorage.getItem('credential_identifier')),
+          c => c.charCodeAt(0))],
+        networkData: textEncoder.encode('network_data'),
+        timeout: 60000,
+        fallbackUrl: 'https://rsolomakhin.github.io/pr/spc/fallback'
+      },
+    }];
+
+    const details = {
+      total: {
+        label: 'Total',
+        amount: {
+          currency: 'USD',
+          value: '0.01',
+        },
+      },
+    };
+
     request = new PaymentRequest(supportedInstruments, details);
     const result = await request.canMakePayment();
     info(result ? "Can make payment" : "Cannot make payment");
