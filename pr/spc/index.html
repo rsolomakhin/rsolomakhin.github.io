@@ -44,7 +44,7 @@ credentialIdentifier = publicKeyCredential.rawId;</pre></p>
   data: {
     action: 'authenticate',
     credentialIds: [credentialIdentifier],
-    networkData: textEncode.encode('network_data'),
+    networkData: Uint8Array.from('network_data', c => c.charCodeAt(0)),
     timeout: 60000,
     fallbackUrl: 'https://rsolomakhin.github.io/pr/spc/fallback'
   },

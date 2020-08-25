@@ -2,7 +2,7 @@
 /* exported onBuyClicked */
 
 const textEncoder = new TextEncoder();
-let credentialIdentifier = [textEncoder.encode('stub_credentialIdentifier')];
+let credentialIdentifier = [Uint8Array.from('stub_credential', c => c.charCodeAt(0))];
 
 /**
  * Creates a payment credential.
@@ -50,7 +50,7 @@ function buildPaymentRequest() {
     data: {
       action: 'authenticate',
       credentialIds: [credentialIdentifier],
-      networkData: textEncoder.encode('network_data'),
+      networkData: Uint8Array.from('network_data', c => c.charCodeAt(0)),
       timeout: 60000,
       fallbackUrl: 'https://rsolomakhin.github.io/pr/spc/fallback'
     },
