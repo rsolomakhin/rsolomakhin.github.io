@@ -15,8 +15,8 @@ function buildPaymentRequest() {
     supportedMethods: 'secure-payment-confirmation',
     data: {
       action: 'authenticate',
-      instrumentId: 'x',
-      networkData: Uint8Array.from('x', c => c.charCodeAt(0)),
+      credentialIds: [Uint8Array.from('credential_ids', c => c.charCodeAt(0))],
+      networkData: Uint8Array.from('network_data', c => c.charCodeAt(0)),
       timeout: 60000,
       fallbackUrl: 'https://rsolomakhin.github.io/pr/spc/fallback'
     },
