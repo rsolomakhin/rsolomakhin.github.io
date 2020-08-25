@@ -37,7 +37,7 @@ const payment = {
   pubKeyCredParams,
 };
 const publicKeyCredential = await navigator.credentials.create({payment});
-window.localStorage.setItem('credential_identifier', publicKeyCredential.id);</pre></p>
+window.localStorage.setItem('credential_identifier', btoa(publicKeyCredential.rawId));</pre></p>
   <p><em>Buy</em> will make the following request:
   <pre>new PaymentRequest([{
   supportedMethods: 'secure-payment-confirmation',
