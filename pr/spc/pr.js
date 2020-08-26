@@ -106,8 +106,7 @@ async function onBuyClicked() {
   try {
     const instrumentResponse = await request.show();
     await instrumentResponse.complete('success')
-    info('This is a demo website. No payment will be processed. ' +
-        JSON.stringify(instrumentResponse, undefned, 2));
+    info(JSON.stringify(instrumentResponse, undefined, 2));
   } catch (err) {
     error(err);
   }
