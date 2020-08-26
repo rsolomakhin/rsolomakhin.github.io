@@ -18,7 +18,7 @@
   </div>
   <pre id="msg"></pre>
   <p><em>Enroll Credential</em> will make the following request:
-  <pre style="color: #418EF0">const instrument = {
+  <pre style="color: #265289">const instrument = {
   displayName: 'Display name for instrument',
   icon: 'https://rsolomakhin.github.io/micro.png',
 };
@@ -42,7 +42,7 @@ window.localStorage.setItem(
     btoa(String.fromCharCode(...new Uint8Array(
         publicKeyCredential.rawId))));</pre></p>
   <p><em>Pay $0.01</em> will make the following request:
-  <pre style="color: #418EF0">new PaymentRequest([{
+  <pre style="color: #265289">new PaymentRequest([{
   supportedMethods: 'secure-payment-confirmation',
   data: {
     action: 'authenticate',
