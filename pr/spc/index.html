@@ -12,13 +12,13 @@
 <body>
   <div id="contents">
     <h1>Secure Payment Confirmation</h1>
-    <p>Price: USD <strong>$0.01</strong></p>
-    <p><button onclick="createPaymentCredential()">Enroll</button></p>
-    <p><button onclick="onBuyClicked()">Buy</button></p>
+    <p>This is a test website. Nothing is charged.</p>
+    <p><button onclick="createPaymentCredential()">Enroll Credential</button></p>
+    <p><button onclick="onBuyClicked()">Pay $0.01</button></p>
   </div>
   <pre id="msg"></pre>
-  <p><em>Enroll</em> will make the following request:
-  <pre>const instrument = {
+  <p><em>Enroll Credential</em> will make the following request:
+  <pre style="color: #418EF0">const instrument = {
   displayName: 'Display name for instrument',
   icon: 'https://rsolomakhin.github.io/micro.png',
 };
@@ -41,8 +41,8 @@ window.localStorage.setItem(
     'credential_identifier',
     btoa(String.fromCharCode(...new Uint8Array(
         publicKeyCredential.rawId))));</pre></p>
-  <p><em>Buy</em> will make the following request:
-  <pre>new PaymentRequest([{
+  <p><em>Pay $0.01</em> will make the following request:
+  <pre style="color: #418EF0">new PaymentRequest([{
   supportedMethods: 'secure-payment-confirmation',
   data: {
     action: 'authenticate',
