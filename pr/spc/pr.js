@@ -13,7 +13,7 @@ async function createPaymentCredential() {
   };
   const instrument = {
     displayName: 'Display name for instrument',
-    icon: 'https://rsolomakhin.github.io/micro.png',
+    icon: 'https://rsolomakhin.github.io/pr/apps/micro/bobpay-logo.png',
   };
   const pubKeyCredParams = [{
     type: 'public-key',
