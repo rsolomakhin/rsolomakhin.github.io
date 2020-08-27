@@ -12,7 +12,7 @@ async function createPaymentCredential() {
     name: 'Rouslan Solomakhin',
   };
   const instrument = {
-    displayName: 'Display name for instrument',
+    displayName: 'Troy ····',
     icon: 'https://rsolomakhin.github.io/pr/spc/troy.png',
   };
   const pubKeyCredParams = [{
