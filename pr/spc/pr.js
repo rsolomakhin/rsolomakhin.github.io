@@ -81,8 +81,6 @@ async function buildPaymentRequest() {
     };
 
     request = new PaymentRequest(supportedInstruments, details);
-    const result = await request.canMakePayment();
-    info(result ? "Can make payment" : "Cannot make payment");
   } catch (err) {
     error(err);
   }
@@ -111,3 +109,21 @@ async function onBuyClicked() {
     error(err);
   }
 }
+
+async function checkCanMakePayment() {
+  if (!window.PaymentRequest) {
+    error('PaymentRequest API is not supported.');
+    return;
+  }
+  try {
+    const request = await buildPaymentRequest();
+    if (!request)
+      return;
+    const result = await request.canMakePayment();
+    info(result ? "Can make payment." : "Cannot make payment");
+  } catch (err) {
+    error(err);
+  }
+}
+
+checkCanMakePayment();
