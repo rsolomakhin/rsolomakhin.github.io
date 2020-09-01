@@ -31,13 +31,11 @@ async function createPaymentCredential() {
   };
   try {
     const publicKeyCredential = await navigator.credentials.create({payment});
-    window.localStorage.setItem(
-        'iframe_credential_identifier',
-        btoa(String.fromCharCode(...new Uint8Array(
-            publicKeyCredential.rawId))));
-    info('Credential ' +
-         window.localStorage.getItem('iframe_credential_identifier') +
-         ' enrolled.');
+    const credentialString = btoa(String.fromCharCode(...new Uint8Array(publicKeyCredential.rawId)));
+    document.getElementById("checkout").contentWindow.postMessage(
+      credentialString,
+      "https://emerald-spiced-psychology.glitch.me/");
+    info('Credential ' + credentialString + ' enrolled.');
   } catch (err) {
     error(err);
   }

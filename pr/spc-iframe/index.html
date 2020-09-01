@@ -19,9 +19,13 @@
 <body>
   <div id="contents">
     <h1>Secure Payment Confirmation</h1>
-    <p>This is a test website. Nothing is charged.</p>
+    <p>This is a test website. Nothing is charged. Clicking "Enroll Credential" creates a new
+      credential and passes it to the cross-origin iframe. Then clicking "Pay $0.01" in the iframe
+      creates a Secure Payment Confirmation request with the given credential. This tests two things,
+      (1) that the iframe can activate the SPC UI, and (2) that the iframe's SPC request can exercise
+      an existing credential that was created in a different frame.</p>
     <p><button onclick="createPaymentCredential()">Enroll Credential</button></p>
-    <iframe src="https://emerald-spiced-psychology.glitch.me/" allow="payment"></iframe>
+    <iframe id="checkout" src="https://emerald-spiced-psychology.glitch.me/" allow="payment"></iframe>
   </div>
   <pre id="msg"></pre>
   <p><em>Enroll Credential</em> will make the following request:
@@ -44,10 +48,10 @@ const payment = {
   pubKeyCredParams,
 };
 const publicKeyCredential = await navigator.credentials.create({payment});
-window.localStorage.setItem(
-    'iframe_credential_identifier',
-    btoa(String.fromCharCode(...new Uint8Array(
-        publicKeyCredential.rawId))));</pre></p>
+const credentialString = btoa(String.fromCharCode(...new Uint8Array(publicKeyCredential.rawId)));
+document.getElementById("checkout").contentWindow.postMessage(
+  credentialString,
+  "https://emerald-spiced-psychology.glitch.me/");</pre></p>
   <p>Based on the <a
   href="https://github.com/rsolomakhin/secure-payment-confirmation">Secure
   Payment Confirmation explainer</a>.</p>
