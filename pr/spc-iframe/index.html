@@ -19,39 +19,14 @@
 <body>
   <div id="contents">
     <h1>Secure Payment Confirmation</h1>
-    <p>This is a test website. Nothing is charged. Clicking "Enroll Credential" creates a new
-      credential and passes it to the cross-origin iframe. Then clicking "Pay $0.01" in the iframe
-      creates a Secure Payment Confirmation request with the given credential. This tests two things,
-      (1) that the iframe can activate the SPC UI, and (2) that the iframe's SPC request can exercise
-      an existing credential that was created in a different frame.</p>
-    <p><button onclick="createPaymentCredential()">Enroll Credential</button></p>
-    <iframe id="checkout" src="https://emerald-spiced-psychology.glitch.me/" allow="payment"></iframe>
+    <p>This is a test website. Nothing is charged. Clicking "Enroll Credential" launches a PaymentRequest
+      window from the iframe to create a credential. Then, copy the credential into the text box (this
+      transaction would happen in the back-end in a production environment). Then, clicking "Pay $0.01"
+      creates a Secure Payment Confirmation request from the iframe with the given credential. This tests
+      two things, (1) that the iframe can activate the SPC UI, and (2) that the iframe's SPC request can 
+      exercise an existing credential that was created in a different frame.</p>
+    <iframe id="checkout" src="https://emerald-spiced-psychology.glitch.me/" allow="payment" width="90%"" height="400px"></iframe>
   </div>
-  <pre id="msg"></pre>
-  <p><em>Enroll Credential</em> will make the following request:
-  <pre style="color: #265289">const instrument = {
-  displayName: 'Troy ····',
-  icon: 'https://rsolomakhin.github.io/pr/spc/troy.png',
-};
-const rp = {
-  id: 'rsolomakhin.github.io',
-  name: 'Rouslan Solomakhin',
-};
-const pubKeyCredParams = [{
-  type: 'public-key',
-  alg: -7,
-}];
-const payment = {
-  rp,
-  instrument,
-  challenge: textEncoder.encode('Transaction approval challenge'),
-  pubKeyCredParams,
-};
-const publicKeyCredential = await navigator.credentials.create({payment});
-const credentialString = btoa(String.fromCharCode(...new Uint8Array(publicKeyCredential.rawId)));
-document.getElementById("checkout").contentWindow.postMessage(
-  credentialString,
-  "https://emerald-spiced-psychology.glitch.me/");</pre></p>
   <p>Based on the <a
   href="https://github.com/rsolomakhin/secure-payment-confirmation">Secure
   Payment Confirmation explainer</a>.</p>
