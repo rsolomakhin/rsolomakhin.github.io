@@ -20,7 +20,7 @@
   <div id="contents">
     <h1>Secure Payment Confirmation</h1>
     <p>This is a test website. Nothing is charged. Clicking "Enroll Credential" launches a PaymentRequest
-      window from the iframe to create a credential. Then, copy the credential into the text box (this
+      window from the cross-origin iframe to create a credential. Then, copy the credential into the text box (this
       transaction would happen in the back-end in a production environment). Then, clicking "Pay $0.01"
       creates a Secure Payment Confirmation request from the iframe with the given credential. This tests
       two things, (1) that the iframe can activate the SPC UI, and (2) that the iframe's SPC request can 
@@ -30,8 +30,6 @@
   <p>Based on the <a
   href="https://github.com/rsolomakhin/secure-payment-confirmation">Secure
   Payment Confirmation explainer</a>.</p>
-  <script src="../util.js"></script>
-  <script src="pr.js"></script>
   <script src="/redirect.js"></script>
 </body>
 
