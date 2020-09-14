@@ -1,0 +1,16 @@
+<html>
+  <script>
+    function remove() {
+	  let frame = document.getElementById("ifrm");
+	  frame.parentNode.removeChild(frame);
+      window.location = 'payment_request_java.html';
+    }
+    function load() {
+	  setTimeout(remove, 100);
+    }
+  </script>
+  <body onload="load()">
+    <iframe id="ifrm" src="payment_request_java2.html"></iframe>
+
+  </body>
+</html>

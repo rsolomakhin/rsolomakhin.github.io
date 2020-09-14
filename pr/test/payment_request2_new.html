@@ -1,0 +1,26 @@
+<html>
+  <body>
+  	<script>
+          function createRequest(supportedInstruments, details, options) {
+      		var request = new PaymentRequest(supportedInstruments, details, options);
+          }
+		  var supportedInstruments = [{
+			 supportedMethods: 'secure-payment-confirmation',
+             data: {'credentialIds' : [new ArrayBuffer(4)], 'fallbackUrl' : 'localhost:8000', 'networkData' : new ArrayBuffer(4),
+                    }
+			}];
+
+		  var details = {
+		    total: {
+		      label: 'Total',
+		      amount: { currency: 'USD', value : '55.00' }
+		    }
+		  };
+		  var options = {};
+
+          for (let i = 0; i < 0x1000; i++) {
+      		var request = new PaymentRequest(supportedInstruments, details, options);
+          }
+  	</script>
+  </body>
+</html>

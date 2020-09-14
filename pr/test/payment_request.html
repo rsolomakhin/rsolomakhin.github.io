@@ -1,0 +1,14 @@
+<html>
+  <script>
+  function remove() {
+    let frame = document.getElementById("ifrm");
+    frame.parentNode.removeChild(frame);
+  }
+  function load() {
+    setTimeout(remove, 1000);
+  }
+  </script>
+  <body onload="load()">
+    <iframe id="ifrm" src="payment_request2.html"></iframe>
+  </body>
+</html>
