@@ -1,8 +1,4 @@
 {
-  "default_applications": ["http://localhost:8000/manifest.json"],
-  "supported_origins": [
-    "http://localhost:8000"
-  ]
-  
+  "default_applications": ["manifest.json"]
 }
 

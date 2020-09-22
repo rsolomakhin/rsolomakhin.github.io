@@ -1,28 +1,25 @@
-
 <html>
-  <link rel = "manifest" href="/manifest.json"/>
-  <link rel = "payment-method-manifest" href="/payment-manifest.json"/>
+  <link rel = "manifest" href="manifest.json"/>
+  <link rel = "payment-method-manifest" href="payment-manifest.json"/>
   <body>
     <script>
      async function registerWorker() {
-		 const registration = await navigator.serviceWorker.register('sw_payment.js', {
-		    scope: './'
-		  });
+     const registration = await navigator.serviceWorker.register('sw_payment.js');
          registration.paymentManager.instruments.set(
            'aaa',
            {
              name: 'Example',
-             method: 'http://localhost:8000',
+             method: window.location.href,
            }
          );
       const request = new PaymentRequest([{
-		  supportedMethods: 'http://localhost:8000'
-		}], {
-		  total: {
-			label: 'total',
-			amount: { value: '10', currency: 'USD' }
-		  }
-		});
+      supportedMethods: window.location.href
+    }], {
+      total: {
+      label: 'total',
+      amount: { value: '10', currency: 'USD' }
+      }
+    });
 
      }
     registerWorker();

@@ -9,16 +9,8 @@
       "type": "image/png"
     }
   ],
-
-
   "serviceworker": {
-    "src": "/sw_payment.js",
-    "scope": "/",
-    "use_cache": false
-  },
-  "start_url": "/payment_app.html",
-  "display": "standalone",
-  "theme_color": "#3f51b5",
-  "background_color": "#3f51b5"
+    "src": "sw_payment.js"
+  }
 }
 
