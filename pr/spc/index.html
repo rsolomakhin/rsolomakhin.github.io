@@ -20,8 +20,10 @@
   <div id="contents">
     <h1>Secure Payment Confirmation</h1>
     <p>This is a test website. Nothing is charged.</p>
-    <p><button onclick="createPaymentCredential()">Enroll Credential</button></p>
-    <p><button onclick="onBuyClicked()">Pay $0.01</button></p>
+    <p><button onclick="createPaymentCredential('id0')">Enroll Credential #1</button></p>
+    <p><button onclick="createPaymentCredential('id1')">Enroll Credential #2</button></p>
+    <p><button onclick="onBuyClicked('id0')">Pay $0.01</button> (with credential #1)</p>
+    <p><button onclick="onBuyClicked('id1')">Pay $0.01</button> (with credential #2)</p>
   </div>
   <pre id="msg"></pre>
   <p><em>Enroll Credential</em> will make the following request:
@@ -75,6 +77,10 @@ window.localStorage.setItem(
   <script src="../util.js"></script>
   <script src="pr.js"></script>
   <script src="/redirect.js"></script>
+  <script>
+    checkCanMakePayment('id0');
+    checkCanMakePayment('id1');
+  </script>
 </body>
 
 </html>

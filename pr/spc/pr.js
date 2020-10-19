@@ -6,7 +6,7 @@ const textEncoder = new TextEncoder();
 /**
  * Creates a payment credential.
  */
-async function createPaymentCredential() {
+async function createPaymentCredential(windowLocalStorageIdentifier) {
   const rp = {
     id: 'rsolomakhin.github.io',
     name: 'Rouslan Solomakhin',
@@ -20,7 +20,7 @@ async function createPaymentCredential() {
     alg: -7,
   }];
   const authenticatorSelection = {
-    userVerification: "required",
+    userVerification: 'required',
   };
   const payment = {
     rp,
@@ -32,11 +32,11 @@ async function createPaymentCredential() {
   try {
     const publicKeyCredential = await navigator.credentials.create({payment});
     window.localStorage.setItem(
-        'credential_identifier',
+        windowLocalStorageIdentifier,
         btoa(String.fromCharCode(...new Uint8Array(
             publicKeyCredential.rawId))));
-    info('Credential ' +
-         window.localStorage.getItem('credential_identifier') +
+    info(windowLocalStorageIdentifier + ': Credential ' +
+         window.localStorage.getItem(windowLocalStorageIdentifier) +
          ' enrolled.');
   } catch (err) {
     error(err);
@@ -47,7 +47,7 @@ async function createPaymentCredential() {
  * Initializes the payment request object.
  * @return {PaymentRequest} The payment request object.
  */
-async function buildPaymentRequest() {
+async function buildPaymentRequest(windowLocalStorageIdentifier) {
   if (!window.PaymentRequest) {
     return null;
   }
@@ -62,7 +62,7 @@ async function buildPaymentRequest() {
       data: {
         action: 'authenticate',
         credentialIds: [Uint8Array.from(
-            atob(window.localStorage.getItem('credential_identifier')),
+            atob(window.localStorage.getItem(windowLocalStorageIdentifier)),
             c => c.charCodeAt(0))],
         networkData: textEncoder.encode('network_data'),
         timeout: 60000,
@@ -91,39 +91,37 @@ async function buildPaymentRequest() {
 /**
  * Launches payment request for Android Pay.
  */
-async function onBuyClicked() {
+async function onBuyClicked(windowLocalStorageIdentifier) {
   if (!window.PaymentRequest) {
     error('PaymentRequest API is not supported.');
     return;
   }
 
-  const request = await buildPaymentRequest();
+  const request = await buildPaymentRequest(windowLocalStorageIdentifier);
   if (!request)
     return;
 
   try {
     const instrumentResponse = await request.show();
     await instrumentResponse.complete('success')
-    info(JSON.stringify(instrumentResponse, undefined, 2));
+    info(windowLocalStorageIdentifier + ': ' + JSON.stringify(instrumentResponse, undefined, 2));
   } catch (err) {
     error(err);
   }
 }
 
-async function checkCanMakePayment() {
+async function checkCanMakePayment(windowLocalStorageIdentifier) {
   if (!window.PaymentRequest) {
     error('PaymentRequest API is not supported.');
     return;
   }
   try {
-    const request = await buildPaymentRequest();
+    const request = await buildPaymentRequest(windowLocalStorageIdentifier);
     if (!request)
       return;
     const result = await request.canMakePayment();
-    info(result ? "Can make payment." : "Cannot make payment");
+    info(windowLocalStorageIdentifier + ': ' + (result ? 'Can make payment.' : 'Cannot make payment'));
   } catch (err) {
     error(err);
   }
 }
-
-checkCanMakePayment();
