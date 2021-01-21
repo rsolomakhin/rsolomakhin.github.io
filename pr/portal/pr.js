@@ -17,7 +17,10 @@ async function createPaymentCredential(windowLocalStorageIdentifier) {
   };
   const pubKeyCredParams = [{
     type: 'public-key',
-    alg: -7,
+    alg: -7,  // ECDSA, not supported on Windows.
+  }, {
+    type: 'public-key',
+    alg: -257,  // RSA, supported on Windows.
   }];
   const authenticatorSelection = {
     userVerification: 'required',
