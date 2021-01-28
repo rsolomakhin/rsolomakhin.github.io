@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--
+     - Origin trial for secure payment confirmation:
+     - https://developers.chrome.com/origintrials/#/view_trial/42784196460019713
+     -->
+  <meta http-equiv="origin-trial"
+  content="Aio7UJEaTHLEBP6cjeUqjLo/qGjr72O2JsTtGj290Iv9kiNy0wpO6Pu1cEyyWj9XbQ11Oq6eE94VH0GEm6Vd0gwAAABoeyJvcmlnaW4iOiJodHRwczovL3Jzb2xvbWFraGluLmdpdGh1Yi5pbzo0NDMiLCJmZWF0dXJlIjoiU2VjdXJlUGF5bWVudENvbmZpcm1hdGlvbiIsImV4cGlyeSI6MTYxNDAwMDcwNn0=">
+
+  <title>Secure Payment Confirmation</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>Secure Payment Confirmation</h1>
+    <p>This is a test website. Nothing is charged. Payment is not allowed in the
+    iframe, so payment credential creation should be denied as well.</p>
+    <iframe id="checkout" src="https://romantic-seed-cup.glitch.me/" width="90%"" height="400px"></iframe>
+  </div>
+  <p>Based on the <a
+  href="https://github.com/rsolomakhin/secure-payment-confirmation">Secure
+  Payment Confirmation explainer</a>.</p>
+  <script src="/redirect.js"></script>
+</body>
+
+</html>
