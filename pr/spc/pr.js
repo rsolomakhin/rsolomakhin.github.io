@@ -143,11 +143,6 @@ async function webAuthnGet(windowLocalStorageIdentifier) {
           id: Uint8Array.from(atob(window.localStorage.getItem(windowLocalStorageIdentifier)), c => c.charCodeAt(0)),
         },
       ],
-      extensions: {
-        uvm: true,  // RP wants to know how the user was verified
-        loc: false,
-        txAuthSimple: 'Please authenticate',
-      },
     };
 
     const credentialInfoAssertion = await navigator.credentials.get({publicKey});
