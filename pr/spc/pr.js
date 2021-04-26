@@ -133,12 +133,8 @@ async function webAuthnGet(windowLocalStorageIdentifier) {
   try {
     const publicKey = {
       challenge: textEncoder.encode('Authentication challenge'),
-      rpId: 'rsolomakhin.github.io',
-      userVerification: 'required',
-      timeout: 60000,
       allowCredentials: [
         {
-          transports: ['internal'],
           type: 'public-key',
           id: Uint8Array.from(atob(window.localStorage.getItem(windowLocalStorageIdentifier)), c => c.charCodeAt(0)),
         },
