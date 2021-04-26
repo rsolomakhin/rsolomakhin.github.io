@@ -133,8 +133,10 @@ async function webAuthnGet(windowLocalStorageIdentifier) {
   try {
     const publicKey = {
       challenge: textEncoder.encode('Authentication challenge'),
+      userVerification: 'required',
       allowCredentials: [
         {
+          transports: ['internal'],
           type: 'public-key',
           id: Uint8Array.from(atob(window.localStorage.getItem(windowLocalStorageIdentifier)), c => c.charCodeAt(0)),
         },
@@ -143,7 +145,7 @@ async function webAuthnGet(windowLocalStorageIdentifier) {
 
     const credentialInfoAssertion = await navigator.credentials.get({publicKey});
     console.log(credentialInfoAssertion);
-    info('Authentication success');
+    info('Successful login with credential ' + credentialInfoAssertion.id);
   } catch (err) {
     error(err);
   }
