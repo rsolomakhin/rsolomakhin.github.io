@@ -79,17 +79,17 @@ window.localStorage.setItem(
 });</pre></p>
   <p><em>Login</em> will make the following request:
   <pre style="color: #265289">const publicKey = {
-      challenge: textEncoder.encode('Authentication challenge'),
-      userVerification: 'required',
-      allowCredentials: [{
-        transports: ['internal'],
-        type: 'public-key',
-        id: Uint8Array.from(
-          atob(window.localStorage.getItem('credential_identifier')),
-          c => c.charCodeAt(0)),
-      }],
-    };
-    navigator.credentials.get({publicKey});</pre></p>
+  challenge: textEncoder.encode('Authentication challenge'),
+  userVerification: 'required',
+  allowCredentials: [{
+    transports: ['internal'],
+    type: 'public-key',
+    id: Uint8Array.from(
+      atob(window.localStorage.getItem('credential_identifier')),
+      c => c.charCodeAt(0)),
+  }],
+};
+navigator.credentials.get({publicKey});</pre></p>
   <p>Based on the <a
   href="https://github.com/rsolomakhin/secure-payment-confirmation">Secure
   Payment Confirmation explainer</a>.</p>
