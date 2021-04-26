@@ -138,7 +138,7 @@ async function webAuthnGet(windowLocalStorageIdentifier) {
       timeout: 60000,
       allowCredentials: [
         {
-          transports: 'internal',
+          transports: ['internal'],
           type: 'public-key',
           id: Uint8Array.from(atob(window.localStorage.getItem(windowLocalStorageIdentifier)), c => c.charCodeAt(0)),
         },
