@@ -128,3 +128,32 @@ async function checkCanMakePayment(windowLocalStorageIdentifier) {
     error(err);
   }
 }
+
+async function webAuthnGet(windowLocalStorageIdentifier) {
+  try {
+    const publicKey = {
+      challenge: textEncoder.encode('Authentication challenge'),
+      rpId: 'rsolomakhin.github.io',
+      userVerification: 'required',
+      timeout: 60000,
+      allowCredentials: [
+        {
+          transports: 'internal',
+          type: 'public-key',
+          id: Uint8Array.from(atob(window.localStorage.getItem(windowLocalStorageIdentifier)), c => c.charCodeAt(0)),
+        },
+      ],
+      extensions: {
+        uvm: true,  // RP wants to know how the user was verified
+        loc: false,
+        txAuthSimple: 'Please authenticate',
+      },
+    };
+
+    const credentialInfoAssertion = await navigator.credentials.get({publicKey});
+    console.log(credentialInfoAssertion);
+    info('Authentication success');
+  } catch (err) {
+    error(err);
+  }
+}
