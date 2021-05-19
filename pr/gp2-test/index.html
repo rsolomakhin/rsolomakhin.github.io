@@ -4,17 +4,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Google Pay 2.0 Test</title>
+  <title>Google Pay 2.0 Test in Test Environment</title>
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 
 <body>
   <div id="contents">
-    <h1>Google Pay 2.0 Test in Live Environment</h1>
-    <p>This page can be used to test Google Pay API version 2.0 in <em>live</em>
-    environment. No payment will be processed.
-    <a href="pr.js">View source</a>.</p>
+    <h1>Google Pay 2.0 Test in Test Environment</h1>
+    <p>This page can be used to test Google Pay API version 2.0 in a
+    <em>test</em> environment with "Example Merchant." No payment will be
+    processed. <a href="pr.js">View source</a>.</p>
     <p>Price: USD <strong>$1.00</strong></p>
     <p><button onclick="onBuyClicked()">Buy</button></p>
   </div>
@@ -47,10 +47,10 @@
       totalPriceStatus: 'FINAL',
       totalPrice: '1.00',
     },
-    // Please use your own Google Pay merchant ID.
+    environment: 'TEST',
     merchantInfo: {
-      merchantName: 'Rouslan Solomakhin',
-      merchantId: '00184145120947117657',
+      merchantName: 'Example Merchant',
+      merchantId: '12345678901234567890',
     },
   },
 }], {
@@ -65,8 +65,8 @@
   <p>Based on the <a
   href="https://developers.google.com/pay/api/web/guides/tutorial">Google Pay
   tutorial</a>.</p>
-  <p>A transaction may fail if the Stripe account encounters any issues. If that
-  happens, try using the <a href="../gp2-test/">test environment</a>.
+  <p>This test page does not exercise the live payments system. To do so try
+  using the <a href="../gp2/">live environment</a>.
   <script src="../util.js"></script>
   <script src="pr.js"></script>
   <script src="/redirect.js"></script>
