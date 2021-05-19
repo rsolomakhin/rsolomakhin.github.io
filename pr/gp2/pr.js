@@ -26,7 +26,7 @@ function buildPaymentRequest() {
           type: 'PAYMENT_GATEWAY',
           parameters: {
             'gateway': 'stripe',
-            // Please use your own Stripe public key.
+            // Please use your own Stripe live public key.
             'stripe:publishableKey': 'pk_live_lNk21zqKM2BENZENh3rzCUgo',
             'stripe:version': '2016-07-06',
           },
