@@ -1,33 +1,39 @@
-const baseRequest = {
-  apiVersion: 2,
-  apiVersionMinor: 0,
-};
-const tokenizationSpecification = {
-  type: 'PAYMENT_GATEWAY',
-  parameters: {
-  gateway: 'stripe',
-  'stripe:version': '2018-10-31',
-  // Please use your own Stripe live public key.
-  'stripe:publishableKey': 'pk_live_lNk21zqKM2BENZENh3rzCUgo',
-  }
-};
-const allowedCardNetworks = ['AMEX', 'DISCOVER', 'INTERAC', 'JCB', 'MASTERCARD', 'VISA'];
-const allowedCardAuthMethods = ['PAN_ONLY', 'CRYPTOGRAM_3DS'];
-const baseCardPaymentMethod = {
-  type: 'CARD',
-  parameters: {
-    allowedAuthMethods: allowedCardAuthMethods,
-    allowedCardNetworks: allowedCardNetworks,
-  },
-};
-const cardPaymentMethod = Object.assign(
-  {tokenizationSpecification: tokenizationSpecification},
-  baseCardPaymentMethod,
-);
-const paymentsClient = new google.payments.api.PaymentsClient();
+let baseRequest;
+let baseCardPaymentMethod;
+let paymentsClient;
+try {
+  baseRequest = {
+    apiVersion: 2,
+    apiVersionMinor: 0,
+  };
+  const allowedCardNetworks = ['AMEX', 'DISCOVER', 'INTERAC', 'JCB', 'MASTERCARD', 'VISA'];
+  const allowedCardAuthMethods = ['PAN_ONLY', 'CRYPTOGRAM_3DS'];
+  baseCardPaymentMethod = {
+    type: 'CARD',
+    parameters: {
+      allowedAuthMethods: allowedCardAuthMethods,
+      allowedCardNetworks: allowedCardNetworks,
+    },
+  };
+} catch (err) {
+  error(err);
+}
 
 async function payButtonClickHandler() {
   try {
+    const tokenizationSpecification = {
+      type: 'PAYMENT_GATEWAY',
+      parameters: {
+      gateway: 'stripe',
+      'stripe:version': '2018-10-31',
+      // Please use your own Stripe live public key.
+      'stripe:publishableKey': 'pk_live_lNk21zqKM2BENZENh3rzCUgo',
+      }
+    };
+    const cardPaymentMethod = Object.assign(
+      {tokenizationSpecification: tokenizationSpecification},
+      baseCardPaymentMethod,
+    );
     const paymentDataRequest = Object.assign({}, baseRequest);
     paymentDataRequest.allowedPaymentMethods = [cardPaymentMethod];
     paymentDataRequest.transactionInfo = {
@@ -50,6 +56,7 @@ async function payButtonClickHandler() {
 
 async function addPayButton() {
   try {
+    paymentsClient = new google.payments.api.PaymentsClient();
     const isReadyToPayRequest = Object.assign({}, baseRequest);
     isReadyToPayRequest.allowedPaymentMethods = [baseCardPaymentMethod];
     const isReadyToPayResponse = await paymentsClient.isReadyToPay(isReadyToPayRequest);
