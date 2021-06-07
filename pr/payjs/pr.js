@@ -16,7 +16,7 @@ try {
     },
   };
 } catch (err) {
-  error(err);
+  error(JSON.stringify(err, undefined, 2));
 }
 
 async function payButtonClickHandler() {
@@ -50,7 +50,7 @@ async function payButtonClickHandler() {
     const paymentData = await paymentsClient.loadPaymentData(paymentDataRequest);
     done('This is a demo website. No payment will be processed.', paymentData);
   } catch (err) {
-    error(err);
+    error(JSON.stringify(err, undefined, 2));
   }
 }
 
@@ -67,6 +67,6 @@ async function addPayButton() {
     const button = paymentsClient.createButton({onClick: payButtonClickHandler});
     document.getElementById('buttonContainer').appendChild(button);
   } catch (err) {
-    error(err);
+    error(JSON.stringify(err, undefined, 2));
   }
 }
