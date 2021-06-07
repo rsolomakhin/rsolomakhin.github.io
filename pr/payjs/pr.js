@@ -53,7 +53,7 @@ async function addPayButton() {
     const isReadyToPayRequest = Object.assign({}, baseRequest);
     isReadyToPayRequest.allowedPaymentMethods = [baseCardPaymentMethod];
     const isReadyToPayResponse = await paymentsClient.isReadyToPay(isReadyToPayRequest);
-    if (!response.result) {
+    if (!isReadyToPayResponse.result) {
       error("Not ready to pay");
       return;
     }
