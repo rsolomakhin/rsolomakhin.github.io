@@ -20,6 +20,10 @@ const baseCardPaymentMethod = {
     allowedCardNetworks: allowedCardNetworks,
   },
 };
+const cardPaymentMethod = Object.assign(
+  {tokenizationSpecification: tokenizationSpecification},
+  baseCardPaymentMethod,
+);
 
 async function payButtonClickHandler() {
   try {
@@ -45,10 +49,6 @@ async function payButtonClickHandler() {
 
 async function addPayButton() {
   try {
-    const cardPaymentMethod = Object.assign(
-      {tokenizationSpecification: tokenizationSpecification},
-      baseCardPaymentMethod,
-    );
     const paymentsClient = new google.payments.api.PaymentsClient();
     const isReadyToPayRequest = Object.assign({}, baseRequest);
     isReadyToPayRequest.allowedPaymentMethods = [baseCardPaymentMethod];
