@@ -48,7 +48,7 @@ async function payButtonClickHandler() {
       merchantId: '00184145120947117657',
     };
     const paymentData = await paymentsClient.loadPaymentData(paymentDataRequest);
-    done('This is a demo website. No payment will be processed.', paymentData);
+    info(JSON.stringify(paymentData, undefined, 2));
   } catch (err) {
     error(JSON.stringify(err, undefined, 2));
   }
