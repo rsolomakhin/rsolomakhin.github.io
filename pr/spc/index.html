@@ -19,18 +19,18 @@
   <div id="contents">
     <h1>Secure Payment Confirmation</h1>
     <p>This is a test website. Nothing is charged.</p>
-    <p><button onclick="createPaymentCredential('id0')">Enroll Credential
-        #1</button></p>
-    <p><button onclick="createPaymentCredential('id1')">Enroll Credential
-        #2</button></p>
-    <p><button onclick="onBuyClicked('id0')">Pay $0.01</button> (with credential
-      #1)</p>
-    <p><button onclick="onBuyClicked('id1')">Pay $0.01</button> (with credential
-      #2)</p>
-    <p><button onclick="webAuthnGet('id0')">Login</button> (with credential
-      #1)</button></p>
-    <p><button onclick="webAuthnGet('id1')">Login</button> (with credential
-      #2)</button></p>
+    <p><button onclick="createPaymentCredential('Credential #1')">Enroll
+        Credential #1</button></p>
+    <p><button onclick="createPaymentCredential('Credential #2')">Enroll
+        Credential #2</button></p>
+    <p><button onclick="onBuyClicked('Credential #1')">Pay $0.01</button> (with
+      credential #1)</p>
+    <p><button onclick="onBuyClicked('Credential #2')">Pay $0.01</button> (with
+      credential #2)</p>
+    <p><button onclick="webAuthnGet('Credential #1')">Login</button> (with
+      credential #1)</button></p>
+    <p><button onclick="webAuthnGet('Credential #2')">Login</button> (with
+      credential #2)</button></p>
   </div>
   <pre id="msg"></pre>
   <p><em>Enroll Credential</em> will make the following request:
@@ -52,7 +52,7 @@ const pubKeyCredParams = [{
 const payment = {
   rp,
   instrument,
-  challenge: textEncoder.encode('Transaction approval challenge'),
+  challenge: textEncoder.encode('Enrollment challenge'),
   pubKeyCredParams,
 };
 const publicKeyCredential = await navigator.credentials.create({payment});
@@ -70,6 +70,7 @@ window.localStorage.setItem(
         atob(window.localStorage.getItem('credential_identifier')),
         c => c.charCodeAt(0))],
     networkData: textEncoder.encode('network_data'),
+    challenge: textEncoder.encode('network_data'),
     timeout: 60000,
     fallbackUrl: 'https://rsolomakhin.github.io/pr/spc/fallback'
   },
@@ -104,7 +105,7 @@ navigator.credentials.get({publicKey});</pre>
   <script src="pr.js"></script>
   <script src="/redirect.js"></script>
   <script>
-    checkCanMakePayment('id0');
+    checkCanMakePayment('Credential #1');
   </script>
 </body>
 

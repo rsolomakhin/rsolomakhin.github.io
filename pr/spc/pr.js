@@ -157,8 +157,8 @@ async function createPaymentCredential(windowLocalStorageIdentifier) {
     console.log(publicKeyCredential);
     window.localStorage.setItem(windowLocalStorageIdentifier,
       arrayBufferToBase64(publicKeyCredential.rawId));
-    info(windowLocalStorageIdentifier + ' credential enrolled: ' +
-      objectToString(publicKeyCredential));
+    info(windowLocalStorageIdentifier + ' enrolled: ' + objectToString(
+      publicKeyCredential));
   } catch (err) {
     error(err);
   }
@@ -232,8 +232,7 @@ async function checkCanMakePayment(windowLocalStorageIdentifier) {
     const request = await buildPaymentRequest(windowLocalStorageIdentifier);
     if (!request) return;
     const result = await request.canMakePayment();
-    info(windowLocalStorageIdentifier + ': ' + (result ? 'Can make payment.' :
-      'Cannot make payment'));
+    info((result ? 'Can make payment.' : 'Cannot make payment'));
   } catch (err) {
     error(err);
   }
@@ -254,8 +253,8 @@ async function webAuthnGet(windowLocalStorageIdentifier) {
       publicKey
     });
     console.log(credentialInfoAssertion);
-    info('Successful login with credential: ' + objectToString(
-      credentialInfoAssertion));
+    info('Successful login with ' + windowLocalStorageIdentifier + ': ' +
+      objectToString(credentialInfoAssertion));
   } catch (err) {
     error(err);
   }
