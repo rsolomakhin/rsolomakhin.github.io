@@ -4,14 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <!--
      - Origin trial for secure payment confirmation:
      - https://developer.chrome.com/origintrials/#/view_trial/2735936773627576321
      -->
   <meta http-equiv="origin-trial"
-  content="Al8eCVNdKr1+VUt1pyCfb5LMmg3MxpEw9EfcnY8jYtMryHHukZG6lDxVeRjL8bpEGT+cXeK4rM4WMDaixmUueQAAAAB9eyJvcmlnaW4iOiJodHRwczovL3Jzb2xvbWFraGluLmdpdGh1Yi5pbzo0NDMiLCJmZWF0dXJlIjoiU2VjdXJlUGF5bWVudENvbmZpcm1hdGlvblYyIiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=">
-
+    content="Al8eCVNdKr1+VUt1pyCfb5LMmg3MxpEw9EfcnY8jYtMryHHukZG6lDxVeRjL8bpEGT+cXeK4rM4WMDaixmUueQAAAAB9eyJvcmlnaW4iOiJodHRwczovL3Jzb2xvbWFraGluLmdpdGh1Yi5pbzo0NDMiLCJmZWF0dXJlIjoiU2VjdXJlUGF5bWVudENvbmZpcm1hdGlvblYyIiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=">
   <title>Secure Payment Confirmation</title>
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" type="text/css" href="../style.css">
@@ -21,12 +19,18 @@
   <div id="contents">
     <h1>Secure Payment Confirmation</h1>
     <p>This is a test website. Nothing is charged.</p>
-    <p><button onclick="createPaymentCredential('id0')">Enroll Credential #1</button></p>
-    <p><button onclick="createPaymentCredential('id1')">Enroll Credential #2</button></p>
-    <p><button onclick="onBuyClicked('id0')">Pay $0.01</button> (with credential #1)</p>
-    <p><button onclick="onBuyClicked('id1')">Pay $0.01</button> (with credential #2)</p>
-    <p><button onclick="webAuthnGet('id0')">Login</button> (with credential #1)</button></p>
-    <p><button onclick="webAuthnGet('id1')">Login</button> (with credential #2)</button></p>
+    <p><button onclick="createPaymentCredential('id0')">Enroll Credential
+        #1</button></p>
+    <p><button onclick="createPaymentCredential('id1')">Enroll Credential
+        #2</button></p>
+    <p><button onclick="onBuyClicked('id0')">Pay $0.01</button> (with credential
+      #1)</p>
+    <p><button onclick="onBuyClicked('id1')">Pay $0.01</button> (with credential
+      #2)</p>
+    <p><button onclick="webAuthnGet('id0')">Login</button> (with credential
+      #1)</button></p>
+    <p><button onclick="webAuthnGet('id1')">Login</button> (with credential
+      #2)</button></p>
   </div>
   <pre id="msg"></pre>
   <p><em>Enroll Credential</em> will make the following request:
@@ -55,7 +59,8 @@ const publicKeyCredential = await navigator.credentials.create({payment});
 window.localStorage.setItem(
     'credential_identifier',
     btoa(String.fromCharCode(...new Uint8Array(
-        publicKeyCredential.rawId))));</pre></p>
+        publicKeyCredential.rawId))));</pre>
+  </p>
   <p><em>Pay $0.01</em> will make the following request:
   <pre style="color: #265289">new PaymentRequest([{
   supportedMethods: 'secure-payment-confirmation',
@@ -76,7 +81,8 @@ window.localStorage.setItem(
       value: '0.01',
     },
   },
-});</pre></p>
+});</pre>
+  </p>
   <p><em>Login</em> will make the following request:
   <pre style="color: #265289">const publicKey = {
   challenge: textEncoder.encode('Authentication challenge'),
@@ -89,16 +95,16 @@ window.localStorage.setItem(
       c => c.charCodeAt(0)),
   }],
 };
-navigator.credentials.get({publicKey});</pre></p>
+navigator.credentials.get({publicKey});</pre>
+  </p>
   <p>Based on the <a
-  href="https://github.com/rsolomakhin/secure-payment-confirmation">Secure
-  Payment Confirmation explainer</a>.</p>
+      href="https://github.com/rsolomakhin/secure-payment-confirmation">Secure
+      Payment Confirmation explainer</a>.</p>
   <script src="../util.js"></script>
   <script src="pr.js"></script>
   <script src="/redirect.js"></script>
   <script>
     checkCanMakePayment('id0');
-    checkCanMakePayment('id1');
   </script>
 </body>
 
