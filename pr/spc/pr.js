@@ -114,7 +114,7 @@ function objectToString(input) {
  */
 async function createPaymentCredential(windowLocalStorageIdentifier) {
   const rp = {
-    id: 'rsolomakhin.github.io',
+    id: window.location.hostname,
     name: 'Rouslan Solomakhin',
   };
   const instrument = {
@@ -162,13 +162,15 @@ async function buildPaymentRequest(windowLocalStorageIdentifier) {
   try {
     // Documentation:
     // https://github.com/rsolomakhin/secure-payment-confirmation
+    const challenge = textEncoder.encode('network_data');
     const supportedInstruments = [{
       supportedMethods: 'secure-payment-confirmation',
       data: {
         action: 'authenticate',
         credentialIds: [Uint8Array.from(atob(window.localStorage.getItem(
           windowLocalStorageIdentifier)), c => c.charCodeAt(0))],
-        networkData: textEncoder.encode('network_data'),
+        networkData: challenge,
+        challenge,
         timeout: 60000,
         fallbackUrl: 'https://rsolomakhin.github.io/pr/spc/fallback'
       },
