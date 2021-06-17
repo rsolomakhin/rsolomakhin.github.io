@@ -14,6 +14,12 @@ function arrayBufferToBase64(input) {
   return btoa(arrayBufferToString(input));
 }
 /**
+ * Converts a base64 encoded string into Unit8Array.
+ */
+function base64ToArray(input) {
+  return Uint8Array.from(atob(input), c => c.charCodeAt(0))
+}
+/**
  * Converts a PaymentResponse or a PublicKeyCredential into an dictionary.
  */
 function objectToDictionary(input) {
@@ -30,24 +36,30 @@ function objectToDictionary(input) {
   if (input.response && (input.response.constructor ===
       AuthenticatorAttestationResponse || input.response.constructor ===
       AuthenticatorAssertionResponse)) {
-    output.response = objectToDictionary(input);
+    output.response = objectToDictionary(input.response);
   }
-  if (input.attestationObject && input.attestationObject === ArrayBuffer) {
+  if (input.attestationObject && input.attestationObject.constructor ===
+    ArrayBuffer) {
     output.attestationObject = arrayBufferToBase64(input.attestationObject);
   }
-  if (input.authenticatorData && input.authenticatorData === ArrayBuffer) {
+  if (input.authenticatorData && input.authenticatorData.constructor ===
+    ArrayBuffer) {
     output.authenticatorData = arrayBufferToBase64(input.authenticatorData);
   }
-  if (input.clientDataJSON && input.clientDataJSON === ArrayBuffer) {
+  if (input.clientDataJSON && input.clientDataJSON.constructor ===
+    ArrayBuffer) {
     output.clientDataJSON = arrayBufferToString(input.clientDataJSON);
   }
-  if (input.signature && input.signature === ArrayBuffer) {
+  if (input.info) {
+    output.info = objectToDictionary(input.info);
+  }
+  if (input.signature && input.signature.constructor === ArrayBuffer) {
     output.signature = arrayBufferToBase64(input.signature);
   }
-  if (input.signature && input.signature === String) {
+  if (input.signature && input.signature.constructor === String) {
     output.signature = input.signature;
   }
-  if (input.userHandle && input.userHandle === ArrayBuffer) {
+  if (input.userHandle && input.userHandle.constructor === ArrayBuffer) {
     output.userHandle = arrayBufferToBase64(input.userHandle);
   }
   if (input.type) {
@@ -134,7 +146,7 @@ async function createPaymentCredential(windowLocalStorageIdentifier) {
   const payment = {
     rp,
     instrument,
-    challenge: textEncoder.encode('Transaction approval challenge'),
+    challenge: textEncoder.encode('Enrollment challenge'),
     pubKeyCredParams,
     authenticatorSelection,
   };
@@ -142,10 +154,11 @@ async function createPaymentCredential(windowLocalStorageIdentifier) {
     const publicKeyCredential = await navigator.credentials.create({
       payment
     });
+    console.log(publicKeyCredential);
     window.localStorage.setItem(windowLocalStorageIdentifier,
       arrayBufferToBase64(publicKeyCredential.rawId));
-    info(windowLocalStorageIdentifier + ': Credential ' + window.localStorage
-      .getItem(windowLocalStorageIdentifier) + ' enrolled.');
+    info(windowLocalStorageIdentifier + ' credential enrolled: ' +
+      objectToString(publicKeyCredential));
   } catch (err) {
     error(err);
   }
@@ -167,8 +180,8 @@ async function buildPaymentRequest(windowLocalStorageIdentifier) {
       supportedMethods: 'secure-payment-confirmation',
       data: {
         action: 'authenticate',
-        credentialIds: [Uint8Array.from(atob(window.localStorage.getItem(
-          windowLocalStorageIdentifier)), c => c.charCodeAt(0))],
+        credentialIds: [base64ToArray(window.localStorage.getItem(
+          windowLocalStorageIdentifier))],
         networkData: challenge,
         challenge,
         timeout: 60000,
@@ -204,8 +217,8 @@ async function onBuyClicked(windowLocalStorageIdentifier) {
     const instrumentResponse = await request.show();
     await instrumentResponse.complete('success')
     console.log(instrumentResponse);
-    info(windowLocalStorageIdentifier + ': ' + objectToString(
-      instrumentResponse));
+    info(windowLocalStorageIdentifier + ' payment response: ' +
+      objectToString(instrumentResponse));
   } catch (err) {
     error(err);
   }
@@ -233,8 +246,8 @@ async function webAuthnGet(windowLocalStorageIdentifier) {
       allowCredentials: [{
         transports: ['internal'],
         type: 'public-key',
-        id: Uint8Array.from(atob(window.localStorage.getItem(
-          windowLocalStorageIdentifier)), c => c.charCodeAt(0)),
+        id: base64ToArray(window.localStorage.getItem(
+          windowLocalStorageIdentifier)),
       }, ],
     };
     const credentialInfoAssertion = await navigator.credentials.get({
