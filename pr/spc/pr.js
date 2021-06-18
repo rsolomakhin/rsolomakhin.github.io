@@ -51,9 +51,17 @@ function objectToDictionary(input) {
     ArrayBuffer) {
     output.authenticatorData = arrayBufferToBase64(input.authenticatorData);
   }
+  if (input.authenticatorData && input.authenticatorData.constructor ===
+    String) {
+    output.authenticatorData = input.authenticatorData;
+  }
   if (input.clientDataJSON && input.clientDataJSON.constructor ===
     ArrayBuffer) {
     output.clientDataJSON = arrayBufferToString(input.clientDataJSON);
+  }
+  if (input.clientDataJSON && input.clientDataJSON.constructor ===
+    String) {
+    output.clientDataJSON = atob(input.clientDataJSON);
   }
   if (input.info) {
     output.info = objectToDictionary(input.info);
@@ -66,6 +74,9 @@ function objectToDictionary(input) {
   }
   if (input.userHandle && input.userHandle.constructor === ArrayBuffer) {
     output.userHandle = arrayBufferToBase64(input.userHandle);
+  }
+  if (input.userHandle && input.userHandle.constructor === String) {
+    output.userHandle = input.userHandle;
   }
   if (input.type) {
     output.type = input.type;
