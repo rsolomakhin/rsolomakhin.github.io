@@ -39,7 +39,8 @@ function objectToDictionary(input) {
   }
   if (input.response && (input.response.constructor ===
       AuthenticatorAttestationResponse || input.response.constructor ===
-      AuthenticatorAssertionResponse)) {
+      AuthenticatorAssertionResponse || input.response.constructor === Object
+      )) {
     output.response = objectToDictionary(input.response);
   }
   if (input.attestationObject && input.attestationObject.constructor ===
