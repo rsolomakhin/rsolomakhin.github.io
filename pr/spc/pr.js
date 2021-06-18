@@ -1,6 +1,10 @@
 /* exported createPaymentCredential */
 /* exported onBuyClicked */
 const textEncoder = new TextEncoder();
+const instrument = {
+  displayName: 'Troy ····',
+  icon: 'https://rsolomakhin.github.io/pr/spc/troy.png',
+};
 /**
  * Converts an ArrayBuffer into a string.
  */
@@ -129,10 +133,6 @@ async function createPaymentCredential(windowLocalStorageIdentifier) {
     id: window.location.hostname,
     name: 'Rouslan Solomakhin',
   };
-  const instrument = {
-    displayName: 'Troy ····',
-    icon: 'https://rsolomakhin.github.io/pr/spc/troy.png',
-  };
   const pubKeyCredParams = [{
     type: 'public-key',
     alg: -7, // ECDSA, not supported on Windows.
@@ -182,6 +182,7 @@ async function buildPaymentRequest(windowLocalStorageIdentifier) {
         action: 'authenticate',
         credentialIds: [base64ToArray(window.localStorage.getItem(
           windowLocalStorageIdentifier))],
+        instrument,
         networkData: challenge,
         challenge,
         timeout: 60000,

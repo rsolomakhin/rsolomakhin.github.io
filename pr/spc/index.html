@@ -69,6 +69,7 @@ window.localStorage.setItem(
     credentialIds: [Uint8Array.from(
         atob(window.localStorage.getItem('credential_identifier')),
         c => c.charCodeAt(0))],
+    instrument,
     networkData: textEncoder.encode('network_data'),
     challenge: textEncoder.encode('network_data'),
     timeout: 60000,
