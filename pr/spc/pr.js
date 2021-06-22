@@ -1,10 +1,6 @@
 /* exported createPaymentCredential */
 /* exported onBuyClicked */
 const textEncoder = new TextEncoder();
-const instrument = {
-  displayName: 'Troy ····',
-  icon: 'https://rsolomakhin.github.io/pr/spc/troy.png',
-};
 /**
  * Converts an ArrayBuffer into a string.
  */
@@ -155,6 +151,10 @@ async function createPaymentCredential(windowLocalStorageIdentifier) {
   const authenticatorSelection = {
     userVerification: 'required',
   };
+  const instrument = {
+    displayName: 'Troy ····',
+    icon: 'https://rsolomakhin.github.io/pr/spc/troy.png',
+  };
   const payment = {
     rp,
     instrument,
@@ -188,13 +188,17 @@ async function buildPaymentRequest(windowLocalStorageIdentifier) {
     // Documentation:
     // https://github.com/rsolomakhin/secure-payment-confirmation
     const challenge = textEncoder.encode('network_data');
+    const updatedInstrument = {
+      displayName: 'My Troy Card',
+      icon: 'https://rsolomakhin.github.io/pr/spc/troy-alt-logo.png',
+    };
     const supportedInstruments = [{
       supportedMethods: 'secure-payment-confirmation',
       data: {
         action: 'authenticate',
         credentialIds: [base64ToArray(window.localStorage.getItem(
           windowLocalStorageIdentifier))],
-        instrument,
+        instrument: updatedInstrument,
         networkData: challenge,
         challenge,
         timeout: 60000,
