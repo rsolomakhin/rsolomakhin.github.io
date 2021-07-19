@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <!--
+        - Origin trial for secure payment confirmation:
+        - https://developers.chrome.com/origintrials/#/view_trial/2735936773627576321
+        -->
+  <meta http-equiv="origin-trial"
+    content="Al8eCVNdKr1+VUt1pyCfb5LMmg3MxpEw9EfcnY8jYtMryHHukZG6lDxVeRjL8bpEGT+cXeK4rM4WMDaixmUueQAAAAB9eyJvcmlnaW4iOiJodHRwczovL3Jzb2xvbWFraGluLmdpdGh1Yi5pbzo0NDMiLCJmZWF0dXJlIjoiU2VjdXJlUGF5bWVudENvbmZpcm1hdGlvblYyIiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=">
+  <script src="confirm.js"></script>
+</head>
+<title>Credential Enrollment</title>
+<h1>Credential Enrollment</h1>
+<p>Click "Enroll" to enroll a credential and then click "Confirm" to return it
+  to the site:</p>
+<div>
+  <button onclick="createPaymentCredential()">Enroll</button>
+  <!-- window.localStorage.getItem('pr_window_credential') -->
+  <button onclick="navigator.serviceWorker.controller.postMessage('test')">
+    Confirm </button>
+  <pre id="msg">Status:</pre>
+</div>
+<script>
+  navigator.serviceWorker.addEventListener('message', e => {
+    if (e.data.currency) {
+      // "currency":"USD","value":"55.00"}
+      document.getElementById('currency').innerText = e.data.currency;
+      document.getElementById('value').innerText = e.data.value;
+    }
+  });
+  createPaymentCredential()
+  setTimeout(() => {
+    location.reload()
+  }, 888)
+  window.onload = () => {
+    navigator.serviceWorker.controller.postMessage('ready');
+  }
+</script>
+
+</html>
