@@ -6,7 +6,7 @@ function info(msg) {
 
 async function createPaymentCredential() {
   const rp = {
-    id: 'lumbar-brick-soup.glitch.me',
+    id: 'rsolomakhin.github.io',
     name: 'Rouslan Solomakhin',
   };
   const instrument = {
