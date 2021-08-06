@@ -42,7 +42,7 @@ const publicKey = {
   },
   user: {
     name: 'user@domain',
-    id: String(Math.random()*999999999),
+    id: Uint8Array.from(String(Math.random()*999999999), c => c.charCodeAt(0)),
     displayName: 'User',
   },
   challenge: textEncoder.encode('Enrollment challenge'),

@@ -14,7 +14,7 @@ function arrayBufferToBase64(input) {
   return btoa(arrayBufferToString(input));
 }
 /**
- * Converts a base64 encoded string into Unit8Array.
+ * Converts a base64 encoded string into Uint8Array.
  */
 function base64ToArray(input) {
   return Uint8Array.from(atob(input), c => c.charCodeAt(0))
@@ -144,7 +144,7 @@ async function createPaymentCredential(windowLocalStorageIdentifier) {
     },
     user: {
       name: 'user@domain',
-      id: String(Math.random()*999999999),
+      id: Uint8Array.from(String(Math.random()*999999999), c => c.charCodeAt(0)),
       displayName: 'User',
     },
     challenge: textEncoder.encode('Enrollment challenge'),
