@@ -10,14 +10,14 @@
      -->
   <meta http-equiv="origin-trial"
     content="Al8eCVNdKr1+VUt1pyCfb5LMmg3MxpEw9EfcnY8jYtMryHHukZG6lDxVeRjL8bpEGT+cXeK4rM4WMDaixmUueQAAAAB9eyJvcmlnaW4iOiJodHRwczovL3Jzb2xvbWFraGluLmdpdGh1Yi5pbzo0NDMiLCJmZWF0dXJlIjoiU2VjdXJlUGF5bWVudENvbmZpcm1hdGlvblYyIiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=">
-  <title>Secure Payment Confirmation: WebAuthn Payment Extension</title>
+  <title>Secure Payment Confirmation: WebAuthn Payment Extension (Debug)</title>
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 
 <body>
   <div id="contents">
-    <h1>Secure Payment Confirmation: WebAuthn Payment Extension</h1>
+    <h1>Secure Payment Confirmation: WebAuthn Payment Extension (Debug)</h1>
     <p>This is a test website. Nothing is charged.</p>
     <p><button onclick="createPaymentCredential('Credential #1')">Enroll
         Credential #1</button></p>
@@ -34,7 +34,8 @@
   </div>
   <pre id="msg"></pre>
   <p><em>Enroll Credential</em> will make the following request:
-  <pre style="color: #265289">
+  <pre style="color: #265289">// Not requiring user verifying platform authenticator.
+// Must be paired with chrome://flags/#enable-debug-for-secure-payment-confirmation
 const publicKey = {
   rp: {
     id: 'rsolomakhin.github.io',
