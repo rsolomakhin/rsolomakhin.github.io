@@ -155,6 +155,11 @@ async function createPaymentCredential(windowLocalStorageIdentifier) {
       type: 'public-key',
       alg: -257,  // RSA, supported on Windows.
     }],
+    authenticatorSelection: {
+      userVerification: 'discouraged',
+      residentKey: 'discouraged',
+      authenticatorAttachment: 'cross-platform',
+    },
     extensions: {
       payment: {
         isPayment: true,

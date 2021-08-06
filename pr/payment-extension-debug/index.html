@@ -35,7 +35,7 @@
   <pre id="msg"></pre>
   <p><em>Enroll Credential</em> will make the following request:
   <pre style="color: #265289">// Not requiring user verifying platform authenticator.
-// Must be paired with chrome://flags/#enable-debug-for-secure-payment-confirmation
+// Must be used with chrome://flags/#enable-debug-for-secure-payment-confirmation
 const publicKey = {
   rp: {
     id: 'rsolomakhin.github.io',
@@ -54,6 +54,11 @@ const publicKey = {
     type: 'public-key',
     alg: -257,  // RSA, supported on Windows.
   }],
+  authenticatorSelection: {
+    userVerification: 'discouraged',
+    residentKey: 'discouraged',
+    authenticatorAttachment: 'cross-platform',
+  },
   extensions: {
     payment: {
       isPayment: true,
