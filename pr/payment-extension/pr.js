@@ -142,6 +142,11 @@ async function createPaymentCredential(windowLocalStorageIdentifier) {
       id: 'rsolomakhin.github.io',
       name: 'Rouslan Solomakhin',
     },
+    user: {
+      name: 'user@domain',
+      id: String(Math.random()*999999999),
+      displayName: 'User',
+    },
     challenge: textEncoder.encode('Enrollment challenge'),
     pubKeyCredParams: [{
       type: 'public-key',
