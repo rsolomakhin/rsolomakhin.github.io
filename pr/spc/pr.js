@@ -186,7 +186,7 @@ async function buildPaymentRequest(windowLocalStorageIdentifier) {
   let request = null;
   try {
     // Documentation:
-    // https://github.com/rsolomakhin/secure-payment-confirmation
+    // https://github.com/w3c/secure-payment-confirmation
     const challenge = textEncoder.encode('network_data');
     const updatedInstrument = {
       displayName: 'My Troy Card',
@@ -202,7 +202,7 @@ async function buildPaymentRequest(windowLocalStorageIdentifier) {
         networkData: challenge,
         challenge,
         timeout: 60000,
-        fallbackUrl: 'https://rsolomakhin.github.io/pr/spc/fallback'
+        payeeOrigin: window.location.origin,
       },
     }];
     const details = {

@@ -16,7 +16,7 @@ async function buildPaymentRequest() {
 
   try {
     // Documentation:
-    // https://github.com/rsolomakhin/secure-payment-confirmation
+    // https://github.com/w3c/secure-payment-confirmation
     const supportedInstruments = [{
       supportedMethods: ["https://lumbar-brick-soup.glitch.me/method-manifest"]
     }];

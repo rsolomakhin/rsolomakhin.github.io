@@ -189,7 +189,7 @@ async function buildPaymentRequest(windowLocalStorageIdentifier) {
   let request = null;
   try {
     // Documentation:
-    // https://github.com/rsolomakhin/secure-payment-confirmation
+    // https://github.com/w3c/secure-payment-confirmation
     const instrument = {
       displayName: 'My Troy Card',
       icon: 'https://rsolomakhin.github.io/pr/spc/troy-alt-logo.png',
@@ -203,6 +203,7 @@ async function buildPaymentRequest(windowLocalStorageIdentifier) {
         instrument,
         challenge: textEncoder.encode('network_data'),
         timeout: 60000,
+        payeeOrigin: window.location.origin,
       },
     }];
     const details = {

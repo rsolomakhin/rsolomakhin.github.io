@@ -198,6 +198,7 @@ async function buildPaymentRequest(windowLocalStorageIdentifier) {
         instrument,
         challenge: textEncoder.encode('network_data'),
         timeout: 60000,
+        payeeOrigin: window.location.origin,
       },
     }];
     const details = {

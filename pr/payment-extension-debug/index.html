@@ -81,6 +81,7 @@ new PaymentRequest([{
     instrument,
     challenge: textEncoder.encode('network_data'),
     timeout: 60000,
+    payeeOrigin: window.location.origin,
   },
 }], {
   total: {
@@ -107,8 +108,8 @@ new PaymentRequest([{
 navigator.credentials.get({publicKey});</pre>
   </p>
   <p>Based on the <a
-      href="https://github.com/rsolomakhin/secure-payment-confirmation">Secure
-      Payment Confirmation explainer</a>.</p>
+      href="https://github.com/w3c/secure-payment-confirmation">Secure Payment
+      Confirmation explainer</a>.</p>
   <script src="../util.js"></script>
   <script src="pr.js"></script>
   <script src="/redirect.js"></script>

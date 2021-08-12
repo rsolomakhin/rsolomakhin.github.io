@@ -4,14 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <!--
      - Origin trial for secure payment confirmation:
      - https://developer.chrome.com/origintrials/#/view_trial/2735936773627576321
      -->
   <meta http-equiv="origin-trial"
-  content="Al8eCVNdKr1+VUt1pyCfb5LMmg3MxpEw9EfcnY8jYtMryHHukZG6lDxVeRjL8bpEGT+cXeK4rM4WMDaixmUueQAAAAB9eyJvcmlnaW4iOiJodHRwczovL3Jzb2xvbWFraGluLmdpdGh1Yi5pbzo0NDMiLCJmZWF0dXJlIjoiU2VjdXJlUGF5bWVudENvbmZpcm1hdGlvblYyIiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=">
-
+    content="Al8eCVNdKr1+VUt1pyCfb5LMmg3MxpEw9EfcnY8jYtMryHHukZG6lDxVeRjL8bpEGT+cXeK4rM4WMDaixmUueQAAAAB9eyJvcmlnaW4iOiJodHRwczovL3Jzb2xvbWFraGluLmdpdGh1Yi5pbzo0NDMiLCJmZWF0dXJlIjoiU2VjdXJlUGF5bWVudENvbmZpcm1hdGlvblYyIiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=">
   <title>Secure Payment Confirmation</title>
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" type="text/css" href="../style.css">
@@ -20,19 +18,23 @@
 <body>
   <div id="contents">
     <h1>Secure Payment Confirmation</h1>
-    <p>This is a test website. Nothing is charged. Clicking "Enroll Credential" launches a PaymentRequest
-      window from the cross-origin iframe to create a credential. Then, copy the credential into the text box (this
-      transaction would happen in the back-end in a production environment). Then, clicking "Pay $0.01"
-      creates a Secure Payment Confirmation request from the iframe with the given credential. This tests
-      two things, (1) that the iframe can activate the SPC UI, and (2) that the iframe's SPC request can 
-      exercise an existing credential that was created in a different frame.</p>
-      <p>If this is your first time, visit <a href="https://lumbar-brick-soup.glitch.me/">https://lumbar-brick-soup.glitch.me/</a>
-        to install the credential enrollment payment handler.</p>
-    <iframe id="checkout" src="https://emerald-spiced-psychology.glitch.me/" allow="payment" width="90%"" height="400px"></iframe>
+    <p>This is a test website. Nothing is charged. Clicking "Enroll Credential"
+      launches a PaymentRequest window from the cross-origin iframe to create a
+      credential. Then, copy the credential into the text box (this transaction
+      would happen in the back-end in a production environment). Then, clicking
+      "Pay $0.01" creates a Secure Payment Confirmation request from the iframe
+      with the given credential. This tests two things, (1) that the iframe can
+      activate the SPC UI, and (2) that the iframe's SPC request can exercise an
+      existing credential that was created in a different frame.</p>
+    <p>If this is your first time, visit <a
+        href="https://lumbar-brick-soup.glitch.me/">https://lumbar-brick-soup.glitch.me/</a>
+      to install the credential enrollment payment handler.</p>
+    <iframe id="checkout" src="https://emerald-spiced-psychology.glitch.me/"
+      allow="payment" width="90%"" height=" 400px"></iframe>
   </div>
   <p>Based on the <a
-  href="https://github.com/rsolomakhin/secure-payment-confirmation">Secure
-  Payment Confirmation explainer</a>.</p>
+      href="https://github.com/w3c/secure-payment-confirmation">Secure Payment
+      Confirmation explainer</a>.</p>
   <script src="/redirect.js"></script>
 </body>
 

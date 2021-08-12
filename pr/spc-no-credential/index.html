@@ -4,14 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <!--
      - Origin trial for secure payment confirmation:
      - https://developer.chrome.com/origintrials/#/view_trial/2735936773627576321
      -->
   <meta http-equiv="origin-trial"
-  content="Al8eCVNdKr1+VUt1pyCfb5LMmg3MxpEw9EfcnY8jYtMryHHukZG6lDxVeRjL8bpEGT+cXeK4rM4WMDaixmUueQAAAAB9eyJvcmlnaW4iOiJodHRwczovL3Jzb2xvbWFraGluLmdpdGh1Yi5pbzo0NDMiLCJmZWF0dXJlIjoiU2VjdXJlUGF5bWVudENvbmZpcm1hdGlvblYyIiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=">
-
+    content="Al8eCVNdKr1+VUt1pyCfb5LMmg3MxpEw9EfcnY8jYtMryHHukZG6lDxVeRjL8bpEGT+cXeK4rM4WMDaixmUueQAAAAB9eyJvcmlnaW4iOiJodHRwczovL3Jzb2xvbWFraGluLmdpdGh1Yi5pbzo0NDMiLCJmZWF0dXJlIjoiU2VjdXJlUGF5bWVudENvbmZpcm1hdGlvblYyIiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=">
   <title>Secure Payment Confirmation</title>
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" type="text/css" href="../style.css">
@@ -24,7 +22,8 @@
     <p><button onclick="onBuyClicked()">Pay $0.01</button></p>
   </div>
   <pre id="msg"></pre>
-  <p><em>Pay $0.01</em> will make the following request with a nonexistent credential:
+  <p><em>Pay $0.01</em> will make the following request with a nonexistent
+    credential:
   <pre style="color: #265289">new PaymentRequest([{
   supportedMethods: 'secure-payment-confirmation',
   data: {
@@ -34,7 +33,7 @@
         c => c.charCodeAt(0))],
     networkData: textEncoder.encode('network_data'),
     timeout: 60000,
-    fallbackUrl: 'https://rsolomakhin.github.io/pr/spc/fallback'
+    payeeOrigin: window.location.origin,
   },
 }], {
   total: {
@@ -44,10 +43,11 @@
       value: '0.01',
     },
   },
-});</pre></p>
+});</pre>
+  </p>
   <p>Based on the <a
-  href="https://github.com/rsolomakhin/secure-payment-confirmation">Secure
-  Payment Confirmation explainer</a>.</p>
+      href="https://github.com/w3c/secure-payment-confirmation">Secure Payment
+      Confirmation explainer</a>.</p>
   <script src="../util.js"></script>
   <script src="pr.js"></script>
   <script src="/redirect.js"></script>

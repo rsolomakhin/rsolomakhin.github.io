@@ -16,7 +16,7 @@ async function buildPaymentRequest() {
 
   try {
     // Documentation:
-    // https://github.com/rsolomakhin/secure-payment-confirmation
+    // https://github.com/w3c/secure-payment-confirmation
     const supportedInstruments = [{
       supportedMethods: 'secure-payment-confirmation',
       data: {
@@ -26,7 +26,7 @@ async function buildPaymentRequest() {
             c => c.charCodeAt(0))],
         networkData: textEncoder.encode('network_data'),
         timeout: 60000,
-        fallbackUrl: 'https://rsolomakhin.github.io/pr/spc/fallback'
+        payeeOrigin: window.location.origin,
       },
     }];
 
