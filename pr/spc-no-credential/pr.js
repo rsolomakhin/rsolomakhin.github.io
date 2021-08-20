@@ -17,14 +17,20 @@ async function buildPaymentRequest() {
   try {
     // Documentation:
     // https://github.com/w3c/secure-payment-confirmation
+    const instrument = {
+      displayName: 'Bob Pay',
+      icon: 'https://rsolomakhin.github.io/pr/spc-no-credential/bobpaycc.png',
+    };
     const supportedInstruments = [{
       supportedMethods: 'secure-payment-confirmation',
+
       data: {
         action: 'authenticate',
         credentialIds: [Uint8Array.from(
             atob(window.localStorage.getItem('no_credential_identifier')),
             c => c.charCodeAt(0))],
-        networkData: textEncoder.encode('network_data'),
+        instrument,
+        challenge: textEncoder.encode('challenge'),
         timeout: 60000,
         payeeOrigin: window.location.origin,
       },
