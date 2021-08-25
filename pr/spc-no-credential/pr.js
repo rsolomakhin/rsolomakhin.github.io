@@ -19,7 +19,6 @@ async function buildPaymentRequest() {
     // https://github.com/w3c/secure-payment-confirmation
     const supportedInstruments = [{
       supportedMethods: 'secure-payment-confirmation',
-
       data: {
         action: 'authenticate',
         credentialIds: [Uint8Array.from(

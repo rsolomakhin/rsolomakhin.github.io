@@ -34,28 +34,37 @@
   </div>
   <pre id="msg"></pre>
   <p><em>Enroll Credential</em> will make the following request:
-  <pre style="color: #265289">const instrument = {
-  displayName: 'Troy ····',
-  icon: 'https://rsolomakhin.github.io/pr/spc/troy.png',
-};
-const rp = {
-  id: 'rsolomakhin.github.io',
-  name: 'Rouslan Solomakhin',
-};
-const pubKeyCredParams = [{
-  type: 'public-key',
-  alg: -7,  // ECDSA, not supported on Windows.
-}, {
-  type: 'public-key',
-  alg: -257,  // RSA, supported on Windows.
-}];
-const payment = {
-  rp,
-  instrument,
+  <pre style="color: #265289">
+const publicKey = {
+  rp: {
+    id: 'rsolomakhin.github.io',
+    name: 'Rouslan Solomakhin',
+  },
+  user: {
+    name: 'user@domain',
+    id: Uint8Array.from(String(Math.random()*999999999), c => c.charCodeAt(0)),
+    displayName: 'User',
+  },
   challenge: textEncoder.encode('Enrollment challenge'),
-  pubKeyCredParams,
+  pubKeyCredParams: [{
+    type: 'public-key',
+    alg: -7,  // ECDSA, not supported on Windows.
+  }, {
+    type: 'public-key',
+    alg: -257,  // RSA, supported on Windows.
+  }],
+  authenticatorSelection: {
+    userVerification: 'required',
+    residentKey: 'required',
+    authenticatorAttachment: 'platform',
+  },
+  extensions: {
+    payment: {
+      isPayment: true,
+    },
+  },
 };
-const publicKeyCredential = await navigator.credentials.create({payment});
+const publicKeyCredential = await navigator.credentials.create({ publicKey });
 window.localStorage.setItem(
     'credential_identifier',
     btoa(String.fromCharCode(...new Uint8Array(

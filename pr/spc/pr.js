@@ -137,34 +137,38 @@ function objectToString(input) {
  * Creates a payment credential.
  */
 async function createPaymentCredential(windowLocalStorageIdentifier) {
-  const rp = {
-    id: window.location.hostname,
-    name: 'Rouslan Solomakhin',
-  };
-  const pubKeyCredParams = [{
-    type: 'public-key',
-    alg: -7, // ECDSA, not supported on Windows.
-  }, {
-    type: 'public-key',
-    alg: -257, // RSA, supported on Windows.
-  }];
-  const authenticatorSelection = {
-    userVerification: 'required',
-  };
-  const instrument = {
-    displayName: 'Troy ····',
-    icon: 'https://rsolomakhin.github.io/pr/spc/troy.png',
-  };
-  const payment = {
-    rp,
-    instrument,
+const publicKey = {
+    rp: {
+      id: 'rsolomakhin.github.io',
+      name: 'Rouslan Solomakhin',
+    },
+    user: {
+      name: 'user@domain',
+      id: Uint8Array.from(String(Math.random()*999999999), c => c.charCodeAt(0)),
+      displayName: 'User',
+    },
     challenge: textEncoder.encode('Enrollment challenge'),
-    pubKeyCredParams,
-    authenticatorSelection,
+    pubKeyCredParams: [{
+      type: 'public-key',
+      alg: -7,  // ECDSA, not supported on Windows.
+    }, {
+      type: 'public-key',
+      alg: -257,  // RSA, supported on Windows.
+    }],
+    authenticatorSelection: {
+      userVerification: 'required',
+      residentKey: 'required',
+      authenticatorAttachment: 'platform',
+    },
+    extensions: {
+      payment: {
+        isPayment: true,
+      },
+    },
   };
   try {
     const publicKeyCredential = await navigator.credentials.create({
-      payment
+      publicKey
     });
     console.log(publicKeyCredential);
     window.localStorage.setItem(windowLocalStorageIdentifier,
