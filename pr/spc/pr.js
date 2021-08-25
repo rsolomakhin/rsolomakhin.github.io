@@ -195,7 +195,7 @@ async function createCredentialCompat() {
  */
 async function createPaymentCredential(windowLocalStorageIdentifier) {
   try {
-    const publicKeyCredential = createCredentialCompat();
+    const publicKeyCredential = await createCredentialCompat();
     console.log(publicKeyCredential);
     window.localStorage.setItem(windowLocalStorageIdentifier,
       arrayBufferToBase64(publicKeyCredential.rawId));
