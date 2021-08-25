@@ -133,43 +133,69 @@ function objectToDictionary(input) {
 function objectToString(input) {
   return JSON.stringify(objectToDictionary(input), undefined, 2);
 }
+
+function createCredentialCompat() {
+  const rp = {
+    id: window.location.hostname,
+    name: 'Rouslan Solomakhin',
+  };
+  const pubKeyCredParams = [{
+    type: 'public-key',
+    alg: -7, // ECDSA, not supported on Windows.
+  }, {
+    type: 'public-key',
+    alg: -257, // RSA, supported on Windows.
+  }];
+  const challenge = textEncoder.encode('Enrollment challenge');
+  if (window.PaymentCredential) {
+    const payment = {
+      rp,
+      instrument: {
+        displayName: 'Troy ····',
+        icon: 'https://rsolomakhin.github.io/pr/spc/troy.png',
+      },
+      challenge,
+      pubKeyCredParams,
+      authenticatorSelection: {
+        userVerification: 'required',
+      },
+    };
+    return await navigator.credentials.create({
+      payment
+    });
+  } else {
+    const publicKey = {
+      rp,
+      user: {
+        name: 'user@domain',
+        id: Uint8Array.from(String(Math.random()*999999999), c => c.charCodeAt(0)),
+        displayName: 'User',
+      },
+      challenge,
+      pubKeyCredParams,
+      authenticatorSelection: {
+        userVerification: 'required',
+        residentKey: 'required',
+        authenticatorAttachment: 'platform',
+      },
+      extensions: {
+        payment: {
+          isPayment: true,
+        },
+      }
+    };
+    return await navigator.credentials.create({
+      publicKey
+    });
+  }
+}
+
 /**
  * Creates a payment credential.
  */
 async function createPaymentCredential(windowLocalStorageIdentifier) {
-const publicKey = {
-    rp: {
-      id: 'rsolomakhin.github.io',
-      name: 'Rouslan Solomakhin',
-    },
-    user: {
-      name: 'user@domain',
-      id: Uint8Array.from(String(Math.random()*999999999), c => c.charCodeAt(0)),
-      displayName: 'User',
-    },
-    challenge: textEncoder.encode('Enrollment challenge'),
-    pubKeyCredParams: [{
-      type: 'public-key',
-      alg: -7,  // ECDSA, not supported on Windows.
-    }, {
-      type: 'public-key',
-      alg: -257,  // RSA, supported on Windows.
-    }],
-    authenticatorSelection: {
-      userVerification: 'required',
-      residentKey: 'required',
-      authenticatorAttachment: 'platform',
-    },
-    extensions: {
-      payment: {
-        isPayment: true,
-      },
-    },
-  };
   try {
-    const publicKeyCredential = await navigator.credentials.create({
-      publicKey
-    });
+    const publicKeyCredential = createCredentialCompat();
     console.log(publicKeyCredential);
     window.localStorage.setItem(windowLocalStorageIdentifier,
       arrayBufferToBase64(publicKeyCredential.rawId));
