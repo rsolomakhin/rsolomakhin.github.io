@@ -134,7 +134,7 @@ function objectToString(input) {
   return JSON.stringify(objectToDictionary(input), undefined, 2);
 }
 
-function createCredentialCompat() {
+async function createCredentialCompat() {
   const rp = {
     id: window.location.hostname,
     name: 'Rouslan Solomakhin',
