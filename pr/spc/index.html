@@ -35,40 +35,69 @@
   <pre id="msg"></pre>
   <p><em>Enroll Credential</em> will make the following request:
   <pre style="color: #265289">
-const publicKey = {
-  rp: {
-    id: 'rsolomakhin.github.io',
+async function createCredentialCompat() {
+  const rp = {
+    id: window.location.hostname,
     name: 'Rouslan Solomakhin',
-  },
-  user: {
-    name: 'user@domain',
-    id: Uint8Array.from(String(Math.random()*999999999), c => c.charCodeAt(0)),
-    displayName: 'User',
-  },
-  challenge: textEncoder.encode('Enrollment challenge'),
-  pubKeyCredParams: [{
+  };
+  const pubKeyCredParams = [{
     type: 'public-key',
-    alg: -7,  // ECDSA, not supported on Windows.
+    alg: -7, // ECDSA, not supported on Windows.
   }, {
     type: 'public-key',
-    alg: -257,  // RSA, supported on Windows.
-  }],
-  authenticatorSelection: {
-    userVerification: 'required',
-    residentKey: 'required',
-    authenticatorAttachment: 'platform',
-  },
-  extensions: {
-    payment: {
-      isPayment: true,
-    },
-  },
-};
-const publicKeyCredential = await navigator.credentials.create({ publicKey });
+    alg: -257, // RSA, supported on Windows.
+  }];
+  const challenge = textEncoder.encode('Enrollment challenge');
+  if (window.PaymentCredential) {
+    const payment = {
+      rp,
+      instrument: {
+        displayName: 'Troy ····',
+        icon: 'https://rsolomakhin.github.io/pr/spc/troy.png',
+      },
+      challenge,
+      pubKeyCredParams,
+      authenticatorSelection: {
+        userVerification: 'required',
+      },
+    };
+    return await navigator.credentials.create({
+      payment
+    });
+  } else {
+    const publicKey = {
+      rp,
+      user: {
+        name: 'user@domain',
+        id: Uint8Array.from(String(Math.random()*999999999), c => c.charCodeAt(0)),
+        displayName: 'User',
+      },
+      challenge,
+      pubKeyCredParams,
+      authenticatorSelection: {
+        userVerification: 'required',
+        residentKey: 'required',
+        authenticatorAttachment: 'platform',
+      },
+      extensions: {
+        payment: {
+          isPayment: true,
+        },
+      }
+    };
+    return await navigator.credentials.create({
+      publicKey
+    });
+  }
+}
+const publicKeyCredential = createCredentialCompat();
 window.localStorage.setItem(
     'credential_identifier',
     btoa(String.fromCharCode(...new Uint8Array(
         publicKeyCredential.rawId))));</pre>
+  </p>
+  <p>
+    <b style="color:red">Notice</b>: If testing on Chrome 95, please add --enable-features=SecurePaymentConfirmationBrowser and --enable-blink-features=SecurePaymentConfirmation command line flag to Chrome, because the origin trial has ended in M94 and the feature is disabled by default on trunk and in all release channels until the launch bug approval.
   </p>
   <p><em>Pay $0.01</em> will make the following request:
   <pre style="color: #265289">new PaymentRequest([{
