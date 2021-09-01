@@ -109,12 +109,13 @@ window.localStorage.setItem(
   <pre style="color: #265289">new PaymentRequest([{
   supportedMethods: 'secure-payment-confirmation',
   data: {
-    action: 'authenticate',
     credentialIds: [Uint8Array.from(
         atob(window.localStorage.getItem('credential_identifier')),
         c => c.charCodeAt(0))],
-    instrument,
-    networkData: textEncoder.encode('network_data'),
+    instrument: {
+      displayName: 'My Troy Card',
+      icon: 'https://rsolomakhin.github.io/pr/spc/troy-alt-logo.png',
+    },
     challenge: textEncoder.encode('network_data'),
     timeout: 60000,
     payeeOrigin: window.location.origin,
