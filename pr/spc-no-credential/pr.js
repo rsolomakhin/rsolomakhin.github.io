@@ -20,7 +20,6 @@ async function buildPaymentRequest() {
     const supportedInstruments = [{
       supportedMethods: 'secure-payment-confirmation',
       data: {
-        action: 'authenticate',
         credentialIds: [Uint8Array.from(
             atob(window.localStorage.getItem('no_credential_identifier')),
             c => c.charCodeAt(0))],

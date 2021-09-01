@@ -63,7 +63,6 @@ async function buildPaymentRequest(windowLocalStorageIdentifier) {
     const supportedInstruments = [{
       supportedMethods: 'secure-payment-confirmation',
       data: {
-        action: 'authenticate',
         credentialIds: [Uint8Array.from(
             atob(window.localStorage.getItem(windowLocalStorageIdentifier)),
             c => c.charCodeAt(0))],

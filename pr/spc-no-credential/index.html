@@ -27,7 +27,6 @@
   <pre style="color: #265289">new PaymentRequest([{
   supportedMethods: 'secure-payment-confirmation',
   data: {
-    action: 'authenticate',
     credentialIds: [Uint8Array.from(
         atob(window.localStorage.getItem('no_credential_identifier')),
         c => c.charCodeAt(0))],

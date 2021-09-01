@@ -225,7 +225,6 @@ async function buildPaymentRequest(windowLocalStorageIdentifier) {
     const supportedInstruments = [{
       supportedMethods: 'secure-payment-confirmation',
       data: {
-        action: 'authenticate',
         credentialIds: [base64ToArray(window.localStorage.getItem(
           windowLocalStorageIdentifier))],
         instrument: updatedInstrument,

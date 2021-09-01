@@ -78,7 +78,6 @@ window.localStorage.setItem(
 new PaymentRequest([{
   supportedMethods: 'secure-payment-confirmation',
   data: {
-    action: 'authenticate',
     credentialIds: [Uint8Array.from(
         atob(window.localStorage.getItem('credential_identifier')),
         c => c.charCodeAt(0))],
