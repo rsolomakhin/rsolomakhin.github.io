@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--
+     - Origin trial for secure payment confirmation:
+     - https://developer.chrome.com/origintrials/#/view_trial/2735936773627576321
+     -->
+  <meta http-equiv="origin-trial"
+    content="Al8eCVNdKr1+VUt1pyCfb5LMmg3MxpEw9EfcnY8jYtMryHHukZG6lDxVeRjL8bpEGT+cXeK4rM4WMDaixmUueQAAAAB9eyJvcmlnaW4iOiJodHRwczovL3Jzb2xvbWFraGluLmdpdGh1Yi5pbzo0NDMiLCJmZWF0dXJlIjoiU2VjdXJlUGF5bWVudENvbmZpcm1hdGlvblYyIiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=">
+  <title>Secure Payment Confirmation: Can Make Payment Check</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>Secure Payment Confirmation: Can Make Payment Check</h1>
+  </div>
+  <pre id="msg"></pre>
+  <p>The page makes the following request on load:
+  <pre style="color: #265289">new PaymentRequest([{
+  supportedMethods: 'secure-payment-confirmation',
+  data: {
+    credentialIds: [textEncoder.encode('0')],
+    instrument: {
+      displayName: 'Display name',
+      icon: 'https://rsolomakhin.github.io/pr/spc/troy-alt-logo.png',
+    },
+    challenge: textEncoder.encode('0'),
+    timeout: 60000,
+    payeeOrigin: window.location.origin,
+  },
+}], {
+  total: {
+    label: 'Total',
+    amount: {
+      currency: 'USD',
+      value: '0.01',
+    },
+  },
+}).canMakePayment();</pre>
+  </p>
+  <p><a href="https://github.com/w3c/secure-payment-confirmation">Docs</a></p>
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+  <script>
+    checkCanMakePayment();
+  </script>
+</body>
+
+</html>
