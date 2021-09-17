@@ -70,7 +70,7 @@ function check() {
               .get('instrument-key')
               .then(instrument => {
                 document.getElementById('method').innerHTML =
-                  instrument.enabledMethods || instrument.method;
+                  instrument.method;
                 document.getElementById('network').innerHTML =
                   instrument.capabilities.supportedNetworks;
                 document.getElementById('type').innerHTML =
@@ -115,7 +115,6 @@ function install() {
             registration.paymentManager.instruments
                 .set('instrument-key', {
                     name: 'Chrome uses name and icon from the web app manifest',
-                    enabledMethods: ['basic-card'],
                     method: 'basic-card',
                     capabilities: {
                         supportedNetworks: ['visa'],
@@ -125,7 +124,7 @@ function install() {
                 .then(() => {
                     registration.paymentManager.instruments.get('instrument-key').then((instrument) => {
                         document.getElementById('scope').innerHTML = registration.scope;
-                        document.getElementById('method').innerHTML = instrument.enabledMethods || instrument.method;
+                        document.getElementById('method').innerHTML = instrument.method;
                         document.getElementById('network').innerHTML = instrument.capabilities.supportedNetworks;
                         document.getElementById('type').innerHTML = instrument.capabilities.supportedTypes;
                         hideElement('installing');
