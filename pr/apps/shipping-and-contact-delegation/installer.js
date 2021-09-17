@@ -141,8 +141,7 @@ function setInstruments(registration) {
         registration.paymentManager.instruments.get('instrument-key')
             .then(instrument => {
               document.getElementById('scope').innerHTML = registration.scope;
-              document.getElementById('method').innerHTML =
-                  instrument.method;
+              document.getElementById('method').innerHTML = instrument.method;
               document.getElementById('network').innerHTML =
                   instrument.capabilities.supportedNetworks;
               hideElement('installing');

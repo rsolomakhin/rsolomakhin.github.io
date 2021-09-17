@@ -69,8 +69,7 @@ function check() {
             registration.paymentManager.instruments
               .get('instrument-key')
               .then(instrument => {
-                document.getElementById('method').innerHTML =
-                  instrument.method;
+                document.getElementById('method').innerHTML = instrument.method;
                 document.getElementById('network').innerHTML =
                   instrument.capabilities.supportedNetworks;
                 document.getElementById('type').innerHTML =
