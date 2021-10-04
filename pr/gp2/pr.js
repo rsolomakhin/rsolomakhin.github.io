@@ -54,6 +54,10 @@ function buildPaymentRequest() {
         value: '1.00',
       },
     },
+    displayItems: [
+      { label: 'Widget #1', amount: { currency: 'USD', value: '0.75' }, },
+      { label: 'Widget #2', amount: { currency: 'USD', value: '0.25' }, },
+    ],
   };
 
   let request = null;
