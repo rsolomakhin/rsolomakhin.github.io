@@ -319,7 +319,7 @@
       const paymentsClient = getGooglePaymentsClient();
       const button = paymentsClient.createButton({
         onClick: onGooglePaymentButtonClicked,
-        buttonType: 'checkout',
+        buttonType: 'buy',
       });
       document.getElementById('container').appendChild(button);
     }
