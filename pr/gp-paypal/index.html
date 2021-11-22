@@ -68,14 +68,6 @@
     };
 
     /**
-     * Card networks supported by your site and your gateway
-     *
-     * @see {@link https://developers.google.com/pay/api/web/reference/request-objects#CardParameters|CardParameters}
-     * @todo confirm card networks supported by your site and gateway
-     */
-    const allowedCardNetworks = ["AMEX", "DISCOVER", "JCB", "MASTERCARD", "VISA"];
-
-    /**
      * Card authentication methods supported by your site and your gateway
      *
      * @see {@link https://developers.google.com/pay/api/web/reference/request-objects#CardParameters|CardParameters}
@@ -98,20 +90,6 @@
       parameters: {
         'gateway': 'example',
         'gatewayMerchantId': 'exampleGatewayMerchantId'
-      }
-    };
-
-    /**
-     * Describe your site's support for the CARD payment method and its required
-     * fields
-     *
-     * @see {@link https://developers.google.com/pay/api/web/reference/request-objects#CardParameters|CardParameters}
-     */
-    const baseCardPaymentMethod = {
-      type: 'CARD',
-      parameters: {
-        allowedAuthMethods: allowedCardAuthMethods,
-        allowedCardNetworks: allowedCardNetworks
       }
     };
 
