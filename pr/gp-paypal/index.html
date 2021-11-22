@@ -306,19 +306,7 @@
      * ability to pay.
      */
     function onGooglePayLoaded() {
-      const paymentsClient = getGooglePaymentsClient();
-      paymentsClient.isReadyToPay(getGoogleIsReadyToPayRequest())
-          .then(function(response) {
-            if (response.result) {
-              addGooglePayButton();
-              // @todo prefetch payment data to improve performance after confirming site functionality
-              // prefetchGooglePaymentData();
-            }
-          })
-          .catch(function(err) {
-            // show error in developer console for debugging
-            console.error(err);
-          });
+      addGooglePayButton();
     }
 
     /**
