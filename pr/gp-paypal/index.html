@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Google Pay Dynamic Update Test</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>Google Pay Dynamic Update Test</h1>
+    <p>This page can be used to test Google Pay API version 2.0 with the Dynamic Update feature.
+    No payment will be processed.</p>
+    <p>Price: USD <strong>$1.00</strong></p>
+    <div id="container"></div>
+    <p><button onclick="openFullscreen()">Open full screen</button></p>
+    <p><button onclick="closeFullscreen()">Close full screen</button></p>
+  </div>
+  <pre id="msg"></pre>
+  <p>Based on the <a
+  href="https://developers.google.com/pay/api/web/guides/tutorial">Google Pay
+  tutorial</a>.</p>
+  <script src="../util.js"></script>
+  <script src="/redirect.js"></script>
+  <script
+      async
+      src="https://pay.google.com/gp/p/js/pay.js"
+      onload="onGooglePayLoaded()">
+  </script>
+  <script type="text/javascript">
+    /* Get the documentElement (<html>) to display the page in fullscreen */
+    var elem = document.documentElement;
+
+    /* View in fullscreen */
+    function openFullscreen() {
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) { /* Safari */
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) { /* IE11 */
+        elem.msRequestFullscreen();
+      }
+    }
+
+    /* Close fullscreen */
+    function closeFullscreen() {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) { /* Safari */
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) { /* IE11 */
+        document.msExitFullscreen();
+      }
+    }
+
+    /**
+     * Define the version of the Google Pay API referenced when creating your
+     * configuration
+     *
+     * @see {@link https://developers.google.com/pay/api/web/reference/request-objects#PaymentDataRequest|apiVersion in PaymentDataRequest}
+     */
+    const baseRequest = {
+      apiVersion: 2,
+      apiVersionMinor: 0
+    };
+
+    /**
+     * Card networks supported by your site and your gateway
+     *
+     * @see {@link https://developers.google.com/pay/api/web/reference/request-objects#CardParameters|CardParameters}
+     * @todo confirm card networks supported by your site and gateway
+     */
+    const allowedCardNetworks = ["AMEX", "DISCOVER", "JCB", "MASTERCARD", "VISA"];
+
+    /**
+     * Card authentication methods supported by your site and your gateway
+     *
+     * @see {@link https://developers.google.com/pay/api/web/reference/request-objects#CardParameters|CardParameters}
+     * @todo confirm your processor supports Android device tokens for your
+     * supported card networks
+     */
+    const allowedCardAuthMethods = ["PAN_ONLY", "CRYPTOGRAM_3DS"];
+
+    /**
+     * Identify your gateway and your site's gateway merchant identifier
+     *
+     * The Google Pay API response will return an encrypted payment method capable
+     * of being charged by a supported gateway after payer authorization
+     *
+     * @todo check with your gateway on the parameters to pass
+     * @see {@link https://developers.google.com/pay/api/web/reference/request-objects#gateway|PaymentMethodTokenizationSpecification}
+     */
+    const tokenizationSpecification = {
+      type: 'PAYMENT_GATEWAY',
+      parameters: {
+        'gateway': 'example',
+        'gatewayMerchantId': 'exampleGatewayMerchantId'
+      }
+    };
+
+    /**
+     * Describe your site's support for the CARD payment method and its required
+     * fields
+     *
+     * @see {@link https://developers.google.com/pay/api/web/reference/request-objects#CardParameters|CardParameters}
+     */
+    const baseCardPaymentMethod = {
+      type: 'CARD',
+      parameters: {
+        allowedAuthMethods: allowedCardAuthMethods,
+        allowedCardNetworks: allowedCardNetworks
+      }
+    };
+
+    /**
+     * Describe your site's support for the CARD payment method including optional
+     * fields
+     *
+     * @see {@link https://developers.google.com/pay/api/web/reference/request-objects#CardParameters|CardParameters}
+     */
+    const cardPaymentMethod = {
+      type: 'PAYPAL',
+      parameters: {
+        purchase_context: {
+          payment_intent: 'AUTHORIZE', // Or 'CAPTURE'.
+          purchase_units: [{
+            description: 'Test Transaction',
+            payee: {
+              // Please use your own PayPal merchant ID.
+              merchant_id: '7CVBPVJ6XSJNA',
+            },
+          }],
+        },
+      },
+      tokenizationSpecification: {
+        type: 'DIRECT',
+      },
+    }
+
+    /**
+     * An initialized google.payments.api.PaymentsClient object or null if not yet set
+     *
+     * @see {@link getGooglePaymentsClient}
+     */
+    let paymentsClient = null;
+
+    /**
+     * Configure your site's support for payment methods supported by the Google Pay
+     * API.
+     *
+     * Each member of allowedPaymentMethods should contain only the required fields,
+     * allowing reuse of this base request when determining a viewer's ability
+     * to pay and later requesting a supported payment method
+     *
+     * @returns {object} Google Pay API version, payment methods supported by the site
+     */
+    function getGoogleIsReadyToPayRequest() {
+      return cardPaymentMethod;
+    }
+
+    /**
+     * Configure support for the Google Pay API
+     *
+     * @see {@link https://developers.google.com/pay/api/web/reference/request-objects#PaymentDataRequest|PaymentDataRequest}
+     * @returns {object} PaymentDataRequest fields
+     */
+    function getGooglePaymentDataRequest() {
+      const paymentDataRequest = Object.assign({}, baseRequest);
+      paymentDataRequest.allowedPaymentMethods = [cardPaymentMethod];
+      paymentDataRequest.transactionInfo = getGoogleTransactionInfo();
+      paymentDataRequest.merchantInfo = {
+        // @todo a merchant ID is available for a production environment after approval by Google
+        // See {@link https://developers.google.com/pay/api/web/guides/test-and-deploy/integration-checklist|Integration checklist}
+        merchantId: '04815916544974054686',
+        merchantName: 'testApp Payment Request'
+      };
+
+      paymentDataRequest.callbackIntents = ["SHIPPING_ADDRESS",  "SHIPPING_OPTION", "PAYMENT_AUTHORIZATION"];
+      paymentDataRequest.shippingAddressRequired = true;
+      paymentDataRequest.shippingAddressParameters = getGoogleShippingAddressParameters();
+      paymentDataRequest.shippingOptionRequired = true;
+
+      return paymentDataRequest;
+    }
+
+    /**
+     * Return an active PaymentsClient or initialize
+     *
+     * @see {@link https://developers.google.com/pay/api/web/reference/client#PaymentsClient|PaymentsClient constructor}
+     * @returns {google.payments.api.PaymentsClient} Google Pay API client
+     */
+    function getGooglePaymentsClient() {
+      if ( paymentsClient === null ) {
+        paymentsClient = new google.payments.api.PaymentsClient({
+          environment: "TEST",
+          merchantInfo: {
+            merchantName: "Example Merchant",
+            merchantId: "01234567890123456789"
+          },
+          paymentDataCallbacks: {
+            onPaymentAuthorized: onPaymentAuthorized,
+            onPaymentDataChanged: onPaymentDataChanged
+          }
+        });
+      }
+      return paymentsClient;
+    }
+
+
+    function onPaymentAuthorized(paymentData) {
+      return new Promise(function(resolve, reject){
+
+      // handle the response
+      console.log('onPaymentAuthorized')
+      console.log(paymentData)
+      processPayment(paymentData)
+        .then(function() {
+          resolve({transactionState: 'SUCCESS'});
+        })
+        .catch(function() {
+            resolve({
+            transactionState: 'ERROR',
+            error: {
+              intent: 'PAYMENT_AUTHORIZATION',
+              message: 'Insufficient funds',
+              reason: 'PAYMENT_DATA_INVALID'
+            }
+          });
+        });
+
+      });
+    }
+
+    /**
+     * Handles dynamic buy flow shipping address and shipping options callback intents.
+     *
+     * @param {object} itermediatePaymentData response from Google Pay API a shipping address or shipping option is selected in the payment sheet.
+     * @see {@link https://developers.google.com/pay/api/web/reference/response-objects#IntermediatePaymentData|IntermediatePaymentData object reference}
+     *
+     * @see {@link https://developers.google.com/pay/api/web/reference/response-objects#PaymentDataRequestUpdate|PaymentDataRequestUpdate}
+     * @returns Promise<{object}> Promise of PaymentDataRequestUpdate object to update the payment sheet.
+     */
+    function onPaymentDataChanged(intermediatePaymentData) {
+      return new Promise(function(resolve, reject) {
+
+        let shippingAddress = intermediatePaymentData.shippingAddress;
+        let shippingOptionData = intermediatePaymentData.shippingOptionData;
+        let paymentDataRequestUpdate = {};
+        
+        console.log('onPaymentDataChanged intermediate payment data')
+        console.log(intermediatePaymentData)
+
+        if (intermediatePaymentData.callbackTrigger == "INITIALIZE" || intermediatePaymentData.callbackTrigger == "SHIPPING_ADDRESS") {
+          if(shippingAddress.administrativeArea == "NJ")  {
+            paymentDataRequestUpdate.error = getGoogleUnserviceableAddressError();
+          }
+          else {
+            paymentDataRequestUpdate.newShippingOptionParameters = getGoogleDefaultShippingOptions();
+            let selectedShippingOptionId = paymentDataRequestUpdate.newShippingOptionParameters.defaultSelectedOptionId;
+            paymentDataRequestUpdate.newTransactionInfo = calculateNewTransactionInfo(selectedShippingOptionId);
+          }
+        }
+        else if (intermediatePaymentData.callbackTrigger == "SHIPPING_OPTION") {
+          paymentDataRequestUpdate.newTransactionInfo = calculateNewTransactionInfo(shippingOptionData.id);
+        }
+
+        console.log(paymentDataRequestUpdate)
+
+        resolve(paymentDataRequestUpdate);
+      });
+    }
+
+    /**
+     * Helper function to create a new TransactionInfo object.
+
+     * @param string shippingOptionId respresenting the selected shipping option in the payment sheet.
+     *
+     * @see {@link https://developers.google.com/pay/api/web/reference/request-objects#TransactionInfo|TransactionInfo}
+     * @returns {object} transaction info, suitable for use as transactionInfo property of PaymentDataRequest
+     */
+    function calculateNewTransactionInfo(shippingOptionId) {
+      let newTransactionInfo = getGoogleTransactionInfo();
+
+      let shippingCost = getShippingCosts()[shippingOptionId];
+      newTransactionInfo.displayItems.push({
+        type: "LINE_ITEM",
+        label: "Shipping cost",
+        price: shippingCost,
+        status: "FINAL"
+      });
+
+      let totalPrice = 0.00;
+      newTransactionInfo.displayItems.forEach(displayItem => totalPrice += parseFloat(displayItem.price));
+      newTransactionInfo.totalPrice = totalPrice.toString();
+
+      return newTransactionInfo;
+    }
+
+    /**
+     * Initialize Google PaymentsClient after Google-hosted JavaScript has loaded
+     *
+     * Display a Google Pay payment button after confirmation of the viewer's
+     * ability to pay.
+     */
+    function onGooglePayLoaded() {
+      const paymentsClient = getGooglePaymentsClient();
+      paymentsClient.isReadyToPay(getGoogleIsReadyToPayRequest())
+          .then(function(response) {
+            if (response.result) {
+              addGooglePayButton();
+              // @todo prefetch payment data to improve performance after confirming site functionality
+              // prefetchGooglePaymentData();
+            }
+          })
+          .catch(function(err) {
+            // show error in developer console for debugging
+            console.error(err);
+          });
+    }
+
+    /**
+     * Add a Google Pay purchase button alongside an existing checkout button
+     *
+     * @see {@link https://developers.google.com/pay/api/web/reference/request-objects#ButtonOptions|Button options}
+     * @see {@link https://developers.google.com/pay/api/web/guides/brand-guidelines|Google Pay brand guidelines}
+     */
+    function addGooglePayButton() {
+      const paymentsClient = getGooglePaymentsClient();
+      const button = paymentsClient.createButton({
+        onClick: onGooglePaymentButtonClicked,
+        buttonType: 'checkout',
+      });
+      document.getElementById('container').appendChild(button);
+    }
+
+    /**
+     * Provide Google Pay API with a payment amount, currency, and amount status
+     *
+     * @see {@link https://developers.google.com/pay/api/web/reference/request-objects#TransactionInfo|TransactionInfo}
+     * @returns {object} transaction info, suitable for use as transactionInfo property of PaymentDataRequest
+     */
+    function getGoogleTransactionInfo() {
+      return {
+        displayItems: [
+          {
+            label: "Subtotal",
+            type: "SUBTOTAL",
+            price: "11.00",
+          },
+          {
+            label: "Tax",
+            type: "TAX",
+            price: "1.00",
+          }
+        ],
+        countryCode: 'US',
+        currencyCode: "USD",
+        totalPriceStatus: "FINAL",
+        totalPrice: "12.00",
+        totalPriceLabel: "Total"
+      };
+    }
+
+    /**
+     * Provide a key value store for shippping options.
+     */
+    function getShippingCosts() {
+      return {
+        "shipping-001": "0.00",
+        "shipping-002": "1.99",
+        "shipping-003": "10.00"
+      }
+    }
+
+    /**
+     * Provide Google Pay API with shipping address parameters when using dynamic buy flow.
+     *
+     * @see {@link https://developers.google.com/pay/api/web/reference/request-objects#ShippingAddressParameters|ShippingAddressParameters}
+     * @returns {object} shipping address details, suitable for use as shippingAddressParameters property of PaymentDataRequest
+     */
+    function getGoogleShippingAddressParameters() {
+      return  {
+        phoneNumberRequired: true
+      };
+    }
+
+    /**
+     * Provide Google Pay API with shipping options and a default selected shipping option.
+     *
+     * @see {@link https://developers.google.com/pay/api/web/reference/request-objects#ShippingOptionParameters|ShippingOptionParameters}
+     * @returns {object} shipping option parameters, suitable for use as shippingOptionParameters property of PaymentDataRequest
+     */
+    function getGoogleDefaultShippingOptions() {
+      return {
+        defaultSelectedOptionId: "shipping-001",
+        shippingOptions: [
+          {
+            "id": "shipping-001",
+            "label": "Free: Standard shipping",
+            "description": "Free Shipping delivered in 5 business days."
+          },
+          {
+            "id": "shipping-002",
+            "label": "$1.99: Standard shipping",
+            "description": "Standard shipping delivered in 3 business days."
+          },
+          {
+            "id": "shipping-003",
+            "label": "$10: Express shipping",
+            "description": "Express shipping delivered in 1 business day."
+          },
+        ]
+      };
+    }
+
+    /**
+     * Provide Google Pay API with a payment data error.
+     *
+     * @see {@link https://developers.google.com/pay/api/web/reference/response-objects#PaymentDataError|PaymentDataError}
+     * @returns {object} payment data error, suitable for use as error property of PaymentDataRequestUpdate
+     */
+    function getGoogleUnserviceableAddressError() {
+      return {
+        reason: "SHIPPING_ADDRESS_UNSERVICEABLE",
+        message: "Cannot ship to the selected address",
+        intent: "SHIPPING_ADDRESS"
+      };
+    }
+
+    /**
+     * Prefetch payment data to improve performance
+     *
+     * @see {@link https://developers.google.com/pay/api/web/reference/client#prefetchPaymentData|prefetchPaymentData()}
+     */
+    function prefetchGooglePaymentData() {
+      const paymentDataRequest = getGooglePaymentDataRequest();
+      // transactionInfo must be set but does not affect cache
+      paymentDataRequest.transactionInfo = {
+        totalPriceStatus: 'NOT_CURRENTLY_KNOWN',
+        currencyCode: 'USD'
+      };
+      const paymentsClient = getGooglePaymentsClient();
+      paymentsClient.prefetchPaymentData(paymentDataRequest);
+    }
+
+
+
+    /**
+     * Show Google Pay payment sheet when Google Pay payment button is clicked
+     */
+    function onGooglePaymentButtonClicked() {
+      const paymentDataRequest = getGooglePaymentDataRequest();
+      paymentDataRequest.transactionInfo = getGoogleTransactionInfo();
+
+      const paymentsClient = getGooglePaymentsClient();
+      paymentsClient.loadPaymentData(paymentDataRequest);
+    }
+
+    /**
+     * Process payment data returned by the Google Pay API
+     *
+     * @param {object} paymentData response from Google Pay API after user approves payment
+     * @see {@link https://developers.google.com/pay/api/web/reference/response-objects#PaymentData|PaymentData object reference}
+     */
+    function processPayment(paymentData) {
+      return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+          // show returned data in developer console for debugging
+          console.log(paymentData);
+          // @todo pass payment token to your gateway to process payment
+          paymentToken = paymentData.paymentMethodData.tokenizationData.token;
+
+          resolve({});
+        }, 3000);
+      });
+    }
+  </script>
+</body>
+
+</html>
