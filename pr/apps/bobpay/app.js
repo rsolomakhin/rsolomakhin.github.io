@@ -4,7 +4,7 @@ self.addEventListener('canmakepayment', (evt) => {
 
 self.addEventListener('paymentrequest', (evt) => {
     evt.respondWith({
-        methodName: 'https://bobpay.xyz/pay',
+        methodName: 'https://bobbucks.dev/pay',
         details: {
             token: '1234567890',
         },

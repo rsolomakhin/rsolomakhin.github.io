@@ -12,7 +12,7 @@ function buildPaymentRequest() {
   const supportedInstruments = [{
     supportedMethods: 'basic-card',
   }, {
-    supportedMethods: 'https://bobpay.xyz/pay',
+    supportedMethods: 'https://bobbucks.dev/pay',
   }];
 
   const details = {

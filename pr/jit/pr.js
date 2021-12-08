@@ -9,7 +9,7 @@ function buildPaymentRequest() {
 
   const supportedInstruments = [{
     supportedMethods: 
-      'https://bobpay.xyz/pay',
+      'https://bobbucks.dev/pay',
     
   }];
 

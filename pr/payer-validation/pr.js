@@ -44,7 +44,7 @@ function buildPaymentRequest() {
       },
     },
   }, {
-    supportedMethods: 'https://bobpay.xyz/pay',
+    supportedMethods: 'https://bobbucks.dev/pay',
   }, {
     supportedMethods: 'basic-card',
   }];

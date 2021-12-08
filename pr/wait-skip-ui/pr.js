@@ -11,7 +11,7 @@ function buildPaymentRequest() {
   }
 
   var supportedInstruments = [{
-    supportedMethods: 'https://bobpay.xyz/pay'
+    supportedMethods: 'https://bobbucks.dev/pay'
   }];
 
   var details = {
