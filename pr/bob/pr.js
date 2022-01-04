@@ -8,7 +8,7 @@ function buildPaymentRequest() {
   }
 
   const supportedInstruments = [{
-    supportedMethods: 'https://bobbucks.dev/pay/manifest.json'
+    supportedMethods: 'https://bobbucks.dev/pay'
   },
   {
     supportedMethods: 'interledger'
