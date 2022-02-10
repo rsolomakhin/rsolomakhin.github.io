@@ -108,3 +108,16 @@ function done(message, resp) {  // eslint-disable-line no-unused-vars
 function clearAllMessages() {  // eslint-disable-line no-unused-vars
   document.getElementById('msg').innerHTML = '';
 }
+
+let options = {
+  types: ['deprecation'],
+  buffered: true
+}
+
+let observer = new ReportingObserver(function(reports, observer) {
+  for (const report of reports) {
+    error(report);
+  }
+}, options);
+
+observer.observe();
