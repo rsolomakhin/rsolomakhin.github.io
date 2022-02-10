@@ -116,7 +116,7 @@ let options = {
 
 let observer = new ReportingObserver(function(reports, observer) {
   for (const report of reports) {
-    error(report.type + ": "+ report.body);
+    error(report.type + ": "+ JSON.stringify(report.body));
   }
 }, options);
 
