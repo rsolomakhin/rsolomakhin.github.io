@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>isReadyToPay + Third-Party Cookies</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>isReadyToPay + Third-Party Cookies</h1>
+    <p>
+      This page can be used to test Google Pay's <code>pay.js</code> in
+      <em>live</em> environment. No payment will be processed.
+      <a href="pr.js">View source</a>.
+    </p>
+
+    <p>
+      This page shows the reliance of isReadyToPay's
+      <code>existingPaymentMethodRequired</code> parameter on third-party
+      cookies. In a browser with third-party cookies disabled, the GPay button
+      below won't load, even if you are signed into Google and have a matching
+      payment method available.
+    </p>
+
+    <div>response.result: <span id="result"></span></div>
+    <div>response.paymentMethodPresent: <span id="paymentMethodPresent"></span></div>
+  </div>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+  <script
+    async
+    src="https://pay.google.com/gp/p/js/pay.js"
+    onload="addPayButton()">
+  </script>
+</body>
+</html>
