@@ -17,6 +17,7 @@ async function checkCanMakePayment() {
         challenge: textEncoder.encode('0'),
         timeout: 60000,
         payeeOrigin: window.location.origin,
+        rpId: window.location.hostname,
       },
     }], {
       total: {label: 'Total', amount: {currency: 'USD', value: '0.01'}},

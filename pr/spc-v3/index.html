@@ -4,12 +4,6 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--
-     - Origin trial for secure payment confirmation:
-     - https://developer.chrome.com/origintrials/#/view_trial/2735936773627576321
-     -->
-  <meta http-equiv="origin-trial"
-    content="AoVd6eSS6T060apjDiR0Pfx3RYMPeliXGkTvpR1y4YHHhYyXu+ilT/phf/PsRrxkod7C0T1kUjGHQ3kj9yUSVQAAAABqeyJvcmlnaW4iOiJodHRwczovL3Jzb2xvbWFraGluLmdpdGh1Yi5pbzo0NDMiLCJmZWF0dXJlIjoiU2VjdXJlUGF5bWVudENvbmZpcm1hdGlvblYyIiwiZXhwaXJ5IjoxNjQwOTk1MTk5fQ==">
   <title>Secure Payment Confirmation</title>
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" type="text/css" href="../style.css">
@@ -23,18 +17,9 @@
     <pre>
   Secure Payment Confirmation has been enabled by default since Chrome 95. Chrome 94 still needs an Origin Trial token to support SPC. The Origin Trial will end by the end of 2021.
     </pre>
-    <p><button onclick="createPaymentCredential('Credential #1')">Enroll
-        Credential #1</button></p>
-    <p><button onclick="createPaymentCredential('Credential #2')">Enroll
-        Credential #2</button></p>
-    <p><button onclick="onBuyClicked('Credential #1')">Pay $0.01</button> (with
-      credential #1)</p>
-    <p><button onclick="onBuyClicked('Credential #2')">Pay $0.01</button> (with
-      credential #2)</p>
-    <p><button onclick="webAuthnGet('Credential #1')">Login</button> (with
-      credential #1)</button></p>
-    <p><button onclick="webAuthnGet('Credential #2')">Login</button> (with
-      credential #2)</button></p>
+    <p><button onclick="createPaymentCredential()">Enroll
+        Credential</button></p>
+    <p><button onclick="onBuyClicked()">Pay $0.01</button></p>
   </div>
   <pre id="msg"></pre>
   <p><em>Enroll Credential</em> will make the following request:
@@ -109,11 +94,13 @@ window.localStorage.setItem(
         c => c.charCodeAt(0))],
     instrument: {
       displayName: 'My Troy Card',
-      icon: 'https://rsolomakhin.github.io/pr/spc/troy-alt-logo.png',
+      icon: 'https://example.com/no-icon.png',
+      iconMustBeShown: false,
     },
     challenge: textEncoder.encode('network_data'),
     timeout: 60000,
     payeeOrigin: window.location.origin,
+    payeeName: 'Example Merchant',
     rpId: window.location.hostname,
   },
 }], {
@@ -147,7 +134,7 @@ navigator.credentials.get({publicKey});</pre>
   <script src="pr.js"></script>
   <script src="/redirect.js"></script>
   <script>
-    checkCanMakePayment('Credential #1');
+    checkCanMakePayment();
   </script>
 </body>
 

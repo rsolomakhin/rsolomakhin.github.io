@@ -30,6 +30,7 @@ async function buildPaymentRequest() {
         challenge: textEncoder.encode('challenge'),
         timeout: 60000,
         payeeOrigin: window.location.origin,
+        rpId: window.location.hostname,
       },
     }];
 

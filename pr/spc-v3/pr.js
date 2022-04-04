@@ -193,13 +193,13 @@ async function createCredentialCompat() {
 /**
  * Creates a payment credential.
  */
-async function createPaymentCredential(windowLocalStorageIdentifier) {
+async function createPaymentCredential() {
   try {
     const publicKeyCredential = await createCredentialCompat();
     console.log(publicKeyCredential);
-    window.localStorage.setItem(windowLocalStorageIdentifier,
+    window.localStorage.setItem('credential_identifier',
       arrayBufferToBase64(publicKeyCredential.rawId));
-    info(windowLocalStorageIdentifier + ' enrolled: ' + objectToString(
+    info('credential enrolled: ' + objectToString(
       publicKeyCredential));
   } catch (err) {
     error(err);
@@ -209,7 +209,7 @@ async function createPaymentCredential(windowLocalStorageIdentifier) {
  * Initializes the payment request object.
  * @return {PaymentRequest} The payment request object.
  */
-async function buildPaymentRequest(windowLocalStorageIdentifier) {
+async function buildPaymentRequest() {
   if (!window.PaymentRequest) {
     return null;
   }
@@ -220,18 +220,20 @@ async function buildPaymentRequest(windowLocalStorageIdentifier) {
     const challenge = textEncoder.encode('network_data');
     const updatedInstrument = {
       displayName: 'My Troy Card',
-      icon: 'https://rsolomakhin.github.io/pr/spc/troy-alt-logo.png',
+      icon: 'https://example.com/no-icon.png',
+      iconMustBeShown: false,
     };
     const supportedInstruments = [{
       supportedMethods: 'secure-payment-confirmation',
       data: {
         credentialIds: [base64ToArray(window.localStorage.getItem(
-          windowLocalStorageIdentifier))],
+          'credential_identifier'))],
         instrument: updatedInstrument,
         networkData: challenge,
         challenge,
         timeout: 60000,
         payeeOrigin: window.location.origin,
+        payeeName: 'Example Merchant',
         rpId: window.location.hostname,
       },
     }];
@@ -253,55 +255,33 @@ async function buildPaymentRequest(windowLocalStorageIdentifier) {
 /**
  * Launches payment request for Android Pay.
  */
-async function onBuyClicked(windowLocalStorageIdentifier) {
+async function onBuyClicked() {
   if (!window.PaymentRequest) {
     error('PaymentRequest API is not supported.');
     return;
   }
-  const request = await buildPaymentRequest(windowLocalStorageIdentifier);
+  const request = await buildPaymentRequest();
   if (!request) return;
   try {
     const instrumentResponse = await request.show();
     await instrumentResponse.complete('success')
     console.log(instrumentResponse);
-    info(windowLocalStorageIdentifier + ' payment response: ' +
+    info('payment response: ' +
       objectToString(instrumentResponse));
   } catch (err) {
     error(err);
   }
 }
-async function checkCanMakePayment(windowLocalStorageIdentifier) {
+async function checkCanMakePayment() {
   if (!window.PaymentRequest) {
     error('PaymentRequest API is not supported.');
     return;
   }
   try {
-    const request = await buildPaymentRequest(windowLocalStorageIdentifier);
+    const request = await buildPaymentRequest();
     if (!request) return;
     const result = await request.canMakePayment();
     info((result ? 'Can make payment.' : 'Cannot make payment'));
-  } catch (err) {
-    error(err);
-  }
-}
-async function webAuthnGet(windowLocalStorageIdentifier) {
-  try {
-    const publicKey = {
-      challenge: textEncoder.encode('Authentication challenge'),
-      userVerification: 'required',
-      allowCredentials: [{
-        transports: ['internal'],
-        type: 'public-key',
-        id: base64ToArray(window.localStorage.getItem(
-          windowLocalStorageIdentifier)),
-      }, ],
-    };
-    const credentialInfoAssertion = await navigator.credentials.get({
-      publicKey
-    });
-    console.log(credentialInfoAssertion);
-    info('Successful login with ' + windowLocalStorageIdentifier + ': ' +
-      objectToString(credentialInfoAssertion));
   } catch (err) {
     error(err);
   }
