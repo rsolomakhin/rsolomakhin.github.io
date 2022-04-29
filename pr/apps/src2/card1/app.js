@@ -48,6 +48,7 @@ self.addEventListener('canmakepayment', (evt) => {
   if (evt.methodData && evt.methodData.length !== 1) {
     console.log('Did not expect ' + str(evt.methodData.length) + ' methods.');
   }
+  evt.respondWith(true);
 });
 
 self.addEventListener('paymentrequest', (evt) => {
