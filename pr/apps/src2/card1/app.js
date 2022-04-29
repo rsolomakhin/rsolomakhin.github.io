@@ -36,10 +36,10 @@ self.addEventListener('message', (evt) => {
 });
 
 self.addEventListener('canmakepayment', (evt) => {
-  if (evt.topOrigin !== 'https://rsolomakhin.github.io') {
+  if (evt.topOrigin !== 'https://rsolomakhin.github.io/') {
     console.log('Hi ' + evt.topOrigin + '!');
   }
-  if (evt.paymentRequestOrigin !== 'https://rsolomakhin.github.io' && evt.paymentRequestOrigin !== evt.topOrigin) {
+  if (evt.paymentRequestOrigin !== 'https://rsolomakhin.github.io/' && evt.paymentRequestOrigin !== evt.topOrigin) {
     console.log('Hi ' + evt.paymentRequestOrigin + '!');
   }
   if (evt.modifiers && evt.modifiers.length > 0) {
