@@ -35,6 +35,21 @@ self.addEventListener('message', (evt) => {
   }
 });
 
+self.addEventListener('canmakepayment', (evt) => {
+  if (evt.topOrigin !== 'https://rsolomakhin.github.io') {
+    console.log('Hi ' + evt.topOrigin + '!');
+  }
+  if (evt.paymentRequestOrigin !== 'https://rsolomakhin.github.io' && evt.paymentRequestOrigin !== evt.topOrigin) {
+    console.log('Hi ' + evt.paymentRequestOrigin + '!');
+  }
+  if (evt.modifiers && evt.modifiers.length > 0) {
+    console.log('Modifiers are present.');
+  }
+  if (evt.methodData && evt.methodData.length !== 1) {
+    console.log('Did not expect ' + str(evt.methodData.length) + ' methods.');
+  }
+});
+
 self.addEventListener('paymentrequest', (evt) => {
     evt.respondWith(new Promise((resolve) => {
       self.resolver = resolve;
