@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secure Payment Confirmation - Opt Out Demo</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>Secure Payment Confirmation - Opt out</h1>
+    <p>This is a test website. Nothing is charged.</p>
+    <p><b style="color:red">Notice</b>:</p>
+    <pre>
+  Opt Out support is still experimental. You will need Chrome Canary, with the --enable-blink-features=SecurePaymentConfirmationOptOut flag set.
+    </pre>
+    <p><button onclick="createPaymentCredential('Credential #1')">Enroll
+        Credential #1</button></p>
+    <p><button onclick="onBuyClicked('Credential #1', true)">Pay $0.01</button>
+      (opt-out enabled)</p>
+    <p><button onclick="onBuyClicked('Credential #1', false)">Pay $0.01</button>
+      (opt-out disabled)</p>
+    <p><button onclick="onBuyClicked('Non-Existant Credential', true)">No matching credentials</button>
+      (opt-out enabled)</p>
+    <p><button onclick="onBuyClicked('Non-Existant Credential', false)">No matching credentials</button>
+      (opt-out disabled)</p>
+  </div>
+  <pre id="msg"></pre>
+
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+  <script>
+    checkCanMakePayment('Credential #1');
+  </script>
+</body>
+
+</html>
