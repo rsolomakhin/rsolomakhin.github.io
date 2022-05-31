@@ -231,7 +231,7 @@ async function buildPaymentRequest(windowLocalStorageIdentifier, showOptOut) {
         networkData: challenge,
         challenge,
         timeout: 60000,
-        payeeOrigin: window.location.origin,
+        payeeOrigin: 'store.example',
         rpId: window.location.hostname,
         showOptOut: !!showOptOut,
       },
