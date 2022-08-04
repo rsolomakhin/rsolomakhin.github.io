@@ -199,10 +199,10 @@ function isDiscoverable(publicKeyCredential) {
     return 'unknown (no getClientExtensionResults function)';
   }
   const results = publicKeyCredential.getClientExtensionResults();
-  if (!results.credProps) {
+  if (results.credProps === undefined) {
     return 'unknown (no credProps in output)';
   }
-  if (!results.credProps.rk) {
+  if (results.credProps.rk === undefined) {
     return 'unknown (no rk member in credProps output)';
   }
   return results.credProps.rk ? 'true' : 'false';
