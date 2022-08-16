@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secure Payment Confirmation - Credential enrollment on Android test</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>Secure Payment Confirmation</h1>
+    <p>This is a test website.</p>
+    </pre>
+    <p><button onclick="createCredential('Credential #1', /*paymentExtension=*/false)">Create
+        Credential</button></p>
+    <p><button onclick="createCredential('Credential #2', /*paymentExtension=*/true)">Create
+        Credential (with payment extension)</button></p>
+  </div>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+</body>
+
+</html>
