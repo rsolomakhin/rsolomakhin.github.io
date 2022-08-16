@@ -134,6 +134,18 @@ function objectToString(input) {
   return JSON.stringify(objectToDictionary(input), undefined, 2);
 }
 
+// Return whether or not SPC supports residentKey 'preferred' (instead of just
+// 'required'). There is unfortunately no way to feature detect this, so we
+// have to do a version check.
+function spcSupportsPreferred() {
+  // This will be true for not just Chrome but also Edge/etc, but that's fine.
+  const match = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
+  const version = parseInt(match[2], 10);
+  // https://crrev.com/130fada41 landed in 106.0.5228.0, but we assume that any
+  // 106 will do for simplicity.
+  return version >= 106;
+}
+
 async function createCredentialCompat() {
   const rp = {
     id: window.location.hostname,
@@ -175,7 +187,7 @@ async function createCredentialCompat() {
       pubKeyCredParams,
       authenticatorSelection: {
         userVerification: 'required',
-        residentKey: 'required',
+        residentKey: spcSupportsPreferred() ? 'preferred' : 'required',
         authenticatorAttachment: 'platform',
       },
       extensions: {
