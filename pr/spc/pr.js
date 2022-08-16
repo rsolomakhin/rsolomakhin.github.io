@@ -140,6 +140,9 @@ function objectToString(input) {
 function spcSupportsPreferred() {
   // This will be true for not just Chrome but also Edge/etc, but that's fine.
   const match = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
+  if (!match)
+    return false;
+
   const version = parseInt(match[2], 10);
   // https://crrev.com/130fada41 landed in 106.0.5228.0, but we assume that any
   // 106 will do for simplicity.
