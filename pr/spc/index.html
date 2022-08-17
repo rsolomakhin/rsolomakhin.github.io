@@ -71,7 +71,7 @@ async function createCredentialCompat() {
       pubKeyCredParams,
       authenticatorSelection: {
         userVerification: 'required',
-        residentKey: 'required',
+        residentKey: spcSupportsPreferred() ? 'preferred' : 'required',
         authenticatorAttachment: 'platform',
       },
       extensions: {
