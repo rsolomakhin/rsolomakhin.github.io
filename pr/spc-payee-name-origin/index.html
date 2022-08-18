@@ -15,13 +15,13 @@
     <p>This is a test website. Nothing is charged.</p>
     <p><button onclick="createPaymentCredential('Credential #1')">Enroll
         Credential</button></p>
-    <p><button onclick="onBuyClicked('Credential #1', 'My Store', null)">Pay $0.01</button>
+    <p><button onclick="onBuyClicked('Credential #1', 'My Store', undefined)">Pay $0.01</button>
       (payeeName only)</p>
-    <p><button onclick="onBuyClicked('Credential #1', null, 'store.example')">Pay $0.01</button>
+    <p><button onclick="onBuyClicked('Credential #1', undefined, 'https://store.example')">Pay $0.01</button>
       (payeeOrigin only)</p>
-    <p><button onclick="onBuyClicked('Credential #1', 'My Store', 'store.example')">Pay $0.01</button>
+    <p><button onclick="onBuyClicked('Credential #1', 'My Store', 'https://store.example')">Pay $0.01</button>
       (payeeName and payeeOrigin)</p>
-    <p><button onclick="onBuyClicked('Credential #1', null, null)">Pay $0.01</button>
+    <p><button onclick="onBuyClicked('Credential #1', undefined, undefined)">Pay $0.01</button>
       (neither - will fail)</p>
   </div>
   <pre id="msg"></pre>
