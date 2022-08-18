@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secure Payment Confirmation - payeeName/payeeOrigin Demo</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>Secure Payment Confirmation - payeeName/payeeOrigin</h1>
+    <p>This is a test website. Nothing is charged.</p>
+    <p><button onclick="createPaymentCredential('Credential #1')">Enroll
+        Credential</button></p>
+    <p><button onclick="onBuyClicked('Credential #1', 'My Store', null)">Pay $0.01</button>
+      (payeeName only)</p>
+    <p><button onclick="onBuyClicked('Credential #1', null, 'store.example')">Pay $0.01</button>
+      (payeeOrigin only)</p>
+    <p><button onclick="onBuyClicked('Credential #1', 'My Store', 'store.example')">Pay $0.01</button>
+      (payeeName and payeeOrigin)</p>
+    <p><button onclick="onBuyClicked('Credential #1', null, null)">Pay $0.01</button>
+      (neither - will fail)</p>
+  </div>
+  <pre id="msg"></pre>
+
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+  <script>
+    checkCanMakePayment('Credential #1');
+  </script>
+</body>
+
+</html>
