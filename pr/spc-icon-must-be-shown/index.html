@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secure Payment Confirmation - iconMustBeShown Demo</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>Secure Payment Confirmation - iconMustBeShown</h1>
+    <p>This is a test website. Nothing is charged.</p>
+    <p><button onclick="createPaymentCredential('Credential #1')">Enroll
+        Credential</button></p>
+    <p><button onclick="onBuyClicked('Credential #1', 'https://rsolomakhin.github.io/pr/spc/troy.png')">Pay $0.01</button>
+      (valid icon)</p>
+    <p><button onclick="onBuyClicked('Credential #1', 'https://rsolomakhin.github.io/nonexistent.png', false)">Pay $0.01</button>
+      (invalid icon, iconMustBeShown=false)</p>
+    <p><button onclick="onBuyClicked('Credential #1', 'https://rsolomakhin.github.io/nonexistent.png', true)">Pay $0.01</button>
+      (invalid icon, iconMustBeShown=true - will fail)</p>
+  </div>
+  <pre id="msg"></pre>
+
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+  <script>
+    checkCanMakePayment('Credential #1');
+  </script>
+</body>
+
+</html>
