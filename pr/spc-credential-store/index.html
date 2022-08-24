@@ -19,22 +19,37 @@
     <ol>
       <li>Click on 'Enroll Credential', and complete the WebAuthn prompt</li>
       <li>Copy the credential ID that is printed into the textbox, for later use</li>
-      <li>Clear the local-profile database. On Chrome (WARNING - may clear important information from your user profile! Use at your own risk):
-        <ul>
-          <li>Visit chrome://settings/clearBrowserData</li>
-          <li>Select Time range: Last Hour</li>
-          <li>Select 'Passwords and other sign-in data' only</li>
-          <li>Click Clear Data</li>
-        </ul>
-      </li>
+      <li>Clear the local-profile database*</li>
       <li>Refresh the page</li>
       <li>Paste the credential ID from step 2 into the textbox</li>
       <li>Click 'Pay $0.01'</li>
     </ol>
+
     </pre>
     <p><button onclick="createPaymentCredential()">Enroll Credential</button></p>
     <p><input id="credential" type="text" style="min-width:25em;"/></p>
     <p><button onclick="onBuyClicked()">Pay $0.01</button></p>
+    <br />
+    <br />
+    <p><b>* Clearing local-profile database</b></p>
+    <p>(WARNING - may clear important information from your user profile! Use at your own risk)</p>
+    <p>On Chrome desktop:
+      <ul>
+        <li>Visit chrome://settings/clearBrowserData</li>
+        <li>Select Time range: Last Hour</li>
+        <li>Select 'Passwords and other sign-in data' only</li>
+        <li>Click Clear Data</li>
+      </ul>
+    </p>
+    <p>On Chrome android:
+      <ul>
+        <li>Open settings (three dots →	Settings)</li>
+        <li>Scroll down, tap "Site settings"</li>
+        <li>Tap "All sites"</li>
+        <li>Find "rsolomakhin.github.io" and tap it. If not present, you're DONE</li>
+        <li>Click the 'delete' trashcan icon, and confirm.</li>
+      </ul>
+    </p>
   </div>
   <pre id="msg"></pre>
   <script src="../util.js"></script>
