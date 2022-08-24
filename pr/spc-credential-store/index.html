@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secure Payment Confirmation - credential store integration</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>Secure Payment Confirmation - credential store integration</h1>
+    <p>This is a test website. Nothing is charged.</p>
+    <p>This page allows testing credential store integrations for SPC. As of
+       August 2022, this is still in development for Android only.</p>
+    <p>To test the integration:</p>
+    <ol>
+      <li>Click on 'Enroll Credential', and complete the WebAuthn prompt</li>
+      <li>Copy the credential ID that is printed into the textbox, for later use</li>
+      <li>Clear the local-profile database. On Chrome (WARNING - may clear important information from your user profile! Use at your own risk):
+        <ul>
+          <li>Visit chrome://settings/clearBrowserData</li>
+          <li>Select Time range: Last Hour</li>
+          <li>Select 'Passwords and other sign-in data' only</li>
+          <li>Click Clear Data</li>
+        </ul>
+      </li>
+      <li>Refresh the page</li>
+      <li>Paste the credential ID from step 2 into the textbox</li>
+      <li>Click 'Pay $0.01'</li>
+    </ol>
+    </pre>
+    <p><button onclick="createPaymentCredential()">Enroll Credential</button></p>
+    <p><input id="credential" type="text" style="min-width:25em;"/></p>
+    <p><button onclick="onBuyClicked()">Pay $0.01</button></p>
+  </div>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+</body>
+
+</html>
