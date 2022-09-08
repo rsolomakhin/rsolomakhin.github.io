@@ -267,12 +267,10 @@ async function onBuyClicked(windowLocalStorageIdentifier) {
     const instrumentResponse = await request.show();
     await instrumentResponse.complete('success')
     console.log(instrumentResponse);
-    info(windowLocalStorageIdentifier + ' payment response: ' +
+    info('SPC succeeded! ' + windowLocalStorageIdentifier + ' payment response: ' +
       objectToString(instrumentResponse));
-    alert('SPC succeeded');
   } catch (err) {
-    error(err);
-    alert('SPC failed - ' + err);
+    error('SPC failed: ' + err);
   }
 }
 async function checkCanMakePayment(windowLocalStorageIdentifier) {
