@@ -27,10 +27,11 @@
     </p>
     <p><button onclick="createCredential('Credential #1', true)">Enroll
         Credential (with payment extension)</button></p>
-    <!-- Saved to local storage as Credential #2, but we user the same user id -->
-    <p><button onclick="createCredential('Credential #2', false)">Enroll
+    <!-- Saved to local storage as Credential #2, but uses the same user id -->
+    <p><button onclick="createCredential('Credential #2', false)">Overwrite
         Credential (without payment extension)</button></p>
-    <p><button onclick="onBuyClicked('Credential #1')">Trigger SPC authentication</button></p>
+    <p><button onclick="onBuyClicked('Credential #1')">Trigger SPC
+        authentication (with initial credential)</button></p>
   </div>
   <pre id="msg"></pre>
   <script src="../util.js"></script>
