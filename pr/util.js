@@ -1,31 +1,12 @@
-var timeoutID1;
-var timeoutID2;
-
 /**
  * Prints the given error message.
  * @param {string} msg - The error message to print.
  */
 function error(msg) {  // eslint-disable-line no-unused-vars
-  if (timeoutID1) {
-    window.clearTimeout(timeoutID1);
-  }
-  if (timeoutID2) {
-    window.clearTimeout(timeoutID2);
-  }
   let element = document.createElement('pre');
   element.innerHTML = msg;
   element.className = 'error';
   document.getElementById('msg').appendChild(element);
-  timeoutID1 = window.setTimeout(function() {
-    if (element.className !== 'error') {
-      return;
-    }
-    element.className = 'error-hide';
-    timeoutID2 = window.setTimeout(function() {
-      element.innerHTML = '';
-      element.className = '';
-    }, 500);
-  }, 10000);
 }
 
 /**
