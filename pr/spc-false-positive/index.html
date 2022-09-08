@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secure Payment Confirmation - False Positive match</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>Secure Payment Confirmation - False Positive match</h1>
+    <p>This is a test website. Nothing is charged.</p>
+    <p>
+      This demo tests the 'false positive' corner case in SPC when a user-agent
+      is using a local browser-cache of credential IDs. By creating a
+      discoverable credential first with the <pre>payment</pre> extension set,
+      and then overriding it with the <b>same</b> <pre>user.id</pre> but
+      <b>without</b> the <pre>payment</pre> extension, the SPC layer is tricked
+      into thinking that the credential still exists.
+    </p>
+    <p>
+      Availability and use of proper OS-level credential store APIs fixes this
+      problem.
+    </p>
+    <p><button onclick="createCredential('Credential #1', true)">Enroll
+        Credential (with payment extension)</button></p>
+    <!-- Saved to local storage as Credential #2, but we user the same user id -->
+    <p><button onclick="createCredential('Credential #2', false)">Enroll
+        Credential (without payment extension)</button></p>
+    <p><button onclick="onBuyClicked('Credential #1')">Trigger SPC authentication</button></p>
+  </div>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+</body>
+
+</html>
