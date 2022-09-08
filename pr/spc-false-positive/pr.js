@@ -269,8 +269,10 @@ async function onBuyClicked(windowLocalStorageIdentifier) {
     console.log(instrumentResponse);
     info(windowLocalStorageIdentifier + ' payment response: ' +
       objectToString(instrumentResponse));
+    alert('SPC succeeded');
   } catch (err) {
     error(err);
+    alert('SPC failed - ' + err);
   }
 }
 async function checkCanMakePayment(windowLocalStorageIdentifier) {
@@ -283,28 +285,6 @@ async function checkCanMakePayment(windowLocalStorageIdentifier) {
     if (!request) return;
     const result = await request.canMakePayment();
     info((result ? 'Can make payment.' : 'Cannot make payment'));
-  } catch (err) {
-    error(err);
-  }
-}
-async function webAuthnGet(windowLocalStorageIdentifier) {
-  try {
-    const publicKey = {
-      challenge: textEncoder.encode('Authentication challenge'),
-      userVerification: 'required',
-      allowCredentials: [{
-        transports: ['internal'],
-        type: 'public-key',
-        id: base64ToArray(window.localStorage.getItem(
-          windowLocalStorageIdentifier)),
-      }, ],
-    };
-    const credentialInfoAssertion = await navigator.credentials.get({
-      publicKey
-    });
-    console.log(credentialInfoAssertion);
-    info('Successful login with ' + windowLocalStorageIdentifier + ': ' +
-      objectToString(credentialInfoAssertion));
   } catch (err) {
     error(err);
   }

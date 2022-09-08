@@ -16,10 +16,10 @@
     <p>
       This demo tests the 'false positive' corner case in SPC when a user-agent
       is using a local browser-cache of credential IDs. By creating a
-      discoverable credential first with the <pre>payment</pre> extension set,
-      and then overriding it with the <b>same</b> <pre>user.id</pre> but
-      <b>without</b> the <pre>payment</pre> extension, the SPC layer is tricked
-      into thinking that the credential still exists.
+      discoverable credential first with the payment extension set, and then
+      overriding it with the <b>same</b> user.id but <b>without</b> the payment
+      extension, the SPC layer is tricked into thinking that the credential
+      still exists.
     </p>
     <p>
       Availability and use of proper OS-level credential store APIs fixes this
