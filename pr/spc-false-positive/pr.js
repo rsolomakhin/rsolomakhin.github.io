@@ -149,7 +149,7 @@ function spcSupportsPreferred() {
   return version >= 106;
 }
 
-async function createCredentialInner(usePaymentExtension) {
+async function createCredentialInner(userId, usePaymentExtension) {
   const rp = {
     id: window.location.hostname,
     name: 'Rouslan Solomakhin',
@@ -166,9 +166,7 @@ async function createCredentialInner(usePaymentExtension) {
     rp,
     user: {
       name: 'user@domain',
-      // Hard-coding to always use the same user ID.
-      // NOT RECOMMENDED FOR SPC
-      id: Uint8Array.from("user1234", c => c.charCodeAt(0)),
+      id: Uint8Array.from(userId, c => c.charCodeAt(0)),
       displayName: 'User',
     },
     challenge,
@@ -197,12 +195,15 @@ async function createCredentialInner(usePaymentExtension) {
  * Creates a credential.
  */
 async function createCredential(windowLocalStorageIdentifier, usePaymentExtension) {
+  // Hard-coding to always use the same user ID.
+  // NOT RECOMMENDED FOR SPC.
+  const userId = "user1234";
   try {
-    const publicKeyCredential = await createCredentialInner(usePaymentExtension);
+    const publicKeyCredential = await createCredentialInner(userId, usePaymentExtension);
     console.log(publicKeyCredential);
     window.localStorage.setItem(windowLocalStorageIdentifier,
       arrayBufferToBase64(publicKeyCredential.rawId));
-    info(windowLocalStorageIdentifier + ' enrolled (paymentExtension ? ' +
+    info(windowLocalStorageIdentifier + ' enrolled for ' + userId + ' (paymentExtension ? ' +
       usePaymentExtension  + '): ' + objectToString(publicKeyCredential));
   } catch (err) {
     error(err);
