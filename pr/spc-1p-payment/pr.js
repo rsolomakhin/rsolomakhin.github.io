@@ -246,7 +246,7 @@ async function buildPaymentRequest() {
         challenge,
         timeout: 60000,
         payeeOrigin: window.location.origin,
-        rpId: window.location.hostname,
+        rpId: 'spc-1p-payment-demo.glitch.me',
       },
     }];
     const details = {
