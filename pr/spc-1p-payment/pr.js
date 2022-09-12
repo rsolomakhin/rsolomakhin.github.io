@@ -290,4 +290,5 @@ window.addEventListener('message', e => {
   if (e.data.type !== 'enrollment') return;
   credentialId = e.data.credential;
   document.getElementById("triggerSPC").disabled = false;
+  info('Received credential ID: ' + credentialId);
 });
