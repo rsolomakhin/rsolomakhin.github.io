@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secure Payment Confirmation - First-Party payment demo</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>Secure Payment Confirmation - First-Party payment demo</h1>
+    <p>This is a test website. Nothing is charged.</p>
+    <p>
+      This demo tests the use of a 'pure' (i.e., not payment-enabled) WebAuthn
+      credential in a first-party scenario. This will not work in a naive
+      browser-cache implementation of SPC, but will work with availbility
+      and use of proper OS-level credential store APIs.
+    </p>
+    <p>To test the integration:</p>
+    <ol>
+      <li>In the iframe, click on 'Enroll Credential'</li>
+      <li>This will open a pop-up* to https://spc-1p-payment-demo.glitch.me/enroll.html</li>
+      <!-- TODO (me): I think window.opener might let us message back? -->
+      <li>Complete the credential enrollment, and the pop-up will close</li>
+      <li><b>Outside</b> of the iframe, click on 'Trigger third-party SPC'.
+          This should fail, because the credential isn't enabled for third-party payment</li>
+      <li><b>Inside</b> of the iframe, click on 'Trigger first-party SPC'. This should succeed.</li>
+    </ol>
+
+    <!-- TODO: This should only be enabled once the inner frame has messaged us -->
+    <p><button id="triggerSPC" onclick="triggerSPC()" disabled>Trigger third-party SPC</button></p>
+
+    <iframe src="https://spc-1p-payment-demo.glitch.me/"></iframe>
+
+    <p>* WebAuthn <a href="https://github.com/w3c/webauthn/issues/1656#issuecomment-1219682589">issue #1656</a>
+       tracks allowing us to do this without a new tab!
+    </p>
+  </div>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+</body>
+
+</html>
