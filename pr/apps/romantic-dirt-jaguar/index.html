@@ -12,6 +12,17 @@
 <div id="contents">
 <h1>Test for a Payment Handler with an Origin Trial that removes identity in "canmakepayment" event</h1>
 <button onclick="runTest()">Run a test</button>
+<p>To see the origin trial token on the payment handler:</p>
+<pre>
+$ curl --head https://romantic-dirt-jaguar.glitch.me/sw.js | grep origin-trial
+origin-trial: Auw/tjTQ2eJQ911wiMHi1Bb7i71hIV6v9pckwldaVyMfzpLfDhkkFI...
+</pre>
+<p>To see the console messages from "canmakepayment" event:</p>
+<ol>
+<li>Open <code>chrome://serviceworker-internals/</code>.
+<li>Find <code>Scope: https://romantic-dirt-jaguar.glitch.me/</code>.
+<li>Click the <code>[Inspect]</code> button.
+</ol>
 <pre id="msg"></pre>
 </div>
 <script>
