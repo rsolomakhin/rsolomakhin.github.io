@@ -32,7 +32,7 @@ async function runTest() {
   try {
     const response = await request.show();
     response.complete('success');
-    info(response);
+    info(JSON.stringify(response, undefined, 2));
   } catch (e) {
     error(e);
   }
