@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test for a Payment Handler with an Origin Trial that removes identity in "canmakepayment" event</title>
+<link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../style.css">
+</head>
+<body>
+<div id="contents">
+<h1>Test for a Payment Handler with an Origin Trial that removes identity in "canmakepayment" event</h1>
+<p id="checking">Checking whether the payment handler is installed...</p>
+<pre id="msg"></pre>
+</div>
+<script>
+(async function() {
+  try {
+    const request = new PaymentRequest([{supportedMethods:
+      'https://romantic-dirt-jaguar.glitch.me/pay'}], {total: {label: 'Total',
+      amount: {value: '0.01', currency: 'USD'}}});
+    info(await request.canMakePayment() ? 'Can make payment' : 'Cannot make payment');
+    const response = await request.show();
+    response.complete('success');
+    info(response);
+  } catch (e) {
+    error(e);
+  }
+})();
+</script>
+</body>
+</html>
