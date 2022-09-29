@@ -11,22 +11,30 @@
 <body>
 <div id="contents">
 <h1>Test for the "canmakepayment" identity Origin Trial</h1>
-<p>This is a test for a Payment Handler with an Origin Trial that removes
-identity in "canmakepayment" event. Click <code>[Run a test]</code> to see a
-response from the payment handler.</p>
+
+<p>This is a test for a Payment Handler with an <a
+href="https://developer.chrome.com/origintrials/#/view_trial/3462142213541068801">Origin
+Trial that removes identity in <code>"canmakepayment"</code> event</a>. Click
+<code>[Run a test]</code> to see a response from the Payment Handler.</p>
+
 <ul>
-<li>For the first run, the payment handler installs just-in-time, so its
-<code>"canmakepayment"</code> event does not run. The payment handler response
-will specify <code>"canMakePaymentRan": false</code>.
-<li>For the consequent runs, the Chrome triggers the
-<code>"canmakepayment"</code> event in the payment handler. The response will
-respond with <code>"canMakePaymentRan": true</code>.
+
+<li>For the first run, the Payment Handler installs just-in-time, so Chrome does
+not trigger its <code>"canmakepayment"</code> event. The Payment Handler
+response will specify <code>"canMakePaymentRan": false</code>.
+
+<li>For the consequent runs, Chrome triggers the <code>"canmakepayment"</code>
+event in the Payment Handler. The response will include
+<code>"canMakePaymentRan": true</code>.
+
 </ul>
-<p>To see the origin trial token on the payment handler:</p>
+
+<p>To see the origin trial token on the Payment Handler:</p>
 <pre>
   $ curl --head https://romantic-dirt-jaguar.glitch.me/sw.js | grep origin-trial
   origin-trial: Auw/tjTQ2eJQ911wiMHi1Bb7i71hIV6v9pckwldaVyMfzpLfDhkkFI...
 </pre>
+
 <button onclick="runTest()">Run a test</button>
 <pre id="msg"></pre>
 </div>
