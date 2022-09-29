@@ -28,8 +28,10 @@ https://chromestatus.com/feature/5190978431352832
 
 <p>This is a test for a Payment Handler with an <a
 href="https://developer.chrome.com/origintrials/#/view_trial/3462142213541068801">Origin
-Trial that removes identity in <code>"canmakepayment"</code> event</a>. Click
-<code>[Run a test]</code> to see a response from the Payment Handler.</p>
+Trial</a> that <a
+href="https://chromestatus.com/feature/5190978431352832">removes identity in
+<code>"canmakepayment"</code> event</a>. Click <code>[Run a test]</code> to see
+a response from the Payment Handler.</p>
 
 <ul>
 
@@ -48,6 +50,10 @@ true</code>.
   $ curl --head https://romantic-dirt-jaguar.glitch.me/sw.js | grep origin-trial
   origin-trial: Auw/tjTQ2eJQ911wiMHi1Bb7i71hIV6v9pckwldaVyMfzpLfDhkkFI...
 </pre>
+
+<p>To manually remove identity from <code>"canmakepayment"</code> event, set
+<code>chrome://flags/#identity-in-can-make-payment</code> to
+<code>[Disaled]</code> and restart Chrome.</p>
 
 <button onclick="runTest()">Run a test</button>
 <pre id="msg"></pre>
