@@ -11,7 +11,7 @@
 <body>
 <div id="contents">
 <h1>Test for the "canmakepayment" identity Origin Trialt</h1>
-<p>Click <code>Run a test</code> to see a response from the payment handler.</p>
+<p>Click <code>[Run a test]</code> to see a response from the payment handler.</p>
 <ul>
 <li>For the first run, the payment handler installs just-in-time, so its
 <code>"canmakepayment"</code> event does not run. The payment handler response
@@ -22,8 +22,8 @@ respond with <code>"canMakePaymentRan": true</code>.
 </ul>
 <p>To see the origin trial token on the payment handler:</p>
 <pre>
-$ curl --head https://romantic-dirt-jaguar.glitch.me/sw.js | grep origin-trial
-origin-trial: Auw/tjTQ2eJQ911wiMHi1Bb7i71hIV6v9pckwldaVyMfzpLfDhkkFI...
+  $ curl --head https://romantic-dirt-jaguar.glitch.me/sw.js | grep origin-trial
+  origin-trial: Auw/tjTQ2eJQ911wiMHi1Bb7i71hIV6v9pckwldaVyMfzpLfDhkkFI...
 </pre>
 <button onclick="runTest()">Run a test</button>
 <pre id="msg"></pre>
