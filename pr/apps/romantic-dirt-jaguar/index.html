@@ -36,7 +36,12 @@ function init() {
 }
 
 async function checkCanMakePayment() {
-  info(await request.canMakePayment() ? 'Can make payment' : 'Cannot make payment');
+  try {
+    info(await request.canMakePayment() ? 'Can make payment' : 'Cannot make payment');
+  } catch (e) {
+    error(e);
+    init();
+  }
 }
 
 async function runTest() {
@@ -44,8 +49,10 @@ async function runTest() {
     const response = await request.show();
     response.complete('success');
     info(JSON.stringify(response, undefined, 2));
+    init();
   } catch (e) {
     error(e);
+    init();
   }
 }
 
