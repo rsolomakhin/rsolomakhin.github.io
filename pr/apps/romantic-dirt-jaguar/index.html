@@ -19,13 +19,13 @@ Trial that removes identity in <code>"canmakepayment"</code> event</a>. Click
 
 <ul>
 
-<li>For the first run, the Payment Handler installs just-in-time, so Chrome does
-not trigger its <code>"canmakepayment"</code> event. The Payment Handler
-response will specify <code>"canMakePaymentRan": false</code>.
+<li>First run: Chrome installs the Payment Handler just-in-time and does not
+trigger its <code>"canmakepayment"</code> event. The Payment Handler response
+will specify <code>"canMakePaymentRan": false</code>.
 
-<li>For the consequent runs, Chrome triggers the <code>"canmakepayment"</code>
-event in the Payment Handler. The response will include
-<code>"canMakePaymentRan": true</code>.
+<li>Consequent runs: Chrome triggers the <code>"canmakepayment"</code> event in
+the Payment Handler. Its response will include <code>"canMakePaymentRan":
+true</code>.
 
 </ul>
 
