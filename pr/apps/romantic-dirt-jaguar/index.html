@@ -10,19 +10,22 @@
 </head>
 <body>
 <div id="contents">
-<h1>Test for a Payment Handler with an Origin Trial that removes identity in "canmakepayment" event</h1>
+<h1>Test for the "canmakepayment" identity Origin Trialt</h1>
+<p>Click <code>Run a test</code> to see a response from the payment handler.</p>
+<ul>
+<li>For the first run, the payment handler installs just-in-time, so its
+<code>"canmakepayment"</code> event does not run. The payment handler response
+will specify <code>"canMakePaymentRan": false</code>.
+<li>For the consequent runs, the Chrome triggers the
+<code>"canmakepayment"</code> event in the payment handler. The response will
+respond with <code>"canMakePaymentRan": true</code>.
+</ul>
 <button onclick="runTest()">Run a test</button>
 <p>To see the origin trial token on the payment handler:</p>
 <pre>
 $ curl --head https://romantic-dirt-jaguar.glitch.me/sw.js | grep origin-trial
 origin-trial: Auw/tjTQ2eJQ911wiMHi1Bb7i71hIV6v9pckwldaVyMfzpLfDhkkFI...
 </pre>
-<p>To see the console messages from "canmakepayment" event:</p>
-<ol>
-<li>Open <code>chrome://serviceworker-internals/</code>.
-<li>Find <code>Scope: https://romantic-dirt-jaguar.glitch.me/</code>.
-<li>Click the <code>[Inspect]</code> button.
-</ol>
 <pre id="msg"></pre>
 </div>
 <script>
