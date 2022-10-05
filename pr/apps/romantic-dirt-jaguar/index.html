@@ -48,12 +48,12 @@ true</code>.
 <p>To see the origin trial token on the Payment Handler:</p>
 <pre>
   $ curl --head https://romantic-dirt-jaguar.glitch.me/sw.js | grep origin-trial
-  origin-trial: Auw/tjTQ2eJQ911wiMHi1Bb7i71hIV6v9pckwldaVyMfzpLfDhkkFI...
+  origin-trial: A3y8Vvmzq5EnUo8e2hI/xw4TvW0UFa...
 </pre>
 
 <p>To manually remove identity from <code>"canmakepayment"</code> event, set
-<code>chrome://flags/#identity-in-can-make-payment</code> to
-<code>[Disaled]</code> and restart Chrome.</p>
+<code>chrome://flags/#clear-identity-in-can-make-payment</code> to
+<code>[Enabled]</code> and restart Chrome.</p>
 
 <button onclick="runTest()">Run a test</button>
 <pre id="msg"></pre>
