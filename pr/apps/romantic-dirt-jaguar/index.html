@@ -22,7 +22,7 @@ https://chromestatus.com/feature/5190978431352832
 <link rel="stylesheet" type="text/css" href="../../style.css">
 <script src="/pr/util.js"></script>
 </head>
-<body>
+<body onload="startUp()">
 <div id="contents">
 <h1>Test for the "canmakepayment" identity Origin Trial</h1>
 
@@ -89,8 +89,12 @@ async function runTest() {
   }
 }
 
-init();
-checkCanMakePayment();
+function startUp() {
+  window.setTimeout(() => {
+    init();
+    checkCanMakePayment();
+  }, 500);
+}
 </script>
 </body>
 </html>
