@@ -2,20 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<!--
-Trial for IdentityInCanMakePaymentEventFeature:
-Remove the merchant origin and arbitrary data from the "canmakepayment" service worker event.
-
-Origin: romantic-dirt-jaguar.glitch.me
-Third party: Yes
-
-Available: Chrome 108 to 110.
-End date: Apr 4, 2023.
-
-https://developer.chrome.com/origintrials/#/view_trial/3462142213541068801
-https://chromestatus.com/feature/5190978431352832
--->
-<meta http-equiv="origin-trial" content="A8EmhJIcd6EiEq0WA/qjBsOaQMfJ9pQ7e2bGt4bGIowq7ixpfIY7yY2U7m3Y2hArWddJoPySXn6gfHD21PlVVggAAACHeyJvcmlnaW4iOiJodHRwczovL3Jzb2xvbWFraGluLmdpdGh1Yi5pbzo0NDMiLCJmZWF0dXJlIjoiSWRlbnRpdHlJbkNhbk1ha2VQYXltZW50RXZlbnRGZWF0dXJlIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Test for the "canmakepayment" identity Origin Trial</title>
 <link rel="icon" href="/favicon.ico">
@@ -48,7 +34,7 @@ true</code>.
 <p>To see the origin trial token on the Payment Handler:</p>
 <pre>
   $ curl --head https://romantic-dirt-jaguar.glitch.me/sw.js | grep origin-trial
-  origin-trial: A3y8Vvmzq5EnUo8e2hI/xw4TvW0UFa...
+  origin-trial: Auw/tjTQ2eJQ911wiMHi1Bb7i71...
 </pre>
 
 <p>To manually remove identity from <code>"canmakepayment"</code> event, set
@@ -69,6 +55,7 @@ function init() {
 }
 
 async function checkCanMakePayment() {
+  info('Checking whether payments can be made...');
   try {
     info(await request.canMakePayment() ? 'Can make payment' : 'Cannot make payment');
   } catch (e) {
