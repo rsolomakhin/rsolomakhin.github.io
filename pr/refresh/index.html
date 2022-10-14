@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test for PaymentRequest object destruction</title>
+<link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../style.css">
+<script src="../util.js"></script>
+</head>
+<body>
+<div id="contents">
+<h1>Test for PaymentRequest object destruction</h1>
+
+<p>This page creates iframes with PaymentRequest objects and then refreshes them.</p>
+
+<button onclick="runTest()">Run a test</button>
+<iframe allow="payment"></iframe>
+<iframe allow="payment"></iframe>
+<iframe allow="payment"></iframe>
+<iframe allow="payment"></iframe>
+<iframe allow="payment"></iframe>
+<iframe allow="payment"></iframe>
+<iframe allow="payment"></iframe>
+<div id="msg"></div>
+</div>
+<script>
+const iframeUrl = 'https://happy-zippy-danthus.glitch.me/';
+const maxMs = 5000;
+const iframes = document.getElementsByTagName('iframe');
+
+function refreshIframeAfterRandomInterval(iframe) {
+  const interval = Math.floor(Math.random() * maxMs);
+  window.setTimeout(() => {
+    iframe.src = iframeUrl + '?randomNumber=' + str(interval);
+    refreshIframeAfterRandomInterval(iframe);
+  }, interval);
+}
+
+function runTest() {
+  try {
+    for (const iframe of iframes) {
+      iframe.src = iframeUrl;
+      refreshIframeAfterRandomInterval(iframe);
+    }
+  } catch (e) {
+    error(e.toString());
+  }
+}
+</script>
+</body>
+</html>
