@@ -15,13 +15,20 @@
 <p>This page creates iframes with PaymentRequest objects and then refreshes them.</p>
 
 <button onclick="runTest()">Run a test</button>
-<iframe allow="payment"></iframe>
-<iframe allow="payment"></iframe>
-<iframe allow="payment"></iframe>
-<iframe allow="payment"></iframe>
-<iframe allow="payment"></iframe>
-<iframe allow="payment"></iframe>
-<iframe allow="payment"></iframe>
+<div class="iframes">
+  <div class="row">
+    <iframe allow="payment"></iframe>
+    <iframe allow="payment"></iframe>
+    <iframe allow="payment"></iframe>
+    <iframe allow="payment"></iframe>
+  </div>
+  <div class="row">
+    <iframe allow="payment"></iframe>
+    <iframe allow="payment"></iframe>
+    <iframe allow="payment"></iframe>
+    <iframe allow="payment"></iframe>
+  </div>
+</div>
 <div id="msg"></div>
 </div>
 <script>
