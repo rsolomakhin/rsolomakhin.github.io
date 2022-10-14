@@ -32,7 +32,7 @@ const iframes = document.getElementsByTagName('iframe');
 function refreshIframeAfterRandomInterval(iframe) {
   const interval = Math.floor(Math.random() * maxMs);
   window.setTimeout(() => {
-    iframe.src = iframeUrl + '?randomNumber=' + str(interval);
+    iframe.src = iframeUrl + '?randomNumber=' + (interval).toString();
     refreshIframeAfterRandomInterval(iframe);
   }, interval);
 }
