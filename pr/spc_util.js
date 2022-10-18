@@ -1,5 +1,3 @@
-const textEncoder = new TextEncoder();
-
 /**
  * Creates a demo WebAuthn credential, optionally setting the 'payment'
  * extension. The created credential will always have the name 'Troy ····
@@ -29,7 +27,7 @@ async function createCredential(setPaymentExtension) {
   const publicKey = {
     rp,
     user,
-    challenge: textEncoder.encode('Enrollment challenge'),
+    challenge: new TextEncoder().encode('Enrollment challenge'),
     pubKeyCredParams,
     authenticatorSelection: {
       userVerification: 'required',
