@@ -134,83 +134,12 @@ function objectToString(input) {
   return JSON.stringify(objectToDictionary(input), undefined, 2);
 }
 
-// Return whether or not SPC supports residentKey 'preferred' (instead of just
-// 'required'). There is unfortunately no way to feature detect this, so we
-// have to do a version check.
-function spcSupportsPreferred() {
-  // This will be true for not just Chrome but also Edge/etc, but that's fine.
-  const match = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
-  if (!match)
-    return false;
-
-  const version = parseInt(match[2], 10);
-  // https://crrev.com/130fada41 landed in 106.0.5228.0, but we assume that any
-  // 106 will do for simplicity.
-  return version >= 106;
-}
-
-async function createCredentialCompat() {
-  const rp = {
-    id: window.location.hostname,
-    name: 'Rouslan Solomakhin',
-  };
-  const pubKeyCredParams = [{
-    type: 'public-key',
-    alg: -7, // ECDSA, not supported on Windows.
-  }, {
-    type: 'public-key',
-    alg: -257, // RSA, supported on Windows.
-  }];
-  const challenge = textEncoder.encode('Enrollment challenge');
-  if (window.PaymentCredential) {
-    const payment = {
-      rp,
-      instrument: {
-        displayName: 'Troy ····',
-        icon: 'https://rsolomakhin.github.io/pr/spc/troy.png',
-      },
-      challenge,
-      pubKeyCredParams,
-      authenticatorSelection: {
-        userVerification: 'required',
-      },
-    };
-    return await navigator.credentials.create({
-      payment
-    });
-  } else {
-    const publicKey = {
-      rp,
-      user: {
-        name: 'Troy ···· 1234',
-        displayName: '',
-        id: Uint8Array.from(String(Math.random()*999999999), c => c.charCodeAt(0)),
-      },
-      challenge,
-      pubKeyCredParams,
-      authenticatorSelection: {
-        userVerification: 'required',
-        residentKey: spcSupportsPreferred() ? 'preferred' : 'required',
-        authenticatorAttachment: 'platform',
-      },
-      extensions: {
-        payment: {
-          isPayment: true,
-        },
-      }
-    };
-    return await navigator.credentials.create({
-      publicKey
-    });
-  }
-}
-
 /**
  * Creates a payment credential.
  */
 async function createPaymentCredential() {
   try {
-    const publicKeyCredential = await createCredentialCompat();
+    const publicKeyCredential = await createCredential(/*setPaymentExtension=*/true);
     console.log(publicKeyCredential);
     document.getElementById('credential').value = arrayBufferToBase64(publicKeyCredential.rawId);
     info('Enrolled: ' + objectToString(publicKeyCredential));
