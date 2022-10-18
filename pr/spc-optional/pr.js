@@ -208,13 +208,13 @@ async function createCredentialCompat() {
 /**
  * Creates a payment credential.
  */
-async function createPaymentCredential(windowLocalStorageIdentifier) {
+async function createPaymentCredential(windowLocalStorageItemKey) {
   try {
     const publicKeyCredential = await createCredentialCompat();
     console.log(publicKeyCredential);
-    window.localStorage.setItem(windowLocalStorageIdentifier,
+    window.localStorage.setItem(windowLocalStorageItemKey,
       arrayBufferToBase64(publicKeyCredential.rawId));
-    info(windowLocalStorageIdentifier + ' enrolled: ' + objectToString(
+    info(windowLocalStorageItemKey + ' enrolled: ' + objectToString(
       publicKeyCredential));
   } catch (err) {
     error(err);
@@ -224,14 +224,12 @@ async function createPaymentCredential(windowLocalStorageIdentifier) {
  * Initializes the payment request object.
  * @return {PaymentRequest} The payment request object.
  */
-async function buildPaymentRequest(windowLocalStorageIdentifier) {
+async function buildPaymentRequest(autofillField, windowLocalStorageItemKey) {
   if (!window.PaymentRequest) {
     return null;
   }
   let request = null;
   try {
-    // Documentation:
-    // https://github.com/w3c/secure-payment-confirmation
     const challenge = textEncoder.encode('network_data');
     const updatedInstrument = {
       displayName: 'My Troy Card',
@@ -241,13 +239,14 @@ async function buildPaymentRequest(windowLocalStorageIdentifier) {
       supportedMethods: 'secure-payment-confirmation',
       data: {
         credentialIds: [base64ToArray(window.localStorage.getItem(
-          windowLocalStorageIdentifier))],
+          windowLocalStorageItemKey))],
         instrument: updatedInstrument,
         networkData: challenge,
         challenge,
         timeout: 60000,
         payeeOrigin: window.location.origin,
         rpId: window.location.hostname,
+        autofillField,
       },
     }];
     const details = {
@@ -268,56 +267,47 @@ async function buildPaymentRequest(windowLocalStorageIdentifier) {
 /**
  * Launches payment request for Android Pay.
  */
-async function onBuyClicked(windowLocalStorageIdentifier) {
+async function optionallyGetSpcFrom(autofillField, windowLocalStorageItemKey) {
   if (!window.PaymentRequest) {
     error('PaymentRequest API is not supported.');
     return;
   }
-  const request = await buildPaymentRequest(windowLocalStorageIdentifier);
+  if (!window.PaymentRequest.AutofillField) {
+    error('SPC does not support autofill popups in your browser yet.');
+    return;
+  }
+  const request = await buildPaymentRequest(
+      autofillField, windowLocalStorageItemKey);
   if (!request) return;
+  if (!request.showInAutofillField) {
+    error('SPC does not support autofill popups in your browser yet.');
+  }
   try {
-    const instrumentResponse = await request.show();
+    const instrumentResponse = await request.showInAutofillField();
     await instrumentResponse.complete('success')
     console.log(instrumentResponse);
-    info(windowLocalStorageIdentifier + ' payment response: ' +
+    info(windowLocalStorageItemKey + ' payment response: ' +
       objectToString(instrumentResponse));
   } catch (err) {
     error(err);
   }
 }
-async function checkCanMakePayment(windowLocalStorageIdentifier) {
-  if (!window.PaymentRequest) {
-    error('PaymentRequest API is not supported.');
-    return;
-  }
-  try {
-    const request = await buildPaymentRequest(windowLocalStorageIdentifier);
-    if (!request) return;
-    const result = await request.canMakePayment();
-    info((result ? 'Can make payment.' : 'Cannot make payment'));
-  } catch (err) {
-    error(err);
+
+function pretendSubmitForm() {
+  const phoneNumber = document.getElementById('phone-field').value;
+  if (phoneNumber) {
+    info('Pretend SMS sent to ' + phoneNumber + '.');
+  } else {
+    error('No phone number provided.');
   }
 }
-async function webAuthnGet(windowLocalStorageIdentifier) {
-  try {
-    const publicKey = {
-      challenge: textEncoder.encode('Authentication challenge'),
-      userVerification: 'required',
-      allowCredentials: [{
-        transports: ['internal'],
-        type: 'public-key',
-        id: base64ToArray(window.localStorage.getItem(
-          windowLocalStorageIdentifier)),
-      }, ],
-    };
-    const credentialInfoAssertion = await navigator.credentials.get({
-      publicKey
-    });
-    console.log(credentialInfoAssertion);
-    info('Successful login with ' + windowLocalStorageIdentifier + ': ' +
-      objectToString(credentialInfoAssertion));
-  } catch (err) {
-    error(err);
-  }
+
+function init() {
+  const verifyForm = document.getElementById('verify-form');
+  verifyForm.addEventListener('submit', evt => {
+    evt.preventDefault();
+    pretendSubmitForm();
+  });
 }
+
+init();

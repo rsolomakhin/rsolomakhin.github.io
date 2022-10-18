@@ -3,24 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Secure Payment Confirmation</title>
+  <title>Optional Secure Payment Confirmation in Phone Autofill</title>
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
   <div id="contents">
-    <h1>Optional Secure Payment Confirmation</h1>
+    <h1>Optional Secure Payment Confirmation in Phone Autofill</h1>
     <p>This is a test website. Nothing is charged.</p>
     </pre>
     <p><button onclick="createPaymentCredential('SPC Credential')">Enroll
     Credential</button> - would happen after a successful authentication and/or
     purchase.</p>
-    <br>
-    <form action="#">
+    <form id="verify-form">
       <p>Verify purchase: <input type="phone" autocomplete="phone" name="phone"
-      placeholder="Phone" id="phone"></input> <input type="submit"
-      onclick="pretendSubmitForm()">Verify via
-      SMS</input></p>
+      placeholder="Phone" id="phone-field"></input> <input type="submit"
+      value="Verify with SMS"></input></p>
     </form>
   </div>
   <pre id="msg"></pre>
@@ -28,7 +26,7 @@
   <script src="pr.js"></script>
   <script src="/redirect.js"></script>
   <script>
-    beginAuth('SPC Credential');
+    optionallyGetSpcFrom('phone-field', 'SPC Credential');
   </script>
 </body>
 </html>
