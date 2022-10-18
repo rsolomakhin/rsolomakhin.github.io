@@ -150,9 +150,9 @@ async function createCredentialInner(userId, usePaymentExtension) {
   const publicKey = {
     rp,
     user: {
-      name: 'user@domain',
+      name: 'Troy ···· 1234',
+      displayName: '',
       id: Uint8Array.from(userId, c => c.charCodeAt(0)),
-      displayName: 'User',
     },
     challenge,
     pubKeyCredParams,
