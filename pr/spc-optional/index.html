@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,7 +7,6 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
-
 <body>
   <div id="contents">
     <h1>Optional Secure Payment Confirmation</h1>
@@ -17,8 +15,12 @@
     <p><button onclick="createPaymentCredential('SPC Credential')">Enroll
     Credential</button> - would happen after a successful authentication and/or
     purchase.</p>
-    <p>Verify purchase: <input type="text" autocomplete"phone"
-    placeholder="555-555-5555" id="phone"></input> <button>Send SMS</button></p>
+    <br>
+    <form action="#">
+      <p>Verify purchase: <input type="phone" autocomplete="phone" name="phone"
+      placeholder="Phone" id="phone"></input> <input type="submit">Verify via
+      SMS</input></p>
+    </form>
   </div>
   <pre id="msg"></pre>
   <script src="../util.js"></script>
@@ -28,5 +30,4 @@
     beginAuth('SPC Credential');
   </script>
 </body>
-
 </html>
