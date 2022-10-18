@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secure Payment Confirmation</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>Optional Secure Payment Confirmation</h1>
+    <p>This is a test website. Nothing is charged.</p>
+    </pre>
+    <p><button onclick="createPaymentCredential('SPC Credential')">Enroll
+    Credential</button> - would happen after a successful authentication and/or
+    purchase.</p>
+    <p>Verify purchase: <input type="text" autocomplete"phone"
+    placeholder="555-555-5555" id="phone"></input> <button>Send SMS</button></p>
+  </div>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+  <script>
+    beginAuth('SPC Credential');
+  </script>
+</body>
+
+</html>
