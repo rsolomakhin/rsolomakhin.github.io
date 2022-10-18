@@ -272,16 +272,13 @@ async function optionallyGetSpcFrom(autofillField, windowLocalStorageItemKey) {
     error('PaymentRequest API is not supported.');
     return;
   }
-  if (!window.PaymentRequest.AutofillField) {
+  if (!window.PaymentRequest.prototype.showInAutofillField) {
     error('SPC does not support autofill popups in your browser yet.');
     return;
   }
   const request = await buildPaymentRequest(
       autofillField, windowLocalStorageItemKey);
   if (!request) return;
-  if (!request.showInAutofillField) {
-    error('SPC does not support autofill popups in your browser yet.');
-  }
   try {
     const instrumentResponse = await request.showInAutofillField();
     await instrumentResponse.complete('success')
