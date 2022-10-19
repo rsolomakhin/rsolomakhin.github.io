@@ -273,7 +273,7 @@ async function optionallyGetSpcFrom(autofillField, windowLocalStorageItemKey) {
     return;
   }
   if (!window.PaymentRequest.prototype.showInAutofillField) {
-    error('SPC does not support autofill popups in your browser yet.');
+    error('Secure Payment Confirmation is not supported in autofill popups.');
     return;
   }
   const request = await buildPaymentRequest(
