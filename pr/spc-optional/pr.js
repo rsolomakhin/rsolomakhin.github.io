@@ -225,6 +225,7 @@ async function createPaymentCredential(windowLocalStorageItemKey) {
  * @return {PaymentRequest} The payment request object.
  */
 async function buildPaymentRequest(autofillField, windowLocalStorageItemKey) {
+  console.log("Autofill field is", autofillField);
   if (!window.PaymentRequest) {
     return null;
   }
