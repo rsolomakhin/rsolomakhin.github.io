@@ -29,16 +29,17 @@
       This demo will not function on platforms that lack support for discoverable
       credentials (e.g., Android).
     </p>
-    <p><button onclick="createCredential('Credential #1', true)">Enroll
+    <p><button onclick="createPaymentCredential('Credential #1', true)">Enroll
         Credential (with payment extension)</button></p>
     <!-- Saved to local storage as Credential #2, but uses the same user id -->
-    <p><button onclick="createCredential('Credential #2', false)">Overwrite
+    <p><button onclick="createPaymentCredential('Credential #2', false)">Overwrite
         Credential (without payment extension)</button></p>
     <p><button onclick="onBuyClicked('Credential #1')">Trigger SPC
         authentication (with initial credential)</button></p>
   </div>
   <pre id="msg"></pre>
   <script src="../util.js"></script>
+  <script src="../spc_util.js"></script>
   <script src="pr.js"></script>
   <script src="/redirect.js"></script>
 </body>

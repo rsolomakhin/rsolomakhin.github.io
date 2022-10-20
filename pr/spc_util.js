@@ -5,9 +5,12 @@
  *
  * @param {boolean} setPaymentExtension - whether or not to enable the 'payment'
  *     extension in the created credential.
+ * @param {object} optionalOverrides - a set of optional overrides for the
+ *     default credential creation parameters.
  * @return {PublicKeyCredential} the created credential.
  */
-async function createCredential(setPaymentExtension) {
+async function createCredential(setPaymentExtension, optionalOverrides = {}) {
+  const {userIdOverride, residentKeyOverride} = optionalOverrides;
   const rp = {
     id: window.location.hostname,
     name: 'Rouslan Solomakhin',
@@ -19,11 +22,17 @@ async function createCredential(setPaymentExtension) {
     type: 'public-key',
     alg: -257, // RSA, supported on Windows.
   }];
+  const userId = (userIdOverride !== undefined) ? userIdOverride : String(Math.random()*999999999);
   const user = {
     name: 'Troy ···· 1234',
     displayName: '',
-    id: Uint8Array.from(String(Math.random()*999999999), c => c.charCodeAt(0)),
+    id: Uint8Array.from(userId, c => c.charCodeAt(0)),
   }
+
+  let residentKey = spcSupportsPreferred() ? 'preferred' : 'required';
+  if (residentKeyOverride !== undefined)
+    residentKey = residentKeyOverride;
+
   const publicKey = {
     rp,
     user,
@@ -31,7 +40,7 @@ async function createCredential(setPaymentExtension) {
     pubKeyCredParams,
     authenticatorSelection: {
       userVerification: 'required',
-      residentKey: spcSupportsPreferred() ? 'preferred' : 'required',
+      residentKey,
       authenticatorAttachment: 'platform',
     },
   };

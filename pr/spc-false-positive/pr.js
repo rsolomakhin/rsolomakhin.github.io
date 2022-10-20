@@ -134,58 +134,19 @@ function objectToString(input) {
   return JSON.stringify(objectToDictionary(input), undefined, 2);
 }
 
-async function createCredentialInner(userId, usePaymentExtension) {
-  const rp = {
-    id: window.location.hostname,
-    name: 'Rouslan Solomakhin',
-  };
-  const pubKeyCredParams = [{
-    type: 'public-key',
-    alg: -7, // ECDSA, not supported on Windows.
-  }, {
-    type: 'public-key',
-    alg: -257, // RSA, supported on Windows.
-  }];
-  const challenge = textEncoder.encode('Enrollment challenge');
-  const publicKey = {
-    rp,
-    user: {
-      name: 'Troy ···· 1234',
-      displayName: '',
-      id: Uint8Array.from(userId, c => c.charCodeAt(0)),
-    },
-    challenge,
-    pubKeyCredParams,
-    authenticatorSelection: {
-      userVerification: 'required',
-      // We need a discoverable credential for this demo, and so must use 'required'.
-      residentKey: 'required',
-      authenticatorAttachment: 'platform',
-    },
-  };
-
-  if (usePaymentExtension) {
-    publicKey.extensions = {
-      payment: {
-        isPayment: true,
-      },
-    };
-  }
-
-  return await navigator.credentials.create({
-    publicKey
-  });
-}
-
 /**
  * Creates a credential.
  */
-async function createCredential(windowLocalStorageIdentifier, usePaymentExtension) {
-  // Hard-coding to always use the same user ID.
-  // NOT RECOMMENDED FOR SPC.
-  const userId = "user1234";
+async function createPaymentCredential(windowLocalStorageIdentifier, usePaymentExtension) {
+  const optionalOverrides = {
+    // Hard-coding to always use the same user ID.
+    // NOT RECOMMENDED FOR SPC.
+    userIdOverride: 'user1234';
+    // We need a discoverable credential for this demo, and so must use 'required'.
+    residentKeyOverride: 'required',
+  };
   try {
-    const publicKeyCredential = await createCredentialInner(userId, usePaymentExtension);
+    const publicKeyCredential = await createCredential(usePaymentExtension, optionalOverrides);
     console.log(publicKeyCredential);
     window.localStorage.setItem(windowLocalStorageIdentifier,
       arrayBufferToBase64(publicKeyCredential.rawId));
