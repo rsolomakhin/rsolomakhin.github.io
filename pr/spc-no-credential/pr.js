@@ -18,7 +18,7 @@ async function onBuyClicked() {
       const hEI = await request.hasEnrolledInstrument();
       info(hEI ? "Has enrolled instrument" : "No enrolled instrument");
     } catch (err) {
-      error("Has enrolled instrument FAILED - " + err);
+      info("Has enrolled instrument call failed - " + err);
     }
 
     const instrumentResponse = await request.show();
