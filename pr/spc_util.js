@@ -180,6 +180,64 @@ function objectToDictionary(input) {
     output.signature = input.signature;
   }
   if (input.userHandle && input.userHandle.constructor === ArrayBuffer) {
+    output.userHandle = arrayBufferToBase64(input.userHandle);
+  }
+  if (input.userHandle && input.userHandle.constructor === String) {
+    output.userHandle = input.userHandle;
+  }
+  if (input.type) {
+    output.type = input.type;
+  }
+  if (input.methodName) {
+    output.methodName = input.methodName;
+  }
+  if (input.details) {
+    output.details = objectToDictionary(input.details);
+  }
+  if (input.appid_extension) {
+    output.appid_extension = input.appid_extension;
+  }
+  if (input.challenge) {
+    output.challenge = input.challenge;
+  }
+  if (input.echo_appid_extension) {
+    output.echo_appid_extension = input.echo_appid_extension;
+  }
+  if (input.echo_prf) {
+    output.echo_prf = input.echo_prf;
+  }
+  if (input.prf_not_evaluated) {
+    output.prf_not_evaluated = input.prf_not_evaluated;
+  }
+  if (input.prf_results) {
+    output.prf_results = objectToDictionary(input.prf_results);
+  }
+  if (input.user_handle) {
+    output.user_handle = input.user_handle;
+  }
+  if (input.authenticator_data) {
+    output.authenticator_data = input.authenticator_data;
+  }
+  if (input.client_data_json) {
+    output.client_data_json = atob(input.client_data_json);
+  }
+  if (input.shippingAddress) {
+    output.shippingAddress = input.shippingAddress;
+  }
+  if (input.shippingOption) {
+    output.shippingOption = input.shippingOption;
+  }
+  if (input.payerName) {
+    output.payerName = input.payerName;
+  }
+  if (input.payerEmail) {
+    output.payerEmail = input.payerEmail;
+  }
+  if (input.payerPhone) {
+    output.payerPhone = input.payerPhone;
+  }
+  return output;
+}
 
 /**
  * Converts a base64 encoded string into Unit8Array.
