@@ -159,7 +159,7 @@ async function onBuyClicked(windowLocalStorageIdentifier, payeeName, payeeOrigin
       credentialIds: [base64ToArray(window.localStorage.getItem(windowLocalStorageIdentifier))],
       payeeName,
       payeeOrigin,
-    };
+    });
 
     const instrumentResponse = await request.show();
     await instrumentResponse.complete('success')
