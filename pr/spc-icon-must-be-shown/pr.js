@@ -149,63 +149,20 @@ async function createPaymentCredential(windowLocalStorageIdentifier) {
     error(err);
   }
 }
+
 /**
- * Initializes the payment request object.
- * @return {PaymentRequest} The payment request object.
- */
-async function buildPaymentRequest(windowLocalStorageIdentifier, iconUrl, iconMustBeShown) {
-  if (!window.PaymentRequest) {
-    return null;
-  }
-  let request = null;
-  try {
-    // Documentation:
-    // https://github.com/w3c/secure-payment-confirmation
-    const challenge = textEncoder.encode('network_data');
-    const updatedInstrument = {
-      displayName: 'My Troy Card',
-      icon: iconUrl,
-      iconMustBeShown,
-    };
-    const supportedInstruments = [{
-      supportedMethods: 'secure-payment-confirmation',
-      data: {
-        credentialIds: [base64ToArray(window.localStorage.getItem(
-          windowLocalStorageIdentifier))],
-        instrument: updatedInstrument,
-        networkData: challenge,
-        challenge,
-        timeout: 60000,
-        payeeOrigin: window.location.origin,
-        rpId: window.location.hostname,
-      },
-    }];
-    const details = {
-      total: {
-        label: 'Total',
-        amount: {
-          currency: 'USD',
-          value: '0.01',
-        },
-      },
-    };
-    request = new PaymentRequest(supportedInstruments, details);
-  } catch (err) {
-    error(err);
-  }
-  return request;
-}
-/**
- * Launches payment request for Android Pay.
+ * Launches payment request for SPC.
  */
 async function onBuyClicked(windowLocalStorageIdentifier, iconUrl, iconMustBeShown) {
-  if (!window.PaymentRequest) {
-    error('PaymentRequest API is not supported.');
-    return;
-  }
-  const request = await buildPaymentRequest(windowLocalStorageIdentifier, iconUrl, iconMustBeShown);
-  if (!request) return;
   try {
+    const request = await createSPCPaymentRequest({
+      credentialIds: [base64ToArray(window.localStorage.getItem(windowLocalStorageIdentifier))],
+      instrument: {
+        icon: iconUrl,
+        iconMustBeShown,
+      },
+    });
+
     const instrumentResponse = await request.show();
     await instrumentResponse.complete('success')
     console.log(instrumentResponse);
@@ -215,6 +172,7 @@ async function onBuyClicked(windowLocalStorageIdentifier, iconUrl, iconMustBeSho
     error(err);
   }
 }
+
 async function checkCanMakePayment(windowLocalStorageIdentifier) {
   if (!window.PaymentRequest) {
     error('PaymentRequest API is not supported.');

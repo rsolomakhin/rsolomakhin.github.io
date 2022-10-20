@@ -24,6 +24,10 @@ async function createCredential(setPaymentExtension, optionalOverrides = {}) {
   }];
   const userId = (userIdOverride !== undefined) ? userIdOverride : String(Math.random()*999999999);
   const user = {
+    // Set an understandable 'username' in case the WebAuthn UX displays it
+    // (e.g., the Passkeys UX on Chrome MacOS 108+). This is for display ONLY,
+    // and has no bearing on SPC's functionality in general. (For example, it
+    // is NOT shown in the SPC transaction dialog.)
     name: 'Troy ···· 1234',
     displayName: '',
     id: Uint8Array.from(userId, c => c.charCodeAt(0)),
@@ -69,4 +73,52 @@ function spcSupportsPreferred() {
   // https://crrev.com/130fada41 landed in 106.0.5228.0, but we assume that any
   // 106 will do for simplicity.
   return version >= 106;
+}
+
+/**
+ * Creates a PaymentRequest object for SPC.
+ *
+ * @param {SecurePaymentConfirmationRequest} spcData - the input SPC data. The
+ *     credentialIds field *MUST* be set. Any other SecurePaymentConfirmationRequest
+ *     fields not set in this object will be initialized to a default value.
+ * @return {PaymentRequest} The payment request object.
+ */
+function createSPCPaymentRequest(spcData) {
+  if (!window.PaymentRequest) {
+    throw new Error('PaymentRequest API is not supported.');
+  }
+  if (spcData === undefined || spcData.credentialIds === undefined) {
+    throw new Error('credentialIds must be set in the input spcData object.');
+  }
+
+  // https://w3c.github.io/secure-payment-confirmation/#sctn-securepaymentconfirmationrequest-dictionary
+  if (spcData.challenge === undefined)
+    spcData.challenge = new TextEncoder().encode('network_data');
+  if (spcData.rpId === undefined)
+    spcData.rpId = window.location.hostname;
+  if (spcData.instrument === undefined)
+    spcData.instrument = {};
+  if (spcData.instrument.displayName === undefined)
+    spcData.instrument.displayName = 'Troy ···· 1234';
+  if (spcData.instrument.icon === undefined)
+    spcData.instrument.icon = 'https://rsolomakhin.github.io/pr/spc/troy-alt-logo.png';
+  if (spcData.timeout === undefined)
+    spcData.timeout = 60000;
+  // We only set a default payeeOrigin if *both* payeeName and payeeOrigin are
+  // undefined, as the spec deliberately allows either/or to be null.
+  if (spcData.payeeName === undefined && spcData.payeeOrigin === undefined)
+    spcData.payeeOrigin = window.location.origin;
+
+  const supportedInstruments = [{supportedMethods: 'secure-payment-confirmation', data: spcData}];
+  const details = {
+    total: {
+      label: 'Total',
+      amount: {
+        currency: 'USD',
+        value: '0.01',
+      },
+    },
+  };
+
+  return new PaymentRequest(supportedInstruments, details); 
 }
