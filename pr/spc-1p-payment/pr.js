@@ -136,61 +136,15 @@ function objectToString(input) {
 }
 
 /**
- * Initializes the payment request object.
- * @return {PaymentRequest} The payment request object.
- */
-async function buildPaymentRequest() {
-  if (!window.PaymentRequest) {
-    return null;
-  }
-  let request = null;
-  try {
-    // Documentation:
-    // https://github.com/w3c/secure-payment-confirmation
-    const challenge = textEncoder.encode('network_data');
-    const updatedInstrument = {
-      displayName: 'My Troy Card',
-      icon: 'https://rsolomakhin.github.io/pr/spc/troy-alt-logo.png',
-    };
-    const supportedInstruments = [{
-      supportedMethods: 'secure-payment-confirmation',
-      data: {
-        credentialIds: [base64ToArray(credentialId)],
-        instrument: updatedInstrument,
-        networkData: challenge,
-        challenge,
-        timeout: 60000,
-        payeeOrigin: window.location.origin,
-        rpId: 'spc-1p-payment-demo.glitch.me',
-      },
-    }];
-    const details = {
-      total: {
-        label: 'Total',
-        amount: {
-          currency: 'USD',
-          value: '0.01',
-        },
-      },
-    };
-    request = new PaymentRequest(supportedInstruments, details);
-  } catch (err) {
-    error(err);
-  }
-  return request;
-}
-
-/**
- * Launches payment request for Android Pay.
+ * Launches payment request for SPC.
  */
 async function triggerSPC() {
-  if (!window.PaymentRequest) {
-    error('PaymentRequest API is not supported.');
-    return;
-  }
-  const request = await buildPaymentRequest();
-  if (!request) return;
   try {
+    const request = await createSPCPaymentRequest({
+      credentialIds: [base64ToArray(credentialId)],
+      rpId: 'spc-1p-payment-demo.glitch.me',
+    });
+
     const instrumentResponse = await request.show();
     await instrumentResponse.complete('success')
     console.log(instrumentResponse);
