@@ -122,3 +122,10 @@ function createSPCPaymentRequest(spcData) {
 
   return new PaymentRequest(supportedInstruments, details); 
 }
+
+/**
+ * Converts a base64 encoded string into Unit8Array.
+ */
+function base64ToArray(input) {
+  return Uint8Array.from(atob(input), c => c.charCodeAt(0))
+}

@@ -14,12 +14,6 @@ function arrayBufferToBase64(input) {
   return btoa(arrayBufferToString(input));
 }
 /**
- * Converts a base64 encoded string into Unit8Array.
- */
-function base64ToArray(input) {
-  return Uint8Array.from(atob(input), c => c.charCodeAt(0))
-}
-/**
  * Converts a PaymentResponse or a PublicKeyCredential into an dictionary.
  */
 function objectToDictionary(input) {
