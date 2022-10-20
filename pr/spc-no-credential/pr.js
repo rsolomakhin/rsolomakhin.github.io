@@ -13,8 +13,13 @@ async function onBuyClicked() {
 
     const result = await request.canMakePayment();
     info(result ? "Can make payment" : "Cannot make payment");
-    const hEI = await request.hasEnrolledInstrument();
-    info(hEI ? "Has enrolled instrument" : "No enrolled instrument");
+    // We don't mind if this fails.
+    try {
+      const hEI = await request.hasEnrolledInstrument();
+      info(hEI ? "Has enrolled instrument" : "No enrolled instrument");
+    } catch (err) {
+      error("Has enrolled instrument FAILED - " + err);
+    }
 
     const instrumentResponse = await request.show();
     await instrumentResponse.complete('success')
