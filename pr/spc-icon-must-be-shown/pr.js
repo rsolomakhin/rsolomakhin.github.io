@@ -173,20 +173,6 @@ async function onBuyClicked(windowLocalStorageIdentifier, iconUrl, iconMustBeSho
   }
 }
 
-async function checkCanMakePayment(windowLocalStorageIdentifier) {
-  if (!window.PaymentRequest) {
-    error('PaymentRequest API is not supported.');
-    return;
-  }
-  try {
-    const request = await buildPaymentRequest(windowLocalStorageIdentifier, false);
-    if (!request) return;
-    const result = await request.canMakePayment();
-    info((result ? 'Can make payment.' : 'Cannot make payment'));
-  } catch (err) {
-    error(err);
-  }
-}
 async function webAuthnGet(windowLocalStorageIdentifier) {
   try {
     const publicKey = {
