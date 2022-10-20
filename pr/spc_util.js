@@ -105,8 +105,8 @@ function createSPCPaymentRequest(spcData) {
   if (spcData.timeout === undefined)
     spcData.timeout = 60000;
   // We only set a default payeeOrigin if *both* payeeName and payeeOrigin are
-  // undefined, as the spec deliberately allows either/or to be null.
-  if (spcData.payeeName === undefined && spcData.payeeOrigin === undefined)
+  // not set, as the spec deliberately allows either/or to be null.
+  if (!('payeeName' in spcData) && !('payeeOrigin' in spcData))
     spcData.payeeOrigin = window.location.origin;
 
   const supportedInstruments = [{supportedMethods: 'secure-payment-confirmation', data: spcData}];
