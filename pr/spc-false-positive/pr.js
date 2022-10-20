@@ -141,7 +141,7 @@ async function createPaymentCredential(windowLocalStorageIdentifier, usePaymentE
   const optionalOverrides = {
     // Hard-coding to always use the same user ID.
     // NOT RECOMMENDED FOR SPC.
-    userIdOverride: 'user1234';
+    userIdOverride: 'user1234',
     // We need a discoverable credential for this demo, and so must use 'required'.
     residentKeyOverride: 'required',
   };
