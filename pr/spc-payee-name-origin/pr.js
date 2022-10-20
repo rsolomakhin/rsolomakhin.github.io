@@ -1,6 +1,5 @@
 /* exported createPaymentCredential */
 /* exported onBuyClicked */
-const textEncoder = new TextEncoder();
 
 /**
  * Creates a payment credential.
@@ -34,28 +33,6 @@ async function onBuyClicked(windowLocalStorageIdentifier, payeeName, payeeOrigin
     console.log(instrumentResponse);
     info(windowLocalStorageIdentifier + ' payment response: ' +
       objectToString(instrumentResponse));
-  } catch (err) {
-    error(err);
-  }
-}
-async function webAuthnGet(windowLocalStorageIdentifier) {
-  try {
-    const publicKey = {
-      challenge: textEncoder.encode('Authentication challenge'),
-      userVerification: 'required',
-      allowCredentials: [{
-        transports: ['internal'],
-        type: 'public-key',
-        id: base64ToArray(window.localStorage.getItem(
-          windowLocalStorageIdentifier)),
-      }, ],
-    };
-    const credentialInfoAssertion = await navigator.credentials.get({
-      publicKey
-    });
-    console.log(credentialInfoAssertion);
-    info('Successful login with ' + windowLocalStorageIdentifier + ': ' +
-      objectToString(credentialInfoAssertion));
   } catch (err) {
     error(err);
   }

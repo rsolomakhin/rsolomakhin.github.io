@@ -1,6 +1,5 @@
 /* exported createPaymentCredential */
 /* exported onBuyClicked */
-const textEncoder = new TextEncoder();
 
 /**
  * Creates a payment credential.
@@ -40,7 +39,7 @@ async function onBuyClicked(windowLocalStorageIdentifier) {
 async function webAuthnGet(windowLocalStorageIdentifier) {
   try {
     const publicKey = {
-      challenge: textEncoder.encode('Authentication challenge'),
+      challenge: new TextEncoder().encode('Authentication challenge'),
       userVerification: 'required',
       allowCredentials: [{
         transports: ['internal'],

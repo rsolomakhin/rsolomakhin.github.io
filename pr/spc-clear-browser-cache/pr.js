@@ -1,6 +1,5 @@
 /* exported createPaymentCredential */
 /* exported onBuyClicked */
-const textEncoder = new TextEncoder();
 
 /**
  * Creates a payment credential.
