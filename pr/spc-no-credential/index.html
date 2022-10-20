@@ -22,37 +22,11 @@
     <p><button onclick="onBuyClicked()">Pay $0.01</button></p>
   </div>
   <pre id="msg"></pre>
-  <p><em>Pay $0.01</em> will make the following request with a nonexistent
-    credential:
-  <pre style="color: #265289">new PaymentRequest([{
-  supportedMethods: 'secure-payment-confirmation',
-  data: {
-    credentialIds: [Uint8Array.from(
-        atob(window.localStorage.getItem('no_credential_identifier')),
-        c => c.charCodeAt(0))],
-    instrument: {
-      displayName: 'Bob Pay',
-      icon: 'https://rsolomakhin.github.io/pr/spc-no-credential/bobpaycc.png',
-    },
-    challenge: textEncoder.encode('challenge'),
-    timeout: 60000,
-    payeeOrigin: window.location.origin,
-    rpId: window.location.hostname,
-  },
-}], {
-  total: {
-    label: 'Total',
-    amount: {
-      currency: 'USD',
-      value: '0.01',
-    },
-  },
-});</pre>
-  </p>
   <p>Based on the <a
       href="https://github.com/w3c/secure-payment-confirmation">Secure Payment
       Confirmation explainer</a>.</p>
   <script src="../util.js"></script>
+  <script src="../spc_util.js"></script>
   <script src="pr.js"></script>
   <script src="/redirect.js"></script>
 </body>
