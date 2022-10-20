@@ -156,62 +156,16 @@ async function createPaymentCredential(windowLocalStorageIdentifier, usePaymentE
     error(err);
   }
 }
+
 /**
- * Initializes the payment request object.
- * @return {PaymentRequest} The payment request object.
- */
-async function buildPaymentRequest(windowLocalStorageIdentifier) {
-  if (!window.PaymentRequest) {
-    return null;
-  }
-  let request = null;
-  try {
-    // Documentation:
-    // https://github.com/w3c/secure-payment-confirmation
-    const challenge = textEncoder.encode('network_data');
-    const updatedInstrument = {
-      displayName: 'My Troy Card',
-      icon: 'https://rsolomakhin.github.io/pr/spc/troy-alt-logo.png',
-    };
-    const supportedInstruments = [{
-      supportedMethods: 'secure-payment-confirmation',
-      data: {
-        credentialIds: [base64ToArray(window.localStorage.getItem(
-          windowLocalStorageIdentifier))],
-        instrument: updatedInstrument,
-        networkData: challenge,
-        challenge,
-        timeout: 60000,
-        payeeOrigin: window.location.origin,
-        rpId: window.location.hostname,
-      },
-    }];
-    const details = {
-      total: {
-        label: 'Total',
-        amount: {
-          currency: 'USD',
-          value: '0.01',
-        },
-      },
-    };
-    request = new PaymentRequest(supportedInstruments, details);
-  } catch (err) {
-    error(err);
-  }
-  return request;
-}
-/**
- * Launches payment request for Android Pay.
+ * Launches payment request for SPC.
  */
 async function onBuyClicked(windowLocalStorageIdentifier) {
-  if (!window.PaymentRequest) {
-    error('PaymentRequest API is not supported.');
-    return;
-  }
-  const request = await buildPaymentRequest(windowLocalStorageIdentifier);
-  if (!request) return;
   try {
+    const request = await createSPCPaymentRequest({
+      credentialIds: [base64ToArray(window.localStorage.getItem(windowLocalStorageIdentifier))],
+    });
+
     const instrumentResponse = await request.show();
     await instrumentResponse.complete('success')
     console.log(instrumentResponse);
@@ -219,19 +173,5 @@ async function onBuyClicked(windowLocalStorageIdentifier) {
       objectToString(instrumentResponse));
   } catch (err) {
     error('SPC failed: ' + err);
-  }
-}
-async function checkCanMakePayment(windowLocalStorageIdentifier) {
-  if (!window.PaymentRequest) {
-    error('PaymentRequest API is not supported.');
-    return;
-  }
-  try {
-    const request = await buildPaymentRequest(windowLocalStorageIdentifier);
-    if (!request) return;
-    const result = await request.canMakePayment();
-    info((result ? 'Can make payment.' : 'Cannot make payment'));
-  } catch (err) {
-    error(err);
   }
 }
