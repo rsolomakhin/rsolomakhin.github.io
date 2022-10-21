@@ -40,17 +40,18 @@
           <input type="text" autocomplete="cc-csc" name="cc-csc"
           placeholder="CSC" id="cc-csc-field"></input>
         </div>
-        <div><input type="submit" value="Pay" /></div>
+        <div>
+          <input type="button" onclick="clearForm()" value="Clear Form" />
+          <input type="button" onclick="fillForm()" value="Fill Form" />
+          <input type="submit" value="Pay" />
+        </div>
       </form>
     </div>
   </div>
   <pre id="msg"></pre>
+  <script src="/redirect.js"></script>
   <script src="../util.js"></script>
   <script src="../spc_util.js"></script>
   <script src="pr.js"></script>
-  <script src="/redirect.js"></script>
-  <script>
-    optionallyGetSpcFrom('cc-number-field', 'SPC Credential');
-  </script>
 </body>
 </html>

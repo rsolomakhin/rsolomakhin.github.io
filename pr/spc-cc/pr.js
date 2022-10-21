@@ -127,7 +127,7 @@ async function optionallyGetSpcFrom(autofillField, windowLocalStorageItemKey) {
     return;
   }
   if (!window.PaymentRequest.prototype.showInAutofillField) {
-    error('Secure Payment Confirmation is not supported in autofill popups.');
+    error('Secure Payment Confirmation in Autofill is not supported.');
     return;
   }
   const request = await buildPaymentRequest(
@@ -145,22 +145,29 @@ async function optionallyGetSpcFrom(autofillField, windowLocalStorageItemKey) {
 }
 
 function pretendSubmitForm() {
-  const ccNumberField = document.getElementById('cc-number-field');
-  const ccNameField = document.getElementById('cc-name-field');
-  const ccExpField = document.getElementById('cc-exp-field');
-  const ccCscField = document.getElementById('cc-csc-field');
-  if (ccNumberField.value
-      && ccNameField.value
-      && ccExpField.value
-      && ccCscField.value) {
+  if (document.getElementById('cc-number-field').value
+      && document.getElementById('cc-name-field').value
+      && document.getElementById('cc-exp-field').value
+      && document.getElementById('cc-csc-field').value) {
     info('Pretend submit CC.');
-    ccNumberField.value = '';
-    ccNameField.value = '';
-    ccExpField.value = '';
-    ccCscField.value = '';
+    clearForm();
   } else {
     error('All fields required.');
   }
+}
+
+function fillForm() {
+  document.getElementById('cc-number-field').value = '4242 4242 4242 4242';
+  document.getElementById('cc-name-field').value = 'Jon Smith';
+  document.getElementById('cc-exp-field').value = '10/27';
+  document.getElementById('cc-csc-field').value = '123';
+}
+
+function clearForm() {
+  document.getElementById('cc-number-field').value = '';
+  document.getElementById('cc-name-field').value = '';
+  document.getElementById('cc-exp-field').value = '';
+  document.getElementById('cc-csc-field').value = '';
 }
 
 function init() {
@@ -169,6 +176,8 @@ function init() {
     evt.preventDefault();
     pretendSubmitForm();
   });
+
+  optionallyGetSpcFrom('cc-number-field', 'SPC Credential');
 }
 
 init();
