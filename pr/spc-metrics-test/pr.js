@@ -14,6 +14,10 @@ async function createPaymentCredential(windowLocalStorageIdentifier) {
   }
 }
 
+function clearEnrolledCredential(windowLocalStorageIdentifier) {
+  window.localStorage.removeItem(windowLocalStorageIdentifier);
+}
+
 let gPaymentRequest = null;
 
 // TODO: Show opt out option
