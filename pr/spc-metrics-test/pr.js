@@ -35,7 +35,7 @@ async function callCanMakePayment() {
   }
 
   try {
-    const cmp = gPaymentRequest.canMakePayment();
+    const cmp = await gPaymentRequest.canMakePayment();
     info('Called canMakePayment, result: ' + cmp);
   } catch (e) {
     error(e);
@@ -49,7 +49,7 @@ async function callHasEnrolledInstrument() {
   }
 
   try {
-    const hei = gPaymentRequest.hasEnrolledInstrument();
+    const hei = await gPaymentRequest.hasEnrolledInstrument();
     info('Called hasEnrolledInstrument, result: ' + hei);
   } catch (e) {
     error(e);
