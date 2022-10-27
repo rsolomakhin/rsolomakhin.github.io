@@ -1,0 +1,20 @@
+<html>
+<head>
+</head>
+<body >
+<script>
+var a = new Array(20);
+for(var i=0;i<12;i++){
+a[i] = document.createElement("iframe"); 
+a[i].src="/pr/1378286/poc.html"
+document.body.append(a[i]);
+}
+
+
+setTimeout(()=>{window.location.reload();}, 100);
+
+</script>
+</body>
+<script>
+</script>
+</html>
