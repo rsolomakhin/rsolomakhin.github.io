@@ -1,0 +1,15 @@
+{
+  "short_name": "Test Pay",
+  "name": "Test Pay",
+  "icons": [{
+    "src": "https://www.gstatic.com/instantbuy/icons/gpay_24.png",
+    "sizes": "24x24"
+  },{
+    "src": "https://www.gstatic.com/instantbuy/icons/gpay_32.png",
+    "sizes": "32x32"
+  }],
+  "serviceworker": {
+    "src": "/no.js",
+    "use_cache": true
+  }
+}
