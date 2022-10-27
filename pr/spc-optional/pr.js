@@ -294,9 +294,9 @@ async function optionallyGetSpcFrom(autofillField, windowLocalStorageItemKey) {
 function pretendSubmitForm() {
   const phoneNumber = document.getElementById('phone-field').value;
   if (phoneNumber) {
-    info('Pretend SMS sent to ' + phoneNumber + '.');
+    info('Valid SMS code received.');
   } else {
-    error('No phone number provided.');
+    error('No SMS code provided.');
   }
 }
 
