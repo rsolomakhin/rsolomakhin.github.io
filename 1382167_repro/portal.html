@@ -1,0 +1,6 @@
+<body style="background-color: black;"></body>
+<script>
+    window.addEventListener('portalactivate', e => {
+        document.body.appendChild(e.adoptPredecessor());
+    });
+</script>
