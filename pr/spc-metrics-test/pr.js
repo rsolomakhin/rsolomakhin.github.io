@@ -75,3 +75,35 @@ async function callShow() {
     error(err);
   }
 }
+
+async function callShowWithoutComplete() {
+  if (!gPaymentRequest) {
+    error('gPaymentRequest is not set');
+    return;
+  }
+
+  try {
+    const instrumentResponse = await gPaymentRequest.show();
+    // Deliberately not calling complete()
+    console.log(instrumentResponse);
+    info('Called show, result: ' + objectToString(instrumentResponse));
+  } catch (err) {
+    error(err);
+  }
+}
+
+async function callShowThenFailComplete() {
+  if (!gPaymentRequest) {
+    error('gPaymentRequest is not set');
+    return;
+  }
+
+  try {
+    const instrumentResponse = await gPaymentRequest.show();
+    await instrumentResponse.complete('fail')
+    console.log(instrumentResponse);
+    info('Called show, result: ' + objectToString(instrumentResponse));
+  } catch (err) {
+    error(err);
+  }
+}
