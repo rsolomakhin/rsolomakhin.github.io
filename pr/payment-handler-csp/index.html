@@ -8,15 +8,14 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" type="text/css" href="../style.css">
 
-  <meta http-equiv="Content-Security-Policy" content="connect-src 'self'">
+  <meta http-equiv="Content-Security-Policy" content="connect-src 'self' https://google.com/pay">
 </head>
 
 <body>
   <div id="contents">
     <h1>PaymentHandler + CSP policy test</h1>
-    <p>This page tests whether the CSP `connect-src` policy applies to PaymentHandler. The connect-src policy on this page only allows self, and so should block a PaymentHandler manifest load.</p>
+    <p>This page tests whether the CSP `connect-src` policy applies to PaymentHandler. The connect-src policy on this page only allows self and https://google.com/pay, and so should block the PaymentHandler manifest load after it redirects.</p>
     <p>No payment will be processed.</p>
-    <br />
     <br />
     <p><button onclick="onBuyClicked()">Buy</button></p>
   </div>
