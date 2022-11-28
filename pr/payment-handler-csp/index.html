@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PaymentHandler + CSP policy test</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+
+  <meta http-equiv="Content-Security-Policy" content="connect-src 'self'">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>PaymentHandler + CSP policy test</h1>
+    <p>This page tests whether the CSP `connect-src` policy applies to PaymentHandler. The connect-src policy on this page only allows self, and so should block a PaymentHandler manifest load.</p>
+    <p>No payment will be processed.</p>
+    <br />
+    <br />
+    <p><button onclick="onBuyClicked()">Buy</button></p>
+  </div>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+</body>
+
+</html>
