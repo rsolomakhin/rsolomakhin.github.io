@@ -37,18 +37,23 @@ true</code>.
   origin-trial: Auw/tjTQ2eJQ911wiMHi1Bb7i71...
 </pre>
 
-<p>To manually remove identity from <code>"canmakepayment"</code> event in
-Chrome 110 and older, set
+<p>Flag guide:</p>
+
+<ul>
+
+<li>Chrome 110 and older: Set
 <code>chrome://flags/#clear-identity-in-can-make-payment</code> to
-<code>[Enabled]</code> and restart Chrome.</p>
+<code>[Enabled]</code> and restart Chrome to manually remove identity fields
+from the <code>"canmakepayment"</code> event.</li>
 
-<p>To manually add identity back to <code>"canmakepayment"</code> event in
-Chrome 111-113, set
-<code>chrome://flags/#add-identity-in-can-make-payment</code> to
-<code>[Enabled]</code> and restart Chrome.</p>
+<li>Chrome 111-113: Set <code>chrome://flags/#add-identity-in-can-make-payment</code> to
+<code>[Enabled]</code> and restart Chrome to manually add back identity fields
+to the <code>"canmakepayment"</code> event.</li>
 
-<p>Starting with Chrome 114, the <code>"canmakepayment"</code> event has no
-identity fields and there is no way to add them back in.</p>
+<li>Starting Chrome 114: There is no way to add the identity fields back to the
+<code>"canmakepayment"</code> event.</li>
+
+</ul>
 
 <button onclick="runTest()">Run a test</button>
 <pre id="msg"></pre>
