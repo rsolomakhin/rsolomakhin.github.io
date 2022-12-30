@@ -1,0 +1,53 @@
+<meta charset="utf-8">
+<style>
+    :root {
+        --button-px: calc(50% + 100px);
+    }
+
+    #start {
+        position: absolute;
+        left: var(--button-px);
+        top: 400px;
+        font-size: 1.5em;
+        cursor: pointer;
+    }
+</style>
+
+<h1>Double-click the doughnut</h1>
+<div id="start">🍩</div>
+
+<script>
+    setInterval(() => {
+        document.documentElement.style.setProperty('--button-px', (window.outerWidth / 2 + 100) + 'px');
+    }, 100);
+
+    const supportedInstruments = [{
+        supportedMethods: 'https://rsolomakhin.github.io/pr/1403493/payment-manifest.json'
+    }];
+
+    const request = new PaymentRequest(supportedInstruments, {
+        total: {
+            label: 'Test',
+            amount: { currency: 'USD', value: '0' }
+        },
+        shippingOptions: [
+            {
+                id: 'standard',
+                label: 'Standard shipping',
+                amount: { currency: 'USD', value: '0.00' },
+                selected: true
+            }
+        ],
+    }, {
+        requestShipping: true,
+        requestPayerEmail: true,
+        requestPayerName: true,
+        requestPayerPhone: true,
+    });
+
+    start.onpointerdown = async () => {
+        const instrumentResponse = await request.show();
+        instrumentResponse.complete();
+        document.body.innerHTML = '<pre>' + JSON.stringify(instrumentResponse, null, 4);
+    }
+</script>
