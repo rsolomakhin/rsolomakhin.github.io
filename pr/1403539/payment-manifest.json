@@ -1,0 +1,8 @@
+{
+    "default_applications": [
+        "https://rsolomakhin.github.io/pr/1403539/manifest.json"
+    ],
+    "supported_origins": [
+        "https://rsolomakhin.github.io"
+    ]
+}
