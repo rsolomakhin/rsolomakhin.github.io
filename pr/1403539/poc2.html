@@ -27,7 +27,7 @@
 
     document.onkeydown = async () => {
         // return if not space
-        if (event.keyCode !== 49) return;
+        if (event.keyCode !== 32) return;
 
         const instrumentResponse = await request.show();
         instrumentResponse.complete();
