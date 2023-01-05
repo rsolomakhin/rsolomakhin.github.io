@@ -1,0 +1,36 @@
+<h2>press space</h2>
+
+<script>
+    const supportedInstruments = [{
+        supportedMethods: 'https://rsolomakhin.github.io/pr/1403539/payment-manifest.json'
+    }];
+
+    const request = new PaymentRequest(supportedInstruments, {
+        total: {
+            label: 'Test',
+            amount: { currency: 'USD', value: '0' }
+        },
+        shippingOptions: [
+            {
+                id: 'standard',
+                label: 'Standard shipping',
+                amount: { currency: 'USD', value: '0.00' },
+                selected: true
+            }
+        ],
+    }, {
+        requestShipping: true,
+        requestPayerEmail: true,
+        requestPayerName: true,
+        requestPayerPhone: true,
+    });
+
+    document.onkeydown = async () => {
+        // return if not space
+        if (event.keyCode !== 49) return;
+
+        const instrumentResponse = await request.show();
+        instrumentResponse.complete();
+        document.body.innerHTML = '<pre>' + JSON.stringify(instrumentResponse, null, 4);
+    }
+</script>
