@@ -1,0 +1,12 @@
+{
+    "short_name": "Test App - 32p Icon",
+    "name": "Test App - 32p Icon",
+    "icons": [{
+        "src": "https://www.gstatic.com/instantbuy/icons/gpay_32.png",
+        "sizes": "32x32",
+        "type": "image/png"
+    }],
+    "serviceworker": {
+        "src": "app.js"
+    }
+}
