@@ -8,16 +8,16 @@ function buildPaymentRequest() {
   }
 
   const supportedInstruments = [{
-    supportedMethods: 'https://rsolomakhin.github.io/apps/icon-32-test/payment_method_manifest.json'
+    supportedMethods: 'https://rsolomakhin.github.io/pr/apps/icon-32-test/payment_method_manifest.json'
   },
   {
-    supportedMethods: 'https://rsolomakhin.github.io/apps/icon-64-test/payment_method_manifest.json'
+    supportedMethods: 'https://rsolomakhin.github.io/pr/apps/icon-64-test/payment_method_manifest.json'
   },
   {
-    supportedMethods: 'https://rsolomakhin.github.io/apps/icon-128-test/payment_method_manifest.json'
+    supportedMethods: 'https://rsolomakhin.github.io/pr/apps/icon-128-test/payment_method_manifest.json'
   },
   {
-    supportedMethods: 'https://rsolomakhin.github.io/apps/icon-256-test/payment_method_manifest.json'
+    supportedMethods: 'https://rsolomakhin.github.io/pr/apps/icon-256-test/payment_method_manifest.json'
   },
   ];
 
