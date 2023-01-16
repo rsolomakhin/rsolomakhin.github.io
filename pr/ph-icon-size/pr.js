@@ -2,24 +2,14 @@
  * Initializes the payment request object.
  * @return {PaymentRequest} The payment request object.
  */
-function buildPaymentRequest() {
+function buildPaymentRequest(size) {
   if (!window.PaymentRequest) {
     return null;
   }
 
   const supportedInstruments = [{
-    supportedMethods: 'https://rsolomakhin.github.io/pr/apps/icon-32-test/payment_method_manifest.json'
-  },
-  {
-    supportedMethods: 'https://rsolomakhin.github.io/pr/apps/icon-64-test/payment_method_manifest.json'
-  },
-  {
-    supportedMethods: 'https://rsolomakhin.github.io/pr/apps/icon-128-test/payment_method_manifest.json'
-  },
-  {
-    supportedMethods: 'https://rsolomakhin.github.io/pr/apps/icon-256-test/payment_method_manifest.json'
-  },
-  ];
+    supportedMethods: `https://rsolomakhin.github.io/pr/apps/icon-${size}-test/payment_method_manifest.json`
+  }];
 
   const details = {
     total: {
@@ -69,8 +59,6 @@ function buildPaymentRequest() {
   return request;
 }
 
-let request = buildPaymentRequest();
-
 /**
  * Handles the response from PaymentRequest.show().
  */
@@ -88,7 +76,9 @@ function handlePaymentResponse(response) {
 /**
  * Launches payment request for Bob Pay.
  */
-function onBuyClicked() { // eslint-disable-line no-unused-vars
+function onBuyClicked(size) { // eslint-disable-line no-unused-vars
+  let request = buildPaymentRequest(size);
+
   if (!window.PaymentRequest || !request) {
     error('PaymentRequest API is not supported.');
     return;
