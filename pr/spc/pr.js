@@ -26,6 +26,13 @@ async function onBuyClicked(windowLocalStorageIdentifier) {
       credentialIds: [base64ToArray(window.localStorage.getItem(windowLocalStorageIdentifier))],
     });
 
+    try {
+      const canMakePayment = await request.canMakePayment();
+      info(`canMakePayment result: ${canMakePayment}`);
+    } catch (err) {
+      error(`Error from canMakePayment: ${error.message}`);
+    }
+
     const instrumentResponse = await request.show();
     await instrumentResponse.complete('success')
     console.log(instrumentResponse);
@@ -58,3 +65,19 @@ async function webAuthnGet(windowLocalStorageIdentifier) {
     error(err);
   }
 }
+
+if (PublicKeyCredential) {
+  if (PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable) {
+    PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
+      .then((available) => {
+        info(`isUserVerifyingPlatformAuthenticatorAvailable: ${available}`);
+      }).catch((error) => {
+        error(`Error when calling isUserVerifyingPlatformAuthenticatorAvailable: ${error.message}`);
+      });
+  } else {
+    error('PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable method not detected');
+  }
+} else {
+  error('PublicKeyCredential interface not detected');
+}
+
