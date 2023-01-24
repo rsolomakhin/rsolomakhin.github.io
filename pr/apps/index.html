@@ -3,32 +3,32 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Apps</title>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="manifest" href="/manifest.json">
+  <title>Payment Handlers</title>
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="manifest" href="../../manifest.json">
   <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
+  <h1>Payment Handlers</h1>
   <h3>Good:</h3>
   <ul>
     <li><a href="origin/">Payment handler for "https://rsolomakhin.github.io"</a>.</li>
     <li><a href="anti/">Payment handler for "https://rsolomakhin.github.io"
       that cannot make payments</a>.</li>
     <li><a href="bobpay/">Payment handler for "https://bobbucks.dev/pay"</a>.</li>
-    <li><a href="https://bobbucks.dev">BobPay registration</a>. <a
+    <li><a href="https://bobbucks.dev">BobBucks registration</a>. <a
         href="../bob/">Test it out with payment sheet</a>. <a
         href="../skip-ui/">Test it out without payment sheet</a>.</li>
     <li><a href="best-icon/">Payment handler for testing selection of the best icon</a>.</li>
+    <li><a href="../ph-icon-size/">PaymentHandler icon size test</a></li>
     <li><a href="pmc/">Payment handler for testing payment method change event</a>.</li>
     <li><a href="shipping-and-contact-delegation/sac/">Payment handler for testing shipping address change event</a>.</li>
     <li><a href="shipping-and-contact-delegation/soc/">Payment handler for testing shipping option change event</a>.</li>
     <li><a href="shipping-and-contact-delegation/simple/">Simple Payment handler for testing shipping/contact delegation</a>.</li>
     <li><a href="shipping-and-contact-delegation/contact/">Simple Payment handler for testing contact only delegation</a>.</li>
     <li><a href="shipping-and-contact-delegation/shipping/">Simple Payment handler for testing shipping only delegation</a>.</li>
-    <li><a href="micro/">Payment handler for testing microtransactions</a>.</li>
     <li><a href="password/">Password handler</a>.</li>
-    <li><a href="src/">"src-card" method</a>.</li>
-    <li><a href="src2/">SRC</a>.</li>
+    <li><a href="src2/">Several payment handlers that each look like a credit card.</a>.</li>
   </ul>
   <h3>Bad:</h3>
   <p>(These payment handlers have bugs in their JavaScript.)</p>
@@ -56,10 +56,6 @@
     <li><a href="mixed/">Mixed content images</a>.</li>
     <li><a href="mixed-js/">Mixed content JavaScript</a>.</li>
   </ul>
-  <p>(These payment handlers depend on the deprecated "basic-card" method.)</p>
-    <ul>
-      <li><a href="basic-card/">Payment handler for "basic-card"</a>.</li>
-    </ul>
-  <script src="/redirect.js"></script>
+  <script src="../../redirect.js"></script>
 </body>
 </html>
