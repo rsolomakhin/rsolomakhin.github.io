@@ -1,0 +1,44 @@
+<meta charset="utf-8">
+<style>
+    #start {
+        position: fixed;
+        left: 75%;
+        bottom: 10;
+        font-size: 10em;
+    }
+</style>
+
+<h1>Double-tap the doughnut</h1>
+<div id="start">🍩</div>
+
+<script>
+    const supportedInstruments = [{
+        supportedMethods: 'https://rsolomakhin.github.io/pr/1403493/payment-manifest.json'
+    }];
+
+    const request = new PaymentRequest(supportedInstruments, {
+        total: {
+            label: 'Test',
+            amount: { currency: 'USD', value: '0' }
+        },
+        shippingOptions: [
+            {
+                id: 'standard',
+                label: 'Standard shipping',
+                amount: { currency: 'USD', value: '0.00' },
+                selected: true
+            }
+        ],
+    }, {
+        requestShipping: true,
+        requestPayerEmail: true,
+        requestPayerName: true,
+        requestPayerPhone: true,
+    });
+
+    start.onpointerdown = async () => {
+        const instrumentResponse = await request.show();
+        instrumentResponse.complete();
+        document.body.innerHTML = '<pre>' + JSON.stringify(instrumentResponse, null, 4);
+    }
+</script>
