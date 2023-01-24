@@ -9,11 +9,7 @@ function buildPaymentRequest() {
 
   const supportedInstruments = [{
     supportedMethods: 'https://bobbucks.dev/pay'
-  },
-  {
-    supportedMethods: 'interledger'
-  }
-  ];
+  }];
 
   const details = {
     total: {
