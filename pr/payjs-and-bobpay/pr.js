@@ -38,7 +38,7 @@ async function payButtonClickHandler() {
     paymentDataRequest.allowedPaymentMethods = [cardPaymentMethod];
     paymentDataRequest.transactionInfo = {
       totalPriceStatus: 'FINAL',
-      totalPrice: '1.00',
+      totalPrice: '50.00',
       currencyCode: 'USD',
       countryCode: 'US',
     };
@@ -81,20 +81,20 @@ bobPayButton = document.getElementById('bobPayButton').addEventListener('click',
       label: 'Payment',
       amount: {
         currency: 'USD',
-        value: '1.00',
+        value: '50.00',
       },
     },
     displayItems: [{
       label: 'Line item 1',
       amount: {
         currency: 'USD',
-        value: '2.00',
+        value: '60.00',
       },
     }, {
       label: 'Discount',
       amount: {
         currency: 'USD',
-        value: '-1.00',
+        value: '-10.00',
       },
     }],
   };
