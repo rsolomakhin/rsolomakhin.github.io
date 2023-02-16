@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pay.js Test in Live Environment</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+  <style>
+  .bobPayButton {
+  	background-color:#44c767;
+  	border-radius:14px;
+  	border:1px solid #18ab29;
+  	display:inline-block;
+  	cursor:pointer;
+  	color:#ffffff !important;
+  	font-family:Arial;
+  	font-size:17px;
+  	padding:16px 65px;
+  	text-decoration:none;
+  	text-shadow:0px 1px 0px #2f6627;
+  }
+  .bobPayButton:hover {
+  	background-color:#5cbf2a;
+  }
+  .bobPayButton:active {
+  	position:relative;
+  	top:1px;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="contents">
+    <h1>Pay.js in Live Environment</h1>
+    <p>This page can be used to compare Google Pay's <code>pay.js</code> in
+    <em>live</em> environment, against the test Bob Pay app. No payment will be processed.
+    <p>Price: USD <strong>$1.00</strong></p>
+    <div id="buttonContainer"></div>
+    <br />
+    <br />
+    <a href="#" id="bobPayButton" class="bobPayButton">🌳 Bob Pay</a>
+  </div>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+  <script
+    async
+    src="https://pay.google.com/gp/p/js/pay.js"
+    onload="addPayButton()">
+  </script>
+</body>
+</html>
