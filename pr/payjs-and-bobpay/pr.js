@@ -103,20 +103,6 @@ bobPayButton = document.getElementById('bobPayButton').addEventListener('click',
 
   try {
     request = new PaymentRequest(supportedInstruments, details);
-    if (request.canMakePayment) {
-      request.canMakePayment().then(function(result) {
-        info(result ? 'Can make payment' : 'Cannot make payment');
-      }).catch(function(err) {
-        error(err);
-      });
-    }
-    if (request.hasEnrolledInstrument) {
-      request.hasEnrolledInstrument().then(function(result) {
-        info(result ? 'Has enrolled instrument' : 'No enrolled instrument');
-      }).catch(function(err) {
-        error(err);
-      });
-    }
   } catch (e) {
     error('Developer mistake: \'' + e.message + '\'');
   }
