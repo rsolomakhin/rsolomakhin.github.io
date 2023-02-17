@@ -1,0 +1,12 @@
+{
+    "short_name": "Test App - SVG Icon",
+    "name": "Test App - SVG Icon",
+    "icons": [{
+        "src": "https://rsolomakhin.github.io/pr/apps/icon-svg-test/tree.svg",
+        "sizes": "32x32",
+        "type": "image/svg+xml"
+    }],
+    "serviceworker": {
+        "src": "app.js"
+    }
+}
