@@ -121,7 +121,7 @@ bobPayButton = document.getElementById('bobPayButton').addEventListener('click',
 function handlePaymentResponse(response) {
     response.complete('success')
       .then(function() {
-        done('This is a demo website. No payment will be processed.', response);
+        info(JSON.stringify(response, undefined, 2));
       })
       .catch(function(err) {
         error(err);
