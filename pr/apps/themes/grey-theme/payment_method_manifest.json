@@ -1,0 +1,4 @@
+{
+  "default_applications": ["https://rsolomakhin.github.io/pr/apps/themes/grey-theme/web_manifest.json"],
+  "supported_origins": ["https://rsolomakhin.github.io"]
+}
