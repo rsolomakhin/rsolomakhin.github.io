@@ -1,7 +1,11 @@
 const PAYMENT_APPS = [
   {
-    description: 'App #1 - Supports shipping, payer name, payer email, and payer phone',
+    description: 'App #1 - Supports shipping, payer name, payer email, and payer phone delegation',
     directory: 'delegate_all'
+  },
+  {
+    description: 'App #2 - Supports shipping delegation only',
+    directory: 'delegate_shipping'
   },
 ];
 
