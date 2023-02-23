@@ -10,25 +10,6 @@ self.response = {
 self.currentPaymentHandlerWindow = null;
 
 self.addEventListener('paymentrequest', (evt) => {
-  self.response.payerName = 'Jon Doe';
-  self.response.payerEmail = 'jon.doe@gmail.com';
-  self.response.payerPhone = '+1 555 555 5555';
-  self.response.shippingAddress = {
-    city: 'Testville',
-    country: 'US',
-    dependentLocality: '',
-    organization: '',
-    phone: '+1 555 555 5555',
-    postalCode: '12345',
-    recipient: 'Jon Doe',
-    region: 'CA',
-    sortingCode: '',
-    addressLine: [
-      '123 Fake St',
-    ],
-  };
-  self.response.shippingOption = 1;
-
   evt.respondWith(new Promise((resolve) => {
     self.resolver = resolve;
     evt.openWindow('payment_handler_window.html')
@@ -44,22 +25,15 @@ self.addEventListener('paymentrequest', (evt) => {
   }));
 });
 
-function sendMessage(msg) {
-  if (self.currentPaymentHandlerWindow) {
-    console.log(
-        'Sending message to payment handler window: ' +
-        JSON.stringify(msg, undefined, 2));
-    self.currentPaymentHandlerWindow.postMessage(msg);
-  } else {
-    console.log(
-        'No destination found for message: ' +
-        JSON.stringify(msg, undefined, 2));
-  }
-}
-
 self.addEventListener('message', (evt) => {
-  if (evt.data === 'confirm') {
+  if (evt.data && evt.data.type === 'confirm') {
     if (self.resolver !== null) {
+      self.response.payerName = evt.data.payerName;
+      self.response.payerEmail = evt.data.payerEmail;
+      self.response.payerPhone = evt.data.payerPhone;
+      self.response.shippingAddress = evt.data.shippingAddress;
+      self.response.shippingOption = 1;
+
       self.resolver(response);
       self.resolver = null;
     } else {
@@ -74,3 +48,17 @@ self.addEventListener('message', (evt) => {
     });
   }
 });
+
+function sendMessage(msg) {
+  if (self.currentPaymentHandlerWindow) {
+    console.log(
+        'Sending message to payment handler window: ' +
+        JSON.stringify(msg, undefined, 2));
+    self.currentPaymentHandlerWindow.postMessage(msg);
+  } else {
+    console.log(
+        'No destination found for message: ' +
+        JSON.stringify(msg, undefined, 2));
+  }
+}
+

@@ -17,20 +17,41 @@ button.addEventListener('click', (evt) => {
   if (navigator.serviceWorker.controller) {
     button.style.display = 'none';
     pleasewait.style.display = 'block';
-    navigator.serviceWorker.controller.postMessage('confirm');
+
+    response = {
+      type: 'confirm',
+      payerName: document.getElementById('name_field').value,
+      payerEmail: document.getElementById('email_field').value,
+      payerPhone: document.getElementById('phone_field').value,
+      shippingAddress: {
+        addressLine: [
+          document.getElementById('street_field').value,
+        ],
+        city: document.getElementById('city_field').value,
+        region: document.getElementById('state_field').value,
+        country: document.getElementById('country_field').value,
+        postalCode: document.getElementById('zip_field').value,
+        // These fields are semi-duplicated when the merchant requests both,
+        // though in theory the contact info and the shipping address could be
+        // different!
+        recipient: document.getElementById('name_field').value,
+        phone: document.getElementById('phone_field').value,
+      },
+    };
+    navigator.serviceWorker.controller.postMessage(response);
   } else {
-    output('Service worker controller found');
+    output('Error: No service worker controller found!');
   }
 });
 
 navigator.serviceWorker.addEventListener('message', (evt) => {
   if (!evt.data) {
-    output('Received an empty message');
+    output('Error: Received an empty message');
     return;
   }
 
   if (evt.data.error) {
-    output(evt.data.error);
+    output('Error: ' + evt.data.error);
     return;
   }
 
