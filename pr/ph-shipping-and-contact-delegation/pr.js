@@ -1,3 +1,17 @@
+const PAYMENT_APPS = [
+  {
+    description: 'App #1 - Supports shipping, payer name, payer email, and payer phone',
+    directory: 'delegate_all'
+  },
+];
+
+// Build the select menu for payment apps
+for (const app of PAYMENT_APPS) {
+  const option = document.createElement('option');
+  option.text = app.description;
+  document.getElementById('app_select').add(option);
+}
+
 /**
  * Initializes the payment request object.
  * @return {PaymentRequest} The payment request object.
@@ -7,8 +21,14 @@ function buildPaymentRequest(options) {
     return null;
   }
 
+  const selectedAppIndex = document.getElementById('app_select').selectedIndex;
+  const selectedApp = PAYMENT_APPS[selectedAppIndex];
+  const selectedAppUrl =  `https://rsolomakhin.github.io/pr/apps/delegation/${selectedApp.directory}/payment_method_manifest.json`;
+
+  info(`Triggering payment app: ${selectedAppUrl}`);
+
   const supportedInstruments = [{
-    supportedMethods: `https://rsolomakhin.github.io/pr/apps/delegation/delegate_all/payment_method_manifest.json`
+    supportedMethods: selectedAppUrl,
   }];
 
   const details = {
@@ -51,7 +71,7 @@ function buildPaymentRequest(options) {
 function handlePaymentResponse(response) {
     response.complete('success')
       .then(function() {
-        info(response);
+        info(JSON.stringify(response, undefined, 2));
       })
       .catch(function(err) {
         error(err);
