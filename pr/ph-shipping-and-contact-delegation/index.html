@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4CAF50">
+  <title>PaymentHandler app shipping/contact info delegation test</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+  <style>
+    h1, strong {
+      color: #4CAF50;
+    }
+    button {
+      background-color: #4CAF50;
+    }
+  </style>
+</head>
+<body>
+  <div id="contents">
+    <h1>PaymentHandler shipping/contact information delegation test</h1>
+    <!-- TODO: Have a select to decide on which app, then buttons for different request levels -->
+    <p><button onclick="onBuyClicked({requestShipping: true, requestPayerEmail: true, requestPayerName: true, requestPayerPhone: true})">Shipping address, email, name, and phone</button></p>
+    <!--
+    <p><button onclick="onBuyClicked('32')">32p icon</button></p>
+    <p><button onclick="onBuyClicked('64')">64p icon</button></p>
+    <p><button onclick="onBuyClicked('128')">128p icon</button></p>
+    <p><button onclick="onBuyClicked('256')">256p icon</button></p>
+    <p><button onclick="onBuyClicked('all-sizes')">All sizes declared</button></p>
+    <p><button onclick="onBuyClicked('svg')">SVG icon</button></p>
+    -->
+  </div>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+</body>
+</html>
