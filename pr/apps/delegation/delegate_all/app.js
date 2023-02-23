@@ -27,7 +27,7 @@ self.addEventListener('paymentrequest', (evt) => {
       '123 Fake St',
     ],
   };
-  self.response.shippingOption = '';
+  self.response.shippingOption = 1;
 
   evt.respondWith(new Promise((resolve) => {
     self.resolver = resolve;
