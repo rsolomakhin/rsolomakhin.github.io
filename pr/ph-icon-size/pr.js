@@ -8,7 +8,7 @@ function buildPaymentRequest(size) {
   }
 
   const supportedInstruments = [{
-    supportedMethods: `https://rsolomakhin.github.io/pr/apps/icon-${size}-test/payment_method_manifest.json`
+    supportedMethods: `https://rsolomakhin.github.io/pr/apps/icon-sizes/icon-${size}-test/payment_method_manifest.json`
   }];
 
   const details = {
