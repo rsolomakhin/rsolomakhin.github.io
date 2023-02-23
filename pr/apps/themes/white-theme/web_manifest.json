@@ -1,0 +1,12 @@
+{
+    "short_name": "Test App - White Theme",
+    "name": "Test App - White Theme",
+    "icons": [{
+        "src": "tree.png",
+        "sizes": "600x600",
+        "type": "image/png"
+    }],
+    "serviceworker": {
+        "src": "app.js"
+    }
+}
