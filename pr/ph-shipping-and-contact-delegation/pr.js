@@ -7,6 +7,10 @@ const PAYMENT_APPS = [
     description: 'App #2 - Supports shipping delegation only',
     directory: 'delegate_shipping'
   },
+  {
+    description: 'App #3 - Does not support any information delegation',
+    directory: 'delegate_none'
+  },
 ];
 
 // Build the select menu for payment apps
