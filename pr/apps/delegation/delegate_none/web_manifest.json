@@ -1,6 +1,6 @@
 {
-    "short_name": "Test App - Shipping and Contact delegation",
-    "name": "Test App - Shipping and Contact delegation",
+    "short_name": "Test App - No Shipping or Contact delegation",
+    "name": "Test App - No Shipping or Contact delegation",
     "icons": [{
         "src": "https://rsolomakhin.github.io/static/tree.png",
         "sizes": "24x24",
