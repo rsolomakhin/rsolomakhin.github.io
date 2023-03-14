@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4CAF50">
+  <title>PaymentHandler error cases</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+  <div id="contents">
+    <h1>PaymentHandler error cases</h1>
+    <div>This page allows testing a number of error cases with Payment Handlers.
+         The list below is not exhaustive - other error cases may exist.</div>
+    <p><button onclick="onBuyClicked('never-calls-openWindow')">Never calls openWindow</button> (will attempt to resolve the payment silently after 10s)</p>
+  </div>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+</body>
+</html>

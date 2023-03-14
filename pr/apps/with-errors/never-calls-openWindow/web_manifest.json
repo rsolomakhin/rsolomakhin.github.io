@@ -1,0 +1,11 @@
+{
+    "short_name": "Test App - Never calls openWindow",
+    "name": "Test App - Never calls openWindow",
+    "icons": [{
+        "src": "https://rsolomakhin.github.io/static/tree.png",
+        "sizes": "32x32"
+    }],
+    "serviceworker": {
+        "src": "app.js"
+    }
+}
