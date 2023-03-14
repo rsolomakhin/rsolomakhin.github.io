@@ -91,6 +91,11 @@
 	  form['password'].value = 'ILoveGeorgeBush';
       }
 
+      var IBANFillForm = function() {
+          var form = document.forms['iban'];
+          form['iban'].value = 'BE71096123456769';
+      }
+
       var changeVisibility = function(checkbox, targetId) {
         document.getElementById(targetId).style.display = checkbox.checked ? 'none' : 'block';
       }
@@ -346,6 +351,16 @@
     <input type="submit" value="Submit">
   </div>
 </form>
+
+<hr>
+<h3>IBAN</h3>
+
+<form name="iban" id="iban" action="https://romantic-dirt-jaguar.glitch.me/post" method="post">
+  IBAN: <input type="text" name="iban" id="iban_number" />
+</form>
+
+<button type="button" onclick="IBANFillForm()">IBAN Fill Form</button>
+<br>
 
 <hr>
 <button type="button" onclick="FlipRTL()">RTL &lt;-&gt; LTR</button>
