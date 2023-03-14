@@ -55,7 +55,6 @@ function handlePaymentResponse(response) {
       })
       .catch(function(err) {
         error(err);
-        request = buildPaymentRequest();
       });
 }
 
@@ -75,10 +74,8 @@ function onBuyClicked(appName) { // eslint-disable-line no-unused-vars
       .then(handlePaymentResponse)
       .catch(function(err) {
         error(err);
-        request = buildPaymentRequest();
       });
   } catch (e) {
     error('Developer mistake: \'' + e.message + '\'');
-    request = buildPaymentRequest();
   }
 }
