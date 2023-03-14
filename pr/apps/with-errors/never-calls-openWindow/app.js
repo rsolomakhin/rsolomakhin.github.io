@@ -9,6 +9,6 @@ self.addEventListener('paymentrequest', (evt) => {
       console.log('paymentrequest event detected, waiting 10s');
       setTimeout(() => {
         console.log('Resolving promise without calling openWindow');
-      }), 10 * 1000);
+      }, 10 * 1000);
     }));
 });
