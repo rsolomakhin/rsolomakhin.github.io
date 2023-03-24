@@ -73,7 +73,11 @@ async function addPayButton() {
 
 bobPayButton = document.getElementById('bobPayButton').addEventListener('click', () => {
   const supportedInstruments = [{
-    supportedMethods: 'https://www.stephenmcgruer.com/BobBucksAndroidPaymentApp/payment-manifest.json'
+    supportedMethods: 'https://www.stephenmcgruer.com/BobBucksAndroidPaymentApp/payment-manifest.json',
+    data: {
+      keyOne: "Test",
+      keyTwo: "Test two",
+    },
   }];
 
   const details = {
