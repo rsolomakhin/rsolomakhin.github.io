@@ -11,6 +11,8 @@ function buildPaymentRequest() {
     "supportedMethods": "https://apple.com/apple-pay",
     "data": {
         "version": 3,
+        // TODO: Should we register for our own merchantIdentifier? This is
+        // taken from https://applepaydemo.apple.com/payment-request-api
         "merchantIdentifier": "merchant.com.apdemo",
         "merchantCapabilities": [
             "supports3DS"
@@ -92,14 +94,15 @@ function handlePaymentResponse(response) {
 /**
  * Launches payment request for Bob Pay.
  */
-function onBuyClicked() { // eslint-disable-line no-unused-vars
+async function onBuyClicked() { // eslint-disable-line no-unused-vars
   if (!window.PaymentRequest || !request) {
     error('PaymentRequest API is not supported.');
     return;
   }
 
   try {
-    request.show()
+    new Promise(resolve => setTimeout(resolve, 1000))
+      .then(request.show())
       .then(handlePaymentResponse)
       .catch(function(err) {
         error(err);
