@@ -100,16 +100,14 @@ async function onBuyClicked() { // eslint-disable-line no-unused-vars
     return;
   }
 
+  // Temporary, for testing background tab behavior.
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
   try {
-    new Promise(resolve => setTimeout(resolve, 1000))
-      .then(request.show())
-      .then(handlePaymentResponse)
-      .catch(function(err) {
-        error(err);
-        request = buildPaymentRequest();
-      });
+    const response = await request.show();
+    await handlePaymentResponse(response);
   } catch (e) {
-    error('Developer mistake: \'' + e.message + '\'');
+    error('Error: \'' + e.message + '\'');
     request = buildPaymentRequest();
   }
 }
