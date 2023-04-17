@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Activationless Secure Payment Confirmation</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>Activationless Secure Payment Confirmation</h1>
+    <p>
+      This page initiates an SPC show() request immediately upon page load,
+      i.e. without a user activation. The request is invoked with Credential #1
+      created on <a href="/pr/spc/index.html">the main SPC test page</a>.
+    </p>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script src="../spc_util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+  <script>
+    onBuyClicked('Credential #1');
+  </script>
+</body>
+
+</html>
