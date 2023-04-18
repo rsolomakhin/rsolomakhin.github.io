@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4CAF50">
+  <title>JS Redirect Test</title>
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+  <style>
+    h1, strong {
+      color: #4CAF50;
+    }
+    button {
+      background-color: #4CAF50;
+    }
+  </style>
+</head>
+<body>
+  <div id="contents">
+    <h1>JS Redirect Test</h1>
+    <p>This page triggers a Payment Request to a glitch.me site, <a href="https://payment-request-redirect.glitch.me/redirect">https://payment-request-redirect.glitch.me/redirect</a>, which both declares a Link header for Payment Handler and also redirects via JavaScript to google.com</p>
+    <p><button onclick="onBuyClicked()">Buy</button></p>
+  </div>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="../../redirect.js"></script>
+</body>
+</html>
