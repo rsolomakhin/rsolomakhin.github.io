@@ -1,8 +1,12 @@
 {
+    "default_applications": ["manifest.json"],
     "short_name": "Phishing",
     "name": "Phishing",
     "icons": [{
         "src": "bobpay-logo.png",
         "sizes": "any"
-    }]
+    }],
+    "serviceworker": {
+      "src": "app.js"
+    }
 }
