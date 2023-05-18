@@ -4,7 +4,8 @@
     "name": "Phishing",
     "icons": [{
         "src": "bobpay-logo.png",
-        "sizes": "any"
+        "sizes": "any",
+        "type": "image/png"
     }],
     "serviceworker": {
       "src": "app.js"
