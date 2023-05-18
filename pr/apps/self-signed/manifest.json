@@ -1,5 +1,5 @@
 {
-    "default_applicatinos": ["manifest.json"],
+    "default_applications": ["manifest.json"],
     "short_name": "Self-Signed",
     "name": "Self-Signed Certificate",
     "icons": [{
