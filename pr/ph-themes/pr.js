@@ -62,8 +62,8 @@ function handlePaymentResponse(response) {
 /**
  * Launches payment request for Bob Pay.
  */
-function onBuyClicked(size) { // eslint-disable-line no-unused-vars
-  let request = buildPaymentRequest(size);
+function onBuyClicked(theme) { // eslint-disable-line no-unused-vars
+  let request = buildPaymentRequest(theme);
 
   if (!window.PaymentRequest || !request) {
     error('PaymentRequest API is not supported.');

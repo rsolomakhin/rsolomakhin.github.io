@@ -1,4 +1,3 @@
 {
-  "default_applications": ["https://rsolomakhin.github.io/pr/apps/themes/no-theme/web_manifest.json"],
-  "supported_origins": ["https://rsolomakhin.github.io"]
+  "default_applications": ["https://rsolomakhin.github.io/pr/apps/themes/no-theme/web_manifest.json"]
 }
