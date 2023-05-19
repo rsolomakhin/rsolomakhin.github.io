@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTTP (not HTTPS) page</title>
+  <link rel="stylesheet" type="text/css" href="../../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <p>The URL of this page is <code id="url">loading...</code></p>
+    <pre id="msg"></pre>
+    <script src="../../util.js"></script>
+    <script>
+    const url = document.getElementById('url');
+    url.innerHTML = window.location.href;
+    if (window.location.protocol === 'https:') {
+      info('This page is HTTPS - allowed.');
+    } else if (window.location.protocol === 'http:') {
+      error('This page is HTTP - should be blocked!');
+    } else {
+      info('This page\'s protocol is "' + window.location.protocol + '".');
+    }
+    </script> 
+  </div>
+</body>
+
+</html>
