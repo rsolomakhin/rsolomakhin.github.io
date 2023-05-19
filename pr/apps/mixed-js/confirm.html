@@ -13,7 +13,7 @@ should be blocked.</p>
 
 <script src="http://rsolomakhin.github.io/pr/util.js"></script>
 <script>
-if (error) { // defined in util.js, which should be blocked.
+if (window.error) { // defined in util.js, which should be blocked.
   // Put a red error message in the <pre id="msg"> above.
   error('Mixed content from http://rsolomakhin.github.io/pr/util.js was loaded!');
 } else {
