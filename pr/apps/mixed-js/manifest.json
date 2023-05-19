@@ -1,8 +1,13 @@
 {
+    "default_applications": ["manifest.json"],
     "short_name": "Mixed JS",
     "name": "Mixed Content JavaScript: Blocked",
     "icons": [{
         "src": "bobpay-logo.png",
-        "sizes": "any"
-    }]
+        "sizes": "any",
+        "type": "image/png"
+    }],
+    "serviceworker": {
+        "src": "app.js"
+    }
 }
