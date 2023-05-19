@@ -1,7 +1,29 @@
+<html>
+<head>
 <title>Mixed Content JavaScript: Blocked</title>
-<p>The JavaScript on this page is from
-<code><strong>http</strong>://rsolomakhin.github.io</code> and should be
-blocked.</p>
-<p>Right click on the payment handler window and select the "Inspect" menu item
-for more details.</p>
-<script src="http://rsolomakhin.github.io/redirect.js"></script>
+<link rel="stylesheet" type="text/css" href="../../style.css">
+</head>
+
+<body>
+
+<p>JavaScript from <code><strong>http</strong>://rsolomakhin.github.io</code>
+should be blocked.</p>
+
+<pre id="msg"></pre>
+
+<script src="http://rsolomakhin.github.io/pr/util.js"></script>
+<script>
+if (error) { // defined in util.js, which should be blocked.
+  // Put a red error message in the <pre id="msg"> above.
+  error('Mixed content from http://rsolomakhin.github.io/pr/util.js was loaded!');
+} else {
+  // Put a green error message in the <pre id="msg"> above.
+  const msg = document.createElement('pre');
+  msg.innerHTML = 'Mixed content from http://rsolomakhin.github.io/pr/util.js was blocked.';
+  msg.className = 'info';
+  document.getElementById('msg').appendChild(msg);
+}
+</script>
+
+</body>
+</html>
