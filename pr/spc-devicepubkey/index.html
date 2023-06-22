@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secure Payment Confirmation (WebAuthn Extension Device Public Key)
+  </title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>Secure Payment Confirmation (WebAuthn Extension Device Public Key)</h1>
+    <p>This is a test website. Nothing is charged.</p>
+    </pre>
+    <p><button
+          onclick="createPaymentCredential(
+            'Credential #1', /* devicePubKey= */ true)">
+      Enroll Credential #1 with DevicePublicKey</button>
+    </p>
+    <p>
+      <button
+        onclick="onBuyClicked('Credential #1', /* getDevicePubKey= */true)">
+        Pay $0.01 and get devicePubKey</button></p>
+    <p>
+      <button
+        onclick="webAuthnGet('Credential #1', /* getDevicePubKey= */true)">
+      Login and get devicePubKey</button></p>
+  </div>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script src="../spc_util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+</body>
+
+</html>

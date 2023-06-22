@@ -10,7 +10,8 @@
  * @return {PublicKeyCredential} the created credential.
  */
 async function createCredential(setPaymentExtension, optionalOverrides = {}) {
-  const {userIdOverride, residentKeyOverride} = optionalOverrides;
+  const {userIdOverride, residentKeyOverride, additionalExtensions} =
+      optionalOverrides;
   const rp = {
     id: window.location.hostname,
     name: 'Rouslan Solomakhin',
@@ -49,8 +50,16 @@ async function createCredential(setPaymentExtension, optionalOverrides = {}) {
     },
   };
 
-  if (setPaymentExtension)
-    publicKey['extensions'] = {payment: {isPayment: true}};
+  if (setPaymentExtension || additionalExtensions !== undefined) {
+    publicKey['extensions'] = additionalExtensions !== undefined
+        ? additionalExtensions
+        : {};
+    if (setPaymentExtension) {
+      publicKey['extensions']['payment'] = {
+        isPayment: true,
+      };
+    }
+  }
 
   return await navigator.credentials.create({publicKey});
 }
