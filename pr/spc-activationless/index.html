@@ -13,7 +13,7 @@
   <div id="contents">
     <h1>Activationless Secure Payment Confirmation</h1>
     <p>
-      This page initiates an SPC show() request immediately upon page load,
+      This page initiates an SPC show() request automatically every 5 seconds,
       i.e. without a user activation. The request is invoked with Credential #1
       created on <a href="/pr/spc/index.html">the main SPC test page</a>.
     </p>
@@ -23,7 +23,9 @@
   <script src="pr.js"></script>
   <script src="/redirect.js"></script>
   <script>
-    onBuyClicked('Credential #1');
+    setInterval(function() {
+      onBuyClicked('Credential #1');
+    }, 5000);
   </script>
 </body>
 
