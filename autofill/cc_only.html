@@ -124,6 +124,14 @@
         right: 0;
         border: 0;
       }
+
+      div { margin-bottom: 0.25em; }
+
+      selectmenu::part(button) {
+        padding: 5px;
+        border-radius: 5px;
+        border: 2px dashed red;
+      }
     </style>
   </head>
   <body>
@@ -135,8 +143,13 @@
   <h3>Credit Card autofill</h3>
 
 <form name="cc1.1" id="cc1" action="https://romantic-dirt-jaguar.glitch.me/post" method="post">
-  Name on card: <input autofocus="" type="text" name="name" id="credit_card_name" autocomplete="cc-name"><br>
+<div>
+  Name on card: <input autofocus="" type="text" name="name" id="credit_card_name" autocomplete="cc-name">
+</div>
+<div>
   Credit card number: <input type="text" name="CCNo" id="credit_card_number"><br autocomplete="cc-number">
+</div>
+<div>
   Expiry Date: <selectmenu name="CCExpiresMonth" autocomplete="cc-exp-month">
     <option value>MM</option>
     <option value="01">01</option>
@@ -172,8 +185,10 @@
     <option value="2037">2037</option>	
     <option value="2038">2038</option>
   </selectmenu>
-  <br>
+</div>
+<div>
   CVC: <input name="cvc" autocomplete="cc-csc">
+</div>
 <br>
   <input type="reset" value="Reset">
   <input type="submit" value="Submit" id="credit_card_submit">
