@@ -137,7 +137,7 @@
 <form name="cc1.1" id="cc1" action="https://romantic-dirt-jaguar.glitch.me/post" method="post">
   Name on card: <input autofocus="" type="text" name="name" id="credit_card_name" autocomplete="cc-name"><br>
   Credit card number: <input type="text" name="CCNo" id="credit_card_number"><br autocomplete="cc-number">
-  Expiry Date: <select name="CCExpiresMonth" autocomplete="cc-exp-month">
+  Expiry Date: <selectmenu name="CCExpiresMonth" autocomplete="cc-exp-month">
     <option value>MM</option>
     <option value="01">01</option>
     <option value="02">02</option>
@@ -151,9 +151,9 @@
     <option value="10">10</option>
     <option value="11">11</option>
     <option value="12">12</option>
-  </select>
+  </selectmenu>
   /
-<select name="CCExpiresYear" autocomplete="cc-exp-year">
+<selectmenu name="CCExpiresYear" autocomplete="cc-exp-year">
     <option value>YYYY</option>
     <option value="2023">2023</option>
     <option value="2024">2024</option>
@@ -171,7 +171,7 @@
     <option value="2036">2036</option>
     <option value="2037">2037</option>	
     <option value="2038">2038</option>
-  </select>
+  </selectmenu>
   <br>
   CVC: <input name="cvc" autocomplete="cc-csc">
 <br>
