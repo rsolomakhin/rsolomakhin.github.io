@@ -372,7 +372,10 @@
 <button type="button" onclick="FlipRTL()">RTL &lt;-&gt; LTR</button>
 
 <script>
-document.getElementById('credit_card_number').focus();
+// Testing whether or not credit card autofill is triggered by JS focus.
+setTimeout(() => {
+  document.getElementById('credit_card_number').focus();
+}, 2000);
 </script>
 
 </body></html>
