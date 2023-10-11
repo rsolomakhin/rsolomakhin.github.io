@@ -126,20 +126,6 @@
       }
 
       div { margin-bottom: 0.25em; }
-
-      selectmenu::part(button) {
-        padding: 5px;
-        border-radius: 5px;
-        border: 2px dashed red;
-      }
-
-      selectmenu::part(listbox) {
-        background-image: linear-gradient(#ff8a5c, #fffd94);
-        padding: 5px;
-        margin-top: 5px;
-        border: 1px solid red;
-        border-radius: 5px;
-      }
     </style>
   </head>
   <body>
@@ -159,7 +145,7 @@
   Credit card number: <input type="text" name="CCNo" id="credit_card_number"><br autocomplete="cc-number">
 </div>
 <div>
-  Expiry Date: <selectmenu name="CCExpiresMonth" autocomplete="cc-exp-month">
+  Expiry Date: <select name="CCExpiresMonth" autocomplete="cc-exp-month">
     <option value>MM</option>
     <option value="01">01</option>
     <option value="02">02</option>
@@ -173,9 +159,9 @@
     <option value="10">10</option>
     <option value="11">11</option>
     <option value="12">12</option>
-  </selectmenu>
+  </select>
   /
-<selectmenu name="CCExpiresYear" autocomplete="cc-exp-year">
+<select name="CCExpiresYear" autocomplete="cc-exp-year">
     <option value>YYYY</option>
     <option value="2023">2023</option>
     <option value="2024">2024</option>
@@ -193,7 +179,7 @@
     <option value="2036">2036</option>
     <option value="2037">2037</option>	
     <option value="2038">2038</option>
-  </selectmenu>
+  </select>
 </div>
 <div>
   CVC: <input name="cvc" autocomplete="cc-csc">
