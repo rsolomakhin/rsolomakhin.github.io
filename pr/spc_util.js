@@ -30,8 +30,7 @@ async function createCredential(setPaymentExtension, optionalOverrides = {}) {
     // and has no bearing on SPC's functionality in general. (For example, it
     // is NOT shown in the SPC transaction dialog.)
     name: 'Troy ···· 1234',
-    // Testing impact of displayName vs name.
-    displayName: 'Troy Card **** 1234',
+    displayName: '',
     id: Uint8Array.from(userId, c => c.charCodeAt(0)),
   }
 
