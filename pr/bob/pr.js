@@ -2,17 +2,13 @@
  * Initializes the payment request object.
  * @return {PaymentRequest} The payment request object.
  */
-function buildPaymentRequest(paymentMethod) {
+function buildPaymentRequest() {
   if (!window.PaymentRequest) {
     return null;
   }
 
-  if (paymentMethod === undefined) {
-    paymentMethod = 'https://bobbucks.dev/pay';
-  }
-
   const supportedInstruments = [{
-    supportedMethods: paymentMethod
+    supportedMethods: 'https://bobbucks.dev/pay'
   }];
 
   const details = {
@@ -82,9 +78,7 @@ function handlePaymentResponse(response) {
 /**
  * Launches payment request for Bob Pay.
  */
-function onBuyClicked(paymentMethod) { // eslint-disable-line no-unused-vars
-  request = buildPaymentRequest(paymentMethod);
-
+function onBuyClicked() { // eslint-disable-line no-unused-vars
   if (!window.PaymentRequest || !request) {
     error('PaymentRequest API is not supported.');
     return;
