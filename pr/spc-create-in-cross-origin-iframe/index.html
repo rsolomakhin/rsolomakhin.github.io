@@ -14,9 +14,11 @@
     <h1>WebAuthn credential create in a cross-origin iframe</h1>
     </pre>
     <div>Without policy:</div>
-    <iframe src="https://create-credential-frame.glitch.me/"></iframe>
-    <div>With policy:</div>
-    <iframe allow="publickey-credentials-create" src="https://create-credential-frame.glitch.me/"></iframe>
+    <iframe src="https://create-credential-frame.glitch.me/" width=450px height=200px></iframe>
+    <div>With publickey-credentials-create policy:</div>
+    <iframe allow="publickey-credentials-create" src="https://create-credential-frame.glitch.me/" width=450px height=200px></iframe>
+    <div>With payment policy:</div>
+    <iframe allow="payment" src="https://create-credential-frame.glitch.me/" width=450px height=200px></iframe>
   </div>
   <pre id="msg"></pre>
   <script src="../util.js"></script>
