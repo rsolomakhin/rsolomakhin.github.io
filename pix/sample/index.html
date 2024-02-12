@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<title>Autofill Pix Test</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+  function copyToClipboard(element) {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($(element).text()).select();
+    document.execCommand("copy");
+    $temp.remove();
+  }
+</script>
+</head>
+
+<body>
+  <h2>This webpage is for testing the FOP bottomsheet used in PIX. </h2>
+  <table>
+  <tr>
+    <td><p id="qr_code_string">00020126370014br.gov.bcb.pix2515www.example.com6304EA3F</p></td>
+    <td><button onclick="copyToClipboard('#qr_code_string')"><img src="https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/content_copy/default/24px.svg" alt="Button for copying the string"></img></button></td>
+  </tr>
+  </table>
+</body>
+</html>
