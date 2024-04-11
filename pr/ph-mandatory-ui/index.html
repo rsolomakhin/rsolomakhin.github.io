@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#4CAF50">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <title>Mandatory UI Test</title>
+  </head>
+  <body>
+    <div id="contents">
+      <h1>Mandatory UI Test</h1>
+      <p>
+        A demo page that uses SilentPay (Payment Method:
+        <a href="https://outrageous-coconut-crystal.glitch.me/method-manifest"
+          >https://outrageous-coconut-crystal.glitch.me/method-manifest</a
+        >)
+      </p>
+      <p>
+        This merchant accepts
+        <a href="https://outrageous-coconut-crystal.glitch.me/">SilentPay</a>.
+      </p>
+      <p>Price: USD <b>$</b><b id="total"></b></p>
+      <p><button onclick="onBuyClicked()">Buy</button></p>
+    </div>
+    <pre id="msg"></pre>
+    <script src="util.js"></script>
+    <script src="pr.js"></script>
+  </body>
+</html>
