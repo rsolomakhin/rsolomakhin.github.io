@@ -40,7 +40,7 @@ function buildPaymentRequest() {
   const supportedInstruments = [
     {
       supportedMethods: [
-        "https://outrageous-coconut-crystal.glitch.me/method-manifest"
+        "https://sparkling-smiling-fuschia.glitch.me/method-manifest"
       ]
     }
   ];
