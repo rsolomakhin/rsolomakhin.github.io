@@ -40,7 +40,7 @@ function buildPaymentRequest() {
   const supportedInstruments = [
     {
       supportedMethods: [
-        "https://sparkling-smiling-fuschia.glitch.me/method-manifest"
+        "https://silent-pay-app.glitch.me/method-manifest"
       ]
     }
   ];
