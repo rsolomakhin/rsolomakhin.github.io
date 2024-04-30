@@ -28,10 +28,14 @@ async function onBuyClicked(windowLocalStorageIdentifier) {
         displayName: '···· 1234',
         icon: 'https://rsolomakhin.github.io/pr/spc-network-and-issuer-icons/troy-card.png',
       },
-      networkName: 'Sync',
-      networkIcon: 'https://rsolomakhin.github.io/pr/spc-network-and-issuer-icons/sync-logo.png',
-      issuerName: 'TroyBank',
-      issuerIcon: 'https://rsolomakhin.github.io/pr/spc/troy-alt-logo.png',
+      networkInfo: {
+        name: 'Sync',
+        icon: 'https://rsolomakhin.github.io/pr/spc-network-and-issuer-icons/sync-logo.png',
+      },
+      issuerInfo: {
+        name: 'TroyBank',
+        icon: 'https://rsolomakhin.github.io/pr/spc/troy-alt-logo.png',
+      },
     });
 
     try {
