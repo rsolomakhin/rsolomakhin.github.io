@@ -39,7 +39,7 @@ async function onBuyClicked(windowLocalStorageIdentifier, showNetwork, showIssue
       params.issuerInfo = {
         name: 'TroyBank',
         icon: 'https://rsolomakhin.github.io/pr/spc/troy-alt-logo.png',
-      },
+      };
     }
 
     const request = await createSPCPaymentRequest(params);
