@@ -20,9 +20,13 @@
     </p>
     </pre>
     <p><button onclick="createPaymentCredential('Credential #1')">Enroll Credential</button></p>
-    <p><button onclick="onBuyClicked('Credential #1', true, true)">Trigger SPC</button> (with Network and Issuer)</p>
-    <p><button onclick="onBuyClicked('Credential #1', true, false)">Trigger SPC</button> (with just Network)</p>
-    <p><button onclick="onBuyClicked('Credential #1', false, true)">Trigger SPC</button> (with just Issuer)</p>
+    <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.Show, NetworkOrIssuerOptions.Show)">Trigger SPC</button> (with Network and Issuer)</p>
+    <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.Show, NetworkOrIssuerOptions.DoNotShow)">Trigger SPC</button> (with just Network)</p>
+    <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.DoNotShow, NetworkOrIssuerOptions.Show)">Trigger SPC</button> (with just Issuer)</p>
+    <p>Error cases:</p>
+    <ul>
+      <li><p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.MissingNameField, NetworkOrIssuerOptions.DoNotShow)">Trigger SPC</button> (Missing network name field)</p></li>
+    </ul>
   </div>
   <pre id="msg"></pre>
   <p>Based on the <a

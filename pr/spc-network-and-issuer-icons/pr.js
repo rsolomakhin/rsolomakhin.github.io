@@ -17,10 +17,21 @@ async function createPaymentCredential(windowLocalStorageIdentifier) {
   }
 }
 
+const NetworkOrIssuerOptions = {
+  DoNotShow: Symbol('DoNotShow'),
+  Show: Symbol('Show'),
+  MissingNameField: Symbol('MissingNameField'),
+  EmptyName: Symbol('EmptyName'),
+  MissingIconField: Symbol('MissingIconField'),
+  EmptyIcon: Symbol('EmptyIcon'),
+  InvalidIconUrl: Symbol('InvalidIconUrl'),
+  NonExistentIconUrl: Symbol('NonExistentIconUrl'),
+};
+
 /**
  * Launches payment request for SPC.
  */
-async function onBuyClicked(windowLocalStorageIdentifier, showNetwork, showIssuer) {
+async function onBuyClicked(windowLocalStorageIdentifier, showNetworkOption, showIssuerOption) {
   try {
     let params = {
       credentialIds: [base64ToArray(window.localStorage.getItem(windowLocalStorageIdentifier))],
@@ -29,17 +40,39 @@ async function onBuyClicked(windowLocalStorageIdentifier, showNetwork, showIssue
         icon: 'https://rsolomakhin.github.io/pr/spc-network-and-issuer-icons/troy-card.png',
       },
     };
-    if (showNetwork) {
-      params.networkInfo = {
-        name: 'Sync',
-        icon: 'https://rsolomakhin.github.io/pr/spc-network-and-issuer-icons/sync-logo.png',
-      };
+    if (showNetworkOption != NetworkOrIssuerOptions.DoNotShow) {
+      params.networkInfo = {};
+      if (showNetworkOption != NetworkOrIssuerOptions.MissingNameField) {
+        params.networkInfo.name = (showNetworkOption == NetworkOrIssuerOptions.EmptyName) ? '' : 'Sync';
+      }
+      if (showNetworkOption != NetworkOrIssuerOptions.MissingIconField) {
+        let icon = 'https://rsolomakhin.github.io/pr/spc-network-and-issuer-icons/sync-logo.png';
+        if (showNetworkOption == NetworkOrIssuerOptions.EmptyIcon) {
+          icon = '';
+        } else if (showNetworkOption == NetworkOrIssuerOptions.InvalidIconUrl) {
+          icon = 'thisisnotaurl';
+        } else if (showNetworkOption == NetworkOrIssuerOptions.NonExistentIconUrl) {
+          icon = 'https://rsolomakhin.github.io/pr/spc-network-and-issuer-icons/nonexistent.png';
+        }
+        params.networkInfo.icon = icon;
+      }
     }
-    if (showIssuer) {
-      params.issuerInfo = {
-        name: 'TroyBank',
-        icon: 'https://rsolomakhin.github.io/pr/spc/troy-alt-logo.png',
-      };
+    if (showIssuerOption != NetworkOrIssuerOptions.DoNotShow) {
+      params.issuerInfo = {};
+      if (showIssuerOption != NetworkOrIssuerOptions.MissingNameField) {
+        params.issuerInfo.name = (showIssuerOption == NetworkOrIssuerOptions.EmptyName) ? '' : 'TroyBank';
+      }
+      if (showIssuerOption != NetworkOrIssuerOptions.MissingIconField) {
+        let icon = 'https://rsolomakhin.github.io/pr/spc/troy-alt-logo.png';
+        if (showIssuerOption == NetworkOrIssuerOptions.EmptyIcon) {
+          icon = '';
+        } else if (showIssuerOption == NetworkOrIssuerOptions.InvalidIconUrl) {
+          icon = 'thisisnotaurl';
+        } else if (showIssuerOption == NetworkOrIssuerOptions.NonExistentIconUrl) {
+          icon = 'https://rsolomakhin.github.io/pr/spc-issuer-and-issuer-icons/nonexistent.png';
+        }
+        params.issuerInfo.icon = icon;
+      }
     }
 
     const request = await createSPCPaymentRequest(params);
