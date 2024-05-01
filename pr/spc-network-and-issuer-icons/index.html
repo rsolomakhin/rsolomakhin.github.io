@@ -13,19 +13,16 @@
   <div id="contents">
     <h1>Secure Payment Confirmation - Network/Issuer Logos</h1>
     <p>This is a test website. Nothing is charged.</p>
+    <p>
+       To run these demos, you need Chrome version 126.0.6451.0 or later.
+       Navigate to chrome://flags#enable-network-and-issuer-icons-for-secure-payment-confirmation
+       and enable the flag.
+    </p>
     </pre>
-    <p><button onclick="createPaymentCredential('Credential #1')">Enroll
-        Credential #1</button></p>
-    <p><button onclick="createPaymentCredential('Credential #2')">Enroll
-        Credential #2</button></p>
-    <p><button onclick="onBuyClicked('Credential #1')">Pay $0.01</button> (with
-      credential #1)</p>
-    <p><button onclick="onBuyClicked('Credential #2')">Pay $0.01</button> (with
-      credential #2)</p>
-    <p><button onclick="webAuthnGet('Credential #1')">Login</button> (with
-      credential #1)</button></p>
-    <p><button onclick="webAuthnGet('Credential #2')">Login</button> (with
-      credential #2)</button></p>
+    <p><button onclick="createPaymentCredential('Credential #1')">Enroll Credential</button></p>
+    <p><button onclick="onBuyClicked('Credential #1', true, true)">Trigger SPC</button></p> (with Network and Issuer)
+    <p><button onclick="onBuyClicked('Credential #1', true, false)">Trigger SPC</button></p> (with just Network)
+    <p><button onclick="onBuyClicked('Credential #1', false, true)">Trigger SPC</button></p> (with just Issuer)
   </div>
   <pre id="msg"></pre>
   <p>Based on the <a

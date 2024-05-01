@@ -20,24 +20,29 @@ async function createPaymentCredential(windowLocalStorageIdentifier) {
 /**
  * Launches payment request for SPC.
  */
-async function onBuyClicked(windowLocalStorageIdentifier) {
+async function onBuyClicked(windowLocalStorageIdentifier, showNetwork, showIssuer) {
   try {
-    const request = await createSPCPaymentRequest({
+    let params = {
       credentialIds: [base64ToArray(window.localStorage.getItem(windowLocalStorageIdentifier))],
       instrument: {
         displayName: '···· 1234',
         icon: 'https://rsolomakhin.github.io/pr/spc-network-and-issuer-icons/troy-card.png',
       },
-      networkInfo: {
+    };
+    if (showNetwork) {
+      params.networkInfo = {
         name: 'Sync',
         icon: 'https://rsolomakhin.github.io/pr/spc-network-and-issuer-icons/sync-logo.png',
-      },
-      issuerInfo: {
+      };
+    }
+    if (showIssuer) {
+      params.issuerInfo = {
         name: 'TroyBank',
         icon: 'https://rsolomakhin.github.io/pr/spc/troy-alt-logo.png',
       },
-    });
+    }
 
+    const request = await createSPCPaymentRequest(params);
     try {
       const canMakePayment = await request.canMakePayment();
       info(`canMakePayment result: ${canMakePayment}`);
