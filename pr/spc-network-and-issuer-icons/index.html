@@ -22,27 +22,27 @@
     <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.Show, NetworkOrIssuerOptions.Show)">Trigger SPC</button> (with Network and Issuer)</p>
     <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.Show, NetworkOrIssuerOptions.DoNotShow)">Trigger SPC</button> (with just Network)</p>
     <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.DoNotShow, NetworkOrIssuerOptions.Show)">Trigger SPC</button> (with just Issuer)</p>
-    <br/>
-    <p><b>Error cases:</b></p>
-    <!-- Network cases -->
-    <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.MissingNameField, NetworkOrIssuerOptions.DoNotShow)">Trigger SPC</button> (Missing network name field)</p>
-    <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.EmptyName, NetworkOrIssuerOptions.DoNotShow)">Trigger SPC</button> (Empty network name)</p>
-    <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.MissingIconField, NetworkOrIssuerOptions.DoNotShow)">Trigger SPC</button> (Missing network icon field)</p>
-    <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.EmptyIcon, NetworkOrIssuerOptions.DoNotShow)">Trigger SPC</button> (Empty network icon URL)</p>
-    <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.InvalidIconUrl, NetworkOrIssuerOptions.DoNotShow)">Trigger SPC</button> (Invalid network icon URL)</p>
-    <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.NonExistentIconUrl, NetworkOrIssuerOptions.DoNotShow)">Trigger SPC</button> (Network icon URL that does not load)</p>
-    <!-- Issuer cases -->
-    <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.DoNotShow, NetworkOrIssuerOptions.MissingNameField)">Trigger SPC</button> (Missing issuer name field)</p>
-    <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.DoNotShow, NetworkOrIssuerOptions.EmptyName)">Trigger SPC</button> (Empty issuer name)</p>
-    <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.DoNotShow, NetworkOrIssuerOptions.MissingIconField)">Trigger SPC</button> (Missing issuer icon field)</p>
-    <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.DoNotShow, NetworkOrIssuerOptions.EmptyIcon)">Trigger SPC</button> (Empty issuer icon URL)</p>
-    <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.DoNotShow, NetworkOrIssuerOptions.InvalidIconUrl)">Trigger SPC</button> (Invalid issuer icon URL)</p>
-    <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.DoNotShow, NetworkOrIssuerOptions.NonExistentIconUrl)">Trigger SPC</button> (Issuer icon URL that does not load)</p>
+    <details>
+      <summary><b>Error cases:</b></summary>
+      <!-- Network cases -->
+      <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.MissingNameField, NetworkOrIssuerOptions.DoNotShow)">Trigger SPC</button> (Missing network name field)</p>
+      <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.EmptyName, NetworkOrIssuerOptions.DoNotShow)">Trigger SPC</button> (Empty network name)</p>
+      <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.MissingIconField, NetworkOrIssuerOptions.DoNotShow)">Trigger SPC</button> (Missing network icon field)</p>
+      <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.EmptyIcon, NetworkOrIssuerOptions.DoNotShow)">Trigger SPC</button> (Empty network icon URL)</p>
+      <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.InvalidIconUrl, NetworkOrIssuerOptions.DoNotShow)">Trigger SPC</button> (Invalid network icon URL)</p>
+      <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.NonExistentIconUrl, NetworkOrIssuerOptions.DoNotShow)">Trigger SPC</button> (Network icon URL that does not load)</p>
+      <!-- Issuer cases -->
+      <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.DoNotShow, NetworkOrIssuerOptions.MissingNameField)">Trigger SPC</button> (Missing issuer name field)</p>
+      <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.DoNotShow, NetworkOrIssuerOptions.EmptyName)">Trigger SPC</button> (Empty issuer name)</p>
+      <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.DoNotShow, NetworkOrIssuerOptions.MissingIconField)">Trigger SPC</button> (Missing issuer icon field)</p>
+      <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.DoNotShow, NetworkOrIssuerOptions.EmptyIcon)">Trigger SPC</button> (Empty issuer icon URL)</p>
+      <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.DoNotShow, NetworkOrIssuerOptions.InvalidIconUrl)">Trigger SPC</button> (Invalid issuer icon URL)</p>
+      <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.DoNotShow, NetworkOrIssuerOptions.NonExistentIconUrl)">Trigger SPC</button> (Issuer icon URL that does not load)</p>
+    </details>
   </div>
+  <br />
+  <hr />
   <pre id="msg"></pre>
-  <p>Based on the <a
-      href="https://github.com/w3c/secure-payment-confirmation">Secure Payment
-      Confirmation explainer</a>.</p>
   <script src="../util.js"></script>
   <script src="../spc_util.js"></script>
   <script src="pr.js"></script>
