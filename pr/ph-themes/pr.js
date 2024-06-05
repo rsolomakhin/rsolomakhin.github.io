@@ -8,7 +8,7 @@ function buildPaymentRequest(theme) {
   }
 
   const supportedInstruments = [{
-    supportedMethods: `https://rsolomakhin.github.io/pr/apps/themes/${theme}-theme/payment_method_manifest.json`
+    supportedMethods: `https://payment-handler-demos.glitch.me/apps/themes/${theme}_theme/payment_method_manifest.json`
   }];
 
   const details = {
