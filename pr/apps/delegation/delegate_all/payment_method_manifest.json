@@ -1,4 +1,0 @@
-{
-  "default_applications": ["https://rsolomakhin.github.io/pr/apps/delegation/delegate_all/web_manifest.json"],
-  "supported_origins": ["https://rsolomakhin.github.io"]
-}
