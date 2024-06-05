@@ -31,7 +31,7 @@ function buildPaymentRequest(options) {
 
   const selectedAppIndex = document.getElementById('app_select').selectedIndex;
   const selectedApp = PAYMENT_APPS[selectedAppIndex];
-  const selectedAppUrl =  `https://rsolomakhin.github.io/pr/apps/delegation/${selectedApp.directory}/payment_method_manifest.json`;
+  const selectedAppUrl =  `https://payment-handler-demos.glitch.me/apps/delegation/${selectedApp.directory}/payment_method_manifest.json`;
 
   info(`Triggering payment app: ${selectedAppUrl}`);
 
