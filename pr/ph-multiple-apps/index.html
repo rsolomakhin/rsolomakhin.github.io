@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multiple Payment Handler apps test</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>Multiple payment apps test</h1>
+    <p>
+      This page tests the user experience for Payment Request/Payment Handler
+      when multiple apps are specified. No payment will be processed.
+      <a href="pr.js">View source</a>.
+    </p>
+    <p>Price: USD <strong>$1.00</strong></p>
+    <p><button onclick="onBuyClicked()">Buy</button></p>
+  </div>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+</body>
+
+</html>
