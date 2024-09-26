@@ -20,8 +20,8 @@ async function createCredentialCompat() {
       rp,
       instrument: {
         icon: 'https://rsolomakhin.github.io/pr/spc/troy.png',
-        name: 'demo@' + window.location.hostname,
-        displayName: 'Demo User',
+        name: 'Demo User on ' + window.location.hostname,
+        displayName: '',
       },
       challenge,
       pubKeyCredParams,
@@ -37,8 +37,8 @@ async function createCredentialCompat() {
       rp,
       user: {
         id: Uint8Array.from(String(Math.random()*999999999), c => c.charCodeAt(0)),
-        name: 'demo@' + window.location.hostname,
-        displayName: 'Demo User',
+        name: 'Demo User on ' + window.location.hostname,
+        displayName: '',
       },
       challenge,
       pubKeyCredParams,
