@@ -29,7 +29,7 @@ async function createCredential(setPaymentExtension, optionalOverrides = {}) {
     // (e.g., the Passkeys UX on Chrome MacOS 108+). This is for display ONLY,
     // and has no bearing on SPC's functionality in general. (For example, it
     // is NOT shown in the SPC transaction dialog.)
-    name: 'Demo User on ' + window.location.hostname,
+    name: 'Demo User',
     displayName: '',
     id: Uint8Array.from(userId, c => c.charCodeAt(0)),
   }
