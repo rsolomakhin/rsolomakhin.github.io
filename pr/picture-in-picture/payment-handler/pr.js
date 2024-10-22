@@ -55,6 +55,7 @@ function handlePaymentResponse(response) {
     response.complete('success')
       .then(function() {
         info(JSON.stringify(response, undefined, 2));
+        request = buildPaymentRequest();
       })
       .catch(function(err) {
         error(err);
