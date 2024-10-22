@@ -18,12 +18,12 @@ function updateDetails(details, addr) {
     if (addr.region === 'CA') {
       shippingOption.id = 'ca';
       shippingOption.label = 'Free delivery in California';
-      details.total.amount.value = '55.00';
+      details.total.amount.value = '0.01';
     } else {
       shippingOption.id = 'us';
       shippingOption.label = 'Standard delivery in US';
-      shippingOption.amount.value = '5.00';
-      details.total.amount.value = '60.00';
+      shippingOption.amount.value = '0.05';
+      details.total.amount.value = '0.06';
     }
     details.shippingOptions = [shippingOption];
   } else {
