@@ -87,7 +87,7 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
 /**
  * Toggles the picture-in-picture (on or off).
  */
-async function togglePictureInPicture() {
+function togglePictureInPicture() {
   if (document.pictureInPictureElement) {
     document.exitPictureInPicture();
   } else if (document.pictureInPictureEnabled) {
@@ -96,10 +96,8 @@ async function togglePictureInPicture() {
       error('Cannot find the video on the page.');
       return;
     }
-    try {
-      await video.requestPictureInPicture();
-    } catch (error) {
+    video.requestPictureInPicture().catch((e) => {
       error('Failed to request picture-in-picture: \'' + e.message + '\'');
-    }
+    });
   }
 }
