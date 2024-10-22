@@ -88,4 +88,14 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
  * Toggles the picture-in-picture (on or off).
  */
 function togglePictureInPicture() {
+  if (document.pictureInPictureElement) {
+    document.exitPictureInPicture();
+  } else if (document.pictureInPictureEnabled) {
+    const video = document.getElementById('video');
+    if (!video) {
+      error('Cannot find the video on the page.');
+      return;
+    }
+    video.requestPictureInPicture();
+  }
 }
