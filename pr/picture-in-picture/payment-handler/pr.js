@@ -1,24 +1,4 @@
 /**
- * Toggles the picture-in-picture (on or off).
- */
-function togglePictureInPicture() {
-  if (document.pictureInPictureElement) {
-    document.exitPictureInPicture();
-  } else if (document.pictureInPictureEnabled) {
-    const video = document.getElementById('video');
-    if (!video) {
-      error('Cannot find the video on the page.');
-      return;
-    }
-    video.requestPictureInPicture().catch((e) => {
-      error('Failed to request picture-in-picture: \'' + e.message + '\'');
-    });
-  } else {
-    error('Picture-in-picture is not available.');
-  }
-}
-
-/**
  * Initializes the payment request object.
  * @return {PaymentRequest} The payment request object.
  */

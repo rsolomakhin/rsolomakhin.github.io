@@ -1,25 +1,30 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>US-only delivery with e-mail address</title>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="stylesheet" type="text/css" href="../style.css">
+  <title>Picture-in-Picture Test for Browser Payment UI</title>
+  <link rel="icon" href="../../../favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../../style.css">
+  <script src="../../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="../../../redirect.js"></script>
 </head>
-
 <body>
   <div id="contents">
-    <h1>US-only delivery with e-mail adderss</h1>
-    <p>The merchant provides free delivery in California, $5.00 delivery in US. Delivery outside of US is impossible. The merchant requests an e-mail address from the merchant. No payment will be processed.</p>
-    <p>Price: USD <strong>$55.00</strong></p>
+    <h1>Picture-in-Picture test for browser payment UI</h1>
     <p><button onclick="onBuyClicked()">Buy</button></p>
+    <p><button onclick="togglePictureInPicture()">Toggle Picture-in-Picture</button></p>
+    <p><button onclick="onBuyClicked()">Launch Payment Handler</button></p>
+    <pre id="msg"></pre>
+    <p><a href="pr.js">View js source</a></p>
+    <div id="video-container">
+      <video src="../../assets/picture-in-picture/flower.webm" id="video" muted autoplay loop width="300"></video>
+      <div id="video-description">
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video" target="_blank">Video from MDN</a>.
+        Licensed CC-0.
+      </div>
+    </div>
   </div>
-  <pre id="msg"></pre>
-  <script src="../util.js"></script>
-  <script src="pr.js"></script>
-  <script src="/redirect.js"></script>
 </body>
-
 </html>
