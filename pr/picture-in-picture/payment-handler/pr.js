@@ -87,7 +87,7 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
 /**
  * Toggles the picture-in-picture (on or off).
  */
-function togglePictureInPicture() {
+async function togglePictureInPicture() {
   if (document.pictureInPictureElement) {
     document.exitPictureInPicture();
   } else if (document.pictureInPictureEnabled) {
@@ -97,7 +97,7 @@ function togglePictureInPicture() {
       return;
     }
     try {
-      video.requestPictureInPicture();
+      await video.requestPictureInPicture();
     } catch (error) {
       error('Failed to request picture-in-picture: \'' + e.message + '\'');
     }
