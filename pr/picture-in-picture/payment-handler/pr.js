@@ -13,25 +13,12 @@ function buildPaymentRequest() {
 
   const details = {
     total: {
-      label: 'Donation',
+      label: 'Total',
       amount: {
         currency: 'USD',
-        value: '55.00',
+        value: '0.01',
       },
     },
-    displayItems: [{
-      label: 'Original donation amount',
-      amount: {
-        currency: 'USD',
-        value: '65.00',
-      },
-    }, {
-      label: 'Friends and family discount',
-      amount: {
-        currency: 'USD',
-        value: '-10.00',
-      },
-    }],
   };
 
   let request = null;
@@ -95,4 +82,10 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
     error('Developer mistake: \'' + e.message + '\'');
     request = buildPaymentRequest();
   }
+}
+
+/**
+ * Toggles the picture-in-picture (on or off).
+ */
+function togglePictureInPicture() {
 }

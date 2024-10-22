@@ -3,29 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#4CAF50">
-  <title>Bob Bucks Test</title>
-  <link rel="icon" href="../../favicon.ico">
-  <link rel="stylesheet" type="text/css" href="../style.css">
-  <style>
-    h1, strong {
-      color: #4CAF50;
-    }
-    button {
-      background-color: #4CAF50;
-    }
-  </style>
+  <title>Picture-in-Picture Test for Web Payment Handler</title>
+  <link rel="icon" href="../../../favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../../style.css">
 </head>
 <body>
   <div id="contents">
-    <h1>Bob Bucks Test</h1>
-    <p>This merchant accepts Bob Bucks. <a href="pr.js">View source</a>.</p>
-    <p>Price: USD <strong>$55.00</strong></p>
-    <p><button onclick="onBuyClicked()">Buy</button></p>
+    <h1>Picture-in-Picture test for Web Payment Handler</h1>
+    <p><button onclick="togglePictureInPicture()">Toggle Picture-in-Picture</button></p>
+    <p><button onclick="onBuyClicked()">Launch Payment Handler</button></p>
   </div>
   <pre id="msg"></pre>
-  <script src="../util.js"></script>
+  <script src="../../util.js"></script>
   <script src="pr.js"></script>
-  <script src="../../redirect.js"></script>
+  <script src="../../../redirect.js"></script>
 </body>
 </html>
