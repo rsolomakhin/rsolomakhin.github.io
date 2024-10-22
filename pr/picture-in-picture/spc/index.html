@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secure Payment Confirmation</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>Secure Payment Confirmation</h1>
+    <p>This is a test website. Nothing is charged.</p>
+    </pre>
+    <p><button onclick="createPaymentCredential('Credential #1')">Enroll
+        Credential #1</button></p>
+    <p><button onclick="createPaymentCredential('Credential #2')">Enroll
+        Credential #2</button></p>
+    <p><button onclick="onBuyClicked('Credential #1')">Pay $0.01</button> (with
+      credential #1)</p>
+    <p><button onclick="onBuyClicked('Credential #2')">Pay $0.01</button> (with
+      credential #2)</p>
+    <p><button onclick="webAuthnGet('Credential #1')">Login</button> (with
+      credential #1)</button></p>
+    <p><button onclick="webAuthnGet('Credential #2')">Login</button> (with
+      credential #2)</button></p>
+  </div>
+  <pre id="msg"></pre>
+  <p>Based on the <a
+      href="https://github.com/w3c/secure-payment-confirmation">Secure Payment
+      Confirmation explainer</a>.</p>
+  <script src="../util.js"></script>
+  <script src="../spc_util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+</body>
+
+</html>
