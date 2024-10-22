@@ -96,6 +96,10 @@ function togglePictureInPicture() {
       error('Cannot find the video on the page.');
       return;
     }
-    video.requestPictureInPicture();
+    try {
+      video.requestPictureInPicture();
+    } catch (error) {
+      error('Failed to request picture-in-picture: \'' + e.message + '\'');
+    }
   }
 }
