@@ -1,3 +1,5 @@
-Files: bigbuckbunny.mp4/webp
-Source: https://peach.blender.org/download/
-License: CC-BY 3.0
+Files: flower.webm
+
+Source: https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm
+
+License: CC-0
