@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>HTTP form</title>
+  <script>
+    if (location.protocol !== 'http:') {
+      location.replace(`http:${location.href.substring(location.protocol.length)}`);
+    }
+  </script>
+</head>
+<body>
+  <p>This is a rsolomakhin.github.io page, which should redirect itself to http</p>
+  <form name="cc1.1" id="cc1" action="https://romantic-dirt-jaguar.glitch.me/post" method="post">
+    Name: <input type="text" name="name" autocomplete="cc-name" id="credit_card_name"><br>
+    Credit card number: <input type="text" name="CCNo" autocomplete="cc-number" id="credit_card_number"><br>
+    Expiry Date: <input type="text" name="CCExp" autocomplete="cc-exp" id="credit_card_expiry"><br>
+    CVC: <input name="cvc" autocomplete="cc-csc" ><br>
+  <br />
+</form>
+</body>
+</html>
