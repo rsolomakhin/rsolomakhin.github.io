@@ -81,3 +81,13 @@ if (PublicKeyCredential) {
   error('PublicKeyCredential interface not detected');
 }
 
+if (PaymentRequest && PaymentRequest.isSecurePaymentConfirmationAvailable) {
+  PaymentRequest.isSecurePaymentConfirmationAvailable()
+    .then((available) => {
+      info(`PaymentRequest.isSecurePaymentConfirmationAvailable: ${available}`);
+    }).catch((error) => {
+      error(`Error when calling PaymentRequest.isSecurePaymentConfirmationAvailable: ${error.message}`);
+    });
+} else {
+  info('PaymentRequest.isSecurePaymentConfirmationAvailable method not available');
+}
