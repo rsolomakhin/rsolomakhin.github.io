@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WebAuthn Activationless Create</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+
+  <script>
+  async function main() {
+    try {
+      const publicKeyCredential = await createCredential(/*setPaymentExtension=*/false);
+      console.log(publicKeyCredential);
+      info('enrolled: ' + objectToString(publicKeyCredential));
+    } catch (err) {
+      error(err);
+    }
+  }
+
+  setTimeout(main, 3000);
+  </script>
+</head>
+
+<body>
+  <div id="contents">
+    <h1>WebAuthn Activationless Create</h1>
+    <p>After a short delay, this site will call navigator.credentials.create(). Do not
+       click or tap on the site in the meantime, to test activationless create.</p>
+    </pre>
+  </div>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script src="../spc_util.js"></script>
+  <script src="/redirect.js"></script>
+</body>
+
+</html>
