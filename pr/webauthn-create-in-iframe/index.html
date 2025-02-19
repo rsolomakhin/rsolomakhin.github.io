@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<title>WebAuthn credential create in cross-origin iframe</title>
+</head>
+
+<body>
+
+<div>
+  <div>Create with no permission policy</div>
+  <iframe src='https://maple-brindle-feverfew.glitch.me/'></iframe>
+</div>
+
+<div>
+  <div>Create with 'payment' permission policy, but no payment extension</div>
+  <iframe allow='payment' src='https://maple-brindle-feverfew.glitch.me/'></iframe>
+</div>
+
+<div>
+  <div>Create with 'payment' permission policy and the payment extension</div>
+  <iframe allow='payment' src='https://maple-brindle-feverfew.glitch.me/?paymentBit=true'></iframe>
+</div>
+
+<div>
+  <div>Create with 'publickey-credentials-create' permission policy, and no payment extension</div>
+  <iframe allow='publickey-credentials-create' src='https://maple-brindle-feverfew.glitch.me/'></iframe>
+</div>
+
+<div>
+  <div>Create with 'publickey-credentials-create' permission policy and the payment extension</div>
+  <iframe allow='publickey-credentials-create' src='https://maple-brindle-feverfew.glitch.me/'></iframe>
+</div>
+
+<div>
+  <div>Create with 'publickey-credentials-create' permission policy, no payment extension, and user activationless (don't click/tap!)</div>
+  <iframe allow='publickey-credentials-create' src='https://maple-brindle-feverfew.glitch.me/auto-call.html'></iframe>
+</div>
+
+<div>
+  <div>Create with 'publickey-credentials-create' permission policy, the payment extension, and user activationless (don't click/tap!)</div>
+  <iframe allow='publickey-credentials-create' src='https://maple-brindle-feverfew.glitch.me/auto-call.html?paymentBit=true'></iframe>
+</div>
+
+<div>
+  <div>Create with 'payment' permission policy, no payment extension, and user activationless (don't click/tap!)</div>
+  <iframe allow='payment' src='https://maple-brindle-feverfew.glitch.me/auto-call.html'></iframe>
+</div>
+
+<div>
+  <div>Create with 'payment' permission policy, the payment extension, and user activationless (don't click/tap!)</div>
+  <iframe allow='payment' src='https://maple-brindle-feverfew.glitch.me/auto-call.html?paymentBit=true'></iframe>
+</div>
+
+</body>
+
+</html>
