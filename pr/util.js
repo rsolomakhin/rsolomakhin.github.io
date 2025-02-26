@@ -73,6 +73,8 @@ function toDictionary(addr) {  // eslint-disable-line no-unused-vars
  * @param {PaymentResponse} resp - The payment response.
  */
 function done(message, resp) {  // eslint-disable-line no-unused-vars
+  dismissPageDimmer();
+
   let element = document.getElementById('contents');
   element.innerHTML = message;
 
@@ -102,7 +104,6 @@ function done(message, resp) {  // eslint-disable-line no-unused-vars
 
   info(email + phone + name + shippingOption + shippingAddress + method +
       instrument);
-  dismissPageDimmer();
 }
 
 /**
