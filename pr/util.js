@@ -27,6 +27,7 @@ function error(msg) {  // eslint-disable-line no-unused-vars
   element.innerHTML = msg;
   element.className = 'error';
   document.getElementById('msg').appendChild(element);
+  dismissPageDimmer();
 }
 
 /**
@@ -101,6 +102,7 @@ function done(message, resp) {  // eslint-disable-line no-unused-vars
 
   info(email + phone + name + shippingOption + shippingAddress + method +
       instrument);
+  dismissPageDimmer();
 }
 
 /**

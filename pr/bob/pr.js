@@ -85,6 +85,7 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
   }
 
   try {
+    showPageDimmer();
     request.show()
       .then(handlePaymentResponse)
       .catch(function(err) {
