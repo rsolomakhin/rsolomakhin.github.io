@@ -122,3 +122,24 @@ let observer = new ReportingObserver(function(reports, observer) {
 }, options);
 
 observer.observe();
+
+/**
+ * Shows a full page half-transparent overlay on top of the page content to
+ * create the appearance of dimming the page.
+ */
+function showPageDimmer() {
+  const dimmer = document.createElement('div');
+  dimmer.id = 'dimmer';
+  dimmer.style = 'position: fixed; padding: 0; margin: 0; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1;';
+  document.body.appendChild(dimmer);
+}
+
+/**
+ * Removes the overlay on top of the page content.
+ */
+function dismissPageDimmer() {
+  const dimmer = document.getElementById('dimmer');
+  if (dimmer) {
+    dimmer.remove();
+  }
+}
