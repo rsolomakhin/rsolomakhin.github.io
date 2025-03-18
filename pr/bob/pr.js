@@ -55,7 +55,7 @@ function handlePaymentResponse(response) {
     response.complete('success')
       .then(function() {
         dismissPageDimmer();
-        info(JSON.stringify(response));
+        info(JSON.stringify(response, undefined, 2));
         request = buildPaymentRequest();
       })
       .catch(function(err) {
