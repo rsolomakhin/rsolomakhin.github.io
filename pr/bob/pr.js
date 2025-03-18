@@ -54,10 +54,12 @@ let request = buildPaymentRequest();
 function handlePaymentResponse(response) {
     response.complete('success')
       .then(function() {
+        dismissPageDimmer();
         info(JSON.stringify(response));
         request = buildPaymentRequest();
       })
       .catch(function(err) {
+        dismissPageDimmer();
         error(err);
         request = buildPaymentRequest();
       });
