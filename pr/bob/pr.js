@@ -67,7 +67,8 @@ let request = buildPaymentRequest();
 function handlePaymentResponse(response) {
     response.complete('success')
       .then(function() {
-        done('This is a demo website. No payment will be processed.', response);
+        info(JSON.stringify(response));
+        request = buildPaymentRequest();
       })
       .catch(function(err) {
         error(err);
