@@ -4,6 +4,7 @@
  */
 function buildPaymentRequest() {
   if (!window.PaymentRequest) {
+    error('PaymentRequest API is not supported. Is the "WebPayments" feature flag enabled?');
     return null;
   }
 
