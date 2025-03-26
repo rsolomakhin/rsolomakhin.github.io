@@ -153,3 +153,10 @@ function dismissPageDimmer() {
 function isAndroid() {
   return (/(android)/i.test(navigator.userAgent));
 }
+
+/**
+ * Returns the string that identifies the sandbox environment.
+ */
+function getGooglePaySandboxEnvironmentName() {
+  return isAndroid() ? 'TEST' : 'SANDBOX';
+}
