@@ -41,7 +41,7 @@ function buildPaymentRequest() {
       environment: 'SANDBOX',
       merchantInfo: {
         merchantName: 'Example Merchant',
-        merchantId: '12345678901234567890',
+        merchantId: 'BCR2DN6TXDBYXAJ7',
       },
     },
   }];

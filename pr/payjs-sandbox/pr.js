@@ -45,7 +45,7 @@ async function payButtonClickHandler() {
     // Please use your own Google Pay merchant ID.
     paymentDataRequest.merchantInfo = {
       merchantName: 'Rouslan Solomakhin',
-      merchantId: '00184145120947117657',
+      merchantId: 'BCR2DN6TXDBYXAJ7',
     };
     const paymentData = await paymentsClient.loadPaymentData(paymentDataRequest);
     info(JSON.stringify(paymentData, undefined, 2));
