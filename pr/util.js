@@ -146,3 +146,10 @@ function dismissPageDimmer() {
     dimmer.remove();
   }
 }
+
+/**
+ * Returns true when the user agent contains the string "Android".
+ */
+function isAndroid() {
+  return (/(android)/i.test(navigator.userAgent));
+}
