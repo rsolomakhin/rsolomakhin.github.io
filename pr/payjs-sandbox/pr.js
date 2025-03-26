@@ -56,7 +56,7 @@ async function payButtonClickHandler() {
 
 async function addPayButton() {
   try {
-    paymentsClient = new google.payments.api.PaymentsClient({environment:'SANDBOX'});
+    paymentsClient = new google.payments.api.PaymentsClient({environment: getGooglePaySandboxEnvironmentName()});
     const isReadyToPayRequest = Object.assign({}, baseRequest);
     isReadyToPayRequest.allowedPaymentMethods = [baseCardPaymentMethod];
     const isReadyToPayResponse = await paymentsClient.isReadyToPay(isReadyToPayRequest);

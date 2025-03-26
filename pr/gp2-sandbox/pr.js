@@ -38,7 +38,7 @@ function buildPaymentRequest() {
         totalPriceStatus: 'FINAL',
         totalPrice: '1.00',
       },
-      environment: 'SANDBOX',
+      environment: getGooglePaySandboxEnvironmentName(),
       merchantInfo: {
         merchantName: 'Example Merchant',
         merchantId: 'BCR2DN6TXDBYXAJ7',
