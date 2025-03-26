@@ -23,6 +23,11 @@ div {
   margin-top: 10px;
 }
 
+.button-container {
+  margin: 0;
+  padding: 0;
+}
+
 .error {
   animation-duration: 0.5s;
   animation-name: popup;
