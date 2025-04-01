@@ -75,6 +75,15 @@
 	  form['CCExpiresYear'].value = '2026';
       }
 
+      var SetMaxLength = function(elementId, maxLength) {
+          let cvcInput = document.getElementById(elementId);
+          cvcInput.setAttribute('maxlength', maxLength);
+          let cvcInputValueLabel = document.getElementById(elementId + '_value');
+          if (cvcInputValueLabel !== null) {
+            cvcInputValueLabel.innerHTML = '' + maxLength;
+          }
+      }
+
       var NPFillFormSimpsons = function() {
 	  var form = document.forms['np1'];
 	  form['username'].value = 'Homer_Simpson';
@@ -262,6 +271,20 @@
 <br>
 
 </p><hr>
+
+<h3>Updates CVC MaxLength</h3>
+
+When the credit card number is changed, a javascript function changes the
+<code>maxlength</code> attribute of the CVC input field from 2 to 4.
+
+<form name="payment_maxlength" id="payment_maxlength" action="https://romantic-dirt-jaguar.glitch.me/post" method="post">
+  Name on card: <input autofocus="" type="text" name="name" id="credit_card_name"><br>
+  Credit card number: <input type="text" name="CCNo" id="credit_card_number" onchange="SetMaxLength('payment_maxlength_cvc_input', 4)"><br>
+  CVC: <input id="payment_maxlength_cvc_input" name="cvc" maxlength="2"> (MaxLength: <span id="payment_maxlength_cvc_input_value">2</span>)
+</form>
+
+<hr>
+
   <h3>Username/Password</h3>
 
   <form name="np" id="np1" action="https://romantic-dirt-jaguar.glitch.me/post" method="post">
