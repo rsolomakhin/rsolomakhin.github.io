@@ -67,6 +67,13 @@ a:visited {
   display: none;
 }
 
+.footer {
+  position: absolute;
+  left: 10px;
+  bottom: 0px;
+  background: white;
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background: black;
@@ -104,10 +111,8 @@ a:visited {
   .warning {
     background: #FFF176;
   }
-}
 
-.footer {
-  position: absolute;
-  left: 10px;
-  bottom: 0px; 
+  .footer {
+    background: black;
+  }
 }
