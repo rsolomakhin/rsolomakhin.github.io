@@ -4,7 +4,7 @@
  */
 function buildPaymentRequest() {
   if (!window.PaymentRequest) {
-    error('PaymentRequest API is not supported. Is the "WebPayments" feature flag enabled?');
+    error('Payment Request API is not supported or not enabled.');
     return null;
   }
 
@@ -71,7 +71,7 @@ function handlePaymentResponse(response) {
  */
 function onBuyClicked() { // eslint-disable-line no-unused-vars
   if (!window.PaymentRequest || !request) {
-    error('PaymentRequest API is not supported.');
+    error('Payment Request API is not supported or not enabled.');
     return;
   }
 
