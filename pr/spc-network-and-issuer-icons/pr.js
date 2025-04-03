@@ -130,10 +130,3 @@ if (PublicKeyCredential) {
 } else {
   error('PublicKeyCredential interface not detected');
 }
-
-window.addEventListener("load", () => {
-  const networkIcon = 'https://rsolomakhin.github.io/pr/spc-network-and-issuer-icons/sync-logo.png';
-  document.getElementById("network-icon-url").value = networkIcon;
-  const issuerIcon = 'https://rsolomakhin.github.io/pr/spc/troy-alt-logo.png';
-  document.getElementById("issuer-icon-url").value = issuerIcon;
-});
