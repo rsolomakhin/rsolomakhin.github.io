@@ -46,7 +46,7 @@ async function onBuyClicked(windowLocalStorageIdentifier, showNetworkOption, sho
         params.networkInfo.name = (showNetworkOption == NetworkOrIssuerOptions.EmptyName) ? '' : 'Sync';
       }
       if (showNetworkOption != NetworkOrIssuerOptions.MissingIconField) {
-        let icon = 'https://rsolomakhin.github.io/pr/spc-network-and-issuer-icons/sync-logo.png';
+        let icon = document.getElementById('network-icon-url').value;
         if (showNetworkOption == NetworkOrIssuerOptions.EmptyIcon) {
           icon = '';
         } else if (showNetworkOption == NetworkOrIssuerOptions.InvalidIconUrl) {
@@ -63,7 +63,7 @@ async function onBuyClicked(windowLocalStorageIdentifier, showNetworkOption, sho
         params.issuerInfo.name = (showIssuerOption == NetworkOrIssuerOptions.EmptyName) ? '' : 'TroyBank';
       }
       if (showIssuerOption != NetworkOrIssuerOptions.MissingIconField) {
-        let icon = 'https://rsolomakhin.github.io/pr/spc/troy-alt-logo.png';
+        let icon = document.getElementById('issuer-icon-url').value;
         if (showIssuerOption == NetworkOrIssuerOptions.EmptyIcon) {
           icon = '';
         } else if (showIssuerOption == NetworkOrIssuerOptions.InvalidIconUrl) {
@@ -131,3 +131,9 @@ if (PublicKeyCredential) {
   error('PublicKeyCredential interface not detected');
 }
 
+window.addEventListener("load", () => {
+  const networkIcon = 'https://rsolomakhin.github.io/pr/spc-network-and-issuer-icons/sync-logo.png';
+  document.getElementById("network-icon-url").value = networkIcon;
+  const issuerIcon = 'https://rsolomakhin.github.io/pr/spc/troy-alt-logo.png';
+  document.getElementById("issuer-icon-url").value = issuerIcon;
+});
