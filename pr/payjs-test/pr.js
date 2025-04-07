@@ -24,10 +24,8 @@ async function payButtonClickHandler() {
     const tokenizationSpecification = {
       type: 'PAYMENT_GATEWAY',
       parameters: {
-      gateway: 'stripe',
-      'stripe:version': '2018-10-31',
-      // Please use your own Stripe live public key.
-      'stripe:publishableKey': 'pk_live_lNk21zqKM2BENZENh3rzCUgo',
+        gateway: 'example',      
+        gatewayMerchantId: 'exampleGatewayMerchantId',
       }
     };
     const cardPaymentMethod = Object.assign(
