@@ -44,6 +44,10 @@ function buildPaymentRequest() {
     error('Developer mistake: \'' + e.message + '\'');
   }
 
+  request.addEventListener('paymentmethodchange', e => {
+    info('"paymentmethodchange" called on request with method name ' + e.methodName);
+  });
+
   return request;
 }
 
