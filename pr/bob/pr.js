@@ -46,6 +46,8 @@ function buildPaymentRequest() {
 
   request.addEventListener('paymentmethodchange', e => {
     info('"paymentmethodchange" called on request with method name ' + e.methodName);
+    info('Responding with an error, for testing');
+    e.respondWith({error: 'Error for testing'});
   });
 
   return request;
