@@ -19,7 +19,7 @@ async function createCredentialCompat() {
     const payment = {
       rp,
       instrument: {
-        icon: 'https://rsolomakhin.github.io/pr/spc/troy.png',
+        icon: 'https://rsolomakhin.github.io/static/troy.png',
         name: 'Demo User',
         displayName: '',
       },
@@ -87,7 +87,7 @@ async function buildPaymentRequest(autofillField, windowLocalStorageItemKey) {
     const challenge = textEncoder.encode('network_data');
     const updatedInstrument = {
       displayName: 'Troy ····',
-      icon: 'https://rsolomakhin.github.io/pr/spc/troy.png',
+      icon: 'https://rsolomakhin.github.io/static/troy.png',
     };
     const supportedInstruments = [{
       supportedMethods: 'secure-payment-confirmation',

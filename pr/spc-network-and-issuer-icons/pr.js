@@ -37,7 +37,7 @@ async function onBuyClicked(windowLocalStorageIdentifier, showNetworkOption, sho
       credentialIds: [base64ToArray(window.localStorage.getItem(windowLocalStorageIdentifier))],
       instrument: {
         displayName: '···· 1234',
-        icon: 'https://rsolomakhin.github.io/pr/spc-network-and-issuer-icons/troy-card.png',
+        icon: 'https://rsolomakhin.github.io/static/troy-card-art.png',
       },
     };
     if (showNetworkOption != NetworkOrIssuerOptions.DoNotShow) {

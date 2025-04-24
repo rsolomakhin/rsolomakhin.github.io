@@ -12,7 +12,7 @@ async function checkCanMakePayment() {
         credentialIds: [textEncoder.encode('0')],
         instrument: {
           displayName: 'Display name',
-          icon: 'https://rsolomakhin.github.io/pr/spc/troy-alt-logo.png',
+          icon: 'https://rsolomakhin.github.io/static/troy-alt-logo.png',
         },
         challenge: textEncoder.encode('0'),
         timeout: 60000,

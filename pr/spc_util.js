@@ -110,7 +110,7 @@ function createSPCPaymentRequest(spcData) {
   if (spcData.instrument.displayName === undefined)
     spcData.instrument.displayName = 'Troy ···· 1234';
   if (spcData.instrument.icon === undefined)
-    spcData.instrument.icon = 'https://rsolomakhin.github.io/pr/spc/troy-alt-logo.png';
+    spcData.instrument.icon = 'https://rsolomakhin.github.io/static/troy-alt-logo.png';
   if (spcData.timeout === undefined)
     spcData.timeout = 60000;
   // We only set a default payeeOrigin if *both* payeeName and payeeOrigin are
