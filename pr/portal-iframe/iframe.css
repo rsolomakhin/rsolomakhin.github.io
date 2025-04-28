@@ -1,8 +1,0 @@
-body, div, iframe { margin: 0px; padding: 0px; border: 0px; }
-.fullpage { display: none; }
-#merchant { position: absolute; left: 0px; top: 0px; height: 100%; width: 100%; z-index: -20; }
-#overlay-container { position: absolute; left: 0px; top: 0px; height: 100%; width: 100%; z-index: -10; background-color: #55555555; }
-#overlay { margin-left: auto; margin-right: auto; margin-top: 75px; width: 500px; height: 500px; background-color: white; padding: 20px; z-index: 10; overflow: auto; border: 1px solid black; }
-.relative { position: relative; }
-#close-button { position: absolute; top: -20px; right: 0px; font-size: 8px; }
-#close-button:hover { cursor: pointer; }

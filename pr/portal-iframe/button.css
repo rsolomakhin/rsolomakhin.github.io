@@ -1,5 +1,0 @@
-.button-container { height: 48px; width: 200px; position: relative; }
-.button { height: 48px; width: 200px; position: absolute; left: 0px; top: 0px; margin: 0px; padding: 0px; }
-.button-overlay { height: 48px; width: 200px; position: absolute; left: 0px; top: 0px; margin: 0px; padding: 0px; }
-.button-overlay:hover { cursor: pointer; }
-iframe.button { border: 0px; }
