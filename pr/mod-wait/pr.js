@@ -12,13 +12,13 @@ function buildPaymentRequest() {
 
   var supportedInstruments = [
     {
-      supportedMethods: 'basic-card',
+      supportedMethods: 'https://bobbucks.dev/pay',
     },
   ];
 
   var details = {
     total: {
-      label: 'Donation',
+      label: 'PENDING',
       amount: {
         currency: 'USD',
         value: '1.00',
