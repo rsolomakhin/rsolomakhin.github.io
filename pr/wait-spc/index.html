@@ -16,18 +16,12 @@
     <p>The price is updated to <code>$0.99</code> after a spinner is shown for
     <code>5</code> seconds.</p> 
     </pre>
-    <p><button onclick="createPaymentCredential('Credential #1')">Enroll
-        Credential #1</button></p>
-    <p><button onclick="createPaymentCredential('Credential #2')">Enroll
-        Credential #2</button></p>
-    <p><button onclick="onBuyClicked('Credential #1')">Pay</button> (with
-      credential #1)</p>
-    <p><button onclick="onBuyClicked('Credential #2')">Pay</button> (with
-      credential #2)</p>
-    <p><button onclick="webAuthnGet('Credential #1')">Login</button> (with
-      credential #1)</button></p>
-    <p><button onclick="webAuthnGet('Credential #2')">Login</button> (with
-      credential #2)</button></p>
+    <p><button onclick="createPaymentCredential('cred1')">Enroll Credential #1</button></p>
+    <p><button onclick="createPaymentCredential('cred2')">Enroll Credential #2</button></p>
+    <p><button onclick="onBuyClicked('cred1')" id="cred1paybutton">Pay</button> (with credential #1)</p>
+    <p><button onclick="onBuyClicked('cred2')" id="cred2paybutton">Pay</button> (with credential #2)</p>
+    <p><button onclick="webAuthnGet('cred1')">Login</button> (with credential #1)</button></p>
+    <p><button onclick="webAuthnGet('cred2')">Login</button> (with credential #2)</button></p>
   </div>
   <pre id="msg"></pre>
   <p>Based on the <a

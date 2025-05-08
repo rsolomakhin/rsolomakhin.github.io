@@ -17,10 +17,24 @@ async function createPaymentCredential(windowLocalStorageIdentifier) {
   }
 }
 
+var is_buying = false;
+
 /**
  * Launches payment request for SPC.
  */
 async function onBuyClicked(windowLocalStorageIdentifier) {
+  if (is_buying) {
+    error('Ignoring button press.');
+    return;
+  }
+
+  is_buying = true;
+
+  var spinner = document.createElement('i');
+  spinner.classList = 'fa fa-refresh fa-spin';
+  var button = document.getElementById(windowLocalStorageIdentifier + 'paybutton');
+  button.appendChild(spinner);
+
   try {
     const request = await createSPCPaymentRequest({
       credentialIds: [base64ToArray(window.localStorage.getItem(windowLocalStorageIdentifier))],
@@ -52,11 +66,13 @@ async function onBuyClicked(windowLocalStorageIdentifier) {
           }, 5000); // 5 seconds.
         })
     );
-    await instrumentResponse.complete('success')
+    await instrumentResponse.complete('success');
+    is_buying = false;
     console.log(instrumentResponse);
     info(windowLocalStorageIdentifier + ' payment response: ' +
       objectToString(instrumentResponse));
   } catch (err) {
+    is_buying = false;
     error(err);
   }
 }
