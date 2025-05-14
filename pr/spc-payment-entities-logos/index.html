@@ -38,8 +38,8 @@
     <details>
       <!-- TODO: Update error cases for paymentEntitiesLogos -->
       <summary><b>Error cases:</b> (click to expand)</summary>
+      <p><button onclick="onBuyClicked('Credential #1', ['logo-1', 'null-logo'])">Trigger SPC</button> (null logo entry)</p>
       <!-- Network cases -->
-      <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.MissingNameField, NetworkOrIssuerOptions.DoNotShow)">Trigger SPC</button> (Missing network name field)</p>
       <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.EmptyName, NetworkOrIssuerOptions.DoNotShow)">Trigger SPC</button> (Empty network name)</p>
       <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.MissingIconField, NetworkOrIssuerOptions.DoNotShow)">Trigger SPC</button> (Missing network icon field)</p>
       <p><button onclick="onBuyClicked('Credential #1', NetworkOrIssuerOptions.EmptyIcon, NetworkOrIssuerOptions.DoNotShow)">Trigger SPC</button> (Empty network icon URL)</p>
