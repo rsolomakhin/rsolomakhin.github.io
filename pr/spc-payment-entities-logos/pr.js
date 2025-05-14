@@ -34,6 +34,7 @@ async function onBuyClicked(windowLocalStorageIdentifier, logosList) {
     for (const logoId of logosList) {
       if (logoId == 'null-logo') {
         params.paymentEntitiesLogos.push(null);
+        continue;
       }
 
       const url = document.getElementById(`${logoId}-url`).value;
