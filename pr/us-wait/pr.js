@@ -67,7 +67,7 @@ function onBuyClicked() {
       },
     },
     {
-      supportedMethods: 'basic-card',
+      supportedMethods: 'https://bobbucks.dev/pay',
     },
   ];
 
