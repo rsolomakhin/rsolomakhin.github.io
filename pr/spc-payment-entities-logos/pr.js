@@ -1,6 +1,8 @@
 /* exported createPaymentCredential */
 /* exported onBuyClicked */
 
+const kValidLogoUrl = 'https://rsolomakhin.github.io/static/sync-network-logo.png';
+
 /**
  * Creates a payment credential.
  */
@@ -32,14 +34,31 @@ async function onBuyClicked(windowLocalStorageIdentifier, logosList) {
 
     params.paymentEntitiesLogos = [];
     for (const logoId of logosList) {
-      if (logoId == 'null-logo') {
+      if (logoId === 'null-logo') {
         params.paymentEntitiesLogos.push(null);
-        continue;
+      } else if (logoId === 'logo-missing-url') {
+        const label = 'Label';
+        params.paymentEntitiesLogos.push({label});
+      } else if (logoId === 'logo-empty-url') {
+        const url = '';
+        const label = 'Label';
+        params.paymentEntitiesLogos.push({url, label});
+      } else if (logoId === 'logo-invalid-url') {
+        const url = 'this-is-not-a-valid-url';
+        const label = 'Label';
+        params.paymentEntitiesLogos.push({url, label});
+      } else if (logoId === 'logo-missing-label') {
+        const url = kValidLogoUrl;
+        params.paymentEntitiesLogos.push({url});
+      } else if (logoId === 'logo-empty-label') {
+        const url = kValidLogoUrl;
+        const label = '';
+        params.paymentEntitiesLogos.push({url});
+      } else {
+        const url = document.getElementById(`${logoId}-url`).value;
+        const label = document.getElementById(`${logoId}-label`).value;
+        params.paymentEntitiesLogos.push({url, label});
       }
-
-      const url = document.getElementById(`${logoId}-url`).value;
-      const label = document.getElementById(`${logoId}-label`).value;
-      params.paymentEntitiesLogos.push({url, label});
     }
 
     const request = await createSPCPaymentRequest(params);
