@@ -53,7 +53,7 @@ async function onBuyClicked(windowLocalStorageIdentifier, logosList) {
       } else if (logoId === 'logo-empty-label') {
         const url = kValidLogoUrl;
         const label = '';
-        params.paymentEntitiesLogos.push({url});
+        params.paymentEntitiesLogos.push({url, label});
       } else {
         const url = document.getElementById(`${logoId}-url`).value;
         const label = document.getElementById(`${logoId}-label`).value;
