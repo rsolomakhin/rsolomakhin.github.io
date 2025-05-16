@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secure Payment Confirmation - Sync Demo</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body onload="reloadIdentifierInInputs()">
+  <div id="contents">
+    <h1>Secure Payment Confirmation</h1>
+    <p>This is a test website. Nothing is charged.</p>
+    </pre>
+    <p><button onclick="createPaymentCredential('SyncCred #1')">Enroll
+        SyncCred #1</button> Id:
+        <input
+          data-local-storage-identifier="SyncCred #1"
+          type="text"
+          style="width:32em;font-family: monospace;"
+          onchange="onCredentialIdChange(this)">
+        </input></p>
+    <p><button onclick="createPaymentCredential('SyncCred #2')">Enroll
+        SyncCred #2</button> Id:
+        <input
+          data-local-storage-identifier="SyncCred #2"
+          type="text"
+          style="width:32em;font-family: monospace;"
+          onchange="onCredentialIdChange(this)">
+        </input></p>
+    <p><button onclick="onBuyClicked('SyncCred #1')">Pay $0.01</button> (with
+      credential #1)</p>
+    <p><button onclick="onBuyClicked('SyncCred #2')">Pay $0.01</button> (with
+      credential #2)</p>
+    <p><button onclick="webAuthnGet('SyncCred #1')">Login</button> (with
+      credential #1)</button></p>
+    <p><button onclick="webAuthnGet('SyncCred #2')">Login</button> (with
+      credential #2)</button></p>
+    <p>This demo page stores the credential id in localStorage. localStorage can be
+      cleared (e.g. browser is deleted and installed again). Then the
+      credential id can be restored using the "Id:" inputs above. (Remember to
+      push "Enter" to trigger the save.)</p> </div>
+  <pre id="msg"></pre>
+  <p>Based on the <a
+      href="https://github.com/w3c/secure-payment-confirmation">Secure Payment
+      Confirmation explainer</a> and
+    <a href="https://github.com/w3c/secure-payment-confirmation/pull/286">
+      Add browser binding to the secure payment confirmation spec</a>
+  <script src="../util.js"></script>
+  <script src="../spc_util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+</body>
+
+</html>

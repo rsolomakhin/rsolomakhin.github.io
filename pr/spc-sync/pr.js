@@ -10,11 +10,36 @@ async function createPaymentCredential(windowLocalStorageIdentifier) {
     console.log(publicKeyCredential);
     window.localStorage.setItem(windowLocalStorageIdentifier,
       arrayBufferToBase64(publicKeyCredential.rawId));
+    reloadIdentifierInInputs();
     info(windowLocalStorageIdentifier + ' enrolled: ' + objectToString(
       publicKeyCredential) + '\n' + 'Extensions: ' +
       extensionsOutputToString(publicKeyCredential));
   } catch (err) {
     error(err);
+  }
+}
+
+/**
+ * Sets the payment credential id in localStorage. A
+ * data-local-storage-identifier attribute must be set on the element.
+ */
+function onCredentialIdChange(inputElement) {
+  let windowLocalStorageIdentifier = inputElement.getAttribute('data-local-storage-identifier');
+  if (!windowLocalStorageIdentifier) {
+    console.log("The input element is missing a data-local-storage-identifier attribute.");
+    return;
+  }
+  window.localStorage.setItem(windowLocalStorageIdentifier, inputElement.value);
+}
+
+/**
+ * Reloads the identifiers from localStorage into the input fields.
+ */
+function reloadIdentifierInInputs() {
+  let inputElements = document.querySelectorAll('input[data-local-storage-identifier]');
+  for (let inputElement of inputElements) {
+    let windowLocalStorageIdentifier = inputElement.getAttribute('data-local-storage-identifier');
+    inputElement.value = window.localStorage.getItem(windowLocalStorageIdentifier);
   }
 }
 
