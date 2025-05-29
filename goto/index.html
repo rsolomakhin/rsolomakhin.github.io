@@ -1,0 +1,27 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.5">
+    <title>Go To URL</title>
+
+    <script>
+    function goToUrl() {
+      let url = document.getElementById('url').value;
+      if (!url) {
+        return;
+      }
+      if (!url.beginsWith('https://')) {
+        url = 'https://' + url;
+      }
+      window.location.href = url;
+    }
+    </script>
+  </head>
+  <body>
+  <h3>Go to URL</h3>
+
+<form name="gotourl" id="gotourl">
+URL: <input type="text" name="url" placeholder="https://your-url-here" id="url" required>
+<br>
+<button type="button" onclick="goToUrl()">GO!</button>
+</form>
+
+</body></html>
