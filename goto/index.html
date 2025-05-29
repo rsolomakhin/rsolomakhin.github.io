@@ -13,13 +13,19 @@
       }
       window.location.href = url;
     }
+
+    function goToUrlIfEnterKey(event) {
+      if (event.key === 'Enter') {
+        goToUrl();
+      }
+    }
     </script>
   </head>
   <body>
   <h3>Go to URL</h3>
 
 <form name="gotourl" id="gotourl">
-URL: <input type="text" name="url" placeholder="https://your-url-here" id="url" required>
+URL: <input type="text" name="url" placeholder="https://your-url-here" id="url" required onkeypress="goToUrlIfEnterKey()">
 <br>
 <br>
 <button type="button" onclick="goToUrl()">GO!</button>
