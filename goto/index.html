@@ -8,7 +8,7 @@
       if (!url) {
         return;
       }
-      if (!url.beginsWith('https://')) {
+      if (!url.startsWith('https://')) {
         url = 'https://' + url;
       }
       window.location.href = url;
@@ -20,6 +20,7 @@
 
 <form name="gotourl" id="gotourl">
 URL: <input type="text" name="url" placeholder="https://your-url-here" id="url" required>
+<br>
 <br>
 <button type="button" onclick="goToUrl()">GO!</button>
 </form>
