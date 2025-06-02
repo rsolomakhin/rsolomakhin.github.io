@@ -162,13 +162,29 @@ async function onApplePayBuyClicked() {
 let ActualPaymentRequest;
 
 class PaymentResponsePolyfill {
-  function toJSON() {
-    return {'hello': 'world'};
+  constructor() {
+    this.details_ = {'hello': 'world'};
   }
 
-  function complete(result, details) {
+  toJSON() {
+    return this.details_;
+  }
+
+  complete(result, details) {
     alert ('PaymentResponsePolyfill.complete()');
     console.log('PaymentResponsePolyfill.complete()');
+  }
+
+  get requestId() {
+    return 'requestId';
+  }
+
+  get methodName() {
+    return 'methodName';
+  }
+
+  get details() {
+    this.details_;
   }
 }
 
