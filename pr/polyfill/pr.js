@@ -218,10 +218,27 @@ function polyfillPaymentRequest() {
 
   window.PaymentRequest.prototype.canMakePayment = function() {
     if (this.isSpc) {
-      console.log('PaymentRequestPolyfill.canMakePayment()');
+      console.log('PaymentRequestPolyfill(spc).canMakePayment()');
       return true;
     } else {
       return this.fallback.canMakePayment();
+    }
+  };
+
+  window.PaymentRequest.prototype.abort = function() {
+    if (this.isSpc) {
+      console.log('PaymentRequestPolyfill(spc).abort()');
+      return true;
+    } else {
+      return this.fallback.abort();
+    }
+  };
+
+  window.PaymentRequest.prototype.addEventlistener = function(type, listener, options) {
+    if (this.isSpc) {
+      console.log('PaymentRequestPolyfill(spc).addEventListener()');
+    } else {
+      return this.fallback.addEventlistener(type, listener, options);
     }
   };
 }
