@@ -161,6 +161,17 @@ async function onApplePayBuyClicked() {
 
 let ActualPaymentRequest;
 
+class PaymentResponsePolyfill {
+  function toJSON() {
+    return {'hello': 'world'};
+  }
+
+  function complete(result, details) {
+    alert ('PaymentResponsePolyfill.complete()');
+    console.log('PaymentResponsePolyfill.complete()');
+  }
+}
+
 function polyfillPaymentRequest() {
   ActualPaymentRequest = window.PaymentRequest;
   window.PaymentRequest = function(methods, details, options) {
@@ -183,6 +194,7 @@ function polyfillPaymentRequest() {
     console.log('PaymentRequestShim.show()');
     if (this.isSpc) {
       alert('PaymentRequestShim(spc).show()');
+      return new PaymentResponsePolyfill();
     } else {
       this.fallback.show(optionalPromise);
     }
