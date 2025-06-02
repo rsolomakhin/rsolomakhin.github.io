@@ -228,8 +228,11 @@ function polyfillPaymentRequest() {
     if (this.isSpc) {
       console.log('PaymentRequestPolyfill.hasEnrolledInstrument()');
       return true;
-    } else {
+    } else if (this.fallback.hasEnrolledInstrument) {
       return this.fallback.hasEnrolledInstrument();
+    } else {
+      console.log('Apple Pay does not implement hasEnrolledInstrument() method.');
+      return false;
     }
   };
 }
