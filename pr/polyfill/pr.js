@@ -56,20 +56,20 @@ function buildApplePayPaymentRequest() {
     request = new PaymentRequest(supportedInstruments, details);
     if (request.canMakePayment) {
       request.canMakePayment().then(function(result) {
-        info(result ? 'Can make payment' : 'Cannot make payment');
+        info(result ? 'Apple Pay: Can make payment' : 'Apple Pay: Cannot make payment');
       }).catch(function(err) {
         error(err);
       });
     }
     if (request.hasEnrolledInstrument) {
       request.hasEnrolledInstrument().then(function(result) {
-        info(result ? 'Has enrolled instrument' : 'No enrolled instrument');
+        info(result ? 'Apple Pay: Has enrolled instrument' : 'Apple Pay: No enrolled instrument');
       }).catch(function(err) {
         error(err);
       });
     }
   } catch (e) {
-    error('Developer mistake: \'' + e.message + '\'');
+    error('Apple Pay: Developer mistake: \'' + e.message + '\'');
   }
 
   return request;
@@ -81,7 +81,7 @@ function buildApplePayPaymentRequest() {
 function handlePaymentResponse(response) {
     response.complete('success')
       .then(function() {
-        done('This is a demo website. No payment will be processed.', response);
+        done('Apple Pay: This is a demo website. No payment will be processed.', response);
       })
       .catch(function(err) {
         error(err);
@@ -131,8 +131,7 @@ async function onSpcBuyClicked(windowLocalStorageIdentifier) {
     await instrumentResponse.complete('success')
     console.log(instrumentResponse);
     info(windowLocalStorageIdentifier + ' payment response: ' +
-      objectToString(instrumentResponse) + '\n' + 'Extensions: ' +
-      extensionsOutputToString(instrumentResponse.details));
+      objectToString(instrumentResponse));
   } catch (err) {
     error(err);
   }
@@ -143,7 +142,7 @@ async function onSpcBuyClicked(windowLocalStorageIdentifier) {
  */
 async function onApplePayBuyClicked() {
   if (!window.PaymentRequest || !applePayRequest) {
-    error('PaymentRequest API is not supported.');
+    error('Apple Pay: PaymentRequest API is not supported.');
     return;
   }
 
@@ -154,7 +153,7 @@ async function onApplePayBuyClicked() {
     const response = await applePayRequest.show();
     await handlePaymentResponse(response);
   } catch (e) {
-    error('Error: \'' + e.message + '\'');
+    error('Apple Pay Error: \'' + e.message + '\'');
     applePayRequest = buildApplePayPaymentRequest();
   }
 }
@@ -194,7 +193,7 @@ function polyfillPaymentRequest() {
     this.isSpc = (methods && methods instanceof Array && methods.length == 1
         && methods[0] && methods[0].supportedMethods
         && methods[0].supportedMethods === 'secure-payment-confirmation');
-    console.log('new PaymentRequestShim()');
+    console.log('new PaymentRequestPolyfill()');
     if (this.isSpc) {
       console.log('Is SPC');
       this.methods = methods;
@@ -207,9 +206,9 @@ function polyfillPaymentRequest() {
   };
 
   window.PaymentRequest.prototype.show = function(optionalPromise) {
-    console.log('PaymentRequestShim.show()');
+    console.log('PaymentRequestPolyfill.show()');
     if (this.isSpc) {
-      alert('PaymentRequestShim(spc).show()');
+      alert('PaymentRequestPolyfill(spc).show()');
       return new PaymentResponsePolyfill();
     } else {
       this.fallback.show(optionalPromise);
@@ -218,7 +217,7 @@ function polyfillPaymentRequest() {
 
   window.PaymentRequest.prototype.canMakePayment = function() {
     if (this.isSpc) {
-      console.log('PaymentRequestShim.canMakePayment()');
+      console.log('PaymentRequestPolyfill.canMakePayment()');
       return true;
     } else {
       return this.fallback.canMakePayment();
@@ -227,7 +226,7 @@ function polyfillPaymentRequest() {
 
   window.PaymentRequest.prototype.hasEnrolledInstrument = function() {
     if (this.isSpc) {
-      console.log('PaymentRequestShim.hasEnrolledInstrument()');
+      console.log('PaymentRequestPolyfill.hasEnrolledInstrument()');
       return true;
     } else {
       return this.fallback.hasEnrolledInstrument();
