@@ -61,7 +61,6 @@ function buildApplePayPaymentRequest() {
         error(err);
       });
     }
-    }
   } catch (e) {
     error('Apple Pay: Developer mistake: \'' + e.message + '\'');
   }
