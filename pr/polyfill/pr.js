@@ -90,9 +90,58 @@ function handlePaymentResponse(response) {
 }
 
 /**
- * Launches payment request for Bob Pay.
+ * Launches payment request for SPC.
  */
-async function onApplePayBuyClicked() { // eslint-disable-line no-unused-vars
+async function onSpcBuyClicked() {
+  if (!window.PaymentRequest) {
+    error('PaymentRequest API is not supported.');
+    return;
+  }
+
+  try {
+    const request = await createSPCPaymentRequest({
+      credentialIds: [base64ToArray(
+          window.localStorage.getItem(windowLocalStorageIdentifier))],
+      // `browserBoundPubKeyCredParams` does not need to be set and will default
+      // to the same values listed here.
+      browserBoundPubKeyCredParams: [
+        {
+          type: 'public-key',
+          alg:
+              -7,  // ECDSA with SHA-256 (See
+                   // https://www.iana.org/assignments/cose/cose.xhtml#algorithms)
+        },
+        {
+          type: 'public-key',
+          alg:
+              -257,  // RSA with SHA-256 (See
+                     // https://www.iana.org/assignments/cose/cose.xhtml#algorithms)
+        }
+      ]
+    });
+
+    try {
+      const canMakePayment = await request.canMakePayment();
+      info(`canMakePayment result: ${canMakePayment}`);
+    } catch (err) {
+      error(`Error from canMakePayment: ${error.message}`);
+    }
+
+    const instrumentResponse = await request.show();
+    await instrumentResponse.complete('success')
+    console.log(instrumentResponse);
+    info(windowLocalStorageIdentifier + ' payment response: ' +
+      objectToString(instrumentResponse) + '\n' + 'Extensions: ' +
+      extensionsOutputToString(instrumentResponse.details));
+  } catch (err) {
+    error(err);
+  }
+}
+
+/**
+ * Launches payment request for Apple Pay.
+ */
+async function onApplePayBuyClicked() {
   if (!window.PaymentRequest || !applePayRequest) {
     error('PaymentRequest API is not supported.');
     return;
