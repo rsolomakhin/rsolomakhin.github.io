@@ -164,7 +164,7 @@ let ActualPaymentRequest;
 function polyfillPaymentRequest() {
   ActualPaymentRequest = window.PaymentRequest;
   window.PaymentRequest = function(methods, details, options) {
-    this.isSpc = (methods && methods.isArray() && methods.length == 1
+    this.isSpc = (methods && methods instanceof Array && methods.length == 1
         && methods[0] && methods[0].supportedMethods
         && methods[0].supportedMethods === 'secure-payment-confirmation');
     console.log('new PaymentRequestShim()');
