@@ -78,7 +78,15 @@ function buildApplePayPaymentRequest() {
 /**
  * Handles the response from PaymentRequest.show().
  */
-function handlePaymentResponse(response) {
+function handleApplePayResponse(response) {
+    if (!response) {
+      done('Apple Pay returned "undefined" response.');
+      return;
+    }
+    if (!response.complete) {
+      done('Apple Pay returned a response without complete() method.');
+      return;
+    }
     response.complete('success')
       .then(function() {
         done('Apple Pay: This is a demo website. No payment will be processed.', response);
@@ -151,7 +159,7 @@ async function onApplePayBuyClicked() {
 
   try {
     const response = await applePayRequest.show();
-    await handlePaymentResponse(response);
+    await handleApplePayResponse(response);
   } catch (e) {
     error('Apple Pay Error: \'' + e.message + '\'');
     applePayRequest = buildApplePayPaymentRequest();
