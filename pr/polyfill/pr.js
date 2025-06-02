@@ -61,12 +61,6 @@ function buildApplePayPaymentRequest() {
         error(err);
       });
     }
-    if (request.hasEnrolledInstrument) {
-      request.hasEnrolledInstrument().then(function(result) {
-        info(result ? 'Apple Pay: Has enrolled instrument' : 'Apple Pay: No enrolled instrument');
-      }).catch(function(err) {
-        error(err);
-      });
     }
   } catch (e) {
     error('Apple Pay: Developer mistake: \'' + e.message + '\'');
@@ -229,18 +223,6 @@ function polyfillPaymentRequest() {
       return true;
     } else {
       return this.fallback.canMakePayment();
-    }
-  };
-
-  window.PaymentRequest.prototype.hasEnrolledInstrument = function() {
-    if (this.isSpc) {
-      console.log('PaymentRequestPolyfill.hasEnrolledInstrument()');
-      return true;
-    } else if (this.fallback.hasEnrolledInstrument) {
-      return this.fallback.hasEnrolledInstrument();
-    } else {
-      console.log('Apple Pay does not implement hasEnrolledInstrument() method.');
-      return false;
     }
   };
 }
