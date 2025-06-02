@@ -92,7 +92,7 @@ function handlePaymentResponse(response) {
 /**
  * Launches payment request for SPC.
  */
-async function onSpcBuyClicked() {
+async function onSpcBuyClicked(windowLocalStorageIdentifier) {
   if (!window.PaymentRequest) {
     error('PaymentRequest API is not supported.');
     return;
