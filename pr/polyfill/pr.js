@@ -29,49 +29,34 @@ function buildApplePayPaymentRequest() {
 
   const details = {
     total: {
-      label: 'Donation',
+      label: 'Total',
       amount: {
         currency: 'USD',
-        value: '55.00',
+        value: '0.01',
       },
     },
-    displayItems: [{
-      label: 'Original donation amount',
-      amount: {
-        currency: 'USD',
-        value: '65.00',
-      },
-    }, {
-      label: 'Friends and family discount',
-      amount: {
-        currency: 'USD',
-        value: '-10.00',
-      },
-    }],
   };
 
-  let request = null;
-
   try {
-    request = new PaymentRequest(supportedInstruments, details);
+    const request = new PaymentRequest(supportedInstruments, details);
     if (request.canMakePayment) {
       request.canMakePayment().then(function(result) {
         info(result ? 'Apple Pay: Can make payment.' : 'Apple Pay: Cannot make payment.');
       }).catch(function(err) {
-        error(err);
+        error('Apple Pay can make payment error: \'' + err.message + '\'');
       });
     }
+    return request;
   } catch (e) {
     error('Apple Pay error: \'' + e.message + '\'');
+    return null;
   }
-
-  return request;
 }
 
 /**
  * Handles the response from PaymentRequest.show().
  */
-function handleApplePayResponse(response) {
+async function handleApplePayResponse(response) {
     if (!response) {
       done('Apple Pay returned "undefined" response.');
       return;
@@ -80,14 +65,13 @@ function handleApplePayResponse(response) {
       done('Apple Pay returned a response without complete() method.');
       return;
     }
-    response.complete('success')
-      .then(function() {
-        done('Apple Pay: This is a demo website. No payment will be processed.', response);
-      })
-      .catch(function(err) {
-        error(err);
-        applePayRequest = buildApplePayPaymentRequest();
-      });
+    try {
+      await response.complete('success')
+      done('Apple Pay: This is a demo website. No payment will be processed.');
+    } catch (err) {
+      error('Apple Pay complete() error: \'' + err.message + '\'');
+      applePayRequest = buildApplePayPaymentRequest();
+    }
 }
 
 function buildSpcPaymentRequest(windowLocalStorageIdentifier) {
@@ -233,7 +217,7 @@ function polyfillPaymentRequest() {
       return Promise.resolve(new PaymentResponsePolyfill());
     } else if (this.isApplePay) {
       console.log('PaymentRequestPolyfill(Apple Pay).show()');
-      this.fallback.show(optionalPromise);
+      return this.fallback.show(optionalPromise);
     } else {
       console.log('PaymentRequestPolyfill(other).show()');
       alert('PaymentRequestPolyfill(other).show()');
