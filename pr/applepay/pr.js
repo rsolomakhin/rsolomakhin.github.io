@@ -54,6 +54,9 @@ function buildPaymentRequest() {
 
   try {
     request = new PaymentRequest(supportedInstruments, details);
+    request.addEventListener('validatemerchant', (evt) => {
+      info('Merchant validation: ' + evt.validationURL);
+    });
     if (request.canMakePayment) {
       request.canMakePayment().then(function(result) {
         info(result ? 'Can make payment' : 'Cannot make payment');
