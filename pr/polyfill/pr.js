@@ -188,6 +188,7 @@ class PaymentResponsePolyfill {
   complete(result, details) {
     alert ('PaymentResponsePolyfill.complete()');
     console.log('PaymentResponsePolyfill.complete()');
+    return Promise.resolve();
   }
 
   get requestId() {
