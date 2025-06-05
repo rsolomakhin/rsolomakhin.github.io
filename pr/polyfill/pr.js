@@ -199,7 +199,7 @@ class PaymentResponsePolyfill {
   }
 
   get details() {
-    this.details_;
+    return this.details_;
   }
 }
 
