@@ -204,7 +204,7 @@ function polyfillPaymentRequest() {
       this.options = options;
     } else if (this.isApplePay) {
       console.log('new PaymentRequestPolyfill(Apple Pay)');
-      this.fallback = new ActualPaymentRequest(methods, details, options);
+      return new ActualPaymentRequest(methods, details, options);
     } else {
       console.log('new PaymentRequestPolyfill(other)');
     }
