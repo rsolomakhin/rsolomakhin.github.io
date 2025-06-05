@@ -146,9 +146,6 @@ async function onApplePayBuyClicked() {
     return;
   }
 
-  // Temporary, for testing background tab behavior.
-  await new Promise(resolve => setTimeout(resolve, 1000));
-
   try {
     const response = await applePayRequest.show();
     await handleApplePayResponse(response);

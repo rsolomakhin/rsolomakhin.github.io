@@ -100,9 +100,6 @@ async function onBuyClicked() { // eslint-disable-line no-unused-vars
     return;
   }
 
-  // Temporary, for testing background tab behavior.
-  await new Promise(resolve => setTimeout(resolve, 1000));
-
   try {
     const response = await request.show();
     await handlePaymentResponse(response);
