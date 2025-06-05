@@ -41,14 +41,14 @@ function buildApplePayPaymentRequest() {
     const request = new PaymentRequest(supportedInstruments, details);
     if (request.canMakePayment) {
       request.canMakePayment().then(function(result) {
-        info(result ? 'Apple Pay: Can make payment.' : 'Apple Pay: Cannot make payment.');
+        info(result ? 'Apple Pay (polyfilled): Can make payment.' : 'Apple Pay (polyfilled): Cannot make payment.');
       }).catch(function(err) {
-        error('Apple Pay can make payment error: \'' + err.message + '\'');
+        error('Apple Pay (polyfilled) can make payment error: \'' + err.message + '\'');
       });
     }
     return request;
   } catch (e) {
-    error('Apple Pay error: \'' + e.message + '\'');
+    error('Apple Pay (polyfilled) error: \'' + e.message + '\'');
     return null;
   }
 }
@@ -58,18 +58,18 @@ function buildApplePayPaymentRequest() {
  */
 async function handleApplePayResponse(response) {
     if (!response) {
-      done('Apple Pay returned "undefined" response.');
+      done('Apple Pay (polyfilled) returned "undefined" response.');
       return;
     }
     if (!response.complete) {
-      done('Apple Pay returned a response without complete() method.');
+      done('Apple Pay (polyfilled) returned a response without complete() method.');
       return;
     }
     try {
       await response.complete('success')
-      done('Apple Pay: This is a demo website. No payment will be processed.');
+      done('Apple Pay (polyfilled): This is a demo website. No payment will be processed.');
     } catch (err) {
-      error('Apple Pay complete() error: \'' + err.message + '\'');
+      error('Apple Pay (polyfilled) complete() error: \'' + err.message + '\'');
       applePayRequest = buildApplePayPaymentRequest();
     }
 }
@@ -102,18 +102,18 @@ function buildSpcPaymentRequest(windowLocalStorageIdentifier) {
       ]
     });
     request.canMakePayment().then((result) => {
-      info(result ? 'SPC: Can make payment.' : 'SPC: Cannot make payment.');
+      info(result ? 'SPC (polyfilled): Can make payment.' : 'SPC (polyfilled): Cannot make payment.');
     }).catch((error) => {
-      error(`SPC: Error from canMakePayment: ${error.message}`);
+      error(`SPC (polyfilled): Error from canMakePayment: ${error.message}`);
     });
     request.hasEnrolledInstrument().then((result) => {
-      info(result ? 'SPC: Has enrolled instrument.' : 'SPC: No enrolled instrument.');
+      info(result ? 'SPC (polyfilled): Has enrolled instrument.' : 'SPC (polyfilled): No enrolled instrument.');
     }).catch((error) => {
-      error(`SPC: Error from hasEnrolledInstrument: ${error.message}`);
+      error(`SPC (polyfilled): Error from hasEnrolledInstrument: ${error.message}`);
     });
     return request;
   } catch (err) {
-    error('SPC error: \'' + err + '\'');
+    error('SPC (polyfilled) error: \'' + err + '\'');
     return null;
   }
 }
@@ -130,10 +130,10 @@ async function onSpcBuyClicked() {
   try {
     const instrumentResponse = await spcRequest.show();
     await instrumentResponse.complete('success')
-    console.log(instrumentResponse);
-    info('SPC: payment response: ' + objectToString(instrumentResponse));
+    info(instrumentResponse);
+    info('SPC (polyfilled): payment response: ' + objectToString(instrumentResponse));
   } catch (err) {
-    error('SPC error: \'' + err.message + '\'');
+    error('SPC (polyfilled) error: \'' + err.message + '\'');
   }
 }
 
@@ -142,7 +142,7 @@ async function onSpcBuyClicked() {
  */
 async function onApplePayBuyClicked() {
   if (!window.PaymentRequest || !applePayRequest) {
-    error('Apple Pay: PaymentRequest API is not supported.');
+    error('Apple Pay (polyfilled): PaymentRequest API is not supported.');
     return;
   }
 
@@ -153,7 +153,7 @@ async function onApplePayBuyClicked() {
     const response = await applePayRequest.show();
     await handleApplePayResponse(response);
   } catch (e) {
-    error('Apple Pay Error: \'' + e.message + '\'');
+    error('Apple Pay (polyfilled) error: \'' + e.message + '\'');
     applePayRequest = buildApplePayPaymentRequest();
   }
 }
@@ -168,8 +168,7 @@ class PaymentResponsePolyfill {
   }
 
   complete(result, details) {
-    alert ('PaymentResponsePolyfill.complete()');
-    console.log('PaymentResponsePolyfill.complete()');
+    info('PaymentResponsePolyfill.complete()');
     return Promise.resolve();
   }
 
@@ -187,21 +186,23 @@ class PaymentResponsePolyfill {
 }
 
 class PaymentRequestPolyfill {
-  constructor(methods, details, options) {}
+  constructor(methodData, details, options) {
+    info('new PaymentRequestPolyfill([{supportedMethods: "'+ methodData[0].supportedMethods +'"}])');
+  }
 
   show(optionalPromise) {
-    console.log('PaymentRequestPolyfill().show()');
+    info('PaymentRequestPolyfill().show()');
     alert('PaymentRequestPolyfill().show()');
     return Promise.resolve(new PaymentResponsePolyfill());
   }
 
   canMakePayment() {
-    console.log('PaymentRequestPolyfill().canMakePayment()');
+    info('PaymentRequestPolyfill().canMakePayment()');
     return Promise.resolve(true);
   }
 
   hasEnrolledInstrument() {
-    console.log('PaymentRequestPolyfill().hasEnrolledInstrument()');
+    info('PaymentRequestPolyfill().hasEnrolledInstrument()');
     return Promise.resolve(true);
   }
 }
@@ -210,19 +211,19 @@ let ActualPaymentRequest;
 
 function polyfillPaymentRequest() {
   ActualPaymentRequest = window.PaymentRequest;
-  window.PaymentRequest = function(methods, details, options) {
-    const method = (methods
-                    && methods instanceof Array
-                    && methods.length > 0
-                    && methods[0]
-                    && methods[0].supportedMethods)
-            ?  methods[0].supportedMethods
+  window.PaymentRequest = function(methodData, details, options) {
+    const method = (methodData
+                    && methodData instanceof Array
+                    && methodData.length > 0
+                    && methodData[0]
+                    && methodData[0].supportedMethods)
+            ?  methodData[0].supportedMethods
             : 'UNKNOWN';
-    console.log('new PaymentRequestPolyfill([{supportedMethods: "'+ method +'"}])');
+    info('new PaymentRequest([{supportedMethods: "'+ method +'"}])');
     if (method === 'secure-payment-confirmation') {
-      return new PaymentRequestPolyfill(methods, details, options);
+      return new PaymentRequestPolyfill(methodData, details, options);
     } else {
-      return new ActualPaymentRequest(methods, details, options);
+      return new ActualPaymentRequest(methodData, details, options);
     }
   };
 }
