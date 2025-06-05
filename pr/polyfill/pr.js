@@ -162,7 +162,7 @@ let ActualPaymentRequest;
 
 class PaymentResponsePolyfill {
   constructor() {
-    this.details_ = {'hello': 'world'};
+    this.details_ = {'key': 'value'};
   }
 
   toJSON() {
@@ -180,7 +180,7 @@ class PaymentResponsePolyfill {
   }
 
   get methodName() {
-    return 'methodName';
+    return 'secure-payment-confirmation';
   }
 
   get details() {
@@ -203,7 +203,7 @@ function polyfillPaymentRequest() {
       this.details = details;
       this.options = options;
     } else if (this.isApplePay) {
-      console.log('new PaymentRequestPolyfill(Apple Pay)');
+      console.log('new PaymentRequestPolyfill(Apple Pay) -> Fallback to platform specific Apple Pay');
       return new ActualPaymentRequest(methods, details, options);
     } else {
       console.log('new PaymentRequestPolyfill(other)');
