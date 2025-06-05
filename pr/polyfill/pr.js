@@ -158,8 +158,6 @@ async function onApplePayBuyClicked() {
   }
 }
 
-let ActualPaymentRequest;
-
 class PaymentResponsePolyfill {
   constructor() {
     this.details_ = {'key': 'value'};
@@ -188,90 +186,43 @@ class PaymentResponsePolyfill {
   }
 }
 
+class PaymentRequestPolyfill {
+  constructor(methods, details, options) {}
+
+  show(optionalPromise) {
+    console.log('PaymentRequestPolyfill().show()');
+    alert('PaymentRequestPolyfill().show()');
+    return Promise.resolve(new PaymentResponsePolyfill());
+  }
+
+  canMakePayment() {
+    console.log('PaymentRequestPolyfill().canMakePayment()');
+    return Promise.resolve(true);
+  }
+
+  hasEnrolledInstrument() {
+    console.log('PaymentRequestPolyfill().hasEnrolledInstrument()');
+    return Promise.resolve(true);
+  }
+}
+
+let ActualPaymentRequest;
+
 function polyfillPaymentRequest() {
   ActualPaymentRequest = window.PaymentRequest;
   window.PaymentRequest = function(methods, details, options) {
-    this.isSpc = (methods && methods instanceof Array && methods.length == 1
-        && methods[0] && methods[0].supportedMethods
-        && methods[0].supportedMethods === 'secure-payment-confirmation');
-    this.isApplePay = (methods && methods instanceof Array && methods.length == 1
-        && methods[0] && methods[0].supportedMethods
-        && methods[0].supportedMethods === 'https://apple.com/apple-pay');
-    if (this.isSpc) {
-      console.log('new PaymentRequestPolyfill(spc)');
-      this.methods = methods;
-      this.details = details;
-      this.options = options;
-    } else if (this.isApplePay) {
-      console.log('new PaymentRequestPolyfill(Apple Pay) -> Fallback to platform specific Apple Pay');
+    const method = (methods
+                    && methods instanceof Array
+                    && methods.length > 0
+                    && methods[0]
+                    && methods[0].supportedMethods)
+            ?  methods[0].supportedMethods
+            : 'UNKNOWN';
+    console.log('new PaymentRequestPolyfill([{supportedMethods: "'+ method +'"}])');
+    if (method === 'secure-payment-confirmation') {
+      return new PaymentRequestPolyfill(methods, details, options);
+    } else {
       return new ActualPaymentRequest(methods, details, options);
-    } else {
-      console.log('new PaymentRequestPolyfill(other)');
-    }
-  };
-
-  window.PaymentRequest.prototype.show = function(optionalPromise) {
-    if (this.isSpc) {
-      console.log('PaymentRequestPolyfill(spc).show()');
-      alert('PaymentRequestPolyfill(spc).show()');
-      return Promise.resolve(new PaymentResponsePolyfill());
-    } else if (this.isApplePay) {
-      console.log('PaymentRequestPolyfill(Apple Pay).show()');
-      return this.fallback.show(optionalPromise);
-    } else {
-      console.log('PaymentRequestPolyfill(other).show()');
-      alert('PaymentRequestPolyfill(other).show()');
-      return Promise.resolve(null);
-    }
-  };
-
-  window.PaymentRequest.prototype.canMakePayment = function() {
-    if (this.isSpc) {
-      console.log('PaymentRequestPolyfill(spc).canMakePayment()');
-      return Promise.resolve(true);
-    } else if (this.isApplePay) {
-      console.log('PaymentRequestPolyfill(Apple Pay).canMakePayment()');
-      return this.fallback.canMakePayment();
-    } else {
-      console.log('PaymentRequestPolyfill(other).canMakePayment()');
-      return Promise.resolve(false);
-    }
-  };
-
-  window.PaymentRequest.prototype.hasEnrolledInstrument = function() {
-    if (this.isSpc) {
-      console.log('PaymentRequestPolyfill(spc).hasEnrolledInstrument()');
-      return Promise.resolve(true);
-    } else if (this.isApplePay) {
-      console.log('PaymentRequestPolyfill(Apple Pay).hasEnrolledInstrument() not implemented. Defaulting to `true`.');
-      return Promise.resolve(true);
-    } else {
-      console.log('PaymentRequestPolyfill(other).hasEnrolledInstrument()');
-      return Promise.resolve(false);
-    }
-  };
-
-  window.PaymentRequest.prototype.abort = function() {
-    if (this.isSpc) {
-      console.log('PaymentRequestPolyfill(spc).abort()');
-      return Promise.resolve(true);
-    } else if (this.isApplePay) {
-      console.log('PaymentRequestPolyfill(Apple Pay).abort()');
-      return this.fallback.abort();
-    } else {
-      console.log('PaymentRequestPolyfill(other).abort()');
-      return Promise.resolve(false);
-    }
-  };
-
-  window.PaymentRequest.prototype.addEventlistener = function(type, listener, options) {
-    if (this.isSpc) {
-      console.log('PaymentRequestPolyfill(spc).addEventListener(' + type + ')');
-    } else if (this.isApplePay) {
-      console.log('PaymentRequestPolyfill(Apple Pay).addEventListener(' + type + ')');
-      return this.fallback.addEventlistener(type, listener, options);
-    } else {
-      console.log('PaymentRequestPolyfill(other).addEventListener(' + type + ')');
     }
   };
 }
