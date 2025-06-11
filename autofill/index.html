@@ -105,6 +105,12 @@
           form['iban'].value = 'BE71096123456769';
       }
 
+      var LoyaltyNumberFillForm = function() {
+          var form = document.forms['loyalty-program'];
+          form['loyalty-program'].value = 'Ikea';
+          form['loyalty-number'].value = "987654321";
+      }
+
       var changeVisibility = function(checkbox, targetId) {
         document.getElementById(targetId).style.display = checkbox.checked ? 'none' : 'block';
       }
@@ -389,6 +395,28 @@ When the credit card number is changed, a javascript function changes the
 </form>
 
 <button type="button" onclick="IBANFillForm()">IBAN Fill Form</button>
+<br>
+
+<hr>
+<h3>Loyalty card</h3>
+
+<form name="loyalty-program" id="loyalty-program" action="https://romantic-dirt-jaguar.glitch.me/post" method="post">
+  Loyalty Program: <select name="loyalty-program" id="loyalty-program">
+    <option value="CVS Pharmacy">CVS Pharmacy</option>
+    <option value="Ikea">Ikea</option>
+    <option value="DHL">DHL</option>
+    <option value="BON Voy">MD</option>
+    <option value="Deutsche Bahn">OR</option>
+    <option value="Miles and more">OH</option>
+  </select> <br>
+  Loyalty Number: <input type="text" name="loyalty-number" id="loyalty-number" />
+  <div>
+    <input type="reset" value="Reset">
+    <input type="submit" value="Submit" id="loyalty_program_submit">
+  </div>
+</form>
+
+<button type="button" onclick="LoyaltyNumberFillForm()">Fill loyalty number</button>
 <br>
 
 <hr>
