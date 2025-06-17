@@ -27,9 +27,12 @@ async function onBuyClicked(windowLocalStorageIdentifier, logosList) {
     let params = {
       credentialIds: [base64ToArray(window.localStorage.getItem(windowLocalStorageIdentifier))],
       instrument: {
-        displayName: '···· 1234',
+        displayName: 'SPC Card',
+        details: '···· 1234',
         icon: 'https://rsolomakhin.github.io/static/troy-card-art.png',
       },
+      payeeName: 'SPC Demo Store',
+      payeeOrigin: 'https://store.example',
     };
 
     params.paymentEntitiesLogos = [];
@@ -38,26 +41,26 @@ async function onBuyClicked(windowLocalStorageIdentifier, logosList) {
         params.paymentEntitiesLogos.push(null);
       } else if (logoId === 'logo-missing-url') {
         const label = 'Label';
-        params.paymentEntitiesLogos.push({label});
+        params.paymentEntitiesLogos.push({ label });
       } else if (logoId === 'logo-empty-url') {
         const url = '';
         const label = 'Label';
-        params.paymentEntitiesLogos.push({url, label});
+        params.paymentEntitiesLogos.push({ url, label });
       } else if (logoId === 'logo-invalid-url') {
         const url = 'this-is-not-a-valid-url';
         const label = 'Label';
-        params.paymentEntitiesLogos.push({url, label});
+        params.paymentEntitiesLogos.push({ url, label });
       } else if (logoId === 'logo-missing-label') {
         const url = kValidLogoUrl;
-        params.paymentEntitiesLogos.push({url});
+        params.paymentEntitiesLogos.push({ url });
       } else if (logoId === 'logo-empty-label') {
         const url = kValidLogoUrl;
         const label = '';
-        params.paymentEntitiesLogos.push({url, label});
+        params.paymentEntitiesLogos.push({ url, label });
       } else {
         const url = document.getElementById(`${logoId}-url`).value;
         const label = document.getElementById(`${logoId}-label`).value;
-        params.paymentEntitiesLogos.push({url, label});
+        params.paymentEntitiesLogos.push({ url, label });
       }
     }
 
@@ -89,7 +92,7 @@ async function webAuthnGet(windowLocalStorageIdentifier) {
         type: 'public-key',
         id: base64ToArray(window.localStorage.getItem(
           windowLocalStorageIdentifier)),
-      }, ],
+      },],
     };
     const credentialInfoAssertion = await navigator.credentials.get({
       publicKey
