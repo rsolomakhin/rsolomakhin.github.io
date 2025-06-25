@@ -32,17 +32,20 @@
       <p>Label <input type="text" id="logo-2-label" style="width: 450px;" value="TroyBank"/></p>
     </div>
     <p><button onclick="createPaymentCredential('Credential #1')">Enroll Credential</button></p>
-    <p><button onclick="onBuyClicked('Credential #1', ['logo-1', 'logo-2'])">Trigger SPC</button> (with both logos)</p>
-    <p><button onclick="onBuyClicked('Credential #1', ['logo-1'])">Trigger SPC</button> (with just logo #1)</p>
-    <p><button onclick="onBuyClicked('Credential #1', ['logo-2'])">Trigger SPC</button> (with just logo #2)</p>
+    <p><button onclick="onBuyClicked('Credential #1', ['logo-1', 'logo-2'], false)">Trigger SPC</button> (with both logos)</p>
+    <p><button onclick="onBuyClicked('Non-Existant Credential', ['logo-1', 'logo-2'], true)">Trigger SPC</button> (no matching credentials)</p>
+    <p><button onclick="onBuyClicked('Credential #1', ['logo-1', 'logo-2'], true)">Trigger SPC</button> (with opt-out)</p>
+    <p><button onclick="onBuyClicked('Credential #1', ['logo-1'], false)">Trigger SPC</button> (with just logo #1)</p>
+    <p><button onclick="onBuyClicked('Credential #1', ['logo-2'], false)">Trigger SPC</button> (with just logo #2)</p>
+    <p><button onclick="onBuyClicked('Credential #1', [], false)">Trigger SPC</button> (without logos)</p>
     <details>
       <summary><b>Error cases:</b> (click to expand)</summary>
-      <p><button onclick="onBuyClicked('Credential #1', ['logo-1', 'null-logo'])">Trigger SPC</button> (null logo entry)</p>
-      <p><button onclick="onBuyClicked('Credential #1', ['logo-missing-url'])">Trigger SPC</button> (Missing logo url)</p>
-      <p><button onclick="onBuyClicked('Credential #1', ['logo-empty-url'])">Trigger SPC</button> (Empty logo url)</p>
-      <p><button onclick="onBuyClicked('Credential #1', ['logo-invalid-url'])">Trigger SPC</button> (Invalid logo url)</p>
-      <p><button onclick="onBuyClicked('Credential #1', ['logo-missing-label'])">Trigger SPC</button> (Missing logo label)</p>
-      <p><button onclick="onBuyClicked('Credential #1', ['logo-empty-label'])">Trigger SPC</button> (Empty logo label)</p>
+      <p><button onclick="onBuyClicked('Credential #1', ['logo-1', 'null-logo'], false)">Trigger SPC</button> (null logo entry)</p>
+      <p><button onclick="onBuyClicked('Credential #1', ['logo-missing-url'], false)">Trigger SPC</button> (Missing logo url)</p>
+      <p><button onclick="onBuyClicked('Credential #1', ['logo-empty-url'], false)">Trigger SPC</button> (Empty logo url)</p>
+      <p><button onclick="onBuyClicked('Credential #1', ['logo-invalid-url'], false)">Trigger SPC</button> (Invalid logo url)</p>
+      <p><button onclick="onBuyClicked('Credential #1', ['logo-missing-label'], false)">Trigger SPC</button> (Missing logo label)</p>
+      <p><button onclick="onBuyClicked('Credential #1', ['logo-empty-label'], false)">Trigger SPC</button> (Empty logo label)</p>
       <!-- TODO: Error case for a logo that cannot be downloaded -->
     </details>
   </div>
