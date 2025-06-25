@@ -15,37 +15,50 @@
     <p>This is a test website. Nothing is charged.</p>
     <p>To run these demos, you need Chrome Android version 139.0.7246.0 version or later.</p>
     <ul>
-       <li>
-         Navigate to <code>chrome://flags#enable-secure-payment-confirmation-ux-refresh</code>
-         and enable the flag.
-       </li>
+      <li>
+        Navigate to <code>chrome://flags#enable-secure-payment-confirmation-ux-refresh</code>
+        and enable the flag.
+      </li>
     </ul>
     <p>
     <div>
       <p>Logo #1:</p>
-      <p>Url <input type="text" id="logo-1-url" style="width: 450px;" value="https://rsolomakhin.github.io/static/sync-network-logo.png"/></p>
-      <p>Label <input type="text" id="logo-1-label" style="width: 450px;" value="Sync Network"/></p>
+      <p>Url <input type="text" id="logo-1-url" style="width: 450px;"
+          value="https://rsolomakhin.github.io/static/sync-network-logo.png" /></p>
+      <p>Label <input type="text" id="logo-1-label" style="width: 450px;" value="Sync Network" /></p>
     </div>
     <div>
       <p>Logo #2:</p>
-      <p>Url <input type="text" id="logo-2-url" style="width: 450px;" value="https://rsolomakhin.github.io/static/troy-alt-logo.png"/></p>
-      <p>Label <input type="text" id="logo-2-label" style="width: 450px;" value="TroyBank"/></p>
+      <p>Url <input type="text" id="logo-2-url" style="width: 450px;"
+          value="https://rsolomakhin.github.io/static/troy-alt-logo.png" /></p>
+      <p>Label <input type="text" id="logo-2-label" style="width: 450px;" value="TroyBank" /></p>
     </div>
     <p><button onclick="createPaymentCredential('Credential #1')">Enroll Credential</button></p>
-    <p><button onclick="onBuyClicked('Credential #1', ['logo-1', 'logo-2'], false)">Trigger SPC</button> (with both logos)</p>
-    <p><button onclick="onBuyClicked('Non-Existant Credential', ['logo-1', 'logo-2'], true)">Trigger SPC</button> (no matching credentials)</p>
-    <p><button onclick="onBuyClicked('Credential #1', ['logo-1', 'logo-2'], true)">Trigger SPC</button> (with opt-out)</p>
+    <p><button onclick="onBuyClicked('Credential #1', ['logo-1', 'logo-2'], false)">Trigger SPC</button> (with both
+      logos)</p>
+    <p><button onclick="onBuyClicked('Non-Existant Credential', ['logo-1', 'logo-2'], false)">Trigger SPC</button> (no
+      matching credentials)</p>
+    <p><button onclick="onBuyClicked('Credential #1', ['logo-1', 'logo-2'], true)">Trigger SPC</button> (with opt-out)
+    </p>
+    <p><button onclick="onBuyClicked('Non-Existant Credential', ['logo-1', 'logo-2'], true)">Trigger SPC</button> (no
+      matching credentials with opt-out)</p>
     <p><button onclick="onBuyClicked('Credential #1', ['logo-1'], false)">Trigger SPC</button> (with just logo #1)</p>
     <p><button onclick="onBuyClicked('Credential #1', ['logo-2'], false)">Trigger SPC</button> (with just logo #2)</p>
     <p><button onclick="onBuyClicked('Credential #1', [], false)">Trigger SPC</button> (without logos)</p>
     <details>
       <summary><b>Error cases:</b> (click to expand)</summary>
-      <p><button onclick="onBuyClicked('Credential #1', ['logo-1', 'null-logo'], false)">Trigger SPC</button> (null logo entry)</p>
-      <p><button onclick="onBuyClicked('Credential #1', ['logo-missing-url'], false)">Trigger SPC</button> (Missing logo url)</p>
-      <p><button onclick="onBuyClicked('Credential #1', ['logo-empty-url'], false)">Trigger SPC</button> (Empty logo url)</p>
-      <p><button onclick="onBuyClicked('Credential #1', ['logo-invalid-url'], false)">Trigger SPC</button> (Invalid logo url)</p>
-      <p><button onclick="onBuyClicked('Credential #1', ['logo-missing-label'], false)">Trigger SPC</button> (Missing logo label)</p>
-      <p><button onclick="onBuyClicked('Credential #1', ['logo-empty-label'], false)">Trigger SPC</button> (Empty logo label)</p>
+      <p><button onclick="onBuyClicked('Credential #1', ['logo-1', 'null-logo'], false)">Trigger SPC</button> (null logo
+        entry)</p>
+      <p><button onclick="onBuyClicked('Credential #1', ['logo-missing-url'], false)">Trigger SPC</button> (Missing logo
+        url)</p>
+      <p><button onclick="onBuyClicked('Credential #1', ['logo-empty-url'], false)">Trigger SPC</button> (Empty logo
+        url)</p>
+      <p><button onclick="onBuyClicked('Credential #1', ['logo-invalid-url'], false)">Trigger SPC</button> (Invalid logo
+        url)</p>
+      <p><button onclick="onBuyClicked('Credential #1', ['logo-missing-label'], false)">Trigger SPC</button> (Missing
+        logo label)</p>
+      <p><button onclick="onBuyClicked('Credential #1', ['logo-empty-label'], false)">Trigger SPC</button> (Empty logo
+        label)</p>
       <!-- TODO: Error case for a logo that cannot be downloaded -->
     </details>
   </div>
