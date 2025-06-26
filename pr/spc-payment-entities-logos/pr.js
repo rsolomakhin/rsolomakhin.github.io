@@ -22,7 +22,7 @@ async function createPaymentCredential(windowLocalStorageIdentifier) {
 /**
  * Launches payment request for SPC.
  */
-async function onBuyClicked(windowLocalStorageIdentifier, logosList) {
+async function onBuyClicked(windowLocalStorageIdentifier, logosList, showOptOut) {
   try {
     let params = {
       credentialIds: [base64ToArray(window.localStorage.getItem(windowLocalStorageIdentifier))],
@@ -33,6 +33,7 @@ async function onBuyClicked(windowLocalStorageIdentifier, logosList) {
       },
       payeeName: 'SPC Demo Store',
       payeeOrigin: 'https://store.example',
+      showOptOut: Boolean(showOptOut),
     };
 
     params.paymentEntitiesLogos = [];
