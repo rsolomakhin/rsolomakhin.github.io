@@ -19,26 +19,27 @@ try {
   error(JSON.stringify(err, undefined, 2));
 }
 
-let TRANSACTION_COUNT = 0;
 function onPaymentAuthorized(paymentData) {
-  return new Promise(function(resolve, reject){
-    TRANSACTION_COUNT++;
-    if (TRANSACTION_COUNT > 1) {
-      info(`Processing transaction #${TRANSACTION_COUNT}: Success.`);
-      resolve({transactionState: 'SUCCESS'});
-    } else {
-      info(`Processing transaction #${TRANSACTION_COUNT}: Simulated failure. Try again.`);
-      resolve({
-        transactionState: 'ERROR',
-        error: {
-          intent: 'PAYMENT_AUTHORIZATION',
-          message: 'Simulated failure. Try again.',
-          reason: 'PAYMENT_DATA_INVALID',
-        },
-      });
-    }
+  return new Promise(function(resolve, reject) {
+    resolve({transactionState: 'SUCCESS'});
   });
 }
+//let TRANSACTION_COUNT = 0;
+//    TRANSACTION_COUNT++;
+//    if (TRANSACTION_COUNT > 1) {
+//      info(`Processing transaction #${TRANSACTION_COUNT}: Success.`);
+//      resolve({transactionState: 'SUCCESS'});
+//    } else {
+//      info(`Processing transaction #${TRANSACTION_COUNT}: Simulated failure. Try again.`);
+//      resolve({
+//        transactionState: 'ERROR',
+//        error: {
+//          intent: 'PAYMENT_AUTHORIZATION',
+//          message: 'Simulated failure. Try again.',
+//          reason: 'PAYMENT_DATA_INVALID',
+//        },
+//      });
+//    }
 
 async function payButtonClickHandler() {
   try {
