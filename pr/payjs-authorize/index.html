@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pay.js with Authorization</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>Pay.js with Authorization</h1>
+
+    <p>This page can be used to test Google Pay's <code>pay.js</code> with
+    payment authorization. The first transaction is simulates a authorization
+    failure. All consequent transactions simulate success.</p>
+
+    <p>This demo relies on the <code>UPDATE_PAYMENT_DETAILS</code> Android
+    intent and the <code>UpdatePaymentDetailsIntentFilterInPaymentApp</code>
+    feature flag.</p>
+
+    <p>No payment will be processed. <a href="pr.js">View source</a>.</p>
+
+    <p>Price: USD <strong>$1.00</strong></p>
+
+    <div id="buttonContainer" class="button-container"></div>
+  </div>
+  <pre id="msg"></pre>
+  <p>Based on the <a
+  href="https://developers.google.com/pay/api/web/guides/tutorial">Google Pay
+  tutorial</a>.</p>
+  <p><a href="../gp-links/">Other Google Pay demos</a>.</p>
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+  <script
+    async
+    src="https://pay.google.com/gp/p/js/pay.js"
+    onload="addPayButton()">
+  </script>
+</body>
+</html>
