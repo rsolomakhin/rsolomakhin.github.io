@@ -64,6 +64,26 @@ async function payButtonClickHandler() {
     paymentDataRequest.callbackIntents = ['SHIPPING_ADDRESS',  'SHIPPING_OPTION', 'PAYMENT_AUTHORIZATION'];
     paymentDataRequest.shippingAddressRequired = true;
     paymentDataRequest.shippingOptionRequired = true;
+    paymentDataRequest.shippingOptionParameters = {
+      'defaultSelectedOptionId': 'shipping-001',
+      'shippingOptions': [
+        {
+          'id': 'shipping-001',
+          'label': '$0.00: Free shipping',
+          'description': 'Free Shipping delivered in 14 business days.'
+        },
+        {
+          'id': 'shipping-002',
+          'label': '$1.99: Standard shipping',
+          'description': 'Standard shipping delivered in 7 business days.'
+        },
+        {
+          'id': 'shipping-003',
+          'label': '$100: Express shipping',
+          'description': 'Express shipping delivered in 2 business days.'
+        },
+      ],
+    };
     const paymentData = await paymentsClient.loadPaymentData(paymentDataRequest);
     info(JSON.stringify(paymentData, undefined, 2));
   } catch (err) {
