@@ -14,10 +14,10 @@
     <h1>Pay.js with Authorization</h1>
 
     <p>This page can be used to test Google Pay's <code>pay.js</code> with
-    payment authorization. The first transaction is simulates a authorization
-    failure. All consequent transactions simulate success.</p>
+    payment authorization.</p>
 
-    <p>This demo relies on the <code>UPDATE_PAYMENT_DETAILS</code> Android
+    <p>Google Pay triggers a callback on the website and waits for the website
+    to reply. That relies on the <code>UPDATE_PAYMENT_DETAILS</code> Android
     intent and the <code>UpdatePaymentDetailsIntentFilterInPaymentApp</code>
     feature flag.</p>
 
