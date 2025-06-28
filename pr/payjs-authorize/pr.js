@@ -72,6 +72,7 @@ async function payButtonClickHandler() {
     paymentDataRequest.paymentDataCallbacks = {
       onPaymentAuthorized: onPaymentAuthorized,
     };
+    paymentDataRequest.callbackIntents = ['PAYMENT_AUTHORIZATION'];
     const paymentData = await paymentsClient.loadPaymentData(paymentDataRequest);
     info(JSON.stringify(paymentData, undefined, 2));
   } catch (err) {
