@@ -69,9 +69,6 @@ async function payButtonClickHandler() {
       merchantName: 'Rouslan Solomakhin',
       merchantId: '00184145120947117657',
     };
-    paymentDataRequest.paymentDataCallbacks = {
-      onPaymentAuthorized: onPaymentAuthorized,
-    };
     paymentDataRequest.callbackIntents = ['PAYMENT_AUTHORIZATION'];
     const paymentData = await paymentsClient.loadPaymentData(paymentDataRequest);
     info(JSON.stringify(paymentData, undefined, 2));
@@ -82,7 +79,12 @@ async function payButtonClickHandler() {
 
 async function addPayButton() {
   try {
-    paymentsClient = new google.payments.api.PaymentsClient({environment:'PRODUCTION'});
+    paymentsClient = new google.payments.api.PaymentsClient({
+      environment:'PRODUCTION',
+      paymentDataCallbacks : {
+        onPaymentAuthorized: onPaymentAuthorized,
+      },
+    });
     const isReadyToPayRequest = Object.assign({}, baseRequest);
     isReadyToPayRequest.allowedPaymentMethods = [baseCardPaymentMethod];
     const isReadyToPayResponse = await paymentsClient.isReadyToPay(isReadyToPayRequest);
