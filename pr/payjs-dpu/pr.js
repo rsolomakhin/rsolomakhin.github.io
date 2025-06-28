@@ -63,7 +63,6 @@ async function payButtonClickHandler() {
     };
     paymentDataRequest.callbackIntents = ['SHIPPING_ADDRESS',  'SHIPPING_OPTION', 'PAYMENT_AUTHORIZATION'];
     paymentDataRequest.shippingAddressRequired = true;
-    paymentDataRequest.shippingAddressParameters = getGoogleShippingAddressParameters();
     paymentDataRequest.shippingOptionRequired = true;
     const paymentData = await paymentsClient.loadPaymentData(paymentDataRequest);
     info(JSON.stringify(paymentData, undefined, 2));
