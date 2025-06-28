@@ -29,7 +29,7 @@ function onPaymentAuthorized(paymentData) {
 function onPaymentDataChanged(paymentData) {
   return new Promise(function(resolve, reject) {
     info(`Received payment data update.`);
-    resolve();
+    resolve({});
   });
 }
 
