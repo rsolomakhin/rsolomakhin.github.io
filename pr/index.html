@@ -13,15 +13,15 @@
     <p>This page can be used to test:</p>
     <ul>
       <li>Google Pay</li>
-      <li>Cards from local autofill</li>
       <li>BobPay</li>
+      <li>Cards from local autofill <em>[Deprecated in Chrome 100]</em></li>
     </ul>
     <p>No payment will be processed.</p>
     <p>Price: USD <strong>$1.00</strong></p>
-    <p style="color:red">Warning: this test depends on the "basic-card" method which has been deprecated since Chrome 100. If you are instructed to test this page, please update the test instructions.</p>
     <p><button onclick="onBuyClicked()">Buy</button></p>
+    <pre id="msg"></pre>
+    <p style="color:orange">Warning: This test depends on the "basic-card" method which has been deprecated since Chrome 100. If you are instructed to test this page, please update the test instructions.</p>
   </div>
-  <pre id="msg"></pre>
   <script src="util.js"></script>
   <script src="pr.js"></script>
   <script src="/redirect.js"></script>
