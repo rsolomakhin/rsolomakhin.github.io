@@ -99,8 +99,8 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
       .then(function(instrumentResponse) {
           instrumentResponse.complete('success')
             .then(function() {
-              done('This is a demo website. No payment will be processed.',
-                instrumentResponse);
+              info(JSON.stringify(instrumentResponse, undefined, 2));
+              request = buildPaymentRequest();
             })
             .catch(function(err) {
               error(err);
