@@ -47,8 +47,7 @@ function buildPaymentRequest() {
           type: 'PAYMENT_GATEWAY',
           parameters: {
             'gateway': 'stripe',
-            // Please use your own Stripe live public key.
-            'stripe:publishableKey': 'pk_live_lNk21zqKM2BENZENh3rzCUgo',
+            'stripe:publishableKey': 'pk_test_kCuYxVPNMzbCTzBvhFD2nSGP',
             'stripe:version': '2016-07-06',
           },
         },
@@ -61,8 +60,8 @@ function buildPaymentRequest() {
       },
       environment: 'TEST',
       merchantInfo: {
-        merchantName: 'Rouslan Solomakhin',
-        merchantId: '00184145120947117657',
+        merchantName: 'Example Merchant',
+        merchantId: '12345678901234567890',
       },
     },
   }];
