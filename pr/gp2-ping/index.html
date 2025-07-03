@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Google Pay Test With Counter</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>Google Pay Test With Counter</h1>
+    <p>Counter: <span id="counter">Not started</span></p>
+    <p>This page invokes Google Pay and shows a counter while the payment app is
+    running. No payment will be processed.
+    <a href="pr.js">View source</a>.</p>
+    <p>Price: USD <strong>$1.00</strong></p>
+    <p><button onclick="onBuyClicked()">Buy</button></p>
+  </div>
+  <pre id="msg"></pre>
+  <p><a href="../gp-links/">Other Google Pay demos</a>.</p>
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+</body>
+
+</html>
