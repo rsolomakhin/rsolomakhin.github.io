@@ -27,6 +27,7 @@ function stopCounter() {
  */
 function buildPaymentRequest() {
   if (!window.PaymentRequest) {
+    error('Payment Request API is not supported or not enabled.');
     return null;
   }
 
