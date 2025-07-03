@@ -2,13 +2,13 @@
 
 
 let intervalId = 0;
+let count = 0;
 
 function showCounterValue(value) {
   document.getElementById('counter').innerHTML = value;
 }
 
 function startCounter() {
-  let count = 0;
   showCounterValue(count);
   intervalId = window.setInterval(function() {
     showCounterValue(++count);
@@ -17,8 +17,9 @@ function startCounter() {
 
 function stopCounter() {
   window.clearInterval(intervalId);
+  showCounterValue('Stopped at ' + count);
   intervalId = 0;
-  showCounterValue('Stopped');
+  count = 0;
 }
 
 /**
