@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Awesome 90s Page</title>
+<style>
+  body {
+    background-color: yellow;
+    color: black;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+  }
+
+  h1 {
+    position: relative;
+    font-size: 50px;
+    text-align: center;
+    animation: bounce 2s infinite ease-in-out, rainbow 5s linear infinite;
+  }
+
+  /* A more authentic '90s marquee-style bounce */
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateX(-50%);
+    }
+    50% {
+      transform: translateX(50%);
+    }
+  }
+
+  @keyframes rainbow {
+    0%{color: #ff0000;}
+    10%{color: #ff8000;}
+    20%{color: #ffff00;}
+    30%{color: #80ff00;}
+    40%{color: #00ff00;}
+    50%{color: #00ff80;}
+    60%{color: #00ffff;}
+    70%{color: #0080ff;}
+    80%{color: #0000ff;}
+    90%{color: #8000ff;}
+    100%{color: #ff00ff;}
+  }
+
+  .gif-container {
+    margin-bottom: 100px;
+    overflow: auto; /* Replaces clearfix for modern browsers */
+  }
+
+  .left {
+    float: left;
+    margin-right: 20px;
+  }
+
+  .right {
+    float: right;
+    margin-left: 20px;
+  }
+
+</style>
+</head>
+<body>
+
+<h1>My Wacky Webpage!</h1>
+
+<div class="gif-container">
+  <img src="https://i.gifer.com/WFOI.gif" alt="Silly dancing raccoon" width="200" height="200" class="left">
+  <p>Flummox grobble snarf blatt. Zorp wibble bibble, quibble glorp. Flarp noodle schnoodle, "blibber blabber," kerplunk. Gibberish flibbertigibbet, "gazoontight," snicklefritz. Wobble dee wobble doo, "floop," zippity zap. Bleep blorp fizzle, "gloop," snarfleupagus. Ziggle zaggle, "zoinks," flibbertigibbet. Mumbo jumbo, "wocka wocka," snarf.</p>
+</div>
+
+<div class="gif-container">
+  <img src="https://i.gifer.com/origin/86/864be64feabe126fc26686e0545cc8ba_w200.gif" alt="Silly running hamster" width="200" height="200" class="right">
+  <p>Glibbity glob gloop, "schnizzle," zorp. Flim flam, "wibble wobble," floopity doo. Bumbersplat, "gazoinks," flibbertigibbet. Zippity zap, "kerplunk," snarfleupagus. Noodle schnoodle, "mumbo jumbo," wocka wocka. Bibble quibble, "floop," snarf. "Blibber blabber," grobble, flarp. Snicklefritz, "zippity doo," wobble dee.</p>
+</div>
+
+<div class="gif-container">
+  <img src="https://i.gifer.com/embedded/download/78hf.gif" alt="Cartoon cat" width="200" height="200" class="left">
+  <p>Wocka wocka, "schnizzle," zorp. Floopity doo, "wibble wobble," flim flam. Flibbertigibbet, "gazoinks," bumbersplat. Snarfleupagus, "kerplunk," zippity zap. Schnoodle noodle, "mumbo jumbo," snarf. Snarf, "floop," bibble quibble. Grobble, "blibber blabber," flarp. Wobble dee, "zippity doo," snicklefritz.</p>
+</div>
+
+<div class="gif-container">
+  <img src="https://i.gifer.com/2GU.gif" alt="Cartoon bird" width="200" height="200" class="right">
+  <p>Zorp, "schnizzle," wocka wocka. Flim flam, "wibble wobble," floopity doo. Bumbersplat, "gazoinks," flibbertigibbet. Zippity zap, "kerplunk," snarfleupagus. Noodle schnoodle, "mumbo jumbo," snarf. Bibble quibble, "floop," snarf. "Blibber blabber," grobble, flarp. Snicklefritz, "zippity doo," wobble dee.</p>
+</div>
+
+<div class="gif-container">
+  <img src="https://i.gifer.com/1I2h.gif" alt="Cartoon mouse" width="200" height="200" class="left">
+  <p>Schnizzle, "zorp," wocka wocka. "Wibble wobble," flim flam, floopity doo. "Gazoinks," bumbersplat, flibbertigibbet. "Kerplunk," zippity zap, snarfleupagus. "Mumbo jumbo," noodle schnoodle, snarf. "Floop," bibble quibble, snarf. "Blibber blabber," grobble, flarp. "Zippity doo," snicklefritz, wobble dee.</p>
+</div>
+
+</body>
+</html>
