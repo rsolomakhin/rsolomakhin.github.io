@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.5">
+    <title>Bnpl Smoke Test</title>
+  </head>
+  <body>
+    <p>
+      <em>Beware what you post. All forms send data to
+           https://dump-truck.appspot.com/post.html.</em>
+      That website is managed by payments-autofill-team@ and ignores all data.
+    </p>
+    <form id="checkout" name="checkout"
+        action="https://dump-truck.appspot.com/post.html" method="post">
+      <div>
+        <label>Order total:</label>
+        <span id="displayAmount">$50.00</span>
+      </div>
+
+      <div>
+        <label for="updateAmountInput">Update Amount:</label>
+        <input type="number" id="updateAmountInput" name="amount" step="0.01" value="50.00">
+      </div>
+
+      <div>Name on card: <input type="text" name="name_cc"></div>
+
+      <div>Credit card number: <input type="text" name="CCNo"></div>
+
+      <div>Expiry Date:
+        <select name="CCExpiresMonth" id="cc_exp_month">
+            <option value>MM</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+        </select> /
+        <select name="CCExpiresYear" id="cc_exp_year">
+            <option value>YYYY</option>
+            <option value="2025">2025</option>
+            <option value="2026">2026</option>
+            <option value="2027">2027</option>
+            <option value="2028">2028</option>
+            <option value="2029">2029</option>
+            <option value="2030">2030</option>
+            <option value="2031">2031</option>
+            <option value="2032">2032</option>
+            <option value="2033">2033</option>
+            <option value="2034">2034</option>
+            <option value="2035">2035</option>
+            <option value="2036">2036</option>
+            <option value="2037">2037</option>
+            <option value="2038">2038</option>
+        </select>
+      </div>
+
+      <div>CVC: <input name="cvc"></div>
+
+      <div><input type="submit" value="Submit"></div>
+    </form>
+  <script>
+    document.getElementById('updateAmountInput').addEventListener('input',
+      function(event) {
+        const numericValue = parseFloat(event.target.value);
+        if (!isNaN(numericValue)) {
+          document.getElementById('displayAmount').innherHTML =
+              '$' + numericValue.toFixed(2);
+        }
+      });
+  </script>
+  </body>
+</html>
