@@ -70,7 +70,7 @@
       function(event) {
         const numericValue = parseFloat(event.target.value);
         if (!isNaN(numericValue)) {
-          document.getElementById('displayAmount').innherHTML =
+          document.getElementById('displayAmount').innerHTML =
               '$' + numericValue.toFixed(2);
         }
       });
