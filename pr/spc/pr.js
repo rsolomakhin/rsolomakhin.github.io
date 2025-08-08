@@ -26,6 +26,10 @@ async function onBuyClicked(windowLocalStorageIdentifier) {
     const request = await createSPCPaymentRequest({
       credentialIds: [base64ToArray(
           window.localStorage.getItem(windowLocalStorageIdentifier))],
+      paymentEntitiesLogos: [
+        {url: 'https://rsolomakhin.github.io/static/sync-network-logo.png', label: 'Sync Network'},
+        {url: 'https://rsolomakhin.github.io/static/troy-alt-logo.png', label: 'TroyBank'},
+      ],
       // `browserBoundPubKeyCredParams` does not need to be set and will default
       // to the same values listed here.
       browserBoundPubKeyCredParams: [

@@ -88,8 +88,9 @@ function spcSupportsPreferred() {
  * Creates a PaymentRequest object for SPC.
  *
  * @param {SecurePaymentConfirmationRequest} spcData - the input SPC data. The
- *     credentialIds field *MUST* be set. Any other SecurePaymentConfirmationRequest
- *     fields not set in this object will be initialized to a default value.
+ *     credentialIds field *MUST* be set. Any other required
+ *     SecurePaymentConfirmationRequest fields not set in this object will be
+ *     initialized to a default value.
  * @return {PaymentRequest} The payment request object.
  */
 function createSPCPaymentRequest(spcData) {
