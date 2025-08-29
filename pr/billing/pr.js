@@ -22,7 +22,7 @@ function buildPaymentRequest() {
           allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
           allowedCardNetworks: ['AMEX', 'DISCOVER', 'INTERAC', 'JCB', 'VISA', 'MASTERCARD'],
           billingAddressRequired: true, // Request billing address
-          billingAddressParameters: {format: 'FULL': phoneNumberRequired: true}, // Request full billing address
+          billingAddressParameters: {format: 'FULL', phoneNumberRequired: true}, // Request full billing address
         },
         tokenizationSpecification: {
           type: 'PAYMENT_GATEWAY',
