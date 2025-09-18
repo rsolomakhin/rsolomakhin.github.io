@@ -8,10 +8,12 @@ function buildPaymentRequest() {
     return null;
   }
 
+  const returnValue = document.getElementById('returnValue').value;
   const supportedInstruments = [{
     supportedMethods: 'https://bobbucks.dev/pay',
     data: {
       testField: 'test value',
+      returnValue,
     },
   }];
 
@@ -96,4 +98,8 @@ function onBuyClicked() { // eslint-disable-line no-unused-vars
     error('Developer mistake: \'' + e.message + '\'');
     request = buildPaymentRequest();
   }
+}
+
+function onReturnValueChanged() {
+  request = buildPaymentRequest();
 }
