@@ -30,7 +30,7 @@
     <p><button onclick="clearAllMessages()">Clear messages</button></p>
     <div>
       <p>For debugging, override IS_READY_TO_PAY return value:</p>
-      <select id="returnValue">
+      <select id="returnValue" onchange="onReturnValueChanged()">
         <option value="true" selected>True</option>
         <option value="false">False</option>
       </select>
