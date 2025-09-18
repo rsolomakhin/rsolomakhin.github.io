@@ -9,7 +9,10 @@ function buildPaymentRequest() {
   }
 
   const supportedInstruments = [{
-    supportedMethods: 'https://bobbucks.dev/pay'
+    supportedMethods: 'https://bobbucks.dev/pay',
+    data: {
+      testField: 'test value',
+    },
   }];
 
   const details = {
