@@ -61,11 +61,11 @@ async function onBuyClicked() {
   }
 
   try {
-    let response = await request.show();
+    const response = await request.show();
     info(`Got response; waiting 5 seconds before calling retry`);
     setTimeout(async function() {
       info(`Calling retry`);
-      response = await response.retry({paymentMethod: { myField: 'Foo' }});
+      await response.retry({paymentMethod: { myField: 'Foo' }});
       response.complete('success');
 
       request = buildPaymentRequest();
