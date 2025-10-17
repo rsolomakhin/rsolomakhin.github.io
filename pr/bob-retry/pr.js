@@ -61,7 +61,7 @@ async function onBuyClicked() {
   }
 
   try {
-    const response = await request.show();
+    let response = await request.show();
     info(`Got response; waiting 5 seconds before calling retry`);
     setTimeout(async function() {
       info(`Calling retry`);
