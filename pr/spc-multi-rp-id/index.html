@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secure Payment Confirmation (Multi-RP)</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>Secure Payment Confirmation (Multi-RP)</h1>
+    <p>This is a test website. Nothing is charged.</p>
+    <p>
+      This page demonstrates the multi-relying-party feature of Secure Payment
+      Confirmation (SPC).
+    </p>
+    <p>
+      To use this demo, you need one or more SPC credentials. You can enroll
+      credentials on this page, which will be scoped to this origin (<code><script>document.write(window.location.hostname)</script></code>).
+      You can also enroll credentials on another origin, such as
+      <a href="https://www.stephenmcgruer.com/web-payments-demos/pr/spc/"
+        target="_blank">stephenmcgruer.com/web-payments-demos/pr/spc/</a>.
+    </p>
+    <p>
+      After enrolling, copy the base64-encoded credential ID and the RP ID
+      (which is the hostname where the credential was created) into the fields
+      below.
+    </p>
+    <p><button onclick="createPaymentCredential('Credential #1')">Enroll
+        Credential #1</button></p>
+    <p><button onclick="createPaymentCredential('Credential #2')">Enroll
+        Credential #2</button></p>
+    <hr />
+    <h2>Payment</h2>
+    <p>
+      Enter the details of up to two credentials to use for payment.
+    </p>
+    <div>
+      <label for="rp_id_1">RP ID 1:</label>
+      <input type="text" id="rp_id_1" size="50" />
+    </div>
+    <div>
+      <label for="credential_id_1">Credential ID 1 (Base64):</label>
+      <input type="text" id="credential_id_1" size="50" />
+    </div>
+    <br />
+    <div>
+      <label for="rp_id_2">RP ID 2:</label>
+      <input type="text" id="rp_id_2" size="50" />
+    </div>
+    <div>
+      <label for="credential_id_2">Credential ID 2 (Base64):</label>
+      <input type="text" id="credential_id_2" size="50" />
+    </div>
+    <p><button onclick="onBuyClicked()">Pay $0.01</button></p>
+  </div>
+  <pre id="msg"></pre>
+  <p>Based on the <a
+      href="https://github.com/w3c/secure-payment-confirmation">Secure Payment
+      Confirmation explainer</a> and
+    <a href="https://github.com/w3c/secure-payment-confirmation/pull/286">
+      Add browser binding to the secure payment confirmation spec</a>
+  <script src="../util.js"></script>
+  <script src="../spc_util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+</body>
+
+</html>
