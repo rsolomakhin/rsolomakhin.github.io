@@ -29,19 +29,29 @@ async function onBuyClicked() {
   const rpId1 = document.getElementById('rp_id_1').value;
   const credId1 = document.getElementById('credential_id_1').value;
   if (rpId1 && credId1) {
-    credentialIds.push({
-      rpId: rpId1,
-      credentialId: base64ToArray(credId1),
-    });
+    try {
+      credentialIds.push({
+        rpId: rpId1,
+        credentialId: base64ToArray(credId1),
+      });
+    } catch (e) {
+      error('Invalid Base64 for Credential ID 1: ' + e.message);
+      return;
+    }
   }
 
   const rpId2 = document.getElementById('rp_id_2').value;
   const credId2 = document.getElementById('credential_id_2').value;
   if (rpId2 && credId2) {
-    credentialIds.push({
-      rpId: rpId2,
-      credentialId: base64ToArray(credId2),
-    });
+    try {
+      credentialIds.push({
+        rpId: rpId2,
+        credentialId: base64ToArray(credId2),
+      });
+    } catch (e) {
+      error('Invalid Base64 for Credential ID 2: ' + e.message);
+      return;
+    }
   }
 
   if (credentialIds.length === 0) {
