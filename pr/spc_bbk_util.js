@@ -19,15 +19,9 @@ function assert_not_equals(a, b, msg) {
 }
 
 // Taken from
-// https://github.com/web-platform-tests/wpt/blob/master/webauthn/resources/utils.js
-
-// Decode |encoded| using base64url decoding.
-function base64urlDecode(encoded) {
-  return atob(encoded.replace(/\-/g, "+").replace(/\_/g, "/"));
-}
-
-// Taken from
 // https://github.com/web-platform-tests/wpt/blob/master/secure-payment-confirmation/utils-bbk.js
+//
+// Relies on pr/webauthn_util.js being loaded.
 
 // See https://www.iana.org/assignments/cose/cose.xhtml#key-type
 const cose_key_type_ec2 = 2;
