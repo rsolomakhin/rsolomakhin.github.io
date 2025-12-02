@@ -1,6 +1,10 @@
 "use strict";
 
 // Taken from
+// https://github.com/web-platform-tests/wpt/blob/master/webauthn/resources/common-inputs.js
+const ES256_ID = -7;
+
+// Taken from
 // https://github.com/web-platform-tests/wpt/blob/master/webauthn/resources/utils.js
 //
 // Relies on pr/wpt_util.js being loaded.
