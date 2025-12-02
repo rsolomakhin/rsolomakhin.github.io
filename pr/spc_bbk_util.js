@@ -1,27 +1,9 @@
 'use strict';
 
-function assert_true(a, msg) {
-  if (!a) {
-    error(msg);
-  }
-}
-
-function assert_equals(a, b, msg) {
-  if (a !== b) {
-    error(msg);
-  }
-}
-
-function assert_not_equals(a, b, msg) {
-  if (a === b) {
-    error(msg);
-  }
-}
-
 // Taken from
 // https://github.com/web-platform-tests/wpt/blob/master/secure-payment-confirmation/utils-bbk.js
 //
-// Relies on pr/webauthn_util.js being loaded.
+// Relies on pr/wpt_util.js and pr/webauthn_util.js being loaded.
 
 // See https://www.iana.org/assignments/cose/cose.xhtml#key-type
 const cose_key_type_ec2 = 2;

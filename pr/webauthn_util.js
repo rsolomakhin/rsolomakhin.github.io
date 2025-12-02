@@ -2,6 +2,8 @@
 
 // Taken from
 // https://github.com/web-platform-tests/wpt/blob/master/webauthn/resources/utils.js
+//
+// Relies on pr/wpt_util.js being loaded.
 
 // Encodes |data| into base64url string. There is no '=' padding, and the
 // characters '-' and '_' must be used instead of '+' and '/', respectively.
