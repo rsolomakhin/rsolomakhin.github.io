@@ -1,5 +1,11 @@
 'use strict';
 
+function assert_true(a, msg) {
+  if (!a) {
+    error(msg);
+  }
+}
+
 function assert_equals(a, b, msg) {
   if (a !== b) {
     error(msg);
