@@ -55,12 +55,15 @@ async function onBuyClicked(windowLocalStorageIdentifier) {
       error(`Error from canMakePayment: ${error.message}`);
     }
 
-    const instrumentResponse = await request.show();
-    await instrumentResponse.complete('success')
-    console.log(instrumentResponse);
+    const response = await request.show();
+    await response.complete('success')
+    console.log(response);
     info(windowLocalStorageIdentifier + ' payment response: ' +
-      objectToString(instrumentResponse) + '\n' + 'Extensions: ' +
-      extensionsOutputToString(instrumentResponse.details));
+      objectToString(response) + '\n' + 'Extensions: ' +
+      extensionsOutputToString(response.details));
+    const verificationResult = await verifyBrowserBoundKey(
+      response.details, [cose_key_type_ec2, cose_key_type_rsa]);
+    info(verificationResult);
   } catch (err) {
     error(err);
   }
