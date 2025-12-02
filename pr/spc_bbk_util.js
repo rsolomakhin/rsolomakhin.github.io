@@ -1,5 +1,17 @@
 'use strict';
 
+function assert_equals(a, b, msg) {
+  if (a !== b) {
+    error(msg);
+  }
+}
+
+function assert_not_equals(a, b, msg) {
+  if (a === b) {
+    error(msg);
+  }
+}
+
 // Taken from
 // https://github.com/web-platform-tests/wpt/blob/master/secure-payment-confirmation/utils-bbk.js
 
