@@ -27,6 +27,12 @@ function base64urlDecode(encoded) {
 const cose_key_type_ec2 = 2;
 const cose_key_type_rsa = 3;
 
+// TODO: Hack for now until Slobo implements
+function getCoseKeyType(encodedKeyType) {
+  // Lie and say its always ec2, note that this will fail on Windows.
+  return cose_key_type_ec2;
+}
+
 // Decode |encoded| using a base64url decoding.
 function base64urlToUint8Array(encoded) {
   return Uint8Array.from(base64urlDecode(encoded), c => c.charCodeAt(0));
