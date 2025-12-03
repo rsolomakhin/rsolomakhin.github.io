@@ -13,6 +13,9 @@ async function createPaymentCredential(windowLocalStorageIdentifier) {
     info(windowLocalStorageIdentifier + ' enrolled: ' + objectToString(
       publicKeyCredential) + '\n' + 'Extensions: ' +
       extensionsOutputToString(publicKeyCredential));
+    const verificationResult = await verifyBrowserBoundKey(
+      publicKeyCredential, [cose_key_type_ec2, cose_key_type_rsa]);
+    info(verificationResult);
   } catch (err) {
     error(err);
   }
