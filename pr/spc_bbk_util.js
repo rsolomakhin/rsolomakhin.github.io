@@ -9,10 +9,14 @@
 const cose_key_type_ec2 = 2;
 const cose_key_type_rsa = 3;
 
-// TODO: Hack for now until Slobo implements
-function getCoseKeyType(encodedKeyType) {
-  // Lie and say its always ec2, note that this will fail on Windows.
-  return cose_key_type_ec2;
+// Given the Uint8Array of the encoded CoseKey return the key type. Key types
+// are enumerated in https://www.iana.org/assignments/cose/cose.xhtml#key-type
+function getCoseKeyType(encodedCoseKey) {
+  const parsed = new Cbor(encodedCoseKey);
+  const cbor = parsed.getCBOR();
+  // The index 1 represents the key type, see
+  // https://www.iana.org/assignments/cose/cose.xhtml#key-common-parameters
+  return cbor[1];
 }
 
 // Decode |encoded| using a base64url decoding.
