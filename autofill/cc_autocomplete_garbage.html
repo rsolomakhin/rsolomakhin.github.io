@@ -1,0 +1,218 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.5">
+    <title>Autofill Credit Card Smoke Test</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+
+  var phoneNumber = '310-310-6000';
+  var FlipRTL = function() {
+    var html = document.getElementsByTagName('html')[0];
+    if (html.getAttribute("dir") == "rtl") {
+      html.setAttribute("dir", "ltr");
+    } else {
+      html.setAttribute("dir", "rtl");
+    }
+  }
+  var FillFormSimpsons = function() {
+	  var form = document.forms['form1'];
+	  form['name'].value = 'Homer Simpson';
+	  form['address'].value = '123 Main Street';
+	  form['city'].value = 'Springfield';
+	  form['state'].value = 'IL';
+	  form['zip'].value = '55123';
+	  form['country'].value = 'USA';
+    form['email'].value = 'hjs@aol.com';
+    form['phone'].value = phoneNumber;
+  }
+  var FillFormSuperman = function() {
+	  var form = document.forms['form1'];
+	  form['name'].value = 'Superman';
+	  form['address'].value = 'Hall of Justice';
+	  form['city'].value = 'Metropolis';
+	  form['state'].value = 'NY';
+	  form['zip'].value = '55555';
+	  form['country'].value = 'United States';
+    form['phone'].value = phoneNumber;
+  }
+  var FillFormPresident = function() {
+	  var form = document.forms['form1'];
+	  form['name'].value = 'Barack Obama';
+	  form['address'].value = '1600 Pennsylvania Ave NW';
+	  form['city'].value = 'Washington';
+	  form['state'].value = 'DC';
+	  form['zip'].value = '20500';
+	  form['country'].value = 'United States';
+    form['phone'].value = phoneNumber;
+  }
+
+  var BasicFillForm = function(id, str) {
+	  var form = document.forms[id];
+          form['n300'].value = str;
+      }
+
+      /* These are not valid credit card numbers!!!! */
+      /* They pass the Luhn check but that's it.     */
+      var CCFillFormSimpsons = function() {
+	  var form = document.forms['cc1'];
+	  form['name'].value = 'Homer Simpson';
+	  form['CCNo'].value = '4408-0412-3456-7893';
+	  form['CCExpiresMonth'].value = '06';
+	  form['CCExpiresYear'].value = '2027';
+      }
+      var CCFillFormSuperman = function() {
+	  var form = document.forms['cc1'];
+	  form['name'].value = 'Superman';
+	  form['CCNo'].value = '4000-4444-4444-4444';
+	  form['CCExpiresMonth'].value = '01';
+	  form['CCExpiresYear'].value = '2029';
+      }
+      var CCFillFormPresident = function() {
+	  var form = document.forms['cc1'];
+	  form['name'].value = 'Barack Obama';
+	  form['CCNo'].value = '4417-1234-5678-9113';
+	  form['CCExpiresMonth'].value = '12';
+	  form['CCExpiresYear'].value = '2028';
+      }
+
+      var NPFillFormSimpsons = function() {
+	  var form = document.forms['np1'];
+	  form['username'].value = 'Homer_Simpson';
+	  form['password'].value = 'DOH!';
+      }
+      var NPFillFormSuperman = function() {
+	  var form = document.forms['np1'];
+	  form['username'].value = 'Superman';
+	  form['password'].value = 'LouisLane';
+      }
+      var NPFillFormPresident = function() {
+	  var form = document.forms['np1'];
+	  form['username'].value = 'Barackalypse';
+	  form['password'].value = 'ILoveGeorgeBush';
+      }
+
+      var IBANFillForm = function() {
+          var form = document.forms['iban'];
+          form['iban'].value = 'BE71096123456769';
+      }
+
+      var changeVisibility = function(checkbox, targetId) {
+        document.getElementById(targetId).style.display = checkbox.checked ? 'none' : 'block';
+      }
+
+    function AjaxSubmit(event) {
+      var form = event.target.form;
+      $.ajax({
+        type: "POST",
+        crossDomain: true,
+        url: 'https://cors-test.appspot.com/',
+        data: $(form).serialize(),
+        success: function() {
+          form.parentNode.innerHTML = "Form Submitted";
+        }
+      });
+    }
+
+    function ShowPhoneNumber() {
+      document.getElementById('form_phone_container').style.display = 'block';
+    }
+    </script>
+    <style>
+      .fork {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border: 0;
+      }
+
+      div { margin-bottom: 0.25em; }
+
+      selectmenu::part(button) {
+        padding: 5px;
+        border-radius: 5px;
+        border: 2px dashed red;
+      }
+
+      selectmenu::part(listbox) {
+        background-image: linear-gradient(#ff8a5c, #fffd94);
+        padding: 5px;
+        margin-top: 5px;
+        border: 1px solid red;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+  <p>This is a variant of <a href="https://rsolomakhin.github.io/autofill/">/autofill</a>. It only has a credit card form, but the form uses the <i>autocomplete</i> attributes set to 'garbage' values.</p>
+  <br />
+  <p><em>Beware what you post. All forms send data to https://dump-truck.appspot.com/post.html.</em> That website is managed by payments-autofill-team@ and ignores all data.</p>
+  <br><br>
+
+  <h3>Credit Card autofill</h3>
+
+<form name="cc1.1" id="cc1" action="https://dump-truck.appspot.com/post.html" method="post">
+<div>
+  Name on card: <input autofocus="" type="text" name="name" id="credit_card_name" autocomplete="bday-day">
+</div>
+<div>
+  Credit card number: <input type="text" name="CCNo" id="credit_card_number"><br autocomplete="bday-day">
+</div>
+<div>
+  Expiry Date: <selectmenu name="CCExpiresMonth" autocomplete="bday-day">
+    <option value>MM</option>
+    <option value="01">01</option>
+    <option value="02">02</option>
+    <option value="03">03</option>
+    <option value="04">04</option>
+    <option value="05">05</option>
+    <option value="06">06</option>
+    <option value="07">07</option>
+    <option value="08">08</option>
+    <option value="09">09</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+  </selectmenu>
+  /
+<selectmenu name="CCExpiresYear" autocomplete="bday-day">
+    <option value>YYYY</option>
+    <option value="2023">2023</option>
+    <option value="2024">2024</option>
+    <option value="2025">2025</option>
+    <option value="2026">2026</option>
+    <option value="2027">2027</option>
+    <option value="2028">2028</option>
+    <option value="2029">2029</option>
+    <option value="2030">2030</option>
+    <option value="2031">2031</option>
+    <option value="2032">2032</option>
+    <option value="2033">2033</option>
+    <option value="2034">2034</option>
+    <option value="2035">2035</option>
+    <option value="2036">2036</option>
+    <option value="2037">2037</option>	
+    <option value="2038">2038</option>
+  </selectmenu>
+</div>
+<div>
+  CVC: <input name="cvc" autocomplete="bday-day">
+</div>
+<br>
+  <input type="reset" value="Reset">
+  <input type="submit" value="Submit" id="credit_card_submit">
+</form>
+
+<p>
+
+<button type="button" onclick="CCFillFormSimpsons()">CC Fill Form (Simpsons)</button>
+<br>
+<button type="button" onclick="CCFillFormSuperman()">CC Fill Form (Superman)</button>
+<br>
+<button type="button" onclick="CCFillFormPresident()">CC Fill Form (President)</button>
+<br>
+
+</p><hr>
+
+<button type="button" onclick="FlipRTL()">RTL &lt;-&gt; LTR</button>
+
+</body></html>
