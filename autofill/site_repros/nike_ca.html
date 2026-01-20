@@ -1,0 +1,85 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.5">
+    <title>Autofill Site Repro - nike.com/ca</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+  </head>
+  <body>
+    <h1>Autofill Site Repro - nike.com/ca</h1>
+    <p><em>Beware what you post. All forms send data to https://dump-truck.appspot.com/post.html.</em> That website is managed by payments-autofill-team@ and ignores all data.</p>
+    <br>
+    <p>This page apporximately replicates a field/form structure seen on nike.com/ca during checkout, for testing. </p>
+    <br>
+    <h2>Delivery</h2>
+    <!-- Email address -->
+    <div>
+      <form>
+        <div>
+          <input id="emailAddress" type="email" placeholder="Email *" aria-label="Email" required="" minlength="0" maxlength="50" />
+        </div>
+      </form>
+    </div>
+    <!-- Shipping address -->
+    <div>
+      <form>
+        <div>
+          <input id="firstName" type="text" placeholder="First Name *" aria-label="First Name" required="" minlength="0" maxlength="60" />
+        </div>
+        <div>
+          <input id="lastName" type="text" placeholder="Last Name *" aria-label="Last Name" required="" minlength="0" maxlength="60" />
+        </div>
+        <div>
+          <input id="addressAutocomplete" type="text" placeholder="Start typing a street address or postcode *" aria-label="Start typing a street address or postcode" required="" minlength="0" maxlength="100" role="combobox" aria-haspopup="listbox" aria-autocomplete="list" aria-controls="predictions-list" aria-expanded="false" aria-activedescendant="" />
+        </div>
+      </form>
+    </div>
+    <!-- Phone number -->
+    <div>
+      <form>
+        <!-- For phone number specifically, the id was on the wrapping custom element (esw-intl-phone) -->
+        <div id="phoneNumber">
+          <input type="tel" triggers="focus" required="" class="fs-4 pv-4 pl-4 pr-8 ng-untouched ng-pristine ng-invalid" placeholder="Phone Number *" aria-label="Phone Number" />
+        </div>
+      </form>
+    </div>
+    <!-- Billing address -->
+    <div>
+      <form>
+        <div>
+          <!-- The page re-uses 'id's -->
+          <input id="firstName" type="text" placeholder="First Name *" aria-label="First Name" required="" minlength="0" maxlength="60" />
+        </div>
+        <div>
+          <input id="lastName" type="text" placeholder="Last Name *" aria-label="Last Name" required="" minlength="0" maxlength="60" />
+        </div>
+        <div>
+          <input id="addressLine1" type="text" placeholder="Address Line 1 *" aria-label="Address Line 1" required="" minlength="0" maxlength="60" role="combobox" aria-haspopup="listbox" aria-autocomplete="list" aria-controls="predictions-list" aria-expanded="false" aria-activedescendant="" />
+        </div>
+        <div>
+          <input id="addressLine2" type="text" placeholder="Address Line 2" aria-label="Address Line 2" minlength="0" maxlength="60" />
+        </div>
+        <div>
+          <input id="postalCode" type="text" placeholder="Postal Code *" aria-label="Postal Code" required="" minlength="0" maxlength="60" />
+        </div>
+        <div>
+          <input id="city" type="text" placeholder="City/Municipality *" aria-label="City/Municipality" required="" minlength="0" maxlength="60" />
+        </div>
+        <div>
+          <input id="addressLine2" type="text" placeholder="Address Line 2" aria-label="Address Line 2" minlength="0" maxlength="60" />
+        </div>
+        <div>
+          <input id="city" type="text" placeholder="City/Municipality *" aria-label="City/Municipality" required="" minlength="0" maxlength="60" />
+        </div>
+        <div>
+          <select id="region" aria-label="State/Province" required=""><option value="" disabled="" selected="" hidden="">State/Province *</option><option value="1: Object">Alberta</option><option value="2: Object">British Columbia</option><option value="3: Object">Manitoba</option><option value="4: Object">New Brunswick</option><option value="5: Object">Newfoundland and Labrador</option><option value="6: Object">Northwest Territories</option><option value="7: Object">Nova Scotia</option><option value="8: Object">Nunavut</option><option value="9: Object">Ontario</option><option value="10: Object">Prince Edward Island</option><option value="11: Object">Quebec</option><option value="12: Object">Saskatchewan</option><option value="13: Object">Yukon</option></select>
+        </div>
+      </form>
+      <!-- The billing address phone number is not in a form at all -->
+      <!-- Again the id is on the parent div, and again it is a duplicate id -->
+      <div id="phoneNumber">
+        <input type="tel" triggers="focus" required="" class="fs-4 pv-4 pl-4 pr-8 ng-untouched ng-pristine ng-invalid" placeholder="Phone Number *" aria-label="Phone Number" />
+      </div>
+    </div>
+  </body>
+</html>
