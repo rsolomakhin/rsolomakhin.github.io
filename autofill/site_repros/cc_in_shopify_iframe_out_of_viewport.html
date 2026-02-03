@@ -19,12 +19,20 @@
   <p><em>Beware what you post. All forms send data to https://dump-truck.appspot.com/post.html.</em> That website is managed by payments-autofill-team@ and ignores all data.</p>
   <br><br>
 
+  <h3>Address autofill</h3>
+  <form name="addr1.1" id="form1" action="https://dump-truck.appspot.com/post.html" method="post">
+    Name: <input type="text" name="name" placeholder="Name"><br>
+    Address: <input type="text" name="address" placeholder="Address"><br>
+    City: <input type="text" name="city" placeholder="City"><br>
+    Country: <input name="country" id="form_country" placeholder="Country"> <br>
+  </form>
+
   <!-- big gap before the iframe -->
   <h3>Empty gap</h3>
   <div style="margin-bottom: 1000px;"></div>
 
   <h3>Credit Card autofill</h3>
 
-  <iframe class="card-fields-iframe" frameborder="0" id="card-fields-number-v9dudivuqwo00000" name="card-fields-number-v9dudivuqwo00000" scrolling="no" src="https://checkout.pci.shopifyinc.com/build/682c31f/number-ltr.html?identifier=&amp;locationURL=" title="Field container for: Card number" style="height: 49px;"></iframe>
+  <iframe class="card-fields-iframe" id="card-fields-number-v9dudivuqwo00000" name="card-fields-number-v9dudivuqwo00000" scrolling="no" src="https://checkout.pci.shopifyinc.com/build/682c31f/number-ltr.html?identifier=&amp;locationURL=" title="Field container for: Card number" style="height: 49px;"></iframe>
 
 </body></html>
