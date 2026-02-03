@@ -1,0 +1,30 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.5">
+    <title>Autofill Credit Card - Iframe in viewport</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+      .fork {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border: 0;
+      }
+
+      div { margin-bottom: 0.25em; }
+    </style>
+  </head>
+  <body>
+  <p>This page includes an iframe (https://stephenmcgruer.github.io/web-payments-demos/autofill/cc_iframe.html) which is out of the viewport (on most monitors!) and which has a credit card form within it</p>
+  <br />
+  <p><em>Beware what you post. All forms send data to https://dump-truck.appspot.com/post.html.</em> That website is managed by payments-autofill-team@ and ignores all data.</p>
+  <br><br>
+
+  <!-- big gap before the iframe -->
+  <h3>Empty gap</h3>
+  <div style="margin-bottom: 1000px;"></div>
+
+  <h3>Credit Card autofill</h3>
+
+  <iframe src="https://www.stephenmcgruer.com/web-payments-demos/autofill/cc_iframe.html" width="600" height="400"/>
+
+</body></html>
