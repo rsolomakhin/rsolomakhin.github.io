@@ -21,8 +21,8 @@
     </p>
     <ol>
       <li>In the iframe, click on 'Enroll Credential'</li>
-      <li>This will open a pop-up* to https://spc-1p-payment-demo.glitch.me/enroll.html</li>
-      <li>Complete the credential enrollment, and the pop-up will close</li>
+      <li>This will trigger credential creation for the embedded RP</li>
+      <li>Complete the credential enrollment</li>
       <li><b>Outside</b> of the iframe, click on 'Trigger third-party SPC'.
           This should fail, because the credential isn't enabled for third-party payment</li>
       <li><b>Inside</b> of the iframe, click on 'Trigger first-party SPC'. This should succeed.</li>
@@ -30,11 +30,7 @@
 
     <p><button id="triggerSPC" onclick="triggerSPC()" disabled>Trigger third-party SPC</button></p>
 
-    <iframe src="https://spc-1p-payment-demo.glitch.me/" allow="payment"></iframe>
-
-    <p>* WebAuthn <a href="https://github.com/w3c/webauthn/issues/1656#issuecomment-1219682589">issue #1656</a>
-       tracks allowing us to do this without a new tab!
-    </p>
+    <iframe src="https://stephenmcgruer.github.io/web-payments-demos/pr/webauthn/iframe.html" allow="payment; publickey-credentials-create"></iframe>
   </div>
   <pre id="msg"></pre>
   <script src="../util.js"></script>
