@@ -14,18 +14,27 @@
     <h1>Secure Payment Confirmation - First-Party payment demo</h1>
     <p>This is a test website. Nothing is charged.</p>
     <p>
-      This demo tests the use of a 'pure' (i.e., not payment-enabled) WebAuthn
-      credential in a first-party scenario. This will not work in a naive
-      browser-cache implementation of SPC, but will work with availability
-      and use of proper OS-level credential store APIs. To test the integration:
+      This demo tests the use of a 'pure' (i.e., not payment-enabled) passkey
+      in a first-party scenario. This will not work in a naive browser-cache
+      implementation of SPC, but will work with availability and use of proper
+      OS-level credential store APIs. To test the integration:
     </p>
+    <p>
+      As of 2026/02/18, this demo:
+      <ul>
+        <li>Works on Chrome on Android, as long as the passkey is saved to Google Password Manager.</li>
+        <li>Does NOT work on Chrome on MacOS</li>
+        <li>Does NOT work on Chrome on Windows</li>
+      </ul>
+    </p>
+    <p>Instructions:</p>
     <ol>
       <li>In the iframe, click on 'Enroll Credential'</li>
-      <li>This will trigger credential creation for the embedded RP</li>
-      <li>Complete the credential enrollment</li>
+      <li>This will trigger passkey creation for the embedded RP</li>
+      <li>Complete the passkey creation</li>
       <li><b>Outside</b> of the iframe, click on 'Trigger third-party SPC'.
-          This should fail, because the credential isn't enabled for third-party payment</li>
-      <li><b>Inside</b> of the iframe, click on 'Trigger first-party SPC'. This should succeed.</li>
+          This should <b>fail</b>, because the passkey isn't enabled for third-party payment</li>
+      <li><b>Inside</b> of the iframe, click on 'Trigger first-party SPC'. This should <b>succeed</b>.</li>
     </ol>
 
     <p><button id="triggerSPC" onclick="triggerSPC()" disabled>Trigger third-party SPC</button></p>
