@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Use PaymentRequest to Scan a Localhost Port Test</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>Use PaymentRequest to Scan a Localhost Port</h1>
+    <p>This page is used to scan a localhost port through a payment request.</p>
+    <p>
+      <button onclick="onScanClicked()" id="scanButton"> Scan Port </button>
+      <input type="text" id="port" placeholder="e.g. 8000" value="8000">
+    </p>
+  </div>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+</body>
+
+</html>
