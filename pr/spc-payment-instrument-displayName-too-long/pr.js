@@ -30,7 +30,7 @@ async function onBuyClicked(windowLocalStorageIdentifier) {
       credentialIds: [base64ToArray(
           window.localStorage.getItem(windowLocalStorageIdentifier))],
       instrument: {
-          displayName: 'This is a very long display name but it should still not be truncated and should be shown in its entirety',
+          displayName: 'This is a very long display name but it should either be shown entirely or clearly truncated and not just cut off.',
       },
       paymentEntitiesLogos: [
         {url: 'https://rsolomakhin.github.io/static/sync-network-logo.png', label: 'Sync Network'},
