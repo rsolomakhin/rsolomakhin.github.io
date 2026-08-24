@@ -15,7 +15,7 @@ const path = require('path');
 const os = require('os');
 
 // Root directory of the rsolomakhin.github.io repository containing merchant & feature demos
-const SITE_ROOT = path.resolve(__dirname, '..');
+const SITE_ROOT = path.resolve(__dirname, '../..');
 
 // CLI Argument & Environment Variable Parsing
 let appDir = process.env.PAYMENT_APP_DIR ? path.resolve(process.env.PAYMENT_APP_DIR) : null;
@@ -27,10 +27,7 @@ for (let i = 2; i < process.argv.length; i++) {
     console.log(`
 rsolomakhin.github.io Local Test Server
 
-Usage: node _tools/serve.js [port] [options]
-
-Arguments:
-  [port]                   Optional port number (e.g. node _tools/serve.js 9000)
+Usage: node _tools/local_test_server/serve.js [options]
 
 Options:
   -p, --port <number>      Port to listen on (default: 8088, or PORT env var)
@@ -44,9 +41,9 @@ Environment Variables:
   PAYMENT_APP_DIR          Path to local payment handler app directory
 
 Examples:
-  node _tools/serve.js
-  node _tools/serve.js 9000
-  node _tools/serve.js --app-dir ../web-based-payment-app-example/public
+  node _tools/local_test_server/serve.js
+  node _tools/local_test_server/serve.js --port 9000
+  node _tools/local_test_server/serve.js --app-dir ../web-based-payment-app-example/public
 `);
     process.exit(0);
   } else if (arg === '-p' || arg === '--port') {
@@ -57,10 +54,13 @@ Examples:
     appDir = path.resolve(process.argv[++i]);
   } else if (arg.startsWith('--app-dir=')) {
     appDir = path.resolve(arg.split('=')[1]);
-  } else if (!isNaN(parseInt(arg, 10))) {
-    // Positional port argument (e.g. node _tools/serve.js 8088)
-    port = parseInt(arg, 10);
   }
+}
+
+// Validate port number
+if (isNaN(port) || port < 1 || port > 65535) {
+  console.error(`❌ Error: Invalid port "${port}". Port must be an integer between 1 and 65535.`);
+  process.exit(1);
 }
 
 // Validate custom payment handler directory if supplied
@@ -89,18 +89,15 @@ const MIME_TYPES = {
 };
 
 /**
- * Transforms static HTML and JavaScript file contents before serving.
+ * Rewrites production URLs in HTML/JS files to the local server origin.
  *
- * 1. Rewrites production https://rsolomakhin.github.io URLs to the local server origin
- *    so all demo links stay on localhost.
- * 2. If a local payment handler is mounted (--app-dir), rewrites https://bobbucks.dev/pay
- *    to the local payment method URL. If not mounted, leaves https://bobbucks.dev intact
- *    so demos use the live production payment handler.
+ * - Maps https://rsolomakhin.github.io -> localhost origin.
+ * - If a local payment app is mounted, maps https://bobbucks.dev -> localhost origin.
  *
- * @param {string} contentStr - Raw file content.
- * @param {string|null} localPaymentMethodUrl - Local payment method URL (null if not mounted).
+ * @param {string} contentStr - File content.
+ * @param {string|null} localPaymentMethodUrl - Local /pay URL (null if not mounted).
  * @param {string} origin - Local server origin (e.g. http://localhost:8088).
- * @return {string} Transformed content string.
+ * @return {string} Transformed content.
  */
 function transformContent(contentStr, localPaymentMethodUrl, origin) {
   let str = contentStr;
@@ -114,23 +111,16 @@ function transformContent(contentStr, localPaymentMethodUrl, origin) {
 }
 
 const server = http.createServer((req, res) => {
-  const host = req.headers.host || `localhost:${port}`;
+  // Validate Host header to prevent header/manifest injection, falling back to localhost:port
+  const rawHost = req.headers.host || '';
+  const host = /^[a-zA-Z0-9.\-]+(?::\d+)?$/.test(rawHost) ? rawHost : `localhost:${port}`;
   const origin = `http://${host}`;
   const localPaymentMethodUrl = PAYMENT_APP_ROOT ? `${origin}/pay` : null;
   const parsedUrl = new URL(req.url, origin);
   let pathname = parsedUrl.pathname;
 
-  // Set global CORS headers to allow cross-origin test demos and iframes
+  // Allow cross-origin manifest and resource loading
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, HEAD, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', '*');
-
-  // Handle CORS preflight requests (e.g. cross-origin fetch from test iframes)
-  if (req.method === 'OPTIONS') {
-    res.writeHead(204);
-    res.end();
-    return;
-  }
 
   // Handle /pay payment method endpoint (only when local payment app is mounted)
   if (PAYMENT_APP_ROOT && (pathname === '/pay' || pathname === '/pay/')) {
@@ -199,18 +189,38 @@ const server = http.createServer((req, res) => {
   }
 
   // Static file resolution
-  // If payment app is mounted and request is under /pay/, search PAYMENT_APP_ROOT first
+  let decodedPath = '';
+  try {
+    decodedPath = decodeURIComponent(pathname);
+  } catch (err) {
+    res.writeHead(400, { 'Content-Type': 'text/plain' });
+    res.end('400 Bad Request');
+    return;
+  }
+
+  // Strip leading slash to treat as relative path within root
+  let safeRelPath = decodedPath.startsWith('/') ? decodedPath.slice(1) : decodedPath;
+  if (safeRelPath.endsWith('/') || safeRelPath === '') {
+    safeRelPath += 'index.html';
+  }
+
+  // If payment app is mounted and request is under pay/, search PAYMENT_APP_ROOT first
   let searchRoots = [];
-  if (PAYMENT_APP_ROOT && pathname.startsWith('/pay/')) {
+  if (PAYMENT_APP_ROOT && safeRelPath.startsWith('pay/')) {
     searchRoots = [PAYMENT_APP_ROOT, SITE_ROOT];
   } else {
     searchRoots = [SITE_ROOT];
   }
 
-  let relPath = pathname.endsWith('/') ? pathname + 'index.html' : pathname;
-
   for (const root of searchRoots) {
-    const candidate = path.join(root, relPath);
+    // Resolve absolute path and guard against directory traversal attacks
+    const candidate = path.resolve(root, safeRelPath);
+    if (!candidate.startsWith(root + path.sep) && candidate !== root) {
+      res.writeHead(403, { 'Content-Type': 'text/plain' });
+      res.end('403 Forbidden');
+      return;
+    }
+
     if (fs.existsSync(candidate) && fs.statSync(candidate).isFile()) {
       let content = fs.readFileSync(candidate);
       const ext = path.extname(candidate).toLowerCase();
