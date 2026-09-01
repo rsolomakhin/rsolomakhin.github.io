@@ -31,10 +31,14 @@
     <ol>
       <li>In the iframe, click on 'Enroll Credential'</li>
       <li>This will trigger passkey creation for the embedded RP</li>
-      <li>Complete the passkey creation</li>
+      <li>Complete the passkey creation; make sure to select the correct
+          authenticator based on the above instructions.</li>
       <li><b>Outside</b> of the iframe, click on 'Trigger third-party SPC'.
-          This should <b>fail</b>, because the passkey isn't enabled for third-party payment</li>
-      <li><b>Inside</b> of the iframe, click on 'Trigger first-party SPC'. This should <b>succeed</b>.</li>
+          This should <b>fail</b> (show the 'Confirm' screen only), because the
+          passkey isn't enabled for third-party payment</li>
+      <li><b>Inside</b> of the iframe, click on 'Trigger first-party SPC'. This
+        should <b>succeed</b> (show the 'Verify' screen, which is followed by a
+        successful WebAuthn authentication).</li>
     </ol>
 
     <p><button id="triggerSPC" onclick="triggerSPC()" disabled>Trigger third-party SPC</button></p>
