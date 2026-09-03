@@ -11,14 +11,14 @@
 
 <body>
   <div id="contents">
-    <h1>Same-Origin Pop-up</h1>
-    <p>This pop-up is currently loaded from origin: <code><script>document.write(window.location.origin)</script></code></p>
-    <p>Click the button below to redirect this pop-up to the third-party domain (<code>stephenmcgruer.com</code>):</p>
-    <p>
-      <label for="targetUrl">Redirect Target URL:</label><br>
-      <input type="text" id="targetUrl" style="width: 100%; max-width: 550px; font-size: 14px; padding: 4px;"
+    <h1 style="margin-top: 0;">Same-Origin Pop-up</h1>
+    <p>Loaded from: <code><script>document.write(window.location.origin)</script></code></p>
+    <p>Click below to redirect this pop-up to <code>stephenmcgruer.com</code>:</p>
+    <div style="margin: 12px 0;">
+      <label for="targetUrl"><strong>Redirect Target URL:</strong></label>
+      <input type="text" id="targetUrl" style="box-sizing: border-box; width: 100%; margin-top: 6px; font-size: 14px; padding: 6px;"
         value="https://www.stephenmcgruer.com/web-payments-demos/pr/spc-capabilities-in-3p-popup/redirected.html">
-    </p>
+    </div>
     <p><button onclick="redirectTo3P()">Redirect to 3P Domain</button></p>
   </div>
   <pre id="msg"></pre>

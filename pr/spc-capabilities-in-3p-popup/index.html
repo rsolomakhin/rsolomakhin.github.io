@@ -24,7 +24,17 @@
   <script src="../util.js"></script>
   <script>
     function openPopup() {
-      const popup = window.open('popup.html', 'spc_popup', 'width=600,height=600');
+      const width = 700;
+      const height = 650;
+      const left = window.screenLeft !== undefined ? window.screenLeft : window.screenX;
+      const top = window.screenTop !== undefined ? window.screenTop : window.screenY;
+      const parentWidth = window.outerWidth || window.innerWidth || screen.width;
+      const parentHeight = window.outerHeight || window.innerHeight || screen.height;
+      const popupLeft = Math.round(left + (parentWidth - width) / 2);
+      const popupTop = Math.round(top + (parentHeight - height) / 2);
+      const features = `width=${width},height=${height},left=${popupLeft},top=${popupTop},resizable=yes,scrollbars=yes`;
+
+      const popup = window.open('popup.html', 'spc_popup', features);
       if (!popup) {
         error('Popup was blocked by the browser. Please allow popups for this site.');
       }
