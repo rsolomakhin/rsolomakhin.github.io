@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPC Capabilities Pop-up (Same-Origin)</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>Same-Origin Pop-up</h1>
+    <p>This pop-up is currently loaded from origin: <code><script>document.write(window.location.origin)</script></code></p>
+    <p>Click the button below to redirect this pop-up to the third-party domain (<code>stephenmcgruer.com</code>):</p>
+    <p>
+      <label for="targetUrl">Redirect Target URL:</label><br>
+      <input type="text" id="targetUrl" style="width: 100%; max-width: 550px; font-size: 14px; padding: 4px;"
+        value="https://www.stephenmcgruer.com/web-payments-demos/pr/spc-capabilities-in-3p-popup/redirected.html">
+    </p>
+    <p><button onclick="redirectTo3P()">Redirect to 3P Domain</button></p>
+  </div>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script>
+    function redirectTo3P() {
+      const targetUrl = document.getElementById('targetUrl').value;
+      if (!targetUrl) {
+        error('Please enter a target URL.');
+        return;
+      }
+      window.location.href = targetUrl;
+    }
+  </script>
+  <script src="/redirect.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPC Capabilities in 3P Pop-up</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>SPC Capabilities in 3P Pop-up</h1>
+    <p>This demo tests calling <code>PaymentRequest.getSecurePaymentConfirmationCapabilities()</code> inside a pop-up window that originated from a same-origin page and was redirected to a third-party domain.</p>
+    <ol>
+      <li>Click <strong>Open Pop-up</strong> to launch a same-origin pop-up window.</li>
+      <li>Inside the pop-up, click the button to redirect the pop-up to <code>stephenmcgruer.com</code>.</li>
+      <li>On <code>stephenmcgruer.com</code>, the page will automatically check SPC capabilities on load and display the result.</li>
+    </ol>
+    <p><button onclick="openPopup()">Open Pop-up</button></p>
+  </div>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script>
+    function openPopup() {
+      const popup = window.open('popup.html', 'spc_popup', 'width=600,height=600');
+      if (!popup) {
+        error('Popup was blocked by the browser. Please allow popups for this site.');
+      }
+    }
+  </script>
+  <script src="/redirect.js"></script>
+</body>
+
+</html>

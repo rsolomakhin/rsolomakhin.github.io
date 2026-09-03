@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPC Capabilities (Third-Party Pop-up)</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+  <div id="contents">
+    <h1>SPC Capabilities (Third-Party Pop-up)</h1>
+    <p>Current origin: <code><script>document.write(window.location.origin)</script></code></p>
+    <p>This page tests calling <code>PaymentRequest.getSecurePaymentConfirmationCapabilities()</code> in a pop-up window after being redirected to a third-party domain.</p>
+    <p>The API check executes automatically on page load. You can also re-run the check using the button below:</p>
+    <p><button onclick="checkCapabilities()">Re-run Capabilities Check</button></p>
+  </div>
+  <pre id="msg"></pre>
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="/redirect.js"></script>
+</body>
+
+</html>
