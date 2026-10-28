@@ -23,7 +23,7 @@ function getConfiguredSizes(brand) {
   const preferredHeight = Number(document.getElementById(heightInputId).value) || (isBigBucks ? 600 : 220);
 
   const threeDsWidth = Number(document.getElementById('threeds-width').value) || 720;
-  const threeDsHeight = Number(document.getElementById('threeds-height').value) || 640;
+  const threeDsHeight = Number(document.getElementById('threeds-height').value) || 500;
 
   return {
     preferredSize: {
