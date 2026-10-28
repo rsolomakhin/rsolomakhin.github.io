@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#1c4532">
   <meta name="description" content="Canopy & Co. Guest Checkout Demo showcasing Payment Request and Payment Handler static window sizing, dynamic window.resizeTo() 3D-Secure, and camera authentication.">
-  <title>Canopy &amp; Co. — Guest Checkout Demo</title>
+  <title>Canopy &amp; Co. — Guest Checkout</title>
   <link rel="icon" href="../../favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,16 +13,6 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-
-  <!-- Demo Storefront Disclaimer Bar -->
-  <div class="demo-notice-bar">
-    <span class="demo-pill">Payment Handler Demo</span>
-    <span>
-      Fake merchant storefront for testing Payment Handler window sizing &amp; camera capabilities. No real money is charged.
-      Requires <code>chrome://flags/#payment-handler-custom-size</code> for custom sizing.
-      <a href="pr.js">View source</a>.
-    </span>
-  </div>
 
   <!-- Storefront Header -->
   <header class="store-header">
@@ -61,12 +51,8 @@
         <!-- Express Wallet Checkout Section -->
         <section class="express-checkout-card" aria-labelledby="express-checkout-heading">
           <div class="express-header">
-            <h1 class="express-title" id="express-checkout-heading">Express Wallet Checkout</h1>
-            <span class="express-tag">Recommended for Demo</span>
+            <h1 class="express-title" id="express-checkout-heading">Express Checkout</h1>
           </div>
-          <p class="express-subtitle">
-            Choose a wallet below to launch the BobBucks Payment Handler with a <strong>compact</strong> or <strong>expanded</strong> static window size via <code>openWindow(url, {preferredSize})</code>.
-          </p>
 
           <div class="wallet-buttons-grid">
             <!-- Button 1: BobBucks (Small / Compact static window) -->
@@ -78,7 +64,7 @@
                 </span>
                 <span class="wallet-btn-arrow">&rarr;</span>
               </div>
-              <span class="wallet-btn-meta" id="bobbucks-size-label">Compact Window (400 &times; 480)</span>
+              <span class="wallet-btn-meta" id="bobbucks-size-label">Compact Window (400 &times; 350)</span>
             </button>
 
             <!-- Button 2: BigBucks (Large / Expanded static window) -->
@@ -103,7 +89,7 @@
                 <div class="size-inputs-row">
                   <input type="number" id="small-width" value="400" min="1" aria-label="BobBucks width">
                   <span>&times;</span>
-                  <input type="number" id="small-height" value="480" min="1" aria-label="BobBucks height">
+                  <input type="number" id="small-height" value="350" min="1" aria-label="BobBucks height">
                 </div>
               </div>
               <div class="size-config-group">
@@ -135,7 +121,6 @@
           <div>
             <div class="form-section-title">
               <span>Shipping &amp; Contact Information</span>
-              <span class="form-section-note">Pre-filled for demo</span>
             </div>
             <div class="form-grid">
               <div class="form-field full-width">
@@ -169,9 +154,8 @@
             <div class="form-section-title">
               <span>Credit or Debit Card</span>
               <div class="card-badges-row">
-                <span class="card-network-pill">VISA</span>
-                <span class="card-network-pill">MC</span>
-                <span class="card-network-pill">AMEX</span>
+                <span class="card-network-pill">APEX</span>
+                <span class="card-network-pill">BUCKS</span>
               </div>
             </div>
             <div class="form-grid">
@@ -194,8 +178,8 @@
             </div>
           </div>
 
-          <button type="submit" class="btn-guest-card-submit" id="btn-guest-card-submit">
-            Pay $148.50 with Card (Demo Placeholder)
+          <button type="button" class="btn-guest-card-submit" id="btn-guest-card-submit" disabled>
+            Pay $148.50 with Card (non-functional for payment app demo)
           </button>
         </form>
 
@@ -296,7 +280,7 @@
           </div>
           <div class="receipt-metric">
             <span class="receipt-metric-label">Initial Window Size (preferredSize)</span>
-            <span class="receipt-metric-value" id="receipt-window-size">400 &times; 480 px</span>
+            <span class="receipt-metric-value" id="receipt-window-size">400 &times; 350 px</span>
           </div>
           <div class="receipt-metric">
             <span class="receipt-metric-label">Verification Flow</span>
@@ -304,7 +288,7 @@
           </div>
           <div class="receipt-metric">
             <span class="receipt-metric-label">Instrument &amp; Total Paid</span>
-            <span class="receipt-metric-value" id="receipt-instrument-total">Visa &bull;&bull;&bull;&bull; 4242 ($148.50)</span>
+            <span class="receipt-metric-value" id="receipt-instrument-total">Apex Card &bull;&bull;&bull;&bull; 4242 ($148.50)</span>
           </div>
         </div>
 
@@ -322,6 +306,15 @@
     </section>
 
   </main>
+
+  <!-- Soft Demo Footer -->
+  <footer class="store-footer">
+    <p>
+      Demo merchant storefront for testing Payment Request &amp; Payment Handler capabilities (no real payment is charged).
+      Requires <code>chrome://flags/#payment-handler-custom-size</code> for custom sizing.
+      <a href="pr.js">View source</a>.
+    </p>
+  </footer>
 
   <div id="msg" style="display: none;"></div>
   <script src="../util.js"></script>

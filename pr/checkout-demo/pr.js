@@ -20,7 +20,7 @@ function getConfiguredSizes(brand) {
   const heightInputId = isBigBucks ? 'large-height' : 'small-height';
 
   const preferredWidth = Number(document.getElementById(widthInputId).value) || (isBigBucks ? 640 : 400);
-  const preferredHeight = Number(document.getElementById(heightInputId).value) || (isBigBucks ? 600 : 480);
+  const preferredHeight = Number(document.getElementById(heightInputId).value) || (isBigBucks ? 600 : 350);
 
   const threeDsWidth = Number(document.getElementById('threeds-width').value) || 720;
   const threeDsHeight = Number(document.getElementById('threeds-height').value) || 640;
@@ -234,17 +234,6 @@ function initCheckoutDemo() {
     brandLink.addEventListener('click', (e) => {
       e.preventDefault();
       resetCheckoutFlow();
-    });
-  }
-
-  const guestForm = document.getElementById('guest-card-form');
-  if (guestForm) {
-    guestForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      setStatusBanner(
-          'Guest card checkout is a non-functional placeholder on this demo page. Click "Pay with BobBucks" or "Pay with BigBucks" above to launch the Payment Handler.',
-          'info');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 
