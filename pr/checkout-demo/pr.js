@@ -20,7 +20,7 @@ function getConfiguredSizes(brand) {
   const heightInputId = isBigBucks ? 'large-height' : 'small-height';
 
   const preferredWidth = Number(document.getElementById(widthInputId).value) || (isBigBucks ? 640 : 400);
-  const preferredHeight = Number(document.getElementById(heightInputId).value) || (isBigBucks ? 600 : 350);
+  const preferredHeight = Number(document.getElementById(heightInputId).value) || (isBigBucks ? 600 : 220);
 
   const threeDsWidth = Number(document.getElementById('threeds-width').value) || 720;
   const threeDsHeight = Number(document.getElementById('threeds-height').value) || 640;

@@ -714,8 +714,13 @@ body {
 
 /* --- Soft Store Footer --- */
 .store-footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  background: rgba(246, 245, 242, 0.94);
+  backdrop-filter: blur(6px);
   border-top: 1px solid var(--border-color);
-  padding: 18px 24px;
+  padding: 10px 24px;
   text-align: center;
   font-size: 12px;
   color: var(--text-muted);
