@@ -752,11 +752,12 @@ body {
 @media (max-width: 860px) {
   .checkout-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
   }
 
   .order-summary-card {
     position: static;
+    order: -1;
   }
 }
 
@@ -775,18 +776,44 @@ body {
   }
 
   .page-container {
-    padding: 18px 14px 32px;
+    padding: 16px 14px 32px;
   }
 
   .checkout-main-col {
-    gap: 18px;
+    gap: 16px;
   }
 
   .express-checkout-card,
   .guest-form-card,
   .order-summary-card {
-    padding: 16px;
+    padding: 14px 16px;
     border-radius: var(--radius-md);
+  }
+
+  .summary-heading {
+    padding-bottom: 10px;
+    font-size: 15px;
+  }
+
+  .cart-items-list {
+    gap: 10px;
+    padding: 12px 0;
+  }
+
+  .cart-item-thumb {
+    width: 40px;
+    height: 40px;
+  }
+
+  .summary-totals {
+    padding-top: 12px;
+    gap: 6px;
+  }
+
+  .summary-row.total-row {
+    margin-top: 4px;
+    padding-top: 8px;
+    font-size: 15.5px;
   }
 
   .wallet-buttons-grid {
