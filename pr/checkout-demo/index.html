@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1c4532">
+  <meta name="description" content="Canopy & Co. Guest Checkout Demo showcasing Payment Request and Payment Handler static window sizing, dynamic window.resizeTo() 3D-Secure, and camera authentication.">
+  <title>Canopy &amp; Co. — Guest Checkout Demo</title>
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+  <!-- Demo Storefront Disclaimer Bar -->
+  <div class="demo-notice-bar">
+    <span class="demo-pill">Payment Handler Demo</span>
+    <span>
+      Fake merchant storefront for testing Payment Handler window sizing &amp; camera capabilities. No real money is charged.
+      Requires <code>chrome://flags/#payment-handler-custom-size</code> for custom sizing.
+      <a href="pr.js">View source</a>.
+    </span>
+  </div>
+
+  <!-- Storefront Header -->
+  <header class="store-header">
+    <div class="store-header-inner">
+      <a href="#" class="store-brand" id="store-brand-link">
+        <div class="store-logo-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 19h20L12 2z"></path>
+            <path d="M12 11v8"></path>
+          </svg>
+        </div>
+        <div>
+          <span class="store-brand-name">Canopy &amp; Co.</span>
+          <span class="store-brand-tag">Outdoor Provisioners</span>
+        </div>
+      </a>
+
+      <ol class="checkout-breadcrumbs" aria-label="Checkout steps">
+        <li class="completed">1. Bag (3)</li>
+        <li aria-hidden="true">&rsaquo;</li>
+        <li class="active" id="breadcrumb-checkout">2. Guest Checkout</li>
+        <li aria-hidden="true">&rsaquo;</li>
+        <li id="breadcrumb-confirmation">3. Order Complete</li>
+      </ol>
+    </div>
+  </header>
+
+  <main class="page-container">
+
+    <!-- STEP 1: GUEST CHECKOUT VIEW -->
+    <div class="checkout-grid" id="checkout-view">
+
+      <!-- Left Column: Express Payment Buttons & Guest Card Form -->
+      <div class="checkout-main-col">
+
+        <!-- Express Wallet Checkout Section -->
+        <section class="express-checkout-card" aria-labelledby="express-checkout-heading">
+          <div class="express-header">
+            <h1 class="express-title" id="express-checkout-heading">Express Wallet Checkout</h1>
+            <span class="express-tag">Recommended for Demo</span>
+          </div>
+          <p class="express-subtitle">
+            Choose a wallet below to launch the BobBucks Payment Handler with a <strong>compact</strong> or <strong>expanded</strong> static window size via <code>openWindow(url, {preferredSize})</code>.
+          </p>
+
+          <div class="wallet-buttons-grid">
+            <!-- Button 1: BobBucks (Small / Compact static window) -->
+            <button type="button" class="btn-wallet-pay btn-wallet-bobbucks" id="btn-pay-bobbucks">
+              <div class="wallet-btn-top">
+                <span class="wallet-btn-brand">
+                  <span class="wallet-monogram">BB</span>
+                  <span>Pay with BobBucks</span>
+                </span>
+                <span class="wallet-btn-arrow">&rarr;</span>
+              </div>
+              <span class="wallet-btn-meta" id="bobbucks-size-label">Compact Window (400 &times; 480)</span>
+            </button>
+
+            <!-- Button 2: BigBucks (Large / Expanded static window) -->
+            <button type="button" class="btn-wallet-pay btn-wallet-bigbucks" id="btn-pay-bigbucks">
+              <div class="wallet-btn-top">
+                <span class="wallet-btn-brand">
+                  <span class="wallet-monogram">BB+</span>
+                  <span>Pay with BigBucks</span>
+                </span>
+                <span class="wallet-btn-arrow">&rarr;</span>
+              </div>
+              <span class="wallet-btn-meta" id="bigbucks-size-label">Expanded Window (640 &times; 600)</span>
+            </button>
+          </div>
+
+          <!-- Optional Size Customization Controls -->
+          <details class="size-config-drawer">
+            <summary>Customize static &amp; 3D-Secure window dimensions</summary>
+            <div class="size-config-grid">
+              <div class="size-config-group">
+                <span class="size-config-label">BobBucks (Small)</span>
+                <div class="size-inputs-row">
+                  <input type="number" id="small-width" value="400" min="1" aria-label="BobBucks width">
+                  <span>&times;</span>
+                  <input type="number" id="small-height" value="480" min="1" aria-label="BobBucks height">
+                </div>
+              </div>
+              <div class="size-config-group">
+                <span class="size-config-label">BigBucks (Large)</span>
+                <div class="size-inputs-row">
+                  <input type="number" id="large-width" value="640" min="1" aria-label="BigBucks width">
+                  <span>&times;</span>
+                  <input type="number" id="large-height" value="600" min="1" aria-label="BigBucks height">
+                </div>
+              </div>
+              <div class="size-config-group">
+                <span class="size-config-label">3D-Secure (resizeTo)</span>
+                <div class="size-inputs-row">
+                  <input type="number" id="threeds-width" value="720" min="1" aria-label="3D-Secure width">
+                  <span>&times;</span>
+                  <input type="number" id="threeds-height" value="640" min="1" aria-label="3D-Secure height">
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <div class="status-banner" id="payment-status-banner" role="status" aria-live="polite"></div>
+        </section>
+
+        <div class="or-divider">Or pay as guest with card</div>
+
+        <!-- Fake (Unused) Guest Shipping & Credit Card Form -->
+        <form class="guest-form-card" id="guest-card-form" novalidate>
+          <div>
+            <div class="form-section-title">
+              <span>Shipping &amp; Contact Information</span>
+              <span class="form-section-note">Pre-filled for demo</span>
+            </div>
+            <div class="form-grid">
+              <div class="form-field full-width">
+                <label for="guest-email">Email Address</label>
+                <input type="email" id="guest-email" value="alex.rivera@example.com">
+              </div>
+              <div class="form-field">
+                <label for="guest-fname">First Name</label>
+                <input type="text" id="guest-fname" value="Alex">
+              </div>
+              <div class="form-field">
+                <label for="guest-lname">Last Name</label>
+                <input type="text" id="guest-lname" value="Rivera">
+              </div>
+              <div class="form-field full-width">
+                <label for="guest-address">Street Address</label>
+                <input type="text" id="guest-address" value="742 Evergreen Terrace, Apt 4B">
+              </div>
+              <div class="form-field">
+                <label for="guest-city">City &amp; State</label>
+                <input type="text" id="guest-city" value="Portland, OR">
+              </div>
+              <div class="form-field">
+                <label for="guest-zip">ZIP Code</label>
+                <input type="text" id="guest-zip" value="97205">
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="form-section-title">
+              <span>Credit or Debit Card</span>
+              <div class="card-badges-row">
+                <span class="card-network-pill">VISA</span>
+                <span class="card-network-pill">MC</span>
+                <span class="card-network-pill">AMEX</span>
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="form-field full-width">
+                <label for="guest-card-number">Card Number</label>
+                <input type="text" id="guest-card-number" placeholder="4532 •••• •••• 8891" value="4532 •••• •••• 8891">
+              </div>
+              <div class="form-field full-width">
+                <label for="guest-card-name">Name on Card</label>
+                <input type="text" id="guest-card-name" value="Alex Rivera">
+              </div>
+              <div class="form-field">
+                <label for="guest-card-exp">Expiration Date (MM/YY)</label>
+                <input type="text" id="guest-card-exp" value="08 / 29">
+              </div>
+              <div class="form-field">
+                <label for="guest-card-cvc">Security Code (CVC)</label>
+                <input type="text" id="guest-card-cvc" value="842">
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-guest-card-submit" id="btn-guest-card-submit">
+            Pay $148.50 with Card (Demo Placeholder)
+          </button>
+        </form>
+
+      </div>
+
+      <!-- Right Column: Fake Shopping Cart / Order Summary -->
+      <aside class="order-summary-card" aria-labelledby="order-summary-heading">
+        <div class="summary-heading">
+          <h2 id="order-summary-heading">Order Summary</h2>
+          <span class="summary-item-count">3 Items</span>
+        </div>
+
+        <ul class="cart-items-list">
+          <li class="cart-item">
+            <div class="cart-item-thumb" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1c4532" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="5" width="16" height="16" rx="3"></rect>
+                <path d="M9 5V3a3 3 0 0 1 6 0v2"></path>
+                <path d="M8 12h8"></path>
+              </svg>
+            </div>
+            <div class="cart-item-info">
+              <div class="cart-item-title">Alpine Daypack 22L</div>
+              <div class="cart-item-variant">Color: Forest Moss &bull; Qty 1</div>
+            </div>
+            <div class="cart-item-price">$84.00</div>
+          </li>
+
+          <li class="cart-item">
+            <div class="cart-item-thumb" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 2h6v3H9z"></path>
+                <rect x="7" y="5" width="10" height="17" rx="2"></rect>
+                <path d="M7 11h10"></path>
+              </svg>
+            </div>
+            <div class="cart-item-info">
+              <div class="cart-item-title">Insulated Titanium Flask</div>
+              <div class="cart-item-variant">Size: 750ml Matte &bull; Qty 1</div>
+            </div>
+            <div class="cart-item-price">$38.00</div>
+          </li>
+
+          <li class="cart-item">
+            <div class="cart-item-thumb" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#92400e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 17a8 8 0 0 1 16 0Z"></path>
+                <rect x="3" y="17" width="18" height="4" rx="1"></rect>
+                <circle cx="12" cy="7" r="1.5"></circle>
+              </svg>
+            </div>
+            <div class="cart-item-info">
+              <div class="cart-item-title">Merino Trail Beanie</div>
+              <div class="cart-item-variant">Color: Oatmeal Heather &bull; Qty 1</div>
+            </div>
+            <div class="cart-item-price">$16.00</div>
+          </li>
+        </ul>
+
+        <div class="summary-totals">
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span>$138.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Standard Ground Shipping</span>
+            <span>Free</span>
+          </div>
+          <div class="summary-row">
+            <span>Estimated Tax</span>
+            <span>$10.50</span>
+          </div>
+          <div class="summary-row total-row">
+            <span>Total</span>
+            <span>$148.50 USD</span>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- STEP 2: ORDER COMPLETE / CONFIRMATION VIEW -->
+    <section class="order-complete-wrapper" id="order-complete-view" aria-labelledby="complete-heading">
+      <div class="order-complete-card">
+        <div class="complete-hero">
+          <div class="complete-check-badge">&#10003;</div>
+          <span class="complete-order-tag" id="receipt-order-number">Order #CNP-84920</span>
+          <h2 class="complete-title" id="complete-heading">Thank you for your order!</h2>
+          <p class="complete-subtitle">
+            Your payment was authorized via Payment Handler and returned to Canopy &amp; Co. Here is a summary of the completed flow:
+          </p>
+        </div>
+
+        <div class="receipt-details-grid">
+          <div class="receipt-metric">
+            <span class="receipt-metric-label">Payment Wallet App</span>
+            <span class="receipt-metric-value" id="receipt-wallet-brand">BobBucks Express</span>
+          </div>
+          <div class="receipt-metric">
+            <span class="receipt-metric-label">Initial Window Size (preferredSize)</span>
+            <span class="receipt-metric-value" id="receipt-window-size">400 &times; 480 px</span>
+          </div>
+          <div class="receipt-metric">
+            <span class="receipt-metric-label">Verification Flow</span>
+            <span class="receipt-metric-value" id="receipt-auth-flow">3D-Secure Card Verification</span>
+          </div>
+          <div class="receipt-metric">
+            <span class="receipt-metric-label">Instrument &amp; Total Paid</span>
+            <span class="receipt-metric-value" id="receipt-instrument-total">Visa &bull;&bull;&bull;&bull; 4242 ($148.50)</span>
+          </div>
+        </div>
+
+        <details class="raw-response-drawer">
+          <summary>View raw PaymentResponse JSON</summary>
+          <pre class="raw-response-pre" id="receipt-raw-json"></pre>
+        </details>
+
+        <div class="complete-actions">
+          <button type="button" class="btn-checkout-again" id="btn-checkout-again">
+            &larr; Start New Order (Checkout Again)
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="msg" style="display: none;"></div>
+  <script src="../util.js"></script>
+  <script src="pr.js"></script>
+  <script src="../../redirect.js"></script>
+</body>
+</html>
